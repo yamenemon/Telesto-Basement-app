@@ -14,6 +14,8 @@
 		3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */; };
 		3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8991DD845DA00936AB9 /* Assets.xcassets */; };
 		3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */; };
+		3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8A41DD8ACB700936AB9 /* 1.png */; };
+		3B6EB8A71DD9B39200936AB9 /* username.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8A61DD9B39200936AB9 /* username.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		3B6EB8991DD845DA00936AB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B6EB89C1DD845DA00936AB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B6EB89E1DD845DA00936AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B6EB8A41DD8ACB700936AB9 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		3B6EB8A61DD9B39200936AB9 /* username.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = username.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				3B6EB8911DD845D900936AB9 /* ViewController.m */,
 				3B6EB8931DD845D900936AB9 /* Main.storyboard */,
 				3B6EB8991DD845DA00936AB9 /* Assets.xcassets */,
+				3B6EB8A41DD8ACB700936AB9 /* 1.png */,
+				3B6EB8A61DD9B39200936AB9 /* username.png */,
 				3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */,
 				3B6EB89E1DD845DA00936AB9 /* Info.plist */,
 				3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */,
@@ -140,7 +146,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B6EB8A71DD9B39200936AB9 /* username.png in Resources */,
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
+				3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */,
 				3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */,
 				3B6EB8951DD845D900936AB9 /* Main.storyboard in Resources */,
 			);
@@ -315,6 +323,7 @@
 				3B6EB8A31DD845DA00936AB9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
