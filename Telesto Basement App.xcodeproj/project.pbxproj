@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B428ACB1DDB3E57008ADABF /* BaseViewController.m */; };
+		3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */; };
 		3B6EB88C1DD845D900936AB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB88B1DD845D900936AB9 /* main.m */; };
 		3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB88E1DD845D900936AB9 /* AppDelegate.m */; };
-		3B6EB8921DD845D900936AB9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB8911DD845D900936AB9 /* ViewController.m */; };
 		3B6EB8951DD845D900936AB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8931DD845D900936AB9 /* Main.storyboard */; };
 		3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */; };
 		3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8991DD845DA00936AB9 /* Assets.xcassets */; };
@@ -19,12 +20,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B428ACA1DDB3E57008ADABF /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		3B428ACB1DDB3E57008ADABF /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		3B69A9C51DDB0E4800163A80 /* TermsAndConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsAndConditionViewController.h; sourceTree = "<group>"; };
+		3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsAndConditionViewController.m; sourceTree = "<group>"; };
 		3B6EB8871DD845D900936AB9 /* Telesto Basement App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Telesto Basement App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B6EB88B1DD845D900936AB9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3B6EB88D1DD845D900936AB9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B6EB88E1DD845D900936AB9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3B6EB8901DD845D900936AB9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3B6EB8911DD845D900936AB9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3B6EB8941DD845D900936AB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B6EB8971DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Telesto_Basement_App.xcdatamodel; sourceTree = "<group>"; };
 		3B6EB8991DD845DA00936AB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,8 +69,8 @@
 			children = (
 				3B6EB88D1DD845D900936AB9 /* AppDelegate.h */,
 				3B6EB88E1DD845D900936AB9 /* AppDelegate.m */,
-				3B6EB8901DD845D900936AB9 /* ViewController.h */,
-				3B6EB8911DD845D900936AB9 /* ViewController.m */,
+				3B428ACA1DDB3E57008ADABF /* BaseViewController.h */,
+				3B428ACB1DDB3E57008ADABF /* BaseViewController.m */,
 				3B6EB8931DD845D900936AB9 /* Main.storyboard */,
 				3B6EB8991DD845DA00936AB9 /* Assets.xcassets */,
 				3B6EB8A41DD8ACB700936AB9 /* 1.png */,
@@ -76,6 +79,8 @@
 				3B6EB89E1DD845DA00936AB9 /* Info.plist */,
 				3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */,
 				3B6EB88A1DD845D900936AB9 /* Supporting Files */,
+				3B69A9C51DDB0E4800163A80 /* TermsAndConditionViewController.h */,
+				3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */,
 			);
 			path = "Telesto Basement App";
 			sourceTree = "<group>";
@@ -161,9 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B6EB8921DD845D900936AB9 /* ViewController.m in Sources */,
+				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */,
 				3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */,
+				3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
