@@ -40,6 +40,7 @@
 		70CF140D1DF4228A0045CF8F /* CustomerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF140C1DF4228A0045CF8F /* CustomerListViewController.m */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
+		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,8 @@
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
 		70CF14101DF43C180045CF8F /* IQDropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDropDownTextField.h; sourceTree = "<group>"; };
 		70CF14111DF43C180045CF8F /* IQDropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDropDownTextField.m; sourceTree = "<group>"; };
+		70CF14131DF449350045CF8F /* CustomerRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerRecordViewController.h; sourceTree = "<group>"; };
+		70CF14141DF449350045CF8F /* CustomerRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerRecordViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +130,8 @@
 				3B428ACB1DDB3E57008ADABF /* BaseViewController.m */,
 				70CF140B1DF4228A0045CF8F /* CustomerListViewController.h */,
 				70CF140C1DF4228A0045CF8F /* CustomerListViewController.m */,
+				70CF14131DF449350045CF8F /* CustomerRecordViewController.h */,
+				70CF14141DF449350045CF8F /* CustomerRecordViewController.m */,
 				706286111DED7EA60022E105 /* DrawingViewController.h */,
 				706286121DED7EA60022E105 /* DrawingViewController.m */,
 				706286171DED939A0022E105 /* PageContentViewController.h */,
@@ -277,6 +282,7 @@
 				70CF140D1DF4228A0045CF8F /* CustomerListViewController.m in Sources */,
 				7017E93B1DEFF51C009FB76A /* SWRevealViewController.m in Sources */,
 				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
+				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				706286131DED7EA60022E105 /* DrawingViewController.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,
 			);
