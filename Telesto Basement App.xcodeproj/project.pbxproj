@@ -17,6 +17,8 @@
 		3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */; };
 		3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8A41DD8ACB700936AB9 /* 1.png */; };
 		3B6EB8A71DD9B39200936AB9 /* username.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8A61DD9B39200936AB9 /* username.png */; };
+		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
+		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
 		700165C71DEEC1F900247245 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 700165C51DEEC1F900247245 /* left.png */; };
 		700165C81DEEC1F900247245 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 700165C61DEEC1F900247245 /* right.png */; };
 		700165D11DEED93200247245 /* Temp1.png in Resources */ = {isa = PBXBuildFile; fileRef = 700165C91DEED93200247245 /* Temp1.png */; };
@@ -27,10 +29,6 @@
 		700165D61DEED93200247245 /* Temp6.png in Resources */ = {isa = PBXBuildFile; fileRef = 700165CE1DEED93200247245 /* Temp6.png */; };
 		700165D71DEED93200247245 /* Temp7.png in Resources */ = {isa = PBXBuildFile; fileRef = 700165CF1DEED93200247245 /* Temp7.png */; };
 		700165D81DEED93200247245 /* Temp8.png in Resources */ = {isa = PBXBuildFile; fileRef = 700165D01DEED93200247245 /* Temp8.png */; };
-		7017E9361DEFF48D009FB76A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7017E9311DEFF48D009FB76A /* MapViewController.m */; };
-		7017E9371DEFF48D009FB76A /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7017E9331DEFF48D009FB76A /* MenuViewController.m */; };
-		7017E93B1DEFF51C009FB76A /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7017E93A1DEFF51C009FB76A /* SWRevealViewController.m */; };
-		7017E9401DEFF608009FB76A /* ColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7017E93D1DEFF608009FB76A /* ColorViewController.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
 		706286131DED7EA60022E105 /* DrawingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706286121DED7EA60022E105 /* DrawingViewController.m */; };
@@ -59,6 +57,10 @@
 		3B6EB89E1DD845DA00936AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6EB8A41DD8ACB700936AB9 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		3B6EB8A61DD9B39200936AB9 /* username.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = username.png; sourceTree = "<group>"; };
+		70015E961DF6913200DF542E /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		70015E9C1DF69BEF00DF542E /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
+		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		700165C51DEEC1F900247245 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		700165C61DEEC1F900247245 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		700165C91DEED93200247245 /* Temp1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Temp1.png; sourceTree = "<group>"; };
@@ -69,14 +71,6 @@
 		700165CE1DEED93200247245 /* Temp6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Temp6.png; sourceTree = "<group>"; };
 		700165CF1DEED93200247245 /* Temp7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Temp7.png; sourceTree = "<group>"; };
 		700165D01DEED93200247245 /* Temp8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Temp8.png; sourceTree = "<group>"; };
-		7017E9301DEFF48D009FB76A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		7017E9311DEFF48D009FB76A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		7017E9321DEFF48D009FB76A /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		7017E9331DEFF48D009FB76A /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		7017E9391DEFF51C009FB76A /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		7017E93A1DEFF51C009FB76A /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		7017E93C1DEFF608009FB76A /* ColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorViewController.h; sourceTree = "<group>"; };
-		7017E93D1DEFF608009FB76A /* ColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorViewController.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		706286111DED7EA60022E105 /* DrawingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingViewController.h; sourceTree = "<group>"; };
@@ -124,8 +118,11 @@
 		3B6EB8891DD845D900936AB9 /* Telesto Basement App */ = {
 			isa = PBXGroup;
 			children = (
+				70015E941DF690E100DF542E /* Models */,
 				3B6EB88D1DD845D900936AB9 /* AppDelegate.h */,
 				3B6EB88E1DD845D900936AB9 /* AppDelegate.m */,
+				3B69A9C51DDB0E4800163A80 /* TermsAndConditionViewController.h */,
+				3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */,
 				3B428ACA1DDB3E57008ADABF /* BaseViewController.h */,
 				3B428ACB1DDB3E57008ADABF /* BaseViewController.m */,
 				70CF140B1DF4228A0045CF8F /* CustomerListViewController.h */,
@@ -136,39 +133,13 @@
 				706286121DED7EA60022E105 /* DrawingViewController.m */,
 				706286171DED939A0022E105 /* PageContentViewController.h */,
 				706286181DED939A0022E105 /* PageContentViewController.m */,
-				7017E9301DEFF48D009FB76A /* MapViewController.h */,
-				7017E9311DEFF48D009FB76A /* MapViewController.m */,
-				7017E9321DEFF48D009FB76A /* MenuViewController.h */,
-				7017E9331DEFF48D009FB76A /* MenuViewController.m */,
-				7017E93C1DEFF608009FB76A /* ColorViewController.h */,
-				7017E93D1DEFF608009FB76A /* ColorViewController.m */,
-				7017E9391DEFF51C009FB76A /* SWRevealViewController.h */,
-				7017E93A1DEFF51C009FB76A /* SWRevealViewController.m */,
-				700165C91DEED93200247245 /* Temp1.png */,
-				700165CA1DEED93200247245 /* Temp2.png */,
-				700165CB1DEED93200247245 /* Temp3.png */,
-				700165CC1DEED93200247245 /* Temp4.png */,
-				700165CD1DEED93200247245 /* Temp5.png */,
-				700165CE1DEED93200247245 /* Temp6.png */,
-				700165CF1DEED93200247245 /* Temp7.png */,
-				700165D01DEED93200247245 /* Temp8.png */,
-				700165C51DEEC1F900247245 /* left.png */,
-				700165C61DEEC1F900247245 /* right.png */,
-				70CF140E1DF431B20045CF8F /* BackButton@2x.png */,
 				3B6EB8931DD845D900936AB9 /* Main.storyboard */,
 				3B6EB8991DD845DA00936AB9 /* Assets.xcassets */,
-				3B6EB8A41DD8ACB700936AB9 /* 1.png */,
-				70B3A78E1DEFEAF6008D5E8D /* whiteUsername.png */,
-				3B6EB8A61DD9B39200936AB9 /* username.png */,
-				70B3A78A1DEFD46E008D5E8D /* password.png */,
-				7017E93E1DEFF608009FB76A /* reveal-icon.png */,
-				7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */,
+				70015E951DF6910500DF542E /* Images */,
 				3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */,
 				3B6EB89E1DD845DA00936AB9 /* Info.plist */,
 				3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */,
 				3B6EB88A1DD845D900936AB9 /* Supporting Files */,
-				3B69A9C51DDB0E4800163A80 /* TermsAndConditionViewController.h */,
-				3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */,
 			);
 			path = "Telesto Basement App";
 			sourceTree = "<group>";
@@ -181,6 +152,41 @@
 				3B6EB88B1DD845D900936AB9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		70015E941DF690E100DF542E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				70015E9C1DF69BEF00DF542E /* HttpHelper.h */,
+				70015E9D1DF69BEF00DF542E /* HttpHelper.m */,
+				70015E961DF6913200DF542E /* Utility.h */,
+				70015E971DF6913200DF542E /* Utility.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		70015E951DF6910500DF542E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				700165C91DEED93200247245 /* Temp1.png */,
+				700165CA1DEED93200247245 /* Temp2.png */,
+				700165CB1DEED93200247245 /* Temp3.png */,
+				700165CC1DEED93200247245 /* Temp4.png */,
+				700165CD1DEED93200247245 /* Temp5.png */,
+				700165CE1DEED93200247245 /* Temp6.png */,
+				700165CF1DEED93200247245 /* Temp7.png */,
+				700165D01DEED93200247245 /* Temp8.png */,
+				700165C51DEEC1F900247245 /* left.png */,
+				700165C61DEEC1F900247245 /* right.png */,
+				70CF140E1DF431B20045CF8F /* BackButton@2x.png */,
+				3B6EB8A41DD8ACB700936AB9 /* 1.png */,
+				70B3A78E1DEFEAF6008D5E8D /* whiteUsername.png */,
+				3B6EB8A61DD9B39200936AB9 /* username.png */,
+				70B3A78A1DEFD46E008D5E8D /* password.png */,
+				7017E93E1DEFF608009FB76A /* reveal-icon.png */,
+				7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +220,7 @@
 				TargetAttributes = {
 					3B6EB8861DD845D900936AB9 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 68449K2QZC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -272,18 +279,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
-				7017E9371DEFF48D009FB76A /* MenuViewController.m in Sources */,
-				7017E9401DEFF608009FB76A /* ColorViewController.m in Sources */,
 				3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */,
 				3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */,
-				7017E9361DEFF48D009FB76A /* MapViewController.m in Sources */,
 				3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */,
+				70015E981DF6913200DF542E /* Utility.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				70CF140D1DF4228A0045CF8F /* CustomerListViewController.m in Sources */,
-				7017E93B1DEFF51C009FB76A /* SWRevealViewController.m in Sources */,
 				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				706286131DED7EA60022E105 /* DrawingViewController.m in Sources */,
+				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +336,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -350,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -379,6 +385,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -392,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -404,11 +411,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 68449K2QZC;
 				INFOPLIST_FILE = "Telesto Basement App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.csm.Telesto-Basement-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -416,11 +425,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 68449K2QZC;
 				INFOPLIST_FILE = "Telesto Basement App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.csm.Telesto-Basement-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

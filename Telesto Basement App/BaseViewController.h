@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "TermsAndConditionViewController.h"
-@interface BaseViewController : UIViewController
+#import "Utility.h"
+#import "HttpHelper.h"
+#import "AppDelegate.h"
+
+@interface BaseViewController : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *useNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *rememberSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UIButton *forgetPasswordBtn;
 
 @end

@@ -28,13 +28,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)cancelButtonPressed:(id)sender {
-    UIAlertView *confirmationAlert = [[UIAlertView alloc] initWithTitle:@"Confirmation Alert" message:@"Please Accept Terms and Condition for using the Application" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done", nil];
-    [confirmationAlert show];
-}
-- (IBAction)AgreeButtonPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
+
 
 /*
 #pragma mark - Navigation

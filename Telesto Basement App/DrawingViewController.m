@@ -31,13 +31,21 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PageContentViewController *viewControllerForPopover = [storyboard instantiateViewControllerWithIdentifier:@"PageContentViewController"];
     viewControllerForPopover.drawingVC = self;
+    viewControllerForPopover.preferredContentSize = CGSizeMake(1000,700);
     
-    popover = [[UIPopoverController alloc]
-               initWithContentViewController:viewControllerForPopover];
-    [popover setPopoverContentSize:CGSizeMake(1000,700)]; // here see if you can get expected size
-    [popover presentPopoverFromRect:anchor.frame
-                             inView:anchor.superview
-           permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    
+    viewControllerForPopover.modalPresentationStyle = UIModalPresentationPopover;
+    [self presentViewController:viewControllerForPopover animated:YES completion:nil];
+    
+    // configure the Popover presentation controller
+    UIPopoverPresentationController *popController = [viewControllerForPopover popoverPresentationController];
+    popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popController.delegate = self;
+    
+    // in case we don't have a bar button as reference
+    popController.sourceView = anchor.superview;
+    popController.sourceRect =  anchor.frame;
 }
 -(void)selectedTemplate:(id)sender{
     [popover dismissPopoverAnimated:NO];
@@ -45,6 +53,30 @@
     NSLog(@"template index:%ld",(long)btn.tag);
     _drawingTemplateImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Temp%ld",(long)btn.tag+1]];
 }
+# pragma mark - Popover Presentation Controller Delegate
+-(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{
+
+    return UIModalPresentationNone;
+
+}
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    
+    // called when a Popover is dismissed
+    NSLog(@"Popover was dismissed with external tap. Have a nice day!");
+}
+
+- (BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    
+    // return YES if the Popover should be dismissed
+    // return NO if the Popover should not be dismissed
+    return YES;
+}
+
+- (void)popoverPresentationController:(UIPopoverPresentationController *)popoverPresentationController willRepositionPopoverToRect:(inout CGRect *)rect inView:(inout UIView *__autoreleasing  _Nonnull *)view {
+    
+    // called when the Popover changes positon
+}
+
 /*
 #pragma mark - Navigation
 

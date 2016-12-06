@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PageContentViewController.h"
-@interface DrawingViewController : UIViewController
+@interface DrawingViewController : UIViewController<UIPopoverPresentationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *drawingTemplateImageView;
 -(void)selectedTemplate:(id)sender;
 @end
