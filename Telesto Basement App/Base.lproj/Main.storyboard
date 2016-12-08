@@ -58,7 +58,7 @@
                                                 <rect key="frame" x="181" y="135" width="279" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <connections>
                                                     <action selector="editingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="XnM-8p-FR1"/>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="zoX-Bw-0Pi"/>
@@ -74,7 +74,6 @@
                                                 <state key="normal" title="Login"/>
                                                 <connections>
                                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dlq-ez-ZGn"/>
-                                                    <segue destination="l7s-Pa-2Fa" kind="show" id="UB4-86-Buh"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="751" verticalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6G3-gI-JMa">
@@ -155,7 +154,7 @@
         <!--PIONEER BASEMENT-->
         <scene sceneID="ieu-lw-FmZ">
             <objects>
-                <viewController id="l7s-Pa-2Fa" customClass="CustomerListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CustomerListViewController" id="l7s-Pa-2Fa" customClass="CustomerListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Kv-51-BFd"/>
                         <viewControllerLayoutGuide type="bottom" id="8LY-Qh-DdS"/>

@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 
 @interface BaseViewController ()
-
+@property (strong, nonatomic) UIActivityIndicatorView *aSpinner;
 @end
 
 @implementation BaseViewController
@@ -17,6 +17,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [Utility checkForCookie];
+    
+    NSString *oldEmailAddress = [self getOldLoginEmailAddress];
+    if (oldEmailAddress &&
+        ![oldEmailAddress isEqualToString:@""]) {
+        self.useNameTextField.text = oldEmailAddress;
+    }
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)]];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self showingTermsAndConditionScreen];
@@ -39,7 +47,26 @@
     [self presentViewController:vc animated:YES completion:NULL];
 
 }
+-(void)hideButton {
+    self.loginBtn.hidden = TRUE;
+}
+
+
+-(void)showButton {
+    self.loginBtn.hidden = FALSE;
+}
+
+
+-(void)addSpinner {
+    [self.view endEditing:YES];
+    [self.view addSubview:self.aSpinner];
+    [self.aSpinner startAnimating];
+}
+
 - (IBAction)loginButtonPressed:(id)sender {
+    
+    [self hideButton];
+    [self addSpinner];
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSString* tokenAsString = [appDelegate deviceToken];
@@ -49,7 +76,7 @@
     NSString* userId = _useNameTextField.text;
     NSString* password = _passwordTextField.text;
     
-    NSString *post = [NSString stringWithFormat:@"userid=%@&password=%@&device_token=%@", userId, password, tokenAsString];
+    NSString *post = [NSString stringWithFormat:@"userid=%@&password=%@&device_token=%@&device_type=iOS", userId, password, tokenAsString];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
     
@@ -60,19 +87,76 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     NSData *data = [serviceHelper sendRequest:request];
-    NSLog(@"data in string: %@",[[NSString alloc] initWithData:data encoding:4]);
+    [self parseJOSNLoginStatus:data];
+    
+}
+- (BOOL)parseJOSNLoginStatus:(NSData *)data {
+    NSError *e = nil;
+    NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data
+                                                              options:NSJSONReadingMutableLeaves
+                                                                error: &e];
+    NSString *loginStatus = [jsonArray objectForKey:@"Login"];
+    if([loginStatus isEqualToString:@"true"]) {
+        NSLog(@"Login Successful");
+        if([self.rememberSwitch isOn]) {
+            [self updateLoginEmailAddress:self.useNameTextField.text];
+        } else {
+            [self clearOldLoginEmailAddress];
+        }
+        
+        [Utility storeCookie];
+        [Utility showCustomerListViewController];
+        return YES;
+    } else {
+        [self showButton];
+        NSString *message = @"Login Failed";
+        NSLog(@"%@", message);
+        [Utility showAlertWithTitle:@"Error"
+                              withMessage:message];
+        return NO;
+    }
+    return NO;
+}
+-(NSString*)getOldLoginEmailAddress {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *oldEmailSettings = [[defaults objectForKey:@"EmailSettings"] mutableCopy];
+    if(oldEmailSettings) {
+        return [oldEmailSettings objectForKey:@"EmailAddress"];
+    }
+    return @"";
+}
+
+
+-(void)updateLoginEmailAddress:(NSString*)emailAddress {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *oldEmailSettings = [[defaults objectForKey:@"EmailSettings"] mutableCopy];
+    if(!oldEmailSettings) {
+        oldEmailSettings = [[NSMutableDictionary alloc] init];
+    }
+    
+    [oldEmailSettings setValue:emailAddress
+                        forKey:@"EmailAddress"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:oldEmailSettings
+                                              forKey:@"EmailSettings"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+-(void)clearOldLoginEmailAddress {
+    [self updateLoginEmailAddress:@""];
 }
 #pragma mark UITextField Delegate
 
 - (IBAction)editingChanged:(id)sender {
     if (_passwordTextField.text.length>0 && _useNameTextField.text.length>0) {
-        [UIView animateWithDuration:0.10 animations:^{
+        [UIView animateWithDuration:0.25 animations:^{
             _loginBtn.enabled = YES;
             _loginBtn.alpha = 1.0;
         }];
 
     } else {
-        [UIView animateWithDuration:0.10 animations:^{
+        [UIView animateWithDuration:0.25 animations:^{
             _loginBtn.enabled = NO;
             _loginBtn.alpha = 0.25;
         }];
@@ -84,15 +168,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

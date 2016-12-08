@@ -7,7 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface Utility : NSObject
++ (void)loadLoginView;
++ (void)showMainViewController;
++ (void)showDomainViewController;
++ (void)showCustomerListViewController;
 
++ (void)checkForCookie;
++ (BOOL)iSUserLoggedIn;
++ (void)storeCookie;
++ (void)restoreCookie;
++ (void)removeCookie;
+
++ (void)authenticationRequired;
+
++ (void)showAlertWithTitle:(NSString*)title
+               withMessage:(NSString*)message;
+
++ (UIImage*)imageWithImage:(UIImage*)sourceImage
+             scaledToWidth:(float)i_width;
+
++(void)showConnectionErroMessage;
++(void)showJSONErroMessage;
 @end
