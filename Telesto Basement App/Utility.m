@@ -11,9 +11,9 @@
 
 @implementation Utility
 + (void)loadLoginView {
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//    [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
 }
 
 

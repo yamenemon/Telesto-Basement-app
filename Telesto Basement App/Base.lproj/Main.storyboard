@@ -12,7 +12,7 @@
         <!--Base View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BaseViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="BaseViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -234,12 +234,15 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ajy-mr-gte" userLabel="SlideView">
                                         <rect key="frame" x="0.0" y="55" width="300" height="713"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEu-gb-ZvO">
+                                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pEu-gb-ZvO">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="679"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="l7s-Pa-2Fa" id="nG6-kA-mH3"/>
+                                                    <outlet property="delegate" destination="l7s-Pa-2Fa" id="qgg-hb-LQo"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.63366395235061646" green="0.57315236330032349" blue="0.53073054552078247" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="pEu-gb-ZvO" firstAttribute="leading" secondItem="Ajy-mr-gte" secondAttribute="leading" id="0Xx-sV-8c2"/>
                                             <constraint firstAttribute="width" constant="300" id="FUs-rL-isV"/>
@@ -303,6 +306,9 @@
                     <navigationItem key="navigationItem" title="PIONEER BASEMENT" id="wFi-YS-lBx"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="customerListTableView" destination="nEV-yu-fkN" id="JqB-6L-Reb"/>
+                        <outlet property="customerSearchBar" destination="0kD-Po-QuO" id="fC6-eM-U2f"/>
+                        <outlet property="sliderTableView" destination="pEu-gb-ZvO" id="UVy-UU-DR2"/>
                         <outlet property="sliderView" destination="Ajy-mr-gte" id="hGC-I1-xp9"/>
                     </connections>
                 </viewController>

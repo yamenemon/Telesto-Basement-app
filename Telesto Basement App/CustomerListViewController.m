@@ -20,6 +20,7 @@
 }
 -(void)viewDidLayoutSubviews{
 
+    _sliderTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     _sliderView.hidden = NO;
     _sliderView.frame = CGRectMake(-_sliderView.frame.size.width, _sliderView.frame.origin.y, _sliderView.frame.size.width, _sliderView.frame.size.height);
@@ -48,7 +49,56 @@
                          //...second completion block...
                      }];
 }
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (tableView.tag == 1) {
+        return 5;
+    }
+    return 1;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
+    if (tableView.tag==1) {
+        switch (indexPath.row) {
+            case 0:
+                cell.textLabel.text = @"Settings";
+                break;
+            case 1:
+                cell.textLabel.text = @"Old Proposals";
+                break;
+            case 2:
+                cell.textLabel.text = @"Training Video";
+                break;
+            case 3:
+                cell.textLabel.text = @"Presentations";
+                break;
+            case 4:
+                cell.textLabel.text = @"Logout";
+                break;
+                
+                
+            default:
+                break;
+        }
+    }
+    return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView.tag == 1) {
+        if (indexPath.row == 4) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [Utility loadLoginView];
+        }
+    }
+
+}
 /*
 #pragma mark - Navigation
 
