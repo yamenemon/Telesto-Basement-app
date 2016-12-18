@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Utility.h"
+#import "SWRevealViewController.h"
 @interface CustomerListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 @property (weak, nonatomic) IBOutlet UIView *sliderView;
 @property (weak, nonatomic) IBOutlet UITableView *sliderTableView;
 @property (weak, nonatomic) IBOutlet UITableView *customerListTableView;

@@ -16,10 +16,56 @@
 
 @implementation DrawingViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self customSetup];
 }
+
+
+- (void)customSetup
+{
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.revealButtonItem setTarget: revealViewController];
+        [self.revealButtonItem setAction: @selector( revealToggle: )];
+        [self.navigationController.navigationBar addGestureRecognizer:revealViewController.panGestureRecognizer];
+    }
+    
+}
+
+
+#pragma mark state preservation / restoration
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    // Save what you need here
+    
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    // Restore what you need here
+    
+    [super decodeRestorableStateWithCoder:coder];
+}
+
+
+- (void)applicationFinishedRestoringState
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    // Call whatever function you need to visually restore
+    [self customSetup];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -51,7 +97,7 @@
     [popover dismissPopoverAnimated:NO];
     UIButton *btn = (UIButton*)sender;
     NSLog(@"template index:%ld",(long)btn.tag);
-    _drawingTemplateImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Temp%ld",(long)btn.tag+1]];
+//    _drawingTemplateImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"Temp%ld",(long)btn.tag+1]];
 }
 # pragma mark - Popover Presentation Controller Delegate
 -(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{

@@ -31,7 +31,7 @@
 }
 + (void)showCustomerListViewController {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"CustomerListViewController"];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"SWRevealViewController"];
     [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
 }
 

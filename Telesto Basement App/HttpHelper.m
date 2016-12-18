@@ -75,17 +75,17 @@
     return self;
 }
 
--(void)dealloc
-{
-    [self setError:nil];
-    [self setRequest:nil];
-    [self setResponse:nil];
-    [self setMethod:nil];
-    [self setFileParams:nil];
-    [self setFormParams:nil];
-    [self setUrl:nil];
-}
-
+//-(void)dealloc
+//{
+//    [self setError:nil];
+//    [self setRequest:nil];
+//    [self setResponse:nil];
+//    [self setMethod:nil];
+//    [self setFileParams:nil];
+//    [self setFormParams:nil];
+//    [self setUrl:nil];
+//}
+//
 #pragma mark - simple send methods
 
 /* these methods perform simple GET/POST requests. 

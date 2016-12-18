@@ -14,41 +14,53 @@
 
 @implementation CustomerListViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
--(void)viewDidLayoutSubviews{
-
-    _sliderTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-    _sliderView.hidden = NO;
-    _sliderView.frame = CGRectMake(-_sliderView.frame.size.width, _sliderView.frame.origin.y, _sliderView.frame.size.width, _sliderView.frame.size.height);
-
+    [self customSetup];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)customSetup
+{
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.revealButtonItem setTarget: self.revealViewController];
+        [self.revealButtonItem setAction: @selector( revealToggle: )];
+        [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    }
 }
-- (IBAction)sliderBtnClicked:(id)sender {
+
+#pragma mark state preservation / restoration
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     
-    [UIView animateWithDuration:0.4
-                          delay:0
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-                         if (_isShown == NO) {
-                             _isShown = YES;
-                             _sliderView.frame = CGRectMake(0, _sliderView.frame.origin.y, _sliderView.frame.size.width, _sliderView.frame.size.height);
-                         }
-                         else{
-                             _isShown = NO;
-                             _sliderView.frame = CGRectMake(-_sliderView.frame.size.width, _sliderView.frame.origin.y, _sliderView.frame.size.width, _sliderView.frame.size.height);                         }
-                     }
-                     completion:^(BOOL finished){
-                         //...second completion block...
-                     }];
+    // Save what you need here
+    
+    [super encodeRestorableStateWithCoder:coder];
 }
+
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    // Restore what you need here
+    
+    [super decodeRestorableStateWithCoder:coder];
+}
+
+
+- (void)applicationFinishedRestoringState
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    // Call whatever function you need to visually restore
+    [self customSetup];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -97,7 +109,6 @@
             [Utility loadLoginView];
         }
     }
-
 }
 /*
 #pragma mark - Navigation

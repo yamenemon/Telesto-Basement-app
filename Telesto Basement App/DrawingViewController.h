@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PageContentViewController.h"
+#import "SWRevealViewController.h"
 @interface DrawingViewController : UIViewController<UIPopoverPresentationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *drawingTemplateImageView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 -(void)selectedTemplate:(id)sender;
 @end

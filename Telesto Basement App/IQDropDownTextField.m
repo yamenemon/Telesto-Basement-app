@@ -70,26 +70,26 @@ NSInteger const IQOptionalTextFieldIndex =  -1;
 
 #pragma mark - NSObject
 
-- (void)dealloc {
-    [_pickerView setDelegate:nil];
-    [_pickerView setDataSource:nil];
-    [_datePicker removeTarget:nil action:NULL forControlEvents:UIControlEventValueChanged];
-    [_timePicker removeTarget:nil action:NULL forControlEvents:UIControlEventValueChanged];
-    [_dateTimePicker removeTarget:nil action:NULL forControlEvents:UIControlEventValueChanged];
-    _pickerView = nil;
-    _datePicker = nil;
-    _dateTimePicker = nil;
-    dropDownDateFormatter = nil;
-    dropDownTimeFormatter = nil;
-    _ItemListsInternal = nil;
-    self.delegate = nil;
-    _dataSource = nil;
-    _optionalItemText = nil;
-    _itemList = nil;
-    _dropDownFont = nil;
-    _dropDownTextColor = nil;
-    _optionalItemTextColor = nil;
-}
+//- (void)dealloc {
+//    [_pickerView setDelegate:nil];
+//    [_pickerView setDataSource:nil];
+//    [_datePicker removeTarget:nil action:NULL forControlEvents:UIControlEventValueChanged];
+//    [_timePicker removeTarget:nil action:NULL forControlEvents:UIControlEventValueChanged];
+//    [_dateTimePicker removeTarget:nil action:NULL forControlEvents:UIControlEventValueChanged];
+//    _pickerView = nil;
+//    _datePicker = nil;
+//    _dateTimePicker = nil;
+//    dropDownDateFormatter = nil;
+//    dropDownTimeFormatter = nil;
+//    _ItemListsInternal = nil;
+//    self.delegate = nil;
+//    _dataSource = nil;
+//    _optionalItemText = nil;
+//    _itemList = nil;
+//    _dropDownFont = nil;
+//    _dropDownTextColor = nil;
+//    _optionalItemTextColor = nil;
+//}
 
 #pragma mark - Initialization
 
