@@ -30,4 +30,5 @@
 
 +(void)showConnectionErroMessage;
 +(void)showJSONErroMessage;
++(UIColor*)colorWithHexString:(NSString*)hex;
 @end

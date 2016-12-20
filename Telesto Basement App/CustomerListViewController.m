@@ -17,6 +17,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundColor:[Utility colorWithHexString:@"0A5571"]];
     [self customSetup];
 }
 
@@ -76,6 +78,7 @@
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
+
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
     if (tableView.tag==1) {
         switch (indexPath.row) {
@@ -109,6 +112,12 @@
             [Utility loadLoginView];
         }
     }
+}
+- (IBAction)testBtnCalled:(id)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DesignViewController"];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 /*
 #pragma mark - Navigation

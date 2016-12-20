@@ -13,6 +13,12 @@
 
 @implementation MenuViewController
 
+-(void)viewDidLoad{
+
+    self.navigationController.navigationBar.tintColor = [UIColor redColor];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+}
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
@@ -40,30 +46,51 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-
     switch ( indexPath.row )
     {
         case 0:
-            CellIdentifier = @"map";
+            CellIdentifier = @"Customer List";
             break;
             
         case 1:
-            CellIdentifier = @"blue";
+            CellIdentifier = @"Settings";
             break;
-
+            
         case 2:
-            CellIdentifier = @"red";
+            CellIdentifier = @"Old Proposals";
+            break;
+        case 3:
+            CellIdentifier = @"Training Videos";
+            break;
+        case 4:
+            CellIdentifier = @"Presentations";
+            break;
+        case 5:
+            CellIdentifier = @"Logout";
             break;
     }
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier forIndexPath: indexPath];
- 
+    SWUITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[SWUITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+    }
+    cell.tag = indexPath.row;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(cell.tag == indexPath.row) {
+            tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+            UIImageView *imagView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"separator"]];
+            imagView.frame = CGRectMake(10,cell.frame.size.height -1, self.view.frame.size.width-80, 0.5);
+            [imagView setContentMode:UIViewContentModeScaleToFill];
+            [cell addSubview:imagView];
+        }
+    });
     return cell;
 }
 
