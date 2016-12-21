@@ -20,8 +20,24 @@
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundColor:[Utility colorWithHexString:@"0A5571"]];
     [self customSetup];
+    [self getCustomerData];
 }
 
+-(void)getCustomerData{
+
+    NSString *customerData = @"{ \"firstName\": \"John\",\"lastName\": \"Smith\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
+    // Convert to JSON object:
+    NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:[customerData dataUsingEncoding:NSUTF8StringEncoding]
+                                                          options:0 error:NULL];
+    NSLog(@"jsonObject=%@", jsonObject);
+    
+    
+    CustomerInfoObject *customerInfoObj = [[CustomerInfoObject alloc] init];
+    customerInfoObj.customerName = [NSString stringWithFormat:@"%@ %@",[jsonObject valueForKey:@"firstName"],[jsonObject valueForKey:@"lastName"]] ;
+    customerInfoObj.customerAddress = [jsonObject valueForKey:@"address"];
+    customerInfoObj.scheduleDate = [jsonObject valueForKey:@"number"];
+    _customerInfoObjArray = [[NSMutableArray alloc] initWithObjects:customerInfoObj, nil];
+}
 - (void)customSetup
 {
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -67,10 +83,8 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (tableView.tag == 1) {
-        return 5;
-    }
-    return 1;
+    
+    return [_customerInfoObjArray count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -80,38 +94,51 @@
     
 
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-    if (tableView.tag==1) {
-        switch (indexPath.row) {
-            case 0:
-                cell.textLabel.text = @"Settings";
-                break;
-            case 1:
-                cell.textLabel.text = @"Old Proposals";
-                break;
-            case 2:
-                cell.textLabel.text = @"Training Video";
-                break;
-            case 3:
-                cell.textLabel.text = @"Presentations";
-                break;
-            case 4:
-                cell.textLabel.text = @"Logout";
-                break;
-                
-                
-            default:
-                break;
-        }
+    UILabel *userName;
+    UILabel *userAddress;
+    UILabel *scheduleLabel;
+    UIImageView *userImageView;
+    
+    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:indexPath.row];
+
+    if (cell) {
+        userImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userName"]];
+        [cell addSubview:userImageView];
+        userImageView.frame = CGRectMake(3, 2, 45, 45);
+        userImageView.tag = 0;
+        
+        userName = [[UILabel alloc] initWithFrame:CGRectMake(48, 2, 200, 50)];
+        [cell addSubview:userName];
+        userName.tag = 1;
+        
+        userAddress = [[UILabel alloc] initWithFrame:CGRectMake(48, 52, 200, 150)];
+        [cell addSubview:userAddress];
+        userAddress.tag = 2;
+        
+        scheduleLabel = [[UILabel alloc] initWithFrame:CGRectMake(48, 252, 200, 48)];
+        [cell addSubview:scheduleLabel];
+        scheduleLabel.tag = 3;
     }
+    else{
+        userImageView = [cell viewWithTag:0];
+        userName = [cell viewWithTag:1];
+        userAddress = [cell viewWithTag:2];
+        scheduleLabel = [cell viewWithTag:3];
+    }
+    NSLog(@"\nCustomer Name: %@ \n Customer Address: %@ \n Customer Schedule: %@ \n",customerInfoObject.customerName,customerInfoObject.customerAddress,customerInfoObject.scheduleDate);
+    userName.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerName];
+    userAddress.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerAddress];
+    scheduleLabel.text = [NSString stringWithFormat:@"%@", customerInfoObject.scheduleDate];
+
     return cell;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return 200;
+
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (tableView.tag == 1) {
-        if (indexPath.row == 4) {
-            [self dismissViewControllerAnimated:YES completion:nil];
-            [Utility loadLoginView];
-        }
-    }
+    
 }
 - (IBAction)testBtnCalled:(id)sender {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

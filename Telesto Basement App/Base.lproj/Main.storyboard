@@ -7,13 +7,9 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Roboto-Bold.ttf">
-            <string>Roboto-Bold</string>
-        </array>
         <array key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
         </array>
@@ -1113,24 +1109,43 @@ Washington, DC 20521-6170
                                             <constraint firstAttribute="height" constant="520" id="BOa-wo-4pW"/>
                                             <constraint firstAttribute="width" constant="810" id="HKa-kP-VaS"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="p86-zk-glB" id="SYg-xh-21Z"/>
+                                            <outlet property="delegate" destination="p86-zk-glB" id="Vpz-PG-EUE"/>
+                                        </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mBj-r2-SKh">
-                                        <rect key="frame" x="265" y="685" width="457" height="59"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mBj-r2-SKh">
+                                        <rect key="frame" x="265" y="685" width="494" height="59"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-qN-mnV">
-                                                <rect key="frame" x="-2" y="0.0" width="459" height="59"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="35"/>
-                                                <state key="normal" title="Create New Account">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-qN-mnV">
+                                                <rect key="frame" x="0.0" y="0.0" width="494" height="59"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="59" id="xZQ-zL-hxV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <inset key="imageEdgeInsets" minX="-100" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Create New Customer">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creat_new_customer.png" translatesAutoresizingMaskIntoConstraints="NO" id="yRa-77-SJd">
+                                                <rect key="frame" x="18" y="10" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="RGh-RZ-4qX"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.03932344913482666" green="0.3544466495513916" blue="0.47187530994415283" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="QOb-qN-mnV" secondAttribute="width" id="Y72-xs-kSp"/>
-                                            <constraint firstAttribute="bottom" secondItem="QOb-qN-mnV" secondAttribute="bottom" id="ZLC-dR-GHI"/>
-                                            <constraint firstItem="QOb-qN-mnV" firstAttribute="top" secondItem="mBj-r2-SKh" secondAttribute="top" id="k2V-N9-ERl"/>
-                                            <constraint firstItem="QOb-qN-mnV" firstAttribute="leading" secondItem="mBj-r2-SKh" secondAttribute="leadingMargin" constant="-10" id="wIT-CT-FQE"/>
+                                            <constraint firstItem="QOb-qN-mnV" firstAttribute="top" secondItem="mBj-r2-SKh" secondAttribute="top" id="2hm-YL-zLS"/>
+                                            <constraint firstItem="QOb-qN-mnV" firstAttribute="centerY" secondItem="yRa-77-SJd" secondAttribute="centerY" id="5YX-HF-GDe"/>
+                                            <constraint firstItem="yRa-77-SJd" firstAttribute="leading" secondItem="mBj-r2-SKh" secondAttribute="leading" constant="18" id="CIJ-AV-jLI"/>
+                                            <constraint firstAttribute="bottom" secondItem="QOb-qN-mnV" secondAttribute="bottom" id="Eeo-Rr-3kv"/>
+                                            <constraint firstItem="yRa-77-SJd" firstAttribute="top" secondItem="mBj-r2-SKh" secondAttribute="top" constant="10" id="MZq-sz-mSL"/>
+                                            <constraint firstItem="QOb-qN-mnV" firstAttribute="leading" secondItem="mBj-r2-SKh" secondAttribute="leading" id="RQT-vd-3F4"/>
+                                            <constraint firstAttribute="trailing" secondItem="QOb-qN-mnV" secondAttribute="trailing" id="kui-Xq-IUy"/>
+                                            <constraint firstAttribute="width" constant="494" id="nU0-Hr-D7I"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1138,13 +1153,14 @@ Washington, DC 20521-6170
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="vPY-1A-lK0" secondAttribute="bottom" constant="8" id="BBw-Yq-nxp"/>
                                     <constraint firstItem="9Pd-Lv-pdT" firstAttribute="centerX" secondItem="BrV-aI-6cF" secondAttribute="centerX" id="HGd-p7-e8A"/>
+                                    <constraint firstItem="mBj-r2-SKh" firstAttribute="centerX" secondItem="BrV-aI-6cF" secondAttribute="centerX" id="Igc-rN-VJx"/>
+                                    <constraint firstItem="mBj-r2-SKh" firstAttribute="top" secondItem="9Pd-Lv-pdT" secondAttribute="bottom" constant="26" id="OqN-HS-wBq"/>
                                     <constraint firstAttribute="trailing" secondItem="vPY-1A-lK0" secondAttribute="trailing" constant="14" id="aJ3-As-vbm"/>
                                     <constraint firstItem="9Pd-Lv-pdT" firstAttribute="trailing" secondItem="pWq-VI-xTX" secondAttribute="trailing" id="ddP-vO-oNf"/>
                                     <constraint firstItem="pWq-VI-xTX" firstAttribute="top" secondItem="BrV-aI-6cF" secondAttribute="top" constant="95" id="jar-0z-qdV"/>
-                                    <constraint firstAttribute="bottom" secondItem="mBj-r2-SKh" secondAttribute="bottom" constant="24" id="ksd-9M-S81"/>
                                     <constraint firstItem="9Pd-Lv-pdT" firstAttribute="top" secondItem="pWq-VI-xTX" secondAttribute="bottom" id="ld5-of-3Wk"/>
                                     <constraint firstItem="9Pd-Lv-pdT" firstAttribute="leading" secondItem="pWq-VI-xTX" secondAttribute="leading" id="qjn-y7-uhC"/>
-                                    <constraint firstItem="mBj-r2-SKh" firstAttribute="leading" secondItem="BrV-aI-6cF" secondAttribute="leading" constant="265" id="xwt-2h-0vI"/>
+                                    <constraint firstItem="mBj-r2-SKh" firstAttribute="leading" secondItem="BrV-aI-6cF" secondAttribute="leading" priority="250" constant="265" id="xwt-2h-0vI"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1160,6 +1176,8 @@ Washington, DC 20521-6170
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" style="plain" id="KQt-pd-fUs"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="customerListTableView" destination="9Pd-Lv-pdT" id="D7I-0z-r3P"/>
+                        <outlet property="customerSearchBar" destination="pWq-VI-xTX" id="ckr-ZP-VlF"/>
                         <outlet property="revealButtonItem" destination="KQt-pd-fUs" id="hpp-Yh-XPh"/>
                         <outlet property="searchDisplayController" destination="to0-m4-QQs" id="GOj-NW-swQ"/>
                     </connections>
@@ -1265,6 +1283,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerColor" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2yX-Oq-Cx0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1358,6 +1377,7 @@ Washington, DC 20521-6170
     <resources>
         <image name="1.png" width="75" height="75"/>
         <image name="BackButton.png" width="100" height="100"/>
+        <image name="creat_new_customer.png" width="20" height="20"/>
         <image name="customerList.png" width="20" height="20"/>
         <image name="log_out.png" width="20" height="20"/>
         <image name="new_customer.png" width="20" height="20"/>

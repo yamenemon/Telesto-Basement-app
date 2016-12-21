@@ -30,6 +30,7 @@
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
 		70192ECB1DFD559500901E7D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70192ECA1DFD559500901E7D /* SWRevealViewController.m */; };
 		70192ECE1DFD61A900901E7D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70192ECD1DFD61A900901E7D /* MenuViewController.m */; };
+		703587B01E0A8D0700D13753 /* CustomerInfoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 703587AF1E0A8D0700D13753 /* CustomerInfoObject.m */; };
 		705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C31DF97B7000082D55 /* Roboto-Black.ttf */; };
 		705F64D61DF97B7000082D55 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C41DF97B7000082D55 /* Roboto-BlackItalic.ttf */; };
 		705F64D71DF97B7000082D55 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C51DF97B7000082D55 /* Roboto-Bold.ttf */; };
@@ -130,6 +131,8 @@
 		70192ECA1DFD559500901E7D /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		70192ECC1DFD61A900901E7D /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		70192ECD1DFD61A900901E7D /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		703587AE1E0A8D0700D13753 /* CustomerInfoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerInfoObject.h; sourceTree = "<group>"; };
+		703587AF1E0A8D0700D13753 /* CustomerInfoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerInfoObject.m; sourceTree = "<group>"; };
 		705F64C31DF97B7000082D55 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		705F64C41DF97B7000082D55 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		705F64C51DF97B7000082D55 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -344,6 +347,7 @@
 		70192EC81DFD555400901E7D /* SW */ = {
 			isa = PBXGroup;
 			children = (
+				703587AD1E0A8CD900D13753 /* CustomerList */,
 				70192ECC1DFD61A900901E7D /* MenuViewController.h */,
 				70192ECD1DFD61A900901E7D /* MenuViewController.m */,
 				70CF140B1DF4228A0045CF8F /* CustomerListViewController.h */,
@@ -360,6 +364,15 @@
 				7084E9A21E07C58400EA5AE8 /* DesignViewController.m */,
 			);
 			name = SW;
+			sourceTree = "<group>";
+		};
+		703587AD1E0A8CD900D13753 /* CustomerList */ = {
+			isa = PBXGroup;
+			children = (
+				703587AE1E0A8D0700D13753 /* CustomerInfoObject.h */,
+				703587AF1E0A8D0700D13753 /* CustomerInfoObject.m */,
+			);
+			name = CustomerList;
 			sourceTree = "<group>";
 		};
 		705F64C21DF97B5500082D55 /* Font */ = {
@@ -541,6 +554,7 @@
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				706286131DED7EA60022E105 /* DrawingViewController.m in Sources */,
 				70192ECE1DFD61A900901E7D /* MenuViewController.m in Sources */,
+				703587B01E0A8D0700D13753 /* CustomerInfoObject.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				7084E9A01E07C14400EA5AE8 /* PresentationsViewController.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,
