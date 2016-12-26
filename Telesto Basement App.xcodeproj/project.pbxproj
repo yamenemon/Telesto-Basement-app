@@ -31,6 +31,8 @@
 		70192ECB1DFD559500901E7D /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70192ECA1DFD559500901E7D /* SWRevealViewController.m */; };
 		70192ECE1DFD61A900901E7D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70192ECD1DFD61A900901E7D /* MenuViewController.m */; };
 		703587B01E0A8D0700D13753 /* CustomerInfoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 703587AF1E0A8D0700D13753 /* CustomerInfoObject.m */; };
+		70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70363F191E114520003534C3 /* product_slider@2x.png */; };
+		70363F1C1E1146B0003534C3 /* ProductSlider.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70363F1B1E1146B0003534C3 /* ProductSlider.xib */; };
 		705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C31DF97B7000082D55 /* Roboto-Black.ttf */; };
 		705F64D61DF97B7000082D55 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C41DF97B7000082D55 /* Roboto-BlackItalic.ttf */; };
 		705F64D71DF97B7000082D55 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C51DF97B7000082D55 /* Roboto-Bold.ttf */; };
@@ -133,6 +135,8 @@
 		70192ECD1DFD61A900901E7D /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		703587AE1E0A8D0700D13753 /* CustomerInfoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerInfoObject.h; sourceTree = "<group>"; };
 		703587AF1E0A8D0700D13753 /* CustomerInfoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerInfoObject.m; sourceTree = "<group>"; };
+		70363F191E114520003534C3 /* product_slider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product_slider@2x.png"; sourceTree = "<group>"; };
+		70363F1B1E1146B0003534C3 /* ProductSlider.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductSlider.xib; sourceTree = "<group>"; };
 		705F64C31DF97B7000082D55 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		705F64C41DF97B7000082D55 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		705F64C51DF97B7000082D55 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 				706286171DED939A0022E105 /* PageContentViewController.h */,
 				706286181DED939A0022E105 /* PageContentViewController.m */,
 				3B6EB8931DD845D900936AB9 /* Main.storyboard */,
+				70363F1B1E1146B0003534C3 /* ProductSlider.xib */,
 				3B6EB8991DD845DA00936AB9 /* Assets.xcassets */,
 				70015E951DF6910500DF542E /* Images */,
 				3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */,
@@ -292,6 +297,7 @@
 		70015E951DF6910500DF542E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				70363F191E114520003534C3 /* product_slider@2x.png */,
 				70FDF6181E094C1E00CF32EF /* customerList@2x.png */,
 				7084E9A71E07CD2C00EA5AE8 /* 1@2x.png */,
 				7084E9A81E07CD2C00EA5AE8 /* 2@2x.png */,
@@ -460,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */,
+				70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */,
 				70EC80E61E067DB400A6D245 /* search@2x.png in Resources */,
 				7084E9BF1E07CD2C00EA5AE8 /* 4@2x.png in Resources */,
 				70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */,
@@ -497,6 +504,7 @@
 				7084E9BD1E07CD2C00EA5AE8 /* 2@2x.png in Resources */,
 				705F64DB1DF97B7000082D55 /* Roboto-LightItalic.ttf in Resources */,
 				700165D81DEED93200247245 /* Temp8.png in Resources */,
+				70363F1C1E1146B0003534C3 /* ProductSlider.xib in Resources */,
 				7084E9CF1E07CD2C00EA5AE8 /* 20@2x.png in Resources */,
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
 				70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */,

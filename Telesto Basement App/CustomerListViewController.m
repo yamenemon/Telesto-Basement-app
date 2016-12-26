@@ -127,9 +127,10 @@
         viewButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [viewButton addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
         [viewButton setTitle:@"Show View" forState:UIControlStateNormal];
-        viewButton.backgroundColor = [UIColor redColor];
-        viewButton.frame = CGRectMake(tableView.frame.size.width - 165, (184-40)/2, 160.0, 40.0);
+        viewButton.backgroundColor = [Utility colorWithHexString:@"#0A5A78"];
+        viewButton.frame = CGRectMake(tableView.frame.size.width - 180, (184-40)/2, 160.0, 40.0);
         viewButton.tag = 5;
+        viewButton.layer.cornerRadius = 5.0;
         [cell addSubview:viewButton];
     }
     else{

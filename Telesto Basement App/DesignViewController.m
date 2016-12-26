@@ -13,26 +13,27 @@
 @end
 
 @implementation DesignViewController
-
+@synthesize productSliderView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     CGRect appFrame = [[UIScreen mainScreen] bounds];
-    self.view = [[UIView alloc] initWithFrame:appFrame];
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view = [[UIView alloc] initWithFrame:appFrame];
+//    self.view.backgroundColor = [UIColor whiteColor];
     
+    self.navigationItem.title = @"Drawing Window";
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:button];
-    button.frame = CGRectMake(20, 20, 80, 80);
-    [button setImage:[UIImage imageNamed:@"milky_way.jpg"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(placeBarImage:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *product = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:product];
-    product.frame = CGRectMake(120, 20, 80, 80);
-    [product setImage:[UIImage imageNamed:@"1.png"] forState:UIControlStateNormal];
-    [product addTarget:self action:@selector(productImage:) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:button];
+//    button.frame = CGRectMake(20, 45, 80, 80);
+//    [button setImage:[UIImage imageNamed:@"milky_way.jpg"] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(placeBarImage:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIButton *product = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.view addSubview:product];
+//    product.frame = CGRectMake(120, 45, 80, 80);
+//    [product setImage:[UIImage imageNamed:@"1.png"] forState:UIControlStateNormal];
+//    [product addTarget:self action:@selector(productImage:) forControlEvents:UIControlEventTouchUpInside];
     
 //    priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 250, 20, 250, 50)];
 //    [self.view addSubview:priceLabel];
@@ -41,6 +42,16 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideEditingHandles)];
     [gestureRecognizer setDelegate:self];
     [self.view addGestureRecognizer:gestureRecognizer];
+    isShown = NO;
+}
+-(void)viewWillLayoutSubviews{
+
+    
+    /*Scrolling window*/
+    
+    CGRect frame = productSliderView.frame;
+    frame.origin.x = - frame.size.width+30;
+    productSliderView.frame = frame;
 }
 -(void)placeBarImage:(UIButton*)sender{
     
@@ -92,6 +103,35 @@
     // We only want the gesture recognizer to end the editing session on the last
     // edited view. We wouldn't want to dismiss an editing session in progress.
     [lastEditedView hideEditingHandles];
+}
+- (IBAction)productSliderCalled:(id)sender {
+    
+    if (isShown==NO) {
+        [UIView animateWithDuration:0.5
+                              delay:0.1
+                            options: UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             CGRect frame = productSliderView.frame;
+                             frame.origin.x = 0;
+                             productSliderView.frame = frame;
+                         } completion:nil];
+        isShown = YES;
+    }
+    else{
+    
+    
+        [UIView animateWithDuration:0.5
+                              delay:0.1
+                            options: UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             CGRect frame = productSliderView.frame;
+                             frame.origin.x = - frame.size.width+30;
+                             productSliderView.frame = frame;
+                         } completion:nil];
+        isShown = NO;
+    }
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
