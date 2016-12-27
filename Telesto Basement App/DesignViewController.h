@@ -17,4 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (weak, nonatomic) IBOutlet UIView *drawingView;
+@property (weak, nonatomic) IBOutlet UILabel *wallContainerLabel;
+@property (weak, nonatomic) IBOutlet UIButton *horizentalBtn;
+@property (weak, nonatomic) IBOutlet UIButton *verticalBtn;
+@property (weak, nonatomic) IBOutlet UIView *basementDesignView;
 @end

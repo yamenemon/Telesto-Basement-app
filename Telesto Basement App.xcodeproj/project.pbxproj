@@ -82,6 +82,8 @@
 		7084E9CE1E07CD2C00EA5AE8 /* 19@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B91E07CD2C00EA5AE8 /* 19@2x.png */; };
 		7084E9CF1E07CD2C00EA5AE8 /* 20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9BA1E07CD2C00EA5AE8 /* 20@2x.png */; };
 		7084E9D01E07CD2C00EA5AE8 /* milky_way.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */; };
+		70B0114F1E12424C005AB6DF /* HorizentalLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B0114D1E12424C005AB6DF /* HorizentalLine@2x.png */; };
+		70B011501E12424C005AB6DF /* verticalLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B0114E1E12424C005AB6DF /* verticalLine@2x.png */; };
 		70CF140D1DF4228A0045CF8F /* CustomerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF140C1DF4228A0045CF8F /* CustomerListViewController.m */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
@@ -193,6 +195,8 @@
 		7084E9B91E07CD2C00EA5AE8 /* 19@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19@2x.png"; sourceTree = "<group>"; };
 		7084E9BA1E07CD2C00EA5AE8 /* 20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20@2x.png"; sourceTree = "<group>"; };
 		7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = milky_way.jpg; sourceTree = "<group>"; };
+		70B0114D1E12424C005AB6DF /* HorizentalLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HorizentalLine@2x.png"; sourceTree = "<group>"; };
+		70B0114E1E12424C005AB6DF /* verticalLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verticalLine@2x.png"; sourceTree = "<group>"; };
 		70CF140B1DF4228A0045CF8F /* CustomerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerListViewController.h; sourceTree = "<group>"; };
 		70CF140C1DF4228A0045CF8F /* CustomerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerListViewController.m; sourceTree = "<group>"; };
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 		70015E951DF6910500DF542E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				70B0114D1E12424C005AB6DF /* HorizentalLine@2x.png */,
+				70B0114E1E12424C005AB6DF /* verticalLine@2x.png */,
 				70363F191E114520003534C3 /* product_slider@2x.png */,
 				70FDF6181E094C1E00CF32EF /* customerList@2x.png */,
 				7084E9A71E07CD2C00EA5AE8 /* 1@2x.png */,
@@ -490,6 +496,7 @@
 				7084E9C81E07CD2C00EA5AE8 /* 13@2x.png in Resources */,
 				7084E9CC1E07CD2C00EA5AE8 /* 17@2x.png in Resources */,
 				705F64E41DF97B7000082D55 /* RobotoCondensed-Light.ttf in Resources */,
+				70B011501E12424C005AB6DF /* verticalLine@2x.png in Resources */,
 				700165D51DEED93200247245 /* Temp5.png in Resources */,
 				7084E9CE1E07CD2C00EA5AE8 /* 19@2x.png in Resources */,
 				700165D21DEED93200247245 /* Temp2.png in Resources */,
@@ -507,6 +514,7 @@
 				70363F1C1E1146B0003534C3 /* ProductSlider.xib in Resources */,
 				7084E9CF1E07CD2C00EA5AE8 /* 20@2x.png in Resources */,
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
+				70B0114F1E12424C005AB6DF /* HorizentalLine@2x.png in Resources */,
 				70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */,
 				3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */,
 				705F64DD1DF97B7000082D55 /* Roboto-MediumItalic.ttf in Resources */,

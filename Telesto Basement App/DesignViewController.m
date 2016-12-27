@@ -14,70 +14,75 @@
 
 @implementation DesignViewController
 @synthesize productSliderView;
+@synthesize buttonView;
+@synthesize drawingView;
+@synthesize wallContainerLabel;
+@synthesize horizentalBtn;
+@synthesize verticalBtn;
+@synthesize basementDesignView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    CGRect appFrame = [[UIScreen mainScreen] bounds];
-//    self.view = [[UIView alloc] initWithFrame:appFrame];
-//    self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.title = @"Drawing Window";
     
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.view addSubview:button];
-//    button.frame = CGRectMake(20, 45, 80, 80);
-//    [button setImage:[UIImage imageNamed:@"milky_way.jpg"] forState:UIControlStateNormal];
-//    [button addTarget:self action:@selector(placeBarImage:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIButton *product = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.view addSubview:product];
-//    product.frame = CGRectMake(120, 45, 80, 80);
-//    [product setImage:[UIImage imageNamed:@"1.png"] forState:UIControlStateNormal];
-//    [product addTarget:self action:@selector(productImage:) forControlEvents:UIControlEventTouchUpInside];
-    
-//    priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 250, 20, 250, 50)];
-//    [self.view addSubview:priceLabel];
-//    priceLabel.text = @"Total Price: ";
-    
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideEditingHandles)];
     [gestureRecognizer setDelegate:self];
-    [self.view addGestureRecognizer:gestureRecognizer];
+    [drawingView addGestureRecognizer:gestureRecognizer];
     isShown = NO;
 }
 -(void)viewWillLayoutSubviews{
-
-    
     /*Scrolling window*/
     
     CGRect frame = productSliderView.frame;
     frame.origin.x = - frame.size.width+30;
     productSliderView.frame = frame;
-}
--(void)placeBarImage:(UIButton*)sender{
     
-    // (1) Create a user resizable view with a simple red background content view.
-    CGRect gripFrame = CGRectMake(30, 30, 100, 100);
-    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
-    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-    [contentView setBackgroundColor:[UIColor blackColor]];
-    userResizableView.contentView = contentView;
-    userResizableView.delegate = self;
-    [userResizableView showEditingHandles];
-    currentlyEditingView = userResizableView;
-    lastEditedView = userResizableView;
-    [self.view addSubview:userResizableView];
     
 }
--(void)productImage:(UIButton*)sender{
+-(void)viewDidAppear:(BOOL)animated{
+
+    [self createProductScroller];
+}
+-(void)createProductScroller{
+
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 150, productSliderView.frame.size.height)];
     
+    int y = 0;
+    CGRect frame;
+    for (int i = 0; i < 10; i++) {
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        
+        if (i == 0) {
+            frame = CGRectMake(10, 10, 80, 80);
+        } else {
+            frame = CGRectMake(10, (i * 80) + (i*20) + 10, 80, 80);
+        }
+        
+        button.frame = frame;
+        [button setTag:i];
+        [button setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]]]];
+        [button addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [scrollView addSubview:button];
+        
+        if (i == 9) {
+            y = CGRectGetMaxY(button.frame);
+        }
+    }
+    
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width,y);
+    scrollView.backgroundColor = [UIColor clearColor];
+    [productSliderView addSubview:scrollView];
+
+}
+-(void)productBtnClicked:(id)sender{
+    UIButton *productBtn = (UIButton*)sender;
     // (1) Create a user resizable view with a simple red background content view.
-    CGRect gripFrame = CGRectMake(30, 30, 200, 200);
+    CGRect gripFrame = CGRectMake(100, 10, 150, 150);
     SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
-    //    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-    //    [contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"grate-sump-plus-2.png"]]];
-    NSInteger randomNumber = arc4random() % 16;
     
-    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",randomNumber]]];
+    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",productBtn.tag]]];
     
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
@@ -85,8 +90,8 @@
     [userResizableView showEditingHandles];
     currentlyEditingView = userResizableView;
     lastEditedView = userResizableView;
-    [self.view addSubview:userResizableView];
-    
+    [basementDesignView addSubview:userResizableView];
+    [self productSliderCalled:nil];
 }
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
     lastEditedView = userResizableView;
@@ -132,6 +137,33 @@
     }
     
 
+}
+- (IBAction)horizentalLineBtn:(id)sender {
+    CGRect gripFrame = CGRectMake(30, 0, 100, 30);
+    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
+    [contentView setBackgroundColor:[UIColor blackColor]];
+    userResizableView.contentView = contentView;
+    userResizableView.delegate = self;
+    [userResizableView showEditingHandles];
+    currentlyEditingView = userResizableView;
+    lastEditedView = userResizableView;
+    [basementDesignView addSubview:userResizableView];
+}
+- (IBAction)verticalLineBtn:(id)sender {
+    CGRect gripFrame = CGRectMake(0, 0, 30, 100);
+    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
+    [contentView setBackgroundColor:[UIColor blackColor]];
+    userResizableView.contentView = contentView;
+    userResizableView.delegate = self;
+    [userResizableView showEditingHandles];
+    currentlyEditingView = userResizableView;
+    lastEditedView = userResizableView;
+    [basementDesignView addSubview:userResizableView];
+}
+- (IBAction)removeBtnClicked:(id)sender {
+    [lastEditedView removeFromSuperview];
 }
 
 - (void)didReceiveMemoryWarning {

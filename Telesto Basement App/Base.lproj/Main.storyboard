@@ -199,7 +199,7 @@
                                 <rect key="frame" x="0.0" y="44" width="1024" height="724"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODO PRADSON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFo-ub-QUc">
-                                        <rect key="frame" x="325.5" y="50" width="373" height="66"/>
+                                        <rect key="frame" x="326" y="50" width="373" height="66"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -313,7 +313,7 @@ Washington, DC 20521-6170
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-nA-bVc">
-                                                <rect key="frame" x="10" y="110" width="168.5" height="55"/>
+                                                <rect key="frame" x="10" y="110" width="169" height="55"/>
                                                 <color key="backgroundColor" red="0.090873487293720245" green="0.55142456293106079" blue="0.66489517688751221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="Yo1-XC-CLe"/>
@@ -327,7 +327,7 @@ Washington, DC 20521-6170
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSO-q3-tCq">
-                                                <rect key="frame" x="186.5" y="110" width="150.5" height="55"/>
+                                                <rect key="frame" x="187" y="110" width="150" height="55"/>
                                                 <color key="backgroundColor" red="0.090873487289999999" green="0.55142456289999997" blue="0.6648951769" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                                 <state key="normal" title="Continue">
@@ -517,25 +517,25 @@ Washington, DC 20521-6170
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZuI-jk-HIC" customClass="IQDropDownTextField">
-                                                <rect key="frame" x="8" y="203" width="244.5" height="30"/>
+                                                <rect key="frame" x="8" y="203" width="245" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postal / Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-3F-MEU" customClass="IQDropDownTextField">
-                                                <rect key="frame" x="8" y="259" width="244.5" height="30"/>
+                                                <rect key="frame" x="8" y="259" width="245" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-eG-UjC" customClass="IQDropDownTextField">
-                                                <rect key="frame" x="296.5" y="259" width="244.5" height="30"/>
+                                                <rect key="frame" x="297" y="259" width="244" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State / Province" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqj-Hd-I5M" customClass="IQDropDownTextField">
-                                                <rect key="frame" x="296.5" y="203" width="244.5" height="30"/>
+                                                <rect key="frame" x="297" y="203" width="244" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -966,7 +966,7 @@ Washington, DC 20521-6170
                 <navigationController storyboardIdentifier="NavigationControllerMap" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y32-Z6-gDD" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5pt-MO-wRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5pt-MO-wRa">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1126,7 +1126,114 @@ Washington, DC 20521-6170
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTV-l3-1zL">
                                         <rect key="frame" x="40" y="121" width="944" height="636"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iU-DB-vHj">
+                                                <rect key="frame" x="826" y="22" width="99" height="35"/>
+                                                <color key="backgroundColor" red="0.034504257142543793" green="0.28444188833236694" blue="0.37672173976898193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="99" id="S9g-wY-DZ3"/>
+                                                    <constraint firstAttribute="height" constant="35" id="XF2-lL-QDY"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
+                                                <state key="normal" title="Remove">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="removeBtnClicked:" destination="1oi-d3-S4E" eventType="touchUpInside" id="vti-5y-3mB"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Dg-zA-2iu" userLabel="ButtonView">
+                                                <rect key="frame" x="8" y="10" width="190" height="60"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIB-H3-y75">
+                                                        <rect key="frame" x="26" y="15" width="40" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="1yO-HZ-Plj"/>
+                                                        </constraints>
+                                                        <state key="normal" backgroundImage="HorizentalLine.png"/>
+                                                        <connections>
+                                                            <action selector="horizentalLineBtn:" destination="1oi-d3-S4E" eventType="touchUpInside" id="VUI-tg-KCG"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jx-25-G6j">
+                                                        <rect key="frame" x="92" y="0.0" width="5" height="60"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfm-xB-tMe">
+                                                        <rect key="frame" x="124" y="15" width="40" height="30"/>
+                                                        <state key="normal" backgroundImage="verticalLine.png"/>
+                                                        <connections>
+                                                            <action selector="verticalLineBtn:" destination="1oi-d3-S4E" eventType="touchUpInside" id="ANw-Fu-bd3"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.057161893868190858" green="0.53944225796827039" blue="0.72543710833273556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="nfm-xB-tMe" firstAttribute="height" secondItem="vIB-H3-y75" secondAttribute="height" id="Ap1-bQ-8Pc"/>
+                                                    <constraint firstItem="vIB-H3-y75" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="top" constant="15" id="a0r-5c-EGg"/>
+                                                    <constraint firstItem="vIB-H3-y75" firstAttribute="leading" secondItem="5Dg-zA-2iu" secondAttribute="leading" constant="26" id="e77-Jg-tKJ"/>
+                                                    <constraint firstAttribute="width" constant="190" id="eAt-ef-quJ"/>
+                                                    <constraint firstItem="nfm-xB-tMe" firstAttribute="baseline" secondItem="vIB-H3-y75" secondAttribute="baseline" id="gOI-WA-H1D"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nfm-xB-tMe" secondAttribute="trailing" constant="26" id="hgQ-Pp-ISc"/>
+                                                    <constraint firstItem="nfm-xB-tMe" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="top" constant="15" id="men-Ai-mD7"/>
+                                                    <constraint firstItem="nfm-xB-tMe" firstAttribute="width" secondItem="vIB-H3-y75" secondAttribute="width" id="mze-JE-NMA"/>
+                                                    <constraint firstAttribute="height" constant="60" id="uvp-wI-QTZ"/>
+                                                    <constraint firstItem="vIB-H3-y75" firstAttribute="centerY" secondItem="5Dg-zA-2iu" secondAttribute="centerY" id="wGf-Ms-o3m"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click Line For Basement Wall &amp; Use Product Slider For Product." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyA-1j-0z9">
+                                                <rect key="frame" x="206" y="22" width="612" height="48"/>
+                                                <fontDescription key="fontDescription" name="Roboto-LightItalic" family="Roboto" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xh6-K3-tyN" userLabel="BasementDesignView">
+                                                <rect key="frame" x="-8" y="78" width="961" height="570"/>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="cyA-1j-0z9" firstAttribute="bottom" secondItem="5Dg-zA-2iu" secondAttribute="bottom" id="0QV-kb-50i"/>
+                                            <constraint firstAttribute="bottom" secondItem="xh6-K3-tyN" secondAttribute="bottom" constant="-12" id="9rc-Mt-0TS"/>
+                                            <constraint firstItem="xh6-K3-tyN" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="-8" id="Cvt-19-hvB"/>
+                                            <constraint firstAttribute="trailing" secondItem="8iU-DB-vHj" secondAttribute="trailing" constant="19" id="G8o-zW-iJA"/>
+                                            <constraint firstItem="cyA-1j-0z9" firstAttribute="leading" secondItem="5Dg-zA-2iu" secondAttribute="trailing" constant="8" id="H5h-DZ-Gh8"/>
+                                            <constraint firstItem="8iU-DB-vHj" firstAttribute="leading" secondItem="cyA-1j-0z9" secondAttribute="trailing" constant="8" id="Mna-zL-z6a"/>
+                                            <constraint firstItem="8iU-DB-vHj" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" constant="22" id="Uv3-dY-e4Z"/>
+                                            <constraint firstItem="cyA-1j-0z9" firstAttribute="top" secondItem="8iU-DB-vHj" secondAttribute="top" id="k1g-l5-TwZ"/>
+                                            <constraint firstItem="5Dg-zA-2iu" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" constant="10" id="lAi-Je-QrJ"/>
+                                            <constraint firstItem="xh6-K3-tyN" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="bottom" constant="8" id="rVA-e6-TtW"/>
+                                            <constraint firstItem="5Dg-zA-2iu" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="8" id="sIW-r1-zV0"/>
+                                            <constraint firstAttribute="trailing" secondItem="xh6-K3-tyN" secondAttribute="trailing" constant="-9" id="wdo-oo-AXL"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-eD-Xrr" userLabel="ProductSliderView">
+                                        <rect key="frame" x="0.0" y="121" width="180" height="636"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfR-vY-Io8">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="636"/>
+                                            </scrollView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-Ve-rZ3">
+                                                <rect key="frame" x="151" y="213" width="30" height="210"/>
+                                                <state key="normal" image="product_slider.png"/>
+                                                <connections>
+                                                    <action selector="productSliderCalled:" destination="1oi-d3-S4E" eventType="touchUpInside" id="zAl-W1-XtE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="LPq-uK-d61"/>
+                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="leading" secondItem="Cyv-eD-Xrr" secondAttribute="leading" id="TZm-W4-zJy"/>
+                                            <constraint firstAttribute="trailing" secondItem="eO5-Ve-rZ3" secondAttribute="trailing" constant="-1" id="Vjs-Fh-59h"/>
+                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="leading" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="1" id="YzE-Xr-d1i"/>
+                                            <constraint firstAttribute="bottom" secondItem="XfR-vY-Io8" secondAttribute="bottom" id="iIf-dp-Ymv"/>
+                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="centerY" secondItem="XfR-vY-Io8" secondAttribute="centerY" id="r2x-e0-Hng"/>
+                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="top" secondItem="Cyv-eD-Xrr" secondAttribute="top" id="u22-y9-C5i"/>
+                                            <constraint firstAttribute="trailing" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="30" id="ugf-ju-Vag"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sib-yX-PDg">
                                         <rect key="frame" x="40" y="64" width="944" height="52"/>
@@ -1205,32 +1312,6 @@ Washington, DC 20521-6170
                                             <constraint firstItem="NvU-gW-UTV" firstAttribute="baseline" secondItem="jW8-fP-SJR" secondAttribute="baseline" id="y6O-Ju-Lpr"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-eD-Xrr" userLabel="ProductSliderView">
-                                        <rect key="frame" x="0.0" y="121" width="180" height="636"/>
-                                        <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfR-vY-Io8">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="636"/>
-                                            </scrollView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-Ve-rZ3">
-                                                <rect key="frame" x="151" y="213" width="30" height="210"/>
-                                                <state key="normal" image="product_slider.png"/>
-                                                <connections>
-                                                    <action selector="productSliderCalled:" destination="1oi-d3-S4E" eventType="touchUpInside" id="zAl-W1-XtE"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.74912631511688232" green="0.83119082450866699" blue="0.86067026853561401" alpha="0.505859375" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="LPq-uK-d61"/>
-                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="leading" secondItem="Cyv-eD-Xrr" secondAttribute="leading" id="TZm-W4-zJy"/>
-                                            <constraint firstAttribute="trailing" secondItem="eO5-Ve-rZ3" secondAttribute="trailing" constant="-1" id="Vjs-Fh-59h"/>
-                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="leading" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="1" id="YzE-Xr-d1i"/>
-                                            <constraint firstAttribute="bottom" secondItem="XfR-vY-Io8" secondAttribute="bottom" id="iIf-dp-Ymv"/>
-                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="centerY" secondItem="XfR-vY-Io8" secondAttribute="centerY" id="r2x-e0-Hng"/>
-                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="top" secondItem="Cyv-eD-Xrr" secondAttribute="top" id="u22-y9-C5i"/>
-                                            <constraint firstAttribute="trailing" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="30" id="ugf-ju-Vag"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1258,9 +1339,13 @@ Washington, DC 20521-6170
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="basementDesignView" destination="xh6-K3-tyN" id="SxY-zo-T5n"/>
                         <outlet property="buttonView" destination="Sib-yX-PDg" id="v94-qo-1cl"/>
                         <outlet property="drawingView" destination="rTV-l3-1zL" id="BaU-qR-vDT"/>
+                        <outlet property="horizentalBtn" destination="vIB-H3-y75" id="TNf-Qd-FW5"/>
                         <outlet property="productSliderView" destination="Cyv-eD-Xrr" id="c0z-Nf-BG6"/>
+                        <outlet property="verticalBtn" destination="nfm-xB-tMe" id="vgm-q5-O2X"/>
+                        <outlet property="wallContainerLabel" destination="cyA-1j-0z9" id="rS0-qC-6sz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwD-rE-Igs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1319,7 +1404,7 @@ Washington, DC 20521-6170
         <scene sceneID="Pj7-jR-Ive">
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerColor" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2yX-Oq-Cx0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1337,7 +1422,7 @@ Washington, DC 20521-6170
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kjf-i3-4sV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="06f-FH-q6U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06f-FH-q6U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1355,7 +1440,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NFt-8r-g3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iwR-Im-04P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iwR-Im-04P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1397,7 +1482,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YaK-4u-ubd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dRc-JO-613">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRc-JO-613">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1413,6 +1498,7 @@ Washington, DC 20521-6170
     </scenes>
     <resources>
         <image name="1.png" width="75" height="75"/>
+        <image name="HorizentalLine.png" width="75" height="75"/>
         <image name="creat_new_customer.png" width="20" height="20"/>
         <image name="customerList.png" width="20" height="20"/>
         <image name="log_out.png" width="20" height="20"/>
@@ -1425,6 +1511,7 @@ Washington, DC 20521-6170
         <image name="telesto-logo.png" width="194" height="74"/>
         <image name="traning_videos.png" width="20" height="20"/>
         <image name="userName.png" width="45" height="45"/>
+        <image name="verticalLine.png" width="75" height="75"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XLw-tu-cxx"/>
