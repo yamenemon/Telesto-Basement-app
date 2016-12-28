@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "SPUserResizableView.h"
-#import "WYPopoverController.h"
 #import "TemplatePopOverViewController.h"
+
+@class  TemplatePopOverViewController;
 
 @interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate> {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
     UILabel* priceLabel;
     BOOL isShown;
-    UIPopoverController *popoverController;
+    TemplatePopOverViewController *templateController;
+    UIImageView*drawingImageView;
 }
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
@@ -25,4 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *horizentalBtn;
 @property (weak, nonatomic) IBOutlet UIButton *verticalBtn;
 @property (weak, nonatomic) IBOutlet UIView *basementDesignView;
+
+-(void)setSavedTemplateNumber:(int)number;
 @end

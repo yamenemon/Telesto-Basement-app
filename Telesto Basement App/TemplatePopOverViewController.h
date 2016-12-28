@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DesignViewController.h"
+
 @class DesignViewController;
 @interface TemplatePopOverViewController : UIViewController
 

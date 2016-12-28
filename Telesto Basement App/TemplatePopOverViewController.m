@@ -15,6 +15,15 @@
 
 @implementation TemplatePopOverViewController
 @synthesize parentClass;
+
+- (id)initWithBaseController:(DesignViewController*)baseController {
+    if ((self = [super init])) {
+        // Clear background to ensure the content view shows through.
+        parentClass = baseController;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -52,7 +61,7 @@
     
     UIButton *btn = (UIButton*)sender;
     NSLog(@"Sender.tag %ld",btn.tag);
-    
+    [parentClass setSavedTemplateNumber:(int)btn.tag];
 
 }
 - (void)didReceiveMemoryWarning {

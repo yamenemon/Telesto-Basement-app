@@ -8,7 +8,6 @@
 
 #import "DesignViewController.h"
 #import "WYPopoverController.h"
-
 @interface DesignViewController ()<WYPopoverControllerDelegate>
 
 @end
@@ -86,7 +85,6 @@
     SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
     
     UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",productBtn.tag]]];
-    
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
     userResizableView.delegate = self;
@@ -174,26 +172,42 @@
 - (IBAction)savedTemplateButtonAction:(id)sender {
     UIButton*button = (UIButton*)sender;
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    TemplatePopOverViewController *controller = [sb instantiateViewControllerWithIdentifier:@"TemplatePopOverViewController"];
-    controller.parentClass = self;
-    controller.preferredContentSize = CGSizeMake(600, 500);
+    templateController = [sb instantiateViewControllerWithIdentifier:@"TemplatePopOverViewController"];
+    templateController.parentClass = self;
+    templateController.preferredContentSize = CGSizeMake(600, 500);
     
-    controller.modalPresentationStyle = UIModalPresentationPopover;
-    UIPopoverPresentationController *popPC = controller.popoverPresentationController;
-    controller.popoverPresentationController.sourceRect = button.bounds;
-    controller.popoverPresentationController.sourceView = button;
+    templateController.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *popPC = templateController.popoverPresentationController;
+    templateController.popoverPresentationController.sourceRect = button.bounds;
+    templateController.popoverPresentationController.sourceView = button;
     popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    popPC.delegate = self; //18
-    [self presentViewController:controller animated:YES completion:nil];
+    popPC.delegate = self;
+    [self presentViewController:templateController animated:YES completion:nil];
 }
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
-    return UIModalPresentationPopover; // 20
+    return UIModalPresentationPopover;
 }
 
 - (UIViewController *)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style {
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller.presentedViewController];
-    return navController; // 21
+    return navController;
+}
+-(void)setSavedTemplateNumber:(int)number{
+    
+    if (drawingImageView) {
+        [drawingImageView removeFromSuperview];
+    }
+    drawingImageView = [[UIImageView alloc] init];
+    
+    [templateController dismissViewControllerAnimated:YES completion:^{
+        drawingImageView.frame = CGRectMake(0, 0, basementDesignView.frame.size.width, basementDesignView.frame.size.height);
+        [drawingImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"temp%d",number]]];
+        [basementDesignView addSubview:drawingImageView];
+    
+    }];
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
