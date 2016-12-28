@@ -22,7 +22,12 @@
     [self customSetup];
     [self getCustomerData];
 }
+-(void)viewWillLayoutSubviews{
 
+    _customerListTableView.layer.borderColor = [UIColor lightGrayColor].CGColor;//[Utility colorWithHexString:@"0x0A5A78"].CGColor;
+    _customerListTableView.layer.borderWidth = 2.0;
+    _customerListTableView.layer.cornerRadius = 2.0;
+}
 -(void)getCustomerData{
     _customerListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
@@ -127,7 +132,7 @@
         viewButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [viewButton addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
         [viewButton setTitle:@"Show View" forState:UIControlStateNormal];
-        viewButton.backgroundColor = [Utility colorWithHexString:@"#0A5A78"];
+        viewButton.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
         viewButton.frame = CGRectMake(tableView.frame.size.width - 180, (184-40)/2, 160.0, 40.0);
         viewButton.tag = 5;
         viewButton.layer.cornerRadius = 5.0;

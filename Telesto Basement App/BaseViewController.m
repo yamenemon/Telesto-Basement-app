@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 
 @interface BaseViewController ()
+@property (weak, nonatomic) IBOutlet UIView *loginView;
 @property (strong, nonatomic) UIActivityIndicatorView *aSpinner;
 @end
 
@@ -38,6 +39,13 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"First_Logged_in"];
         [self displayTermsAndCondition];
     }
+
+}
+-(void)viewDidLayoutSubviews{
+
+    
+    _loginView.layer.cornerRadius = 10;
+    _loginView.layer.borderColor = [Utility colorWithHexString:@"0x0A5A78"].CGColor;
 
 }
 -(void)displayTermsAndCondition{

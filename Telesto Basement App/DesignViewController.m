@@ -7,8 +7,9 @@
 //
 
 #import "DesignViewController.h"
+#import "WYPopoverController.h"
 
-@interface DesignViewController ()
+@interface DesignViewController ()<WYPopoverControllerDelegate>
 
 @end
 
@@ -37,7 +38,9 @@
     CGRect frame = productSliderView.frame;
     frame.origin.x = - frame.size.width+30;
     productSliderView.frame = frame;
-    
+    basementDesignView.layer.borderWidth = 2.0;
+    basementDesignView.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    basementDesignView.layer.cornerRadius = 2.0;
     
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -166,6 +169,32 @@
     [lastEditedView removeFromSuperview];
 }
 
+
+/*Button View button's Actions*/
+- (IBAction)savedTemplateButtonAction:(id)sender {
+    UIButton*button = (UIButton*)sender;
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    TemplatePopOverViewController *controller = [sb instantiateViewControllerWithIdentifier:@"TemplatePopOverViewController"];
+    controller.parentClass = self;
+    controller.preferredContentSize = CGSizeMake(600, 500);
+    
+    controller.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *popPC = controller.popoverPresentationController;
+    controller.popoverPresentationController.sourceRect = button.bounds;
+    controller.popoverPresentationController.sourceView = button;
+    popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popPC.delegate = self; //18
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
+    return UIModalPresentationPopover; // 20
+}
+
+- (UIViewController *)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style {
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller.presentedViewController];
+    return navController; // 21
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

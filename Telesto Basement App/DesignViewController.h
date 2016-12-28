@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "SPUserResizableView.h"
-@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate> {
+#import "WYPopoverController.h"
+#import "TemplatePopOverViewController.h"
+
+@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate> {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
     UILabel* priceLabel;
     BOOL isShown;
+    UIPopoverController *popoverController;
 }
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;

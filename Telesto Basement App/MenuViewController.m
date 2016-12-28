@@ -25,8 +25,8 @@
     // configure the destination view controller:
     if ( [sender isKindOfClass:[UITableViewCell class]] )
     {
-        UILabel* c = [(SWUITableViewCell *)sender label];
-        UINavigationController *navController = segue.destinationViewController;
+//        UILabel* c = [(SWUITableViewCell *)sender label];
+//        UINavigationController *navController = segue.destinationViewController;
 //        ColorViewController* cvc = [navController childViewControllers].firstObject;
 //        if ( [cvc isKindOfClass:[ColorViewController class]] )
 //        {
