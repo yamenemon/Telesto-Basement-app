@@ -1,32 +1,36 @@
 //
-//  CustomerRecordViewController.m
+//  UserProfileViewController.m
 //  Telesto Basement App
 //
-//  Created by CSM on 12/4/16.
-//  Copyright © 2016 csm. All rights reserved.
+//  Created by CSM on 1/4/17.
+//  Copyright © 2017 csm. All rights reserved.
 //
 
-#import "CustomerRecordViewController.h"
+#import "UserProfileViewController.h"
 
-@interface CustomerRecordViewController ()
+@interface UserProfileViewController ()
+
+@property (weak, nonatomic) IBOutlet UIView *previousProposalView;
+@property (weak, nonatomic) IBOutlet UIView *latestProposalView;
 
 @end
 
-@implementation CustomerRecordViewController
+@implementation UserProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"Customer Records";
 }
 
+-(void)viewDidLayoutSubviews{
+
+    _previousProposalView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _latestProposalView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.title = @"Customer Profile";
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)customerRecordPage:(id)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

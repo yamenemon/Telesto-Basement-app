@@ -20,6 +20,11 @@
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
+		7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */; };
+		7027C9BD1E1CEF5E0062EB77 /* AccordionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9BB1E1CEF5E0062EB77 /* AccordionHeaderView.m */; };
+		7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */; };
+		7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C01E1D15760062EB77 /* UserProfileViewController.m */; };
+		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
 		70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70363F191E114520003534C3 /* product_slider@2x.png */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
 		704B68981E13CB8D00E6537D /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B68951E13CB8D00E6537D /* WYPopoverController.m */; };
@@ -92,6 +97,7 @@
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
+		70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF19651E1CE03D00C90EDD /* FaqsViewController.m */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
 		70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D61E067DB400A6D245 /* log_out_@2x.png */; };
 		70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D71E067DB400A6D245 /* log_out@2x.png */; };
@@ -127,6 +133,15 @@
 		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
+		7027C9B71E1CEEDA0062EB77 /* FZAccordionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZAccordionTableView.h; path = FZAccordionTableView/FZAccordionTableView.h; sourceTree = "<group>"; };
+		7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FZAccordionTableView.m; path = FZAccordionTableView/FZAccordionTableView.m; sourceTree = "<group>"; };
+		7027C9BA1E1CEF5E0062EB77 /* AccordionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccordionHeaderView.h; path = FZAccordionTableView/AccordionHeaderView.h; sourceTree = "<group>"; };
+		7027C9BB1E1CEF5E0062EB77 /* AccordionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccordionHeaderView.m; path = FZAccordionTableView/AccordionHeaderView.m; sourceTree = "<group>"; };
+		7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccordionHeaderView.xib; path = FZAccordionTableView/AccordionHeaderView.xib; sourceTree = "<group>"; };
+		7027C9BF1E1D15760062EB77 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		7027C9C01E1D15760062EB77 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
+		7027C9C21E1D35950062EB77 /* ProposalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalViewController.h; sourceTree = "<group>"; };
+		7027C9C31E1D35950062EB77 /* ProposalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalViewController.m; sourceTree = "<group>"; };
 		70363F191E114520003534C3 /* product_slider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product_slider@2x.png"; sourceTree = "<group>"; };
 		704B688F1E13C9C000E6537D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		704B68941E13CB8D00E6537D /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
@@ -215,6 +230,8 @@
 		70CF14111DF43C180045CF8F /* IQDropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDropDownTextField.m; sourceTree = "<group>"; };
 		70CF14131DF449350045CF8F /* CustomerRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerRecordViewController.h; sourceTree = "<group>"; };
 		70CF14141DF449350045CF8F /* CustomerRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerRecordViewController.m; sourceTree = "<group>"; };
+		70CF19641E1CE03D00C90EDD /* FaqsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqsViewController.h; sourceTree = "<group>"; };
+		70CF19651E1CE03D00C90EDD /* FaqsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqsViewController.m; sourceTree = "<group>"; };
 		70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creat_new_customer@2x.png"; sourceTree = "<group>"; };
 		70EC80D61E067DB400A6D245 /* log_out_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out_@2x.png"; sourceTree = "<group>"; };
 		70EC80D71E067DB400A6D245 /* log_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out@2x.png"; sourceTree = "<group>"; };
@@ -261,6 +278,7 @@
 		3B6EB8891DD845D900936AB9 /* Telesto Basement App */ = {
 			isa = PBXGroup;
 			children = (
+				7027C9B61E1CEEBA0062EB77 /* ColapsableTableView */,
 				704B68931E13CB7B00E6537D /* Custom PopOver */,
 				704B68911E13CA6200E6537D /* Controllers */,
 				705B782C1E13C6C800161991 /* SW */,
@@ -359,6 +377,18 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		7027C9B61E1CEEBA0062EB77 /* ColapsableTableView */ = {
+			isa = PBXGroup;
+			children = (
+				7027C9B71E1CEEDA0062EB77 /* FZAccordionTableView.h */,
+				7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */,
+				7027C9BA1E1CEF5E0062EB77 /* AccordionHeaderView.h */,
+				7027C9BB1E1CEF5E0062EB77 /* AccordionHeaderView.m */,
+				7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */,
+			);
+			name = ColapsableTableView;
+			sourceTree = "<group>";
+		};
 		704B688E1E13C9C000E6537D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +412,12 @@
 				706286121DED7EA60022E105 /* DrawingViewController.m */,
 				706286171DED939A0022E105 /* PageContentViewController.h */,
 				706286181DED939A0022E105 /* PageContentViewController.m */,
+				70CF19641E1CE03D00C90EDD /* FaqsViewController.h */,
+				70CF19651E1CE03D00C90EDD /* FaqsViewController.m */,
+				7027C9BF1E1D15760062EB77 /* UserProfileViewController.h */,
+				7027C9C01E1D15760062EB77 /* UserProfileViewController.m */,
+				7027C9C21E1D35950062EB77 /* ProposalViewController.h */,
+				7027C9C31E1D35950062EB77 /* ProposalViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -538,6 +574,7 @@
 				7084E9C11E07CD2C00EA5AE8 /* 6@2x.png in Resources */,
 				705B78241E13C0B700161991 /* Temp7@2x.png in Resources */,
 				705F64DE1DF97B7000082D55 /* Roboto-Regular.ttf in Resources */,
+				7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */,
 				7084E9CD1E07CD2C00EA5AE8 /* 18@2x.png in Resources */,
 				705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */,
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
@@ -589,6 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */,
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */,
 				705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */,
@@ -598,16 +636,20 @@
 				705B783E1E13C71D00161991 /* CustomerListViewController.m in Sources */,
 				705B78441E13C71D00161991 /* TrainingVideoViewController.m in Sources */,
 				3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */,
+				70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */,
 				70015E981DF6913200DF542E /* Utility.m in Sources */,
 				704B68991E13CB8D00E6537D /* WYStoryboardPopoverSegue.m in Sources */,
 				705B783F1E13C71D00161991 /* DesignViewController.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
+				7027C9BD1E1CEF5E0062EB77 /* AccordionHeaderView.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
 				704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */,
 				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
+				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
+				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
 				706286131DED7EA60022E105 /* DrawingViewController.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
