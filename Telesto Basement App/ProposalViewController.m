@@ -29,7 +29,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return 15;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -117,7 +117,7 @@
             quantity.text = @"1";
             price.text = @"$1000";
             break;
-        case 9:
+        case 10:
             productName.text =@"Total";
             quantity.text = @"= 9";
             price.text = @"= $3200";

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1155,114 +1154,98 @@ Washington, DC 20521-6170
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTV-l3-1zL">
-                                        <rect key="frame" x="40" y="121" width="944" height="636"/>
+                                        <rect key="frame" x="40" y="121" width="944" height="637"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iU-DB-vHj">
-                                                <rect key="frame" x="826" y="22" width="99" height="35"/>
-                                                <color key="backgroundColor" red="0.034504257142543793" green="0.28444188833236694" blue="0.37672173976898193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="99" id="S9g-wY-DZ3"/>
-                                                    <constraint firstAttribute="height" constant="35" id="XF2-lL-QDY"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
-                                                <state key="normal" title="Remove">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="removeBtnClicked:" destination="1oi-d3-S4E" eventType="touchUpInside" id="vti-5y-3mB"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Dg-zA-2iu" userLabel="ButtonView">
-                                                <rect key="frame" x="8" y="10" width="190" height="60"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Dg-zA-2iu" userLabel="LeftButtonView">
+                                                <rect key="frame" x="10" y="10" width="491" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIB-H3-y75">
-                                                        <rect key="frame" x="26" y="15" width="40" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="40" id="1yO-HZ-Plj"/>
-                                                        </constraints>
-                                                        <state key="normal" backgroundImage="HorizentalLine.png"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ip1-8T-QFm">
+                                                        <rect key="frame" x="8" y="5" width="100" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Wall" image="wall.png"/>
                                                         <connections>
-                                                            <action selector="horizentalLineBtn:" destination="1oi-d3-S4E" eventType="touchUpInside" id="VUI-tg-KCG"/>
+                                                            <action selector="wallPopOverBtnAction:" destination="1oi-d3-S4E" eventType="touchUpInside" id="Vjf-vB-dyx"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jx-25-G6j">
-                                                        <rect key="frame" x="92" y="0.0" width="5" height="60"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-1h-Tjh">
+                                                        <rect key="frame" x="116" y="5" width="100" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfm-xB-tMe">
-                                                        <rect key="frame" x="124" y="15" width="40" height="30"/>
-                                                        <state key="normal" backgroundImage="verticalLine.png"/>
+                                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Stair" image="stair.png">
+                                                            <color key="titleColor" red="0.95605307819999996" green="0.97260981800000001" blue="0.97669869659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7T-Lf-jqi">
+                                                        <rect key="frame" x="224" y="6" width="100" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Door" image="Door.png">
+                                                            <color key="titleColor" red="0.95605307819999996" green="0.97260981800000001" blue="0.97669869659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIO-gJ-bsr">
+                                                        <rect key="frame" x="330" y="6" width="150" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Sliding Window" image="slidingWindow.png">
+                                                            <color key="titleColor" red="0.95605307819999996" green="0.97260981800000001" blue="0.97669869659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.038640640676021576" green="0.33505094051361084" blue="0.44409996271133423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="6Pg-fl-bg5"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J14-Yo-Frk" userLabel="RightButtonView">
+                                                <rect key="frame" x="708" y="10" width="228" height="47"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYe-lV-Bjm">
+                                                        <rect key="frame" x="8" y="9" width="87" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Flip" image="slidingWindow.png">
+                                                            <color key="titleColor" red="0.95605307819999996" green="0.97260981800000001" blue="0.97669869659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iU-DB-vHj">
+                                                        <rect key="frame" x="103" y="9" width="116" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Remove" image="remove.png">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
                                                         <connections>
-                                                            <action selector="verticalLineBtn:" destination="1oi-d3-S4E" eventType="touchUpInside" id="ANw-Fu-bd3"/>
+                                                            <action selector="removeBtnClicked:" destination="1oi-d3-S4E" eventType="touchUpInside" id="vti-5y-3mB"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.057161893868190858" green="0.53944225796827039" blue="0.72543710833273556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstItem="nfm-xB-tMe" firstAttribute="height" secondItem="vIB-H3-y75" secondAttribute="height" id="Ap1-bQ-8Pc"/>
-                                                    <constraint firstItem="vIB-H3-y75" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="top" constant="15" id="a0r-5c-EGg"/>
-                                                    <constraint firstItem="vIB-H3-y75" firstAttribute="leading" secondItem="5Dg-zA-2iu" secondAttribute="leading" constant="26" id="e77-Jg-tKJ"/>
-                                                    <constraint firstAttribute="width" constant="190" id="eAt-ef-quJ"/>
-                                                    <constraint firstItem="nfm-xB-tMe" firstAttribute="baseline" secondItem="vIB-H3-y75" secondAttribute="baseline" id="gOI-WA-H1D"/>
-                                                    <constraint firstAttribute="trailing" secondItem="nfm-xB-tMe" secondAttribute="trailing" constant="26" id="hgQ-Pp-ISc"/>
-                                                    <constraint firstItem="nfm-xB-tMe" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="top" constant="15" id="men-Ai-mD7"/>
-                                                    <constraint firstItem="nfm-xB-tMe" firstAttribute="width" secondItem="vIB-H3-y75" secondAttribute="width" id="mze-JE-NMA"/>
-                                                    <constraint firstAttribute="height" constant="60" id="uvp-wI-QTZ"/>
-                                                    <constraint firstItem="vIB-H3-y75" firstAttribute="centerY" secondItem="5Dg-zA-2iu" secondAttribute="centerY" id="wGf-Ms-o3m"/>
-                                                </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click Line For Basement Wall &amp; Use Product Slider For Product." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyA-1j-0z9">
-                                                <rect key="frame" x="206" y="22" width="612" height="48"/>
-                                                <fontDescription key="fontDescription" name="Roboto-LightItalic" family="Roboto" pointSize="15"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xh6-K3-tyN" userLabel="BasementDesignView">
-                                                <rect key="frame" x="0.0" y="78" width="944" height="557"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lEO-sm-dTp">
+                                                <rect key="frame" x="8" y="65" width="928" height="571"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.32384417808219179" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="cyA-1j-0z9" firstAttribute="bottom" secondItem="5Dg-zA-2iu" secondAttribute="bottom" id="0QV-kb-50i"/>
-                                            <constraint firstAttribute="bottom" secondItem="xh6-K3-tyN" secondAttribute="bottom" constant="1" id="9rc-Mt-0TS"/>
-                                            <constraint firstItem="xh6-K3-tyN" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" id="Cvt-19-hvB"/>
-                                            <constraint firstAttribute="trailing" secondItem="8iU-DB-vHj" secondAttribute="trailing" constant="19" id="G8o-zW-iJA"/>
-                                            <constraint firstItem="cyA-1j-0z9" firstAttribute="leading" secondItem="5Dg-zA-2iu" secondAttribute="trailing" constant="8" id="H5h-DZ-Gh8"/>
-                                            <constraint firstItem="8iU-DB-vHj" firstAttribute="leading" secondItem="cyA-1j-0z9" secondAttribute="trailing" constant="8" id="Mna-zL-z6a"/>
-                                            <constraint firstItem="8iU-DB-vHj" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" constant="22" id="Uv3-dY-e4Z"/>
-                                            <constraint firstItem="cyA-1j-0z9" firstAttribute="top" secondItem="8iU-DB-vHj" secondAttribute="top" id="k1g-l5-TwZ"/>
-                                            <constraint firstItem="5Dg-zA-2iu" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" constant="10" id="lAi-Je-QrJ"/>
-                                            <constraint firstItem="xh6-K3-tyN" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="bottom" constant="8" id="rVA-e6-TtW"/>
-                                            <constraint firstItem="5Dg-zA-2iu" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="8" id="sIW-r1-zV0"/>
-                                            <constraint firstAttribute="trailing" secondItem="xh6-K3-tyN" secondAttribute="trailing" id="wdo-oo-AXL"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-eD-Xrr" userLabel="ProductSliderView">
-                                        <rect key="frame" x="0.0" y="121" width="180" height="636"/>
-                                        <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfR-vY-Io8">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="636"/>
-                                            </scrollView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-Ve-rZ3">
-                                                <rect key="frame" x="151" y="213" width="30" height="210"/>
-                                                <state key="normal" image="product_slider.png"/>
-                                                <connections>
-                                                    <action selector="productSliderCalled:" destination="1oi-d3-S4E" eventType="touchUpInside" id="zAl-W1-XtE"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="LPq-uK-d61"/>
-                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="leading" secondItem="Cyv-eD-Xrr" secondAttribute="leading" id="TZm-W4-zJy"/>
-                                            <constraint firstAttribute="trailing" secondItem="eO5-Ve-rZ3" secondAttribute="trailing" constant="-1" id="Vjs-Fh-59h"/>
-                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="leading" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="1" id="YzE-Xr-d1i"/>
-                                            <constraint firstAttribute="bottom" secondItem="XfR-vY-Io8" secondAttribute="bottom" id="iIf-dp-Ymv"/>
-                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="centerY" secondItem="XfR-vY-Io8" secondAttribute="centerY" id="r2x-e0-Hng"/>
-                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="top" secondItem="Cyv-eD-Xrr" secondAttribute="top" id="u22-y9-C5i"/>
-                                            <constraint firstAttribute="trailing" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="30" id="ugf-ju-Vag"/>
+                                            <constraint firstItem="lEO-sm-dTp" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="bottom" constant="15" id="9as-VM-iYL"/>
+                                            <constraint firstAttribute="trailing" secondItem="lEO-sm-dTp" secondAttribute="trailing" constant="8" id="HO1-pW-FeV"/>
+                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" constant="10" id="JXN-as-hLG"/>
+                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="leading" secondItem="5Dg-zA-2iu" secondAttribute="trailing" constant="207" id="JlP-3a-gBY"/>
+                                            <constraint firstItem="5Dg-zA-2iu" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="10" id="KEG-Ju-Lwk"/>
+                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="bottom" secondItem="5Dg-zA-2iu" secondAttribute="bottom" constant="7" id="NV8-hh-5RV"/>
+                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="708" id="OK1-sz-1pt"/>
+                                            <constraint firstItem="lEO-sm-dTp" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="8" id="apj-D6-mP4"/>
+                                            <constraint firstItem="5Dg-zA-2iu" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" constant="10" id="dBc-jE-NW0"/>
+                                            <constraint firstAttribute="bottom" secondItem="lEO-sm-dTp" secondAttribute="bottom" constant="1" id="ekr-vw-V1a"/>
+                                            <constraint firstAttribute="trailing" secondItem="J14-Yo-Frk" secondAttribute="trailing" constant="8" id="lFh-Is-6Xn"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sib-yX-PDg">
@@ -1348,13 +1331,38 @@ Washington, DC 20521-6170
                                             <constraint firstItem="NvU-gW-UTV" firstAttribute="baseline" secondItem="jW8-fP-SJR" secondAttribute="baseline" id="y6O-Ju-Lpr"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-eD-Xrr" userLabel="ProductSliderView">
+                                        <rect key="frame" x="0.0" y="121" width="180" height="637"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfR-vY-Io8">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="637"/>
+                                            </scrollView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-Ve-rZ3">
+                                                <rect key="frame" x="151" y="214" width="30" height="210"/>
+                                                <state key="normal" image="product_slider.png"/>
+                                                <connections>
+                                                    <action selector="productSliderCalled:" destination="1oi-d3-S4E" eventType="touchUpInside" id="zAl-W1-XtE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="LPq-uK-d61"/>
+                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="leading" secondItem="Cyv-eD-Xrr" secondAttribute="leading" id="TZm-W4-zJy"/>
+                                            <constraint firstAttribute="trailing" secondItem="eO5-Ve-rZ3" secondAttribute="trailing" constant="-1" id="Vjs-Fh-59h"/>
+                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="leading" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="1" id="YzE-Xr-d1i"/>
+                                            <constraint firstAttribute="bottom" secondItem="XfR-vY-Io8" secondAttribute="bottom" id="iIf-dp-Ymv"/>
+                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="centerY" secondItem="XfR-vY-Io8" secondAttribute="centerY" id="r2x-e0-Hng"/>
+                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="top" secondItem="Cyv-eD-Xrr" secondAttribute="top" id="u22-y9-C5i"/>
+                                            <constraint firstAttribute="trailing" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="30" id="ugf-ju-Vag"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Sib-yX-PDg" firstAttribute="top" secondItem="imp-Rh-cPl" secondAttribute="top" constant="64" id="EJ4-WL-kAX"/>
                                     <constraint firstItem="rTV-l3-1zL" firstAttribute="top" secondItem="imp-Rh-cPl" secondAttribute="top" constant="121" id="KIn-GH-THy"/>
                                     <constraint firstItem="Cyv-eD-Xrr" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" id="LkR-gG-U01"/>
-                                    <constraint firstAttribute="bottom" secondItem="rTV-l3-1zL" secondAttribute="bottom" constant="11" id="Nc6-ud-hwq"/>
+                                    <constraint firstAttribute="bottom" secondItem="rTV-l3-1zL" secondAttribute="bottom" constant="10" id="Nc6-ud-hwq"/>
                                     <constraint firstItem="rTV-l3-1zL" firstAttribute="leading" secondItem="Sib-yX-PDg" secondAttribute="leading" id="g5C-Ao-j0v"/>
                                     <constraint firstItem="Cyv-eD-Xrr" firstAttribute="bottom" secondItem="rTV-l3-1zL" secondAttribute="bottom" id="p20-rk-vT5"/>
                                     <constraint firstItem="Sib-yX-PDg" firstAttribute="leading" secondItem="imp-Rh-cPl" secondAttribute="leading" constant="40" id="tNS-4m-MUQ"/>
@@ -1375,13 +1383,10 @@ Washington, DC 20521-6170
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="basementDesignView" destination="xh6-K3-tyN" id="SxY-zo-T5n"/>
+                        <outlet property="basementDesignView" destination="lEO-sm-dTp" id="MWa-VZ-j8N"/>
                         <outlet property="buttonView" destination="Sib-yX-PDg" id="v94-qo-1cl"/>
                         <outlet property="drawingView" destination="rTV-l3-1zL" id="BaU-qR-vDT"/>
-                        <outlet property="horizentalBtn" destination="vIB-H3-y75" id="TNf-Qd-FW5"/>
                         <outlet property="productSliderView" destination="Cyv-eD-Xrr" id="c0z-Nf-BG6"/>
-                        <outlet property="verticalBtn" destination="nfm-xB-tMe" id="vgm-q5-O2X"/>
-                        <outlet property="wallContainerLabel" destination="cyA-1j-0z9" id="rS0-qC-6sz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwD-rE-Igs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1421,7 +1426,7 @@ Washington, DC 20521-6170
                                                         <rect key="frame" x="8" y="47" width="445" height="149"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <mutableString key="text">Q: What led you to call our company?
+                                                        <string key="text">Q: What led you to call our company?
 A: My basement leaks every time it rains and need to waterproof the basement
 
 Q: What year was your house built?
@@ -1452,7 +1457,7 @@ Q: What have you budgeted to fix it?
 A: Not much
 
 Q: How quickly do you want it fixed?
-A: Immediately</mutableString>
+A: Immediately</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
@@ -1976,7 +1981,7 @@ A: Immediately</mutableString>
     </scenes>
     <resources>
         <image name="1.png" width="75" height="75"/>
-        <image name="HorizentalLine.png" width="75" height="75"/>
+        <image name="Door.png" width="17" height="22"/>
         <image name="Temp6.png" width="400" height="316"/>
         <image name="creat_new_customer.png" width="20" height="20"/>
         <image name="customerList.png" width="20" height="20"/>
@@ -1985,12 +1990,15 @@ A: Immediately</mutableString>
         <image name="passwordIcon.png" width="45" height="45"/>
         <image name="presentation.png" width="20" height="20"/>
         <image name="product_slider.png" width="32" height="210"/>
+        <image name="remove.png" width="17" height="20"/>
         <image name="reveal-icon.png" width="22" height="17"/>
         <image name="settings___.png" width="20" height="20"/>
+        <image name="slidingWindow.png" width="17" height="17"/>
+        <image name="stair.png" width="17" height="16"/>
         <image name="telesto-logo.png" width="194" height="74"/>
         <image name="traning_videos.png" width="20" height="20"/>
         <image name="userName.png" width="45" height="45"/>
-        <image name="verticalLine.png" width="75" height="75"/>
+        <image name="wall.png" width="17" height="13"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XLw-tu-cxx"/>

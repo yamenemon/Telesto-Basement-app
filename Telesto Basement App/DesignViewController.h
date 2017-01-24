@@ -12,13 +12,15 @@
 
 @class  TemplatePopOverViewController;
 
-@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate> {
+@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate> {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
     UILabel* priceLabel;
     BOOL isShown;
     TemplatePopOverViewController *templateController;
     UIImageView*drawingImageView;
+    UIView *curvedView;
+    SPUserResizableView *userResizableViewCurvedView;
 }
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;

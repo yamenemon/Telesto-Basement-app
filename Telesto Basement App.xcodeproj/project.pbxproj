@@ -18,6 +18,11 @@
 		3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8A41DD8ACB700936AB9 /* 1.png */; };
 		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
+		7004A3641E37595500DCF65C /* wall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A3631E37595500DCF65C /* wall@2x.png */; };
+		7004A3661E375CD800DCF65C /* Door@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A3651E375CD800DCF65C /* Door@2x.png */; };
+		7004A3681E37645200DCF65C /* stair@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A3671E37645200DCF65C /* stair@2x.png */; };
+		7004A36A1E37652100DCF65C /* slidingWindow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A3691E37652100DCF65C /* slidingWindow@2x.png */; };
+		7004A36C1E376C0000DCF65C /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A36B1E376C0000DCF65C /* remove@2x.png */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
 		7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */; };
@@ -68,7 +73,6 @@
 		705F64EB1DF97F2600082D55 /* telesto-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64E81DF97F2600082D55 /* telesto-logo@2x.png */; };
 		705F64EC1DF97F2600082D55 /* userName@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64E91DF97F2600082D55 /* userName@2x.png */; };
 		705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */; };
-		706286131DED7EA60022E105 /* DrawingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706286121DED7EA60022E105 /* DrawingViewController.m */; };
 		706286191DED939A0022E105 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706286181DED939A0022E105 /* PageContentViewController.m */; };
 		7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */; };
 		7084E9BC1E07CD2C00EA5AE8 /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9A71E07CD2C00EA5AE8 /* 1@2x.png */; };
@@ -131,6 +135,11 @@
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		70015E9C1DF69BEF00DF542E /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		7004A3631E37595500DCF65C /* wall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wall@2x.png"; sourceTree = "<group>"; };
+		7004A3651E375CD800DCF65C /* Door@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Door@2x.png"; sourceTree = "<group>"; };
+		7004A3671E37645200DCF65C /* stair@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stair@2x.png"; sourceTree = "<group>"; };
+		7004A3691E37652100DCF65C /* slidingWindow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slidingWindow@2x.png"; sourceTree = "<group>"; };
+		7004A36B1E376C0000DCF65C /* remove@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove@2x.png"; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		7027C9B71E1CEEDA0062EB77 /* FZAccordionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZAccordionTableView.h; path = FZAccordionTableView/FZAccordionTableView.h; sourceTree = "<group>"; };
@@ -196,8 +205,6 @@
 		705F64E81DF97F2600082D55 /* telesto-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "telesto-logo@2x.png"; sourceTree = "<group>"; };
 		705F64E91DF97F2600082D55 /* userName@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userName@2x.png"; sourceTree = "<group>"; };
 		705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "passwordIcon@2x.png"; sourceTree = "<group>"; };
-		706286111DED7EA60022E105 /* DrawingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingViewController.h; sourceTree = "<group>"; };
-		706286121DED7EA60022E105 /* DrawingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingViewController.m; sourceTree = "<group>"; };
 		706286171DED939A0022E105 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		706286181DED939A0022E105 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
@@ -322,6 +329,11 @@
 		70015E951DF6910500DF542E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7004A36B1E376C0000DCF65C /* remove@2x.png */,
+				7004A3691E37652100DCF65C /* slidingWindow@2x.png */,
+				7004A3651E375CD800DCF65C /* Door@2x.png */,
+				7004A3671E37645200DCF65C /* stair@2x.png */,
+				7004A3631E37595500DCF65C /* wall@2x.png */,
 				70B0114D1E12424C005AB6DF /* HorizentalLine@2x.png */,
 				70B0114E1E12424C005AB6DF /* verticalLine@2x.png */,
 				70363F191E114520003534C3 /* product_slider@2x.png */,
@@ -408,8 +420,6 @@
 				3B428ACB1DDB3E57008ADABF /* BaseViewController.m */,
 				70CF14131DF449350045CF8F /* CustomerRecordViewController.h */,
 				70CF14141DF449350045CF8F /* CustomerRecordViewController.m */,
-				706286111DED7EA60022E105 /* DrawingViewController.h */,
-				706286121DED7EA60022E105 /* DrawingViewController.m */,
 				706286171DED939A0022E105 /* PageContentViewController.h */,
 				706286181DED939A0022E105 /* PageContentViewController.m */,
 				70CF19641E1CE03D00C90EDD /* FaqsViewController.h */,
@@ -542,9 +552,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7004A3641E37595500DCF65C /* wall@2x.png in Resources */,
 				70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */,
 				705B78291E13C0B700161991 /* Temp2@2x.png in Resources */,
 				70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */,
+				7004A3661E375CD800DCF65C /* Door@2x.png in Resources */,
 				70EC80E61E067DB400A6D245 /* search@2x.png in Resources */,
 				7084E9BF1E07CD2C00EA5AE8 /* 4@2x.png in Resources */,
 				70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */,
@@ -561,12 +573,14 @@
 				7084E9CB1E07CD2C00EA5AE8 /* 16@2x.png in Resources */,
 				705B782A1E13C0B700161991 /* Temp1@2x.png in Resources */,
 				70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */,
+				7004A36A1E37652100DCF65C /* slidingWindow@2x.png in Resources */,
 				705F64E21DF97B7000082D55 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				705B78231E13C0B700161991 /* Temp8@2x.png in Resources */,
 				70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */,
 				7084E9BC1E07CD2C00EA5AE8 /* 1@2x.png in Resources */,
 				70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */,
 				7084E9C81E07CD2C00EA5AE8 /* 13@2x.png in Resources */,
+				7004A36C1E376C0000DCF65C /* remove@2x.png in Resources */,
 				7084E9CC1E07CD2C00EA5AE8 /* 17@2x.png in Resources */,
 				705F64E41DF97B7000082D55 /* RobotoCondensed-Light.ttf in Resources */,
 				70B011501E12424C005AB6DF /* verticalLine@2x.png in Resources */,
@@ -604,6 +618,7 @@
 				7084E9C01E07CD2C00EA5AE8 /* 5@2x.png in Resources */,
 				7084E9C41E07CD2C00EA5AE8 /* 9@2x.png in Resources */,
 				705B78271E13C0B700161991 /* Temp4@2x.png in Resources */,
+				7004A3681E37645200DCF65C /* stair@2x.png in Resources */,
 				7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */,
 				7084E9C21E07CD2C00EA5AE8 /* 7@2x.png in Resources */,
 				705F64DA1DF97B7000082D55 /* Roboto-Light.ttf in Resources */,
@@ -650,7 +665,6 @@
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
 				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
-				706286131DED7EA60022E105 /* DrawingViewController.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,
@@ -705,6 +719,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 68449K2QZC;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -755,6 +770,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 68449K2QZC;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -778,9 +794,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 68449K2QZC;
 				INFOPLIST_FILE = "Telesto Basement App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.csm.Telesto-Basement-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -793,9 +810,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 68449K2QZC;
 				INFOPLIST_FILE = "Telesto Basement App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.csm.Telesto-Basement-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";

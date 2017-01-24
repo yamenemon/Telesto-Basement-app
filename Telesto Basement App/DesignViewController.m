@@ -20,8 +20,15 @@
 @synthesize horizentalBtn;
 @synthesize verticalBtn;
 @synthesize basementDesignView;
-- (void)viewDidLoad {
+CGFloat firstX;
+CGFloat firstY;
+CGFloat lastRotation;
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    lastRotation = 0.0;
+   
     // Do any additional setup after loading the view, typically from a nib.
     
     self.navigationItem.title = @"Drawing Window";
@@ -208,6 +215,38 @@
     }];
     
     
+}
+- (IBAction)wallPopOverBtnAction:(id)sender {
+    
+    UIButton *wallBtn = (UIButton*)sender;
+    wallBtn.backgroundColor = [UIColor darkGrayColor];
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Wall"
+                                                                              message: nil
+                                                                       preferredStyle: UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *horizentalAction =  [UIAlertAction actionWithTitle: @"Horizental" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // Handle Take Photo here
+        
+    }];
+    [horizentalAction setValue:[[UIImage imageNamed:@"passwordIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [alertController addAction:horizentalAction];
+
+    
+    UIAlertAction *verticalAction =  [UIAlertAction actionWithTitle: @"Vertical" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // Handle Take Photo here
+        
+    }];
+    [verticalAction setValue:[[UIImage imageNamed:@"passwordIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [alertController addAction:verticalAction];
+    
+    alertController.modalPresentationStyle = UIModalPresentationPopover;
+    
+    UIPopoverPresentationController * popover = alertController.popoverPresentationController;
+    popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    popover.sourceView = wallBtn;
+    popover.sourceRect = wallBtn.bounds;
+    
+    [self presentViewController: alertController animated: YES completion: nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
