@@ -18,11 +18,6 @@
 		3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8A41DD8ACB700936AB9 /* 1.png */; };
 		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
-		7004A3641E37595500DCF65C /* wall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A3631E37595500DCF65C /* wall@2x.png */; };
-		7004A3661E375CD800DCF65C /* Door@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A3651E375CD800DCF65C /* Door@2x.png */; };
-		7004A3681E37645200DCF65C /* stair@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A3671E37645200DCF65C /* stair@2x.png */; };
-		7004A36A1E37652100DCF65C /* slidingWindow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A3691E37652100DCF65C /* slidingWindow@2x.png */; };
-		7004A36C1E376C0000DCF65C /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7004A36B1E376C0000DCF65C /* remove@2x.png */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
 		7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */; };
@@ -98,6 +93,18 @@
 		7084E9D01E07CD2C00EA5AE8 /* milky_way.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */; };
 		70B0114F1E12424C005AB6DF /* HorizentalLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B0114D1E12424C005AB6DF /* HorizentalLine@2x.png */; };
 		70B011501E12424C005AB6DF /* verticalLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70B0114E1E12424C005AB6DF /* verticalLine@2x.png */; };
+		70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */; };
+		70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */; };
+		70BAF3A71E38C7950087C051 /* wall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39D1E38C7950087C051 /* wall@2x.png */; };
+		70BAF3A81E38C7950087C051 /* stair@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39E1E38C7950087C051 /* stair@2x.png */; };
+		70BAF3A91E38C7950087C051 /* door@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39F1E38C7950087C051 /* door@2x.png */; };
+		70BAF3AA1E38C7950087C051 /* window@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF3A01E38C7950087C051 /* window@2x.png */; };
+		70BAF3AB1E38C7950087C051 /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF3A11E38C7950087C051 /* more@2x.png */; };
+		70BAF3AC1E38C7950087C051 /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF3A21E38C7950087C051 /* remove@2x.png */; };
+		70BAF3AD1E38C7950087C051 /* flip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF3A31E38C7950087C051 /* flip@2x.png */; };
+		70BAF3AE1E38C7950087C051 /* save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF3A41E38C7950087C051 /* save@2x.png */; };
+		70BAF3AF1E38C7950087C051 /* continue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF3A51E38C7950087C051 /* continue@2x.png */; };
+		70BAF3B01E38C7950087C051 /* exit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF3A61E38C7950087C051 /* exit@2x.png */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
@@ -135,11 +142,6 @@
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		70015E9C1DF69BEF00DF542E /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
-		7004A3631E37595500DCF65C /* wall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wall@2x.png"; sourceTree = "<group>"; };
-		7004A3651E375CD800DCF65C /* Door@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Door@2x.png"; sourceTree = "<group>"; };
-		7004A3671E37645200DCF65C /* stair@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stair@2x.png"; sourceTree = "<group>"; };
-		7004A3691E37652100DCF65C /* slidingWindow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slidingWindow@2x.png"; sourceTree = "<group>"; };
-		7004A36B1E376C0000DCF65C /* remove@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove@2x.png"; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		7027C9B71E1CEEDA0062EB77 /* FZAccordionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZAccordionTableView.h; path = FZAccordionTableView/FZAccordionTableView.h; sourceTree = "<group>"; };
@@ -232,6 +234,19 @@
 		7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = milky_way.jpg; sourceTree = "<group>"; };
 		70B0114D1E12424C005AB6DF /* HorizentalLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HorizentalLine@2x.png"; sourceTree = "<group>"; };
 		70B0114E1E12424C005AB6DF /* verticalLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verticalLine@2x.png"; sourceTree = "<group>"; };
+		70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavDrawingToolsView.h; sourceTree = "<group>"; };
+		70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavDrawingToolsView.m; sourceTree = "<group>"; };
+		70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftNavDrawingToolsView.xib; sourceTree = "<group>"; };
+		70BAF39D1E38C7950087C051 /* wall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wall@2x.png"; sourceTree = "<group>"; };
+		70BAF39E1E38C7950087C051 /* stair@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stair@2x.png"; sourceTree = "<group>"; };
+		70BAF39F1E38C7950087C051 /* door@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "door@2x.png"; sourceTree = "<group>"; };
+		70BAF3A01E38C7950087C051 /* window@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "window@2x.png"; sourceTree = "<group>"; };
+		70BAF3A11E38C7950087C051 /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more@2x.png"; sourceTree = "<group>"; };
+		70BAF3A21E38C7950087C051 /* remove@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove@2x.png"; sourceTree = "<group>"; };
+		70BAF3A31E38C7950087C051 /* flip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flip@2x.png"; sourceTree = "<group>"; };
+		70BAF3A41E38C7950087C051 /* save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save@2x.png"; sourceTree = "<group>"; };
+		70BAF3A51E38C7950087C051 /* continue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "continue@2x.png"; sourceTree = "<group>"; };
+		70BAF3A61E38C7950087C051 /* exit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exit@2x.png"; sourceTree = "<group>"; };
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
 		70CF14101DF43C180045CF8F /* IQDropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDropDownTextField.h; sourceTree = "<group>"; };
 		70CF14111DF43C180045CF8F /* IQDropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDropDownTextField.m; sourceTree = "<group>"; };
@@ -329,11 +344,16 @@
 		70015E951DF6910500DF542E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7004A36B1E376C0000DCF65C /* remove@2x.png */,
-				7004A3691E37652100DCF65C /* slidingWindow@2x.png */,
-				7004A3651E375CD800DCF65C /* Door@2x.png */,
-				7004A3671E37645200DCF65C /* stair@2x.png */,
-				7004A3631E37595500DCF65C /* wall@2x.png */,
+				70BAF39D1E38C7950087C051 /* wall@2x.png */,
+				70BAF39E1E38C7950087C051 /* stair@2x.png */,
+				70BAF39F1E38C7950087C051 /* door@2x.png */,
+				70BAF3A01E38C7950087C051 /* window@2x.png */,
+				70BAF3A11E38C7950087C051 /* more@2x.png */,
+				70BAF3A21E38C7950087C051 /* remove@2x.png */,
+				70BAF3A31E38C7950087C051 /* flip@2x.png */,
+				70BAF3A41E38C7950087C051 /* save@2x.png */,
+				70BAF3A51E38C7950087C051 /* continue@2x.png */,
+				70BAF3A61E38C7950087C051 /* exit@2x.png */,
 				70B0114D1E12424C005AB6DF /* HorizentalLine@2x.png */,
 				70B0114E1E12424C005AB6DF /* verticalLine@2x.png */,
 				70363F191E114520003534C3 /* product_slider@2x.png */,
@@ -454,6 +474,9 @@
 				705B78301E13C71D00161991 /* CustomerListViewController.m */,
 				705B78311E13C71D00161991 /* DesignViewController.h */,
 				705B78321E13C71D00161991 /* DesignViewController.m */,
+				70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */,
+				70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */,
+				70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */,
 				705B78331E13C71D00161991 /* MenuViewController.h */,
 				705B78341E13C71D00161991 /* MenuViewController.m */,
 				705B78351E13C71D00161991 /* OldProposalsViewController.h */,
@@ -552,15 +575,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7004A3641E37595500DCF65C /* wall@2x.png in Resources */,
 				70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */,
 				705B78291E13C0B700161991 /* Temp2@2x.png in Resources */,
 				70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */,
-				7004A3661E375CD800DCF65C /* Door@2x.png in Resources */,
 				70EC80E61E067DB400A6D245 /* search@2x.png in Resources */,
 				7084E9BF1E07CD2C00EA5AE8 /* 4@2x.png in Resources */,
 				70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */,
 				70EC80E71E067DB400A6D245 /* separator@2x.png in Resources */,
+				70BAF3AE1E38C7950087C051 /* save@2x.png in Resources */,
 				704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */,
 				70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */,
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
@@ -573,14 +595,12 @@
 				7084E9CB1E07CD2C00EA5AE8 /* 16@2x.png in Resources */,
 				705B782A1E13C0B700161991 /* Temp1@2x.png in Resources */,
 				70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */,
-				7004A36A1E37652100DCF65C /* slidingWindow@2x.png in Resources */,
 				705F64E21DF97B7000082D55 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				705B78231E13C0B700161991 /* Temp8@2x.png in Resources */,
 				70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */,
 				7084E9BC1E07CD2C00EA5AE8 /* 1@2x.png in Resources */,
 				70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */,
 				7084E9C81E07CD2C00EA5AE8 /* 13@2x.png in Resources */,
-				7004A36C1E376C0000DCF65C /* remove@2x.png in Resources */,
 				7084E9CC1E07CD2C00EA5AE8 /* 17@2x.png in Resources */,
 				705F64E41DF97B7000082D55 /* RobotoCondensed-Light.ttf in Resources */,
 				70B011501E12424C005AB6DF /* verticalLine@2x.png in Resources */,
@@ -592,35 +612,44 @@
 				7084E9CD1E07CD2C00EA5AE8 /* 18@2x.png in Resources */,
 				705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */,
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
+				70BAF3AC1E38C7950087C051 /* remove@2x.png in Resources */,
 				705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */,
 				705B78261E13C0B700161991 /* Temp5@2x.png in Resources */,
 				7084E9BE1E07CD2C00EA5AE8 /* 3@2x.png in Resources */,
 				7084E9BD1E07CD2C00EA5AE8 /* 2@2x.png in Resources */,
+				70BAF3A71E38C7950087C051 /* wall@2x.png in Resources */,
 				705F64DB1DF97B7000082D55 /* Roboto-LightItalic.ttf in Resources */,
 				7084E9CF1E07CD2C00EA5AE8 /* 20@2x.png in Resources */,
+				70BAF3AA1E38C7950087C051 /* window@2x.png in Resources */,
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
 				70B0114F1E12424C005AB6DF /* HorizentalLine@2x.png in Resources */,
 				70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */,
 				3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */,
+				70BAF3AD1E38C7950087C051 /* flip@2x.png in Resources */,
 				705F64DD1DF97B7000082D55 /* Roboto-MediumItalic.ttf in Resources */,
 				705F64DF1DF97B7000082D55 /* Roboto-Thin.ttf in Resources */,
+				70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */,
 				705F64E11DF97B7000082D55 /* RobotoCondensed-Bold.ttf in Resources */,
 				7084E9C61E07CD2C00EA5AE8 /* 11@2x.png in Resources */,
 				705F64E31DF97B7000082D55 /* RobotoCondensed-Italic.ttf in Resources */,
 				705F64E51DF97B7000082D55 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				70EC80EA1E067DB400A6D245 /* traning_videos@2x.png in Resources */,
 				705F64E61DF97B7000082D55 /* RobotoCondensed-Regular.ttf in Resources */,
+				70BAF3A91E38C7950087C051 /* door@2x.png in Resources */,
 				705F64EB1DF97F2600082D55 /* telesto-logo@2x.png in Resources */,
+				70BAF3AB1E38C7950087C051 /* more@2x.png in Resources */,
 				705B78281E13C0B700161991 /* Temp3@2x.png in Resources */,
 				705F64D81DF97B7000082D55 /* Roboto-BoldItalic.ttf in Resources */,
 				705F64D61DF97B7000082D55 /* Roboto-BlackItalic.ttf in Resources */,
 				705B78251E13C0B700161991 /* Temp6@2x.png in Resources */,
 				7084E9C01E07CD2C00EA5AE8 /* 5@2x.png in Resources */,
 				7084E9C41E07CD2C00EA5AE8 /* 9@2x.png in Resources */,
+				70BAF3AF1E38C7950087C051 /* continue@2x.png in Resources */,
 				705B78271E13C0B700161991 /* Temp4@2x.png in Resources */,
-				7004A3681E37645200DCF65C /* stair@2x.png in Resources */,
+				70BAF3A81E38C7950087C051 /* stair@2x.png in Resources */,
 				7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */,
 				7084E9C21E07CD2C00EA5AE8 /* 7@2x.png in Resources */,
+				70BAF3B01E38C7950087C051 /* exit@2x.png in Resources */,
 				705F64DA1DF97B7000082D55 /* Roboto-Light.ttf in Resources */,
 				705F64DC1DF97B7000082D55 /* Roboto-Medium.ttf in Resources */,
 				705F64E01DF97B7000082D55 /* Roboto-ThinItalic.ttf in Resources */,
@@ -653,6 +682,7 @@
 				3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */,
 				70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */,
 				70015E981DF6913200DF542E /* Utility.m in Sources */,
+				70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */,
 				704B68991E13CB8D00E6537D /* WYStoryboardPopoverSegue.m in Sources */,
 				705B783F1E13C71D00161991 /* DesignViewController.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,

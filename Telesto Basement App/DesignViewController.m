@@ -8,6 +8,9 @@
 
 #import "DesignViewController.h"
 #import "WYPopoverController.h"
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 @interface DesignViewController ()<WYPopoverControllerDelegate>
 
 @end
@@ -32,7 +35,7 @@ CGFloat lastRotation;
     // Do any additional setup after loading the view, typically from a nib.
     
     self.navigationItem.title = @"Drawing Window";
-    
+    [self.navigationItem setHidesBackButton:YES];
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideEditingHandles)];
     [gestureRecognizer setDelegate:self];
     [drawingView addGestureRecognizer:gestureRecognizer];
@@ -131,8 +134,6 @@ CGFloat lastRotation;
         isShown = YES;
     }
     else{
-    
-    
         [UIView animateWithDuration:0.5
                               delay:0.1
                             options: UIViewAnimationOptionCurveEaseInOut
@@ -143,32 +144,6 @@ CGFloat lastRotation;
                          } completion:nil];
         isShown = NO;
     }
-    
-
-}
-- (IBAction)horizentalLineBtn:(id)sender {
-    CGRect gripFrame = CGRectMake(30, 0, 100, 30);
-    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
-    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-    [contentView setBackgroundColor:[UIColor blackColor]];
-    userResizableView.contentView = contentView;
-    userResizableView.delegate = self;
-    [userResizableView showEditingHandles];
-    currentlyEditingView = userResizableView;
-    lastEditedView = userResizableView;
-    [basementDesignView addSubview:userResizableView];
-}
-- (IBAction)verticalLineBtn:(id)sender {
-    CGRect gripFrame = CGRectMake(0, 0, 30, 100);
-    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
-    UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-    [contentView setBackgroundColor:[UIColor blackColor]];
-    userResizableView.contentView = contentView;
-    userResizableView.delegate = self;
-    [userResizableView showEditingHandles];
-    currentlyEditingView = userResizableView;
-    lastEditedView = userResizableView;
-    [basementDesignView addSubview:userResizableView];
 }
 - (IBAction)removeBtnClicked:(id)sender {
     [lastEditedView removeFromSuperview];
@@ -216,16 +191,35 @@ CGFloat lastRotation;
     
     
 }
+- (IBAction)flipPopOverBtnAction:(id)sender {
+}
+- (IBAction)slidingWindowPopOverBtnAction:(id)sender {
+}
+- (IBAction)DoorPopOverBtnAction:(id)sender {
+}
+- (IBAction)stairPopOverBtnAction:(id)sender {
+}
+
 - (IBAction)wallPopOverBtnAction:(id)sender {
     
     UIButton *wallBtn = (UIButton*)sender;
-    wallBtn.backgroundColor = [UIColor darkGrayColor];
+    [self changeSelectionColor:wallBtn];
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Wall"
-                                                                              message: nil
-                                                                       preferredStyle: UIAlertControllerStyleActionSheet];
+                                                            message: nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *horizentalAction =  [UIAlertAction actionWithTitle: @"Horizental" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        // Handle Take Photo here
+        
+        CGRect gripFrame = CGRectMake(30, 0, 100, 30);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
+        [contentView setBackgroundColor:[UIColor blackColor]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
         
     }];
     [horizentalAction setValue:[[UIImage imageNamed:@"passwordIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -233,7 +227,17 @@ CGFloat lastRotation;
 
     
     UIAlertAction *verticalAction =  [UIAlertAction actionWithTitle: @"Vertical" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        // Handle Take Photo here
+        
+        CGRect gripFrame = CGRectMake(0, 0, 30, 100);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
+        [contentView setBackgroundColor:[UIColor blackColor]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
         
     }];
     [verticalAction setValue:[[UIImage imageNamed:@"passwordIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -247,6 +251,19 @@ CGFloat lastRotation;
     popover.sourceRect = wallBtn.bounds;
     
     [self presentViewController: alertController animated: YES completion: nil];
+}
+
+-(void)changeSelectionColor:(UIButton*)btn{
+    
+    btn.backgroundColor = UIColorFromRGB(0x05374E);
+    btn.layer.cornerRadius = 5.0f;
+    btn.layer.masksToBounds = NO;
+    btn.layer.borderWidth = 2.0f;
+    btn.layer.borderColor = UIColorFromRGB(0x042431).CGColor;
+    btn.layer.shadowColor = UIColorFromRGB(0x074259).CGColor;
+    btn.layer.shadowOpacity = 0.3;
+    btn.layer.shadowRadius = 12;
+    btn.layer.shadowOffset = CGSizeMake(-2.0f, -2.0f);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

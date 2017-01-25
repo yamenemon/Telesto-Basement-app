@@ -1153,16 +1153,41 @@ Washington, DC 20521-6170
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imp-Rh-cPl" userLabel="Base View">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-eD-Xrr" userLabel="ProductSliderView">
+                                        <rect key="frame" x="0.0" y="121" width="180" height="637"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfR-vY-Io8">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="637"/>
+                                            </scrollView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-Ve-rZ3">
+                                                <rect key="frame" x="151" y="214" width="30" height="210"/>
+                                                <state key="normal" image="product_slider.png"/>
+                                                <connections>
+                                                    <action selector="productSliderCalled:" destination="1oi-d3-S4E" eventType="touchUpInside" id="zAl-W1-XtE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="LPq-uK-d61"/>
+                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="leading" secondItem="Cyv-eD-Xrr" secondAttribute="leading" id="TZm-W4-zJy"/>
+                                            <constraint firstAttribute="trailing" secondItem="eO5-Ve-rZ3" secondAttribute="trailing" constant="-1" id="Vjs-Fh-59h"/>
+                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="leading" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="1" id="YzE-Xr-d1i"/>
+                                            <constraint firstAttribute="bottom" secondItem="XfR-vY-Io8" secondAttribute="bottom" id="iIf-dp-Ymv"/>
+                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="centerY" secondItem="XfR-vY-Io8" secondAttribute="centerY" id="r2x-e0-Hng"/>
+                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="top" secondItem="Cyv-eD-Xrr" secondAttribute="top" id="u22-y9-C5i"/>
+                                            <constraint firstAttribute="trailing" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="30" id="ugf-ju-Vag"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTV-l3-1zL">
                                         <rect key="frame" x="40" y="121" width="944" height="637"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Dg-zA-2iu" userLabel="LeftButtonView">
-                                                <rect key="frame" x="10" y="10" width="491" height="40"/>
+                                                <rect key="frame" x="10" y="0.0" width="491" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ip1-8T-QFm">
-                                                        <rect key="frame" x="8" y="5" width="100" height="30"/>
+                                                        <rect key="frame" x="8" y="3" width="100" height="29"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Wall" image="wall.png"/>
                                                         <connections>
@@ -1170,54 +1195,68 @@ Washington, DC 20521-6170
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-1h-Tjh">
-                                                        <rect key="frame" x="116" y="5" width="100" height="30"/>
+                                                        <rect key="frame" x="116" y="3" width="100" height="29"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Stair" image="stair.png">
                                                             <color key="titleColor" red="0.95605307819999996" green="0.97260981800000001" blue="0.97669869659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="stairPopOverBtnAction:" destination="1oi-d3-S4E" eventType="touchUpInside" id="PKd-HX-h05"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7T-Lf-jqi">
-                                                        <rect key="frame" x="224" y="6" width="100" height="30"/>
+                                                        <rect key="frame" x="224" y="3" width="100" height="29"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Door" image="Door.png">
                                                             <color key="titleColor" red="0.95605307819999996" green="0.97260981800000001" blue="0.97669869659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="DoorPopOverBtnAction:" destination="1oi-d3-S4E" eventType="touchUpInside" id="6O8-KP-Fmf"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIO-gJ-bsr">
-                                                        <rect key="frame" x="330" y="6" width="150" height="30"/>
+                                                        <rect key="frame" x="330" y="3" width="150" height="29"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Sliding Window" image="slidingWindow.png">
                                                             <color key="titleColor" red="0.95605307819999996" green="0.97260981800000001" blue="0.97669869659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="slidingWindowPopOverBtnAction:" destination="1oi-d3-S4E" eventType="touchUpInside" id="Nge-KN-e4M"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.038640640676021576" green="0.33505094051361084" blue="0.44409996271133423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.038640640676021576" green="0.33505094051361084" blue="0.44409996271133423" alpha="0.83237906678082196" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="6Pg-fl-bg5"/>
+                                                    <constraint firstAttribute="height" constant="35" id="6Pg-fl-bg5"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5.0"/>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J14-Yo-Frk" userLabel="RightButtonView">
-                                                <rect key="frame" x="708" y="10" width="228" height="47"/>
+                                                <rect key="frame" x="708" y="0.0" width="228" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYe-lV-Bjm">
-                                                        <rect key="frame" x="8" y="9" width="87" height="30"/>
+                                                        <rect key="frame" x="8" y="3" width="87" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Flip" image="slidingWindow.png">
                                                             <color key="titleColor" red="0.95605307819999996" green="0.97260981800000001" blue="0.97669869659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="flipPopOverBtnAction:" destination="1oi-d3-S4E" eventType="touchUpInside" id="MGe-8A-6XG"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iU-DB-vHj">
-                                                        <rect key="frame" x="103" y="9" width="116" height="30"/>
+                                                        <rect key="frame" x="103" y="3" width="116" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Remove" image="remove.png">
@@ -1228,28 +1267,29 @@ Washington, DC 20521-6170
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <color key="backgroundColor" red="0.19905158877372742" green="0.44166672229766846" blue="0.53407078981399536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lEO-sm-dTp">
-                                                <rect key="frame" x="8" y="65" width="928" height="571"/>
+                                                <rect key="frame" x="8" y="43" width="928" height="593"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.32384417808219179" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="lEO-sm-dTp" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="bottom" constant="15" id="9as-VM-iYL"/>
+                                            <constraint firstItem="lEO-sm-dTp" firstAttribute="top" secondItem="5Dg-zA-2iu" secondAttribute="bottom" constant="8" id="9as-VM-iYL"/>
                                             <constraint firstAttribute="trailing" secondItem="lEO-sm-dTp" secondAttribute="trailing" constant="8" id="HO1-pW-FeV"/>
-                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" constant="10" id="JXN-as-hLG"/>
-                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="leading" secondItem="5Dg-zA-2iu" secondAttribute="trailing" constant="207" id="JlP-3a-gBY"/>
+                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" id="JXN-as-hLG"/>
+                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="leading" secondItem="5Dg-zA-2iu" secondAttribute="trailing" priority="750" constant="207" id="JlP-3a-gBY"/>
                                             <constraint firstItem="5Dg-zA-2iu" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="10" id="KEG-Ju-Lwk"/>
-                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="bottom" secondItem="5Dg-zA-2iu" secondAttribute="bottom" constant="7" id="NV8-hh-5RV"/>
-                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="708" id="OK1-sz-1pt"/>
+                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="bottom" secondItem="5Dg-zA-2iu" secondAttribute="bottom" id="NV8-hh-5RV"/>
+                                            <constraint firstItem="J14-Yo-Frk" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" priority="750" constant="708" id="OK1-sz-1pt"/>
                                             <constraint firstItem="lEO-sm-dTp" firstAttribute="leading" secondItem="rTV-l3-1zL" secondAttribute="leading" constant="8" id="apj-D6-mP4"/>
-                                            <constraint firstItem="5Dg-zA-2iu" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" constant="10" id="dBc-jE-NW0"/>
+                                            <constraint firstItem="5Dg-zA-2iu" firstAttribute="top" secondItem="rTV-l3-1zL" secondAttribute="top" id="dBc-jE-NW0"/>
                                             <constraint firstAttribute="bottom" secondItem="lEO-sm-dTp" secondAttribute="bottom" constant="1" id="ekr-vw-V1a"/>
                                             <constraint firstAttribute="trailing" secondItem="J14-Yo-Frk" secondAttribute="trailing" constant="8" id="lFh-Is-6Xn"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sib-yX-PDg">
-                                        <rect key="frame" x="40" y="64" width="944" height="52"/>
+                                        <rect key="frame" x="40" y="64" width="944" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NvU-gW-UTV">
                                                 <rect key="frame" x="8" y="8" width="142.5" height="32"/>
@@ -1312,7 +1352,7 @@ Washington, DC 20521-6170
                                         <constraints>
                                             <constraint firstItem="jW8-fP-SJR" firstAttribute="width" secondItem="NvU-gW-UTV" secondAttribute="width" id="6x0-Fy-tOt"/>
                                             <constraint firstItem="jfr-dv-U7d" firstAttribute="width" secondItem="jW8-fP-SJR" secondAttribute="width" id="7Bq-bp-kzV"/>
-                                            <constraint firstAttribute="height" constant="52" id="AtK-hd-qj4"/>
+                                            <constraint firstAttribute="height" constant="49" id="AtK-hd-qj4"/>
                                             <constraint firstItem="NvU-gW-UTV" firstAttribute="leading" secondItem="Sib-yX-PDg" secondAttribute="leadingMargin" id="Dvo-FP-5kW"/>
                                             <constraint firstItem="2Gu-df-1rH" firstAttribute="leading" secondItem="Ghv-jn-qBM" secondAttribute="trailing" constant="15" id="H9d-yF-Enf"/>
                                             <constraint firstItem="2Gu-df-1rH" firstAttribute="width" secondItem="Ghv-jn-qBM" secondAttribute="width" id="KVv-wz-Ixk"/>
@@ -1331,31 +1371,6 @@ Washington, DC 20521-6170
                                             <constraint firstItem="NvU-gW-UTV" firstAttribute="baseline" secondItem="jW8-fP-SJR" secondAttribute="baseline" id="y6O-Ju-Lpr"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-eD-Xrr" userLabel="ProductSliderView">
-                                        <rect key="frame" x="0.0" y="121" width="180" height="637"/>
-                                        <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfR-vY-Io8">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="637"/>
-                                            </scrollView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-Ve-rZ3">
-                                                <rect key="frame" x="151" y="214" width="30" height="210"/>
-                                                <state key="normal" image="product_slider.png"/>
-                                                <connections>
-                                                    <action selector="productSliderCalled:" destination="1oi-d3-S4E" eventType="touchUpInside" id="zAl-W1-XtE"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="LPq-uK-d61"/>
-                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="leading" secondItem="Cyv-eD-Xrr" secondAttribute="leading" id="TZm-W4-zJy"/>
-                                            <constraint firstAttribute="trailing" secondItem="eO5-Ve-rZ3" secondAttribute="trailing" constant="-1" id="Vjs-Fh-59h"/>
-                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="leading" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="1" id="YzE-Xr-d1i"/>
-                                            <constraint firstAttribute="bottom" secondItem="XfR-vY-Io8" secondAttribute="bottom" id="iIf-dp-Ymv"/>
-                                            <constraint firstItem="eO5-Ve-rZ3" firstAttribute="centerY" secondItem="XfR-vY-Io8" secondAttribute="centerY" id="r2x-e0-Hng"/>
-                                            <constraint firstItem="XfR-vY-Io8" firstAttribute="top" secondItem="Cyv-eD-Xrr" secondAttribute="top" id="u22-y9-C5i"/>
-                                            <constraint firstAttribute="trailing" secondItem="XfR-vY-Io8" secondAttribute="trailing" constant="30" id="ugf-ju-Vag"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1369,7 +1384,7 @@ Washington, DC 20521-6170
                                     <constraint firstItem="rTV-l3-1zL" firstAttribute="trailing" secondItem="Sib-yX-PDg" secondAttribute="trailing" id="uN1-c9-H3y"/>
                                     <constraint firstAttribute="trailing" secondItem="Sib-yX-PDg" secondAttribute="trailing" constant="40" id="v7m-wj-jDP"/>
                                     <constraint firstItem="Cyv-eD-Xrr" firstAttribute="leading" secondItem="imp-Rh-cPl" secondAttribute="leading" id="xK8-bf-c7Y"/>
-                                    <constraint firstItem="rTV-l3-1zL" firstAttribute="top" secondItem="Sib-yX-PDg" secondAttribute="bottom" constant="5" id="ylx-zC-CLN"/>
+                                    <constraint firstItem="rTV-l3-1zL" firstAttribute="top" secondItem="Sib-yX-PDg" secondAttribute="bottom" constant="8" id="ylx-zC-CLN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1381,6 +1396,7 @@ Washington, DC 20521-6170
                             <constraint firstItem="imp-Rh-cPl" firstAttribute="top" secondItem="Kvl-Zi-tJH" secondAttribute="top" id="ySJ-Pz-mgf"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="basementDesignView" destination="lEO-sm-dTp" id="MWa-VZ-j8N"/>
