@@ -91,6 +91,8 @@
 		7084E9CE1E07CD2C00EA5AE8 /* 19@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B91E07CD2C00EA5AE8 /* 19@2x.png */; };
 		7084E9CF1E07CD2C00EA5AE8 /* 20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9BA1E07CD2C00EA5AE8 /* 20@2x.png */; };
 		7084E9D01E07CD2C00EA5AE8 /* milky_way.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */; };
+		709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */; };
+		709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */; };
 		70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */; };
 		70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
@@ -220,6 +222,9 @@
 		7084E9B91E07CD2C00EA5AE8 /* 19@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19@2x.png"; sourceTree = "<group>"; };
 		7084E9BA1E07CD2C00EA5AE8 /* 20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20@2x.png"; sourceTree = "<group>"; };
 		7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = milky_way.jpg; sourceTree = "<group>"; };
+		709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavDrwaingToolsView.h; sourceTree = "<group>"; };
+		709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavDrwaingToolsView.m; sourceTree = "<group>"; };
+		709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightNavDrwaingToolsView.xib; sourceTree = "<group>"; };
 		70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavDrawingToolsView.h; sourceTree = "<group>"; };
 		70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavDrawingToolsView.m; sourceTree = "<group>"; };
 		70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftNavDrawingToolsView.xib; sourceTree = "<group>"; };
@@ -441,6 +446,9 @@
 				70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */,
 				70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */,
 				70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */,
+				709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */,
+				709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */,
+				709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */,
 				705B78331E13C71D00161991 /* MenuViewController.h */,
 				705B78341E13C71D00161991 /* MenuViewController.m */,
 				705B78351E13C71D00161991 /* OldProposalsViewController.h */,
@@ -609,6 +617,7 @@
 				7084E9C51E07CD2C00EA5AE8 /* 10@2x.png in Resources */,
 				7084E9C31E07CD2C00EA5AE8 /* 8@2x.png in Resources */,
 				7084E9C91E07CD2C00EA5AE8 /* 14@2x.png in Resources */,
+				709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */,
 				3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */,
 				3B6EB8951DD845D900936AB9 /* Main.storyboard in Resources */,
 				7084E9D01E07CD2C00EA5AE8 /* milky_way.jpg in Resources */,
@@ -636,6 +645,7 @@
 				70015E981DF6913200DF542E /* Utility.m in Sources */,
 				70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */,
 				704B68991E13CB8D00E6537D /* WYStoryboardPopoverSegue.m in Sources */,
+				709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */,
 				705B783F1E13C71D00161991 /* DesignViewController.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
 				7027C9BD1E1CEF5E0062EB77 /* AccordionHeaderView.m in Sources */,

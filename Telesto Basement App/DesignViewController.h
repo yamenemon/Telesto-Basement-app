@@ -10,6 +10,7 @@
 #import "SPUserResizableView.h"
 #import "TemplatePopOverViewController.h"
 #import "LeftNavDrawingToolsView.h"
+#import "RightNavDrwaingToolsView.h"
 
 @class  TemplatePopOverViewController;
 
@@ -28,4 +29,5 @@
 
 -(void)setSavedTemplateNumber:(int)number;
 - (void)wallPopOverBtnAction:(id)sender;
+-(void)backButtonAction;
 @end

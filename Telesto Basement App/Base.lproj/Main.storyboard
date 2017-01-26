@@ -1605,7 +1605,7 @@ A: Immediately</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylj-Rg-W4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5471" y="-1482"/>
+            <point key="canvasLocation" x="-5344" y="-1245"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dcM-Te-05r">

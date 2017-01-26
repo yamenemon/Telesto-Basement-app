@@ -35,7 +35,10 @@ CGFloat lastRotation;
     [gestureRecognizer setDelegate:self];
     [basementDesignView addGestureRecognizer:gestureRecognizer];
     isShown = NO;
-    [self.view setNeedsDisplay];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.view setNeedsDisplay];
+    });
+
 }
 -(BOOL)prefersStatusBarHidden{
     return NO;
@@ -45,6 +48,11 @@ CGFloat lastRotation;
     LeftNavDrawingToolsView *leftNavBtnBar = [[[NSBundle mainBundle] loadNibNamed:@"LeftNavDrawingToolsView" owner:self options:nil] objectAtIndex:0];
     [self.navigationController.navigationBar addSubview:leftNavBtnBar];
     leftNavBtnBar.baseClass = self;
+    
+    RightNavDrwaingToolsView *rightNavBtnBar = [[[NSBundle mainBundle] loadNibNamed:@"RightNavDrwaingToolsView" owner:self options:nil] objectAtIndex:0];
+    rightNavBtnBar.frame = CGRectMake(self.view.frame.size.width - rightNavBtnBar.frame.size.width, 0, rightNavBtnBar.frame.size.width, rightNavBtnBar.frame.size.height);
+    [self.navigationController.navigationBar addSubview:rightNavBtnBar];
+    rightNavBtnBar.baseClass = self;
 }
 -(void)viewDidLayoutSubviews:(BOOL)animated{
     /*Scrolling window*/
@@ -52,7 +60,6 @@ CGFloat lastRotation;
     CGRect frame = productSliderView.frame;
     frame.origin.x = -frame.size.width+100;
     productSliderView.frame = frame;
-    
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self createProductScroller];
@@ -108,7 +115,9 @@ CGFloat lastRotation;
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
     lastEditedView = userResizableView;
 }
-
+-(void)backButtonAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([currentlyEditingView hitTest:[touch locationInView:currentlyEditingView] withEvent:nil]) {
         return NO;
