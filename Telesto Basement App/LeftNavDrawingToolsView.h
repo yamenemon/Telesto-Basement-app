@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class DesignViewController;
 
 @interface LeftNavDrawingToolsView : UIView
-
+@property (nonatomic,strong) DesignViewController *baseClass;
 @end

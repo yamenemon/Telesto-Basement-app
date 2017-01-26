@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SPUserResizableView.h"
 #import "TemplatePopOverViewController.h"
+#import "LeftNavDrawingToolsView.h"
 
 @class  TemplatePopOverViewController;
 
@@ -23,12 +24,8 @@
     SPUserResizableView *userResizableViewCurvedView;
 }
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
-@property (weak, nonatomic) IBOutlet UIView *buttonView;
-@property (weak, nonatomic) IBOutlet UIView *drawingView;
-@property (weak, nonatomic) IBOutlet UILabel *wallContainerLabel;
-@property (weak, nonatomic) IBOutlet UIButton *horizentalBtn;
-@property (weak, nonatomic) IBOutlet UIButton *verticalBtn;
 @property (weak, nonatomic) IBOutlet UIView *basementDesignView;
 
 -(void)setSavedTemplateNumber:(int)number;
+- (void)wallPopOverBtnAction:(id)sender;
 @end

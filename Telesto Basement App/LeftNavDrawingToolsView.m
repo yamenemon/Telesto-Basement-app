@@ -7,9 +7,9 @@
 //
 
 #import "LeftNavDrawingToolsView.h"
-
+#import "DesignViewController.h"
 @implementation LeftNavDrawingToolsView
-
+@synthesize baseClass;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -17,5 +17,21 @@
     // Drawing code
 }
 */
+- (IBAction)wallBtnClicked:(id)sender {
+    NSLog(@"Wall Button Clicked");
+    [baseClass wallPopOverBtnAction:sender];
+}
+- (IBAction)stairBtnClicked:(id)sender {
+    NSLog(@"Stair Button Clicked");
+}
+- (IBAction)doorBtnClicked:(id)sender {
+    NSLog(@"Door Button Clicked");
+}
+- (IBAction)windowBtnClicked:(id)sender {
+    NSLog(@"Window Button Clicked");
+}
+- (IBAction)moreBtnClicked:(id)sender {
+    NSLog(@"More Button Clicked");
+}
 
 @end

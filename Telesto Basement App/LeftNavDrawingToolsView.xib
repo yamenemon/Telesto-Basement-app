@@ -11,48 +11,72 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LeftNavDrawingToolsView">
-            <rect key="frame" x="0.0" y="0.0" width="814" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="332" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7j-tG-yNy">
-                    <rect key="frame" x="126" y="2" width="62" height="40"/>
+                    <rect key="frame" x="68" y="6" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="wall.png"/>
+                    <state key="normal" backgroundImage="Wall"/>
+                    <connections>
+                        <action selector="wallBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Kt9-Pb-3sd"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhN-AB-LzJ">
-                    <rect key="frame" x="209" y="7" width="46" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhN-AB-LzJ">
+                    <rect key="frame" x="121" y="7" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" backgroundImage="Stair"/>
+                    <connections>
+                        <action selector="stairBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="O5O-aE-GpQ"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-LI-ZbP">
-                    <rect key="frame" x="290" y="7" width="46" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-LI-ZbP">
+                    <rect key="frame" x="174" y="7" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" backgroundImage="Door"/>
+                    <connections>
+                        <action selector="doorBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="h9E-tO-zxz"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-pl-4tF">
-                    <rect key="frame" x="356" y="7" width="46" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-pl-4tF">
+                    <rect key="frame" x="229" y="7" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" backgroundImage="Window"/>
+                    <connections>
+                        <action selector="windowBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="lXx-V8-lPg"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJX-cJ-8ho">
-                    <rect key="frame" x="410" y="7" width="46" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJX-cJ-8ho">
+                    <rect key="frame" x="282" y="7" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" backgroundImage="More"/>
+                    <connections>
+                        <action selector="moreBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="EnS-HB-PHu"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRM-h6-zS8">
-                    <rect key="frame" x="28" y="0.0" width="62" height="44"/>
+                    <rect key="frame" x="7" y="4" width="38" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="reveal-icon.png"/>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NavSeperator" translatesAutoresizingMaskIntoConstraints="NO" id="b5M-OO-qjt">
+                    <rect key="frame" x="45" y="2" width="13" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.038640640676021576" green="0.33505094051361084" blue="0.44409996271133423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-208" y="-253"/>
+            <point key="canvasLocation" x="-624" y="1"/>
         </view>
     </objects>
     <resources>
+        <image name="Door" width="50" height="50"/>
+        <image name="More" width="50" height="50"/>
+        <image name="NavSeperator" width="1" height="44"/>
+        <image name="Stair" width="50" height="50"/>
+        <image name="Wall" width="50" height="50"/>
+        <image name="Window" width="50" height="50"/>
         <image name="reveal-icon.png" width="22" height="17"/>
-        <image name="wall.png" width="8" height="7"/>
     </resources>
 </document>
