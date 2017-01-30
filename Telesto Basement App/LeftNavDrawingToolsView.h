@@ -11,4 +11,5 @@
 
 @interface LeftNavDrawingToolsView : UIView
 @property (nonatomic,strong) DesignViewController *baseClass;
+@property (weak, nonatomic) IBOutlet UIButton *revealButtonItem;
 @end

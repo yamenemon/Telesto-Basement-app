@@ -45,11 +45,11 @@ CGFloat lastRotation;
 }
 -(void)viewWillAppear:(BOOL)animated{
 
-    LeftNavDrawingToolsView *leftNavBtnBar = [[[NSBundle mainBundle] loadNibNamed:@"LeftNavDrawingToolsView" owner:self options:nil] objectAtIndex:0];
+    leftNavBtnBar = [[[NSBundle mainBundle] loadNibNamed:@"LeftNavDrawingToolsView" owner:self options:nil] objectAtIndex:0];
     [self.navigationController.navigationBar addSubview:leftNavBtnBar];
     leftNavBtnBar.baseClass = self;
     
-    RightNavDrwaingToolsView *rightNavBtnBar = [[[NSBundle mainBundle] loadNibNamed:@"RightNavDrwaingToolsView" owner:self options:nil] objectAtIndex:0];
+    rightNavBtnBar = [[[NSBundle mainBundle] loadNibNamed:@"RightNavDrwaingToolsView" owner:self options:nil] objectAtIndex:0];
     rightNavBtnBar.frame = CGRectMake(self.view.frame.size.width - rightNavBtnBar.frame.size.width, 0, rightNavBtnBar.frame.size.width, rightNavBtnBar.frame.size.height);
     [self.navigationController.navigationBar addSubview:rightNavBtnBar];
     rightNavBtnBar.baseClass = self;
@@ -63,6 +63,10 @@ CGFloat lastRotation;
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self createProductScroller];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    leftNavBtnBar.hidden = YES;
+    rightNavBtnBar.hidden = YES;
 }
 -(void)createProductScroller{
 
@@ -115,6 +119,10 @@ CGFloat lastRotation;
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
     lastEditedView = userResizableView;
 }
+- (void)flipTheObject{
+    lastEditedView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    [lastEditedView setNeedsDisplay];
+}
 -(void)backButtonAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -155,7 +163,7 @@ CGFloat lastRotation;
         isShown = NO;
     }
 }
-- (IBAction)removeBtnClicked:(id)sender {
+- (void)removeBtnClicked{
     [lastEditedView removeFromSuperview];
 }
 
@@ -199,6 +207,60 @@ CGFloat lastRotation;
     }];
 }
 
+- (void)revealButtonItemClicked:(id)sender{
+
+    UIButton *menuBtn = (UIButton*)sender;
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                              message: nil
+                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *newTemplate =  [UIAlertAction actionWithTitle: @"New Template" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }];
+//    [newTemplate setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [newTemplate setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:newTemplate];
+    
+    
+    UIAlertAction *savedTemplate =  [UIAlertAction actionWithTitle: @"Saved Template" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }];
+//    [savedTemplate setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [savedTemplate setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:savedTemplate];
+    
+    UIAlertAction *checkList =  [UIAlertAction actionWithTitle: @"CheckList" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }];
+//    [checkList setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [checkList setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:checkList];
+    
+    
+    UIAlertAction *showPrice =  [UIAlertAction actionWithTitle: @"Show Price" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }];
+//    [showPrice setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [showPrice setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:showPrice];
+    
+    
+    
+    
+    alertController.modalPresentationStyle = UIModalPresentationPopover;
+    
+    UIPopoverPresentationController * popover = alertController.popoverPresentationController;
+    popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    popover.sourceView = menuBtn;
+    popover.sourceRect = menuBtn.bounds;
+    
+    [self presentViewController: alertController animated: YES completion: nil];
+
+}
 
 - (void)wallPopOverBtnAction:(id)sender {
     

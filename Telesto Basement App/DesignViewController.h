@@ -23,11 +23,17 @@
     UIImageView*drawingImageView;
     UIView *curvedView;
     SPUserResizableView *userResizableViewCurvedView;
+    
+    LeftNavDrawingToolsView *leftNavBtnBar;
+    RightNavDrwaingToolsView *rightNavBtnBar;
 }
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *basementDesignView;
 
--(void)setSavedTemplateNumber:(int)number;
+- (void)setSavedTemplateNumber:(int)number;
 - (void)wallPopOverBtnAction:(id)sender;
--(void)backButtonAction;
+- (void)backButtonAction;
+- (void)revealButtonItemClicked:(id)sender;
+- (void)removeBtnClicked;
+- (void)flipTheObject;
 @end

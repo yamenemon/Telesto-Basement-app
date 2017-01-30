@@ -10,4 +10,5 @@
 @class DesignViewController;
 @interface RightNavDrwaingToolsView : UIView
 @property (nonatomic,strong) DesignViewController *baseClass;
+
 @end

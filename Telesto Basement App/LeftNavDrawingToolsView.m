@@ -17,6 +17,9 @@
     // Drawing code
 }
 */
+- (IBAction)menuBtnClicked:(id)sender {
+    [baseClass revealButtonItemClicked:sender];
+}
 - (IBAction)wallBtnClicked:(id)sender {
     NSLog(@"Wall Button Clicked");
     [baseClass wallPopOverBtnAction:sender];
@@ -32,6 +35,9 @@
 }
 - (IBAction)moreBtnClicked:(id)sender {
     NSLog(@"More Button Clicked");
+}
+- (IBAction)deleteBtnPressed:(id)sender {
+    [baseClass removeBtnClicked];
 }
 
 @end

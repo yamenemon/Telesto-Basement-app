@@ -20,6 +20,7 @@
 - (IBAction)saveButtonClicked:(id)sender {
 }
 - (IBAction)flipButtonClicked:(id)sender {
+    [baseClass flipTheObject];
 }
 - (IBAction)exitButtonClicked:(id)sender {
     [baseClass backButtonAction];
