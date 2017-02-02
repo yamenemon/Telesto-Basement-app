@@ -65,12 +65,15 @@ CGFloat lastRotation;
 -(void)viewDidLayoutSubviews:(BOOL)animated{
     /*Scrolling window*/
     [super viewWillLayoutSubviews];
-    CGRect frame = productSliderView.frame;
-    frame.origin.x = -frame.size.width+100;
-    productSliderView.frame = frame;
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
-    [self createProductScroller];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        isShown = YES;
+        productSliderView.hidden = YES;
+        [self productSliderCalled:nil];
+        [self createProductScroller];
+    });
 }
 -(void)viewWillDisappear:(BOOL)animated{
     leftNavBtnBar.hidden = YES;
@@ -98,7 +101,8 @@ CGFloat lastRotation;
         
         button.frame = frame;
         [button setTag:i];
-        [button setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]]]];
+//        [button setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]]]];
+        [button setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [scrollView addSubview:button];
         
@@ -111,6 +115,8 @@ CGFloat lastRotation;
     scrollView.backgroundColor = [UIColorFromRGB(0x0A5A78) colorWithAlphaComponent:0.3]; ;
 //    productSliderView.alpha = 0.5;
     [productSliderView addSubview:scrollView];
+    productSliderView.hidden = NO;
+
 
 }
 -(void)productBtnClicked:(id)sender{

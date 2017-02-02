@@ -232,7 +232,7 @@ Washington, DC 20521-6170
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" translatesAutoresizingMaskIntoConstraints="NO" id="teV-zN-qBG">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="teV-zN-qBG">
                                                 <rect key="frame" x="8" y="91" width="88" height="88"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="88" id="V4E-yn-l6G"/>
@@ -530,25 +530,25 @@ Washington, DC 20521-6170
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZuI-jk-HIC" customClass="IQDropDownTextField">
-                                                <rect key="frame" x="8" y="203" width="244.5" height="30"/>
+                                                <rect key="frame" x="8" y="203" width="245" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postal / Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ngn-3F-MEU" customClass="IQDropDownTextField">
-                                                <rect key="frame" x="8" y="259" width="244.5" height="30"/>
+                                                <rect key="frame" x="8" y="259" width="245" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-eG-UjC" customClass="IQDropDownTextField">
-                                                <rect key="frame" x="296.5" y="259" width="244.5" height="30"/>
+                                                <rect key="frame" x="297" y="259" width="244" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State / Province" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqj-Hd-I5M" customClass="IQDropDownTextField">
-                                                <rect key="frame" x="296.5" y="203" width="244.5" height="30"/>
+                                                <rect key="frame" x="297" y="203" width="244" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -993,7 +993,7 @@ Washington, DC 20521-6170
                 <navigationController storyboardIdentifier="NavigationControllerMap" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y32-Z6-gDD" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5pt-MO-wRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5pt-MO-wRa">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1735,7 +1735,7 @@ A: Immediately</string>
         <scene sceneID="Pj7-jR-Ive">
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerColor" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2yX-Oq-Cx0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1753,7 +1753,7 @@ A: Immediately</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kjf-i3-4sV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="06f-FH-q6U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06f-FH-q6U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1771,7 +1771,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NFt-8r-g3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iwR-Im-04P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iwR-Im-04P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1827,7 +1827,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YaK-4u-ubd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dRc-JO-613">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRc-JO-613">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1842,7 +1842,6 @@ A: Immediately</string>
         </scene>
     </scenes>
     <resources>
-        <image name="1.png" width="152" height="152"/>
         <image name="Temp6.png" width="400" height="316"/>
         <image name="creat_new_customer.png" width="20" height="20"/>
         <image name="customerList.png" width="20" height="20"/>

@@ -16,7 +16,6 @@
 		3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */; };
 		3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8991DD845DA00936AB9 /* Assets.xcassets */; };
 		3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */; };
-		3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8A41DD8ACB700936AB9 /* 1.png */; };
 		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
@@ -81,6 +80,15 @@
 		70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF19651E1CE03D00C90EDD /* FaqsViewController.m */; };
 		70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E8481E43426B007E3F2F /* SettingsViewController.m */; };
 		70D6E84C1E4351C7007E3F2F /* ShowPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */; };
+		70D6E8561E436495007E3F2F /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E84D1E436495007E3F2F /* 1@2x.png */; };
+		70D6E8571E436495007E3F2F /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E84E1E436495007E3F2F /* 2@2x.png */; };
+		70D6E8581E436495007E3F2F /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E84F1E436495007E3F2F /* 3@2x.png */; };
+		70D6E8591E436495007E3F2F /* 4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8501E436495007E3F2F /* 4@2x.png */; };
+		70D6E85A1E436495007E3F2F /* 5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8511E436495007E3F2F /* 5@2x.png */; };
+		70D6E85B1E436495007E3F2F /* 6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8521E436495007E3F2F /* 6@2x.png */; };
+		70D6E85C1E436495007E3F2F /* 7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8531E436495007E3F2F /* 7@2x.png */; };
+		70D6E85D1E436495007E3F2F /* 8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8541E436495007E3F2F /* 8@2x.png */; };
+		70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8551E436495007E3F2F /* 9@2x.png */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
 		70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D61E067DB400A6D245 /* log_out_@2x.png */; };
 		70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D71E067DB400A6D245 /* log_out@2x.png */; };
@@ -110,7 +118,6 @@
 		3B6EB8991DD845DA00936AB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B6EB89C1DD845DA00936AB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B6EB89E1DD845DA00936AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B6EB8A41DD8ACB700936AB9 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		474EE36DEBC3BD902C3C33C8 /* Pods-Telesto Basement App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telesto Basement App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App.debug.xcconfig"; sourceTree = "<group>"; };
 		70015E961DF6913200DF542E /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
@@ -202,6 +209,15 @@
 		70D6E8481E43426B007E3F2F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPriceViewController.h; sourceTree = "<group>"; };
 		70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPriceViewController.m; sourceTree = "<group>"; };
+		70D6E84D1E436495007E3F2F /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
+		70D6E84E1E436495007E3F2F /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
+		70D6E84F1E436495007E3F2F /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
+		70D6E8501E436495007E3F2F /* 4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4@2x.png"; sourceTree = "<group>"; };
+		70D6E8511E436495007E3F2F /* 5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5@2x.png"; sourceTree = "<group>"; };
+		70D6E8521E436495007E3F2F /* 6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6@2x.png"; sourceTree = "<group>"; };
+		70D6E8531E436495007E3F2F /* 7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7@2x.png"; sourceTree = "<group>"; };
+		70D6E8541E436495007E3F2F /* 8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8@2x.png"; sourceTree = "<group>"; };
+		70D6E8551E436495007E3F2F /* 9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9@2x.png"; sourceTree = "<group>"; };
 		70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creat_new_customer@2x.png"; sourceTree = "<group>"; };
 		70EC80D61E067DB400A6D245 /* log_out_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out_@2x.png"; sourceTree = "<group>"; };
 		70EC80D71E067DB400A6D245 /* log_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out@2x.png"; sourceTree = "<group>"; };
@@ -295,6 +311,15 @@
 		70015E951DF6910500DF542E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				70D6E84D1E436495007E3F2F /* 1@2x.png */,
+				70D6E84E1E436495007E3F2F /* 2@2x.png */,
+				70D6E84F1E436495007E3F2F /* 3@2x.png */,
+				70D6E8501E436495007E3F2F /* 4@2x.png */,
+				70D6E8511E436495007E3F2F /* 5@2x.png */,
+				70D6E8521E436495007E3F2F /* 6@2x.png */,
+				70D6E8531E436495007E3F2F /* 7@2x.png */,
+				70D6E8541E436495007E3F2F /* 8@2x.png */,
+				70D6E8551E436495007E3F2F /* 9@2x.png */,
 				70363F191E114520003534C3 /* product_slider@2x.png */,
 				70FDF6181E094C1E00CF32EF /* customerList@2x.png */,
 				70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */,
@@ -312,7 +337,6 @@
 				705F64E81DF97F2600082D55 /* telesto-logo@2x.png */,
 				705F64E91DF97F2600082D55 /* userName@2x.png */,
 				70CF140E1DF431B20045CF8F /* BackButton@2x.png */,
-				3B6EB8A41DD8ACB700936AB9 /* 1.png */,
 				7017E93E1DEFF608009FB76A /* reveal-icon.png */,
 				7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */,
 				705B781B1E13C0B700161991 /* Temp8@2x.png */,
@@ -514,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */,
+				70D6E8591E436495007E3F2F /* 4@2x.png in Resources */,
 				705B78291E13C0B700161991 /* Temp2@2x.png in Resources */,
 				70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */,
 				70EC80E61E067DB400A6D245 /* search@2x.png in Resources */,
@@ -530,20 +555,23 @@
 				70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */,
 				705F64E21DF97B7000082D55 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				705B78231E13C0B700161991 /* Temp8@2x.png in Resources */,
+				70D6E8561E436495007E3F2F /* 1@2x.png in Resources */,
 				70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */,
 				70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */,
 				705F64E41DF97B7000082D55 /* RobotoCondensed-Light.ttf in Resources */,
 				705B78241E13C0B700161991 /* Temp7@2x.png in Resources */,
+				70D6E85B1E436495007E3F2F /* 6@2x.png in Resources */,
 				705F64DE1DF97B7000082D55 /* Roboto-Regular.ttf in Resources */,
 				7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */,
 				705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */,
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
 				705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */,
+				70D6E8581E436495007E3F2F /* 3@2x.png in Resources */,
+				70D6E8571E436495007E3F2F /* 2@2x.png in Resources */,
 				705B78261E13C0B700161991 /* Temp5@2x.png in Resources */,
 				705F64DB1DF97B7000082D55 /* Roboto-LightItalic.ttf in Resources */,
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
 				70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */,
-				3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */,
 				705F64DD1DF97B7000082D55 /* Roboto-MediumItalic.ttf in Resources */,
 				705F64DF1DF97B7000082D55 /* Roboto-Thin.ttf in Resources */,
 				70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */,
@@ -558,12 +586,16 @@
 				705F64D61DF97B7000082D55 /* Roboto-BlackItalic.ttf in Resources */,
 				705B78251E13C0B700161991 /* Temp6@2x.png in Resources */,
 				705B78271E13C0B700161991 /* Temp4@2x.png in Resources */,
+				70D6E85A1E436495007E3F2F /* 5@2x.png in Resources */,
+				70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */,
 				7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */,
+				70D6E85C1E436495007E3F2F /* 7@2x.png in Resources */,
 				705F64DA1DF97B7000082D55 /* Roboto-Light.ttf in Resources */,
 				705F64DC1DF97B7000082D55 /* Roboto-Medium.ttf in Resources */,
 				705F64E01DF97B7000082D55 /* Roboto-ThinItalic.ttf in Resources */,
 				70EC80E51E067DB400A6D245 /* presentation@2x.png in Resources */,
 				709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */,
+				70D6E85D1E436495007E3F2F /* 8@2x.png in Resources */,
 				3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */,
 				3B6EB8951DD845D900936AB9 /* Main.storyboard in Resources */,
 			);
