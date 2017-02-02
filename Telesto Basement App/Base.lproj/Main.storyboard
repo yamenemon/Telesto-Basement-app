@@ -1887,7 +1887,7 @@ A: Immediately</string>
         </scene>
     </scenes>
     <resources>
-        <image name="1.png" width="75" height="75"/>
+        <image name="1.png" width="152" height="152"/>
         <image name="Temp6.png" width="400" height="316"/>
         <image name="creat_new_customer.png" width="20" height="20"/>
         <image name="customerList.png" width="20" height="20"/>

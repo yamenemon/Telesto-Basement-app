@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		167AB7714A412FA773401D90 /* libPods-Telesto Basement App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D774B00CC6AFD6F82927CD9 /* libPods-Telesto Basement App.a */; };
 		3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B428ACB1DDB3E57008ADABF /* BaseViewController.m */; };
 		3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */; };
 		3B6EB88C1DD845D900936AB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB88B1DD845D900936AB9 /* main.m */; };
@@ -70,26 +71,6 @@
 		705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */; };
 		706286191DED939A0022E105 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706286181DED939A0022E105 /* PageContentViewController.m */; };
 		7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */; };
-		7084E9BC1E07CD2C00EA5AE8 /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9A71E07CD2C00EA5AE8 /* 1@2x.png */; };
-		7084E9BD1E07CD2C00EA5AE8 /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9A81E07CD2C00EA5AE8 /* 2@2x.png */; };
-		7084E9BE1E07CD2C00EA5AE8 /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9A91E07CD2C00EA5AE8 /* 3@2x.png */; };
-		7084E9BF1E07CD2C00EA5AE8 /* 4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9AA1E07CD2C00EA5AE8 /* 4@2x.png */; };
-		7084E9C01E07CD2C00EA5AE8 /* 5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9AB1E07CD2C00EA5AE8 /* 5@2x.png */; };
-		7084E9C11E07CD2C00EA5AE8 /* 6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9AC1E07CD2C00EA5AE8 /* 6@2x.png */; };
-		7084E9C21E07CD2C00EA5AE8 /* 7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9AD1E07CD2C00EA5AE8 /* 7@2x.png */; };
-		7084E9C31E07CD2C00EA5AE8 /* 8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9AE1E07CD2C00EA5AE8 /* 8@2x.png */; };
-		7084E9C41E07CD2C00EA5AE8 /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9AF1E07CD2C00EA5AE8 /* 9@2x.png */; };
-		7084E9C51E07CD2C00EA5AE8 /* 10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B01E07CD2C00EA5AE8 /* 10@2x.png */; };
-		7084E9C61E07CD2C00EA5AE8 /* 11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B11E07CD2C00EA5AE8 /* 11@2x.png */; };
-		7084E9C71E07CD2C00EA5AE8 /* 12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B21E07CD2C00EA5AE8 /* 12@2x.png */; };
-		7084E9C81E07CD2C00EA5AE8 /* 13@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B31E07CD2C00EA5AE8 /* 13@2x.png */; };
-		7084E9C91E07CD2C00EA5AE8 /* 14@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B41E07CD2C00EA5AE8 /* 14@2x.png */; };
-		7084E9CA1E07CD2C00EA5AE8 /* 15@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B51E07CD2C00EA5AE8 /* 15@2x.png */; };
-		7084E9CB1E07CD2C00EA5AE8 /* 16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B61E07CD2C00EA5AE8 /* 16@2x.png */; };
-		7084E9CC1E07CD2C00EA5AE8 /* 17@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B71E07CD2C00EA5AE8 /* 17@2x.png */; };
-		7084E9CD1E07CD2C00EA5AE8 /* 18@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B81E07CD2C00EA5AE8 /* 18@2x.png */; };
-		7084E9CE1E07CD2C00EA5AE8 /* 19@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9B91E07CD2C00EA5AE8 /* 19@2x.png */; };
-		7084E9CF1E07CD2C00EA5AE8 /* 20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9BA1E07CD2C00EA5AE8 /* 20@2x.png */; };
 		7084E9D01E07CD2C00EA5AE8 /* milky_way.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */; };
 		709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */; };
 		709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */; };
@@ -114,6 +95,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D774B00CC6AFD6F82927CD9 /* libPods-Telesto Basement App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Telesto Basement App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B428ACA1DDB3E57008ADABF /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		3B428ACB1DDB3E57008ADABF /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		3B69A9C51DDB0E4800163A80 /* TermsAndConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsAndConditionViewController.h; sourceTree = "<group>"; };
@@ -128,6 +110,7 @@
 		3B6EB89C1DD845DA00936AB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B6EB89E1DD845DA00936AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B6EB8A41DD8ACB700936AB9 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		474EE36DEBC3BD902C3C33C8 /* Pods-Telesto Basement App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telesto Basement App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App.debug.xcconfig"; sourceTree = "<group>"; };
 		70015E961DF6913200DF542E /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		70015E9C1DF69BEF00DF542E /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
@@ -201,26 +184,6 @@
 		706286181DED939A0022E105 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
-		7084E9A71E07CD2C00EA5AE8 /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
-		7084E9A81E07CD2C00EA5AE8 /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
-		7084E9A91E07CD2C00EA5AE8 /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
-		7084E9AA1E07CD2C00EA5AE8 /* 4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4@2x.png"; sourceTree = "<group>"; };
-		7084E9AB1E07CD2C00EA5AE8 /* 5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5@2x.png"; sourceTree = "<group>"; };
-		7084E9AC1E07CD2C00EA5AE8 /* 6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6@2x.png"; sourceTree = "<group>"; };
-		7084E9AD1E07CD2C00EA5AE8 /* 7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7@2x.png"; sourceTree = "<group>"; };
-		7084E9AE1E07CD2C00EA5AE8 /* 8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8@2x.png"; sourceTree = "<group>"; };
-		7084E9AF1E07CD2C00EA5AE8 /* 9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9@2x.png"; sourceTree = "<group>"; };
-		7084E9B01E07CD2C00EA5AE8 /* 10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10@2x.png"; sourceTree = "<group>"; };
-		7084E9B11E07CD2C00EA5AE8 /* 11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11@2x.png"; sourceTree = "<group>"; };
-		7084E9B21E07CD2C00EA5AE8 /* 12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12@2x.png"; sourceTree = "<group>"; };
-		7084E9B31E07CD2C00EA5AE8 /* 13@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13@2x.png"; sourceTree = "<group>"; };
-		7084E9B41E07CD2C00EA5AE8 /* 14@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "14@2x.png"; sourceTree = "<group>"; };
-		7084E9B51E07CD2C00EA5AE8 /* 15@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "15@2x.png"; sourceTree = "<group>"; };
-		7084E9B61E07CD2C00EA5AE8 /* 16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16@2x.png"; sourceTree = "<group>"; };
-		7084E9B71E07CD2C00EA5AE8 /* 17@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17@2x.png"; sourceTree = "<group>"; };
-		7084E9B81E07CD2C00EA5AE8 /* 18@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "18@2x.png"; sourceTree = "<group>"; };
-		7084E9B91E07CD2C00EA5AE8 /* 19@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19@2x.png"; sourceTree = "<group>"; };
-		7084E9BA1E07CD2C00EA5AE8 /* 20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20@2x.png"; sourceTree = "<group>"; };
 		7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = milky_way.jpg; sourceTree = "<group>"; };
 		709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavDrwaingToolsView.h; sourceTree = "<group>"; };
 		709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavDrwaingToolsView.m; sourceTree = "<group>"; };
@@ -247,6 +210,7 @@
 		70EC80DE1E067DB400A6D245 /* settings__@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings__@2x.png"; sourceTree = "<group>"; };
 		70EC80DF1E067DB400A6D245 /* traning_videos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "traning_videos@2x.png"; sourceTree = "<group>"; };
 		70FDF6181E094C1E00CF32EF /* customerList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customerList@2x.png"; sourceTree = "<group>"; };
+		C60A664EF7D6CA664CB25D5C /* Pods-Telesto Basement App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telesto Basement App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */,
+				167AB7714A412FA773401D90 /* libPods-Telesto Basement App.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +232,7 @@
 				3B6EB8891DD845D900936AB9 /* Telesto Basement App */,
 				3B6EB8881DD845D900936AB9 /* Products */,
 				704B688E1E13C9C000E6537D /* Frameworks */,
+				94C13A06E1B0BEC60A7B633E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,26 +293,6 @@
 			children = (
 				70363F191E114520003534C3 /* product_slider@2x.png */,
 				70FDF6181E094C1E00CF32EF /* customerList@2x.png */,
-				7084E9A71E07CD2C00EA5AE8 /* 1@2x.png */,
-				7084E9A81E07CD2C00EA5AE8 /* 2@2x.png */,
-				7084E9A91E07CD2C00EA5AE8 /* 3@2x.png */,
-				7084E9AA1E07CD2C00EA5AE8 /* 4@2x.png */,
-				7084E9AB1E07CD2C00EA5AE8 /* 5@2x.png */,
-				7084E9AC1E07CD2C00EA5AE8 /* 6@2x.png */,
-				7084E9AD1E07CD2C00EA5AE8 /* 7@2x.png */,
-				7084E9AE1E07CD2C00EA5AE8 /* 8@2x.png */,
-				7084E9AF1E07CD2C00EA5AE8 /* 9@2x.png */,
-				7084E9B01E07CD2C00EA5AE8 /* 10@2x.png */,
-				7084E9B11E07CD2C00EA5AE8 /* 11@2x.png */,
-				7084E9B21E07CD2C00EA5AE8 /* 12@2x.png */,
-				7084E9B31E07CD2C00EA5AE8 /* 13@2x.png */,
-				7084E9B41E07CD2C00EA5AE8 /* 14@2x.png */,
-				7084E9B51E07CD2C00EA5AE8 /* 15@2x.png */,
-				7084E9B61E07CD2C00EA5AE8 /* 16@2x.png */,
-				7084E9B71E07CD2C00EA5AE8 /* 17@2x.png */,
-				7084E9B81E07CD2C00EA5AE8 /* 18@2x.png */,
-				7084E9B91E07CD2C00EA5AE8 /* 19@2x.png */,
-				7084E9BA1E07CD2C00EA5AE8 /* 20@2x.png */,
 				7084E9BB1E07CD2C00EA5AE8 /* milky_way.jpg */,
 				70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */,
 				70EC80D61E067DB400A6D245 /* log_out_@2x.png */,
@@ -394,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				704B688F1E13C9C000E6537D /* QuartzCore.framework */,
+				1D774B00CC6AFD6F82927CD9 /* libPods-Telesto Basement App.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -488,6 +435,15 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
+		94C13A06E1B0BEC60A7B633E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				474EE36DEBC3BD902C3C33C8 /* Pods-Telesto Basement App.debug.xcconfig */,
+				C60A664EF7D6CA664CB25D5C /* Pods-Telesto Basement App.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -495,9 +451,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B6EB8A11DD845DA00936AB9 /* Build configuration list for PBXNativeTarget "Telesto Basement App" */;
 			buildPhases = (
+				8AB2CDAEBC3B0C38D337E226 /* [CP] Check Pods Manifest.lock */,
 				3B6EB8831DD845D900936AB9 /* Sources */,
 				3B6EB8841DD845D900936AB9 /* Frameworks */,
 				3B6EB8851DD845D900936AB9 /* Resources */,
+				5804329E731016E815D0EB82 /* [CP] Embed Pods Frameworks */,
+				AB676D21A84387455BE0FF11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -551,7 +510,6 @@
 				705B78291E13C0B700161991 /* Temp2@2x.png in Resources */,
 				70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */,
 				70EC80E61E067DB400A6D245 /* search@2x.png in Resources */,
-				7084E9BF1E07CD2C00EA5AE8 /* 4@2x.png in Resources */,
 				70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */,
 				70EC80E71E067DB400A6D245 /* separator@2x.png in Resources */,
 				704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */,
@@ -559,35 +517,23 @@
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
 				705F64EC1DF97F2600082D55 /* userName@2x.png in Resources */,
 				70EC80E31E067DB400A6D245 /* new_customer@2x.png in Resources */,
-				7084E9C71E07CD2C00EA5AE8 /* 12@2x.png in Resources */,
-				7084E9CA1E07CD2C00EA5AE8 /* 15@2x.png in Resources */,
 				705F64D71DF97B7000082D55 /* Roboto-Bold.ttf in Resources */,
 				7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */,
-				7084E9CB1E07CD2C00EA5AE8 /* 16@2x.png in Resources */,
 				705B782A1E13C0B700161991 /* Temp1@2x.png in Resources */,
 				70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */,
 				705F64E21DF97B7000082D55 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				705B78231E13C0B700161991 /* Temp8@2x.png in Resources */,
 				70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */,
-				7084E9BC1E07CD2C00EA5AE8 /* 1@2x.png in Resources */,
 				70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */,
-				7084E9C81E07CD2C00EA5AE8 /* 13@2x.png in Resources */,
-				7084E9CC1E07CD2C00EA5AE8 /* 17@2x.png in Resources */,
 				705F64E41DF97B7000082D55 /* RobotoCondensed-Light.ttf in Resources */,
-				7084E9CE1E07CD2C00EA5AE8 /* 19@2x.png in Resources */,
-				7084E9C11E07CD2C00EA5AE8 /* 6@2x.png in Resources */,
 				705B78241E13C0B700161991 /* Temp7@2x.png in Resources */,
 				705F64DE1DF97B7000082D55 /* Roboto-Regular.ttf in Resources */,
 				7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */,
-				7084E9CD1E07CD2C00EA5AE8 /* 18@2x.png in Resources */,
 				705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */,
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
 				705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */,
 				705B78261E13C0B700161991 /* Temp5@2x.png in Resources */,
-				7084E9BE1E07CD2C00EA5AE8 /* 3@2x.png in Resources */,
-				7084E9BD1E07CD2C00EA5AE8 /* 2@2x.png in Resources */,
 				705F64DB1DF97B7000082D55 /* Roboto-LightItalic.ttf in Resources */,
-				7084E9CF1E07CD2C00EA5AE8 /* 20@2x.png in Resources */,
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
 				70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */,
 				3B6EB8A51DD8ACB700936AB9 /* 1.png in Resources */,
@@ -595,7 +541,6 @@
 				705F64DF1DF97B7000082D55 /* Roboto-Thin.ttf in Resources */,
 				70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */,
 				705F64E11DF97B7000082D55 /* RobotoCondensed-Bold.ttf in Resources */,
-				7084E9C61E07CD2C00EA5AE8 /* 11@2x.png in Resources */,
 				705F64E31DF97B7000082D55 /* RobotoCondensed-Italic.ttf in Resources */,
 				705F64E51DF97B7000082D55 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				70EC80EA1E067DB400A6D245 /* traning_videos@2x.png in Resources */,
@@ -605,18 +550,12 @@
 				705F64D81DF97B7000082D55 /* Roboto-BoldItalic.ttf in Resources */,
 				705F64D61DF97B7000082D55 /* Roboto-BlackItalic.ttf in Resources */,
 				705B78251E13C0B700161991 /* Temp6@2x.png in Resources */,
-				7084E9C01E07CD2C00EA5AE8 /* 5@2x.png in Resources */,
-				7084E9C41E07CD2C00EA5AE8 /* 9@2x.png in Resources */,
 				705B78271E13C0B700161991 /* Temp4@2x.png in Resources */,
 				7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */,
-				7084E9C21E07CD2C00EA5AE8 /* 7@2x.png in Resources */,
 				705F64DA1DF97B7000082D55 /* Roboto-Light.ttf in Resources */,
 				705F64DC1DF97B7000082D55 /* Roboto-Medium.ttf in Resources */,
 				705F64E01DF97B7000082D55 /* Roboto-ThinItalic.ttf in Resources */,
 				70EC80E51E067DB400A6D245 /* presentation@2x.png in Resources */,
-				7084E9C51E07CD2C00EA5AE8 /* 10@2x.png in Resources */,
-				7084E9C31E07CD2C00EA5AE8 /* 8@2x.png in Resources */,
-				7084E9C91E07CD2C00EA5AE8 /* 14@2x.png in Resources */,
 				709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */,
 				3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */,
 				3B6EB8951DD845D900936AB9 /* Main.storyboard in Resources */,
@@ -625,6 +564,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5804329E731016E815D0EB82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AB2CDAEBC3B0C38D337E226 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AB676D21A84387455BE0FF11 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3B6EB8831DD845D900936AB9 /* Sources */ = {
@@ -783,6 +770,7 @@
 		};
 		3B6EB8A21DD845DA00936AB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 474EE36DEBC3BD902C3C33C8 /* Pods-Telesto Basement App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -799,6 +787,7 @@
 		};
 		3B6EB8A31DD845DA00936AB9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C60A664EF7D6CA664CB25D5C /* Pods-Telesto Basement App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

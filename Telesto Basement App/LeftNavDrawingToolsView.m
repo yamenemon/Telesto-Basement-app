@@ -39,5 +39,8 @@
 - (IBAction)deleteBtnPressed:(id)sender {
     [baseClass removeBtnClicked];
 }
+- (IBAction)colorPickerCalled:(id)sender {
+    [baseClass showColorPickerButtonTapped:sender];
+}
 
 @end

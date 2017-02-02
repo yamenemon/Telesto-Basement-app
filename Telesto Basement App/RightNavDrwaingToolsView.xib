@@ -11,42 +11,42 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RightNavDrwaingToolsView">
-            <rect key="frame" x="0.0" y="0.0" width="173" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="155" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTg-pJ-LnT">
-                    <rect key="frame" x="12" y="4" width="37" height="37"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="save"/>
-                    <connections>
-                        <action selector="saveButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="bf3-8M-k3l"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07U-kW-c8I">
-                    <rect key="frame" x="57" y="4" width="37" height="37"/>
+                    <rect key="frame" x="9" y="4" width="37" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="Flip"/>
                     <connections>
                         <action selector="flipButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="bZi-vp-RA2"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NavSeperator" translatesAutoresizingMaskIntoConstraints="NO" id="XZM-MM-Op2">
+                    <rect key="frame" x="99" y="1" width="1" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTg-pJ-LnT">
+                    <rect key="frame" x="53" y="4" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="save"/>
+                    <connections>
+                        <action selector="saveButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="bf3-8M-k3l"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7L-jQ-0Dc">
-                    <rect key="frame" x="123" y="4" width="37" height="37"/>
+                    <rect key="frame" x="108" y="4" width="37" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="Exit"/>
                     <connections>
                         <action selector="exitButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="vU4-41-DLj"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NavSeperator" translatesAutoresizingMaskIntoConstraints="NO" id="13e-f8-mYH">
-                    <rect key="frame" x="107" y="1" width="1" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.039215686270000001" green="0.35294117650000001" blue="0.47058823529999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-76.5" y="-261"/>
+            <point key="canvasLocation" x="-239.5" y="-261"/>
         </view>
     </objects>
     <resources>

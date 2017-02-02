@@ -11,6 +11,7 @@
 #import "TemplatePopOverViewController.h"
 #import "LeftNavDrawingToolsView.h"
 #import "RightNavDrwaingToolsView.h"
+#import <DRColorPicker/DRColorPickerViewController.h>
 
 @class  TemplatePopOverViewController;
 
@@ -36,4 +37,6 @@
 - (void)revealButtonItemClicked:(id)sender;
 - (void)removeBtnClicked;
 - (void)flipTheObject;
+- (void)savedTemplateButtonAction:(id)sender;
+- (void)showColorPickerButtonTapped:(id)sender;
 @end
