@@ -951,7 +951,7 @@ Washington, DC 20521-6170
         <!--Settings-->
         <scene sceneID="q7u-9r-Q1A">
             <objects>
-                <viewController storyboardIdentifier="DrawingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kdl-Dm-GgI" customClass="DrawingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kdl-Dm-GgI" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bba-mo-GBW"/>
                         <viewControllerLayoutGuide type="bottom" id="Gaa-ls-md7"/>
@@ -960,7 +960,7 @@ Washington, DC 20521-6170
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This page is under maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLd-W3-rvJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting Page is under maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLd-W3-rvJ">
                                 <rect key="frame" x="20" y="154" width="984" height="468"/>
                                 <fontDescription key="fontDescription" name="Roboto-Italic" family="Roboto" pointSize="50"/>
                                 <nil key="textColor"/>
@@ -980,7 +980,7 @@ Washington, DC 20521-6170
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" style="plain" id="lNg-oZ-ftO"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="revealButtonItem" destination="lNg-oZ-ftO" id="g6C-XE-RBt"/>
+                        <outlet property="revealButtonItem" destination="lNg-oZ-ftO" id="6Qw-2u-2as"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="euT-15-V8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1712,7 +1712,7 @@ A: Immediately</string>
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This page is under maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YM-Hm-S8g">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old Proposal Page is under maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YM-Hm-S8g">
                                 <rect key="frame" x="20" y="150" width="984" height="468"/>
                                 <fontDescription key="fontDescription" name="Roboto-Italic" family="Roboto" pointSize="50"/>
                                 <nil key="textColor"/>
@@ -1750,7 +1750,7 @@ A: Immediately</string>
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This page is under maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5f3-5C-dM0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trainning Video Page is under maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5f3-5C-dM0">
                                 <rect key="frame" x="20" y="150" width="984" height="468"/>
                                 <fontDescription key="fontDescription" name="Roboto-Italic" family="Roboto" pointSize="50"/>
                                 <nil key="textColor"/>
@@ -1841,7 +1841,7 @@ A: Immediately</string>
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This page is under maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smd-4h-VpT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presentation Page is under maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smd-4h-VpT">
                                 <rect key="frame" x="20" y="150" width="984" height="468"/>
                                 <fontDescription key="fontDescription" name="Roboto-Italic" family="Roboto" pointSize="50"/>
                                 <nil key="textColor"/>
