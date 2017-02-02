@@ -80,6 +80,7 @@
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
 		70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF19651E1CE03D00C90EDD /* FaqsViewController.m */; };
 		70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E8481E43426B007E3F2F /* SettingsViewController.m */; };
+		70D6E84C1E4351C7007E3F2F /* ShowPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
 		70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D61E067DB400A6D245 /* log_out_@2x.png */; };
 		70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D71E067DB400A6D245 /* log_out@2x.png */; };
@@ -199,6 +200,8 @@
 		70CF19651E1CE03D00C90EDD /* FaqsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqsViewController.m; sourceTree = "<group>"; };
 		70D6E8471E43426B007E3F2F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		70D6E8481E43426B007E3F2F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPriceViewController.h; sourceTree = "<group>"; };
+		70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPriceViewController.m; sourceTree = "<group>"; };
 		70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creat_new_customer@2x.png"; sourceTree = "<group>"; };
 		70EC80D61E067DB400A6D245 /* log_out_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out_@2x.png"; sourceTree = "<group>"; };
 		70EC80D71E067DB400A6D245 /* log_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out@2x.png"; sourceTree = "<group>"; };
@@ -390,6 +393,8 @@
 				705B78301E13C71D00161991 /* CustomerListViewController.m */,
 				705B78311E13C71D00161991 /* DesignViewController.h */,
 				705B78321E13C71D00161991 /* DesignViewController.m */,
+				70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */,
+				70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */,
 				70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */,
 				70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */,
 				70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */,
@@ -637,6 +642,7 @@
 				705B783F1E13C71D00161991 /* DesignViewController.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
 				7027C9BD1E1CEF5E0062EB77 /* AccordionHeaderView.m in Sources */,
+				70D6E84C1E4351C7007E3F2F /* ShowPriceViewController.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,

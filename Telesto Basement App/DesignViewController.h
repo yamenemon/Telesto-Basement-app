@@ -11,6 +11,7 @@
 #import "TemplatePopOverViewController.h"
 #import "LeftNavDrawingToolsView.h"
 #import "RightNavDrwaingToolsView.h"
+#import "ShowPriceViewController.h"
 #import <DRColorPicker/DRColorPickerViewController.h>
 
 @class  TemplatePopOverViewController;

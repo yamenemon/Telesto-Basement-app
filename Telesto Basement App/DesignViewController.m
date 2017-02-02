@@ -220,9 +220,35 @@ CGFloat lastRotation;
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *newTemplate =  [UIAlertAction actionWithTitle: @"New Template" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Info"
+                                      message:@"Do you want to take new template?"
+                                      preferredStyle:UIAlertControllerStyleAlert];
         
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"Yes"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 for (UIView *subview in [basementDesignView subviews]) {
+                                         [subview removeFromSuperview];
+                                 }
+                                 
+                             }];
+        UIAlertAction* cancel = [UIAlertAction
+                                 actionWithTitle:@"NO"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+        
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }];
-//    [newTemplate setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [newTemplate setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
     
     [alertController addAction:newTemplate];
@@ -238,8 +264,8 @@ CGFloat lastRotation;
     [alertController addAction:savedTemplate];
     
     UIAlertAction *checkList =  [UIAlertAction actionWithTitle: @"CheckList" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        DRColorPickerViewController *colorPicker = [[DRColorPickerViewController alloc] init];
-        [self.navigationController presentViewController:colorPicker animated:YES completion:nil];
+
+        
     }];
 //    [checkList setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [checkList setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -248,9 +274,19 @@ CGFloat lastRotation;
     
     
     UIAlertAction *showPrice =  [UIAlertAction actionWithTitle: @"Show Price" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ShowPriceViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ShowPriceViewController"];
+        vc.preferredContentSize = CGSizeMake(600, 500);
         
+        vc.modalPresentationStyle = UIModalPresentationPopover;
+        UIPopoverPresentationController *popPC = vc.popoverPresentationController;
+        vc.popoverPresentationController.sourceRect = menuBtn.bounds;
+        vc.popoverPresentationController.sourceView = menuBtn;
+        popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        popPC.delegate = self;
+        [self presentViewController:vc animated:YES completion:nil];
     }];
-//    [showPrice setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [showPrice setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
     
     [alertController addAction:showPrice];
