@@ -43,4 +43,5 @@
 - (void)stairButtonAction:(id)sender;
 - (void)doorButtonAction:(id)sender;
 - (void)windowSliderButtonAction:(id)sender;
+- (void)saveButtonAction:(id)sender;
 @end

@@ -8,6 +8,9 @@
 
 #import "ShowPriceViewController.h"
 
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 @interface ShowPriceViewController ()
 
 @end
@@ -141,7 +144,7 @@
     /* Section header is in 0th index... */
     [label setText:string];
     [view addSubview:label];
-    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
+    [view setBackgroundColor:UIColorFromRGB(0x0A5A78)]; //your background color...
     return view;
 }
 

@@ -94,9 +94,9 @@ CGFloat lastRotation;
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
         if (i == 0) {
-            frame = CGRectMake(10, 10, 80, 80);
+            frame = CGRectMake(30, 10, 90, 90);
         } else {
-            frame = CGRectMake(10, (i * 80) + (i*20) + 10, 80, 80);
+            frame = CGRectMake(30, (i * 90) + (i*20) + 10, 90, 90);
         }
         
         button.frame = frame;
@@ -227,7 +227,7 @@ CGFloat lastRotation;
     
     UIAlertAction *newTemplate =  [UIAlertAction actionWithTitle: @"New Template" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"Info"
+                                      alertControllerWithTitle:@"New Template"
                                       message:@"Do you want to take new template?"
                                       preferredStyle:UIAlertControllerStyleAlert];
         
@@ -270,7 +270,11 @@ CGFloat lastRotation;
     [alertController addAction:savedTemplate];
     
     UIAlertAction *checkList =  [UIAlertAction actionWithTitle: @"CheckList" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-
+        
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewController"];
+        vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self.navigationController pushViewController:vc animated:YES];
         
     }];
 //    [checkList setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -591,6 +595,36 @@ CGFloat lastRotation;
 - (void)flipTheObject{
 //    lastEditedView.transform = CGAffineTransformMakeRotation(M_PI_2);
 //    [lastEditedView setNeedsDisplay];
+}
+- (void)saveButtonAction:(id)sender{
+
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Save Only!!!"
+                                  message:@"What do you want to do?"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Save"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                         }];
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Save & Continue"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                 UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
+                                 vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                                 [self.navigationController pushViewController:vc animated:YES];
+                             }];
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
 }
 -(void)backButtonAction{
     [self.navigationController popViewControllerAnimated:YES];

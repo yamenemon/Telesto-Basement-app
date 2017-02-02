@@ -232,7 +232,7 @@ Washington, DC 20521-6170
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="teV-zN-qBG">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pdfImage" translatesAutoresizingMaskIntoConstraints="NO" id="teV-zN-qBG">
                                                 <rect key="frame" x="8" y="91" width="88" height="88"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="88" id="V4E-yn-l6G"/>
@@ -323,7 +323,7 @@ Washington, DC 20521-6170
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-nA-bVc">
-                                                <rect key="frame" x="10" y="110" width="168.5" height="55"/>
+                                                <rect key="frame" x="10" y="110" width="169" height="55"/>
                                                 <color key="backgroundColor" red="0.090873487293720245" green="0.55142456293106079" blue="0.66489517688751221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="Yo1-XC-CLe"/>
@@ -337,7 +337,7 @@ Washington, DC 20521-6170
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSO-q3-tCq">
-                                                <rect key="frame" x="186.5" y="110" width="150.5" height="55"/>
+                                                <rect key="frame" x="187" y="110" width="150" height="55"/>
                                                 <color key="backgroundColor" red="0.090873487289999999" green="0.55142456289999997" blue="0.6648951769" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                                 <state key="normal" title="Continue">
@@ -1164,7 +1164,7 @@ Washington, DC 20521-6170
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eO5-Ve-rZ3">
                                                 <rect key="frame" x="151" y="214" width="30" height="210"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="product_slider.png"/>
+                                                <state key="normal" image="ProductSliderButton"/>
                                                 <connections>
                                                     <action selector="productSliderCalled:" destination="1oi-d3-S4E" eventType="touchUpInside" id="zAl-W1-XtE"/>
                                                 </connections>
@@ -1211,7 +1211,7 @@ Washington, DC 20521-6170
         <!--Proposal-->
         <scene sceneID="xTP-Gl-PiN">
             <objects>
-                <viewController title="Proposal" id="b5M-Ek-zPn" customClass="ProposalViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProposalViewController" title="Proposal" id="b5M-Ek-zPn" customClass="ProposalViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9S9-hP-n1r"/>
                         <viewControllerLayoutGuide type="bottom" id="WK9-zX-9jD"/>
@@ -1508,7 +1508,7 @@ A: Immediately</string>
         <!--Faqs View Controller-->
         <scene sceneID="q5B-NP-7Ra">
             <objects>
-                <viewController id="INr-6W-vz9" customClass="FaqsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FaqsViewController" id="INr-6W-vz9" customClass="FaqsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="th4-HI-kPC"/>
                         <viewControllerLayoutGuide type="bottom" id="XtL-kv-Qsm"/>
@@ -1842,14 +1842,15 @@ A: Immediately</string>
         </scene>
     </scenes>
     <resources>
+        <image name="ProductSliderButton" width="32" height="210"/>
         <image name="Temp6.png" width="400" height="316"/>
         <image name="creat_new_customer.png" width="20" height="20"/>
         <image name="customerList.png" width="20" height="20"/>
         <image name="log_out.png" width="20" height="20"/>
         <image name="new_customer.png" width="20" height="20"/>
         <image name="passwordIcon.png" width="45" height="45"/>
+        <image name="pdfImage" width="100" height="114"/>
         <image name="presentation.png" width="20" height="20"/>
-        <image name="product_slider.png" width="32" height="210"/>
         <image name="reveal-icon.png" width="22" height="17"/>
         <image name="settings___.png" width="20" height="20"/>
         <image name="telesto-logo.png" width="194" height="74"/>

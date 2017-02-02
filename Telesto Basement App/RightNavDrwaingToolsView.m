@@ -19,7 +19,7 @@
 }
 */
 - (IBAction)saveButtonClicked:(id)sender {
-    
+    [baseClass saveButtonAction:sender];
 }
 - (IBAction)flipButtonClicked:(id)sender {
     [baseClass flipTheObject];

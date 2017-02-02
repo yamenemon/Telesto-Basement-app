@@ -25,7 +25,6 @@
 		7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */; };
 		7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C01E1D15760062EB77 /* UserProfileViewController.m */; };
 		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
-		70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70363F191E114520003534C3 /* product_slider@2x.png */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
 		704B68981E13CB8D00E6537D /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B68951E13CB8D00E6537D /* WYPopoverController.m */; };
 		704B68991E13CB8D00E6537D /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B68971E13CB8D00E6537D /* WYStoryboardPopoverSegue.m */; };
@@ -134,7 +133,6 @@
 		7027C9C01E1D15760062EB77 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		7027C9C21E1D35950062EB77 /* ProposalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalViewController.h; sourceTree = "<group>"; };
 		7027C9C31E1D35950062EB77 /* ProposalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalViewController.m; sourceTree = "<group>"; };
-		70363F191E114520003534C3 /* product_slider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "product_slider@2x.png"; sourceTree = "<group>"; };
 		704B688F1E13C9C000E6537D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		704B68941E13CB8D00E6537D /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
 		704B68951E13CB8D00E6537D /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
@@ -320,7 +318,6 @@
 				70D6E8531E436495007E3F2F /* 7@2x.png */,
 				70D6E8541E436495007E3F2F /* 8@2x.png */,
 				70D6E8551E436495007E3F2F /* 9@2x.png */,
-				70363F191E114520003534C3 /* product_slider@2x.png */,
 				70FDF6181E094C1E00CF32EF /* customerList@2x.png */,
 				70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */,
 				70EC80D61E067DB400A6D245 /* log_out_@2x.png */,
@@ -540,7 +537,6 @@
 				70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */,
 				70D6E8591E436495007E3F2F /* 4@2x.png in Resources */,
 				705B78291E13C0B700161991 /* Temp2@2x.png in Resources */,
-				70363F1A1E114520003534C3 /* product_slider@2x.png in Resources */,
 				70EC80E61E067DB400A6D245 /* search@2x.png in Resources */,
 				70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */,
 				70EC80E71E067DB400A6D245 /* separator@2x.png in Resources */,
