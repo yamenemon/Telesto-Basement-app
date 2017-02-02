@@ -25,6 +25,8 @@ CGFloat firstX;
 CGFloat firstY;
 CGFloat lastRotation;
 
+#pragma mark - ViewControllers Super Methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -74,6 +76,10 @@ CGFloat lastRotation;
     leftNavBtnBar.hidden = YES;
     rightNavBtnBar.hidden = YES;
 }
+#pragma mark -
+
+#pragma mark - Product Slider Methods
+
 -(void)createProductScroller{
 
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,150, productSliderView.frame.size.height)];
@@ -126,13 +132,7 @@ CGFloat lastRotation;
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
     lastEditedView = userResizableView;
 }
-- (void)flipTheObject{
-    lastEditedView.transform = CGAffineTransformMakeRotation(M_PI_2);
-    [lastEditedView setNeedsDisplay];
-}
--(void)backButtonAction{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([currentlyEditingView hitTest:[touch locationInView:currentlyEditingView] withEvent:nil]) {
         return NO;
@@ -169,9 +169,6 @@ CGFloat lastRotation;
                          } completion:nil];
         isShown = NO;
     }
-}
-- (void)removeBtnClicked{
-    [lastEditedView removeFromSuperview];
 }
 
 
@@ -213,6 +210,7 @@ CGFloat lastRotation;
         [basementDesignView addSubview:drawingImageView];
     }];
 }
+#pragma mark - Navigation Tools Actions Methods
 
 - (void)revealButtonItemClicked:(id)sender{
 
@@ -270,7 +268,6 @@ CGFloat lastRotation;
     [self presentViewController: alertController animated: YES completion: nil];
 
 }
-
 - (void)wallPopOverBtnAction:(id)sender {
     
     UIButton *wallBtn = (UIButton*)sender;
@@ -278,7 +275,7 @@ CGFloat lastRotation;
                                                             message: nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *horizentalAction =  [UIAlertAction actionWithTitle: @"Horizental" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *horizentalAction =  [UIAlertAction actionWithTitle: @"Horizental Line" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         CGRect gripFrame = CGRectMake(30, 0, 100, 30);
         SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
@@ -298,7 +295,7 @@ CGFloat lastRotation;
     [alertController addAction:horizentalAction];
 
     
-    UIAlertAction *verticalAction =  [UIAlertAction actionWithTitle: @"Vertical" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *verticalAction =  [UIAlertAction actionWithTitle: @"Vertical Line" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         CGRect gripFrame = CGRectMake(0, 0, 30, 100);
         SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
@@ -325,20 +322,242 @@ CGFloat lastRotation;
     
     [self presentViewController: alertController animated: YES completion: nil];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+- (void)stairButtonAction:(id)sender{
 
-/*
-#pragma mark - Navigation
+    UIButton *stairBtn = (UIButton*)sender;
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                              message: nil
+                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *upStair =  [UIAlertAction actionWithTitle: @"Up Stair" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 70, 100);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairUp"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [upStair setValue:[[UIImage imageNamed:@"stairUp"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [upStair setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:upStair];
+    
+    
+    UIAlertAction *leftStair =  [UIAlertAction actionWithTitle: @"Left Stair" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 100, 70);
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairLeft"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [leftStair setValue:[[UIImage imageNamed:@"stairLeft"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [leftStair setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    [alertController addAction:leftStair];
+    
+    
+    UIAlertAction *rightStair =  [UIAlertAction actionWithTitle: @"Right Stair" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 100, 70);
+
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairRight"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [rightStair setValue:[[UIImage imageNamed:@"stairRight"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [rightStair setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    [alertController addAction:rightStair];
+    
+    
+    UIAlertAction *downStair =  [UIAlertAction actionWithTitle: @"Down Stair" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 70, 100);
+
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairBottom"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [downStair setValue:[[UIImage imageNamed:@"stairBottom"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [downStair setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    [alertController addAction:downStair];
+    
+    
+    alertController.modalPresentationStyle = UIModalPresentationPopover;
+    
+    UIPopoverPresentationController * popover = alertController.popoverPresentationController;
+    popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    popover.sourceView = stairBtn;
+    popover.sourceRect = stairBtn.bounds;
+    
+    [self presentViewController: alertController animated: YES completion: nil];
+
 }
-*/
+- (void)doorButtonAction:(id)sender{
+    
+    UIButton *doorButton = (UIButton*)sender;
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                              message: nil
+                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *flipTop =  [UIAlertAction actionWithTitle: @"Top Side Door" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 50, 50);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipTop"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [flipTop setValue:[[UIImage imageNamed:@"flipTop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [flipTop setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:flipTop];
+    
+    
+    UIAlertAction *flipLeft =  [UIAlertAction actionWithTitle: @"Left Side Door" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 50, 50);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipLeft"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [flipLeft setValue:[[UIImage imageNamed:@"flipLeft"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [flipLeft setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:flipLeft];
+    
+    UIAlertAction *flipRight =  [UIAlertAction actionWithTitle: @"Right Side Door" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 50, 50);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipRight"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [flipRight setValue:[[UIImage imageNamed:@"flipRight"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [flipRight setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:flipRight];
+    
+    UIAlertAction *flipBottom =  [UIAlertAction actionWithTitle: @"Bottom Side Door" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 50, 50);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipBottom"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [flipBottom setValue:[[UIImage imageNamed:@"flipBottom"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [flipBottom setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:flipBottom];
+    
+    alertController.modalPresentationStyle = UIModalPresentationPopover;
+    
+    UIPopoverPresentationController * popover = alertController.popoverPresentationController;
+    popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    popover.sourceView = doorButton;
+    popover.sourceRect = doorButton.bounds;
+    
+    [self presentViewController: alertController animated: YES completion: nil];
+}
+- (void)windowSliderButtonAction:(id)sender{
+    
+    UIButton *windowSliderButton = (UIButton*)sender;
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                              message: nil
+                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *HorizontalWindow =  [UIAlertAction actionWithTitle: @"Horizontal Window" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 100, 30);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"sliderWindowHorizontal_big"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [HorizontalWindow setValue:[[UIImage imageNamed:@"sliderWindowHorizontal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [HorizontalWindow setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:HorizontalWindow];
+    
+    
+    UIAlertAction *verticalWindow =  [UIAlertAction actionWithTitle: @"Vertical Window" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        CGRect gripFrame = CGRectMake(30, 0, 30, 100);
+        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"sliderWindowVertical_Big"]]];
+        userResizableView.contentView = contentView;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        
+    }];
+    [verticalWindow setValue:[[UIImage imageNamed:@"sliderWindowVertical"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [verticalWindow setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    
+    [alertController addAction:verticalWindow];
+    
+
+    
+    alertController.modalPresentationStyle = UIModalPresentationPopover;
+    
+    UIPopoverPresentationController * popover = alertController.popoverPresentationController;
+    popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+    popover.sourceView = windowSliderButton;
+    popover.sourceRect = windowSliderButton.bounds;
+    
+    [self presentViewController: alertController animated: YES completion: nil];
+}
+- (void)flipTheObject{
+//    lastEditedView.transform = CGAffineTransformMakeRotation(M_PI_2);
+//    [lastEditedView setNeedsDisplay];
+}
+-(void)backButtonAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)removeBtnClicked{
+    [lastEditedView removeFromSuperview];
+}
+#pragma mark -
+
 
 
 #pragma mark Color Picker Methods -
@@ -477,5 +696,9 @@ CGFloat lastRotation;
     [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
 }
 
-
+#pragma mark -
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 @end

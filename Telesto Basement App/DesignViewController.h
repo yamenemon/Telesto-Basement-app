@@ -39,4 +39,7 @@
 - (void)flipTheObject;
 - (void)savedTemplateButtonAction:(id)sender;
 - (void)showColorPickerButtonTapped:(id)sender;
+- (void)stairButtonAction:(id)sender;
+- (void)doorButtonAction:(id)sender;
+- (void)windowSliderButtonAction:(id)sender;
 @end

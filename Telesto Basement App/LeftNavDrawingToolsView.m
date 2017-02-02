@@ -26,12 +26,15 @@
 }
 - (IBAction)stairBtnClicked:(id)sender {
     NSLog(@"Stair Button Clicked");
+    [baseClass stairButtonAction:sender];
 }
 - (IBAction)doorBtnClicked:(id)sender {
     NSLog(@"Door Button Clicked");
+    [baseClass doorButtonAction:sender];
 }
 - (IBAction)windowBtnClicked:(id)sender {
     NSLog(@"Window Button Clicked");
+    [baseClass windowSliderButtonAction:sender];
 }
 - (IBAction)moreBtnClicked:(id)sender {
     NSLog(@"More Button Clicked");
