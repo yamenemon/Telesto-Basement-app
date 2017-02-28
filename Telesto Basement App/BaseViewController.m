@@ -39,7 +39,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"First_Logged_in"];
         [self displayTermsAndCondition];
     }
-
+    NSLog(@"Test push for subdevelopment");
 }
 -(void)viewDidLayoutSubviews{
 
