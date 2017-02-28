@@ -1,12 +1,15 @@
 PODS:
+  - CNPPopupController (0.3.3)
   - DRColorPicker (1.0.11)
 
 DEPENDENCIES:
+  - CNPPopupController
   - DRColorPicker
 
 SPEC CHECKSUMS:
+  CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
   DRColorPicker: d4291e8ac469f5762b1f1f6a98e8e1b3bf230ad6
 
-PODFILE CHECKSUM: 714555cf93bd0bebf27caa14e6eb3e8d5443f925
+PODFILE CHECKSUM: 02fbfccf6f7dcd90d1461d62aa81e4c02e27bcb5
 
 COCOAPODS: 1.2.0

@@ -8,5 +8,7 @@ target 'Telesto Basement App' do
   # Pods for Telesto Basement App
 
 	pod 'DRColorPicker'
+    pod 'CNPPopupController'
+    
 
 end

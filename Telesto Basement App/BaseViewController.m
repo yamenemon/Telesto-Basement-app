@@ -7,10 +7,14 @@
 //
 
 #import "BaseViewController.h"
+#import "CNPPopupController.h"
 
-@interface BaseViewController ()
+
+@interface BaseViewController () <CNPPopupControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *loginView;
 @property (strong, nonatomic) UIActivityIndicatorView *aSpinner;
+@property (nonatomic, strong) CNPPopupController *popupController;
+
 @end
 
 @implementation BaseViewController
@@ -171,7 +175,83 @@
 
     }
 }
+- (IBAction)loginButtonClicked:(id)sender {
+    [self showPopupWithStyle:CNPPopupStyleCentered];
 
+}
+- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
+    
+//    NSMutableParagraphStyle *paragraphStyle = NSMutableParagraphStyle.new;
+//    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+//    paragraphStyle.alignment = NSTextAlignmentCenter;
+//    
+//    NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"It's A Popup!" attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:24], NSParagraphStyleAttributeName : paragraphStyle}];
+//    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:@"You can add text and images" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:18], NSParagraphStyleAttributeName : paragraphStyle}];
+//    NSAttributedString *lineTwo = [[NSAttributedString alloc] initWithString:@"With style, using NSAttributedString" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:18], NSForegroundColorAttributeName : [UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0], NSParagraphStyleAttributeName : paragraphStyle}];
+    
+    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 200, 60)];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [button setTitle:@"Close Me" forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0];
+    button.layer.cornerRadius = 4;
+    button.selectionHandler = ^(CNPPopupButton *button){
+        [self.popupController dismissPopupControllerAnimated:YES];
+        NSLog(@"Block for button: %@", button.titleLabel.text);
+    };
+    
+//    UILabel *titleLabel = [[UILabel alloc] init];
+//    titleLabel.numberOfLines = 0;
+//    titleLabel.attributedText = title;
+//    
+//    UILabel *lineOneLabel = [[UILabel alloc] init];
+//    lineOneLabel.numberOfLines = 0;
+//    lineOneLabel.attributedText = lineOne;
+//    
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon"]];
+//    
+//    UILabel *lineTwoLabel = [[UILabel alloc] init];
+//    lineTwoLabel.numberOfLines = 0;
+//    lineTwoLabel.attributedText = lineTwo;
+    
+    
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 55)];
+    customView.backgroundColor = [UIColor lightGrayColor];
+    
+    UITextField *textFied = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 230, 35)];
+    textFied.borderStyle = UITextBorderStyleRoundedRect;
+    textFied.placeholder = @"Custom view!";
+    [customView addSubview:textFied];
+    
+    
+    
+    UIImage *image = [UIImage imageNamed:@"telesto-logo"];
+    float logoX = ((self.view.frame.size.width/2) - image.size.width)/2;
+    UIImageView *telestoLogo = [[UIImageView alloc] initWithFrame:CGRectMake(logoX, 5, image.size.width,image.size.height)];
+    telestoLogo.image = image;
+    
+    self.popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */telestoLogo,customView, button]];
+    self.popupController.theme = [self defaultTheme];
+    self.popupController.theme.popupStyle = popupStyle;
+    self.popupController.delegate = self;
+    [self.popupController presentPopupControllerAnimated:YES];
+}
+- (CNPPopupTheme *)defaultTheme {
+    CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
+    defaultTheme.backgroundColor = [UIColor whiteColor];
+    defaultTheme.cornerRadius = 4.0f;
+    defaultTheme.popupContentInsets = UIEdgeInsetsMake(16.0f, 16.0f, 16.0f, 16.0f);
+    defaultTheme.popupStyle = CNPPopupStyleCentered;
+    defaultTheme.presentationStyle = CNPPopupPresentationStyleSlideInFromBottom;
+    defaultTheme.dismissesOppositeDirection = NO;
+    defaultTheme.maskType = CNPPopupMaskTypeDimmed;
+    defaultTheme.shouldDismissOnBackgroundTouch = YES;
+    defaultTheme.movesAboveKeyboard = YES;
+    defaultTheme.contentVerticalPadding = 16.0f;
+    defaultTheme.maxPopupWidth = self.view.frame.size.width/2;
+    defaultTheme.animationDuration = 0.3f;
+    return defaultTheme;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
