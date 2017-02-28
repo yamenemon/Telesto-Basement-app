@@ -39,6 +39,7 @@
     BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults] boolForKey:@"First_Logged_in"];
     if(isLoggedIn == YES) {
         NSLog(@"Show loginWindow");
+        NSLog(@"Hide loginWindow");
     } else {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"First_Logged_in"];
         [self displayTermsAndCondition];
