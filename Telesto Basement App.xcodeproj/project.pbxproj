@@ -69,6 +69,9 @@
 		705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */; };
 		706286191DED939A0022E105 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706286181DED939A0022E105 /* PageContentViewController.m */; };
 		7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */; };
+		709B44351E6D6942008058F3 /* loginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B44341E6D6942008058F3 /* loginView.m */; };
+		709B44371E6D6951008058F3 /* loginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709B44361E6D6951008058F3 /* loginView.xib */; };
+		709B443A1E6D8977008058F3 /* demoVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 709B44391E6D8977008058F3 /* demoVideo.mp4 */; };
 		709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */; };
 		709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */; };
 		70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */; };
@@ -191,6 +194,10 @@
 		706286181DED939A0022E105 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
+		709B44331E6D6942008058F3 /* loginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginView.h; sourceTree = "<group>"; };
+		709B44341E6D6942008058F3 /* loginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginView.m; sourceTree = "<group>"; };
+		709B44361E6D6951008058F3 /* loginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginView.xib; sourceTree = "<group>"; };
+		709B44391E6D8977008058F3 /* demoVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demoVideo.mp4; sourceTree = "<group>"; };
 		709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavDrwaingToolsView.h; sourceTree = "<group>"; };
 		709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavDrwaingToolsView.m; sourceTree = "<group>"; };
 		709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightNavDrwaingToolsView.xib; sourceTree = "<group>"; };
@@ -275,6 +282,7 @@
 				3B6EB8931DD845D900936AB9 /* Main.storyboard */,
 				3B6EB8991DD845DA00936AB9 /* Assets.xcassets */,
 				704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */,
+				709B44391E6D8977008058F3 /* demoVideo.mp4 */,
 				70015E951DF6910500DF542E /* Images */,
 				3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */,
 				3B6EB89E1DD845DA00936AB9 /* Info.plist */,
@@ -380,6 +388,9 @@
 				3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */,
 				3B428ACA1DDB3E57008ADABF /* BaseViewController.h */,
 				3B428ACB1DDB3E57008ADABF /* BaseViewController.m */,
+				709B44331E6D6942008058F3 /* loginView.h */,
+				709B44341E6D6942008058F3 /* loginView.m */,
+				709B44361E6D6951008058F3 /* loginView.xib */,
 				70CF14131DF449350045CF8F /* CustomerRecordViewController.h */,
 				70CF14141DF449350045CF8F /* CustomerRecordViewController.m */,
 				706286171DED939A0022E105 /* PageContentViewController.h */,
@@ -567,6 +578,7 @@
 				705F64DE1DF97B7000082D55 /* Roboto-Regular.ttf in Resources */,
 				7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */,
 				705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */,
+				709B443A1E6D8977008058F3 /* demoVideo.mp4 in Resources */,
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
 				705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */,
 				70D6E8581E436495007E3F2F /* 3@2x.png in Resources */,
@@ -592,6 +604,7 @@
 				70D6E85A1E436495007E3F2F /* 5@2x.png in Resources */,
 				70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */,
 				7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */,
+				709B44371E6D6951008058F3 /* loginView.xib in Resources */,
 				70D6E85C1E436495007E3F2F /* 7@2x.png in Resources */,
 				705F64DA1DF97B7000082D55 /* Roboto-Light.ttf in Resources */,
 				705F64DC1DF97B7000082D55 /* Roboto-Medium.ttf in Resources */,
@@ -685,6 +698,7 @@
 				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
+				709B44351E6D6942008058F3 /* loginView.m in Sources */,
 				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,

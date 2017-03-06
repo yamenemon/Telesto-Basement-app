@@ -10,7 +10,11 @@
 #import "CNPPopupController.h"
 
 
-@interface BaseViewController () <CNPPopupControllerDelegate>
+@interface BaseViewController () <CNPPopupControllerDelegate>{
+
+    AVPlayer *avPlayer;
+    AVPlayerLayer *layer;
+}
 @property (weak, nonatomic) IBOutlet UIView *loginView;
 @property (strong, nonatomic) UIActivityIndicatorView *aSpinner;
 @property (nonatomic, strong) CNPPopupController *popupController;
@@ -30,6 +34,22 @@
         self.useNameTextField.text = oldEmailAddress;
     }
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self.view action:@selector(endEditing:)]];
+    [self playBackgroundVideo];
+}
+-(void)playBackgroundVideo{
+
+    NSString *filepath = [[NSBundle mainBundle] pathForResource:@"demoVideo" ofType:@"mp4"];
+    NSURL *fileURL = [NSURL fileURLWithPath:filepath];
+    avPlayer = [AVPlayer playerWithURL:fileURL];
+    
+    layer = [AVPlayerLayer playerLayerWithPlayer:avPlayer];
+    layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    layer.frame = self.view.bounds;
+    [self.view.layer addSublayer: layer];
+    [avPlayer play];
+
+
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self showingTermsAndConditionScreen];
@@ -47,9 +67,21 @@
 }
 -(void)viewDidLayoutSubviews{
 
-    
+    [self.view.layer insertSublayer:_loginBtn.layer above:layer];
+
     _loginView.layer.cornerRadius = 10;
     _loginView.layer.borderColor = [Utility colorWithHexString:@"0x0A5A78"].CGColor;
+    
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"loginView"
+                                                      owner:self
+                                                    options:nil];
+    
+    _customLoginView = [ nibViews objectAtIndex:0];
+    _customLoginView.loginBtn.layer.cornerRadius = 5;
+    _customLoginView.loginBtn.layer.borderColor = [Utility colorWithHexString:@"0x0A5A78"].CGColor;
+    _customLoginView.errorMessageLabel.hidden = YES;
+    _customLoginView.loadingIndicator.hidden = YES;
+    _customLoginView.activeStatusSwitch.transform = CGAffineTransformMakeScale(0.75, 0.75);
 
 }
 -(void)displayTermsAndCondition{
@@ -189,16 +221,16 @@
 //    NSAttributedString *lineOne = [[NSAttributedString alloc] initWithString:@"You can add text and images" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:18], NSParagraphStyleAttributeName : paragraphStyle}];
 //    NSAttributedString *lineTwo = [[NSAttributedString alloc] initWithString:@"With style, using NSAttributedString" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:18], NSForegroundColorAttributeName : [UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0], NSParagraphStyleAttributeName : paragraphStyle}];
     
-    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 200, 60)];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    [button setTitle:@"Close Me" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0];
-    button.layer.cornerRadius = 4;
-    button.selectionHandler = ^(CNPPopupButton *button){
-        [self.popupController dismissPopupControllerAnimated:YES];
-        NSLog(@"Block for button: %@", button.titleLabel.text);
-    };
+//    CNPPopupButton *button = [[CNPPopupButton alloc] initWithFrame:CGRectMake(0, 0, 200, 60)];
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+//    [button setTitle:@"Close Me" forState:UIControlStateNormal];
+//    button.backgroundColor = [UIColor colorWithRed:0.46 green:0.8 blue:1.0 alpha:1.0];
+//    button.layer.cornerRadius = 4;
+//    button.selectionHandler = ^(CNPPopupButton *button){
+//        [self.popupController dismissPopupControllerAnimated:YES];
+//        NSLog(@"Block for button: %@", button.titleLabel.text);
+//    };
     
 //    UILabel *titleLabel = [[UILabel alloc] init];
 //    titleLabel.numberOfLines = 0;
@@ -214,14 +246,14 @@
 //    lineTwoLabel.numberOfLines = 0;
 //    lineTwoLabel.attributedText = lineTwo;
     
-    
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 55)];
-    customView.backgroundColor = [UIColor lightGrayColor];
-    
-    UITextField *textFied = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 230, 35)];
-    textFied.borderStyle = UITextBorderStyleRoundedRect;
-    textFied.placeholder = @"Custom view!";
-    [customView addSubview:textFied];
+//    
+//    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 55)];
+//    customView.backgroundColor = [UIColor lightGrayColor];
+//    
+//    UITextField *textFied = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 230, 35)];
+//    textFied.borderStyle = UITextBorderStyleRoundedRect;
+//    textFied.placeholder = @"Custom view!";
+//    [customView addSubview:textFied];
     
     
     
@@ -230,7 +262,7 @@
     UIImageView *telestoLogo = [[UIImageView alloc] initWithFrame:CGRectMake(logoX, 5, image.size.width,image.size.height)];
     telestoLogo.image = image;
     
-    self.popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */telestoLogo,customView, button]];
+    self.popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */_customLoginView]];
     self.popupController.theme = [self defaultTheme];
     self.popupController.theme.popupStyle = popupStyle;
     self.popupController.delegate = self;
