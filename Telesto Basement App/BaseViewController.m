@@ -15,9 +15,12 @@
     AVPlayer *avPlayer;
     AVPlayerLayer *layer;
 }
-@property (weak, nonatomic) IBOutlet UIView *loginView;
 @property (strong, nonatomic) UIActivityIndicatorView *aSpinner;
 @property (nonatomic, strong) CNPPopupController *popupController;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *tutorialButton;
+@property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
 @end
 
@@ -67,11 +70,12 @@
 }
 -(void)viewDidLayoutSubviews{
 
-    [self.view.layer insertSublayer:_loginBtn.layer above:layer];
-
-    _loginView.layer.cornerRadius = 10;
-    _loginView.layer.borderColor = [Utility colorWithHexString:@"0x0A5A78"].CGColor;
-    
+    [self.view.layer insertSublayer:_tutorialButton.layer above:layer];
+    [self.view.layer insertSublayer:_loginButton.layer above:layer];
+    [self.view.layer insertSublayer:_taglineLabel.layer above:layer];
+    [self.view.layer insertSublayer:_backgroundView.layer above:layer];
+    _loginButton.layer.cornerRadius = 5;
+    _tutorialButton.layer.cornerRadius = 5;
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"loginView"
                                                       owner:self
                                                     options:nil];
