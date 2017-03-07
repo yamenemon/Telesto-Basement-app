@@ -11,7 +11,7 @@
 @interface Utility : NSObject
 + (void)loadLoginView;
 + (void)showMainViewController;
-+ (void)showDomainViewController;
++ (void)showBaseViewController;
 + (void)showCustomerListViewController;
 
 + (void)checkForCookie;

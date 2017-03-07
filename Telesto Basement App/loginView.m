@@ -40,6 +40,7 @@
             //Control UIView, IBOutlet all here
             [self hideButton];
             [self addSpinner];
+            _errorMessageLabel.text = @"";
             
         });
         
@@ -60,17 +61,10 @@
         NSData *data = [serviceHelper sendRequest:request];
         [self parseJOSNLoginStatus:data];
     });
-
-    
-    
-    
-    
 }
 - (BOOL)parseJOSNLoginStatus:(NSData *)data {
     NSError *e = nil;
-    NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data
-                                                              options:NSJSONReadingMutableLeaves
-                                                                error: &e];
+    NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error: &e];
     NSString *loginStatus = [jsonArray objectForKey:@"Login"];
     if([loginStatus isEqualToString:@"true"]) {
         NSLog(@"Login Successful");
@@ -90,8 +84,7 @@
         [self showButton];
         NSString *message = @"Login Failed";
         NSLog(@"%@", message);
-//        [Utility showAlertWithTitle:@"Error"
-//                        withMessage:message];
+
         _errorMessageLabel.hidden = NO;
         _errorMessageLabel.text = message;
         [_loadingIndicator stopAnimating];

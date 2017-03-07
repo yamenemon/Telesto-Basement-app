@@ -58,10 +58,10 @@
 }
 
 
-+ (void)showDomainViewController {
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"DomainTableViewController"];
-//    [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
++ (void)showBaseViewController {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
 }
 + (void)showCustomerListViewController {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

@@ -1062,6 +1062,12 @@ Washington, DC 20521-6170
                     </view>
                     <navigationItem key="navigationItem" title="Customer List" id="hQL-1x-41L">
                         <barButtonItem key="leftBarButtonItem" image="reveal-icon.png" style="plain" id="KQt-pd-fUs"/>
+                        <barButtonItem key="rightBarButtonItem" image="log_out.png" style="plain" id="3Jn-7w-uQS">
+                            <color key="tintColor" red="0.92540907859802246" green="0.92554211616516113" blue="0.92537993192672729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logoutBtnAction:" destination="p86-zk-glB" id="wSI-9o-h6v"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="customerListTableView" destination="9Pd-Lv-pdT" id="D7I-0z-r3P"/>
@@ -1804,7 +1810,7 @@ A: Immediately</string>
         <image name="tutorial" width="123" height="123"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BiK-d6-r2t"/>
+        <segue reference="XLw-tu-cxx"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.039215686274509803" green="0.33333333333333331" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

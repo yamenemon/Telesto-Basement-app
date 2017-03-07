@@ -7,7 +7,7 @@
 //
 
 #import "CustomerListViewController.h"
-
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @interface CustomerListViewController ()
 
 @end
@@ -217,5 +217,36 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)logoutBtnAction:(id)sender {
+
+    
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Log Out"
+                                      message:@"Do you want to Log out?"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"Yes"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [Utility showBaseViewController];
+                                 
+                             }];
+        UIAlertAction* cancel = [UIAlertAction
+                                 actionWithTitle:@"NO"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+//        [alert setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+
+}
 
 @end
