@@ -76,6 +76,7 @@
 		709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */; };
 		70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */; };
 		70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */; };
+		70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C216F41E6EC5B600464968 /* TutorialViewController.m */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
@@ -204,6 +205,8 @@
 		70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavDrawingToolsView.h; sourceTree = "<group>"; };
 		70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavDrawingToolsView.m; sourceTree = "<group>"; };
 		70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftNavDrawingToolsView.xib; sourceTree = "<group>"; };
+		70C216F31E6EC5B600464968 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		70C216F41E6EC5B600464968 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
 		70CF14101DF43C180045CF8F /* IQDropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDropDownTextField.h; sourceTree = "<group>"; };
 		70CF14111DF43C180045CF8F /* IQDropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDropDownTextField.m; sourceTree = "<group>"; };
@@ -388,6 +391,8 @@
 				3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */,
 				3B428ACA1DDB3E57008ADABF /* BaseViewController.h */,
 				3B428ACB1DDB3E57008ADABF /* BaseViewController.m */,
+				70C216F31E6EC5B600464968 /* TutorialViewController.h */,
+				70C216F41E6EC5B600464968 /* TutorialViewController.m */,
 				709B44331E6D6942008058F3 /* loginView.h */,
 				709B44341E6D6942008058F3 /* loginView.m */,
 				709B44361E6D6951008058F3 /* loginView.xib */,
@@ -704,6 +709,7 @@
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,
+				70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

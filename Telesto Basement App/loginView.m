@@ -81,7 +81,10 @@
         }
         
         [Utility storeCookie];
-        [Utility showCustomerListViewController];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [Utility showCustomerListViewController];
+            
+        });
         return YES;
     } else {
         [self showButton];
@@ -96,14 +99,6 @@
         return NO;
     }
     return NO;
-}
--(NSString*)getOldLoginEmailAddress {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *oldEmailSettings = [[defaults objectForKey:@"EmailSettings"] mutableCopy];
-    if(oldEmailSettings) {
-        return [oldEmailSettings objectForKey:@"EmailAddress"];
-    }
-    return @"";
 }
 
 
@@ -150,5 +145,18 @@
 
 -(void)showButton {
     self.loginBtn.hidden = FALSE;
+}
+- (IBAction)forgetBtnPressed:(id)sender {
+    
+    [UIView animateWithDuration:0.65 animations:^{
+        _loginView.alpha = 0.0;
+        _forgetView.alpha = 1.0;
+    }];
+}
+- (IBAction)sendBtnAction:(id)sender {
+    [UIView animateWithDuration:0.65 animations:^{
+        _forgetView.alpha = 0.0;
+        _loginView.alpha = 1.0;
+    }];
 }
 @end

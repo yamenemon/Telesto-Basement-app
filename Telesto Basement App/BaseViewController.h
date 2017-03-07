@@ -16,10 +16,6 @@
 
 @interface BaseViewController : UIViewController<UITextFieldDelegate>
 @property (strong,nonatomic) loginView *customLoginView;
-@property (weak, nonatomic) IBOutlet UITextField *useNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UISwitch *rememberSwitch;
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
-@property (weak, nonatomic) IBOutlet UIButton *forgetPasswordBtn;
+
 
 @end
