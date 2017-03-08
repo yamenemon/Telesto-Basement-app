@@ -46,7 +46,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,9 +70,6 @@
             break;
         case 4:
             CellIdentifier = @"Presentations";
-            break;
-        case 5:
-            CellIdentifier = @"Logout";
             break;
     }
     SWUITableViewCell *cell;

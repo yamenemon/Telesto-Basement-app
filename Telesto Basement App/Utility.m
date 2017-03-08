@@ -62,6 +62,7 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLoggedIn"];
 }
 + (void)showCustomerListViewController {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -86,7 +87,9 @@
     }
     return FALSE;
 }
-
++ (BOOL)isLoggedIn{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isLoggedIn"];
+}
 
 + (void)storeCookie {
     for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {

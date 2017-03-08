@@ -32,7 +32,7 @@
                                                                    blue:113/255.f
                                                                   alpha:1]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     //register for push notification
     [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
@@ -41,16 +41,24 @@
     // already calling from applicationDidBecomeActive
     // [self setOldCookieForAutoLogin];
     
+    
     //reset old notes
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *oldNoteSettings = [defaults objectForKey:@"NoteSettings"];
     if(oldNoteSettings) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"NoteSettings"];
     }
-    
+    if ([Utility isLoggedIn] == YES) {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"SWRevealViewController"];
+        self.window.rootViewController = vc;
+        [self.window makeKeyAndVisible];
+    }
+    else{
+        [Utility showBaseViewController];
+    }
     return YES;
 }
-
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
     NSLog(@"My token is: %@", deviceToken);

@@ -68,6 +68,8 @@
     NSString *loginStatus = [jsonArray objectForKey:@"Login"];
     if([loginStatus isEqualToString:@"true"]) {
         NSLog(@"Login Successful");
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
+
         if([self.activeStatusSwitch isOn]) {
             [self updateLoginEmailAddress:self.emailField.text];
         } else {
