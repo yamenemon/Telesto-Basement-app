@@ -77,6 +77,7 @@
 		70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */; };
 		70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */; };
 		70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C216F41E6EC5B600464968 /* TutorialViewController.m */; };
+		70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54C61E7138F600F7FE67 /* iCarousel.m */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
@@ -207,6 +208,8 @@
 		70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftNavDrawingToolsView.xib; sourceTree = "<group>"; };
 		70C216F31E6EC5B600464968 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		70C216F41E6EC5B600464968 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		70CA54C51E7138F600F7FE67 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		70CA54C61E7138F600F7FE67 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
 		70CF14101DF43C180045CF8F /* IQDropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDropDownTextField.h; sourceTree = "<group>"; };
 		70CF14111DF43C180045CF8F /* IQDropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDropDownTextField.m; sourceTree = "<group>"; };
@@ -385,17 +388,9 @@
 		704B68911E13CA6200E6537D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				70CA54C41E71389300F7FE67 /* Login */,
 				3B6EB88D1DD845D900936AB9 /* AppDelegate.h */,
 				3B6EB88E1DD845D900936AB9 /* AppDelegate.m */,
-				3B69A9C51DDB0E4800163A80 /* TermsAndConditionViewController.h */,
-				3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */,
-				3B428ACA1DDB3E57008ADABF /* BaseViewController.h */,
-				3B428ACB1DDB3E57008ADABF /* BaseViewController.m */,
-				70C216F31E6EC5B600464968 /* TutorialViewController.h */,
-				70C216F41E6EC5B600464968 /* TutorialViewController.m */,
-				709B44331E6D6942008058F3 /* loginView.h */,
-				709B44341E6D6942008058F3 /* loginView.m */,
-				709B44361E6D6951008058F3 /* loginView.xib */,
 				70CF14131DF449350045CF8F /* CustomerRecordViewController.h */,
 				70CF14141DF449350045CF8F /* CustomerRecordViewController.m */,
 				706286171DED939A0022E105 /* PageContentViewController.h */,
@@ -479,6 +474,24 @@
 				705F64D41DF97B7000082D55 /* RobotoCondensed-Regular.ttf */,
 			);
 			name = Font;
+			sourceTree = "<group>";
+		};
+		70CA54C41E71389300F7FE67 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3B69A9C51DDB0E4800163A80 /* TermsAndConditionViewController.h */,
+				3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */,
+				3B428ACA1DDB3E57008ADABF /* BaseViewController.h */,
+				3B428ACB1DDB3E57008ADABF /* BaseViewController.m */,
+				70CA54C51E7138F600F7FE67 /* iCarousel.h */,
+				70CA54C61E7138F600F7FE67 /* iCarousel.m */,
+				70C216F31E6EC5B600464968 /* TutorialViewController.h */,
+				70C216F41E6EC5B600464968 /* TutorialViewController.m */,
+				709B44331E6D6942008058F3 /* loginView.h */,
+				709B44341E6D6942008058F3 /* loginView.m */,
+				709B44361E6D6951008058F3 /* loginView.xib */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		94C13A06E1B0BEC60A7B633E /* Pods */ = {
@@ -684,6 +697,7 @@
 				704B68981E13CB8D00E6537D /* WYPopoverController.m in Sources */,
 				3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */,
 				3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */,
+				70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */,
 				705B783E1E13C71D00161991 /* CustomerListViewController.m in Sources */,
 				705B78441E13C71D00161991 /* TrainingVideoViewController.m in Sources */,
 				3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */,

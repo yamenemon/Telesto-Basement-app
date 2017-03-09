@@ -8,9 +8,9 @@
 
 #import "BaseViewController.h"
 #import "CNPPopupController.h"
+#import "iCarousel.h"
 
-
-@interface BaseViewController () <CNPPopupControllerDelegate>{
+@interface BaseViewController () <CNPPopupControllerDelegate,iCarouselDelegate,iCarouselDataSource>{
 
     AVPlayer *avPlayer;
     AVPlayerLayer *layer;
@@ -21,7 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *tutorialButton;
 @property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
 
-
+@property (weak, nonatomic) IBOutlet iCarousel *iCarouselView;
+@property (nonatomic, assign) BOOL wrap;
+@property (nonatomic, strong) NSMutableArray *items;
 @end
 
 @implementation BaseViewController
@@ -42,8 +44,111 @@
     layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
     layer.frame = self.view.bounds;
-    [self.view.layer addSublayer: layer];
+//    [self.view.layer addSublayer: layer];
     [avPlayer play];
+    
+    self.items = [NSMutableArray array];
+    for (int i = 0; i < 11; i++)
+    {
+        [self.items addObject:@(i)];
+    }
+    self.iCarouselView.delegate = self;
+    self.iCarouselView.dataSource = self;
+    self.iCarouselView.type = iCarouselTypeCylinder;
+//    [self.iCarouselView scrollByNumberOfItems:self.items.count duration:10];
+
+}
+#pragma mark -
+#pragma mark iCarousel methods
+
+- (NSInteger)numberOfItemsInCarousel:(__unused iCarousel *)carousel
+{
+    return (NSInteger)[self.items count];
+}
+
+- (UIView *)carousel:(__unused iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    
+    //create new view if no view is available for recycling
+    if (view == nil)
+    {
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 600.0, 300.0)];
+        NSString *imageName = [NSString stringWithFormat:@"carousel_%ld",(long)index+1];
+        ((UIImageView *)view).image = [UIImage imageNamed:imageName];
+        view.contentMode = UIViewContentModeScaleToFill;
+    }
+    
+    return view;
+}
+
+- (NSInteger)numberOfPlaceholdersInCarousel:(__unused iCarousel *)carousel
+{
+    //note: placeholder views are only displayed on some carousels if wrapping is disabled
+    return 2;
+}
+
+- (UIView *)carousel:(__unused iCarousel *)carousel placeholderViewAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    //create new view if no view is available for recycling
+    if (view == nil)
+    {
+        //don't do anything specific to the index within
+        //this `if (view == nil) {...}` statement because the view will be
+        //recycled and used with other index values later
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 200.0)];
+        NSString *imageName = [NSString stringWithFormat:@"carousel_%ld",(long)index+1];
+        ((UIImageView *)view).image = [UIImage imageNamed:imageName];
+        view.contentMode = UIViewContentModeScaleToFill;
+    }
+    return view;
+}
+
+- (CATransform3D)carousel:(__unused iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform
+{
+    //implement 'flip3D' style carousel
+    transform = CATransform3DRotate(transform, M_PI / 8.0, 0.0, 1.0, 0.0);
+    return CATransform3DTranslate(transform, 0.0, 0.0, offset * self.iCarouselView.itemWidth);
+}
+
+- (CGFloat)carousel:(__unused iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    //customize carousel display
+    switch (option)
+    {
+        case iCarouselOptionWrap:
+        {
+            //normally you would hard-code this to YES or NO
+            return YES;
+        }
+        case iCarouselOptionSpacing:
+        {
+            //add a bit of spacing between the item views
+            return value * 1.05;
+        }
+        case iCarouselOptionFadeMax:
+        {
+            if (self.iCarouselView.type == iCarouselTypeCustom)
+            {
+                //set opacity based on distance from camera
+                return 0.0;
+            }
+            return value;
+        }
+        case iCarouselOptionShowBackfaces:
+        case iCarouselOptionRadius:
+        case iCarouselOptionAngle:
+        case iCarouselOptionArc:
+        case iCarouselOptionTilt:
+        case iCarouselOptionCount:
+        case iCarouselOptionFadeMin:
+        case iCarouselOptionFadeMinAlpha:
+        case iCarouselOptionFadeRange:
+        case iCarouselOptionOffsetMultiplier:
+        case iCarouselOptionVisibleItems:
+        {
+            return value;
+        }
+    }
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self showingTermsAndConditionScreen];
@@ -58,7 +163,7 @@
         [self displayTermsAndCondition];
     }
 }
--(void)viewDidLayoutSubviews{
+- (void)viewDidLayoutSubviews{
 
     [self.view.layer insertSublayer:_tutorialButton.layer above:layer];
     [self.view.layer insertSublayer:_loginButton.layer above:layer];
@@ -95,7 +200,7 @@
         self.customLoginView.emailField.text = oldEmailAddress;
     }
 }
--(NSString*)getOldLoginEmailAddress {
+- (NSString*)getOldLoginEmailAddress {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *oldEmailSettings = [[defaults objectForKey:@"EmailSettings"] mutableCopy];
     if(oldEmailSettings) {
@@ -103,25 +208,19 @@
     }
     return @"";
 }
--(void)displayTermsAndCondition{
+- (void)displayTermsAndCondition{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"termsAndCondition"];
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:vc animated:YES completion:NULL];
-
 }
-
-
--(void)addSpinner {
+- (void)addSpinner {
     [self.view endEditing:YES];
     [self.view addSubview:self.aSpinner];
     [self.aSpinner startAnimating];
 }
-
-
 - (IBAction)loginButtonClicked:(id)sender {
     [self showPopupWithStyle:CNPPopupStyleCentered];
-
 }
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
     UIImage *image = [UIImage imageNamed:@"telesto-logo"];

@@ -41,8 +41,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ueJ-wu-Aek" userLabel="Base View">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CarouselBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ZJn-Dp-UnH">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gss-eM-Gt1">
-                                        <rect key="frame" x="846" y="595" width="137" height="126"/>
+                                        <rect key="frame" x="846" y="615" width="137" height="126"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="137" id="Nj1-b4-eR0"/>
                                             <constraint firstAttribute="height" constant="126" id="X5p-7S-uUH"/>
@@ -55,7 +58,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xh8-66-93J">
-                                        <rect key="frame" x="57" y="595" width="109" height="126"/>
+                                        <rect key="frame" x="57" y="615" width="109" height="126"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="109" id="GCY-4y-aVi"/>
                                             <constraint firstAttribute="height" constant="126" id="TdM-NF-aBP"/>
@@ -67,21 +70,35 @@
                                             <action selector="loginButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="26T-gN-10G"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Best Basement Design Tools Ever!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2J-6c-W09">
-                                        <rect key="frame" x="57" y="35" width="926" height="119"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Basement Design Tools Ever!!!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2J-6c-W09">
+                                        <rect key="frame" x="76" y="14" width="872.5" height="73"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="55"/>
-                                        <color key="textColor" red="0.93719738721847534" green="0.57795637845993042" blue="0.29640921950340271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.078072719275951385" green="0.36243125796318054" blue="0.47568124532699585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-Pa-F5E" customClass="iCarousel">
+                                        <rect key="frame" x="8" y="95" width="1008" height="512"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.96899727784148648" green="0.99047444006060892" blue="1" alpha="0.64862478595890416" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Xh8-66-93J" secondAttribute="bottom" constant="47" id="E6c-cl-Vji"/>
+                                    <constraint firstItem="5TI-Pa-F5E" firstAttribute="top" secondItem="Y2J-6c-W09" secondAttribute="bottom" constant="8" id="0gk-CH-bOt"/>
+                                    <constraint firstAttribute="bottom" secondItem="Xh8-66-93J" secondAttribute="bottom" constant="27" id="E6c-cl-Vji"/>
                                     <constraint firstAttribute="trailing" secondItem="Gss-eM-Gt1" secondAttribute="trailing" constant="41" id="Lt8-IP-Bg8"/>
+                                    <constraint firstItem="Y2J-6c-W09" firstAttribute="centerX" secondItem="ZJn-Dp-UnH" secondAttribute="centerX" id="Q5v-gw-pYf"/>
+                                    <constraint firstItem="ZJn-Dp-UnH" firstAttribute="top" secondItem="ueJ-wu-Aek" secondAttribute="top" id="Tho-aB-iyo"/>
                                     <constraint firstItem="Xh8-66-93J" firstAttribute="leading" secondItem="ueJ-wu-Aek" secondAttribute="leading" constant="57" id="a4c-Pk-6ao"/>
-                                    <constraint firstAttribute="bottom" secondItem="Gss-eM-Gt1" secondAttribute="bottom" constant="47" id="z6k-ro-yfa"/>
+                                    <constraint firstItem="5TI-Pa-F5E" firstAttribute="leading" secondItem="ueJ-wu-Aek" secondAttribute="leading" constant="8" id="aUA-Om-sFg"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZJn-Dp-UnH" secondAttribute="bottom" id="eyx-9K-nto"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZJn-Dp-UnH" secondAttribute="trailing" id="htY-tS-oSz"/>
+                                    <constraint firstItem="Y2J-6c-W09" firstAttribute="top" secondItem="ueJ-wu-Aek" secondAttribute="top" constant="14" id="mBc-Bx-5XK"/>
+                                    <constraint firstItem="Xh8-66-93J" firstAttribute="top" secondItem="5TI-Pa-F5E" secondAttribute="bottom" constant="8" id="orn-WP-AHf"/>
+                                    <constraint firstAttribute="trailing" secondItem="5TI-Pa-F5E" secondAttribute="trailing" constant="8" id="wFo-PY-IzZ"/>
+                                    <constraint firstItem="ZJn-Dp-UnH" firstAttribute="leading" secondItem="ueJ-wu-Aek" secondAttribute="leading" id="wZ4-dr-3rC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gss-eM-Gt1" secondAttribute="bottom" constant="27" id="z6k-ro-yfa"/>
+                                    <constraint firstItem="5TI-Pa-F5E" firstAttribute="top" secondItem="Y2J-6c-W09" secondAttribute="bottom" constant="8" id="zbF-73-Jah"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -95,6 +112,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="iCarouselView" destination="5TI-Pa-F5E" id="aiz-Yj-Ldm"/>
                         <outlet property="loginButton" destination="Xh8-66-93J" id="AQm-NE-Q6M"/>
                         <outlet property="taglineLabel" destination="Y2J-6c-W09" id="4Aa-1k-1b4"/>
                         <outlet property="tutorialButton" destination="Gss-eM-Gt1" id="2Y3-v3-OiO"/>
@@ -102,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8588.671875" y="-1598.4375"/>
+            <point key="canvasLocation" x="-8593.359375" y="-1598.4375"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="JA0-7O-r5Q">
@@ -1773,11 +1791,12 @@ A: Immediately</string>
         </scene>
     </scenes>
     <resources>
+        <image name="CarouselBackground" width="25" height="234"/>
         <image name="ProductSliderButton" width="32" height="210"/>
         <image name="Temp6.png" width="400" height="316"/>
         <image name="creat_new_customer.png" width="20" height="20"/>
         <image name="customerList.png" width="20" height="20"/>
-        <image name="log_out.png" width="20" height="20"/>
+        <image name="log_out.png" width="30" height="30"/>
         <image name="login" width="109" height="126"/>
         <image name="new_customer.png" width="20" height="20"/>
         <image name="pdfImage" width="100" height="114"/>
