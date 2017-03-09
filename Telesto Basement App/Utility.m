@@ -69,7 +69,6 @@
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"SWRevealViewController"];
     [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
 }
-
 + (void)checkForCookie {
     for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
         NSLog(@"Domains %@", [cookie domain]);

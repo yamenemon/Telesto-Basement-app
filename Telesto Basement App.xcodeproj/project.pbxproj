@@ -80,6 +80,7 @@
 		70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54C61E7138F600F7FE67 /* iCarousel.m */; };
 		70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54CF1E7172A700F7FE67 /* CustomTableViewCell.m */; };
 		70CA54D21E7172A700F7FE67 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CA54D01E7172A700F7FE67 /* CustomTableViewCell.xib */; };
+		70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54D61E7188FD00F7FE67 /* CustomerProposalsViewController.m */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
@@ -215,6 +216,8 @@
 		70CA54CE1E7172A700F7FE67 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		70CA54CF1E7172A700F7FE67 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		70CA54D01E7172A700F7FE67 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		70CA54D51E7188FD00F7FE67 /* CustomerProposalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerProposalsViewController.h; sourceTree = "<group>"; };
+		70CA54D61E7188FD00F7FE67 /* CustomerProposalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerProposalsViewController.m; sourceTree = "<group>"; };
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
 		70CF14101DF43C180045CF8F /* IQDropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDropDownTextField.h; sourceTree = "<group>"; };
 		70CF14111DF43C180045CF8F /* IQDropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDropDownTextField.m; sourceTree = "<group>"; };
@@ -426,6 +429,7 @@
 		705B782C1E13C6C800161991 /* SW */ = {
 			isa = PBXGroup;
 			children = (
+				70CA54D41E7188CB00F7FE67 /* Customer Proposals */,
 				70CA54C81E71612500F7FE67 /* CustomerList */,
 				705B78311E13C71D00161991 /* DesignViewController.h */,
 				705B78321E13C71D00161991 /* DesignViewController.m */,
@@ -508,6 +512,15 @@
 				70CA54D01E7172A700F7FE67 /* CustomTableViewCell.xib */,
 			);
 			name = CustomerList;
+			sourceTree = "<group>";
+		};
+		70CA54D41E7188CB00F7FE67 /* Customer Proposals */ = {
+			isa = PBXGroup;
+			children = (
+				70CA54D51E7188FD00F7FE67 /* CustomerProposalsViewController.h */,
+				70CA54D61E7188FD00F7FE67 /* CustomerProposalsViewController.m */,
+			);
+			name = "Customer Proposals";
 			sourceTree = "<group>";
 		};
 		94C13A06E1B0BEC60A7B633E /* Pods */ = {
@@ -735,6 +748,7 @@
 				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
+				70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */,
 				709B44351E6D6942008058F3 /* loginView.m in Sources */,
 				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,

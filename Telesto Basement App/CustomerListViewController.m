@@ -133,8 +133,8 @@
         cell.proposalsBtn.tag = indexPath.row;
         cell.proposalsBtn.layer.cornerRadius = 5.0;
 
-    cell.cityTextLabel.text = @"city : New York.\npostalCode : 10021.\nstate : NY.\nstreetAddress : 21 2nd Street.";
-    cell.lastLoginTextLabel.text = @"Monday, June 15, 2009 8:45:30 PM ";
+    cell.cityTextLabel.text = @": New York.\npostalCode : 10021.\nstate : NY.\nstreetAddress : 21 2nd Street.";
+    cell.lastLoginTextLabel.text = @": Monday, June 15, 2009 8:45:30 PM ";
     NSLog(@"\nCustomer Name: %@ \n Customer Address: %@ \n Customer Schedule: %@ \n",customerInfoObject.customerName,customerInfoObject.customerAddress,customerInfoObject.scheduleDate);
     cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerName];
 
@@ -142,7 +142,7 @@
 }
 -(void)cellMethod:(id)sender{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"DesignViewController"];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerProposals"];
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:vc animated:YES];
 }
