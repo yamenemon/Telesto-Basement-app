@@ -10,6 +10,8 @@
 #import "Utility.h"
 #import "SWRevealViewController.h"
 #import "CustomerInfoObject.h"
+#import "CustomTableViewCell.h"
+
 @interface CustomerListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *customerListTableView;

@@ -24,7 +24,7 @@
 }
 -(void)viewWillLayoutSubviews{
 
-    _customerListTableView.layer.borderColor = [UIColor lightGrayColor].CGColor;//[Utility colorWithHexString:@"0x0A5A78"].CGColor;
+    _customerListTableView.layer.borderColor = [UIColor clearColor].CGColor;//[Utility colorWithHexString:@"0x0A5A78"].CGColor;
     _customerListTableView.layer.borderWidth = 2.0;
     _customerListTableView.layer.cornerRadius = 2.0;
 }
@@ -115,69 +115,28 @@
     return 10;//[_customerInfoObjArray count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-    UILabel *userName;
-    UILabel *userAddress;
-    UILabel *scheduleLabel;
-    UIImageView *userImageView;
-    UIButton *viewButton;
-    
+  
     CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:indexPath.row];
+    static NSString *simpleTableIdentifier = @"CustomTableViewCell";
+    
+    CustomTableViewCell *cell = (CustomTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
 
-    if (cell) {
-        userImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userName"]];
-        [cell addSubview:userImageView];
-        userImageView.frame = CGRectMake(3,150/2, 50, 50);
-        userImageView.tag = 0;
-        
-        userName = [[UILabel alloc] initWithFrame:CGRectMake(60, 2, 500, 50)];
-        [cell addSubview:userName];
-        userName.font = [UIFont fontWithName:@"Roboto-Bold" size:30];
-        userName.tag = 1;
-        
-        userAddress = [[UILabel alloc] initWithFrame:CGRectMake(60, 52, 500, 100)];
-        [cell addSubview:userAddress];
-        userAddress.tag = 2;
-        userAddress.font = [UIFont fontWithName:@"Roboto-Light" size:14];
-        userAddress.numberOfLines = 10;
-        
-        scheduleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 152, 500, 30)];
-        [cell addSubview:scheduleLabel];
-        scheduleLabel.tag = 3;
-        
-        viewButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [viewButton addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
-        [viewButton setTitle:@"Show View" forState:UIControlStateNormal];
-        viewButton.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
-        viewButton.frame = CGRectMake(tableView.frame.size.width - 180, (184-40)/2, 160.0, 40.0);
-        viewButton.tag = 5;
-        viewButton.layer.cornerRadius = 5.0;
-        [cell addSubview:viewButton];
-    }
-    else{
-        userImageView = [cell viewWithTag:0];
-        userName = [cell viewWithTag:1];
-        userAddress = [cell viewWithTag:2];
-        scheduleLabel = [cell viewWithTag:3];
-        
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    userName.backgroundColor = [UIColor clearColor];
-    userAddress.backgroundColor = [UIColor clearColor];
-    scheduleLabel.backgroundColor = [UIColor clearColor];
-//    userName.text = @"Steve Lenon";
-    userAddress.text = @"city : New York.\npostalCode : 10021.\nstate : NY.\nstreetAddress : 21 2nd Street.";
-    scheduleLabel.text = @"Monday, June 15, 2009 8:45:30 PM ";
+        cell.cellImageView.image = [UIImage imageNamed:@"userName"];
+    
+        [cell.proposalsBtn addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
+        cell.proposalsBtn.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+        cell.proposalsBtn.tag = indexPath.row;
+        cell.proposalsBtn.layer.cornerRadius = 5.0;
+
+    cell.cityTextLabel.text = @"city : New York.\npostalCode : 10021.\nstate : NY.\nstreetAddress : 21 2nd Street.";
+    cell.lastLoginTextLabel.text = @"Monday, June 15, 2009 8:45:30 PM ";
     NSLog(@"\nCustomer Name: %@ \n Customer Address: %@ \n Customer Schedule: %@ \n",customerInfoObject.customerName,customerInfoObject.customerAddress,customerInfoObject.scheduleDate);
-    userName.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerName];
-//    userAddress.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerAddress];
-//    scheduleLabel.text = [NSString stringWithFormat:@"%@", customerInfoObject.scheduleDate];
+    cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerName];
 
     return cell;
 }
@@ -189,7 +148,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 184;
+    return 100;
 
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
