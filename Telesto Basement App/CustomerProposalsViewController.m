@@ -24,10 +24,7 @@
 
 }
 -(void)viewDidLayoutSubviews{
-
-    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+   
     self.customerProfileImage.layer.cornerRadius = self.customerProfileImage.frame.size.width / 2;
     self.customerProfileImage.layer.borderWidth = 15.0f;
     self.customerProfileImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
