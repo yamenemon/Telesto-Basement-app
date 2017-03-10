@@ -106,6 +106,8 @@
     // Call whatever function you need to visually restore
     [self customSetup];
 }
+#pragma mark -
+#pragma mark UITableView delegate Method -
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -125,6 +127,7 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         cell.cellImageView.image = [UIImage imageNamed:@"userName"];
     

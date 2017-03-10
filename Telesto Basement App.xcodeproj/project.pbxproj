@@ -68,6 +68,8 @@
 		705F64EC1DF97F2600082D55 /* userName@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64E91DF97F2600082D55 /* userName@2x.png */; };
 		705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */; };
 		706286191DED939A0022E105 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706286181DED939A0022E105 /* PageContentViewController.m */; };
+		70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */; };
+		70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */; };
 		7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */; };
 		709B44351E6D6942008058F3 /* loginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B44341E6D6942008058F3 /* loginView.m */; };
 		709B44371E6D6951008058F3 /* loginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709B44361E6D6951008058F3 /* loginView.xib */; };
@@ -197,6 +199,9 @@
 		705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "passwordIcon@2x.png"; sourceTree = "<group>"; };
 		706286171DED939A0022E105 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
 		706286181DED939A0022E105 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
+		70641E531E72AE660085FFE6 /* CustomerProposalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerProposalTableViewCell.h; sourceTree = "<group>"; };
+		70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerProposalTableViewCell.m; sourceTree = "<group>"; };
+		70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerProposalTableViewCell.xib; sourceTree = "<group>"; };
 		7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
 		709B44331E6D6942008058F3 /* loginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginView.h; sourceTree = "<group>"; };
@@ -519,6 +524,9 @@
 			children = (
 				70CA54D51E7188FD00F7FE67 /* CustomerProposalsViewController.h */,
 				70CA54D61E7188FD00F7FE67 /* CustomerProposalsViewController.m */,
+				70641E531E72AE660085FFE6 /* CustomerProposalTableViewCell.h */,
+				70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */,
+				70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */,
 			);
 			name = "Customer Proposals";
 			sourceTree = "<group>";
@@ -636,6 +644,7 @@
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
 				70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */,
 				705F64DD1DF97B7000082D55 /* Roboto-MediumItalic.ttf in Resources */,
+				70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */,
 				705F64DF1DF97B7000082D55 /* Roboto-Thin.ttf in Resources */,
 				70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */,
 				705F64E11DF97B7000082D55 /* RobotoCondensed-Bold.ttf in Resources */,
@@ -749,6 +758,7 @@
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
 				70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */,
+				70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */,
 				709B44351E6D6942008058F3 /* loginView.m in Sources */,
 				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
