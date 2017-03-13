@@ -76,6 +76,7 @@
 		709B443A1E6D8977008058F3 /* demoVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 709B44391E6D8977008058F3 /* demoVideo.mp4 */; };
 		709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */; };
 		709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */; };
+		709F4BD71E76B35200C8B8DA /* CustomProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709F4BD61E76B35200C8B8DA /* CustomProductView.m */; };
 		70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */; };
 		70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */; };
 		70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C216F41E6EC5B600464968 /* TutorialViewController.m */; };
@@ -101,7 +102,6 @@
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
 		70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D61E067DB400A6D245 /* log_out_@2x.png */; };
 		70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D71E067DB400A6D245 /* log_out@2x.png */; };
-		70EC80E31E067DB400A6D245 /* new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D81E067DB400A6D245 /* new_customer@2x.png */; };
 		70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D91E067DB400A6D245 /* old_proposal@2x.png */; };
 		70EC80E51E067DB400A6D245 /* presentation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DA1E067DB400A6D245 /* presentation@2x.png */; };
 		70EC80E61E067DB400A6D245 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DB1E067DB400A6D245 /* search@2x.png */; };
@@ -211,6 +211,8 @@
 		709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavDrwaingToolsView.h; sourceTree = "<group>"; };
 		709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavDrwaingToolsView.m; sourceTree = "<group>"; };
 		709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightNavDrwaingToolsView.xib; sourceTree = "<group>"; };
+		709F4BD51E76B35200C8B8DA /* CustomProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProductView.h; sourceTree = "<group>"; };
+		709F4BD61E76B35200C8B8DA /* CustomProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProductView.m; sourceTree = "<group>"; };
 		70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavDrawingToolsView.h; sourceTree = "<group>"; };
 		70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavDrawingToolsView.m; sourceTree = "<group>"; };
 		70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftNavDrawingToolsView.xib; sourceTree = "<group>"; };
@@ -246,7 +248,6 @@
 		70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creat_new_customer@2x.png"; sourceTree = "<group>"; };
 		70EC80D61E067DB400A6D245 /* log_out_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out_@2x.png"; sourceTree = "<group>"; };
 		70EC80D71E067DB400A6D245 /* log_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out@2x.png"; sourceTree = "<group>"; };
-		70EC80D81E067DB400A6D245 /* new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_customer@2x.png"; sourceTree = "<group>"; };
 		70EC80D91E067DB400A6D245 /* old_proposal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "old_proposal@2x.png"; sourceTree = "<group>"; };
 		70EC80DA1E067DB400A6D245 /* presentation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "presentation@2x.png"; sourceTree = "<group>"; };
 		70EC80DB1E067DB400A6D245 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
@@ -351,7 +352,6 @@
 				70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */,
 				70EC80D61E067DB400A6D245 /* log_out_@2x.png */,
 				70EC80D71E067DB400A6D245 /* log_out@2x.png */,
-				70EC80D81E067DB400A6D245 /* new_customer@2x.png */,
 				70EC80D91E067DB400A6D245 /* old_proposal@2x.png */,
 				70EC80DA1E067DB400A6D245 /* presentation@2x.png */,
 				70EC80DB1E067DB400A6D245 /* search@2x.png */,
@@ -434,18 +434,9 @@
 		705B782C1E13C6C800161991 /* SW */ = {
 			isa = PBXGroup;
 			children = (
+				709F4BD41E76B30C00C8B8DA /* Design Window */,
 				70CA54D41E7188CB00F7FE67 /* Customer Proposals */,
 				70CA54C81E71612500F7FE67 /* CustomerList */,
-				705B78311E13C71D00161991 /* DesignViewController.h */,
-				705B78321E13C71D00161991 /* DesignViewController.m */,
-				70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */,
-				70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */,
-				70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */,
-				70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */,
-				70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */,
-				709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */,
-				709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */,
-				709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */,
 				705B78331E13C71D00161991 /* MenuViewController.h */,
 				705B78341E13C71D00161991 /* MenuViewController.m */,
 				705B78351E13C71D00161991 /* OldProposalsViewController.h */,
@@ -485,6 +476,25 @@
 				705F64D41DF97B7000082D55 /* RobotoCondensed-Regular.ttf */,
 			);
 			name = Font;
+			sourceTree = "<group>";
+		};
+		709F4BD41E76B30C00C8B8DA /* Design Window */ = {
+			isa = PBXGroup;
+			children = (
+				705B78311E13C71D00161991 /* DesignViewController.h */,
+				705B78321E13C71D00161991 /* DesignViewController.m */,
+				70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */,
+				70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */,
+				70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */,
+				70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */,
+				70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */,
+				709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */,
+				709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */,
+				709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */,
+				709F4BD51E76B35200C8B8DA /* CustomProductView.h */,
+				709F4BD61E76B35200C8B8DA /* CustomProductView.m */,
+			);
+			name = "Design Window";
 			sourceTree = "<group>";
 		};
 		70CA54C41E71389300F7FE67 /* Login */ = {
@@ -618,7 +628,6 @@
 				70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */,
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
 				705F64EC1DF97F2600082D55 /* userName@2x.png in Resources */,
-				70EC80E31E067DB400A6D245 /* new_customer@2x.png in Resources */,
 				705F64D71DF97B7000082D55 /* Roboto-Bold.ttf in Resources */,
 				7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */,
 				705B782A1E13C0B700161991 /* Temp1@2x.png in Resources */,
@@ -744,6 +753,7 @@
 				70015E981DF6913200DF542E /* Utility.m in Sources */,
 				70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */,
 				70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */,
+				709F4BD71E76B35200C8B8DA /* CustomProductView.m in Sources */,
 				704B68991E13CB8D00E6537D /* WYStoryboardPopoverSegue.m in Sources */,
 				709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */,
 				705B783F1E13C71D00161991 /* DesignViewController.m in Sources */,

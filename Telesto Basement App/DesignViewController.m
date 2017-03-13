@@ -122,8 +122,8 @@ CGFloat lastRotation;
 -(void)productBtnClicked:(id)sender{
     UIButton *productBtn = (UIButton*)sender;
     // (1) Create a user resizable view with a simple red background content view.
-    CGRect gripFrame = CGRectMake(100, 10, 150, 150);
-    SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+    CGRect gripFrame = CGRectMake(100, 10, 90, 90);
+    CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
     
     UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",productBtn.tag]]];
     contentView.frame = gripFrame;
@@ -133,6 +133,7 @@ CGFloat lastRotation;
     currentlyEditingView = userResizableView;
     lastEditedView = userResizableView;
     [basementDesignView addSubview:userResizableView];
+    [userResizableView bringSubviewToFront:userResizableView.centerFrame];
     [self productSliderCalled:nil];
 }
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {

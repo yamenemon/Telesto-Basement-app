@@ -13,7 +13,7 @@
 #import "RightNavDrwaingToolsView.h"
 #import "ShowPriceViewController.h"
 #import <DRColorPicker/DRColorPickerViewController.h>
-
+#import "CustomProductView.h"
 @class  TemplatePopOverViewController;
 
 @interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate> {
