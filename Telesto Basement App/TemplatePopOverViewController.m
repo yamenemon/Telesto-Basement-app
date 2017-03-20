@@ -15,6 +15,7 @@
 
 @implementation TemplatePopOverViewController
 @synthesize parentClass;
+@synthesize templateArray;
 
 - (id)initWithBaseController:(DesignViewController*)baseController {
     if ((self = [super init])) {
@@ -27,12 +28,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+//    NSArray  *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDir  = [documentPaths objectAtIndex:0];
+//    
+//    NSString *outputPath    = [documentsDir stringByAppendingPathComponent:[fileList objectAtIndex:indexPath.row]];
+//    
+//    NSFileManager *fileManager = [[NSFileManager alloc] init];
+//    
+//    
+//    
+//    NSString *imgPath = [outputPath stringByReplacingOccurrencesOfString:@"mov" withString:@"png"];
+//    
+//    
+//    if ([fileManager fileExistsAtPath:imgPath])
+//    {
+//        NSLog(@"FOUND IMG");
+//        NSLog(imgPath);
+//    }
+//    NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:imgPath]];
+//    UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
+    
+    
+    templateArray = [NSMutableArray arrayWithObjects:@"temp1",@"temp2",@"temp3",@"temp4",@"temp5",@"temp6",@"temp7",@"temp8", nil];
+
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsPath error:nil];
+    for (NSString *filename in dirContents) {
+        NSString *fileExt = [filename pathExtension];
+        
+        if ([fileExt isEqualToString:@"jpg"]) {
+            
+            [templateArray addObject:filename];
+        }
+    }
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
 
     int x = 0;
     CGRect frame;
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < templateArray.count; i++) {
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         
@@ -44,12 +81,12 @@
         
         button.frame = frame;
         [button setTag:i];
-        [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"temp%d",i+1]] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:[templateArray objectAtIndex:i]] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(templateClicked:) forControlEvents:UIControlEventTouchUpInside];
         [_templateScroller addSubview:button];
         button.backgroundColor = [Utility colorWithHexString:@"0xCEDEE4"];
         
-        if (i == 7) {
+        if (i == templateArray.count) {
             x = CGRectGetMaxX(button.frame);
         }
     }

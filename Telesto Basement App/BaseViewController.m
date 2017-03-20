@@ -168,7 +168,7 @@
     [self.view.layer insertSublayer:_tutorialButton.layer above:layer];
     [self.view.layer insertSublayer:_loginButton.layer above:layer];
     [self.view.layer insertSublayer:_taglineLabel.layer above:layer];
-//    [self.view.layer insertSublayer:_tutorialView.layer above:layer];
+
     _loginButton.layer.cornerRadius = 5;
     _tutorialButton.layer.cornerRadius = 5;
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"loginView"
@@ -223,10 +223,6 @@
     [self showPopupWithStyle:CNPPopupStyleCentered];
 }
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
-    UIImage *image = [UIImage imageNamed:@"telesto-logo"];
-    float logoX = ((self.view.frame.size.width/2) - image.size.width)/2;
-    UIImageView *telestoLogo = [[UIImageView alloc] initWithFrame:CGRectMake(logoX, 5, image.size.width,image.size.height)];
-    telestoLogo.image = image;
     
     self.popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */_customLoginView]];
     self.popupController.theme = [self defaultTheme];

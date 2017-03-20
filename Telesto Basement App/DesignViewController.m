@@ -21,17 +21,14 @@
 @implementation DesignViewController
 @synthesize productSliderView;
 @synthesize basementDesignView;
-CGFloat firstX;
-CGFloat firstY;
-CGFloat lastRotation;
+@synthesize savedDesignArray;
+@synthesize customTemplateNameView;
 
 #pragma mark - ViewControllers Super Methods
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    lastRotation = 0.0;
-   
+    [super viewDidLoad];   
     // Do any additional setup after loading the view, typically from a nib.
     
     self.navigationItem.title = @"Drawing Window";
@@ -62,9 +59,14 @@ CGFloat lastRotation;
     [self.navigationController.navigationBar addSubview:rightNavBtnBar];
     rightNavBtnBar.baseClass = self;
 }
--(void)viewDidLayoutSubviews:(BOOL)animated{
+-(void)viewDidLayoutSubviews{
     /*Scrolling window*/
-    [super viewWillLayoutSubviews];
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"CustomTemplateNameView"
+                                                      owner:self
+                                                    options:nil];
+    
+    customTemplateNameView = [ nibViews objectAtIndex:0];
+    customTemplateNameView.designViewController = self;
     
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -125,7 +127,7 @@ CGFloat lastRotation;
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
     CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
     
-    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",productBtn.tag]]];
+    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",(long)productBtn.tag]]];
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
     userResizableView.delegate = self;
@@ -195,11 +197,9 @@ CGFloat lastRotation;
     popPC.delegate = self;
     [self presentViewController:templateController animated:YES completion:nil];
 }
-
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
     return UIModalPresentationPopover;
 }
-
 - (UIViewController *)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style {
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller.presentedViewController];
     return navController;
@@ -609,6 +609,8 @@ CGFloat lastRotation;
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {
+                             savedDesignArray = [[basementDesignView subviews] mutableCopy];
+                             [self saveDesignView];
                              [alert dismissViewControllerAnimated:YES completion:nil];
                          }];
     UIAlertAction* cancel = [UIAlertAction
@@ -633,10 +635,53 @@ CGFloat lastRotation;
 - (void)removeBtnClicked{
     [lastEditedView removeFromSuperview];
 }
+-(void)saveDesignView{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setCustomTemplateName];
+    });
+}
+-(void)savedTemplateViewForScreenShot:(NSString*)templateName{
+
+    CGRect rect = [basementDesignView bounds];
+    UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [basementDesignView.layer renderInContext:context];
+    UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSString  *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@.jpg",templateName]];
+    [UIImageJPEGRepresentation(capturedImage, 0.95) writeToFile:imagePath atomically:YES];
+    [popupController dismissPopupControllerAnimated:YES];
+}
+
+- (void)setCustomTemplateName{
+    [self showPopupWithStyle:CNPPopupStyleCentered];
+}
+- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
+    
+    popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customTemplateNameView]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = popupStyle;
+    popupController.delegate = self;
+    [popupController presentPopupControllerAnimated:YES];
+}
+- (CNPPopupTheme *)defaultTheme {
+    CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
+    defaultTheme.backgroundColor = [UIColor whiteColor];
+    defaultTheme.cornerRadius = 5.0f;
+    defaultTheme.popupContentInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    defaultTheme.popupStyle = CNPPopupStyleCentered;
+    defaultTheme.presentationStyle = CNPPopupPresentationStyleFadeIn;
+    defaultTheme.dismissesOppositeDirection = NO;
+    defaultTheme.maskType = CNPPopupMaskTypeDimmed;
+    defaultTheme.shouldDismissOnBackgroundTouch = YES;
+    defaultTheme.movesAboveKeyboard = YES;
+    defaultTheme.contentVerticalPadding = 16.0f;
+    defaultTheme.maxPopupWidth = self.view.frame.size.width/2;
+    defaultTheme.animationDuration = 0.65f;
+    return defaultTheme;
+}
+
 #pragma mark -
-
-
-
 #pragma mark Color Picker Methods -
 
 - (void)showColorPickerButtonTapped:(id)sender

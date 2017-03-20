@@ -14,4 +14,5 @@
 
 @property (nonatomic,strong) DesignViewController *parentClass;
 @property (weak, nonatomic) IBOutlet UIScrollView *templateScroller;
+@property (strong, nonatomic) NSMutableArray *templateArray;
 @end

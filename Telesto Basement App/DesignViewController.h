@@ -14,9 +14,12 @@
 #import "ShowPriceViewController.h"
 #import <DRColorPicker/DRColorPickerViewController.h>
 #import "CustomProductView.h"
+#import "CNPPopupController.h"
+#import "CustomTemplateNameView.h"
+
 @class  TemplatePopOverViewController;
 
-@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate> {
+@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate,CNPPopupControllerDelegate> {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
     UILabel* priceLabel;
@@ -28,9 +31,12 @@
     
     LeftNavDrawingToolsView *leftNavBtnBar;
     RightNavDrwaingToolsView *rightNavBtnBar;
+    CNPPopupController *popupController;
 }
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *basementDesignView;
+@property (strong, nonatomic) NSMutableArray *savedDesignArray;
+@property (strong, nonatomic) CustomTemplateNameView *customTemplateNameView;
 
 - (void)setSavedTemplateNumber:(int)number;
 - (void)wallPopOverBtnAction:(id)sender;
@@ -44,4 +50,5 @@
 - (void)doorButtonAction:(id)sender;
 - (void)windowSliderButtonAction:(id)sender;
 - (void)saveButtonAction:(id)sender;
+-(void)savedTemplateViewForScreenShot:(NSString*)templateName;
 @end

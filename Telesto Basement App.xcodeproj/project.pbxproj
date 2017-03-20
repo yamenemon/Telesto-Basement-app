@@ -25,6 +25,8 @@
 		7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */; };
 		7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C01E1D15760062EB77 /* UserProfileViewController.m */; };
 		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
+		702BD7F21E7FFD6F008F786C /* CustomTemplateNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */; };
+		702BD7F51E7FFE0F008F786C /* CustomTemplateNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
 		704B68981E13CB8D00E6537D /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B68951E13CB8D00E6537D /* WYPopoverController.m */; };
 		704B68991E13CB8D00E6537D /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B68971E13CB8D00E6537D /* WYStoryboardPopoverSegue.m */; };
@@ -144,6 +146,9 @@
 		7027C9C01E1D15760062EB77 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		7027C9C21E1D35950062EB77 /* ProposalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalViewController.h; sourceTree = "<group>"; };
 		7027C9C31E1D35950062EB77 /* ProposalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalViewController.m; sourceTree = "<group>"; };
+		702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTemplateNameView.xib; sourceTree = "<group>"; };
+		702BD7F31E7FFE0F008F786C /* CustomTemplateNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTemplateNameView.h; sourceTree = "<group>"; };
+		702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTemplateNameView.m; sourceTree = "<group>"; };
 		704B688F1E13C9C000E6537D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		704B68941E13CB8D00E6537D /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
 		704B68951E13CB8D00E6537D /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
@@ -434,21 +439,10 @@
 		705B782C1E13C6C800161991 /* SW */ = {
 			isa = PBXGroup;
 			children = (
+				70BFBF571E781549007F0862 /* Menu Controllers */,
 				709F4BD41E76B30C00C8B8DA /* Design Window */,
 				70CA54D41E7188CB00F7FE67 /* Customer Proposals */,
 				70CA54C81E71612500F7FE67 /* CustomerList */,
-				705B78331E13C71D00161991 /* MenuViewController.h */,
-				705B78341E13C71D00161991 /* MenuViewController.m */,
-				705B78351E13C71D00161991 /* OldProposalsViewController.h */,
-				705B78361E13C71D00161991 /* OldProposalsViewController.m */,
-				705B78371E13C71D00161991 /* PresentationsViewController.h */,
-				705B78381E13C71D00161991 /* PresentationsViewController.m */,
-				705B78391E13C71D00161991 /* SWRevealViewController.h */,
-				705B783A1E13C71D00161991 /* SWRevealViewController.m */,
-				705B783B1E13C71D00161991 /* TrainingVideoViewController.h */,
-				705B783C1E13C71D00161991 /* TrainingVideoViewController.m */,
-				70D6E8471E43426B007E3F2F /* SettingsViewController.h */,
-				70D6E8481E43426B007E3F2F /* SettingsViewController.m */,
 			);
 			name = SW;
 			sourceTree = "<group>";
@@ -493,8 +487,30 @@
 				709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */,
 				709F4BD51E76B35200C8B8DA /* CustomProductView.h */,
 				709F4BD61E76B35200C8B8DA /* CustomProductView.m */,
+				702BD7F31E7FFE0F008F786C /* CustomTemplateNameView.h */,
+				702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */,
+				702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */,
 			);
 			name = "Design Window";
+			sourceTree = "<group>";
+		};
+		70BFBF571E781549007F0862 /* Menu Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				705B78331E13C71D00161991 /* MenuViewController.h */,
+				705B78341E13C71D00161991 /* MenuViewController.m */,
+				705B78351E13C71D00161991 /* OldProposalsViewController.h */,
+				705B78361E13C71D00161991 /* OldProposalsViewController.m */,
+				705B78371E13C71D00161991 /* PresentationsViewController.h */,
+				705B78381E13C71D00161991 /* PresentationsViewController.m */,
+				705B78391E13C71D00161991 /* SWRevealViewController.h */,
+				705B783A1E13C71D00161991 /* SWRevealViewController.m */,
+				705B783B1E13C71D00161991 /* TrainingVideoViewController.h */,
+				705B783C1E13C71D00161991 /* TrainingVideoViewController.m */,
+				70D6E8471E43426B007E3F2F /* SettingsViewController.h */,
+				70D6E8481E43426B007E3F2F /* SettingsViewController.m */,
+			);
+			name = "Menu Controllers";
 			sourceTree = "<group>";
 		};
 		70CA54C41E71389300F7FE67 /* Login */ = {
@@ -647,6 +663,7 @@
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
 				705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */,
 				70D6E8581E436495007E3F2F /* 3@2x.png in Resources */,
+				702BD7F21E7FFD6F008F786C /* CustomTemplateNameView.xib in Resources */,
 				70D6E8571E436495007E3F2F /* 2@2x.png in Resources */,
 				705B78261E13C0B700161991 /* Temp5@2x.png in Resources */,
 				705F64DB1DF97B7000082D55 /* Roboto-LightItalic.ttf in Resources */,
@@ -739,6 +756,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */,
+				702BD7F51E7FFE0F008F786C /* CustomTemplateNameView.m in Sources */,
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */,
 				705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */,
