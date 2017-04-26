@@ -25,7 +25,8 @@
     }
     else{
         _messageLabel.hidden = YES;
-        [_designViewController savedTemplateViewForScreenShot:_templateNameTextField.text];
+//        [_designViewController savedTemplateViewForScreenShot:_templateNameTextField.text];
+        [_designViewController saveTemplateName:_templateNameTextField.text];
     }
 }
 

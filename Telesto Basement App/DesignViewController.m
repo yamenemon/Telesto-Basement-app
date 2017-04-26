@@ -7,12 +7,11 @@
 //
 
 #import "DesignViewController.h"
-#import "WYPopoverController.h"
 #import "DRColorPicker.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface DesignViewController ()<WYPopoverControllerDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface DesignViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) DRColorPickerColor* color;
 @property (nonatomic, weak) DRColorPickerViewController* colorPickerVC;
@@ -26,8 +25,7 @@
 
 #pragma mark - ViewControllers Super Methods
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];   
     // Do any additional setup after loading the view, typically from a nib.
     
@@ -43,7 +41,7 @@
     
     
     self.color = [[DRColorPickerColor alloc] initWithColor:UIColor.blueColor];
-
+    
 }
 -(BOOL)prefersStatusBarHidden{
     return NO;
@@ -58,6 +56,7 @@
     rightNavBtnBar.frame = CGRectMake(self.view.frame.size.width - rightNavBtnBar.frame.size.width, 0, rightNavBtnBar.frame.size.width, rightNavBtnBar.frame.size.height);
     [self.navigationController.navigationBar addSubview:rightNavBtnBar];
     rightNavBtnBar.baseClass = self;
+    
 }
 -(void)viewDidLayoutSubviews{
     /*Scrolling window*/
@@ -68,6 +67,10 @@
     customTemplateNameView = [ nibViews objectAtIndex:0];
     customTemplateNameView.designViewController = self;
     
+    customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
+
+    [self setCustomTemplateName];
+
 }
 -(void)viewDidAppear:(BOOL)animated{
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -80,6 +83,16 @@
 -(void)viewWillDisappear:(BOOL)animated{
     leftNavBtnBar.hidden = YES;
     rightNavBtnBar.hidden = YES;
+}
+#pragma mark -
+#pragma mark - Popup Methods
+- (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle {
+    
+    popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customVideoPopUpView]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = popupStyle;
+    popupController.delegate = self;
+    [popupController presentPopupControllerAnimated:YES];
 }
 #pragma mark -
 
@@ -126,29 +139,28 @@
     // (1) Create a user resizable view with a simple red background content view.
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
     CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
-    
+    userResizableView.infoBtn.tag = arc4random()%4;
     UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",(long)productBtn.tag]]];
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
+    userResizableView.baseVC = self;
     userResizableView.delegate = self;
     [userResizableView showEditingHandles];
     currentlyEditingView = userResizableView;
     lastEditedView = userResizableView;
     [basementDesignView addSubview:userResizableView];
-    [userResizableView bringSubviewToFront:userResizableView.centerFrame];
+    [userResizableView bringSubviewToFront:userResizableView.infoBtn];
     [self productSliderCalled:nil];
 }
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
     lastEditedView = userResizableView;
 }
-
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([currentlyEditingView hitTest:[touch locationInView:currentlyEditingView] withEvent:nil]) {
         return NO;
     }
     return YES;
 }
-
 - (void)hideEditingHandles {
     // We only want the gesture recognizer to end the editing session on the last
     // edited view. We wouldn't want to dismiss an editing session in progress.
@@ -178,44 +190,6 @@
                          } completion:nil];
         isShown = NO;
     }
-}
-
-
-/*Button View button's Actions*/
-- (void)savedTemplateButtonAction:(id)sender {
-    UIButton*button = (UIButton*)sender;
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    templateController = [sb instantiateViewControllerWithIdentifier:@"TemplatePopOverViewController"];
-    templateController.parentClass = self;
-    templateController.preferredContentSize = CGSizeMake(600, 500);
-    
-    templateController.modalPresentationStyle = UIModalPresentationPopover;
-    UIPopoverPresentationController *popPC = templateController.popoverPresentationController;
-    templateController.popoverPresentationController.sourceRect = button.bounds;
-    templateController.popoverPresentationController.sourceView = button;
-    popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    popPC.delegate = self;
-    [self presentViewController:templateController animated:YES completion:nil];
-}
-- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
-    return UIModalPresentationPopover;
-}
-- (UIViewController *)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style {
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller.presentedViewController];
-    return navController;
-}
--(void)setSavedTemplateNumber:(int)number{
-    
-    if (drawingImageView) {
-        [drawingImageView removeFromSuperview];
-    }
-    drawingImageView = [[UIImageView alloc] init];
-    
-    [templateController dismissViewControllerAnimated:YES completion:^{
-        drawingImageView.frame = CGRectMake(0, 0, basementDesignView.frame.size.width, basementDesignView.frame.size.height);
-        [drawingImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"temp%d",number]]];
-        [basementDesignView addSubview:drawingImageView];
-    }];
 }
 #pragma mark - Navigation Tools Actions Methods
 
@@ -640,6 +614,18 @@
         [self setCustomTemplateName];
     });
 }
+-(void)saveTemplateName:(NSString*)templateName{
+    _templateNameString = templateName;
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",_templateNameString]];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
+    [popupController dismissPopupControllerAnimated:YES];
+
+}
 -(void)savedTemplateViewForScreenShot:(NSString*)templateName{
 
     CGRect rect = [basementDesignView bounds];
@@ -652,7 +638,6 @@
     [UIImageJPEGRepresentation(capturedImage, 0.95) writeToFile:imagePath atomically:YES];
     [popupController dismissPopupControllerAnimated:YES];
 }
-
 - (void)setCustomTemplateName{
     [self showPopupWithStyle:CNPPopupStyleCentered];
 }
@@ -662,6 +647,7 @@
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = popupStyle;
     popupController.delegate = self;
+    popupController.theme.shouldDismissOnBackgroundTouch = NO;
     [popupController presentPopupControllerAnimated:YES];
 }
 - (CNPPopupTheme *)defaultTheme {
@@ -680,12 +666,44 @@
     defaultTheme.animationDuration = 0.65f;
     return defaultTheme;
 }
-
+-(void)setSavedTemplateNumber:(int)number{
+    
+    if (drawingImageView) {
+        [drawingImageView removeFromSuperview];
+    }
+    drawingImageView = [[UIImageView alloc] init];
+    
+    [templateController dismissViewControllerAnimated:YES completion:^{
+        drawingImageView.frame = CGRectMake(0, 0, basementDesignView.frame.size.width, basementDesignView.frame.size.height);
+        [drawingImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"temp%d",number]]];
+        [basementDesignView addSubview:drawingImageView];
+    }];
+}
+- (void)savedTemplateButtonAction:(id)sender {
+    UIButton*button = (UIButton*)sender;
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    templateController = [sb instantiateViewControllerWithIdentifier:@"TemplatePopOverViewController"];
+    templateController.parentClass = self;
+    templateController.preferredContentSize = CGSizeMake(600, 500);
+    
+    templateController.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *popPC = templateController.popoverPresentationController;
+    templateController.popoverPresentationController.sourceRect = button.bounds;
+    templateController.popoverPresentationController.sourceView = button;
+    popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popPC.delegate = self;
+    [self presentViewController:templateController animated:YES completion:nil];
+}
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
+    return UIModalPresentationPopover;
+}
+- (UIViewController *)presentationController:(UIPresentationController *)controller viewControllerForAdaptivePresentationStyle:(UIModalPresentationStyle)style {
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller.presentedViewController];
+    return navController;
+}
 #pragma mark -
 #pragma mark Color Picker Methods -
-
-- (void)showColorPickerButtonTapped:(id)sender
-{
+- (void)showColorPickerButtonTapped:(id)sender{
     // Setup the color picker - this only has to be done once, but can be called again and again if the values need to change while the app runs
     //    DRColorPickerThumbnailSizeInPointsPhone = 44.0f; // default is 42
     //    DRColorPickerThumbnailSizeInPointsPad = 44.0f; // default is 54
@@ -798,9 +816,7 @@
     // finally, present the color picker
     [self presentViewController:vc animated:YES completion:nil];
 }
-
-- (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info
-{
+- (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info{
     // get the image
     UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
     if(!img) img = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -811,13 +827,10 @@
     // dismiss the image picker
     [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
 }
-
-- (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker
-{
+- (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker{
     // image picker cancel, just dismiss it
     [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
 }
-
 #pragma mark -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

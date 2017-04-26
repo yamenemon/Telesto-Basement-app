@@ -18,6 +18,8 @@
 		3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */; };
 		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
+		700D52501EB0B0A500B9732C /* CustomVideoPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700D524F1EB0B0A500B9732C /* CustomVideoPopUpView.xib */; };
+		700D52531EB0B0C700B9732C /* CustomVideoPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 700D52521EB0B0C700B9732C /* CustomVideoPopUpView.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
 		7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */; };
@@ -28,8 +30,6 @@
 		702BD7F21E7FFD6F008F786C /* CustomTemplateNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */; };
 		702BD7F51E7FFE0F008F786C /* CustomTemplateNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
-		704B68981E13CB8D00E6537D /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B68951E13CB8D00E6537D /* WYPopoverController.m */; };
-		704B68991E13CB8D00E6537D /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B68971E13CB8D00E6537D /* WYStoryboardPopoverSegue.m */; };
 		704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */; };
 		704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */ = {isa = PBXBuildFile; fileRef = 704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */; };
 		705B78231E13C0B700161991 /* Temp8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705B781B1E13C0B700161991 /* Temp8@2x.png */; };
@@ -135,6 +135,9 @@
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		70015E9C1DF69BEF00DF542E /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		700D524F1EB0B0A500B9732C /* CustomVideoPopUpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomVideoPopUpView.xib; sourceTree = "<group>"; };
+		700D52511EB0B0C700B9732C /* CustomVideoPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomVideoPopUpView.h; sourceTree = "<group>"; };
+		700D52521EB0B0C700B9732C /* CustomVideoPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomVideoPopUpView.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		7027C9B71E1CEEDA0062EB77 /* FZAccordionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZAccordionTableView.h; path = FZAccordionTableView/FZAccordionTableView.h; sourceTree = "<group>"; };
@@ -150,10 +153,6 @@
 		702BD7F31E7FFE0F008F786C /* CustomTemplateNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTemplateNameView.h; sourceTree = "<group>"; };
 		702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTemplateNameView.m; sourceTree = "<group>"; };
 		704B688F1E13C9C000E6537D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		704B68941E13CB8D00E6537D /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
-		704B68951E13CB8D00E6537D /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
-		704B68961E13CB8D00E6537D /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
-		704B68971E13CB8D00E6537D /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
 		704B689A1E13CD0900E6537D /* TemplatePopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatePopOverViewController.h; sourceTree = "<group>"; };
 		704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatePopOverViewController.m; sourceTree = "<group>"; };
 		704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "12.9_inch_iPad_Pro@2x-png.png"; sourceTree = "<group>"; };
@@ -426,10 +425,6 @@
 		704B68931E13CB7B00E6537D /* Custom PopOver */ = {
 			isa = PBXGroup;
 			children = (
-				704B68941E13CB8D00E6537D /* WYPopoverController.h */,
-				704B68951E13CB8D00E6537D /* WYPopoverController.m */,
-				704B68961E13CB8D00E6537D /* WYStoryboardPopoverSegue.h */,
-				704B68971E13CB8D00E6537D /* WYStoryboardPopoverSegue.m */,
 				704B689A1E13CD0900E6537D /* TemplatePopOverViewController.h */,
 				704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */,
 			);
@@ -477,6 +472,9 @@
 			children = (
 				705B78311E13C71D00161991 /* DesignViewController.h */,
 				705B78321E13C71D00161991 /* DesignViewController.m */,
+				700D52511EB0B0C700B9732C /* CustomVideoPopUpView.h */,
+				700D52521EB0B0C700B9732C /* CustomVideoPopUpView.m */,
+				700D524F1EB0B0A500B9732C /* CustomVideoPopUpView.xib */,
 				70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */,
 				70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */,
 				70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */,
@@ -652,6 +650,7 @@
 				705B78231E13C0B700161991 /* Temp8@2x.png in Resources */,
 				70D6E8561E436495007E3F2F /* 1@2x.png in Resources */,
 				70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */,
+				700D52501EB0B0A500B9732C /* CustomVideoPopUpView.xib in Resources */,
 				70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */,
 				705F64E41DF97B7000082D55 /* RobotoCondensed-Light.ttf in Resources */,
 				705B78241E13C0B700161991 /* Temp7@2x.png in Resources */,
@@ -760,7 +759,6 @@
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */,
 				705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */,
-				704B68981E13CB8D00E6537D /* WYPopoverController.m in Sources */,
 				3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */,
 				3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */,
 				70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */,
@@ -772,7 +770,6 @@
 				70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */,
 				70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */,
 				709F4BD71E76B35200C8B8DA /* CustomProductView.m in Sources */,
-				704B68991E13CB8D00E6537D /* WYStoryboardPopoverSegue.m in Sources */,
 				709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */,
 				705B783F1E13C71D00161991 /* DesignViewController.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
@@ -789,6 +786,7 @@
 				70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */,
 				709B44351E6D6942008058F3 /* loginView.m in Sources */,
 				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
+				700D52531EB0B0C700B9732C /* CustomVideoPopUpView.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,

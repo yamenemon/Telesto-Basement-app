@@ -16,6 +16,7 @@
 #import "CustomProductView.h"
 #import "CNPPopupController.h"
 #import "CustomTemplateNameView.h"
+#import "CustomVideoPopUpView.h"
 
 @class  TemplatePopOverViewController;
 
@@ -32,12 +33,13 @@
     LeftNavDrawingToolsView *leftNavBtnBar;
     RightNavDrwaingToolsView *rightNavBtnBar;
     CNPPopupController *popupController;
+    CustomVideoPopUpView *customVideoPopUpView;
 }
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *basementDesignView;
 @property (strong, nonatomic) NSMutableArray *savedDesignArray;
 @property (strong, nonatomic) CustomTemplateNameView *customTemplateNameView;
-
+@property (strong, nonatomic) NSString *templateNameString;
 - (void)setSavedTemplateNumber:(int)number;
 - (void)wallPopOverBtnAction:(id)sender;
 - (void)backButtonAction;
@@ -51,4 +53,6 @@
 - (void)windowSliderButtonAction:(id)sender;
 - (void)saveButtonAction:(id)sender;
 -(void)savedTemplateViewForScreenShot:(NSString*)templateName;
+- (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle;
+-(void)saveTemplateName:(NSString*)templateName;
 @end

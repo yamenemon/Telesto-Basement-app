@@ -7,11 +7,11 @@
 //
 
 #import "SPUserResizableView.h"
-
+@class DesignViewController;
 @interface CustomProductView : SPUserResizableView
 {
 //    UIButton *cameraBtn;
 }
-@property (nonatomic,strong) UIButton *cameraBtn;
-@property (nonatomic,strong) UIView *centerFrame;
+@property (nonatomic,strong) UIButton *infoBtn;
+@property (nonatomic,strong) DesignViewController *baseVC;
 @end

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomVideoPopUpView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6n-Vu-J2S" userLabel="BaseView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vLR-uc-XnD">
+                            <rect key="frame" x="8" y="428" width="359" height="231"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="231" id="yd9-bf-cLl"/>
+                            </constraints>
+                        </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uzj-kO-1m9" userLabel="PlayerView">
+                            <rect key="frame" x="8" y="8" width="359" height="412"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZCr-vR-5fp">
+                                    <rect key="frame" x="8" y="8" width="343" height="396"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="ZCr-vR-5fp" firstAttribute="leading" secondItem="Uzj-kO-1m9" secondAttribute="leading" constant="8" id="0X0-hy-X4x"/>
+                                <constraint firstItem="ZCr-vR-5fp" firstAttribute="top" secondItem="Uzj-kO-1m9" secondAttribute="top" constant="8" id="TMD-rv-a0E"/>
+                                <constraint firstAttribute="bottom" secondItem="ZCr-vR-5fp" secondAttribute="bottom" constant="8" id="bdK-ib-itt"/>
+                                <constraint firstAttribute="trailing" secondItem="ZCr-vR-5fp" secondAttribute="trailing" constant="8" id="jsE-wK-3Df"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="vLR-uc-XnD" firstAttribute="leading" secondItem="N6n-Vu-J2S" secondAttribute="leading" constant="8" id="3xX-mp-o8h"/>
+                        <constraint firstItem="vLR-uc-XnD" firstAttribute="top" secondItem="Uzj-kO-1m9" secondAttribute="bottom" constant="8" id="9Wp-I1-GFa"/>
+                        <constraint firstItem="Uzj-kO-1m9" firstAttribute="top" secondItem="N6n-Vu-J2S" secondAttribute="top" constant="8" id="AaO-6A-wge"/>
+                        <constraint firstAttribute="bottom" secondItem="vLR-uc-XnD" secondAttribute="bottom" constant="8" id="BNo-2t-VA5"/>
+                        <constraint firstAttribute="trailing" secondItem="vLR-uc-XnD" secondAttribute="trailing" constant="8" id="YDg-gp-V9c"/>
+                        <constraint firstAttribute="trailing" secondItem="Uzj-kO-1m9" secondAttribute="trailing" constant="8" id="bWv-ES-mQb"/>
+                        <constraint firstItem="Uzj-kO-1m9" firstAttribute="leading" secondItem="N6n-Vu-J2S" secondAttribute="leading" constant="8" id="iOe-KM-PgY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="N6n-Vu-J2S" secondAttribute="trailing" id="VYU-Zy-GZX"/>
+                <constraint firstAttribute="bottom" secondItem="N6n-Vu-J2S" secondAttribute="bottom" id="iar-dh-WqQ"/>
+                <constraint firstItem="N6n-Vu-J2S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mdP-GR-2z5"/>
+                <constraint firstItem="N6n-Vu-J2S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qV9-Wn-E93"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+</document>
