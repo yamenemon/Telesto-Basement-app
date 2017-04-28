@@ -35,11 +35,15 @@
     CNPPopupController *popupController;
     CustomVideoPopUpView *customVideoPopUpView;
 }
+
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *basementDesignView;
 @property (strong, nonatomic) NSMutableArray *savedDesignArray;
 @property (strong, nonatomic) CustomTemplateNameView *customTemplateNameView;
 @property (strong, nonatomic) NSString *templateNameString;
+@property (strong, nonatomic) NSMutableArray *productArray;
+@property (strong, nonatomic) NSMutableArray *infoBtnArray;
+
 - (void)setSavedTemplateNumber:(int)number;
 - (void)wallPopOverBtnAction:(id)sender;
 - (void)backButtonAction;
@@ -53,6 +57,6 @@
 - (void)windowSliderButtonAction:(id)sender;
 - (void)saveButtonAction:(id)sender;
 -(void)savedTemplateViewForScreenShot:(NSString*)templateName;
-- (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle;
+- (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender;
 -(void)saveTemplateName:(NSString*)templateName;
 @end

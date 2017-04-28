@@ -46,6 +46,6 @@
     return self;
 }
 -(void)infoBtnAction:(UIButton*)sender{
-    [baseVC showVideoPopupWithStyle:CNPPopupStyleCentered];
+    [baseVC showVideoPopupWithStyle:CNPPopupStyleCentered withSender:sender];
 }
 @end

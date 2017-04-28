@@ -22,6 +22,8 @@
 @synthesize basementDesignView;
 @synthesize savedDesignArray;
 @synthesize customTemplateNameView;
+@synthesize productArray;
+@synthesize infoBtnArray;
 
 #pragma mark - ViewControllers Super Methods
 
@@ -39,7 +41,7 @@
         [self.view setNeedsDisplay];
     });
     
-    
+    productArray = [[NSMutableArray alloc] init];
     self.color = [[DRColorPickerColor alloc] initWithColor:UIColor.blueColor];
     
 }
@@ -86,13 +88,52 @@
 }
 #pragma mark -
 #pragma mark - Popup Methods
-- (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle {
+- (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender{
+    
+    NSLog(@"sender tag: %ld", (long)sender.tag);
+    for (int i = 1; i<productArray.count; i++) {
+        UIView *view = [productArray objectAtIndex:i];
+        BOOL isCustomProductClass = [view isKindOfClass:[CustomProductView class]];
+        if (isCustomProductClass == YES) {
+            CustomProductView*view = [productArray objectAtIndex:i];
+//            NSLog(@"Button tag: %ld",(long)view.infoBtn.tag);
+            if (sender.tag == view.infoBtn.tag) {
+                NSLog(@"Same tag");
+            }
+        }
+    }
+   
     
     popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customVideoPopUpView]];
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = popupStyle;
     popupController.delegate = self;
     [popupController presentPopupControllerAnimated:YES];
+}
+- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
+    
+    popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customTemplateNameView]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = popupStyle;
+    popupController.delegate = self;
+    popupController.theme.shouldDismissOnBackgroundTouch = NO;
+    [popupController presentPopupControllerAnimated:YES];
+}
+- (CNPPopupTheme *)defaultTheme {
+    CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
+    defaultTheme.backgroundColor = [UIColor whiteColor];
+    defaultTheme.cornerRadius = 5.0f;
+    defaultTheme.popupContentInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    defaultTheme.popupStyle = CNPPopupStyleCentered;
+    defaultTheme.presentationStyle = CNPPopupPresentationStyleFadeIn;
+    defaultTheme.dismissesOppositeDirection = NO;
+    defaultTheme.maskType = CNPPopupMaskTypeDimmed;
+    defaultTheme.shouldDismissOnBackgroundTouch = YES;
+    defaultTheme.movesAboveKeyboard = YES;
+    defaultTheme.contentVerticalPadding = 16.0f;
+    defaultTheme.maxPopupWidth = self.view.frame.size.width/2;
+    defaultTheme.animationDuration = 0.65f;
+    return defaultTheme;
 }
 #pragma mark -
 
@@ -139,7 +180,8 @@
     // (1) Create a user resizable view with a simple red background content view.
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
     CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
-    userResizableView.infoBtn.tag = arc4random()%4;
+    userResizableView.infoBtn.tag = productArray.count;
+    NSLog(@"sender tag: %ld",userResizableView.infoBtn.tag);
     UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",(long)productBtn.tag]]];
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
@@ -151,6 +193,10 @@
     [basementDesignView addSubview:userResizableView];
     [userResizableView bringSubviewToFront:userResizableView.infoBtn];
     [self productSliderCalled:nil];
+    
+    [productArray addObject:lastEditedView];
+    NSLog(@"Array after Adding: %@",productArray);
+
 }
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
     lastEditedView = userResizableView;
@@ -308,6 +354,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [horizentalAction setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -328,6 +376,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [verticalAction setValue:[[UIImage imageNamed:@"Vertical_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -359,6 +409,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [upStair setValue:[[UIImage imageNamed:@"stairUp"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -378,6 +430,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [leftStair setValue:[[UIImage imageNamed:@"stairLeft"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -396,6 +450,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [rightStair setValue:[[UIImage imageNamed:@"stairRight"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -414,6 +470,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [downStair setValue:[[UIImage imageNamed:@"stairBottom"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -447,6 +505,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [flipTop setValue:[[UIImage imageNamed:@"flipTop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -465,6 +525,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [flipLeft setValue:[[UIImage imageNamed:@"flipLeft"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -482,6 +544,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [flipRight setValue:[[UIImage imageNamed:@"flipRight"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -499,6 +563,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [flipBottom setValue:[[UIImage imageNamed:@"flipBottom"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -531,6 +597,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [HorizontalWindow setValue:[[UIImage imageNamed:@"sliderWindowHorizontal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -549,6 +617,8 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
+        [productArray addObject:lastEditedView];
+
         
     }];
     [verticalWindow setValue:[[UIImage imageNamed:@"sliderWindowVertical"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -608,6 +678,9 @@
 }
 - (void)removeBtnClicked{
     [lastEditedView removeFromSuperview];
+    NSInteger removeObjectIndex =[productArray indexOfObject:lastEditedView];
+    [productArray removeObjectAtIndex:removeObjectIndex];
+    NSLog(@"\nNew Array after removing: %@",productArray);
 }
 -(void)saveDesignView{
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -620,7 +693,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",_templateNameString]];
-    
+    NSLog(@"Template path: %@",dataPath);
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
     [popupController dismissPopupControllerAnimated:YES];
@@ -641,31 +714,7 @@
 - (void)setCustomTemplateName{
     [self showPopupWithStyle:CNPPopupStyleCentered];
 }
-- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
-    
-    popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customTemplateNameView]];
-    popupController.theme = [self defaultTheme];
-    popupController.theme.popupStyle = popupStyle;
-    popupController.delegate = self;
-    popupController.theme.shouldDismissOnBackgroundTouch = NO;
-    [popupController presentPopupControllerAnimated:YES];
-}
-- (CNPPopupTheme *)defaultTheme {
-    CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
-    defaultTheme.backgroundColor = [UIColor whiteColor];
-    defaultTheme.cornerRadius = 5.0f;
-    defaultTheme.popupContentInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
-    defaultTheme.popupStyle = CNPPopupStyleCentered;
-    defaultTheme.presentationStyle = CNPPopupPresentationStyleFadeIn;
-    defaultTheme.dismissesOppositeDirection = NO;
-    defaultTheme.maskType = CNPPopupMaskTypeDimmed;
-    defaultTheme.shouldDismissOnBackgroundTouch = YES;
-    defaultTheme.movesAboveKeyboard = YES;
-    defaultTheme.contentVerticalPadding = 16.0f;
-    defaultTheme.maxPopupWidth = self.view.frame.size.width/2;
-    defaultTheme.animationDuration = 0.65f;
-    return defaultTheme;
-}
+
 -(void)setSavedTemplateNumber:(int)number{
     
     if (drawingImageView) {
