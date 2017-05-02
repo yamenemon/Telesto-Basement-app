@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomVideoPopUpView : UIView
+@interface CustomVideoPopUpView : UIView <UICollectionViewDelegate,UICollectionViewDataSource>{
+    NSArray *_galleryItems;
+}
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

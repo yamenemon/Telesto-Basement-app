@@ -69,7 +69,7 @@
     customTemplateNameView = [ nibViews objectAtIndex:0];
     customTemplateNameView.designViewController = self;
     
-    customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
+    
 
     [self setCustomTemplateName];
 
@@ -103,7 +103,7 @@
         }
     }
    
-    
+    customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
     popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customVideoPopUpView]];
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = popupStyle;
@@ -345,11 +345,12 @@
     UIAlertAction *horizentalAction =  [UIAlertAction actionWithTitle: @"Horizental Line" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         CGRect gripFrame = CGRectMake(30, 0, 100, 30);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
         [contentView setBackgroundColor:[UIColor lightGrayColor]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -367,11 +368,12 @@
     UIAlertAction *verticalAction =  [UIAlertAction actionWithTitle: @"Vertical Line" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         CGRect gripFrame = CGRectMake(0, 0, 30, 100);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
         [contentView setBackgroundColor:[UIColor lightGrayColor]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -401,10 +403,11 @@
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *upStair =  [UIAlertAction actionWithTitle: @"Up Stair" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 70, 100);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairUp"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -422,10 +425,11 @@
     UIAlertAction *leftStair =  [UIAlertAction actionWithTitle: @"Left Stair" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 100, 70);
 
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairLeft"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -442,10 +446,11 @@
     UIAlertAction *rightStair =  [UIAlertAction actionWithTitle: @"Right Stair" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 100, 70);
 
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairRight"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -462,10 +467,11 @@
     UIAlertAction *downStair =  [UIAlertAction actionWithTitle: @"Down Stair" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 70, 100);
 
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairBottom"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -497,10 +503,11 @@
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *flipTop =  [UIAlertAction actionWithTitle: @"Top Side Door" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 50, 50);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipTop"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -517,10 +524,11 @@
     
     UIAlertAction *flipLeft =  [UIAlertAction actionWithTitle: @"Left Side Door" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 50, 50);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipLeft"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -536,10 +544,11 @@
     
     UIAlertAction *flipRight =  [UIAlertAction actionWithTitle: @"Right Side Door" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 50, 50);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipRight"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -555,10 +564,11 @@
     
     UIAlertAction *flipBottom =  [UIAlertAction actionWithTitle: @"Bottom Side Door" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 50, 50);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipBottom"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -589,10 +599,11 @@
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *HorizontalWindow =  [UIAlertAction actionWithTitle: @"Horizontal Window" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 100, 30);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"sliderWindowHorizontal_big"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
@@ -609,10 +620,11 @@
     
     UIAlertAction *verticalWindow =  [UIAlertAction actionWithTitle: @"Vertical Window" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         CGRect gripFrame = CGRectMake(30, 0, 30, 100);
-        SPUserResizableView *userResizableView = [[SPUserResizableView alloc] initWithFrame:gripFrame];
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"sliderWindowVertical_Big"]]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
+        userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
