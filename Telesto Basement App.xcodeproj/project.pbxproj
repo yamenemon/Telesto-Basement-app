@@ -29,6 +29,7 @@
 		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
 		702BD7F21E7FFD6F008F786C /* CustomTemplateNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */; };
 		702BD7F51E7FFE0F008F786C /* CustomTemplateNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */; };
+		703C35871EBA16DE00448B1A /* GalleryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C35861EBA16DE00448B1A /* GalleryItem.m */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
 		704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */; };
 		704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */ = {isa = PBXBuildFile; fileRef = 704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */; };
@@ -110,9 +111,6 @@
 		70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DD1E067DB400A6D245 /* settings___@2x.png */; };
 		70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DE1E067DB400A6D245 /* settings__@2x.png */; };
 		70EC80EA1E067DB400A6D245 /* traning_videos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DF1E067DB400A6D245 /* traning_videos@2x.png */; };
-		70F0D9C31EB8BB240043B80C /* GalleryItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F0D9C01EB8BB240043B80C /* GalleryItemCollectionViewCell.m */; };
-		70F0D9C41EB8BB240043B80C /* GalleryItemCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F0D9C21EB8BB240043B80C /* GalleryItemCommentView.m */; };
-		70F0D9C71EB8BBCB0043B80C /* GalleryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F0D9C61EB8BBCB0043B80C /* GalleryItem.m */; };
 		70F0D9C91EB8BDC90043B80C /* items.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70F0D9C81EB8BDC90043B80C /* items.plist */; };
 		70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FDF6181E094C1E00CF32EF /* customerList@2x.png */; };
 /* End PBXBuildFile section */
@@ -155,6 +153,8 @@
 		702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTemplateNameView.xib; sourceTree = "<group>"; };
 		702BD7F31E7FFE0F008F786C /* CustomTemplateNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTemplateNameView.h; sourceTree = "<group>"; };
 		702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTemplateNameView.m; sourceTree = "<group>"; };
+		703C35851EBA16DE00448B1A /* GalleryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryItem.h; sourceTree = "<group>"; };
+		703C35861EBA16DE00448B1A /* GalleryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryItem.m; sourceTree = "<group>"; };
 		704B688F1E13C9C000E6537D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		704B689A1E13CD0900E6537D /* TemplatePopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatePopOverViewController.h; sourceTree = "<group>"; };
 		704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatePopOverViewController.m; sourceTree = "<group>"; };
@@ -261,12 +261,6 @@
 		70EC80DD1E067DB400A6D245 /* settings___@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings___@2x.png"; sourceTree = "<group>"; };
 		70EC80DE1E067DB400A6D245 /* settings__@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings__@2x.png"; sourceTree = "<group>"; };
 		70EC80DF1E067DB400A6D245 /* traning_videos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "traning_videos@2x.png"; sourceTree = "<group>"; };
-		70F0D9BF1EB8BB240043B80C /* GalleryItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryItemCollectionViewCell.h; sourceTree = "<group>"; };
-		70F0D9C01EB8BB240043B80C /* GalleryItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryItemCollectionViewCell.m; sourceTree = "<group>"; };
-		70F0D9C11EB8BB240043B80C /* GalleryItemCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryItemCommentView.h; sourceTree = "<group>"; };
-		70F0D9C21EB8BB240043B80C /* GalleryItemCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryItemCommentView.m; sourceTree = "<group>"; };
-		70F0D9C51EB8BBCB0043B80C /* GalleryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryItem.h; sourceTree = "<group>"; };
-		70F0D9C61EB8BBCB0043B80C /* GalleryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryItem.m; sourceTree = "<group>"; };
 		70F0D9C81EB8BDC90043B80C /* items.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = items.plist; sourceTree = "<group>"; };
 		70FDF6181E094C1E00CF32EF /* customerList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customerList@2x.png"; sourceTree = "<group>"; };
 		C60A664EF7D6CA664CB25D5C /* Pods-Telesto Basement App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telesto Basement App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App.release.xcconfig"; sourceTree = "<group>"; };
@@ -483,13 +477,9 @@
 				700D52511EB0B0C700B9732C /* CustomVideoPopUpView.h */,
 				700D52521EB0B0C700B9732C /* CustomVideoPopUpView.m */,
 				700D524F1EB0B0A500B9732C /* CustomVideoPopUpView.xib */,
+				703C35851EBA16DE00448B1A /* GalleryItem.h */,
+				703C35861EBA16DE00448B1A /* GalleryItem.m */,
 				70F0D9C81EB8BDC90043B80C /* items.plist */,
-				70F0D9BF1EB8BB240043B80C /* GalleryItemCollectionViewCell.h */,
-				70F0D9C01EB8BB240043B80C /* GalleryItemCollectionViewCell.m */,
-				70F0D9C11EB8BB240043B80C /* GalleryItemCommentView.h */,
-				70F0D9C21EB8BB240043B80C /* GalleryItemCommentView.m */,
-				70F0D9C51EB8BBCB0043B80C /* GalleryItem.h */,
-				70F0D9C61EB8BBCB0043B80C /* GalleryItem.m */,
 				70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */,
 				70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */,
 				70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */,
@@ -769,7 +759,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70F0D9C71EB8BBCB0043B80C /* GalleryItem.m in Sources */,
 				7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */,
 				702BD7F51E7FFE0F008F786C /* CustomTemplateNameView.m in Sources */,
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
@@ -778,8 +767,6 @@
 				3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */,
 				3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */,
 				70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */,
-				70F0D9C41EB8BB240043B80C /* GalleryItemCommentView.m in Sources */,
-				70F0D9C31EB8BB240043B80C /* GalleryItemCollectionViewCell.m in Sources */,
 				705B783E1E13C71D00161991 /* CustomerListViewController.m in Sources */,
 				705B78441E13C71D00161991 /* TrainingVideoViewController.m in Sources */,
 				3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */,
@@ -806,6 +793,7 @@
 				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
 				700D52531EB0B0C700B9732C /* CustomVideoPopUpView.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
+				703C35871EBA16DE00448B1A /* GalleryItem.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,

@@ -20,7 +20,7 @@
 
 @class  TemplatePopOverViewController;
 
-@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate,CNPPopupControllerDelegate> {
+@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate,CNPPopupControllerDelegate,UIImagePickerControllerDelegate> {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
     UILabel* priceLabel;
@@ -59,4 +59,5 @@
 -(void)savedTemplateViewForScreenShot:(NSString*)templateName;
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender;
 -(void)saveTemplateName:(NSString*)templateName;
+-(void)openCameraWindow;
 @end

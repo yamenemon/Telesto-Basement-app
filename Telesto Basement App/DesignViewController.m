@@ -88,6 +88,38 @@
 }
 #pragma mark -
 #pragma mark - Popup Methods
+-(void)openCameraWindow{
+
+    [popupController dismissPopupControllerAnimated:YES];
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+
+}
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+//    
+//    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+//    [self saveImage:chosenImage];
+//    
+//    [picker dismissViewControllerAnimated:YES completion:NULL];
+//    
+//}
+- (void)saveImage:(UIImage*)selectedImage {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:_templateNameString];
+    UIImage *image;// = imageView.image; // imageView is my image from camera
+    NSData *imageData = UIImagePNGRepresentation(image);
+    [imageData writeToFile:savedImagePath atomically:NO];
+}
+//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+//    
+//    [picker dismissViewControllerAnimated:YES completion:NULL];
+//    
+//}
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender{
     
     NSLog(@"sender tag: %ld", (long)sender.tag);
@@ -96,7 +128,6 @@
         BOOL isCustomProductClass = [view isKindOfClass:[CustomProductView class]];
         if (isCustomProductClass == YES) {
             CustomProductView*view = [productArray objectAtIndex:i];
-//            NSLog(@"Button tag: %ld",(long)view.infoBtn.tag);
             if (sender.tag == view.infoBtn.tag) {
                 NSLog(@"Same tag");
             }
@@ -104,6 +135,7 @@
     }
    
     customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
+    customVideoPopUpView.baseView = self;
     popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customVideoPopUpView]];
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = popupStyle;

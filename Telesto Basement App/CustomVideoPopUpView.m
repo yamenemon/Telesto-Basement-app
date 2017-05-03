@@ -7,11 +7,11 @@
 //
 
 #import "CustomVideoPopUpView.h"
+#import "DesignViewController.h"
 #import "GalleryItem.h"
-#import "GalleryItemCollectionViewCell.h"
-#import "GalleryItemCommentView.h"
 @implementation CustomVideoPopUpView
-
+@synthesize snapContainer;
+@synthesize baseView;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -21,15 +21,21 @@
 */
 #pragma mark -
 #pragma mark - View Lifecycle
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    [self initGalleryItems];
+    
 
-- (id)initWithFrame:(CGRect)aRect
-{
-    if ((self = [super initWithFrame:aRect])) {
-        [self initGalleryItems];
-        
-        [_collectionView reloadData];
-    }
-    return self;
+    UICollectionViewFlowLayout *flo = [[UICollectionViewFlowLayout alloc] init];
+    
+    snapShotCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width-16, snapContainer.frame.size.height) collectionViewLayout:flo];
+    snapShotCollectionView.delegate = self;
+    snapShotCollectionView.dataSource = self;
+    snapShotCollectionView.backgroundColor = [UIColor clearColor];
+    [snapShotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewcell"];
+    [snapContainer addSubview:snapShotCollectionView];
+    
+    [snapShotCollectionView reloadData];
 }
 - (void)initGalleryItems
 {
@@ -51,27 +57,34 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [_galleryItems count];
+    return [_galleryItems count]+1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GalleryItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GalleryItemCollectionViewCell" forIndexPath:indexPath];
-    [cell setGalleryItem:_galleryItems[indexPath.row]];
+
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewcell" forIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor greenColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+    imageView.contentMode = UIViewContentModeScaleToFill;
+    [cell addSubview:imageView];
+    if (indexPath.row==0) {
+        imageView.image = [UIImage imageNamed:@"cameraThumb"];
+    }
+    else{
+        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:imageView];
+    }
     return cell;
 }
-
+- (UIImageView*)setGalleryItem:(GalleryItem *)item withImageView:(UIImageView*)_itemImageView
+{
+    
+    _itemImageView.image = [UIImage imageNamed:item.itemImage];
+    return _itemImageView;
+}
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    GalleryItemCommentView *commentView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"GalleryItemCommentView" forIndexPath:indexPath];
-    
-    commentView.commentLabel.text = [NSString stringWithFormat:@"Supplementary view of kind %@", kind];
-    return commentView;
 }
 
 #pragma mark -
@@ -79,17 +92,13 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle: @"didSelectItemAtIndexPath:"
-                                                                        message: [NSString stringWithFormat: @"Indexpath = %@", indexPath]
-                                                                 preferredStyle: UIAlertControllerStyleAlert];
+    if (indexPath.row==0) {
+        [baseView openCameraWindow];
+    }
+    else{
+        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:_bigScreenImageView];
+    }
     
-    UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Dismiss"
-                                                          style: UIAlertActionStyleDestructive
-                                                        handler: nil];
-    
-    [controller addAction: alertAction];
-    
-//    [self presentViewController: controller animated: YES completion: nil];
 }
 
 #pragma mark -
@@ -97,13 +106,12 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat picDimension = self.frame.size.width / 4.0f;
+    CGFloat picDimension = self.frame.size.width / 6.0f;
     return CGSizeMake(picDimension, picDimension);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    CGFloat leftRightInset = self.frame.size.width / 14.0f;
-    return UIEdgeInsetsMake(0, leftRightInset, 0, leftRightInset);
+    return UIEdgeInsetsMake(2, 2, 2, 2);
 }
 @end

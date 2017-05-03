@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomVideoPopUpView : UIView <UICollectionViewDelegate,UICollectionViewDataSource>{
+@class  DesignViewController;
+
+@interface CustomVideoPopUpView : UIView <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIImagePickerControllerDelegate>{
     NSArray *_galleryItems;
+    UICollectionView *snapShotCollectionView;
 }
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIView *snapContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *bigScreenImageView;
+@property (strong, nonatomic) DesignViewController *baseView;
 
 @end
