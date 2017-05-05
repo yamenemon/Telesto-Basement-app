@@ -16,6 +16,6 @@
 }
 @property (weak, nonatomic) IBOutlet UIView *snapContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *bigScreenImageView;
-@property (strong, nonatomic) DesignViewController *baseView;
+@property (strong,nonatomic) DesignViewController *baseView;
 
 @end

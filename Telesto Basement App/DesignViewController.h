@@ -17,6 +17,7 @@
 #import "CNPPopupController.h"
 #import "CustomTemplateNameView.h"
 #import "CustomVideoPopUpView.h"
+#import "Product.h"
 
 @class  TemplatePopOverViewController;
 
@@ -34,6 +35,8 @@
     RightNavDrwaingToolsView *rightNavBtnBar;
     CNPPopupController *popupController;
     CustomVideoPopUpView *customVideoPopUpView;
+    int lastClickedProductInfoBtn;
+    BOOL isFromProduct;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
@@ -43,6 +46,8 @@
 @property (strong, nonatomic) NSString *templateNameString;
 @property (strong, nonatomic) NSMutableArray *productArray;
 @property (strong, nonatomic) NSMutableArray *infoBtnArray;
+@property (strong, nonatomic) NSMutableArray *downloadedProduct;
+@property (strong, nonatomic) NSMutableArray *productInWindowArray;
 
 - (void)setSavedTemplateNumber:(int)number;
 - (void)wallPopOverBtnAction:(id)sender;

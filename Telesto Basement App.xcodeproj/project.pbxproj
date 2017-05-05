@@ -82,6 +82,7 @@
 		70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */; };
 		70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */; };
 		70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C216F41E6EC5B600464968 /* TutorialViewController.m */; };
+		70C4BDA41EBC58C20009C354 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C4BDA31EBC58C20009C354 /* Product.m */; };
 		70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54C61E7138F600F7FE67 /* iCarousel.m */; };
 		70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54CF1E7172A700F7FE67 /* CustomTableViewCell.m */; };
 		70CA54D21E7172A700F7FE67 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CA54D01E7172A700F7FE67 /* CustomTableViewCell.xib */; };
@@ -101,6 +102,7 @@
 		70D6E85C1E436495007E3F2F /* 7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8531E436495007E3F2F /* 7@2x.png */; };
 		70D6E85D1E436495007E3F2F /* 8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8541E436495007E3F2F /* 8@2x.png */; };
 		70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8551E436495007E3F2F /* 9@2x.png */; };
+		70D7C2A01EBAFCF500ECE099 /* ProductObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D7C29F1EBAFCF500ECE099 /* ProductObject.m */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
 		70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D61E067DB400A6D245 /* log_out_@2x.png */; };
 		70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D71E067DB400A6D245 /* log_out@2x.png */; };
@@ -224,6 +226,8 @@
 		70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftNavDrawingToolsView.xib; sourceTree = "<group>"; };
 		70C216F31E6EC5B600464968 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		70C216F41E6EC5B600464968 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		70C4BDA21EBC58C20009C354 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		70C4BDA31EBC58C20009C354 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		70CA54C51E7138F600F7FE67 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		70CA54C61E7138F600F7FE67 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		70CA54CE1E7172A700F7FE67 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 		70D6E8531E436495007E3F2F /* 7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7@2x.png"; sourceTree = "<group>"; };
 		70D6E8541E436495007E3F2F /* 8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8@2x.png"; sourceTree = "<group>"; };
 		70D6E8551E436495007E3F2F /* 9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9@2x.png"; sourceTree = "<group>"; };
+		70D7C29E1EBAFCF500ECE099 /* ProductObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductObject.h; sourceTree = "<group>"; };
+		70D7C29F1EBAFCF500ECE099 /* ProductObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductObject.m; sourceTree = "<group>"; };
 		70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creat_new_customer@2x.png"; sourceTree = "<group>"; };
 		70EC80D61E067DB400A6D245 /* log_out_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out_@2x.png"; sourceTree = "<group>"; };
 		70EC80D71E067DB400A6D245 /* log_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out@2x.png"; sourceTree = "<group>"; };
@@ -493,6 +499,10 @@
 				702BD7F31E7FFE0F008F786C /* CustomTemplateNameView.h */,
 				702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */,
 				702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */,
+				70D7C29E1EBAFCF500ECE099 /* ProductObject.h */,
+				70D7C29F1EBAFCF500ECE099 /* ProductObject.m */,
+				70C4BDA21EBC58C20009C354 /* Product.h */,
+				70C4BDA31EBC58C20009C354 /* Product.m */,
 			);
 			name = "Design Window";
 			sourceTree = "<group>";
@@ -785,6 +795,8 @@
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
 				704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */,
 				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
+				70D7C2A01EBAFCF500ECE099 /* ProductObject.m in Sources */,
+				70C4BDA41EBC58C20009C354 /* Product.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
 				70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */,

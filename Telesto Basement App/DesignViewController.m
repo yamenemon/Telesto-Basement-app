@@ -24,6 +24,7 @@
 @synthesize customTemplateNameView;
 @synthesize productArray;
 @synthesize infoBtnArray;
+@synthesize downloadedProduct;
 
 #pragma mark - ViewControllers Super Methods
 
@@ -69,17 +70,35 @@
     customTemplateNameView = [ nibViews objectAtIndex:0];
     customTemplateNameView.designViewController = self;
     
-    
-
     [self setCustomTemplateName];
-
 }
 -(void)viewDidAppear:(BOOL)animated{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        isShown = YES;
-        productSliderView.hidden = YES;
-        [self productSliderCalled:nil];
-        [self createProductScroller];
+    
+//    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+//        //Background Thread
+//        dispatch_async(dispatch_get_main_queue(), ^(void){
+//            //Run UI Updates
+//            isShown = YES;
+//            productSliderView.hidden = YES;
+//            [self productSliderCalled:nil];
+//            [self createProductScroller];
+//            
+//        });
+//    });
+    dispatch_queue_t _serialQueue = dispatch_queue_create("com.example.name", DISPATCH_QUEUE_SERIAL);
+
+    dispatch_sync(_serialQueue, ^{
+        [self downloadProduct];
+    });
+    dispatch_sync(_serialQueue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            //Run UI Updates
+            isShown = YES;
+            productSliderView.hidden = YES;
+            [self productSliderCalled:nil];
+            [self createProductScroller];
+            
+        });
     });
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -99,27 +118,19 @@
     [self presentViewController:picker animated:YES completion:NULL];
 
 }
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-//    
-//    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-//    [self saveImage:chosenImage];
-//    
-//    [picker dismissViewControllerAnimated:YES completion:NULL];
-//    
-//}
 - (void)saveImage:(UIImage*)selectedImage {
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:_templateNameString];
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%d",_templateNameString,lastClickedProductInfoBtn]];
+    NSLog(@"Saving folder directory: %@",savedImagePath);
     UIImage *image;// = imageView.image; // imageView is my image from camera
     NSData *imageData = UIImagePNGRepresentation(image);
     [imageData writeToFile:savedImagePath atomically:NO];
+    
+    
 }
-//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-//    
-//    [picker dismissViewControllerAnimated:YES completion:NULL];
-//    
-//}
+
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender{
     
     NSLog(@"sender tag: %ld", (long)sender.tag);
@@ -133,9 +144,9 @@
             }
         }
     }
-   
     customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
     customVideoPopUpView.baseView = self;
+    isFromProduct = YES;
     popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customVideoPopUpView]];
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = popupStyle;
@@ -171,13 +182,75 @@
 
 #pragma mark - Product Slider Methods
 
--(void)createProductScroller{
 
+-(void)downloadProduct{
+
+    /* DOWNLOAD PRODUCT HERE
+    -----------------------
+    */
+    //STORE DOWNLOADED PRODUCT
+    downloadedProduct = [[NSMutableArray alloc] init];
+    Product *product = [[Product alloc] init];
+    product.productId = 908;
+    product.productImageName = @"Pro Series Sump Pumps";
+    product.productPrice = 200.0f;
+    [downloadedProduct addObject:product];
+    
+    Product *product2 = [[Product alloc] init];
+    product2.productId = 909;
+    product2.productImageName = @"Dehumidification";
+    product2.productPrice = 500.0f;
+    [downloadedProduct addObject:product2];
+    
+    Product *product3 = [[Product alloc] init];
+    product3.productId = 910;
+    product3.productImageName = @"Grate Drain";
+    product3.productPrice = 100.0f;
+    [downloadedProduct addObject:product3];
+    
+    Product *product4 = [[Product alloc] init];
+    product4.productId = 911;
+    product4.productImageName = @"Fast Drain";
+    product4.productPrice = 20.0f;
+    [downloadedProduct addObject:product4];
+    
+    Product *product5 = [[Product alloc] init];
+    product5.productId = 912;
+    product5.productImageName = @"Grate Trench";
+    product5.productPrice = 150.0f;
+    [downloadedProduct addObject:product5];
+    
+    Product *product6 = [[Product alloc] init];
+    product6.productId = 913;
+    product6.productImageName = @"FastSump Pump";
+    product6.productPrice = 185.0f;
+    [downloadedProduct addObject:product6];
+    
+    Product *product7 = [[Product alloc] init];
+    product7.productId = 983;
+    product7.productImageName = @"High Water Sump Alarm";
+    product7.productPrice = 185.0f;
+    [downloadedProduct addObject:product7];
+    
+    Product *product8 = [[Product alloc] init];
+    product8.productId = 983;
+    product8.productImageName = @"GrateSump Plus";
+    product8.productPrice = 185.0f;
+    [downloadedProduct addObject:product8];
+    
+    Product *product9 = [[Product alloc] init];
+    product9.productId = 935;
+    product9.productImageName = @"GrateSump Plus ||";
+    product9.productPrice = 185.0f;
+    [downloadedProduct addObject:product9];
+}
+-(void)createProductScroller{
+    
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,150, productSliderView.frame.size.height)];
     
     int y = 0;
     CGRect frame;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < downloadedProduct.count; i++) {
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
@@ -188,32 +261,49 @@
         }
         
         button.frame = frame;
+        
         [button setTag:i];
-//        [button setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]]]];
         [button setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [scrollView addSubview:button];
         
-        if (i == 9) {
+        if (i == downloadedProduct.count-1) {
             y = CGRectGetMaxY(button.frame);
         }
     }
     
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width,y);
     scrollView.backgroundColor = [UIColorFromRGB(0x0A5A78) colorWithAlphaComponent:0.3]; ;
-//    productSliderView.alpha = 0.5;
     [productSliderView addSubview:scrollView];
     productSliderView.hidden = NO;
-
-
+    
+    _productInWindowArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i< downloadedProduct.count; i++) {
+        Product *product = (Product*)[downloadedProduct objectAtIndex:i];
+        [_productInWindowArray addObject:[NSNumber numberWithInt:product.productId]];
+    }
+    
 }
 -(void)productBtnClicked:(id)sender{
     UIButton *productBtn = (UIButton*)sender;
+    
+    NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:productBtn.tag]];
+    
+    NSString *newFolderId = [NSString stringWithFormat:@"%@%ld",productCurrentId,productBtn.tag];
+    [self saveUserSelectedProductInfo:newFolderId];
+    for (int i=0; i<_productInWindowArray.count; i++) {
+        if (i == productBtn.tag) {
+            [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
+        }
+    }
+    
     // (1) Create a user resizable view with a simple red background content view.
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
     CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
-    userResizableView.infoBtn.tag = productArray.count;
-    NSLog(@"sender tag: %ld",userResizableView.infoBtn.tag);
+    userResizableView.infoBtn.tag = [newFolderId intValue];
+    userResizableView.productID = [newFolderId intValue];
+    NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
+    
     UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",(long)productBtn.tag]]];
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
@@ -228,7 +318,17 @@
     
     [productArray addObject:lastEditedView];
     NSLog(@"Array after Adding: %@",productArray);
+    
+}
+-(void)saveUserSelectedProductInfo:(NSString*)folderName{
 
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@/%@",_templateNameString,folderName]];
+    NSLog(@"product folder path: %@",dataPath);
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
 }
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
     lastEditedView = userResizableView;
@@ -721,10 +821,56 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)removeBtnClicked{
-    [lastEditedView removeFromSuperview];
     NSInteger removeObjectIndex =[productArray indexOfObject:lastEditedView];
-    [productArray removeObjectAtIndex:removeObjectIndex];
+    CustomProductView *productView = (CustomProductView*)[productArray objectAtIndex:removeObjectIndex];
+    int lastSelectedProduct = productView.productID;
     NSLog(@"\nNew Array after removing: %@",productArray);
+    
+    //Remove folder from document directory
+    
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Remove!!!"
+                                  message:@"Do you want to delete?"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yes = [UIAlertAction
+                         actionWithTitle:@"Yes"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [lastEditedView removeFromSuperview];
+                             [productArray removeObjectAtIndex:removeObjectIndex];
+
+                             NSFileManager *fileManager = [NSFileManager defaultManager];
+                             
+                             NSError *error;
+                             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                             NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+                             NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@/%d",_templateNameString,lastSelectedProduct]];
+                             NSLog(@"product folder path: %@",dataPath);
+
+                             BOOL success = [fileManager removeItemAtPath:dataPath error:&error];
+                             if (success) {
+                                 NSLog(@"Successfylly Deleted");
+                             }
+                             else {
+                                 NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+                             }
+
+                         }];
+    UIAlertAction* No = [UIAlertAction
+                             actionWithTitle:@"No"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+    [alert addAction:yes];
+    [alert addAction:No];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+
 }
 -(void)saveDesignView{
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -914,11 +1060,16 @@
     UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
     if(!img) img = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    // tell the color picker to finish importing
-    [self.colorPickerVC.rootViewController finishImport:img];
-    
-    // dismiss the image picker
-    [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
+    if (isFromProduct == YES) {
+        [self saveImage:img];
+    }
+    else{
+        // tell the color picker to finish importing
+        [self.colorPickerVC.rootViewController finishImport:img];
+        
+        // dismiss the image picker
+        [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 - (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker{
     // image picker cancel, just dismiss it

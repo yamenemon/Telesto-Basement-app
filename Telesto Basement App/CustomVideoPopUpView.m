@@ -9,6 +9,7 @@
 #import "CustomVideoPopUpView.h"
 #import "DesignViewController.h"
 #import "GalleryItem.h"
+
 @implementation CustomVideoPopUpView
 @synthesize snapContainer;
 @synthesize baseView;
