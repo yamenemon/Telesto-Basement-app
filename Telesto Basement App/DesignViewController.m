@@ -122,13 +122,12 @@
 
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%d",_templateNameString,lastClickedProductInfoBtn]];
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d",_templateNameString,lastClickedProductInfoBtn]];
     NSLog(@"Saving folder directory: %@",savedImagePath);
-    UIImage *image;// = imageView.image; // imageView is my image from camera
-    NSData *imageData = UIImagePNGRepresentation(image);
+    NSData *imageData = UIImagePNGRepresentation(selectedImage);
     [imageData writeToFile:savedImagePath atomically:NO];
-    
-    
+//    NSError *error;
+//    [imageData writeToFile:savedImagePath options:NSDataWritingFileProtectionNone error:&error];
 }
 
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender{
@@ -146,6 +145,9 @@
     }
     customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
     customVideoPopUpView.baseView = self;
+    lastClickedProductInfoBtn = (int)sender.tag;
+    customVideoPopUpView.selectedVideoPopUpBtnTag = (int)sender.tag;
+    customVideoPopUpView.userCapturedImageUrl = _templateNameString;
     isFromProduct = YES;
     popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customVideoPopUpView]];
     popupController.theme = [self defaultTheme];
@@ -1062,6 +1064,8 @@
     
     if (isFromProduct == YES) {
         [self saveImage:img];
+        [picker dismissViewControllerAnimated:YES completion:nil];
+        isFromProduct = NO;
     }
     else{
         // tell the color picker to finish importing
@@ -1074,6 +1078,7 @@
 - (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker{
     // image picker cancel, just dismiss it
     [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark -
 - (void)didReceiveMemoryWarning {

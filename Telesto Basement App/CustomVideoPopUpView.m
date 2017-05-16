@@ -13,6 +13,8 @@
 @implementation CustomVideoPopUpView
 @synthesize snapContainer;
 @synthesize baseView;
+@synthesize selectedVideoPopUpBtnTag;
+@synthesize userCapturedImageUrl;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -49,6 +51,29 @@
     {
         [items addObject:[GalleryItem galleryItemWithDictionary:inputItem]];
     }
+    
+    
+    NSArray  *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir  = [documentPaths objectAtIndex:0];
+    
+    NSString *outputPath    = [documentsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d",userCapturedImageUrl,selectedVideoPopUpBtnTag]];
+    
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    
+    
+    
+    NSString *imgPath = [outputPath stringByReplacingOccurrencesOfString:@"mov" withString:@"png"];
+    
+    
+    if ([fileManager fileExistsAtPath:imgPath])
+    {
+        NSLog(@"FOUND IMG");
+        NSLog(@"%@", imgPath);
+        NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imgPath]];
+        UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
+    }
+
+    
     
     _galleryItems = items;
 }

@@ -17,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *snapContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *bigScreenImageView;
 @property (strong,nonatomic) DesignViewController *baseView;
+@property (assign,nonatomic) int selectedVideoPopUpBtnTag;
+@property (assign,nonatomic) NSString *userCapturedImageUrl;
 
 @end
