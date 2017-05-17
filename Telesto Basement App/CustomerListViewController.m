@@ -192,7 +192,10 @@
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action)
                              {
+                                 [self dismissViewControllerAnimated:YES completion:^{
                                  [Utility showBaseViewController];
+                                 }];
+                                 
                                  
                              }];
         UIAlertAction* cancel = [UIAlertAction

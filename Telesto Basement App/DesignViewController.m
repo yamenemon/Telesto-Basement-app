@@ -122,10 +122,12 @@
 
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d",_templateNameString,lastClickedProductInfoBtn]];
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d/%@.png",_templateNameString,lastClickedProductInfoBtn,selectedImage]];
     NSLog(@"Saving folder directory: %@",savedImagePath);
     NSData *imageData = UIImagePNGRepresentation(selectedImage);
-    [imageData writeToFile:savedImagePath atomically:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [imageData writeToFile:savedImagePath atomically:YES];
+    });
 //    NSError *error;
 //    [imageData writeToFile:savedImagePath options:NSDataWritingFileProtectionNone error:&error];
 }
@@ -148,6 +150,7 @@
     lastClickedProductInfoBtn = (int)sender.tag;
     customVideoPopUpView.selectedVideoPopUpBtnTag = (int)sender.tag;
     customVideoPopUpView.userCapturedImageUrl = _templateNameString;
+    [customVideoPopUpView initGalleryItems];
     isFromProduct = YES;
     popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customVideoPopUpView]];
     popupController.theme = [self defaultTheme];

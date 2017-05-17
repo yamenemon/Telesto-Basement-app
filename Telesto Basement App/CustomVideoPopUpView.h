@@ -19,5 +19,5 @@
 @property (strong,nonatomic) DesignViewController *baseView;
 @property (assign,nonatomic) int selectedVideoPopUpBtnTag;
 @property (assign,nonatomic) NSString *userCapturedImageUrl;
-
+- (void)initGalleryItems;
 @end

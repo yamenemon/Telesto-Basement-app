@@ -26,7 +26,7 @@
 #pragma mark - View Lifecycle
 -(void)awakeFromNib{
     [super awakeFromNib];
-    [self initGalleryItems];
+//    [self initGalleryItems];
     
 
     UICollectionViewFlowLayout *flo = [[UICollectionViewFlowLayout alloc] init];
@@ -42,42 +42,43 @@
 }
 - (void)initGalleryItems
 {
-    NSMutableArray *items = [NSMutableArray array];
-    
-    NSString *inputFile = [[NSBundle mainBundle] pathForResource:@"items" ofType:@"plist"];
-    NSArray *inputDataArray = [NSArray arrayWithContentsOfFile:inputFile];
-    
-    for (NSDictionary *inputItem in inputDataArray)
-    {
-        [items addObject:[GalleryItem galleryItemWithDictionary:inputItem]];
-    }
-    
-    
-    NSArray  *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDir  = [documentPaths objectAtIndex:0];
-    
-    NSString *outputPath    = [documentsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d",userCapturedImageUrl,selectedVideoPopUpBtnTag]];
-    
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
-    
-    
-    
-    NSString *imgPath = [outputPath stringByReplacingOccurrencesOfString:@"mov" withString:@"png"];
-    
-    
-    if ([fileManager fileExistsAtPath:imgPath])
-    {
-        NSLog(@"FOUND IMG");
-        NSLog(@"%@", imgPath);
-        NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imgPath]];
-        UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
-    }
-
-    
-    
-    _galleryItems = items;
+//    NSMutableArray *items = [NSMutableArray array];
+//    
+//    NSString *inputFile = [[NSBundle mainBundle] pathForResource:@"items" ofType:@"plist"];
+//    NSArray *inputDataArray = [NSArray arrayWithContentsOfFile:inputFile];
+//    
+//    for (NSDictionary *inputItem in inputDataArray)
+//    {
+//        [items addObject:[GalleryItem galleryItemWithDictionary:inputItem]];
+//    }
+//
+//    _galleryItems = items;
+    _galleryItems = [self listFileAtPath:baseView.templateNameString];
 }
-
+-(NSArray *)listFileAtPath:(NSString *)path
+{
+    //-----> LIST ALL FILES <-----//
+    NSLog(@"LISTING ALL FILES FOUND");
+    NSLog(@"Path of the image: %@",path);
+    int count;
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@/%d",path,selectedVideoPopUpBtnTag]];
+    NSLog(@"product folder path: %@",dataPath);
+    
+    NSMutableArray *imagePathArray = [[NSMutableArray alloc] init];
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:dataPath error:NULL];
+    for (count = 0; count < (int)[directoryContent count]; count++)
+    {
+        NSLog(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+        NSString *imagePath = [NSString stringWithFormat:@"%@/%@",dataPath,[directoryContent objectAtIndex:count]];
+        NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imagePath]];
+        UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
+        [imagePathArray addObject:thumbNail];
+    }
+    return imagePathArray;
+}
 #pragma mark -
 #pragma mark - UICollectionViewDataSource
 
@@ -98,7 +99,9 @@
         imageView.image = [UIImage imageNamed:@"cameraThumb"];
     }
     else{
-        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:imageView];
+//        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:imageView];
+        imageView.image = [_galleryItems objectAtIndex:indexPath.row-1];
+
     }
     return cell;
 }
@@ -122,7 +125,8 @@
         [baseView openCameraWindow];
     }
     else{
-        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:_bigScreenImageView];
+//        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:_bigScreenImageView];
+        _bigScreenImageView.image = [_galleryItems objectAtIndex:indexPath.row-1];
     }
     
 }
