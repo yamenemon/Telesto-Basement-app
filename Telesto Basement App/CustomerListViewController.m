@@ -190,13 +190,8 @@
         UIAlertAction* ok = [UIAlertAction
                              actionWithTitle:@"Yes"
                              style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [self dismissViewControllerAnimated:YES completion:^{
+                             handler:^(UIAlertAction * action){
                                  [Utility showBaseViewController];
-                                 }];
-                                 
-                                 
                              }];
         UIAlertAction* cancel = [UIAlertAction
                                  actionWithTitle:@"NO"

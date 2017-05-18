@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "DesignViewController.h"
+#import "iCarousel.h"
+#import "Downloader.h"
 
 @class DesignViewController;
-@interface TemplatePopOverViewController : UIViewController
+@interface TemplatePopOverViewController : UIViewController<iCarouselDelegate,iCarouselDataSource>
 
 @property (nonatomic,strong) DesignViewController *parentClass;
 @property (weak, nonatomic) IBOutlet UIScrollView *templateScroller;

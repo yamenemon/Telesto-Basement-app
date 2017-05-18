@@ -190,9 +190,13 @@
 
 -(void)downloadProduct{
 
-    /* DOWNLOAD PRODUCT HERE
-    -----------------------
-    */
+    // DOWNLOAD PRODUCT HERE
+    //-----------------------
+     
+    Downloader *loader = [Downloader sharedManager];
+    [loader downloadProducts];
+     
+    
     //STORE DOWNLOADED PRODUCT
     downloadedProduct = [[NSMutableArray alloc] init];
     Product *product = [[Product alloc] init];
@@ -919,7 +923,7 @@
     
     [templateController dismissViewControllerAnimated:YES completion:^{
         drawingImageView.frame = CGRectMake(0, 0, basementDesignView.frame.size.width, basementDesignView.frame.size.height);
-        [drawingImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"temp%d",number]]];
+        [drawingImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Temp%d",number]]];
         [basementDesignView addSubview:drawingImageView];
     }];
 }

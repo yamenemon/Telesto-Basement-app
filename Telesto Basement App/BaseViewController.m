@@ -32,20 +32,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self playBackgroundVideo];
+//    [self playBackgroundVideo];
 }
 -(void)playBackgroundVideo{
 
-    NSString *filepath = [[NSBundle mainBundle] pathForResource:@"demoVideo" ofType:@"mp4"];
-    NSURL *fileURL = [NSURL fileURLWithPath:filepath];
-    avPlayer = [AVPlayer playerWithURL:fileURL];
-    
-    layer = [AVPlayerLayer playerLayerWithPlayer:avPlayer];
-    layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    layer.frame = self.view.bounds;
-//    [self.view.layer addSublayer: layer];
-    [avPlayer play];
+//    NSString *filepath = [[NSBundle mainBundle] pathForResource:@"demoVideo" ofType:@"mp4"];
+//    NSURL *fileURL = [NSURL fileURLWithPath:filepath];
+//    avPlayer = [AVPlayer playerWithURL:fileURL];
+//    
+//    layer = [AVPlayerLayer playerLayerWithPlayer:avPlayer];
+//    layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//    avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+//    layer.frame = self.view.bounds;
+////    [self.view.layer addSublayer: layer];
+//    [avPlayer play];
     
     self.items = [NSMutableArray array];
     for (int i = 0; i < 11; i++)

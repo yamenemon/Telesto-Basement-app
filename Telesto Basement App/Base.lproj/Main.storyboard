@@ -1732,33 +1732,37 @@ A: Immediately</string>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYr-XM-2ZD" userLabel="BaseView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLZ-vX-FjN" customClass="iCarousel">
+                                        <rect key="frame" x="20" y="20" width="560" height="560"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kLZ-vX-FjN" secondAttribute="trailing" constant="20" id="5eN-gn-COg"/>
+                                    <constraint firstItem="kLZ-vX-FjN" firstAttribute="leading" secondItem="IYr-XM-2ZD" secondAttribute="leading" constant="20" id="6jf-wL-qGQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="kLZ-vX-FjN" secondAttribute="bottom" constant="20" id="hNV-AM-b23"/>
+                                    <constraint firstItem="kLZ-vX-FjN" firstAttribute="top" secondItem="IYr-XM-2ZD" secondAttribute="top" constant="20" id="oAm-Fs-otN"/>
+                                </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aJ-Bj-Ofi">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1aJ-Bj-Ofi" firstAttribute="leading" secondItem="Eya-qi-tVU" secondAttribute="leading" id="2hG-as-vCa"/>
                             <constraint firstItem="cAC-hw-blQ" firstAttribute="top" secondItem="IYr-XM-2ZD" secondAttribute="bottom" id="Hr4-ks-Tte"/>
                             <constraint firstAttribute="trailing" secondItem="IYr-XM-2ZD" secondAttribute="trailing" id="MaS-oO-sCz"/>
-                            <constraint firstItem="1aJ-Bj-Ofi" firstAttribute="top" secondItem="Eya-qi-tVU" secondAttribute="top" id="iL1-Y0-HGR"/>
-                            <constraint firstAttribute="trailing" secondItem="1aJ-Bj-Ofi" secondAttribute="trailing" id="iYl-bf-g8E"/>
                             <constraint firstItem="IYr-XM-2ZD" firstAttribute="leading" secondItem="Eya-qi-tVU" secondAttribute="leading" id="kfr-CF-TNy"/>
                             <constraint firstItem="IYr-XM-2ZD" firstAttribute="top" secondItem="Eya-qi-tVU" secondAttribute="top" id="sPC-98-AE4"/>
-                            <constraint firstItem="cAC-hw-blQ" firstAttribute="top" secondItem="1aJ-Bj-Ofi" secondAttribute="bottom" id="sQM-vx-ueB"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
-                        <outlet property="templateScroller" destination="1aJ-Bj-Ofi" id="z0T-Xl-b5X"/>
+                        <outlet property="iCarouselView" destination="kLZ-vX-FjN" id="Ked-3N-5Ec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylj-Rg-W4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6001" y="-2144"/>
+            <point key="canvasLocation" x="-6001.171875" y="-2144.53125"/>
         </scene>
         <!--Show Price View Controller-->
         <scene sceneID="Jqs-oM-Xbo">

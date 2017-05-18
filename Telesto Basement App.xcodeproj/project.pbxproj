@@ -103,6 +103,7 @@
 		70D6E85D1E436495007E3F2F /* 8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8541E436495007E3F2F /* 8@2x.png */; };
 		70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8551E436495007E3F2F /* 9@2x.png */; };
 		70D7C2A01EBAFCF500ECE099 /* ProductObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D7C29F1EBAFCF500ECE099 /* ProductObject.m */; };
+		70EA296F1ECDA0C40002931F /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA296E1ECDA0C40002931F /* Downloader.m */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
 		70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D61E067DB400A6D245 /* log_out_@2x.png */; };
 		70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D71E067DB400A6D245 /* log_out@2x.png */; };
@@ -257,6 +258,8 @@
 		70D6E8551E436495007E3F2F /* 9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9@2x.png"; sourceTree = "<group>"; };
 		70D7C29E1EBAFCF500ECE099 /* ProductObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductObject.h; sourceTree = "<group>"; };
 		70D7C29F1EBAFCF500ECE099 /* ProductObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductObject.m; sourceTree = "<group>"; };
+		70EA296D1ECDA0C40002931F /* Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
+		70EA296E1ECDA0C40002931F /* Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
 		70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creat_new_customer@2x.png"; sourceTree = "<group>"; };
 		70EC80D61E067DB400A6D245 /* log_out_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out_@2x.png"; sourceTree = "<group>"; };
 		70EC80D71E067DB400A6D245 /* log_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out@2x.png"; sourceTree = "<group>"; };
@@ -308,7 +311,6 @@
 			children = (
 				3BAFAD5F1E43CC77009F6392 /* Telesto Basement App.entitlements */,
 				7027C9B61E1CEEBA0062EB77 /* ColapsableTableView */,
-				704B68931E13CB7B00E6537D /* Custom PopOver */,
 				704B68911E13CA6200E6537D /* Controllers */,
 				705B782C1E13C6C800161991 /* SW */,
 				70015E941DF690E100DF542E /* Models */,
@@ -344,6 +346,8 @@
 				70015E9D1DF69BEF00DF542E /* HttpHelper.m */,
 				70015E961DF6913200DF542E /* Utility.h */,
 				70015E971DF6913200DF542E /* Utility.m */,
+				70EA296D1ECDA0C40002931F /* Downloader.h */,
+				70EA296E1ECDA0C40002931F /* Downloader.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -413,6 +417,9 @@
 		704B68911E13CA6200E6537D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				704B68931E13CB7B00E6537D /* Custom PopOver */,
+				70CA54C81E71612500F7FE67 /* CustomerList */,
+				70CA54D41E7188CB00F7FE67 /* Customer Proposals */,
 				70CA54C41E71389300F7FE67 /* Login */,
 				3B6EB88D1DD845D900936AB9 /* AppDelegate.h */,
 				3B6EB88E1DD845D900936AB9 /* AppDelegate.m */,
@@ -444,8 +451,6 @@
 			children = (
 				70BFBF571E781549007F0862 /* Menu Controllers */,
 				709F4BD41E76B30C00C8B8DA /* Design Window */,
-				70CA54D41E7188CB00F7FE67 /* Customer Proposals */,
-				70CA54C81E71612500F7FE67 /* CustomerList */,
 			);
 			name = SW;
 			sourceTree = "<group>";
@@ -807,6 +812,7 @@
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				703C35871EBA16DE00448B1A /* GalleryItem.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,
+				70EA296F1ECDA0C40002931F /* Downloader.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,
 				70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */,
