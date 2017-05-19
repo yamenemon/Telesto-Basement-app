@@ -73,6 +73,8 @@
 		706286191DED939A0022E105 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706286181DED939A0022E105 /* PageContentViewController.m */; };
 		70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */; };
 		70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */; };
+		706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B21ECEFC4F003E7247 /* Reachability.m */; };
+		706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */; };
 		7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */; };
 		709B44351E6D6942008058F3 /* loginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B44341E6D6942008058F3 /* loginView.m */; };
 		709B44371E6D6951008058F3 /* loginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709B44361E6D6951008058F3 /* loginView.xib */; };
@@ -212,6 +214,10 @@
 		70641E531E72AE660085FFE6 /* CustomerProposalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerProposalTableViewCell.h; sourceTree = "<group>"; };
 		70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerProposalTableViewCell.m; sourceTree = "<group>"; };
 		70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerProposalTableViewCell.xib; sourceTree = "<group>"; };
+		706FA6B11ECEFC4F003E7247 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		706FA6B21ECEFC4F003E7247 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		706FA6B41ECEFCAE003E7247 /* MTReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTReachabilityManager.h; sourceTree = "<group>"; };
+		706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTReachabilityManager.m; sourceTree = "<group>"; };
 		7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
 		709B44331E6D6942008058F3 /* loginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginView.h; sourceTree = "<group>"; };
@@ -342,6 +348,10 @@
 		70015E941DF690E100DF542E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				706FA6B41ECEFCAE003E7247 /* MTReachabilityManager.h */,
+				706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */,
+				706FA6B11ECEFC4F003E7247 /* Reachability.h */,
+				706FA6B21ECEFC4F003E7247 /* Reachability.m */,
 				70015E9C1DF69BEF00DF542E /* HttpHelper.h */,
 				70015E9D1DF69BEF00DF542E /* HttpHelper.m */,
 				70015E961DF6913200DF542E /* Utility.h */,
@@ -793,6 +803,7 @@
 				709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */,
 				705B783F1E13C71D00161991 /* DesignViewController.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
+				706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */,
 				7027C9BD1E1CEF5E0062EB77 /* AccordionHeaderView.m in Sources */,
 				70D6E84C1E4351C7007E3F2F /* ShowPriceViewController.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
@@ -803,6 +814,7 @@
 				70D7C2A01EBAFCF500ECE099 /* ProductObject.m in Sources */,
 				70C4BDA41EBC58C20009C354 /* Product.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
+				706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
 				70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */,
 				70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */,

@@ -11,6 +11,9 @@
 #import "HttpHelper.h"
 #import "Utility.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
 @implementation loginView
 
 /*
@@ -26,41 +29,42 @@
     [self.loadingIndicator startAnimating];
 }
 - (IBAction)loginButtonPressed:(id)sender {
-    
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        //Add some method process in global queue - normal for data processing
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        NSString* tokenAsString = [appDelegate deviceToken];
-        
-        HttpHelper *serviceHelper = [[HttpHelper alloc] init];
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            //Add method, task you want perform on mainQueue
-            //Control UIView, IBOutlet all here
-            [self hideButton];
-            [self addSpinner];
-            _errorMessageLabel.text = @"";
+
+
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
+            //Add some method process in global queue - normal for data processing
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            NSString* tokenAsString = [appDelegate deviceToken];
+            
+            HttpHelper *serviceHelper = [[HttpHelper alloc] init];
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                //Add method, task you want perform on mainQueue
+                //Control UIView, IBOutlet all here
+                [self hideButton];
+                [self addSpinner];
+                _errorMessageLabel.text = @"";
+                
+            });
+            
+            //Add some method process in global queue - normal for data processing
+            NSString* userId = _emailField.text;
+            NSString* password = _passwordField.text;
+            
+            NSString *post = [NSString stringWithFormat:@"userid=%@&password=%@&device_token=%@&device_type=iOS", userId, password, tokenAsString];
+            NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+            NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+            
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+            [request setURL:[NSURL URLWithString:@"https://jupiter.centralstationmarketing.com/api/ios/Login.php"]];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setHTTPBody:postData];
+            NSData *data = [serviceHelper sendRequest:request];
+            [self parseJOSNLoginStatus:data];
         });
-        
-        //Add some method process in global queue - normal for data processing
-        NSString* userId = _emailField.text;
-        NSString* password = _passwordField.text;
-        
-        NSString *post = [NSString stringWithFormat:@"userid=%@&password=%@&device_token=%@&device_type=iOS", userId, password, tokenAsString];
-        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-        
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-        [request setURL:[NSURL URLWithString:@"https://jupiter.centralstationmarketing.com/api/ios/Login.php"]];
-        [request setHTTPMethod:@"POST"];
-        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        [request setHTTPBody:postData];
-        NSData *data = [serviceHelper sendRequest:request];
-        [self parseJOSNLoginStatus:data];
-    });
+    
 }
 - (BOOL)parseJOSNLoginStatus:(NSData *)data {
     NSError *e = nil;

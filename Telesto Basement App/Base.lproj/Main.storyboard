@@ -77,7 +77,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Basement Design Tools Ever!!!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2J-6c-W09">
                                         <rect key="frame" x="92.5" y="14" width="840.5" height="70"/>
                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="53"/>
-                                        <color key="textColor" red="0.078072719275951385" green="0.36243125796318054" blue="0.47568124532699585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.078431372549019607" green="0.36078431372549019" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TI-Pa-F5E" customClass="iCarousel">
@@ -997,15 +997,15 @@ Washington, DC 20521-6170
                                 <color key="backgroundColor" red="0.96070033311843872" green="0.96083813905715942" blue="0.96067017316818237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="vPY-1A-lK0" secondAttribute="bottom" constant="8" id="BBw-Yq-nxp"/>
-                                    <constraint firstAttribute="bottom" secondItem="9Pd-Lv-pdT" secondAttribute="bottom" constant="17" id="F5U-CC-cD7"/>
-                                    <constraint firstItem="9Pd-Lv-pdT" firstAttribute="leading" secondItem="BrV-aI-6cF" secondAttribute="leading" constant="50" id="Pqb-m6-6Tj"/>
-                                    <constraint firstItem="9Pd-Lv-pdT" firstAttribute="top" secondItem="pWq-VI-xTX" secondAttribute="bottom" constant="7" id="Vbz-5R-nzc"/>
-                                    <constraint firstItem="pWq-VI-xTX" firstAttribute="trailing" secondItem="9Pd-Lv-pdT" secondAttribute="trailing" id="X3b-kt-XDO"/>
+                                    <constraint firstItem="9Pd-Lv-pdT" firstAttribute="leading" secondItem="pWq-VI-xTX" secondAttribute="leading" id="JCX-48-1Wx"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Pd-Lv-pdT" secondAttribute="bottom" constant="17" id="PaT-1m-4bI"/>
+                                    <constraint firstItem="pWq-VI-xTX" firstAttribute="top" secondItem="BrV-aI-6cF" secondAttribute="top" constant="70" id="W11-IN-TAW"/>
+                                    <constraint firstItem="pWq-VI-xTX" firstAttribute="leading" secondItem="BrV-aI-6cF" secondAttribute="leading" constant="50" id="Y95-fS-whB"/>
                                     <constraint firstAttribute="trailing" secondItem="vPY-1A-lK0" secondAttribute="trailing" constant="14" id="aJ3-As-vbm"/>
-                                    <constraint firstItem="pWq-VI-xTX" firstAttribute="leading" secondItem="9Pd-Lv-pdT" secondAttribute="leading" id="aZR-LT-kuT"/>
-                                    <constraint firstItem="pWq-VI-xTX" firstAttribute="top" secondItem="BrV-aI-6cF" secondAttribute="top" constant="70" id="jar-0z-qdV"/>
-                                    <constraint firstAttribute="trailing" secondItem="pWq-VI-xTX" secondAttribute="trailing" constant="50" id="yNM-Rc-j2H"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Pd-Lv-pdT" secondAttribute="trailing" constant="50" id="yUf-MF-P5P"/>
+                                    <constraint firstItem="9Pd-Lv-pdT" firstAttribute="trailing" secondItem="pWq-VI-xTX" secondAttribute="trailing" id="am8-fD-KK3"/>
+                                    <constraint firstItem="9Pd-Lv-pdT" firstAttribute="width" secondItem="pWq-VI-xTX" secondAttribute="width" id="c1I-cY-np8"/>
+                                    <constraint firstItem="9Pd-Lv-pdT" firstAttribute="top" secondItem="pWq-VI-xTX" secondAttribute="bottom" constant="7" id="mfP-1w-qDd"/>
+                                    <constraint firstAttribute="trailing" secondItem="pWq-VI-xTX" secondAttribute="trailing" constant="50" id="rZd-OI-cdc"/>
                                 </constraints>
                             </view>
                         </subviews>

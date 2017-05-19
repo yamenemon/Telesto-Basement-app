@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "CNPPopupController.h"
 #import "iCarousel.h"
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface BaseViewController () <CNPPopupControllerDelegate,iCarouselDelegate,iCarouselDataSource>{
 
@@ -32,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-//    [self playBackgroundVideo];
+    [self playBackgroundVideo];
 }
 -(void)playBackgroundVideo{
 
@@ -76,6 +77,9 @@
         NSString *imageName = [NSString stringWithFormat:@"carousel_%ld",(long)index+1];
         ((UIImageView *)view).image = [UIImage imageNamed:imageName];
         view.contentMode = UIViewContentModeScaleToFill;
+        view.layer.borderColor = UIColorFromRGB(0x145C79).CGColor;
+        view.layer.borderWidth = 5.0f;
+        view.layer.cornerRadius = 1.0f;
     }
     
     return view;
@@ -220,7 +224,25 @@
     [self.aSpinner startAnimating];
 }
 - (IBAction)loginButtonClicked:(id)sender {
+    BOOL isReachable = [MTReachabilityManager isReachable];
+    if (isReachable) {
     [self showPopupWithStyle:CNPPopupStyleCentered];
+    }
+    else{
+    NSLog(@"Not Reachable");
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Internet Problem" message:@"You are out of network.Prese check your network settings." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    [alert addAction:ok];
+    [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+    [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
     

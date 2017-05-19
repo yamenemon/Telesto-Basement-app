@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MTReachabilityManager.h"
 @interface AppDelegate ()
 
 @end
@@ -24,6 +24,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.deviceTokenString = @"";
+    
+    [MTReachabilityManager sharedManager];
+
     
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName, nil]];

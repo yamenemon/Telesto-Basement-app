@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MTReachabilityManager.h"
 
 @interface loginView : UIView<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *loginView;
