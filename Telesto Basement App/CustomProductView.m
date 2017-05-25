@@ -12,9 +12,22 @@
 
 @implementation CustomProductView
 @synthesize infoBtn;
-@synthesize productID;
 @synthesize baseVC;
-@synthesize productObject;
+
+@synthesize productName;
+@synthesize productId;
+@synthesize staticId;
+@synthesize productXcoordinate;
+@synthesize productYcoordinate;
+@synthesize productWidth;
+@synthesize productHeight;
+@synthesize productColor;
+@synthesize productQuantity;
+@synthesize productUnitPrice;
+@synthesize productUnitType;
+@synthesize productDiscount;
+@synthesize storedMediaArray;
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -26,7 +39,6 @@
 {
     // do any initialization that's common to both -initWithFrame:
     // and -initWithCoder: in this method
-    productObject = [[ProductObject alloc] init];
     
     UIImage *cameraImage = [UIImage imageNamed:@"cameraIcon"];
     infoBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, self.frame.size.height - 25, cameraImage.size.width/1.5, cameraImage.size.height/1.5)];

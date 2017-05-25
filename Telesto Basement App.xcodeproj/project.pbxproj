@@ -76,6 +76,8 @@
 		706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B21ECEFC4F003E7247 /* Reachability.m */; };
 		706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */; };
 		7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */; };
+		7097799C1ED569430032F4FF /* horizentalWall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7097799A1ED569420032F4FF /* horizentalWall@2x.png */; };
+		7097799D1ED569430032F4FF /* verticalWall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7097799B1ED569420032F4FF /* verticalWall@2x.png */; };
 		709B44351E6D6942008058F3 /* loginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B44341E6D6942008058F3 /* loginView.m */; };
 		709B44371E6D6951008058F3 /* loginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709B44361E6D6951008058F3 /* loginView.xib */; };
 		709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */; };
@@ -104,7 +106,6 @@
 		70D6E85C1E436495007E3F2F /* 7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8531E436495007E3F2F /* 7@2x.png */; };
 		70D6E85D1E436495007E3F2F /* 8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8541E436495007E3F2F /* 8@2x.png */; };
 		70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8551E436495007E3F2F /* 9@2x.png */; };
-		70D7C2A01EBAFCF500ECE099 /* ProductObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D7C29F1EBAFCF500ECE099 /* ProductObject.m */; };
 		70EA296F1ECDA0C40002931F /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA296E1ECDA0C40002931F /* Downloader.m */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
 		70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D61E067DB400A6D245 /* log_out_@2x.png */; };
@@ -220,6 +221,8 @@
 		706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTReachabilityManager.m; sourceTree = "<group>"; };
 		7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
+		7097799A1ED569420032F4FF /* horizentalWall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "horizentalWall@2x.png"; sourceTree = "<group>"; };
+		7097799B1ED569420032F4FF /* verticalWall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "verticalWall@2x.png"; sourceTree = "<group>"; };
 		709B44331E6D6942008058F3 /* loginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginView.h; sourceTree = "<group>"; };
 		709B44341E6D6942008058F3 /* loginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginView.m; sourceTree = "<group>"; };
 		709B44361E6D6951008058F3 /* loginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginView.xib; sourceTree = "<group>"; };
@@ -242,6 +245,7 @@
 		70CA54D01E7172A700F7FE67 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		70CA54D51E7188FD00F7FE67 /* CustomerProposalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerProposalsViewController.h; sourceTree = "<group>"; };
 		70CA54D61E7188FD00F7FE67 /* CustomerProposalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerProposalsViewController.m; sourceTree = "<group>"; };
+		70CD67CA1ED6BE5E007980FA /* StringClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringClass.h; sourceTree = "<group>"; };
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
 		70CF14101DF43C180045CF8F /* IQDropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDropDownTextField.h; sourceTree = "<group>"; };
 		70CF14111DF43C180045CF8F /* IQDropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDropDownTextField.m; sourceTree = "<group>"; };
@@ -262,8 +266,6 @@
 		70D6E8531E436495007E3F2F /* 7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7@2x.png"; sourceTree = "<group>"; };
 		70D6E8541E436495007E3F2F /* 8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8@2x.png"; sourceTree = "<group>"; };
 		70D6E8551E436495007E3F2F /* 9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9@2x.png"; sourceTree = "<group>"; };
-		70D7C29E1EBAFCF500ECE099 /* ProductObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductObject.h; sourceTree = "<group>"; };
-		70D7C29F1EBAFCF500ECE099 /* ProductObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductObject.m; sourceTree = "<group>"; };
 		70EA296D1ECDA0C40002931F /* Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
 		70EA296E1ECDA0C40002931F /* Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
 		70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creat_new_customer@2x.png"; sourceTree = "<group>"; };
@@ -325,6 +327,8 @@
 				704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */,
 				70015E951DF6910500DF542E /* Images */,
 				3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */,
+				7097799A1ED569420032F4FF /* horizentalWall@2x.png */,
+				7097799B1ED569420032F4FF /* verticalWall@2x.png */,
 				3B6EB89E1DD845DA00936AB9 /* Info.plist */,
 				3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */,
 				3B6EB88A1DD845D900936AB9 /* Supporting Files */,
@@ -358,6 +362,7 @@
 				70015E971DF6913200DF542E /* Utility.m */,
 				70EA296D1ECDA0C40002931F /* Downloader.h */,
 				70EA296E1ECDA0C40002931F /* Downloader.m */,
+				70CD67CA1ED6BE5E007980FA /* StringClass.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -514,8 +519,6 @@
 				702BD7F31E7FFE0F008F786C /* CustomTemplateNameView.h */,
 				702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */,
 				702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */,
-				70D7C29E1EBAFCF500ECE099 /* ProductObject.h */,
-				70D7C29F1EBAFCF500ECE099 /* ProductObject.m */,
 				70C4BDA21EBC58C20009C354 /* Product.h */,
 				70C4BDA31EBC58C20009C354 /* Product.m */,
 			);
@@ -671,6 +674,7 @@
 				704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */,
 				70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */,
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
+				7097799C1ED569430032F4FF /* horizentalWall@2x.png in Resources */,
 				705F64EC1DF97F2600082D55 /* userName@2x.png in Resources */,
 				705F64D71DF97B7000082D55 /* Roboto-Bold.ttf in Resources */,
 				7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */,
@@ -712,6 +716,7 @@
 				705F64D81DF97B7000082D55 /* Roboto-BoldItalic.ttf in Resources */,
 				705F64D61DF97B7000082D55 /* Roboto-BlackItalic.ttf in Resources */,
 				705B78251E13C0B700161991 /* Temp6@2x.png in Resources */,
+				7097799D1ED569430032F4FF /* verticalWall@2x.png in Resources */,
 				705B78271E13C0B700161991 /* Temp4@2x.png in Resources */,
 				70D6E85A1E436495007E3F2F /* 5@2x.png in Resources */,
 				70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */,
@@ -811,7 +816,6 @@
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
 				704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */,
 				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
-				70D7C2A01EBAFCF500ECE099 /* ProductObject.m in Sources */,
 				70C4BDA41EBC58C20009C354 /* Product.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */,

@@ -12,5 +12,7 @@
 @synthesize productId;
 @synthesize productImageName;
 @synthesize productImageUrl;
-@synthesize productPrice;
+@synthesize productUnitPrice;
+@synthesize productUnitType;
+@synthesize productDiscount;
 @end

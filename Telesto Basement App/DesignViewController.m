@@ -202,55 +202,73 @@
     Product *product = [[Product alloc] init];
     product.productId = 908;
     product.productImageName = @"Pro Series Sump Pumps";
-    product.productPrice = 200.0f;
+    product.productUnitPrice = 200.0f;
+    product.productUnitType = @"Pieces";
+    product.productDiscount = 0;
     [downloadedProduct addObject:product];
     
     Product *product2 = [[Product alloc] init];
     product2.productId = 909;
     product2.productImageName = @"Dehumidification";
-    product2.productPrice = 500.0f;
+    product2.productUnitPrice = 500.0f;
+    product2.productUnitType = @"Pieces";
+    product2.productDiscount = 0;
     [downloadedProduct addObject:product2];
     
     Product *product3 = [[Product alloc] init];
     product3.productId = 910;
     product3.productImageName = @"Grate Drain";
-    product3.productPrice = 100.0f;
+    product3.productUnitPrice = 100.0f;
+    product3.productUnitType = @"Pieces";
+    product3.productDiscount = 0;
     [downloadedProduct addObject:product3];
     
     Product *product4 = [[Product alloc] init];
     product4.productId = 911;
     product4.productImageName = @"Fast Drain";
-    product4.productPrice = 20.0f;
+    product4.productUnitPrice = 20.0f;
+    product4.productUnitType = @"Pieces";
+    product4.productDiscount = 0;
     [downloadedProduct addObject:product4];
     
     Product *product5 = [[Product alloc] init];
     product5.productId = 912;
     product5.productImageName = @"Grate Trench";
-    product5.productPrice = 150.0f;
+    product5.productUnitPrice = 150.0f;
+    product5.productUnitType = @"Pieces";
+    product5.productDiscount = 0;
     [downloadedProduct addObject:product5];
     
     Product *product6 = [[Product alloc] init];
     product6.productId = 913;
     product6.productImageName = @"FastSump Pump";
-    product6.productPrice = 185.0f;
+    product6.productUnitPrice = 185.0f;
+    product6.productUnitType = @"Pieces";
+    product6.productDiscount = 0;
     [downloadedProduct addObject:product6];
     
     Product *product7 = [[Product alloc] init];
     product7.productId = 983;
     product7.productImageName = @"High Water Sump Alarm";
-    product7.productPrice = 185.0f;
+    product7.productUnitPrice = 185.0f;
+    product7.productUnitType = @"Pieces";
+    product7.productDiscount = 0;
     [downloadedProduct addObject:product7];
     
     Product *product8 = [[Product alloc] init];
     product8.productId = 983;
     product8.productImageName = @"GrateSump Plus";
-    product8.productPrice = 185.0f;
+    product8.productUnitPrice = 185.0f;
+    product8.productUnitType = @"Pieces";
+    product8.productDiscount = 0;
     [downloadedProduct addObject:product8];
     
     Product *product9 = [[Product alloc] init];
     product9.productId = 935;
     product9.productImageName = @"GrateSump Plus ||";
-    product9.productPrice = 185.0f;
+    product9.productUnitPrice = 185.0f;
+    product9.productUnitType = @"Pieces";
+    product9.productDiscount = 0;
     [downloadedProduct addObject:product9];
 }
 -(void)createProductScroller{
@@ -310,7 +328,6 @@
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
     CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
     userResizableView.infoBtn.tag = [newFolderId intValue];
-    userResizableView.productID = [newFolderId intValue];
     NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
     
     UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",(long)productBtn.tag]]];
@@ -319,13 +336,28 @@
     userResizableView.baseVC = self;
     userResizableView.delegate = self;
     [userResizableView showEditingHandles];
+    
+    userResizableView.productId = [newFolderId intValue];
+    userResizableView.staticId = horizentalWall;
+    userResizableView.productXcoordinate = userResizableView.contentView.frame.origin.x;
+    userResizableView.productYcoordinate = userResizableView.contentView.frame.origin.y;
+    userResizableView.productWidth = userResizableView.contentView.frame.size.width;
+    userResizableView.productHeight = userResizableView.contentView.frame.size.height;
+    userResizableView.productColor = @"";
+    userResizableView.productQuantity = 0;
+    userResizableView.productUnitPrice = 0;
+    userResizableView.productUnitType = @"";
+    userResizableView.productDiscount = 0;
+    userResizableView.storedMediaArray = nil;
+    
     currentlyEditingView = userResizableView;
     lastEditedView = userResizableView;
     [basementDesignView addSubview:userResizableView];
+    [productArray addObject:lastEditedView];
+
     [userResizableView bringSubviewToFront:userResizableView.infoBtn];
     [self productSliderCalled:nil];
     
-    [productArray addObject:lastEditedView];
     NSLog(@"Array after Adding: %@",productArray);
     
 }
@@ -378,6 +410,7 @@
         isShown = NO;
     }
 }
+
 #pragma mark - Navigation Tools Actions Methods
 
 - (void)revealButtonItemClicked:(id)sender{
@@ -488,11 +521,50 @@
         CGRect gripFrame = CGRectMake(30, 0, 100, 30);
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-        [contentView setBackgroundColor:[UIColor lightGrayColor]];
+        
+        UIGraphicsBeginImageContext(contentView.frame.size);
+        [[UIImage imageNamed:@"horizentalWall"] drawInRect:contentView.bounds];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        [contentView setBackgroundColor:[UIColor colorWithPatternImage:image]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
+        
+        /*
+         @synthesize infoBtn;
+         @synthesize baseVC;
+         
+         @synthesize productName;
+         @synthesize productId;
+         @synthesize staticId;
+         @synthesize productXcoordinate;
+         @synthesize productYcoordinate;
+         @synthesize productWidth;
+         @synthesize productHeight;
+         @synthesize productColor;
+         @synthesize productQuantity;
+         @synthesize productUnitPrice;
+         @synthesize productUnitType;
+         @synthesize productDiscount;
+         @synthesize storedMediaArray;
+         */
+        
+        userResizableView.productId = 0;
+        userResizableView.staticId = horizentalWall;
+        userResizableView.productXcoordinate = userResizableView.contentView.frame.origin.x;
+        userResizableView.productYcoordinate = userResizableView.contentView.frame.origin.y;
+        userResizableView.productWidth = userResizableView.contentView.frame.size.width;
+        userResizableView.productHeight = userResizableView.contentView.frame.size.height;
+        userResizableView.productColor = @"";
+        userResizableView.productQuantity = 0;
+        userResizableView.productUnitPrice = 0;
+        userResizableView.productUnitType = @"";
+        userResizableView.productDiscount = 0;
+        userResizableView.storedMediaArray = nil;
+        
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
@@ -500,7 +572,7 @@
 
         
     }];
-    [horizentalAction setValue:[[UIImage imageNamed:@"Horizontal_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [horizentalAction setValue:[[UIImage imageNamed:@"horizentalWall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [horizentalAction setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
 
     [alertController addAction:horizentalAction];
@@ -511,11 +583,32 @@
         CGRect gripFrame = CGRectMake(0, 0, 30, 100);
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIView *contentView = [[UIView alloc] initWithFrame:gripFrame];
-        [contentView setBackgroundColor:[UIColor lightGrayColor]];
+        
+        UIGraphicsBeginImageContext(contentView.frame.size);
+        [[UIImage imageNamed:@"verticalWall"] drawInRect:contentView.bounds];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        
+        [contentView setBackgroundColor:[UIColor colorWithPatternImage:image]];
         userResizableView.contentView = contentView;
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
+        
+        userResizableView.productId = 0;
+        userResizableView.staticId = verticalWall;
+        userResizableView.productXcoordinate = userResizableView.contentView.frame.origin.x;
+        userResizableView.productYcoordinate = userResizableView.contentView.frame.origin.y;
+        userResizableView.productWidth = userResizableView.contentView.frame.size.width;
+        userResizableView.productHeight = userResizableView.contentView.frame.size.height;
+        userResizableView.productColor = @"";
+        userResizableView.productQuantity = 0;
+        userResizableView.productUnitPrice = 0;
+        userResizableView.productUnitType = @"";
+        userResizableView.productDiscount = 0;
+        userResizableView.storedMediaArray = nil;
+        
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
@@ -523,7 +616,7 @@
 
         
     }];
-    [verticalAction setValue:[[UIImage imageNamed:@"Vertical_wall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
+    [verticalAction setValue:[[UIImage imageNamed:@"verticalWall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [verticalAction setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
     [alertController addAction:verticalAction];
     
@@ -832,7 +925,7 @@
 - (void)removeBtnClicked{
     NSInteger removeObjectIndex =[productArray indexOfObject:lastEditedView];
     CustomProductView *productView = (CustomProductView*)[productArray objectAtIndex:removeObjectIndex];
-    int lastSelectedProduct = productView.productID;
+    int lastSelectedProduct = productView.productId;
     NSLog(@"\nNew Array after removing: %@",productArray);
     
     //Remove folder from document directory
