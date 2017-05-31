@@ -18,8 +18,6 @@
 		3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */; };
 		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
-		700D52501EB0B0A500B9732C /* CustomVideoPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 700D524F1EB0B0A500B9732C /* CustomVideoPopUpView.xib */; };
-		700D52531EB0B0C700B9732C /* CustomVideoPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 700D52521EB0B0C700B9732C /* CustomVideoPopUpView.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
 		7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */; };
@@ -27,9 +25,6 @@
 		7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */; };
 		7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C01E1D15760062EB77 /* UserProfileViewController.m */; };
 		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
-		702BD7F21E7FFD6F008F786C /* CustomTemplateNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */; };
-		702BD7F51E7FFE0F008F786C /* CustomTemplateNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */; };
-		703C35871EBA16DE00448B1A /* GalleryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 703C35861EBA16DE00448B1A /* GalleryItem.m */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
 		704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */; };
 		704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */ = {isa = PBXBuildFile; fileRef = 704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */; };
@@ -43,12 +38,26 @@
 		705B782A1E13C0B700161991 /* Temp1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705B78221E13C0B700161991 /* Temp1@2x.png */; };
 		705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B782E1E13C71D00161991 /* CustomerInfoObject.m */; };
 		705B783E1E13C71D00161991 /* CustomerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B78301E13C71D00161991 /* CustomerListViewController.m */; };
-		705B783F1E13C71D00161991 /* DesignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B78321E13C71D00161991 /* DesignViewController.m */; };
 		705B78401E13C71D00161991 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B78341E13C71D00161991 /* MenuViewController.m */; };
 		705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B78361E13C71D00161991 /* OldProposalsViewController.m */; };
 		705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B78381E13C71D00161991 /* PresentationsViewController.m */; };
 		705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B783A1E13C71D00161991 /* SWRevealViewController.m */; };
 		705B78441E13C71D00161991 /* TrainingVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705B783C1E13C71D00161991 /* TrainingVideoViewController.m */; };
+		705F05A01EDED8CE00D8B837 /* CustomProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F05881EDED8CE00D8B837 /* CustomProductView.m */; };
+		705F05A11EDED8CE00D8B837 /* CustomTemplateNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F058A1EDED8CE00D8B837 /* CustomTemplateNameView.m */; };
+		705F05A21EDED8CE00D8B837 /* CustomTemplateNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705F058B1EDED8CE00D8B837 /* CustomTemplateNameView.xib */; };
+		705F05A31EDED8CE00D8B837 /* CustomVideoPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F058D1EDED8CE00D8B837 /* CustomVideoPopUpView.m */; };
+		705F05A41EDED8CE00D8B837 /* CustomVideoPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705F058E1EDED8CE00D8B837 /* CustomVideoPopUpView.xib */; };
+		705F05A51EDED8CE00D8B837 /* DesignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F05901EDED8CE00D8B837 /* DesignViewController.m */; };
+		705F05A61EDED8CE00D8B837 /* GalleryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F05921EDED8CE00D8B837 /* GalleryItem.m */; };
+		705F05A71EDED8CE00D8B837 /* items.plist in Resources */ = {isa = PBXBuildFile; fileRef = 705F05931EDED8CE00D8B837 /* items.plist */; };
+		705F05A81EDED8CE00D8B837 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F05951EDED8CE00D8B837 /* LeftNavDrawingToolsView.m */; };
+		705F05A91EDED8CE00D8B837 /* LeftNavDrawingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705F05961EDED8CE00D8B837 /* LeftNavDrawingToolsView.xib */; };
+		705F05AA1EDED8CE00D8B837 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F05981EDED8CE00D8B837 /* Product.m */; };
+		705F05AB1EDED8CE00D8B837 /* ProductObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F059A1EDED8CE00D8B837 /* ProductObject.m */; };
+		705F05AC1EDED8CE00D8B837 /* RightNavDrwaingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F059C1EDED8CE00D8B837 /* RightNavDrwaingToolsView.m */; };
+		705F05AD1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 705F059D1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib */; };
+		705F05AE1EDED8CE00D8B837 /* ShowPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 705F059F1EDED8CE00D8B837 /* ShowPriceViewController.m */; };
 		705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C31DF97B7000082D55 /* Roboto-Black.ttf */; };
 		705F64D61DF97B7000082D55 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C41DF97B7000082D55 /* Roboto-BlackItalic.ttf */; };
 		705F64D71DF97B7000082D55 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 705F64C51DF97B7000082D55 /* Roboto-Bold.ttf */; };
@@ -80,13 +89,7 @@
 		7097799D1ED569430032F4FF /* verticalWall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7097799B1ED569420032F4FF /* verticalWall@2x.png */; };
 		709B44351E6D6942008058F3 /* loginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709B44341E6D6942008058F3 /* loginView.m */; };
 		709B44371E6D6951008058F3 /* loginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709B44361E6D6951008058F3 /* loginView.xib */; };
-		709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */; };
-		709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */; };
-		709F4BD71E76B35200C8B8DA /* CustomProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = 709F4BD61E76B35200C8B8DA /* CustomProductView.m */; };
-		70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */; };
-		70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */; };
 		70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C216F41E6EC5B600464968 /* TutorialViewController.m */; };
-		70C4BDA41EBC58C20009C354 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C4BDA31EBC58C20009C354 /* Product.m */; };
 		70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54C61E7138F600F7FE67 /* iCarousel.m */; };
 		70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54CF1E7172A700F7FE67 /* CustomTableViewCell.m */; };
 		70CA54D21E7172A700F7FE67 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CA54D01E7172A700F7FE67 /* CustomTableViewCell.xib */; };
@@ -96,7 +99,6 @@
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
 		70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF19651E1CE03D00C90EDD /* FaqsViewController.m */; };
 		70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E8481E43426B007E3F2F /* SettingsViewController.m */; };
-		70D6E84C1E4351C7007E3F2F /* ShowPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */; };
 		70D6E8561E436495007E3F2F /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E84D1E436495007E3F2F /* 1@2x.png */; };
 		70D6E8571E436495007E3F2F /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E84E1E436495007E3F2F /* 2@2x.png */; };
 		70D6E8581E436495007E3F2F /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E84F1E436495007E3F2F /* 3@2x.png */; };
@@ -117,7 +119,6 @@
 		70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DD1E067DB400A6D245 /* settings___@2x.png */; };
 		70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DE1E067DB400A6D245 /* settings__@2x.png */; };
 		70EC80EA1E067DB400A6D245 /* traning_videos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DF1E067DB400A6D245 /* traning_videos@2x.png */; };
-		70F0D9C91EB8BDC90043B80C /* items.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70F0D9C81EB8BDC90043B80C /* items.plist */; };
 		70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FDF6181E094C1E00CF32EF /* customerList@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -142,9 +143,6 @@
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		70015E9C1DF69BEF00DF542E /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
-		700D524F1EB0B0A500B9732C /* CustomVideoPopUpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomVideoPopUpView.xib; sourceTree = "<group>"; };
-		700D52511EB0B0C700B9732C /* CustomVideoPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomVideoPopUpView.h; sourceTree = "<group>"; };
-		700D52521EB0B0C700B9732C /* CustomVideoPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomVideoPopUpView.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		7027C9B71E1CEEDA0062EB77 /* FZAccordionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZAccordionTableView.h; path = FZAccordionTableView/FZAccordionTableView.h; sourceTree = "<group>"; };
@@ -156,11 +154,6 @@
 		7027C9C01E1D15760062EB77 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		7027C9C21E1D35950062EB77 /* ProposalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalViewController.h; sourceTree = "<group>"; };
 		7027C9C31E1D35950062EB77 /* ProposalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalViewController.m; sourceTree = "<group>"; };
-		702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTemplateNameView.xib; sourceTree = "<group>"; };
-		702BD7F31E7FFE0F008F786C /* CustomTemplateNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTemplateNameView.h; sourceTree = "<group>"; };
-		702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTemplateNameView.m; sourceTree = "<group>"; };
-		703C35851EBA16DE00448B1A /* GalleryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryItem.h; sourceTree = "<group>"; };
-		703C35861EBA16DE00448B1A /* GalleryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryItem.m; sourceTree = "<group>"; };
 		704B688F1E13C9C000E6537D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		704B689A1E13CD0900E6537D /* TemplatePopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatePopOverViewController.h; sourceTree = "<group>"; };
 		704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatePopOverViewController.m; sourceTree = "<group>"; };
@@ -177,8 +170,6 @@
 		705B782E1E13C71D00161991 /* CustomerInfoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerInfoObject.m; sourceTree = "<group>"; };
 		705B782F1E13C71D00161991 /* CustomerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerListViewController.h; sourceTree = "<group>"; };
 		705B78301E13C71D00161991 /* CustomerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerListViewController.m; sourceTree = "<group>"; };
-		705B78311E13C71D00161991 /* DesignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignViewController.h; sourceTree = "<group>"; };
-		705B78321E13C71D00161991 /* DesignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignViewController.m; sourceTree = "<group>"; };
 		705B78331E13C71D00161991 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		705B78341E13C71D00161991 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		705B78351E13C71D00161991 /* OldProposalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldProposalsViewController.h; sourceTree = "<group>"; };
@@ -189,6 +180,31 @@
 		705B783A1E13C71D00161991 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		705B783B1E13C71D00161991 /* TrainingVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingVideoViewController.h; sourceTree = "<group>"; };
 		705B783C1E13C71D00161991 /* TrainingVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingVideoViewController.m; sourceTree = "<group>"; };
+		705F05871EDED8CE00D8B837 /* CustomProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProductView.h; sourceTree = "<group>"; };
+		705F05881EDED8CE00D8B837 /* CustomProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProductView.m; sourceTree = "<group>"; };
+		705F05891EDED8CE00D8B837 /* CustomTemplateNameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTemplateNameView.h; sourceTree = "<group>"; };
+		705F058A1EDED8CE00D8B837 /* CustomTemplateNameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTemplateNameView.m; sourceTree = "<group>"; };
+		705F058B1EDED8CE00D8B837 /* CustomTemplateNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTemplateNameView.xib; sourceTree = "<group>"; };
+		705F058C1EDED8CE00D8B837 /* CustomVideoPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomVideoPopUpView.h; sourceTree = "<group>"; };
+		705F058D1EDED8CE00D8B837 /* CustomVideoPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomVideoPopUpView.m; sourceTree = "<group>"; };
+		705F058E1EDED8CE00D8B837 /* CustomVideoPopUpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomVideoPopUpView.xib; sourceTree = "<group>"; };
+		705F058F1EDED8CE00D8B837 /* DesignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignViewController.h; sourceTree = "<group>"; };
+		705F05901EDED8CE00D8B837 /* DesignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignViewController.m; sourceTree = "<group>"; };
+		705F05911EDED8CE00D8B837 /* GalleryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryItem.h; sourceTree = "<group>"; };
+		705F05921EDED8CE00D8B837 /* GalleryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryItem.m; sourceTree = "<group>"; };
+		705F05931EDED8CE00D8B837 /* items.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = items.plist; sourceTree = "<group>"; };
+		705F05941EDED8CE00D8B837 /* LeftNavDrawingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavDrawingToolsView.h; sourceTree = "<group>"; };
+		705F05951EDED8CE00D8B837 /* LeftNavDrawingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavDrawingToolsView.m; sourceTree = "<group>"; };
+		705F05961EDED8CE00D8B837 /* LeftNavDrawingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftNavDrawingToolsView.xib; sourceTree = "<group>"; };
+		705F05971EDED8CE00D8B837 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		705F05981EDED8CE00D8B837 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		705F05991EDED8CE00D8B837 /* ProductObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductObject.h; sourceTree = "<group>"; };
+		705F059A1EDED8CE00D8B837 /* ProductObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductObject.m; sourceTree = "<group>"; };
+		705F059B1EDED8CE00D8B837 /* RightNavDrwaingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavDrwaingToolsView.h; sourceTree = "<group>"; };
+		705F059C1EDED8CE00D8B837 /* RightNavDrwaingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavDrwaingToolsView.m; sourceTree = "<group>"; };
+		705F059D1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightNavDrwaingToolsView.xib; sourceTree = "<group>"; };
+		705F059E1EDED8CE00D8B837 /* ShowPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPriceViewController.h; sourceTree = "<group>"; };
+		705F059F1EDED8CE00D8B837 /* ShowPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPriceViewController.m; sourceTree = "<group>"; };
 		705F64C31DF97B7000082D55 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		705F64C41DF97B7000082D55 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		705F64C51DF97B7000082D55 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -226,18 +242,8 @@
 		709B44331E6D6942008058F3 /* loginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginView.h; sourceTree = "<group>"; };
 		709B44341E6D6942008058F3 /* loginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginView.m; sourceTree = "<group>"; };
 		709B44361E6D6951008058F3 /* loginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginView.xib; sourceTree = "<group>"; };
-		709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavDrwaingToolsView.h; sourceTree = "<group>"; };
-		709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavDrwaingToolsView.m; sourceTree = "<group>"; };
-		709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightNavDrwaingToolsView.xib; sourceTree = "<group>"; };
-		709F4BD51E76B35200C8B8DA /* CustomProductView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProductView.h; sourceTree = "<group>"; };
-		709F4BD61E76B35200C8B8DA /* CustomProductView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProductView.m; sourceTree = "<group>"; };
-		70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavDrawingToolsView.h; sourceTree = "<group>"; };
-		70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavDrawingToolsView.m; sourceTree = "<group>"; };
-		70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftNavDrawingToolsView.xib; sourceTree = "<group>"; };
 		70C216F31E6EC5B600464968 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		70C216F41E6EC5B600464968 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
-		70C4BDA21EBC58C20009C354 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
-		70C4BDA31EBC58C20009C354 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		70CA54C51E7138F600F7FE67 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		70CA54C61E7138F600F7FE67 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		70CA54CE1E7172A700F7FE67 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
@@ -255,8 +261,6 @@
 		70CF19651E1CE03D00C90EDD /* FaqsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqsViewController.m; sourceTree = "<group>"; };
 		70D6E8471E43426B007E3F2F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		70D6E8481E43426B007E3F2F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPriceViewController.h; sourceTree = "<group>"; };
-		70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPriceViewController.m; sourceTree = "<group>"; };
 		70D6E84D1E436495007E3F2F /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
 		70D6E84E1E436495007E3F2F /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
 		70D6E84F1E436495007E3F2F /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
@@ -278,7 +282,6 @@
 		70EC80DD1E067DB400A6D245 /* settings___@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings___@2x.png"; sourceTree = "<group>"; };
 		70EC80DE1E067DB400A6D245 /* settings__@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings__@2x.png"; sourceTree = "<group>"; };
 		70EC80DF1E067DB400A6D245 /* traning_videos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "traning_videos@2x.png"; sourceTree = "<group>"; };
-		70F0D9C81EB8BDC90043B80C /* items.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = items.plist; sourceTree = "<group>"; };
 		70FDF6181E094C1E00CF32EF /* customerList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customerList@2x.png"; sourceTree = "<group>"; };
 		C60A664EF7D6CA664CB25D5C /* Pods-Telesto Basement App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telesto Basement App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -498,29 +501,31 @@
 		709F4BD41E76B30C00C8B8DA /* Design Window */ = {
 			isa = PBXGroup;
 			children = (
-				705B78311E13C71D00161991 /* DesignViewController.h */,
-				705B78321E13C71D00161991 /* DesignViewController.m */,
-				700D52511EB0B0C700B9732C /* CustomVideoPopUpView.h */,
-				700D52521EB0B0C700B9732C /* CustomVideoPopUpView.m */,
-				700D524F1EB0B0A500B9732C /* CustomVideoPopUpView.xib */,
-				703C35851EBA16DE00448B1A /* GalleryItem.h */,
-				703C35861EBA16DE00448B1A /* GalleryItem.m */,
-				70F0D9C81EB8BDC90043B80C /* items.plist */,
-				70D6E84A1E4351C7007E3F2F /* ShowPriceViewController.h */,
-				70D6E84B1E4351C7007E3F2F /* ShowPriceViewController.m */,
-				70BAF3981E38C6520087C051 /* LeftNavDrawingToolsView.h */,
-				70BAF3991E38C6520087C051 /* LeftNavDrawingToolsView.m */,
-				70BAF39B1E38C6760087C051 /* LeftNavDrawingToolsView.xib */,
-				709DDF201E3A33F200CE313C /* RightNavDrwaingToolsView.h */,
-				709DDF211E3A33F200CE313C /* RightNavDrwaingToolsView.m */,
-				709DDF231E3A340500CE313C /* RightNavDrwaingToolsView.xib */,
-				709F4BD51E76B35200C8B8DA /* CustomProductView.h */,
-				709F4BD61E76B35200C8B8DA /* CustomProductView.m */,
-				702BD7F31E7FFE0F008F786C /* CustomTemplateNameView.h */,
-				702BD7F41E7FFE0F008F786C /* CustomTemplateNameView.m */,
-				702BD7F11E7FFD6F008F786C /* CustomTemplateNameView.xib */,
-				70C4BDA21EBC58C20009C354 /* Product.h */,
-				70C4BDA31EBC58C20009C354 /* Product.m */,
+				705F05871EDED8CE00D8B837 /* CustomProductView.h */,
+				705F05881EDED8CE00D8B837 /* CustomProductView.m */,
+				705F05891EDED8CE00D8B837 /* CustomTemplateNameView.h */,
+				705F058A1EDED8CE00D8B837 /* CustomTemplateNameView.m */,
+				705F058B1EDED8CE00D8B837 /* CustomTemplateNameView.xib */,
+				705F058C1EDED8CE00D8B837 /* CustomVideoPopUpView.h */,
+				705F058D1EDED8CE00D8B837 /* CustomVideoPopUpView.m */,
+				705F058E1EDED8CE00D8B837 /* CustomVideoPopUpView.xib */,
+				705F058F1EDED8CE00D8B837 /* DesignViewController.h */,
+				705F05901EDED8CE00D8B837 /* DesignViewController.m */,
+				705F05911EDED8CE00D8B837 /* GalleryItem.h */,
+				705F05921EDED8CE00D8B837 /* GalleryItem.m */,
+				705F05931EDED8CE00D8B837 /* items.plist */,
+				705F05941EDED8CE00D8B837 /* LeftNavDrawingToolsView.h */,
+				705F05951EDED8CE00D8B837 /* LeftNavDrawingToolsView.m */,
+				705F05961EDED8CE00D8B837 /* LeftNavDrawingToolsView.xib */,
+				705F05971EDED8CE00D8B837 /* Product.h */,
+				705F05981EDED8CE00D8B837 /* Product.m */,
+				705F05991EDED8CE00D8B837 /* ProductObject.h */,
+				705F059A1EDED8CE00D8B837 /* ProductObject.m */,
+				705F059B1EDED8CE00D8B837 /* RightNavDrwaingToolsView.h */,
+				705F059C1EDED8CE00D8B837 /* RightNavDrwaingToolsView.m */,
+				705F059D1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib */,
+				705F059E1EDED8CE00D8B837 /* ShowPriceViewController.h */,
+				705F059F1EDED8CE00D8B837 /* ShowPriceViewController.m */,
 			);
 			name = "Design Window";
 			sourceTree = "<group>";
@@ -674,7 +679,9 @@
 				704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */,
 				70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */,
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
+				705F05A41EDED8CE00D8B837 /* CustomVideoPopUpView.xib in Resources */,
 				7097799C1ED569430032F4FF /* horizentalWall@2x.png in Resources */,
+				705F05A91EDED8CE00D8B837 /* LeftNavDrawingToolsView.xib in Resources */,
 				705F64EC1DF97F2600082D55 /* userName@2x.png in Resources */,
 				705F64D71DF97B7000082D55 /* Roboto-Bold.ttf in Resources */,
 				7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */,
@@ -684,7 +691,6 @@
 				705B78231E13C0B700161991 /* Temp8@2x.png in Resources */,
 				70D6E8561E436495007E3F2F /* 1@2x.png in Resources */,
 				70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */,
-				700D52501EB0B0A500B9732C /* CustomVideoPopUpView.xib in Resources */,
 				70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */,
 				705F64E41DF97B7000082D55 /* RobotoCondensed-Light.ttf in Resources */,
 				705B78241E13C0B700161991 /* Temp7@2x.png in Resources */,
@@ -695,17 +701,16 @@
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
 				705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */,
 				70D6E8581E436495007E3F2F /* 3@2x.png in Resources */,
-				702BD7F21E7FFD6F008F786C /* CustomTemplateNameView.xib in Resources */,
 				70D6E8571E436495007E3F2F /* 2@2x.png in Resources */,
+				705F05A21EDED8CE00D8B837 /* CustomTemplateNameView.xib in Resources */,
 				705B78261E13C0B700161991 /* Temp5@2x.png in Resources */,
 				705F64DB1DF97B7000082D55 /* Roboto-LightItalic.ttf in Resources */,
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
+				705F05A71EDED8CE00D8B837 /* items.plist in Resources */,
 				70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */,
-				70F0D9C91EB8BDC90043B80C /* items.plist in Resources */,
 				705F64DD1DF97B7000082D55 /* Roboto-MediumItalic.ttf in Resources */,
 				70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */,
 				705F64DF1DF97B7000082D55 /* Roboto-Thin.ttf in Resources */,
-				70BAF39C1E38C6760087C051 /* LeftNavDrawingToolsView.xib in Resources */,
 				705F64E11DF97B7000082D55 /* RobotoCondensed-Bold.ttf in Resources */,
 				705F64E31DF97B7000082D55 /* RobotoCondensed-Italic.ttf in Resources */,
 				705F64E51DF97B7000082D55 /* RobotoCondensed-LightItalic.ttf in Resources */,
@@ -718,6 +723,7 @@
 				705B78251E13C0B700161991 /* Temp6@2x.png in Resources */,
 				7097799D1ED569430032F4FF /* verticalWall@2x.png in Resources */,
 				705B78271E13C0B700161991 /* Temp4@2x.png in Resources */,
+				705F05AD1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib in Resources */,
 				70D6E85A1E436495007E3F2F /* 5@2x.png in Resources */,
 				70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */,
 				7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */,
@@ -727,7 +733,6 @@
 				705F64DC1DF97B7000082D55 /* Roboto-Medium.ttf in Resources */,
 				705F64E01DF97B7000082D55 /* Roboto-ThinItalic.ttf in Resources */,
 				70EC80E51E067DB400A6D245 /* presentation@2x.png in Resources */,
-				709DDF241E3A340500CE313C /* RightNavDrwaingToolsView.xib in Resources */,
 				70D6E85D1E436495007E3F2F /* 8@2x.png in Resources */,
 				3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */,
 				3B6EB8951DD845D900936AB9 /* Main.storyboard in Resources */,
@@ -790,7 +795,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */,
-				702BD7F51E7FFE0F008F786C /* CustomTemplateNameView.m in Sources */,
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */,
 				705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */,
@@ -800,37 +804,39 @@
 				705B783E1E13C71D00161991 /* CustomerListViewController.m in Sources */,
 				705B78441E13C71D00161991 /* TrainingVideoViewController.m in Sources */,
 				3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */,
+				705F05A11EDED8CE00D8B837 /* CustomTemplateNameView.m in Sources */,
 				70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */,
+				705F05AC1EDED8CE00D8B837 /* RightNavDrwaingToolsView.m in Sources */,
 				70015E981DF6913200DF542E /* Utility.m in Sources */,
-				70BAF39A1E38C6520087C051 /* LeftNavDrawingToolsView.m in Sources */,
 				70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */,
-				709F4BD71E76B35200C8B8DA /* CustomProductView.m in Sources */,
-				709DDF221E3A33F200CE313C /* RightNavDrwaingToolsView.m in Sources */,
-				705B783F1E13C71D00161991 /* DesignViewController.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
 				706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */,
 				7027C9BD1E1CEF5E0062EB77 /* AccordionHeaderView.m in Sources */,
-				70D6E84C1E4351C7007E3F2F /* ShowPriceViewController.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
 				704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */,
 				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
-				70C4BDA41EBC58C20009C354 /* Product.m in Sources */,
+				705F05AE1EDED8CE00D8B837 /* ShowPriceViewController.m in Sources */,
+				705F05AB1EDED8CE00D8B837 /* ProductObject.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
 				70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */,
+				705F05A51EDED8CE00D8B837 /* DesignViewController.m in Sources */,
+				705F05AA1EDED8CE00D8B837 /* Product.m in Sources */,
 				70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */,
+				705F05A81EDED8CE00D8B837 /* LeftNavDrawingToolsView.m in Sources */,
 				709B44351E6D6942008058F3 /* loginView.m in Sources */,
 				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
-				700D52531EB0B0C700B9732C /* CustomVideoPopUpView.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
-				703C35871EBA16DE00448B1A /* GalleryItem.m in Sources */,
+				705F05A31EDED8CE00D8B837 /* CustomVideoPopUpView.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,
 				70EA296F1ECDA0C40002931F /* Downloader.m in Sources */,
+				705F05A61EDED8CE00D8B837 /* GalleryItem.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,
+				705F05A01EDED8CE00D8B837 /* CustomProductView.m in Sources */,
 				70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

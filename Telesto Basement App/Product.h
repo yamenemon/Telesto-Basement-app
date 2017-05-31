@@ -12,7 +12,5 @@
 @property (assign,nonatomic) int productId;
 @property (strong,nonatomic) NSString *productImageName;
 @property (strong,nonatomic) NSString *productImageUrl;
-@property (assign,nonatomic) long productUnitPrice;
-@property (assign,nonatomic) NSString* productUnitType;
-@property (assign,nonatomic) long productDiscount;
+@property (assign,nonatomic) long productPrice;
 @end

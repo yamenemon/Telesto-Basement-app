@@ -18,7 +18,6 @@
 #import "CustomTemplateNameView.h"
 #import "CustomVideoPopUpView.h"
 #import "Product.h"
-#import "StringClass.h"
 
 @class  TemplatePopOverViewController;
 
