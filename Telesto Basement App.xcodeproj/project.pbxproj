@@ -20,9 +20,6 @@
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
-		7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */; };
-		7027C9BD1E1CEF5E0062EB77 /* AccordionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9BB1E1CEF5E0062EB77 /* AccordionHeaderView.m */; };
-		7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */; };
 		7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C01E1D15760062EB77 /* UserProfileViewController.m */; };
 		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
@@ -145,11 +142,6 @@
 		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
-		7027C9B71E1CEEDA0062EB77 /* FZAccordionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FZAccordionTableView.h; path = FZAccordionTableView/FZAccordionTableView.h; sourceTree = "<group>"; };
-		7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FZAccordionTableView.m; path = FZAccordionTableView/FZAccordionTableView.m; sourceTree = "<group>"; };
-		7027C9BA1E1CEF5E0062EB77 /* AccordionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccordionHeaderView.h; path = FZAccordionTableView/AccordionHeaderView.h; sourceTree = "<group>"; };
-		7027C9BB1E1CEF5E0062EB77 /* AccordionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccordionHeaderView.m; path = FZAccordionTableView/AccordionHeaderView.m; sourceTree = "<group>"; };
-		7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccordionHeaderView.xib; path = FZAccordionTableView/AccordionHeaderView.xib; sourceTree = "<group>"; };
 		7027C9BF1E1D15760062EB77 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		7027C9C01E1D15760062EB77 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		7027C9C21E1D35950062EB77 /* ProposalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalViewController.h; sourceTree = "<group>"; };
@@ -321,7 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				3BAFAD5F1E43CC77009F6392 /* Telesto Basement App.entitlements */,
-				7027C9B61E1CEEBA0062EB77 /* ColapsableTableView */,
 				704B68911E13CA6200E6537D /* Controllers */,
 				705B782C1E13C6C800161991 /* SW */,
 				70015E941DF690E100DF542E /* Models */,
@@ -409,18 +400,6 @@
 				705B78221E13C0B700161991 /* Temp1@2x.png */,
 			);
 			name = Images;
-			sourceTree = "<group>";
-		};
-		7027C9B61E1CEEBA0062EB77 /* ColapsableTableView */ = {
-			isa = PBXGroup;
-			children = (
-				7027C9B71E1CEEDA0062EB77 /* FZAccordionTableView.h */,
-				7027C9B81E1CEEDA0062EB77 /* FZAccordionTableView.m */,
-				7027C9BA1E1CEF5E0062EB77 /* AccordionHeaderView.h */,
-				7027C9BB1E1CEF5E0062EB77 /* AccordionHeaderView.m */,
-				7027C9BC1E1CEF5E0062EB77 /* AccordionHeaderView.xib */,
-			);
-			name = ColapsableTableView;
 			sourceTree = "<group>";
 		};
 		704B688E1E13C9C000E6537D /* Frameworks */ = {
@@ -696,7 +675,6 @@
 				705B78241E13C0B700161991 /* Temp7@2x.png in Resources */,
 				70D6E85B1E436495007E3F2F /* 6@2x.png in Resources */,
 				705F64DE1DF97B7000082D55 /* Roboto-Regular.ttf in Resources */,
-				7027C9BE1E1CEF5E0062EB77 /* AccordionHeaderView.xib in Resources */,
 				705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */,
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
 				705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */,
@@ -811,7 +789,6 @@
 				70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
 				706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */,
-				7027C9BD1E1CEF5E0062EB77 /* AccordionHeaderView.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
@@ -828,7 +805,6 @@
 				70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */,
 				705F05A81EDED8CE00D8B837 /* LeftNavDrawingToolsView.m in Sources */,
 				709B44351E6D6942008058F3 /* loginView.m in Sources */,
-				7027C9B91E1CEEDA0062EB77 /* FZAccordionTableView.m in Sources */,
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				705F05A31EDED8CE00D8B837 /* CustomVideoPopUpView.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,

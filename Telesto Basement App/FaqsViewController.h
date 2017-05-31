@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FZAccordionTableView.h"
-#import "AccordionHeaderView.h"
 #import "Utility.h"
 
 @interface FaqsViewController : UIViewController <UITextViewDelegate>
