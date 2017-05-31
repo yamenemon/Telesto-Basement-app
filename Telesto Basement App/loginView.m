@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "HttpHelper.h"
 #import "Utility.h"
+#import "StringClass.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -50,7 +51,7 @@
             //Add some method process in global queue - normal for data processing
             NSString* userId = _emailField.text;
             NSString* password = _passwordField.text;
-            
+            /*
             NSString *post = [NSString stringWithFormat:@"userid=%@&password=%@&device_token=%@&device_type=iOS", userId, password, tokenAsString];
             NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
             NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
@@ -63,14 +64,69 @@
             [request setHTTPBody:postData];
             NSData *data = [serviceHelper sendRequest:request];
             [self parseJOSNLoginStatus:data];
+             */
+            tokenAsString = @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH";
+            NSString *endPoint = @"user_login";
+            NSString *post = [NSString stringWithFormat:@"email=%@&password=%@&authKey=%@", userId, password, tokenAsString];
+            NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+            NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+            
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseURL,endPoint]]];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setHTTPBody:postData];
+            [self sendRequest:request];
         });
     
+}
+-(void)sendRequest:(NSURLRequest*)urlRequest{
+
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+
+    
+    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           NSLog(@"Response:%@ %@\n", response, error);
+                                                           
+                                                           if(error == nil)
+                                                           {
+                                                               NSString * text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+                                                               NSLog(@"Data = %@",text);
+                                                               if (data) {
+                                                                   [self parseJOSNLoginStatus:data];
+                                                               }
+                                                               else{
+                                                                   [self showButton];
+                                                                   NSString *message = @"Login Failed";
+                                                                   NSLog(@"%@", message);
+                                                                   
+                                                                   _errorMessageLabel.hidden = NO;
+                                                                   _errorMessageLabel.text = message;
+                                                                   _loadingIndicator.hidden = YES;
+                                                                   [_loadingIndicator stopAnimating];
+                                                               }
+                                                           }
+                                                           else{
+                                                               [self showButton];
+                                                               NSString *message = @"Login Failed";
+                                                               NSLog(@"%@", message);
+                                                               
+                                                               _errorMessageLabel.hidden = NO;
+                                                               _errorMessageLabel.text = message;
+                                                               _loadingIndicator.hidden = YES;
+                                                               [_loadingIndicator stopAnimating];
+                                                           }
+                                                       }];
+    [dataTask resume];
 }
 - (BOOL)parseJOSNLoginStatus:(NSData *)data {
     NSError *e = nil;
     NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error: &e];
-    NSString *loginStatus = [jsonArray objectForKey:@"Login"];
-    if([loginStatus isEqualToString:@"true"]) {
+    long loginStatus = [[jsonArray objectForKey:@"success"] longValue];
+    if(loginStatus == 1) {
         NSLog(@"Login Successful");
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
 
@@ -93,6 +149,7 @@
 
         _errorMessageLabel.hidden = NO;
         _errorMessageLabel.text = message;
+        _loadingIndicator.hidden = YES;
         [_loadingIndicator stopAnimating];
         
         return NO;

@@ -9,6 +9,8 @@
 #ifndef StringClass_h
 #define StringClass_h
 
+
+NSString *const BaseURL = @"http://telesto.centralstationmarketing.com/";
 NSString *const MyFirstConstant = @"FirstConstant";
 NSString *const MySecondConstant = @"SecondConstant";
 

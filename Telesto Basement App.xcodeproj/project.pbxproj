@@ -414,10 +414,6 @@
 		704B68911E13CA6200E6537D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				704B68931E13CB7B00E6537D /* Custom PopOver */,
-				70CA54C81E71612500F7FE67 /* CustomerList */,
-				70CA54D41E7188CB00F7FE67 /* Customer Proposals */,
-				70CA54C41E71389300F7FE67 /* Login */,
 				3B6EB88D1DD845D900936AB9 /* AppDelegate.h */,
 				3B6EB88E1DD845D900936AB9 /* AppDelegate.m */,
 				70CF14131DF449350045CF8F /* CustomerRecordViewController.h */,
@@ -430,6 +426,10 @@
 				7027C9C01E1D15760062EB77 /* UserProfileViewController.m */,
 				7027C9C21E1D35950062EB77 /* ProposalViewController.h */,
 				7027C9C31E1D35950062EB77 /* ProposalViewController.m */,
+				704B68931E13CB7B00E6537D /* Custom PopOver */,
+				70CA54C81E71612500F7FE67 /* CustomerList */,
+				70CA54D41E7188CB00F7FE67 /* Customer Proposals */,
+				70CA54C41E71389300F7FE67 /* Login */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
