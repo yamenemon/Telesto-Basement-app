@@ -76,7 +76,6 @@
 		705F64EB1DF97F2600082D55 /* telesto-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64E81DF97F2600082D55 /* telesto-logo@2x.png */; };
 		705F64EC1DF97F2600082D55 /* userName@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64E91DF97F2600082D55 /* userName@2x.png */; };
 		705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */; };
-		706286191DED939A0022E105 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 706286181DED939A0022E105 /* PageContentViewController.m */; };
 		70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */; };
 		70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */; };
 		706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B21ECEFC4F003E7247 /* Reachability.m */; };
@@ -218,8 +217,6 @@
 		705F64E81DF97F2600082D55 /* telesto-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "telesto-logo@2x.png"; sourceTree = "<group>"; };
 		705F64E91DF97F2600082D55 /* userName@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "userName@2x.png"; sourceTree = "<group>"; };
 		705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "passwordIcon@2x.png"; sourceTree = "<group>"; };
-		706286171DED939A0022E105 /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
-		706286181DED939A0022E105 /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 		70641E531E72AE660085FFE6 /* CustomerProposalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerProposalTableViewCell.h; sourceTree = "<group>"; };
 		70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerProposalTableViewCell.m; sourceTree = "<group>"; };
 		70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerProposalTableViewCell.xib; sourceTree = "<group>"; };
@@ -316,15 +313,7 @@
 				704B68911E13CA6200E6537D /* Controllers */,
 				705B782C1E13C6C800161991 /* SW */,
 				70015E941DF690E100DF542E /* Models */,
-				3B6EB8931DD845D900936AB9 /* Main.storyboard */,
-				3B6EB8991DD845DA00936AB9 /* Assets.xcassets */,
-				704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */,
 				70015E951DF6910500DF542E /* Images */,
-				3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */,
-				7097799A1ED569420032F4FF /* horizentalWall@2x.png */,
-				7097799B1ED569420032F4FF /* verticalWall@2x.png */,
-				3B6EB89E1DD845DA00936AB9 /* Info.plist */,
-				3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */,
 				3B6EB88A1DD845D900936AB9 /* Supporting Files */,
 			);
 			path = "Telesto Basement App";
@@ -333,11 +322,14 @@
 		3B6EB88A1DD845D900936AB9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */,
-				7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */,
+				3B6EB8931DD845D900936AB9 /* Main.storyboard */,
+				3B6EB8991DD845DA00936AB9 /* Assets.xcassets */,
+				3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */,
+				7097799A1ED569420032F4FF /* horizentalWall@2x.png */,
+				7097799B1ED569420032F4FF /* verticalWall@2x.png */,
+				3B6EB89E1DD845DA00936AB9 /* Info.plist */,
+				3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */,
 				705F64C21DF97B5500082D55 /* Font */,
-				70CF14101DF43C180045CF8F /* IQDropDownTextField.h */,
-				70CF14111DF43C180045CF8F /* IQDropDownTextField.m */,
 				3B6EB88B1DD845D900936AB9 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -346,6 +338,10 @@
 		70015E941DF690E100DF542E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */,
+				7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */,
+				70CF14101DF43C180045CF8F /* IQDropDownTextField.h */,
+				70CF14111DF43C180045CF8F /* IQDropDownTextField.m */,
 				706FA6B41ECEFCAE003E7247 /* MTReachabilityManager.h */,
 				706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */,
 				706FA6B11ECEFC4F003E7247 /* Reachability.h */,
@@ -364,6 +360,7 @@
 		70015E951DF6910500DF542E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */,
 				70D6E84D1E436495007E3F2F /* 1@2x.png */,
 				70D6E84E1E436495007E3F2F /* 2@2x.png */,
 				70D6E84F1E436495007E3F2F /* 3@2x.png */,
@@ -414,12 +411,9 @@
 		704B68911E13CA6200E6537D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				70EC57A11EDFF7CA00ABC263 /* CustomerRecord */,
 				3B6EB88D1DD845D900936AB9 /* AppDelegate.h */,
 				3B6EB88E1DD845D900936AB9 /* AppDelegate.m */,
-				70CF14131DF449350045CF8F /* CustomerRecordViewController.h */,
-				70CF14141DF449350045CF8F /* CustomerRecordViewController.m */,
-				706286171DED939A0022E105 /* PageContentViewController.h */,
-				706286181DED939A0022E105 /* PageContentViewController.m */,
 				70CF19641E1CE03D00C90EDD /* FaqsViewController.h */,
 				70CF19651E1CE03D00C90EDD /* FaqsViewController.m */,
 				7027C9BF1E1D15760062EB77 /* UserProfileViewController.h */,
@@ -480,6 +474,8 @@
 		709F4BD41E76B30C00C8B8DA /* Design Window */ = {
 			isa = PBXGroup;
 			children = (
+				705F058F1EDED8CE00D8B837 /* DesignViewController.h */,
+				705F05901EDED8CE00D8B837 /* DesignViewController.m */,
 				705F05871EDED8CE00D8B837 /* CustomProductView.h */,
 				705F05881EDED8CE00D8B837 /* CustomProductView.m */,
 				705F05891EDED8CE00D8B837 /* CustomTemplateNameView.h */,
@@ -488,8 +484,6 @@
 				705F058C1EDED8CE00D8B837 /* CustomVideoPopUpView.h */,
 				705F058D1EDED8CE00D8B837 /* CustomVideoPopUpView.m */,
 				705F058E1EDED8CE00D8B837 /* CustomVideoPopUpView.xib */,
-				705F058F1EDED8CE00D8B837 /* DesignViewController.h */,
-				705F05901EDED8CE00D8B837 /* DesignViewController.m */,
 				705F05911EDED8CE00D8B837 /* GalleryItem.h */,
 				705F05921EDED8CE00D8B837 /* GalleryItem.m */,
 				705F05931EDED8CE00D8B837 /* items.plist */,
@@ -570,6 +564,15 @@
 				70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */,
 			);
 			name = "Customer Proposals";
+			sourceTree = "<group>";
+		};
+		70EC57A11EDFF7CA00ABC263 /* CustomerRecord */ = {
+			isa = PBXGroup;
+			children = (
+				70CF14131DF449350045CF8F /* CustomerRecordViewController.h */,
+				70CF14141DF449350045CF8F /* CustomerRecordViewController.m */,
+			);
+			name = CustomerRecord;
 			sourceTree = "<group>";
 		};
 		94C13A06E1B0BEC60A7B633E /* Pods */ = {
@@ -793,7 +796,6 @@
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
 				704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */,
-				706286191DED939A0022E105 /* PageContentViewController.m in Sources */,
 				705F05AE1EDED8CE00D8B837 /* ShowPriceViewController.m in Sources */,
 				705F05AB1EDED8CE00D8B837 /* ProductObject.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
