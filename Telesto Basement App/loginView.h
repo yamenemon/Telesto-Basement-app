@@ -12,6 +12,7 @@
 @interface loginView : UIView<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *loginView;
 @property (weak, nonatomic) IBOutlet UIView *forgetView;
+@property (weak, nonatomic) IBOutlet UIView *termsView;
 
 
 

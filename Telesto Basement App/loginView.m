@@ -156,8 +156,6 @@
     }
     return NO;
 }
-
-
 -(void)updateLoginEmailAddress:(NSString*)emailAddress {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *oldEmailSettings = [[defaults objectForKey:@"EmailSettings"] mutableCopy];
@@ -172,8 +170,6 @@
                                               forKey:@"EmailSettings"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
-
 -(void)clearOldLoginEmailAddress {
     [self updateLoginEmailAddress:@""];
 }
@@ -197,21 +193,34 @@
 -(void)hideButton {
     self.loginBtn.hidden = TRUE;
 }
-
-
 -(void)showButton {
     self.loginBtn.hidden = FALSE;
 }
 - (IBAction)forgetBtnPressed:(id)sender {
-    
     [UIView animateWithDuration:0.65 animations:^{
         _loginView.alpha = 0.0;
+        _termsView.alpha = 0.0;
         _forgetView.alpha = 1.0;
     }];
 }
 - (IBAction)sendBtnAction:(id)sender {
     [UIView animateWithDuration:0.65 animations:^{
         _forgetView.alpha = 0.0;
+        _termsView.alpha = 0.0;
+        _loginView.alpha = 1.0;
+    }];
+}
+- (IBAction)termsOfUse:(id)sender {
+    [UIView animateWithDuration:0.65 animations:^{
+    _forgetView.alpha = 0.0;
+    _termsView.alpha = 1.0;
+    _loginView.alpha = 0.0;
+    }];
+}
+- (IBAction)termsDoneBtnActions:(id)sender {
+    [UIView animateWithDuration:0.65 animations:^{
+        _forgetView.alpha = 0.0;
+        _termsView.alpha = 0.0;
         _loginView.alpha = 1.0;
     }];
 }

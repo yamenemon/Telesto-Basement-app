@@ -13,8 +13,6 @@
 
 @interface BaseViewController () <CNPPopupControllerDelegate,iCarouselDelegate,iCarouselDataSource>{
 
-    AVPlayer *avPlayer;
-    AVPlayerLayer *layer;
 }
 @property (strong, nonatomic) UIActivityIndicatorView *aSpinner;
 @property (nonatomic, strong) CNPPopupController *popupController;
@@ -169,12 +167,10 @@
 }
 - (void)viewDidLayoutSubviews{
 
-    [self.view.layer insertSublayer:_tutorialButton.layer above:layer];
-    [self.view.layer insertSublayer:_loginButton.layer above:layer];
-    [self.view.layer insertSublayer:_taglineLabel.layer above:layer];
 
     _loginButton.layer.cornerRadius = 5;
     _tutorialButton.layer.cornerRadius = 5;
+    
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"loginView"
                                                       owner:self
                                                     options:nil];
@@ -186,6 +182,7 @@
     _customLoginView.loginView.backgroundColor = [UIColor clearColor];
     _customLoginView.forgetView.backgroundColor = [UIColor clearColor];
     _customLoginView.forgetView.alpha = 0.0;
+    _customLoginView.termsView.alpha = 0.0;
     
     
     _customLoginView.errorMessageLabel.hidden = YES;
