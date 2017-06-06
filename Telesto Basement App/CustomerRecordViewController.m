@@ -20,31 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Customer Records";
-    
-    [self changeTextfieldStyle:_firstNameTextField];
-    [self changeTextfieldStyle:_lastNameTextField];
-    [self changeTextfieldStyle:_streetAddressTextField];
-    [self changeTextfieldStyle:_cityTextField];
-    [self changeTextfieldStyle:_zipCodeTextField];
-    [self changeTextfieldStyle:_countryTextField];
-    [self changeTextfieldStyle:_emailTextField];
-    [self changeTextfieldStyle:_areaTextField];
-    [self changeTextfieldStyle:_phoneNumberTextField];
-    [self changeTextfieldStyle:_stateNameTextField];
-    
-}
--(void)viewDidLayoutSubviews{
-    self.customerImageView.layer.cornerRadius = self.customerImageView.frame.size.width / 2;
-    self.customerImageView.layer.borderWidth = 3.0f;
-    self.customerImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.customerImageView.clipsToBounds = YES;
-    
-    
-    self.basementImageView.layer.cornerRadius = 5;
-    self.basementImageView.layer.borderWidth = 2.0f;
-    self.basementImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.basementImageView.clipsToBounds = YES;
-    
+    [_rightView endEditing:YES];
 //    [self changeTextfieldStyle:_firstNameTextField];
 //    [self changeTextfieldStyle:_lastNameTextField];
 //    [self changeTextfieldStyle:_streetAddressTextField];
@@ -56,6 +32,12 @@
 //    [self changeTextfieldStyle:_phoneNumberTextField];
 //    [self changeTextfieldStyle:_stateNameTextField];
     
+}
+-(void)viewDidLayoutSubviews{
+    self.customerImageView.layer.cornerRadius = self.customerImageView.frame.size.width / 2;
+    self.customerImageView.layer.borderWidth = 3.0f;
+    self.customerImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.customerImageView.clipsToBounds = YES;
 }
 -(UITextField*)changeTextfieldStyle:(UITextField*)textField{
     
