@@ -2166,14 +2166,14 @@ A: Immediately</string>
                                             <action selector="editProfilePicture:" destination="E6b-Wl-O3C" eventType="touchUpInside" id="nER-Qr-wuK"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-Y8-N5H">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building Media" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-Y8-N5H">
                                         <rect key="frame" x="8" y="316" width="152" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="152" id="I9s-7Q-VzX"/>
                                             <constraint firstAttribute="height" constant="21" id="YAW-i5-5gY"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                        <color key="textColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2221,9 +2221,9 @@ A: Immediately</string>
                         <outlet property="notesTextView" destination="MpS-Eb-2kO" id="UnL-rJ-Sxk"/>
                         <outlet property="phoneNotifySwitch" destination="hSU-gm-8FF" id="aae-wa-KvX"/>
                         <outlet property="phoneNumberTextField" destination="53a-aS-Se7" id="xPU-YT-5DD"/>
+                        <outlet property="snapContainer" destination="GcT-qC-JR6" id="uVP-Sd-Xc2"/>
                         <outlet property="stateNameTextField" destination="l98-F6-71S" id="svu-Kr-mj6"/>
                         <outlet property="streetAddressTextField" destination="c6e-xr-nsj" id="5tu-rw-rMi"/>
-                        <outlet property="userCapturedImageView" destination="GcT-qC-JR6" id="QnG-gi-Gv3"/>
                         <outlet property="zipCodeTextField" destination="eMS-RP-HmD" id="kuO-33-Fj7"/>
                     </connections>
                 </viewController>

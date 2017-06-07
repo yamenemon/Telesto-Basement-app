@@ -15,26 +15,27 @@
 @end
 
 @implementation CustomerRecordViewController
-
+@synthesize snapContainer;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Customer Records";
      mediaSelectionPopUp = [[[NSBundle mainBundle] loadNibNamed:@"MediaPopUp" owner:self options:nil] objectAtIndex:0];
-    
+    _galleryItems = [[NSMutableArray alloc] init];
     [self registerForKeyboardNotifications];
+    [self loadSanpMediaContainer];
+}
+-(void)loadSanpMediaContainer{
+    UICollectionViewFlowLayout *flo = [[UICollectionViewFlowLayout alloc] init];
     
-//    [self changeTextfieldStyle:_firstNameTextField];
-//    [self changeTextfieldStyle:_lastNameTextField];
-//    [self changeTextfieldStyle:_streetAddressTextField];
-//    [self changeTextfieldStyle:_cityTextField];
-//    [self changeTextfieldStyle:_zipCodeTextField];
-//    [self changeTextfieldStyle:_countryTextField];
-//    [self changeTextfieldStyle:_emailTextField];
-//    [self changeTextfieldStyle:_areaTextField];
-//    [self changeTextfieldStyle:_phoneNumberTextField];
-//    [self changeTextfieldStyle:_stateNameTextField];
+    snapShotCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, snapContainer.frame.size.width, snapContainer.frame.size.height) collectionViewLayout:flo];
+    snapShotCollectionView.delegate = self;
+    snapShotCollectionView.dataSource = self;
+    snapShotCollectionView.backgroundColor = [UIColor clearColor];
+    [snapShotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewcell"];
+    [snapContainer addSubview:snapShotCollectionView];
     
+    [snapShotCollectionView reloadData];
 }
 - (CNPPopupTheme *)defaultTheme {
     CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
@@ -139,11 +140,140 @@
     _customerRecordScrollView.contentInset = contentInsets;
     _customerRecordScrollView.scrollIndicatorInsets = contentInsets;
 }
--(void)createCustomer{
 
-//    tokenAsString = @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH";
+- (IBAction)customerRecordPage:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)editProfilePicture:(id)sender {
+    mediaSelectionPopUp.isFromBuildingMedia = NO;
+    [self mediaPopUP];
+}
+-(void)mediaPopUP{
+    mediaSelectionPopUp.customerRecordVC = self;
+    [mediaSelectionPopUp initialize];
+    popupController = [[CNPPopupController alloc] initWithContents:@[mediaSelectionPopUp]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = CNPPopupStyleCentered;
+    popupController.delegate = self;
+    [popupController presentPopupControllerAnimated:YES];
+}
+-(void)loadImageFromViaMedia:(CameraMode)mode{
+    [popupController dismissPopupControllerAnimated:YES];
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    if (mode == ProfilePicFromCamera) {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else if (mode == ProfilePicFromGallery){
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    else if(mode == PictureForBuildingMediaFromGallery){
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    else if(mode == PictureForBuildingMediaFromCamera){
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    cameraMode = mode;
+    imagePickerController.delegate = self;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+// This method is called when an image has been chosen from the library or taken from the camera.
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //You can retrieve the actual UIImage
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    //Or you can get the image url from AssetsLibrary
+//    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
+    if (cameraMode == ProfilePicFromCamera || cameraMode == ProfilePicFromGallery) {
+        _customerImageView.image = image;
+        _customerImageView.contentMode = UIViewContentModeScaleToFill;
+    }
+    else{
+        [_galleryItems addObject:image];
+        [snapShotCollectionView reloadData];
+    }
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark -
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [_galleryItems count]+1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewcell" forIndexPath:indexPath];
+    //    cell.backgroundColor = [UIColor greenColor];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+    imageView.contentMode = UIViewContentModeScaleToFill;
+    [cell addSubview:imageView];
+    if (indexPath.row==0) {
+        imageView.image = [UIImage imageNamed:@"cameraThumb"];
+    }
+    else{
+        //        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:imageView];
+        imageView.image = [_galleryItems objectAtIndex:indexPath.row-1];
+//        _bigScreenImageView.image = imageView.image;
+    }
+    return cell;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+#pragma mark -
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==0) {
+        mediaSelectionPopUp.isFromBuildingMedia = YES;
+        [self mediaPopUP];
+        [mediaSelectionPopUp.mediaPopUpTable reloadData];
+    }
+    else{
+//        _bigScreenImageView.image = [_galleryItems objectAtIndex:indexPath.row-1];
+    }
+}
+
+#pragma mark -
+#pragma mark - UICollectionViewFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat picDimension = snapContainer.frame.size.width / 5.5f;
+    return CGSizeMake(picDimension, picDimension);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(0.5, 0.5, 0.5, 0.5);
+}
+
+
+-(BOOL)shouldAutorotate{
+    return NO;
+}
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+}
+#pragma mark -
+#pragma mark CREATE CUSTOMER
+-(void)createCustomer{
+    
+    //    tokenAsString = @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH";
     NSString *endPoint = @"create_customer";
-//    fName, lName, address, city, state, zip, countryId, email, phone, userId
+    //    fName, lName, address, city, state, zip, countryId, email, phone, userId
     NSString *post = [NSString stringWithFormat:@"fName=%@&lName=%@&address=%@&city=%@&state=%@&zip=%@&countryId=%@&email=%@&phone=%@&userId=%@", _firstNameTextField.text, _lastNameTextField.text, _streetAddressTextField.text,_cityTextField.text,_stateNameTextField.text,_zipCodeTextField.text,_countryTextField.text];
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
@@ -155,7 +285,7 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     [self sendRequest:request];
-
+    
 }
 -(void)sendRequest:(NSURLRequest*)urlRequest{
     
@@ -190,51 +320,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)customerRecordPage:(id)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (IBAction)editProfilePicture:(id)sender {
-    mediaSelectionPopUp.customerRecordVC = self;
-    [mediaSelectionPopUp initialize];
-    popupController = [[CNPPopupController alloc] initWithContents:@[mediaSelectionPopUp]];
-    popupController.theme = [self defaultTheme];
-    popupController.theme.popupStyle = CNPPopupStyleCentered;
-    popupController.delegate = self;
-    [popupController presentPopupControllerAnimated:YES];
-    
-}
--(void)loadImageFromViaMedia:(CameraMode)mode{
-    [popupController dismissPopupControllerAnimated:YES];
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    if (mode == ProfilePicFromCamera) {
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else{
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    imagePickerController.delegate = self;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
-}
-
-// This method is called when an image has been chosen from the library or taken from the camera.
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    //You can retrieve the actual UIImage
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    //Or you can get the image url from AssetsLibrary
-//    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
-    _customerImageView.image = image;
-    _customerImageView.contentMode = UIViewContentModeScaleToFill;
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
--(BOOL)shouldAutorotate{
-    return NO;
-}
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-{
-    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
 }
 /*
  #pragma mark - Navigation

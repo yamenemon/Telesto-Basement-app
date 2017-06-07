@@ -101,7 +101,7 @@
     else{
 //        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:imageView];
         imageView.image = [_galleryItems objectAtIndex:indexPath.row-1];
-
+        _bigScreenImageView.image = imageView.image;
     }
     return cell;
 }

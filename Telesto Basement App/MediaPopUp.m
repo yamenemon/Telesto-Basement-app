@@ -11,6 +11,7 @@
 
 @implementation MediaPopUp
 @synthesize customerRecordVC;
+@synthesize isFromBuildingMedia;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -30,6 +31,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Number of rows is the number of time zones in the region for the specified section.
+    if (isFromBuildingMedia == YES){
+        return 4;
+    }
+    else{ return 2; }
     return 2;
 }
 
@@ -39,19 +44,46 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:MyIdentifier];
     }
-    switch (indexPath.row) {
-        case 0:
-            cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
-            cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
-            cell.textLabel.text = @"Gallery Picture";
-            break;
-        case 1:
-            cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
-            cell.textLabel.text = @"Capture Picture";
-            break;
-        default:
-            break;
+    if (isFromBuildingMedia == YES) {
+        switch (indexPath.row) {
+            case 0:
+                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                cell.textLabel.text = @"Load Gallery";
+                break;
+            case 1:
+                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.textLabel.text = @"Capture Picture";
+                break;
+            case 2:
+                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.textLabel.text = @"Load Video";
+                break;
+            case 3:
+                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.textLabel.text = @"Capture Video";
+                break;
+            default:
+                break;
+        }
     }
+    else{
+        switch (indexPath.row) {
+            case 0:
+                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                cell.textLabel.text = @"Gallery Picture";
+
+                break;
+            case 1:
+                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.textLabel.text = @"Capture Picture";
+                break;
+            default:
+                break;
+        }
+    }
+    
     
     return cell;
 }
@@ -59,13 +91,26 @@
     return 65;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    if (indexPath.row==0) {
-        
-        [customerRecordVC loadImageFromViaMedia:ProfilePicFromGallery];
+    if (isFromBuildingMedia == NO) {
+        if (indexPath.row==0) {
+            
+            [customerRecordVC loadImageFromViaMedia:ProfilePicFromGallery];
+        }
+        else if (indexPath.row==1){
+            [customerRecordVC loadImageFromViaMedia:ProfilePicFromCamera];
+        }
     }
-    else if (indexPath.row==1){
-        [customerRecordVC loadImageFromViaMedia:ProfilePicFromCamera];
+    else if (indexPath.row == 0){
+        [customerRecordVC loadImageFromViaMedia:PictureForBuildingMediaFromGallery];
+    }
+    else if (indexPath.row == 1){
+        [customerRecordVC loadImageFromViaMedia:PictureForBuildingMediaFromCamera];
+    }
+    else if (indexPath.row == 2){
+        [customerRecordVC loadImageFromViaMedia:VideoForBuildingMediaFromGallery];
+    }
+    else if (indexPath.row == 3){
+        [customerRecordVC loadImageFromViaMedia:VideoForBuildingMediaFromCamera];
     }
 }
 -(BOOL)shouldAutorotate{

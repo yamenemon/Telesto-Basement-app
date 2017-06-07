@@ -10,6 +10,7 @@
 @class CustomerRecordViewController;
 @interface MediaPopUp : UIView <UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) CustomerRecordViewController *customerRecordVC;
+@property (assign,nonatomic) BOOL isFromBuildingMedia;
 @property (weak, nonatomic) IBOutlet UITableView *mediaPopUpTable;
 -(void)initialize;
 @end

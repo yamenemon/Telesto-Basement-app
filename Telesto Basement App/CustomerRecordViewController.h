@@ -13,14 +13,21 @@
 
 typedef NS_ENUM(NSInteger, CameraMode) {
     ProfilePicFromGallery,
-    ProfilePicFromCamera
+    ProfilePicFromCamera,
+    PictureForBuildingMediaFromGallery,
+    PictureForBuildingMediaFromCamera,
+    VideoForBuildingMediaFromGallery,
+    VideoForBuildingMediaFromCamera
 };
 
-@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate>{
+@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>{
     UITextField *activeField;
     MediaPopUp *mediaSelectionPopUp;
     CNPPopupController *popupController;
+    UICollectionView *snapShotCollectionView;
+    CameraMode cameraMode;
 }
+@property (strong,nonatomic) NSMutableArray *galleryItems;
 
 @property (weak, nonatomic) IBOutlet UIView *customerName;
 @property (weak, nonatomic) IBOutlet UIImageView *customerImageView;
@@ -39,8 +46,8 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 @property (weak, nonatomic) IBOutlet UISwitch *emailNotificationSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *phoneNotifySwitch;
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
+@property (weak, nonatomic) IBOutlet UIView *snapContainer;
 
-@property (weak, nonatomic) IBOutlet UIView *userCapturedImageView;
 
 -(void)loadImageFromViaMedia:(CameraMode)mode;
 @end
