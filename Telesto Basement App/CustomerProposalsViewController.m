@@ -17,7 +17,7 @@
 @end
 
 @implementation CustomerProposalsViewController
-
+@synthesize customInfoObject;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -25,15 +25,25 @@
     self.title = @"Customer Profile";
 
 }
+-(void)viewWillAppear:(BOOL)animated{
+
+    NSLog(@"customInfoObject === %@",customInfoObject);
+    [self setCustomerInfo:customInfoObject];
+}
+-(void)setCustomerInfo:(CustomerInfoObject*)customerInfo{
+
+    self.customerNameLabel.text = [NSString stringWithFormat:@"%@",customerInfo.customerName];
+    self.stateLabel.text = [NSString stringWithFormat:@"%@",customerInfo.customerAddress];
+}
 -(void)viewDidLayoutSubviews{
    
     self.customerProfileImage.layer.cornerRadius = self.customerProfileImage.frame.size.width / 2;
-    self.customerProfileImage.layer.borderWidth = 1.0f;
+    self.customerProfileImage.layer.borderWidth = 2.0f;
     self.customerProfileImage.layer.borderColor = UIColorFromRGB(0x0A5571).CGColor;
     self.customerProfileImage.clipsToBounds = YES;
     
     self.proposalBtn.layer.cornerRadius = 2.0f;
-    self.editProfileBTn.layer.cornerRadius = 5.0f;
+    self.editProfileBTn.layer.cornerRadius = 2.0f;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -830,7 +830,7 @@
                                  vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                                  [self.navigationController pushViewController:vc animated:YES];
                              }];
-    [alert addAction:ok];
+//    [alert addAction:ok];
     [alert addAction:cancel];
     
     [self presentViewController:alert animated:YES completion:nil];

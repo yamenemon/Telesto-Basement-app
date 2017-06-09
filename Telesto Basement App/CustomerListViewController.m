@@ -151,9 +151,10 @@
 -(void)cellMethod:(UIButton*)sender{
     UIButton *btn = (UIButton*)sender;
     long tag = btn.tag;
-    [_customerInfoObjArray objectAtIndex:tag];
+    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:tag];
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerProposals"];
+    CustomerProposalsViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerProposals"];
+    vc.customInfoObject = customerInfoObject;
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:vc animated:YES];
 }

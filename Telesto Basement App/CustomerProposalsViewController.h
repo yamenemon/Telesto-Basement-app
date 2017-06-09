@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CustomerInfoObject.h"
 @interface CustomerProposalsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
+
+@property (strong,nonatomic) CustomerInfoObject *customInfoObject;
 @property (weak, nonatomic) IBOutlet UIImageView *customerProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *customerNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postLabel;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lastLoginLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *customerHouseImageView;
 @property (weak, nonatomic) IBOutlet UIButton *proposalBtn;
 @property (weak, nonatomic) IBOutlet UIButton *editProfileBTn;
 @end
