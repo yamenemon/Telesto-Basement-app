@@ -12,6 +12,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
 @property (weak, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet UILabel *proposalName;
-@property (weak, nonatomic) IBOutlet UILabel *proposalDescription;
 
+@property (weak, nonatomic) IBOutlet UIButton *signProposals;
+@property (weak, nonatomic) IBOutlet UIButton *editProposals;
+@property (weak, nonatomic) IBOutlet UIButton *duplicateProposals;
 @end

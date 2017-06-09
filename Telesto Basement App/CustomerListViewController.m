@@ -56,7 +56,7 @@
         // Convert to JSON object:
         NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:[[arr objectAtIndex:i] dataUsingEncoding:NSUTF8StringEncoding]
                                                               options:0 error:NULL];
-        NSLog(@"jsonObject=%@", jsonObject);
+//        NSLog(@"jsonObject=%@", jsonObject);
         
         CustomerInfoObject *customerInfoObj = [[CustomerInfoObject alloc] init];
         customerInfoObj.customerName = [NSString stringWithFormat:@"%@ %@",[jsonObject valueForKey:@"firstName"],[jsonObject valueForKey:@"lastName"]] ;
@@ -131,19 +131,27 @@
 
         cell.cellImageView.image = [UIImage imageNamed:@"userName"];
     
-        [cell.proposalsBtn addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
-        cell.proposalsBtn.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
-        cell.proposalsBtn.tag = indexPath.row;
-        cell.proposalsBtn.layer.cornerRadius = 5.0;
+//        [cell.proposalsBtn addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
+    cell.MapItBtn.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+    cell.MapItBtn.tag = indexPath.row;
+    cell.MapItBtn.layer.cornerRadius = 5.0;
+    
+    cell.customProfileBtn.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+    cell.customProfileBtn.tag = indexPath.row;
+    cell.customProfileBtn.layer.cornerRadius = 5.0;
+    [cell.customProfileBtn addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
 
-    cell.cityTextLabel.text = @": New York.\npostalCode : 10021.\nstate : NY.\nstreetAddress : 21 2nd Street.";
+    cell.cityTextLabel.text = @"streetAddress : 21 2nd Street.";
     cell.lastLoginTextLabel.text = @": Monday, June 15, 2009 8:45:30 PM ";
     NSLog(@"\nCustomer Name: %@ \n Customer Address: %@ \n Customer Schedule: %@ \n",customerInfoObject.customerName,customerInfoObject.customerAddress,customerInfoObject.scheduleDate);
     cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerName];
 
     return cell;
 }
--(void)cellMethod:(id)sender{
+-(void)cellMethod:(UIButton*)sender{
+    UIButton *btn = (UIButton*)sender;
+    long tag = btn.tag;
+    [_customerInfoObjArray objectAtIndex:tag];
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerProposals"];
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -154,9 +162,10 @@
     return 100;
 
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:indexPath.row];
+//    [self cellMethod:customerInfoObject];
+//}
 - (IBAction)createNewCustomer:(id)sender {
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

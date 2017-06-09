@@ -92,6 +92,11 @@
 		70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54D61E7188FD00F7FE67 /* CustomerProposalsViewController.m */; };
 		70CAA46B1EE7DB4100614BFB /* MediaPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CAA46A1EE7DB4100614BFB /* MediaPopUp.m */; };
 		70CAA46D1EE7DB4E00614BFB /* MediaPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CAA46C1EE7DB4E00614BFB /* MediaPopUp.xib */; };
+		70CAA46F1EE83E3100614BFB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CAA46E1EE83E3100614BFB /* MobileCoreServices.framework */; };
+		70CAA4711EE83E3A00614BFB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CAA4701EE83E3A00614BFB /* MediaPlayer.framework */; };
+		70CAA4731EE83E4000614BFB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CAA4721EE83E4000614BFB /* AssetsLibrary.framework */; };
+		70CAA4751EE83E5100614BFB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CAA4741EE83E5100614BFB /* CoreMedia.framework */; };
+		70CAA4771EE83E5A00614BFB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CAA4761EE83E5A00614BFB /* AVFoundation.framework */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
@@ -245,6 +250,11 @@
 		70CAA4691EE7DB4100614BFB /* MediaPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaPopUp.h; sourceTree = "<group>"; };
 		70CAA46A1EE7DB4100614BFB /* MediaPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaPopUp.m; sourceTree = "<group>"; };
 		70CAA46C1EE7DB4E00614BFB /* MediaPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaPopUp.xib; sourceTree = "<group>"; };
+		70CAA46E1EE83E3100614BFB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		70CAA4701EE83E3A00614BFB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		70CAA4721EE83E4000614BFB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		70CAA4741EE83E5100614BFB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		70CAA4761EE83E5A00614BFB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		70CD67CA1ED6BE5E007980FA /* StringClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringClass.h; sourceTree = "<group>"; };
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
 		70CF14101DF43C180045CF8F /* IQDropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDropDownTextField.h; sourceTree = "<group>"; };
@@ -285,7 +295,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70CAA4771EE83E5A00614BFB /* AVFoundation.framework in Frameworks */,
+				70CAA4751EE83E5100614BFB /* CoreMedia.framework in Frameworks */,
 				704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */,
+				70CAA4731EE83E4000614BFB /* AssetsLibrary.framework in Frameworks */,
+				70CAA4711EE83E3A00614BFB /* MediaPlayer.framework in Frameworks */,
+				70CAA46F1EE83E3100614BFB /* MobileCoreServices.framework in Frameworks */,
 				167AB7714A412FA773401D90 /* libPods-Telesto Basement App.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +422,11 @@
 		704B688E1E13C9C000E6537D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70CAA4761EE83E5A00614BFB /* AVFoundation.framework */,
+				70CAA4741EE83E5100614BFB /* CoreMedia.framework */,
+				70CAA4721EE83E4000614BFB /* AssetsLibrary.framework */,
+				70CAA4701EE83E3A00614BFB /* MediaPlayer.framework */,
+				70CAA46E1EE83E3100614BFB /* MobileCoreServices.framework */,
 				704B688F1E13C9C000E6537D /* QuartzCore.framework */,
 				1D774B00CC6AFD6F82927CD9 /* libPods-Telesto Basement App.a */,
 			);

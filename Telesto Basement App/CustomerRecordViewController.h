@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <MobileCoreServices/UTCoreTypes.h>
+#import <MediaPlayer/MediaPlayer.h>
+
 #import "MediaPopUp.h"
 #import "CNPPopupController.h"
 

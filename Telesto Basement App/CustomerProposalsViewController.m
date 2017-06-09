@@ -10,6 +10,7 @@
 #import "Utility.h"
 #import "CustomerInfoObject.h"
 #import "CustomerProposalTableViewCell.h"
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface CustomerProposalsViewController ()
 
@@ -21,22 +22,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.navigationController.navigationBar.translucent = NO;
+    self.title = @"Customer Profile";
 
 }
 -(void)viewDidLayoutSubviews{
    
     self.customerProfileImage.layer.cornerRadius = self.customerProfileImage.frame.size.width / 2;
-    self.customerProfileImage.layer.borderWidth = 15.0f;
-    self.customerProfileImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.customerProfileImage.layer.borderWidth = 1.0f;
+    self.customerProfileImage.layer.borderColor = UIColorFromRGB(0x0A5571).CGColor;
     self.customerProfileImage.clipsToBounds = YES;
     
-    self.proposalBtn.layer.cornerRadius = 5.0f;
-    
-    self.customerHouseImageView.layer.cornerRadius = self.customerProfileImage.frame.size.width / 2;
-    self.customerHouseImageView.layer.borderWidth = 10.0f;
-    self.customerHouseImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.customerHouseImageView.clipsToBounds = YES;
-    
+    self.proposalBtn.layer.cornerRadius = 2.0f;
     self.editProfileBTn.layer.cornerRadius = 5.0f;
 }
 - (void)didReceiveMemoryWarning {
@@ -52,7 +48,7 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    CustomerInfoObject *customerInfoObject ;//= [_customerInfoObjArray objectAtIndex:indexPath.row];
+//    CustomerInfoObject *customerInfoObject ;//= [_customerInfoObjArray objectAtIndex:indexPath.row];
     static NSString *simpleTableIdentifier = @"CustomerProposalTableViewCell";
     
     CustomerProposalTableViewCell *cell = (CustomerProposalTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -60,18 +56,30 @@
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomerProposalTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.cellImage.image = [UIImage imageNamed:@"userName"];
     
     cell.proposalName.text = @"Basement Waterproofing";
-    cell.proposalDescription.text = @"Make your basement dry and clean";
+    
+    cell.signProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+    cell.signProposals.tag = indexPath.row;
+    cell.signProposals.layer.cornerRadius = 5.0;
+    
+    cell.editProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+    cell.editProposals.tag = indexPath.row;
+    cell.editProposals.layer.cornerRadius = 5.0;
+    
+    cell.duplicateProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+    cell.duplicateProposals.tag = indexPath.row;
+    cell.duplicateProposals.layer.cornerRadius = 5.0;
     
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 130;
+    return 100;
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -19,5 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cityTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastLoginTextLabel;
-@property (weak, nonatomic) IBOutlet UIButton *proposalsBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *MapItBtn;
+@property (weak, nonatomic) IBOutlet UIButton *customProfileBtn;
+
 @end

@@ -59,7 +59,7 @@
 -(void)viewDidLayoutSubviews{
     self.customerImageView.layer.cornerRadius = self.customerImageView.frame.size.width / 2;
     self.customerImageView.layer.borderWidth = 3.0f;
-    self.customerImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.customerImageView.layer.borderColor = UIColorFromRGB(0x0A5571).CGColor;
     self.customerImageView.clipsToBounds = YES;
     _emailNotificationSwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
     _phoneNotifySwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
@@ -196,7 +196,83 @@
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-
+//- (IBAction)PlayVideo:(id)sender {
+//    [self startMediaBrowserFromViewController: self usingDelegate: self];
+//}
+//
+//- (BOOL) startMediaBrowserFromViewController: (UIViewController*) controller
+//                               usingDelegate: (id <UIImagePickerControllerDelegate,
+//                                               UINavigationControllerDelegate>) delegate{
+//    
+//    if (([UIImagePickerController isSourceTypeAvailable:
+//          UIImagePickerControllerSourceTypeSavedPhotosAlbum] == NO)
+//        || (delegate == nil)
+//        || (controller == nil))
+//        return NO;
+//    
+//    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
+//    mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+//    
+//    mediaUI.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
+//    
+//    // Hides the controls for moving & scaling pictures, or for
+//    // trimming movies. To instead show the controls, use YES.
+//    mediaUI.allowsEditing = YES;
+//    
+//    mediaUI.delegate = delegate;
+//    
+//    [controller presentModalViewController: mediaUI animated: YES];
+//    return YES;
+//    
+//}
+//// For responding to the user tapping Cancel.
+//- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
+//    
+//    [self dismissModalViewControllerAnimated: YES];
+//}
+//
+//// For responding to the user accepting a newly-captured picture or movie
+//- (void) imagePickerController: (UIImagePickerController *) picker
+// didFinishPickingMediaWithInfo: (NSDictionary *) info {
+//    
+//    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
+//    
+//    [self dismissModalViewControllerAnimated:NO];
+//    
+//    // Handle a movie capture
+//    if (CFStringCompare ((__bridge_retained CFStringRef)mediaType, kUTTypeMovie, 0)
+//        == kCFCompareEqualTo) {
+//        
+//        NSString *moviePath = [[info objectForKey:
+//                                UIImagePickerControllerMediaURL] path];
+//        MPMoviePlayerViewController* theMovie =
+//        [[MPMoviePlayerViewController alloc] initWithContentURL: [info objectForKey:
+//                                                                  UIImagePickerControllerMediaURL]];
+//        [self presentMoviePlayerViewControllerAnimated:theMovie];
+//        
+//        // Register for the playback finished notification
+//        [[NSNotificationCenter defaultCenter]
+//         addObserver: self
+//         selector: @selector(myMovieFinishedCallback:)
+//         name: MPMoviePlayerPlaybackDidFinishNotification
+//         object: theMovie];
+//        
+//        
+//    }
+//}
+//// When the movie is done, release the controller.
+//-(void) myMovieFinishedCallback: (NSNotification*) aNotification
+//{
+//    [self dismissMoviePlayerViewControllerAnimated];
+//    
+//    avmovi* theMovie = [aNotification object];
+//    
+//    [[NSNotificationCenter defaultCenter]
+//     removeObserver: self
+//     name: MPMoviePlayerPlaybackDidFinishNotification
+//     object: theMovie];
+//    // Release the movie instance created in playMovieAtURL:
+//}
 
 #pragma mark -
 #pragma mark - UICollectionViewDataSource
