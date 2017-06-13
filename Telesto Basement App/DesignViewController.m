@@ -25,6 +25,7 @@
 @synthesize productArray;
 @synthesize infoBtnArray;
 @synthesize downloadedProduct;
+@synthesize productSliderCustomView;
 
 #pragma mark - ViewControllers Super Methods
 
@@ -45,6 +46,15 @@
     productArray = [[NSMutableArray alloc] init];
     self.color = [[DRColorPickerColor alloc] initWithColor:UIColor.blueColor];
     
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"CustomTemplateNameView"
+                                                      owner:self
+                                                    options:nil];
+    
+    customTemplateNameView = [ nibViews objectAtIndex:0];
+    customTemplateNameView.designViewController = self;
+    
+    [self setCustomTemplateName];
+    
 }
 -(BOOL)prefersStatusBarHidden{
     return NO;
@@ -59,34 +69,17 @@
     rightNavBtnBar.frame = CGRectMake(self.view.frame.size.width - rightNavBtnBar.frame.size.width, 0, rightNavBtnBar.frame.size.width, rightNavBtnBar.frame.size.height);
     [self.navigationController.navigationBar addSubview:rightNavBtnBar];
     rightNavBtnBar.baseClass = self;
-    
 }
 -(void)viewDidLayoutSubviews{
     /*Scrolling window*/
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"CustomTemplateNameView"
-                                                      owner:self
-                                                    options:nil];
     
-    customTemplateNameView = [ nibViews objectAtIndex:0];
-    customTemplateNameView.designViewController = self;
     
-    [self setCustomTemplateName];
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
     
-//    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-//        //Background Thread
-//        dispatch_async(dispatch_get_main_queue(), ^(void){
-//            //Run UI Updates
-//            isShown = YES;
-//            productSliderView.hidden = YES;
-//            [self productSliderCalled:nil];
-//            [self createProductScroller];
-//            
-//        });
-//    });
     dispatch_queue_t _serialQueue = dispatch_queue_create("com.example.name", DISPATCH_QUEUE_SERIAL);
-
+    
     dispatch_sync(_serialQueue, ^{
         [self downloadProduct];
     });
@@ -100,6 +93,7 @@
             
         });
     });
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     leftNavBtnBar.hidden = YES;
@@ -116,7 +110,6 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     [self presentViewController:picker animated:YES completion:NULL];
-
 }
 - (void)saveImage:(UIImage*)selectedImage {
 
@@ -131,7 +124,6 @@
 //    NSError *error;
 //    [imageData writeToFile:savedImagePath options:NSDataWritingFileProtectionNone error:&error];
 }
-
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender{
     
     NSLog(@"sender tag: %ld", (long)sender.tag);
@@ -152,7 +144,7 @@
     customVideoPopUpView.userCapturedImageUrl = _templateNameString;
     [customVideoPopUpView initGalleryItems];
     isFromProduct = YES;
-    popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customVideoPopUpView]];
+    popupController = [[CNPPopupController alloc] initWithContents:@[customVideoPopUpView]];
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = popupStyle;
     popupController.delegate = self;
@@ -160,7 +152,7 @@
 }
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
     
-    popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */customTemplateNameView]];
+    popupController = [[CNPPopupController alloc] initWithContents:@[customTemplateNameView]];
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = popupStyle;
     popupController.delegate = self;
@@ -184,10 +176,7 @@
     return defaultTheme;
 }
 #pragma mark -
-
 #pragma mark - Product Slider Methods
-
-
 -(void)downloadProduct{
 
     // DOWNLOAD PRODUCT HERE
@@ -254,36 +243,45 @@
     [downloadedProduct addObject:product9];
 }
 -(void)createProductScroller{
-    
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0,150, productSliderView.frame.size.height)];
-    
     int y = 0;
     CGRect frame;
-    for (int i = 0; i < downloadedProduct.count; i++) {
+    for (int i = 0; i < downloadedProduct.count-1; i++) {
         
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
+        NSArray*customSliderButtonView = [[NSBundle mainBundle] loadNibNamed:@"ProductSliderCustomView" owner:self options:nil];
+        productSliderCustomView = [customSliderButtonView objectAtIndex:0];
+        productSliderCustomView.designViewController = self;
+        productSliderCustomView.backgroundColor = [UIColor clearColor];
+
         if (i == 0) {
-            frame = CGRectMake(30, 10, 90, 90);
+            frame = CGRectMake(0,
+                               5,
+                               self.productSliderScrollView.frame.size.width,
+                               self.productSliderCustomView.frame.size.height);
         } else {
-            frame = CGRectMake(30, (i * 90) + (i*20) + 10, 90, 90);
+            frame = CGRectMake(0,
+                               (i * productSliderCustomView.frame.size.height) + 10,
+                               self.productSliderScrollView.frame.size.width,
+                               productSliderCustomView.frame.size.height);
         }
+    
+        productSliderCustomView.frame = frame;
+        [productSliderCustomView setNeedsLayout];
+        [productSliderCustomView.productBtn setTag:i+1];
+        [productSliderCustomView.productBtn setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i+1]] forState:UIControlStateNormal];
+        [productSliderCustomView.productBtn addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.productSliderScrollView addSubview:productSliderCustomView];
         
-        button.frame = frame;
-        
-        [button setTag:i];
-        [button setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i]] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [scrollView addSubview:button];
-        
-        if (i == downloadedProduct.count-1) {
-            y = CGRectGetMaxY(button.frame);
+        if (i == downloadedProduct.count-2) {
+            y = CGRectGetMaxY(productSliderCustomView.frame);
         }
+        Product *product = [downloadedProduct objectAtIndex:i];
+        productSliderCustomView.productName.text = [NSString stringWithFormat:@"%@",product.productImageName];
     }
     
-    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width,y);
-    scrollView.backgroundColor = [UIColorFromRGB(0x0A5A78) colorWithAlphaComponent:0.3]; ;
-    [productSliderView addSubview:scrollView];
+    self.productSliderScrollView.contentSize = CGSizeMake(self.productSliderScrollView.frame.size.width,y);
+    self.productSliderScrollView.backgroundColor = [UIColorFromRGB(0x0A5A78) colorWithAlphaComponent:0.3]; ;
+    [productSliderView addSubview:self.productSliderScrollView];
     productSliderView.hidden = NO;
     
     _productInWindowArray = [[NSMutableArray alloc] init];
@@ -291,7 +289,24 @@
         Product *product = (Product*)[downloadedProduct objectAtIndex:i];
         [_productInWindowArray addObject:[NSNumber numberWithInt:product.productId]];
     }
+}
+-(void)showProductDetailsPopUp:(int)btnTag{
     
+    Product *product = [downloadedProduct objectAtIndex:btnTag];
+    
+    NSArray*ProductInfoDetailsPopupView = [[NSBundle mainBundle] loadNibNamed:@"ProductInfoDetailsPopupView" owner:self options:nil];
+    self.productInfoDetails = [ProductInfoDetailsPopupView objectAtIndex:0];
+    self.productInfoDetails.designViewController = self;
+    self.productInfoDetails.productName.text = product.productImageName;
+    self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%ld",product.productPrice];
+    self.productInfoDetails.productDetailImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",btnTag]];
+    self.productInfoDetails.productDescriptions.text = @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+    
+    popupController = [[CNPPopupController alloc] initWithContents:@[self.productInfoDetails]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = CNPPopupStyleCentered;
+    popupController.delegate = self;
+    [popupController presentPopupControllerAnimated:YES];
 }
 -(void)productBtnClicked:(id)sender{
     UIButton *productBtn = (UIButton*)sender;

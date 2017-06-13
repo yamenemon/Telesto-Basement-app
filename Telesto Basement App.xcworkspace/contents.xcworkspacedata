@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ProductSliderButton.h">
+   </FileRef>
+   <FileRef
+      location = "group:ProductSliderButton.m">
+   </FileRef>
+   <FileRef
       location = "group:Telesto Basement App.xcodeproj">
    </FileRef>
    <FileRef

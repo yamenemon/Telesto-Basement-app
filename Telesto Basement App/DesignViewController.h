@@ -18,6 +18,8 @@
 #import "CustomTemplateNameView.h"
 #import "CustomVideoPopUpView.h"
 #import "Product.h"
+#import "ProductSliderCustomView.h"
+#import "ProductInfoDetailsPopup.h"
 
 @class  TemplatePopOverViewController;
 
@@ -48,6 +50,9 @@
 @property (strong, nonatomic) NSMutableArray *infoBtnArray;
 @property (strong, nonatomic) NSMutableArray *downloadedProduct;
 @property (strong, nonatomic) NSMutableArray *productInWindowArray;
+@property (strong, nonatomic) ProductSliderCustomView *productSliderCustomView;
+@property (strong, nonatomic) ProductInfoDetailsPopup *productInfoDetails;
+@property (weak, nonatomic) IBOutlet UIScrollView *productSliderScrollView;
 
 - (void)setSavedTemplateNumber:(int)number;
 - (void)wallPopOverBtnAction:(id)sender;
@@ -65,4 +70,5 @@
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender;
 -(void)saveTemplateName:(NSString*)templateName;
 -(void)openCameraWindow;
+-(void)showProductDetailsPopUp:(int)btnTag;
 @end

@@ -20,6 +20,8 @@
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
+		7025893D1EF00376006ACCC8 /* ProductInfoDetailsPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7025893C1EF00376006ACCC8 /* ProductInfoDetailsPopup.m */; };
+		7025893F1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7025893E1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib */; };
 		7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C01E1D15760062EB77 /* UserProfileViewController.m */; };
 		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
@@ -111,6 +113,8 @@
 		70D6E85C1E436495007E3F2F /* 7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8531E436495007E3F2F /* 7@2x.png */; };
 		70D6E85D1E436495007E3F2F /* 8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8541E436495007E3F2F /* 8@2x.png */; };
 		70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D6E8551E436495007E3F2F /* 9@2x.png */; };
+		70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */; };
+		70E5D8C81EEFC8AB004FE1BF /* ProductSliderCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */; };
 		70EA296F1ECDA0C40002931F /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EA296E1ECDA0C40002931F /* Downloader.m */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
 		70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D61E067DB400A6D245 /* log_out_@2x.png */; };
@@ -148,6 +152,9 @@
 		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
+		7025893B1EF00376006ACCC8 /* ProductInfoDetailsPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductInfoDetailsPopup.h; sourceTree = "<group>"; };
+		7025893C1EF00376006ACCC8 /* ProductInfoDetailsPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductInfoDetailsPopup.m; sourceTree = "<group>"; };
+		7025893E1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductInfoDetailsPopupView.xib; sourceTree = "<group>"; };
 		7027C9BF1E1D15760062EB77 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		7027C9C01E1D15760062EB77 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		7027C9C21E1D35950062EB77 /* ProposalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalViewController.h; sourceTree = "<group>"; };
@@ -274,6 +281,9 @@
 		70D6E8531E436495007E3F2F /* 7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7@2x.png"; sourceTree = "<group>"; };
 		70D6E8541E436495007E3F2F /* 8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8@2x.png"; sourceTree = "<group>"; };
 		70D6E8551E436495007E3F2F /* 9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9@2x.png"; sourceTree = "<group>"; };
+		70E5D8C41EEFC89D004FE1BF /* ProductSliderCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSliderCustomView.h; sourceTree = "<group>"; };
+		70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSliderCustomView.m; sourceTree = "<group>"; };
+		70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductSliderCustomView.xib; sourceTree = "<group>"; };
 		70EA296D1ECDA0C40002931F /* Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
 		70EA296E1ECDA0C40002931F /* Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
 		70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creat_new_customer@2x.png"; sourceTree = "<group>"; };
@@ -501,6 +511,12 @@
 			children = (
 				705F058F1EDED8CE00D8B837 /* DesignViewController.h */,
 				705F05901EDED8CE00D8B837 /* DesignViewController.m */,
+				70E5D8C41EEFC89D004FE1BF /* ProductSliderCustomView.h */,
+				70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */,
+				70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */,
+				7025893B1EF00376006ACCC8 /* ProductInfoDetailsPopup.h */,
+				7025893C1EF00376006ACCC8 /* ProductInfoDetailsPopup.m */,
+				7025893E1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib */,
 				705F05871EDED8CE00D8B837 /* CustomProductView.h */,
 				705F05881EDED8CE00D8B837 /* CustomProductView.m */,
 				705F05891EDED8CE00D8B837 /* CustomTemplateNameView.h */,
@@ -700,7 +716,9 @@
 				70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */,
 				705F64E21DF97B7000082D55 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				705B78231E13C0B700161991 /* Temp8@2x.png in Resources */,
+				7025893F1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib in Resources */,
 				70D6E8561E436495007E3F2F /* 1@2x.png in Resources */,
+				70E5D8C81EEFC8AB004FE1BF /* ProductSliderCustomView.xib in Resources */,
 				70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */,
 				70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */,
 				705F64E41DF97B7000082D55 /* RobotoCondensed-Light.ttf in Resources */,
@@ -807,6 +825,7 @@
 				7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */,
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */,
+				7025893D1EF00376006ACCC8 /* ProductInfoDetailsPopup.m in Sources */,
 				705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */,
 				3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */,
 				3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */,
@@ -820,6 +839,7 @@
 				705F05AC1EDED8CE00D8B837 /* RightNavDrwaingToolsView.m in Sources */,
 				70015E981DF6913200DF542E /* Utility.m in Sources */,
 				70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */,
+				70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
 				706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,

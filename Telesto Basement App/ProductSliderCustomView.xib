@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductSliderCustomView">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="luk-pn-nRq" userLabel="BaseView">
+                    <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7w-ye-YtL">
+                            <rect key="frame" x="8" y="3" width="144" height="107"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSG-E8-lYE">
+                            <rect key="frame" x="8" y="113" width="144" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="A89-ok-zTd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YU-qy-I7n">
+                            <rect key="frame" x="8" y="132" width="144" height="22"/>
+                            <color key="backgroundColor" red="0.039215686270000001" green="0.33333333329999998" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="bhj-x7-gfG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="13"/>
+                            <state key="normal" title="Details">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="detailsBtnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="URe-v6-PeF"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="FWg-xe-UaZ">
+                            <rect key="frame" x="8" y="157" width="144" height="1"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="j5n-Ia-6ET"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="B7w-ye-YtL" firstAttribute="trailing" secondItem="vSG-E8-lYE" secondAttribute="trailing" id="137-jn-EjP"/>
+                        <constraint firstAttribute="bottom" secondItem="FWg-xe-UaZ" secondAttribute="bottom" constant="2" id="Aep-uj-70a"/>
+                        <constraint firstItem="7YU-qy-I7n" firstAttribute="top" secondItem="vSG-E8-lYE" secondAttribute="bottom" constant="2" id="HWe-G9-mIQ"/>
+                        <constraint firstItem="FWg-xe-UaZ" firstAttribute="top" secondItem="7YU-qy-I7n" secondAttribute="bottom" constant="3" id="IhU-vm-zW1"/>
+                        <constraint firstItem="B7w-ye-YtL" firstAttribute="trailing" secondItem="luk-pn-nRq" secondAttribute="trailingMargin" id="L5b-Jg-60w"/>
+                        <constraint firstItem="vSG-E8-lYE" firstAttribute="top" secondItem="B7w-ye-YtL" secondAttribute="bottom" constant="3" id="L72-qu-HoJ"/>
+                        <constraint firstItem="B7w-ye-YtL" firstAttribute="leading" secondItem="luk-pn-nRq" secondAttribute="leadingMargin" id="P0R-SA-BN6"/>
+                        <constraint firstItem="vSG-E8-lYE" firstAttribute="leading" secondItem="7YU-qy-I7n" secondAttribute="leading" id="QgY-qy-bnS"/>
+                        <constraint firstItem="7YU-qy-I7n" firstAttribute="trailing" secondItem="FWg-xe-UaZ" secondAttribute="trailing" id="gKT-pg-4MH"/>
+                        <constraint firstItem="7YU-qy-I7n" firstAttribute="leading" secondItem="FWg-xe-UaZ" secondAttribute="leading" id="goQ-ZC-TUN"/>
+                        <constraint firstItem="B7w-ye-YtL" firstAttribute="leading" secondItem="vSG-E8-lYE" secondAttribute="leading" id="qo0-SA-ygL"/>
+                        <constraint firstItem="B7w-ye-YtL" firstAttribute="top" secondItem="luk-pn-nRq" secondAttribute="top" constant="3" id="sfx-ad-Pck"/>
+                        <constraint firstItem="vSG-E8-lYE" firstAttribute="trailing" secondItem="7YU-qy-I7n" secondAttribute="trailing" id="tbJ-Dq-10f"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="luk-pn-nRq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6rS-Xi-UaY"/>
+                <constraint firstItem="luk-pn-nRq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WAm-r7-jxD"/>
+                <constraint firstAttribute="bottom" secondItem="luk-pn-nRq" secondAttribute="bottom" id="ZZp-Aw-950"/>
+                <constraint firstAttribute="trailing" secondItem="luk-pn-nRq" secondAttribute="trailing" id="zvc-FD-DOO"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="productBtn" destination="B7w-ye-YtL" id="4f3-7X-DVA"/>
+                <outlet property="productDetails" destination="7YU-qy-I7n" id="FXB-8V-vUm"/>
+                <outlet property="productName" destination="vSG-E8-lYE" id="tkZ-o6-7xh"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="separator.png" width="55" height="1"/>
+    </resources>
+</document>
