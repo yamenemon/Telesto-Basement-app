@@ -18,6 +18,7 @@
 		3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */; };
 		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
 		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
+		70161B351EF2939800101BDB /* MapItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70161B341EF2939800101BDB /* MapItViewController.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
 		7025893D1EF00376006ACCC8 /* ProductInfoDetailsPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7025893C1EF00376006ACCC8 /* ProductInfoDetailsPopup.m */; };
@@ -150,6 +151,8 @@
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		70015E9C1DF69BEF00DF542E /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		70161B331EF2939800101BDB /* MapItViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapItViewController.h; sourceTree = "<group>"; };
+		70161B341EF2939800101BDB /* MapItViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapItViewController.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
 		7025893B1EF00376006ACCC8 /* ProductInfoDetailsPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductInfoDetailsPopup.h; sourceTree = "<group>"; };
@@ -615,6 +618,8 @@
 				70CAA4691EE7DB4100614BFB /* MediaPopUp.h */,
 				70CAA46A1EE7DB4100614BFB /* MediaPopUp.m */,
 				70CAA46C1EE7DB4E00614BFB /* MediaPopUp.xib */,
+				70161B331EF2939800101BDB /* MapItViewController.h */,
+				70161B341EF2939800101BDB /* MapItViewController.m */,
 			);
 			name = CustomerRecord;
 			sourceTree = "<group>";
@@ -860,6 +865,7 @@
 				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				705F05A31EDED8CE00D8B837 /* CustomVideoPopUpView.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,
+				70161B351EF2939800101BDB /* MapItViewController.m in Sources */,
 				70EA296F1ECDA0C40002931F /* Downloader.m in Sources */,
 				705F05A61EDED8CE00D8B837 /* GalleryItem.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
