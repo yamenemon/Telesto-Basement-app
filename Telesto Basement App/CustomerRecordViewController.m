@@ -294,9 +294,7 @@
         imageView.image = [UIImage imageNamed:@"cameraThumb"];
     }
     else{
-        //        [self setGalleryItem:[_galleryItems objectAtIndex:indexPath.row-1] withImageView:imageView];
         imageView.image = [_galleryItems objectAtIndex:indexPath.row-1];
-//        _bigScreenImageView.image = imageView.image;
     }
     return cell;
 }
@@ -345,54 +343,46 @@
 }
 #pragma mark -
 #pragma mark CREATE CUSTOMER
--(void)createCustomer{
-    
-    //    tokenAsString = @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH";
-    NSString *endPoint = @"create_customer";
-    //    fName, lName, address, city, state, zip, countryId, email, phone, userId
-    NSString *post = [NSString stringWithFormat:@"fName=%@&lName=%@&address=%@&city=%@&state=%@&zip=%@&countryId=%@&email=%@&phone=%@&userId=%@", _firstNameTextField.text, _lastNameTextField.text, _streetAddressTextField.text,_cityTextField.text,_stateNameTextField.text,_zipCodeTextField.text,_countryTextField.text];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseURL,endPoint]]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    [self sendRequest:request];
-    
+
+- (IBAction)saveBtnAction:(id)sender {
+
+    if ([MTReachabilityManager isReachable]) {
+
+//        [self createCustomer];
+        NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
+        for (int i= 0; i<=_galleryItems.count; i++) {
+            UIImage *img = [_galleryItems objectAtIndex:i];
+            [imageDic setObject:img forKey:@"1"];
+        }
+        [imageDic setObject:self.customerImageView.image forKey:@"2"];
+
+        CustomerDataManager *manager = [CustomerDataManager sharedManager];
+        CustomerDetailInfoObject *detailInfoObject = [[CustomerDetailInfoObject alloc] init];
+        detailInfoObject.customerId = [[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue];
+        detailInfoObject.customerFirstName = self.firstNameTextField.text;
+        detailInfoObject.customerLastName = self.lastNameTextField.text;
+        detailInfoObject.customerStreetAddress = self.streetAddressTextField.text;
+        detailInfoObject.customerCityName = self.cityTextField.text;
+        detailInfoObject.customerStateName = self.stateNameTextField.text;
+        detailInfoObject.customerZipName = self.zipCodeTextField.text;
+        detailInfoObject.customerCountryName = self.countryTextField.text;
+        detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
+        detailInfoObject.customerEmailAddress = self.emailTextField.text;
+        detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
+        detailInfoObject.customerPhoneNumber = self.phoneNumberTextField.text;
+        detailInfoObject.customerNotes = self.notesTextView.text;
+        detailInfoObject.customerOtherImageDic = imageDic;
+        [manager validateObjects:detailInfoObject withRootController:self];
+
+    }
+    else{
+
+    }
+
 }
--(void)sendRequest:(NSURLRequest*)urlRequest{
-    
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-    
-    
-    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest
-                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                           NSLog(@"Response:%@ %@\n", response, error);
-                                                           
-                                                           if(error == nil)
-                                                           {
-                                                               NSString * text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-                                                               NSLog(@"Data = %@",text);
-                                                               if (data) {
-                                                                   [self parseJOSNLoginStatus:data];
-                                                               }
-                                                               else{
-                                                                   
-                                                               }
-                                                           }
-                                                       }];
-    [dataTask resume];
-}
-- (BOOL)parseJOSNLoginStatus:(NSData *)data {
-    NSError *e = nil;
-    NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error: &e];
-    long loginStatus = [[jsonArray objectForKey:@"success"] longValue];
-    return loginStatus;
-}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

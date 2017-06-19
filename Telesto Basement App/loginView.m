@@ -51,20 +51,7 @@
             //Add some method process in global queue - normal for data processing
             NSString* userId = _emailField.text;
             NSString* password = _passwordField.text;
-            /*
-            NSString *post = [NSString stringWithFormat:@"userid=%@&password=%@&device_token=%@&device_type=iOS", userId, password, tokenAsString];
-            NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-            NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-            
-            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-            [request setURL:[NSURL URLWithString:@"https://jupiter.centralstationmarketing.com/api/ios/Login.php"]];
-            [request setHTTPMethod:@"POST"];
-            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-            [request setHTTPBody:postData];
-            NSData *data = [serviceHelper sendRequest:request];
-            [self parseJOSNLoginStatus:data];
-             */
+
             tokenAsString = @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH";
             NSString *endPoint = @"user_login";
             NSString *post = [NSString stringWithFormat:@"email=%@&password=%@&authKey=%@", userId, password, tokenAsString];
@@ -126,6 +113,10 @@
     NSError *e = nil;
     NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error: &e];
     long loginStatus = [[jsonArray objectForKey:@"success"] longValue];
+
+    long userId = [[[jsonArray objectForKey:@"results"] objectForKey:@"userId"] longValue];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithLong:userId] forKey:@"userId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     if(loginStatus == 1) {
         NSLog(@"Login Successful");
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];

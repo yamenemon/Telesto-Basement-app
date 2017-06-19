@@ -33,4 +33,5 @@
 +(void)showConnectionErroMessage;
 +(void)showJSONErroMessage;
 +(UIColor*)colorWithHexString:(NSString*)hex;
++(BOOL)NSStringIsValidEmail:(NSString *)checkString;
 @end

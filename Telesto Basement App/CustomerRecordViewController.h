@@ -11,8 +11,10 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "CustomerDataManager.h"
 #import "MediaPopUp.h"
 #import "CNPPopupController.h"
+#import "MTReachabilityManager.h"
 
 typedef NS_ENUM(NSInteger, CameraMode) {
     ProfilePicFromGallery,
