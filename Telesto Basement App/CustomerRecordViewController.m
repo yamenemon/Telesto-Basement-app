@@ -343,18 +343,33 @@
 }
 #pragma mark -
 #pragma mark CREATE CUSTOMER
-
+- (NSMutableDictionary *) indexKeyedDictionaryFromArray:(NSArray *)array
+{
+    id objectInstance;
+    unsigned int indexKey = 0U;
+    
+    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] init];
+    for (objectInstance in array)
+        [mutableDictionary setObject:objectInstance forKey:[NSNumber numberWithUnsignedInt:indexKey++]];
+    
+    return (NSMutableDictionary *)mutableDictionary;
+}
 - (IBAction)saveBtnAction:(id)sender {
 
     if ([MTReachabilityManager isReachable]) {
 
 //        [self createCustomer];
-        NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
-        for (int i= 0; i<=_galleryItems.count; i++) {
-            UIImage *img = [_galleryItems objectAtIndex:i];
-            [imageDic setObject:img forKey:@"1"];
-        }
-        [imageDic setObject:self.customerImageView.image forKey:@"2"];
+//        NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
+//        for (int i= 0; i<_galleryItems.count; i++) {
+//            UIImage *img = [_galleryItems objectAtIndex:i];
+//            [imageDic setObject:img forKey:@"1"];
+//            
+//        }
+//        NSMutableDictionary* imageDic = [NSMutableDictionary dictionaryWithObjects:_galleryItems
+//                                                         forKeys:[_galleryItems valueForKey:@"intField"]];
+//        [imageDic setObject:self.customerImageView.image forKey:@"2"];
+        NSMutableDictionary* imageDic = [self indexKeyedDictionaryFromArray:_galleryItems];
+        [imageDic setObject:self.customerImageView.image forKey:@"pp"];
 
         CustomerDataManager *manager = [CustomerDataManager sharedManager];
         CustomerDetailInfoObject *detailInfoObject = [[CustomerDetailInfoObject alloc] init];
