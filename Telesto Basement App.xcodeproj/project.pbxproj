@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		167AB7714A412FA773401D90 /* libPods-Telesto Basement App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D774B00CC6AFD6F82927CD9 /* libPods-Telesto Basement App.a */; };
 		3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B428ACB1DDB3E57008ADABF /* BaseViewController.m */; };
+		3B444B451EFA90740037A4E0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B444B441EFA90740037A4E0 /* CoreLocation.framework */; };
 		3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */; };
 		3B6EB88C1DD845D900936AB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB88B1DD845D900936AB9 /* main.m */; };
 		3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB88E1DD845D900936AB9 /* AppDelegate.m */; };
@@ -136,6 +137,7 @@
 		1D774B00CC6AFD6F82927CD9 /* libPods-Telesto Basement App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Telesto Basement App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B428ACA1DDB3E57008ADABF /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		3B428ACB1DDB3E57008ADABF /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		3B444B441EFA90740037A4E0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3B69A9C51DDB0E4800163A80 /* TermsAndConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsAndConditionViewController.h; sourceTree = "<group>"; };
 		3B69A9C61DDB0E4800163A80 /* TermsAndConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsAndConditionViewController.m; sourceTree = "<group>"; };
 		3B6EB8871DD845D900936AB9 /* Telesto Basement App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Telesto Basement App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -314,6 +316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B444B451EFA90740037A4E0 /* CoreLocation.framework in Frameworks */,
 				70CAA4771EE83E5A00614BFB /* AVFoundation.framework in Frameworks */,
 				70CAA4751EE83E5100614BFB /* CoreMedia.framework in Frameworks */,
 				704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */,
@@ -441,6 +444,7 @@
 		704B688E1E13C9C000E6537D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B444B441EFA90740037A4E0 /* CoreLocation.framework */,
 				70CAA4761EE83E5A00614BFB /* AVFoundation.framework */,
 				70CAA4741EE83E5100614BFB /* CoreMedia.framework */,
 				70CAA4721EE83E4000614BFB /* AssetsLibrary.framework */,

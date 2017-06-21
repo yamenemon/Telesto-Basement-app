@@ -180,4 +180,23 @@
     [self showAlertWithTitle:@"Error"
                           withMessage:@"Error parsing data from server, please try later."];
 }
++(void)showLocationError:(UIViewController*)controller{
+
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Location Error!!!"
+                                  message:@"Failed to Get Your Location"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+
+//    UIAlertAction* cancel = [UIAlertAction
+//                             actionWithTitle:@"Save & Continue"
+//                             style:UIAlertActionStyleDefault
+//                             handler:^(UIAlertAction * action)
+//                             {
+//
+//                             }];
+//    [alert addAction:cancel];
+
+    [controller presentViewController:alert animated:YES completion:nil];
+
+}
 @end

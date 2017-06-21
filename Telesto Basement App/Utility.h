@@ -34,4 +34,5 @@
 +(void)showJSONErroMessage;
 +(UIColor*)colorWithHexString:(NSString*)hex;
 +(BOOL)NSStringIsValidEmail:(NSString *)checkString;
++(void)showLocationError:(UIViewController*)controller;
 @end

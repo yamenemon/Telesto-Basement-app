@@ -50,13 +50,8 @@
 }
 -(void)createCustomer:(CustomerDetailInfoObject*)objects{
 
-//    NSDictionary *aParametersDic; // It's contains other parameters.
-//    NSDictionary *aImageDic; // It's contains multiple image data as value and a image name as key
-
     NSString* tokenAsString = @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH";
     NSString *endPoint = @"create_customer";
-//    NSString *post = [NSString stringWithFormat:@"fName=%@&lName=%@&address=%@&city=%@&state=%@&zip=%@&countryId=%@&email=%@&phone=%@&userId=%d&authKey=%@&details=%@", objects.customerFirstName, objects.customerLastName, objects.customerStreetAddress,objects.customerCityName,objects.customerStateName,objects.customerZipName,objects.customerCountryName,objects.customerEmailAddress,objects.customerPhoneNumber,1,tokenAsString,objects.customerNotes];
-
     /*
      $customer->latitude = $req['latitude'];
      $customer->longitude = $req['longitude'];
@@ -75,39 +70,43 @@
                                     objects.customerCountryName,@"countryId",
                                     objects.customerEmailAddress,@"email",
                                     objects.customerNotes,@"details",
+                                    objects.customerPhoneNumber,@"phone",
+                                    [NSNumber numberWithLong:objects.latitude],@"latitude",
+                                    [NSNumber numberWithLong:objects.longitude],@"longitude",
+                                    [NSNumber numberWithBool:objects.smsReminder],@"smsNotify",
+                                    [NSNumber numberWithBool:objects.emailNotification],@"emailNotify",
                                     [NSNumber numberWithLong:objects.customerId],@"userId",
                                     tokenAsString,@"authKey",
-
                                     nil];
-
+    NSLog(@"Parameter: %@\n",aParametersDic);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseURL,endPoint]]];
     NSString *boundary = @"---------------------------14737809831466499882746641449";
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
     [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-
+    request.timeoutInterval = 100000;
     NSMutableData *postbody = [NSMutableData data];
     NSString *postData = [self getHTTPBodyParamsFromDictionary:aParametersDic boundary:boundary];
     [postbody appendData:[postData dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
 
     if([objects.customerOtherImageDic count] > 0) {
         for (int i=0; i<objects.customerOtherImageDic.count; i++) {
-            UIImage* image = [objects.customerOtherImageDic valueForKey:[NSString stringWithFormat:@"%d",i]];
+            UIImage* image = [objects.customerOtherImageDic valueForKey:@"pp"];
             NSData *imageData = UIImagePNGRepresentation(image);
-            NSLog(@"Data :%@",imageData);
+//            NSLog(@"Data :%@",imageData);
+            NSString *boundary = @"---------------------------14737809831466499882746641449";
+            NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+            [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
             [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"fileToUpload[]\"; filename=\"%@%d.jpg\"\r\n", @"test", i] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[[NSString stringWithFormat:@"Content-Type: image/jpeg\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+            [postbody appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%d\"\r\n", 1]] dataUsingEncoding:NSUTF8StringEncoding]];
+            [postbody appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
             [postbody appendData:[NSData dataWithData:imageData]];
+            [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
+            [request setHTTPBody:postbody];
+
         }
     }
-    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setHTTPMethod:@"POST"];
-//    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postbody];
     [self sendRequest:request];
-
 }
 -(void)sendRequest:(NSURLRequest*)urlRequest{
 
@@ -117,7 +116,7 @@
 
     NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest
                                                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                           NSLog(@"Response:%@ %@\n", response, error);
+                                                           NSLog(@"Response:%@ %@\n", response, error.description);
 
                                                            if(error == nil)
                                                            {

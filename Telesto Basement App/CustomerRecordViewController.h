@@ -15,6 +15,8 @@
 #import "MediaPopUp.h"
 #import "CNPPopupController.h"
 #import "MTReachabilityManager.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 typedef NS_ENUM(NSInteger, CameraMode) {
     ProfilePicFromGallery,
@@ -25,12 +27,14 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     VideoForBuildingMediaFromCamera
 };
 
-@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>{
+@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,CLLocationManagerDelegate>{
     UITextField *activeField;
     MediaPopUp *mediaSelectionPopUp;
     CNPPopupController *popupController;
     UICollectionView *snapShotCollectionView;
     CameraMode cameraMode;
+    CLLocationManager *locationManager;
+    CLLocation *currentLocation;
 }
 @property (strong,nonatomic) NSMutableArray *galleryItems;
 

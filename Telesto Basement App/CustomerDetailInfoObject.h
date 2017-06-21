@@ -25,4 +25,6 @@
 @property (strong,nonatomic) NSString *customerNotes;
 //@property (strong,nonatomic) UIImage *customerProfileImage;
 @property (strong,nonatomic) NSDictionary *customerOtherImageDic;
+@property (assign,nonatomic) long latitude;
+@property (assign,nonatomic) long longitude;
 @end

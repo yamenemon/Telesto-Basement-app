@@ -24,6 +24,14 @@
     _galleryItems = [[NSMutableArray alloc] init];
     [self registerForKeyboardNotifications];
     [self loadSanpMediaContainer];
+    locationManager = [[CLLocationManager alloc] init];
+    [self getCurrentLocation];
+}
+- (void)getCurrentLocation {
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+
+    [locationManager startUpdatingLocation];
 }
 -(void)loadSanpMediaContainer{
     UICollectionViewFlowLayout *flo = [[UICollectionViewFlowLayout alloc] init];
@@ -387,15 +395,31 @@
         detailInfoObject.customerPhoneNumber = self.phoneNumberTextField.text;
         detailInfoObject.customerNotes = self.notesTextView.text;
         detailInfoObject.customerOtherImageDic = imageDic;
+        detailInfoObject.latitude = currentLocation.coordinate.latitude;
+        detailInfoObject.longitude = currentLocation.coordinate.longitude;
+        detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
+        detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
         [manager validateObjects:detailInfoObject withRootController:self];
-
     }
     else{
 
     }
 
 }
+#pragma mark - CLLocationManagerDelegate
 
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    [Utility showLocationError:self];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+    currentLocation = newLocation;
+
+}
 
 
 - (void)didReceiveMemoryWarning {

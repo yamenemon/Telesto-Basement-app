@@ -945,7 +945,7 @@ Washington, DC 20521-6170
                 <navigationController storyboardIdentifier="NavigationControllerMap" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y32-Z6-gDD" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5pt-MO-wRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5pt-MO-wRa">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2153,7 +2153,7 @@ A: Immediately</string>
                                         </constraints>
                                         <inset key="scrollIndicatorInsets" minX="722" minY="0.0" maxX="704" maxY="0.0"/>
                                     </scrollView>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="S4x-Ab-jgr">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userName.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4x-Ab-jgr">
                                         <rect key="frame" x="24" y="11" width="230" height="230"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="230" id="Da5-Lx-1dL"/>
@@ -2322,7 +2322,7 @@ A: Immediately</string>
         <scene sceneID="Pj7-jR-Ive">
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerColor" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2yX-Oq-Cx0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2340,7 +2340,7 @@ A: Immediately</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kjf-i3-4sV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06f-FH-q6U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="06f-FH-q6U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2358,7 +2358,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NFt-8r-g3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iwR-Im-04P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iwR-Im-04P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2414,7 +2414,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YaK-4u-ubd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRc-JO-613">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dRc-JO-613">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2432,7 +2432,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LRc-Nh-dvh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5YI-D9-RyG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5YI-D9-RyG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2450,7 +2450,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NlW-XZ-P4j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jTj-79-ilE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jTj-79-ilE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2468,7 +2468,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jnA-ng-Cws" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X66-ps-ua5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X66-ps-ua5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2494,11 +2494,11 @@ A: Immediately</string>
         <image name="new_customer.png" width="20" height="20"/>
         <image name="pdfImage" width="100" height="114"/>
         <image name="presentation.png" width="20" height="20"/>
-        <image name="profileAvatar" width="114" height="110"/>
         <image name="reveal-icon.png" width="22" height="17"/>
         <image name="settings___.png" width="20" height="20"/>
         <image name="traning_videos.png" width="20" height="20"/>
         <image name="tutorial" width="123" height="123"/>
+        <image name="userName.png" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XLw-tu-cxx"/>
