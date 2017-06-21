@@ -57,7 +57,15 @@
     NSString *endPoint = @"create_customer";
 //    NSString *post = [NSString stringWithFormat:@"fName=%@&lName=%@&address=%@&city=%@&state=%@&zip=%@&countryId=%@&email=%@&phone=%@&userId=%d&authKey=%@&details=%@", objects.customerFirstName, objects.customerLastName, objects.customerStreetAddress,objects.customerCityName,objects.customerStateName,objects.customerZipName,objects.customerCountryName,objects.customerEmailAddress,objects.customerPhoneNumber,1,tokenAsString,objects.customerNotes];
 
-    NSDictionary *aParametersDic = [[NSDictionary alloc] initWithObjectsAndKeys:
+    /*
+     $customer->latitude = $req['latitude'];
+     $customer->longitude = $req['longitude'];
+     $customer->smsNotify = $req['smsNotify'];
+     $customer->emailNotify = $req['emailNotify'];
+     $customer->userId = $req['userId'];
+     */
+
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                     objects.customerFirstName,@"fName",
                                     objects.customerLastName,@"lName",
                                     objects.customerStreetAddress,@"address",
@@ -67,13 +75,10 @@
                                     objects.customerCountryName,@"countryId",
                                     objects.customerEmailAddress,@"email",
                                     objects.customerNotes,@"details",
-                                    objects.customerId,@"userId",
+                                    [NSNumber numberWithLong:objects.customerId],@"userId",
                                     tokenAsString,@"authKey",
+
                                     nil];
-//    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-//    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
-
-
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseURL,endPoint]]];
@@ -85,27 +90,22 @@
     NSString *postData = [self getHTTPBodyParamsFromDictionary:aParametersDic boundary:boundary];
     [postbody appendData:[postData dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
 
-    [objects.customerOtherImageDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if(obj != nil)
-        {
+    if([objects.customerOtherImageDic count] > 0) {
+        for (int i=0; i<objects.customerOtherImageDic.count; i++) {
+            UIImage* image = [objects.customerOtherImageDic valueForKey:[NSString stringWithFormat:@"%d",i]];
+            NSData *imageData = UIImagePNGRepresentation(image);
+            NSLog(@"Data :%@",imageData);
             [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"PostedImage\"; filetype=\"image/png\"; filename=\"%@\"\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[NSData dataWithData:obj]];
+            [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"fileToUpload[]\"; filename=\"%@%d.jpg\"\r\n", @"test", i] dataUsingEncoding:NSUTF8StringEncoding]];
+            [postbody appendData:[[NSString stringWithFormat:@"Content-Type: image/jpeg\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+            [postbody appendData:[NSData dataWithData:imageData]];
         }
-    }];
-
+    }
     [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-
-
     [request setHTTPMethod:@"POST"];
 //    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-
     [request setHTTPBody:postbody];
-
-
-
     [self sendRequest:request];
 
 }

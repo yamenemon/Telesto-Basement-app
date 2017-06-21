@@ -359,16 +359,16 @@
     if ([MTReachabilityManager isReachable]) {
 
 //        [self createCustomer];
-//        NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
-//        for (int i= 0; i<_galleryItems.count; i++) {
-//            UIImage *img = [_galleryItems objectAtIndex:i];
-//            [imageDic setObject:img forKey:@"1"];
-//            
-//        }
+        NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
+        for (int i= 0; i<_galleryItems.count; i++) {
+            UIImage *img = [_galleryItems objectAtIndex:i];
+            [imageDic setObject:img forKey:[NSString stringWithFormat:@"%d",i]];
+            
+        }
 //        NSMutableDictionary* imageDic = [NSMutableDictionary dictionaryWithObjects:_galleryItems
 //                                                         forKeys:[_galleryItems valueForKey:@"intField"]];
 //        [imageDic setObject:self.customerImageView.image forKey:@"2"];
-        NSMutableDictionary* imageDic = [self indexKeyedDictionaryFromArray:_galleryItems];
+//        NSMutableDictionary* imageDic = [self indexKeyedDictionaryFromArray:_galleryItems];
         [imageDic setObject:self.customerImageView.image forKey:@"pp"];
 
         CustomerDataManager *manager = [CustomerDataManager sharedManager];

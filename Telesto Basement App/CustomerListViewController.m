@@ -143,7 +143,7 @@
 
     cell.cityTextLabel.text = @": 21 2nd Street.";
     cell.lastLoginTextLabel.text = @": Monday, June 15, 2009 8:45:30 PM ";
-    NSLog(@"\nCustomer Name: %@ \n Customer Address: %@ \n Customer Schedule: %@ \n",customerInfoObject.customerName,customerInfoObject.customerAddress,customerInfoObject.scheduleDate);
+//    NSLog(@"\nCustomer Name: %@ \n Customer Address: %@ \n Customer Schedule: %@ \n",customerInfoObject.customerName,customerInfoObject.customerAddress,customerInfoObject.scheduleDate);
     cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerName];
 
     return cell;
