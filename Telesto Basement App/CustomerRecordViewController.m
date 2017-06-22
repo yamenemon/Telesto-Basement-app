@@ -30,7 +30,6 @@
 - (void)getCurrentLocation {
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-
     [locationManager startUpdatingLocation];
 }
 -(void)loadSanpMediaContainer{
@@ -397,8 +396,8 @@
         detailInfoObject.customerOtherImageDic = imageDic;
         detailInfoObject.latitude = currentLocation.coordinate.latitude;
         detailInfoObject.longitude = currentLocation.coordinate.longitude;
-        detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
-        detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
+        detailInfoObject.emailNotification = [self.emailNotificationSwitch isOn]?YES:NO;
+        detailInfoObject.smsReminder = [self.phoneNotifySwitch isOn]?YES:NO;
         [manager validateObjects:detailInfoObject withRootController:self];
     }
     else{

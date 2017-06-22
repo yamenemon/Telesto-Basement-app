@@ -8,7 +8,6 @@
 
 #import "loginView.h"
 #import "AppDelegate.h"
-#import "HttpHelper.h"
 #import "Utility.h"
 #import "StringClass.h"
 
@@ -38,7 +37,6 @@
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             NSString* tokenAsString = [appDelegate deviceToken];
             
-            HttpHelper *serviceHelper = [[HttpHelper alloc] init];
             dispatch_async(dispatch_get_main_queue(), ^(){
                 //Add method, task you want perform on mainQueue
                 //Control UIView, IBOutlet all here

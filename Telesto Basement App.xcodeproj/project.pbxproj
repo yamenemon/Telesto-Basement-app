@@ -20,7 +20,6 @@
 		3BA8D3AB1EF8363400517C65 /* CustomerDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA8D3A71EF8363400517C65 /* CustomerDataManager.m */; };
 		3BA8D3AC1EF8363400517C65 /* CustomerDetailInfoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA8D3AA1EF8363400517C65 /* CustomerDetailInfoObject.m */; };
 		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
-		70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E9D1DF69BEF00DF542E /* HttpHelper.m */; };
 		70161B351EF2939800101BDB /* MapItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70161B341EF2939800101BDB /* MapItViewController.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
@@ -157,8 +156,6 @@
 		474EE36DEBC3BD902C3C33C8 /* Pods-Telesto Basement App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telesto Basement App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App.debug.xcconfig"; sourceTree = "<group>"; };
 		70015E961DF6913200DF542E /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
-		70015E9C1DF69BEF00DF542E /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
-		70015E9D1DF69BEF00DF542E /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		70161B331EF2939800101BDB /* MapItViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapItViewController.h; sourceTree = "<group>"; };
 		70161B341EF2939800101BDB /* MapItViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapItViewController.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
@@ -388,8 +385,6 @@
 				706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */,
 				706FA6B11ECEFC4F003E7247 /* Reachability.h */,
 				706FA6B21ECEFC4F003E7247 /* Reachability.m */,
-				70015E9C1DF69BEF00DF542E /* HttpHelper.h */,
-				70015E9D1DF69BEF00DF542E /* HttpHelper.m */,
 				70015E961DF6913200DF542E /* Utility.h */,
 				70015E971DF6913200DF542E /* Utility.m */,
 				70EA296D1ECDA0C40002931F /* Downloader.h */,
@@ -878,7 +873,6 @@
 				70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */,
 				705F05A81EDED8CE00D8B837 /* LeftNavDrawingToolsView.m in Sources */,
 				709B44351E6D6942008058F3 /* loginView.m in Sources */,
-				70015E9E1DF69BEF00DF542E /* HttpHelper.m in Sources */,
 				705F05A31EDED8CE00D8B837 /* CustomVideoPopUpView.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,
 				70161B351EF2939800101BDB /* MapItViewController.m in Sources */,

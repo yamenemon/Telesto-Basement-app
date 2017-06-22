@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TermsAndConditionViewController.h"
 #import "Utility.h"
-#import "HttpHelper.h"
 #import "AppDelegate.h"
 #import "loginView.h"
 #import <AVFoundation/AVFoundation.h>
