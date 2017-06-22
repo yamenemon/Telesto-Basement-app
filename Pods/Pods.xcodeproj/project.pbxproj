@@ -7,63 +7,109 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01D8E185FD0453F1185A2C5A9FA4F26D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9F282A574723109BB2D466CECD4B15 /* ImageIO.framework */; };
-		01FF46F9E2382806D548EE5D72E11BBC /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091201072C6130056FAA94F3B2D0E4FF /* CNPPopupController.m */; };
-		086B4A2FC60AD9A1B45F2D67600C53B3 /* DRColorPickerColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 970418971C1A8C7BB4171C026262CB1C /* DRColorPickerColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D65F0E2FDCEF6171792B702561D251D /* DRColorPickerHomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B24E371C7ACFE48AD8A18982718634EF /* DRColorPickerHomeViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0DA41C7CAFAEBF2899AC4B9C84D13571 /* DRColorPickerColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1303F9B75A41D3C1DCCD6D4F2347CD /* DRColorPickerColorView.m */; };
-		1555A8B2350A671DDBF5DE8D7D48E36A /* DRColorPickerHueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E53E1268E9FE629B0E145B3870C27F40 /* DRColorPickerHueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15CB22932F611080532FE35112E5F2CC /* DRColorPickerHueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2752308A87C233F351AD517AC4CA293 /* DRColorPickerHueViewController.m */; };
-		1C089433F14841DE82557C07B41BE09E /* DRColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CC40E76DDFC3D55F80B2C2BEC30F535 /* DRColorPicker-dummy.m */; };
-		1D40D2863F7F5FAD328AD514DBF06614 /* DRColorPickerWheelViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B42D3649E7D3B538AA5D2AFC09C146B /* DRColorPickerWheelViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1DA89284D54A1A02876F734D83EEFE05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAFAD6F0B7418EB664A68DC573CB65 /* Foundation.framework */; };
-		1F6DA2CFDF1371B5D42BDEB0C7F00152 /* DRColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F76DCF027F649FA3B2BD2F9437FA761C /* DRColorPicker.m */; };
-		31185D7C2B3AB0B5746642DF457D388D /* DRColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EA466E5504A8FC4001275D4A305497F /* DRColorPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		33B99C66AA2AF79832CE5C41C28FCA4D /* DRColorPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A02F84B48163BB7B4E9B8C2B3F2A664 /* DRColorPickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3B165B15815135EB458356BB8A9D7B0F /* DRColorPickerGridViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C51A290C04AF5C191BD754B7D535B447 /* DRColorPickerGridViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49BA9CAC89056DCB5322126060495FC8 /* DRColorPickerWheelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A18140C321F4CB64880B68B499B9857B /* DRColorPickerWheelViewController.m */; };
-		4D6516D8B76274A08350ADE765A88E85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B721193584C7C9E987C5EDAD3866EB94 /* UIKit.framework */; };
-		56B1804DFC7F38DD410FA3AE1E52BC35 /* DRColorPickerHorizontalCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D640BEB8B0DFA6A9DA7B6EED0E85B8F /* DRColorPickerHorizontalCollectionViewLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58FF016EDC796B7775EDDBF8B6751F61 /* Pods-Telesto Basement App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B750EB49CFBBF1C22BC47419EC27C9 /* Pods-Telesto Basement App-dummy.m */; };
-		628E19A8EACBF347773A96E41E3D10FA /* CNPPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = 465D68908E96AA2B33741FAE0BD7DC40 /* CNPPopupController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		630D903D3E6FB64183A53DABDB31FCF9 /* DRColorPickerGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F7E3965DB1F370A975DB605F7C7125 /* DRColorPickerGridView.m */; };
-		668D34FBC1CD4FB29E26A1402EF60C9A /* DRColorPickerWheelView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC16EA77AA7FD837AD606B54FC866D6 /* DRColorPickerWheelView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		66ECC6A7932396EEC631236C6093780C /* DRColorPickerGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70628578604D68FE27E52DE32E16A9B /* DRColorPickerGridViewController.m */; };
-		6EA8472C2ABC1C478325BED2A678F4C8 /* DRColorPicker+UIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 5CDE9242B5BC7CD422957F68694A1A3E /* DRColorPicker+UIColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		715B73782FCD30FD23F40C8208F67037 /* DRColorPickerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D5226AB2D1A82D086216BC666BE999AE /* DRColorPickerColor.m */; };
-		78998646B17D1C984E0C895B967FBA47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAFAD6F0B7418EB664A68DC573CB65 /* Foundation.framework */; };
-		7B3F69CE6A437A2AFDED6544DDAC84F0 /* DRColorPickerHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA61EBDA260FB0930C80F4C880F74E5 /* DRColorPickerHomeViewController.m */; };
-		7C39753D0026A74B4DAC812FB72D2100 /* DRColorPickerWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DEF187B85D6011842E117CEB6B3118 /* DRColorPickerWheelView.m */; };
-		7EB79E11AE569041F6B48A086D4D956D /* DRColorPickerStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B37959D0C965607788467C4014114DB0 /* DRColorPickerStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		89A3D3CCC6135754FEE9AA056895683B /* DRColorPickerBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 851FCC998EC99B9C978613ED934FFDCE /* DRColorPickerBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B95957BE6B1029EE9A6AC3E36686CBD /* DRColorPickerHomeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E48E1AC06FF69C4B0BFE0B85124809FB /* DRColorPickerHomeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B9DD2C3C87779E60BA6CF48E4777762 /* DRColorPickerGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = FD2F31401D4BF85E4D11EE6B442B41A8 /* DRColorPickerGridView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		94FBF47CFC1A589BE7BA9AE11E75FE78 /* DRColorPickerHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7113A267D772825F0D524708AA13D13 /* DRColorPickerHomeView.m */; };
-		9BD9CF00C080F06CFE3F9B4548C77FDA /* DRColorPickerHorizontalCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 15ED5C153D89AE42D6E3E5416E582FBE /* DRColorPickerHorizontalCollectionViewLayout.m */; };
-		A92438B3A3050DEBE5DCAA07A9F8546A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B721193584C7C9E987C5EDAD3866EB94 /* UIKit.framework */; };
-		B1BD947D805DFE03CD640AF4A3C38270 /* CNPPopupController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EACF07307A897336EDCED77DB7E6D423 /* CNPPopupController-dummy.m */; };
-		BF5B8AD0E3E1A5FE4A05C7F8B7D95E41 /* DRColorPicker+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 205842E4489A53063B03CFBD44AC7325 /* DRColorPicker+UIColor.m */; };
-		C2C905DFB801212F5049DD7478F0DB38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EF4235DA7BDF396961864D3C37C384A /* QuartzCore.framework */; };
-		C828F427BF57DBC52040E8B7A32ED858 /* DRColorPickerColorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 04769BF2E9F02A5C511406EC253C272D /* DRColorPickerColorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC8588A9DBC2BB56A1989E00E1F074AA /* DRColorPickerGridViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = FB56E473F7A7C51A105F6F1DDDBB38FD /* DRColorPickerGridViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CF5A1B4D7C44DC1C4AC8EBFF6F7CD327 /* DRColorPickerHueView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC857505AAE820578F66B50549F636DB /* DRColorPickerHueView.m */; };
-		D4681C8CA189C7891891A84F5C477EA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AAFAD6F0B7418EB664A68DC573CB65 /* Foundation.framework */; };
-		DFB8411FE2F97E732E122DEE3CC30891 /* DRColorPickerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0627803E4AFB7589BCD882437CD774 /* DRColorPickerBaseViewController.m */; };
-		E7A864328FFC7F6A93DE10E157381E0E /* DRColorPickerHueView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4092101DDE274CDF86BF137DD6C30422 /* DRColorPickerHueView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EF3A6C21CCEAB08FA4F591778422ED80 /* DRColorPickerStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A8584B73601F06E1F84458A46E0BAC73 /* DRColorPickerStore.m */; };
-		F5CF185F9224684F05F96BA698DF3D80 /* DRColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AB5E9C70E6AA359B350FC24B8CFA7E6 /* DRColorPickerViewController.m */; };
-		F6CCF3604FEDA9778BE7EE3B67CDEE6D /* DRColorPickerGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 421C3118A83C05854CB702B795964F45 /* DRColorPickerGridViewCell.m */; };
+		01D8E185FD0453F1185A2C5A9FA4F26D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CA8A14A7AD3548AA9259719CAA3D24 /* ImageIO.framework */; };
+		01FF46F9E2382806D548EE5D72E11BBC /* CNPPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD500FF6EC33E6B8434BDE8C49F80BE /* CNPPopupController.m */; };
+		086B4A2FC60AD9A1B45F2D67600C53B3 /* DRColorPickerColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 141421B33255EB9EFCD28AFA8D70F912 /* DRColorPickerColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D65F0E2FDCEF6171792B702561D251D /* DRColorPickerHomeViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D8B613B0A3B7BBAD60D32EEA157E52B6 /* DRColorPickerHomeViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DA41C7CAFAEBF2899AC4B9C84D13571 /* DRColorPickerColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E97CA7196C0A53BEC70C932A201E35 /* DRColorPickerColorView.m */; };
+		1341A7AC2439CB63D459D32EF985A414 /* UIImage+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 72A2C5B5791C8023928E87FDA2811A79 /* UIImage+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1555A8B2350A671DDBF5DE8D7D48E36A /* DRColorPickerHueViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DED95E653BAF2F2D81EF07E1A02DE7E8 /* DRColorPickerHueViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15CB22932F611080532FE35112E5F2CC /* DRColorPickerHueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED38AB503FB9548BB75FACEE02316F24 /* DRColorPickerHueViewController.m */; };
+		1C089433F14841DE82557C07B41BE09E /* DRColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAF27E4D114C320DE318F1C485D74C0 /* DRColorPicker-dummy.m */; };
+		1D40D2863F7F5FAD328AD514DBF06614 /* DRColorPickerWheelViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AC40FC32E46B59017C79391F5EC832F2 /* DRColorPickerWheelViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DA89284D54A1A02876F734D83EEFE05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACC753811AB948C6D7E2FBD763C476D /* Foundation.framework */; };
+		1F6DA2CFDF1371B5D42BDEB0C7F00152 /* DRColorPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3A69A3B6F51BE6B0A20BA6CFA7D585 /* DRColorPicker.m */; };
+		2579663181BFA8F7DA4B5D7CF8537FC0 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C77FE6ECBDD44964A835B03D8BED97F /* UIActivityIndicatorView+AFNetworking.m */; };
+		2843898C40D365BC1361BF1CD832E9B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4832899E11927733C8B858AF857DCC47 /* CoreGraphics.framework */; };
+		2EBAA518CB8B2DAF89A63637091D4615 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 977F49263094BBE031EBB9B2AA4081B2 /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31185D7C2B3AB0B5746642DF457D388D /* DRColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F4E5B6548B83387CA9ECEEDB3299344 /* DRColorPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		31ED9BD97AF9E62874AF3CDF2F8090CF /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B81B2B48E8BB14F2ACE300B415192EE /* AFNetworkActivityIndicatorManager.m */; };
+		33B99C66AA2AF79832CE5C41C28FCA4D /* DRColorPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 9554E4BDED8224C9C61FF509492AFBAC /* DRColorPickerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B165B15815135EB458356BB8A9D7B0F /* DRColorPickerGridViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B5CE876114BB2BF295804946A4ABBEB /* DRColorPickerGridViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		46401F3C7FF0B0CFE2E9B14914780835 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = DFBFEA4B4EAEDC22C4E73BFC3E8E36F9 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49BA9CAC89056DCB5322126060495FC8 /* DRColorPickerWheelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C778996AC823580E24504561448ED8 /* DRColorPickerWheelViewController.m */; };
+		4D6516D8B76274A08350ADE765A88E85 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B30D7D9906CB43F577DAFA21316545 /* UIKit.framework */; };
+		56B1804DFC7F38DD410FA3AE1E52BC35 /* DRColorPickerHorizontalCollectionViewLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = DBC77EDD28B0DE59BB4FFDCF3A2D9012 /* DRColorPickerHorizontalCollectionViewLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5719F06B809080CDEF7E6BC75DEA1A3C /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = B78EF5A226A787E6ED6A104E4C0BD0A5 /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5945033488F9995134DBB7014DE2412F /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E765AB3E4297F2D4324F4ECA73826E0A /* AFURLRequestSerialization.m */; };
+		5C0696B2AD1DC23F6473F5A19FAB6296 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = C542A7A2A815BD764024C5626955572B /* AFImageDownloader.m */; };
+		628E19A8EACBF347773A96E41E3D10FA /* CNPPopupController.h in Headers */ = {isa = PBXBuildFile; fileRef = C58D348F2E6F320628DD168338AA9BA3 /* CNPPopupController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		630D903D3E6FB64183A53DABDB31FCF9 /* DRColorPickerGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A31A25EEBBF17AC5D51C6E03ED71AA4 /* DRColorPickerGridView.m */; };
+		66635EAAE52FF5571DBCDC626FB8CA86 /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = E201A8C3C0969558ABFAE90025B377FD /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		668D34FBC1CD4FB29E26A1402EF60C9A /* DRColorPickerWheelView.h in Headers */ = {isa = PBXBuildFile; fileRef = A81C1EE0C19C913168F240B39BD8727C /* DRColorPickerWheelView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		66E1040543AF7BA3DC3731FE17C85F5B /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2ECB4628718C60A2004A091B678368 /* AFSecurityPolicy.m */; };
+		66ECC6A7932396EEC631236C6093780C /* DRColorPickerGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99DCCA36EE92D576758B63D88EA03434 /* DRColorPickerGridViewController.m */; };
+		682B0E603612B6ADBCCF30580F9A4B09 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = E531403CE074F4C89E19CF497F3FB9BA /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B71CE5BA32574F407349C1DA20605B4 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 619C853B797990CA567FB16BDF0D2FB5 /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6EA8472C2ABC1C478325BED2A678F4C8 /* DRColorPicker+UIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = DE795ABE2FEF64EB511B8E825411EFC0 /* DRColorPicker+UIColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6F05ED5104C3E6F62FE469C9866AAF08 /* Pods-Telesto Basement App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B750EB49CFBBF1C22BC47419EC27C9 /* Pods-Telesto Basement App-dummy.m */; };
+		707E818332E5033501DF2D7826C639DF /* AFImageDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 410E8D97684DA48E337B3C3CABEAB770 /* AFImageDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		715B73782FCD30FD23F40C8208F67037 /* DRColorPickerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5332C39C748090F6A2F47EDA46E2379F /* DRColorPickerColor.m */; };
+		73811DA312BCB537D44D62EC6AD15766 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA67FC4B378CF6B29C2DF8597B718B0 /* AFHTTPSessionManager.m */; };
+		775CE7A8107457BDE59F113D40020839 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCEE86B91A3238E342FD0AE9435E79C /* AFAutoPurgingImageCache.m */; };
+		7B3F69CE6A437A2AFDED6544DDAC84F0 /* DRColorPickerHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE194D74539DB71AA1D4C1690513D8C /* DRColorPickerHomeViewController.m */; };
+		7C39753D0026A74B4DAC812FB72D2100 /* DRColorPickerWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDDC5BF6019342F2F861256D4937503 /* DRColorPickerWheelView.m */; };
+		7EB79E11AE569041F6B48A086D4D956D /* DRColorPickerStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 40DBCB1965C2F45AE49C5B32C544599E /* DRColorPickerStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		85D30678FF4F0AB306399A368EAA46B2 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CD295772CE7C133E14B980AA803896 /* AFURLResponseSerialization.m */; };
+		8958F2453EEBAF71BFEBD78FB48986EC /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B9F678B0A728B37F7E7CF21D8082039 /* UIWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		89A3D3CCC6135754FEE9AA056895683B /* DRColorPickerBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C8EF41CF2FF1EFDF5476950624D3095A /* DRColorPickerBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B1E1A45E0B423395CE2A513BB1B1010 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5817772794AE4D81CB064EE17EF7F073 /* MobileCoreServices.framework */; };
+		8B95957BE6B1029EE9A6AC3E36686CBD /* DRColorPickerHomeView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD37D36B0F03EBD63C1AAC946724B6FC /* DRColorPickerHomeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B9DD2C3C87779E60BA6CF48E4777762 /* DRColorPickerGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = AE33EAA291EB4230E319ADFBA836C5F4 /* DRColorPickerGridView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E80877B1AC8F7FEF82619B47BB9DA87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACC753811AB948C6D7E2FBD763C476D /* Foundation.framework */; };
+		94FBF47CFC1A589BE7BA9AE11E75FE78 /* DRColorPickerHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6835BC3119D7346F158F65D33D9C09C /* DRColorPickerHomeView.m */; };
+		97A86FAAD4B1AD9B3292FF6AF1D8F82B /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC9A145F771960425F65D62763CB10A /* AFNetworking-dummy.m */; };
+		9BD9CF00C080F06CFE3F9B4548C77FDA /* DRColorPickerHorizontalCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F9450F07A55499EA1C90386013F50F68 /* DRColorPickerHorizontalCollectionViewLayout.m */; };
+		9F5BB6B4995BA4A3B2C6AEBA6C31A6DB /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 36B246B38F5951FF99D1655EC1AA1054 /* AFURLSessionManager.m */; };
+		A277AD9070E44BED5A7DE0B1D64D6F15 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA75BF71D579F107711C12D51304D4E /* UIImageView+AFNetworking.m */; };
+		A7F7FDCD36E2DD8D8E346DB19452CC03 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 444FBA8ADB1B940144BAB9D240DEBEC1 /* UIWebView+AFNetworking.m */; };
+		A92438B3A3050DEBE5DCAA07A9F8546A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8B30D7D9906CB43F577DAFA21316545 /* UIKit.framework */; };
+		AFD0634B4D580C7C585C242BE0008A0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACC753811AB948C6D7E2FBD763C476D /* Foundation.framework */; };
+		B1BD947D805DFE03CD640AF4A3C38270 /* CNPPopupController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF8A87199BFBD2810C270A17FD46210 /* CNPPopupController-dummy.m */; };
+		B40756412613B53C80EE77C4C223990F /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = CA092047A547D5283979696B3CD07BB8 /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B84CD33084C9867E67BD56E47B7BFC04 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF7DFBFAAE432780A3E3D643DABD2BC /* UIRefreshControl+AFNetworking.m */; };
+		BF5B8AD0E3E1A5FE4A05C7F8B7D95E41 /* DRColorPicker+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D7092345A30BE8E093BF9C4D3EDF77A /* DRColorPicker+UIColor.m */; };
+		C1C0D7C93BF3DE14A26757273598D0FA /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF2E60C02E9E742EE4A49B5E9CA66CD /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2C905DFB801212F5049DD7478F0DB38 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB64FDC1CD817695EC680922FDD047B7 /* QuartzCore.framework */; };
+		C828F427BF57DBC52040E8B7A32ED858 /* DRColorPickerColorView.h in Headers */ = {isa = PBXBuildFile; fileRef = E07F7F22D033F139BA878CA515380F63 /* DRColorPickerColorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC8588A9DBC2BB56A1989E00E1F074AA /* DRColorPickerGridViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E758A506A88002F5159EDC9F4CF5FFA /* DRColorPickerGridViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF5A1B4D7C44DC1C4AC8EBFF6F7CD327 /* DRColorPickerHueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 004FF5884096FFDC39A0615E099E2300 /* DRColorPickerHueView.m */; };
+		D10CC46035F7A0C868C0955664A34609 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0387B5901FEE2E139BD6BC763BB5AC7C /* UIButton+AFNetworking.m */; };
+		D4681C8CA189C7891891A84F5C477EA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACC753811AB948C6D7E2FBD763C476D /* Foundation.framework */; };
+		D4AA4704CA7863CC86E22AAF88635836 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C0AC1D74FE68482DEEF266A64A72A45 /* UIProgressView+AFNetworking.m */; };
+		D59FC98A74E440C4725B6FDC28F5951E /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = DDFEABDAC9B8F6989EDB6BB84D4FBB1E /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5CB999FB5FC80FC126A38AB4DF12227 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF8D83CEFA09AF25779F8A969F9D831 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D6661D944DA4B5402DA6B57914542DF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 311369F1788D2F10F1EC15B682818CBA /* Security.framework */; };
+		DE31BBF6A7963C5871A19655EF5532BE /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC6367C2D7FA2ACD93B39A066C65DFE /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DFB8411FE2F97E732E122DEE3CC30891 /* DRColorPickerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9923DC6035AFFB757782421B30FAB9 /* DRColorPickerBaseViewController.m */; };
+		E0EF330DB2D3521ED26E67B2E8687A2E /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 792214EBF9E2D93E9B753DD43B356007 /* AFNetworkReachabilityManager.m */; };
+		E738C16AF8020F2D6948D867AA7109EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D668229702A603DF06B25B3596792155 /* SystemConfiguration.framework */; };
+		E7A864328FFC7F6A93DE10E157381E0E /* DRColorPickerHueView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B1092B4EA69162BF1F068B14DDD573A /* DRColorPickerHueView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7B0270BEDCBE116DDD853F76E27B0BA /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DB7923AE2BAB611AF6B86D4C8D2A59DE /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF3A6C21CCEAB08FA4F591778422ED80 /* DRColorPickerStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 853BE5F0567FA4D5DE9DA5DB533A8EAF /* DRColorPickerStore.m */; };
+		F099E5987DD80E8D78E909AF81D3C587 /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = F57060EC99DD55E5BD167BF56C603B2F /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1F93EE1AA5E870F2CE81325CE9EB643 /* AFAutoPurgingImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C27955F92E60D57B0F31F37A12134A4 /* AFAutoPurgingImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5CC06F3E0C232483A72DCCFAF393BE0 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 66354DE4A224136D56873C6ADE97E425 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5CF185F9224684F05F96BA698DF3D80 /* DRColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6347A045875434A5B9BFB45C1DB202BB /* DRColorPickerViewController.m */; };
+		F6CCF3604FEDA9778BE7EE3B67CDEE6D /* DRColorPickerGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9094595E7C423A9EBE5BD1C5EB9B4D4D /* DRColorPickerGridViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		69A264331C4030B16B9132A053935F49 /* PBXContainerItemProxy */ = {
+		4A79B8075E5DB3AB37D431CF42574F36 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 842A0D621639C1DDB8DAFE2CF36B978A;
 			remoteInfo = DRColorPicker;
 		};
-		8CCBFCB2AD174D665C3982C0471E218E /* PBXContainerItemProxy */ = {
+		BFC02BE8291845E5B08318C5DA598CF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E033EDB5EC0819481B0546434FA577B;
+			remoteInfo = AFNetworking;
+		};
+		ED1B0ECA57CE75402FCF416B3FC083A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -73,72 +119,113 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		004FF5884096FFDC39A0615E099E2300 /* DRColorPickerHueView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHueView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHueView.m; sourceTree = "<group>"; };
 		0378B3F2734A90AE992F99B5A610CCF4 /* Pods-Telesto Basement App-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Telesto Basement App-frameworks.sh"; sourceTree = "<group>"; };
-		04769BF2E9F02A5C511406EC253C272D /* DRColorPickerColorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerColorView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerColorView.h; sourceTree = "<group>"; };
-		091201072C6130056FAA94F3B2D0E4FF /* CNPPopupController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CNPPopupController.m; path = CNPPopupController/CNPPopupController.m; sourceTree = "<group>"; };
-		0A1303F9B75A41D3C1DCCD6D4F2347CD /* DRColorPickerColorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerColorView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerColorView.m; sourceTree = "<group>"; };
-		0E9F282A574723109BB2D466CECD4B15 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
-		0FC16EA77AA7FD837AD606B54FC866D6 /* DRColorPickerWheelView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerWheelView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerWheelView.h; sourceTree = "<group>"; };
-		15ED5C153D89AE42D6E3E5416E582FBE /* DRColorPickerHorizontalCollectionViewLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHorizontalCollectionViewLayout.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHorizontalCollectionViewLayout.m; sourceTree = "<group>"; };
-		1A02F84B48163BB7B4E9B8C2B3F2A664 /* DRColorPickerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerViewController.h; sourceTree = "<group>"; };
-		1A9C91E657D3B6B5A45A75A90769B582 /* CNPPopupController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CNPPopupController.xcconfig; sourceTree = "<group>"; };
-		1CC40E76DDFC3D55F80B2C2BEC30F535 /* DRColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DRColorPicker-dummy.m"; sourceTree = "<group>"; };
-		1EF4235DA7BDF396961864D3C37C384A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		205842E4489A53063B03CFBD44AC7325 /* DRColorPicker+UIColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DRColorPicker+UIColor.m"; path = "DRColorPickerExample/DRColorPicker/DRColorPicker+UIColor.m"; sourceTree = "<group>"; };
-		20AAFAD6F0B7418EB664A68DC573CB65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		24D159A00F997B6978E9CF81011DB39C /* DRColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRColorPicker-prefix.pch"; sourceTree = "<group>"; };
+		0387B5901FEE2E139BD6BC763BB5AC7C /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
+		0DCEE86B91A3238E342FD0AE9435E79C /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFAutoPurgingImageCache.m; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.m"; sourceTree = "<group>"; };
+		0F4E5B6548B83387CA9ECEEDB3299344 /* DRColorPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPicker.h; path = DRColorPickerExample/DRColorPicker/DRColorPicker.h; sourceTree = "<group>"; };
+		0FD500FF6EC33E6B8434BDE8C49F80BE /* CNPPopupController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CNPPopupController.m; path = CNPPopupController/CNPPopupController.m; sourceTree = "<group>"; };
+		141421B33255EB9EFCD28AFA8D70F912 /* DRColorPickerColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerColor.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerColor.h; sourceTree = "<group>"; };
+		1C0AC1D74FE68482DEEF266A64A72A45 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		21CD295772CE7C133E14B980AA803896 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		25B750EB49CFBBF1C22BC47419EC27C9 /* Pods-Telesto Basement App-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Telesto Basement App-dummy.m"; sourceTree = "<group>"; };
-		2EA466E5504A8FC4001275D4A305497F /* DRColorPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPicker.h; path = DRColorPickerExample/DRColorPicker/DRColorPicker.h; sourceTree = "<group>"; };
+		2B81B2B48E8BB14F2ACE300B415192EE /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
+		2BA67FC4B378CF6B29C2DF8597B718B0 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		2F9DDB2E043DCF7E5FAB15FD48AC4B41 /* Pods-Telesto Basement App-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Telesto Basement App-acknowledgements.markdown"; sourceTree = "<group>"; };
 		30D2317CE9164FE47A78874C0F7443F3 /* Pods-Telesto Basement App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Telesto Basement App.debug.xcconfig"; sourceTree = "<group>"; };
-		3AB5E9C70E6AA359B350FC24B8CFA7E6 /* DRColorPickerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerViewController.m; sourceTree = "<group>"; };
-		4092101DDE274CDF86BF137DD6C30422 /* DRColorPickerHueView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHueView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHueView.h; sourceTree = "<group>"; };
-		421C3118A83C05854CB702B795964F45 /* DRColorPickerGridViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerGridViewCell.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridViewCell.m; sourceTree = "<group>"; };
-		465D68908E96AA2B33741FAE0BD7DC40 /* CNPPopupController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CNPPopupController.h; path = CNPPopupController/CNPPopupController.h; sourceTree = "<group>"; };
-		4AA61EBDA260FB0930C80F4C880F74E5 /* DRColorPickerHomeViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHomeViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHomeViewController.m; sourceTree = "<group>"; };
-		53824B741364BCC75D40B01E5A45B767 /* libDRColorPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDRColorPicker.a; path = libDRColorPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		55F7E3965DB1F370A975DB605F7C7125 /* DRColorPickerGridView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerGridView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridView.m; sourceTree = "<group>"; };
-		5952E571A1768D1826A796C4A3DD0165 /* libPods-Telesto Basement App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Telesto Basement App.a"; path = "libPods-Telesto Basement App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CDE9242B5BC7CD422957F68694A1A3E /* DRColorPicker+UIColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DRColorPicker+UIColor.h"; path = "DRColorPickerExample/DRColorPicker/DRColorPicker+UIColor.h"; sourceTree = "<group>"; };
-		60DEF187B85D6011842E117CEB6B3118 /* DRColorPickerWheelView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerWheelView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerWheelView.m; sourceTree = "<group>"; };
-		6869F02655CD79DA9E5B70882046A9BE /* DRColorPicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = DRColorPicker.bundle; path = DRColorPickerExample/DRColorPicker/DRColorPicker.bundle; sourceTree = "<group>"; };
-		6D0627803E4AFB7589BCD882437CD774 /* DRColorPickerBaseViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerBaseViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerBaseViewController.m; sourceTree = "<group>"; };
+		311369F1788D2F10F1EC15B682818CBA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		36B246B38F5951FF99D1655EC1AA1054 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		3753B265927E9724D24FE4D7A693328A /* CNPPopupController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CNPPopupController-prefix.pch"; sourceTree = "<group>"; };
+		3C0671389D712988CA0CC5A418473D84 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		40DBCB1965C2F45AE49C5B32C544599E /* DRColorPickerStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerStore.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerStore.h; sourceTree = "<group>"; };
+		410E8D97684DA48E337B3C3CABEAB770 /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
+		441793EBA5DCF9AAFE35DA227ACEF83D /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
+		444FBA8ADB1B940144BAB9D240DEBEC1 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		4832899E11927733C8B858AF857DCC47 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		49C778996AC823580E24504561448ED8 /* DRColorPickerWheelViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerWheelViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerWheelViewController.m; sourceTree = "<group>"; };
+		4B3A69A3B6F51BE6B0A20BA6CFA7D585 /* DRColorPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPicker.m; path = DRColorPickerExample/DRColorPicker/DRColorPicker.m; sourceTree = "<group>"; };
+		5332C39C748090F6A2F47EDA46E2379F /* DRColorPickerColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerColor.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerColor.m; sourceTree = "<group>"; };
+		5480378B929185EC5519A049D3843C2D /* libDRColorPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libDRColorPicker.a; path = libDRColorPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5817772794AE4D81CB064EE17EF7F073 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		5B5CE876114BB2BF295804946A4ABBEB /* DRColorPickerGridViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerGridViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridViewController.h; sourceTree = "<group>"; };
+		619C853B797990CA567FB16BDF0D2FB5 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		626FE9E5B8A73533B4BE73B8A346FB29 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6347A045875434A5B9BFB45C1DB202BB /* DRColorPickerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerViewController.m; sourceTree = "<group>"; };
+		66354DE4A224136D56873C6ADE97E425 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
+		6A31A25EEBBF17AC5D51C6E03ED71AA4 /* DRColorPickerGridView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerGridView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridView.m; sourceTree = "<group>"; };
+		6B9F678B0A728B37F7E7CF21D8082039 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		7167687119F6A7BF073940C30E19B4DF /* Pods-Telesto Basement App-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Telesto Basement App-resources.sh"; sourceTree = "<group>"; };
-		73198ED76ACE4C04416FD642DF8ABD30 /* DRColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DRColorPicker.xcconfig; sourceTree = "<group>"; };
-		851FCC998EC99B9C978613ED934FFDCE /* DRColorPickerBaseViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerBaseViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerBaseViewController.h; sourceTree = "<group>"; };
-		8B42D3649E7D3B538AA5D2AFC09C146B /* DRColorPickerWheelViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerWheelViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerWheelViewController.h; sourceTree = "<group>"; };
-		8D640BEB8B0DFA6A9DA7B6EED0E85B8F /* DRColorPickerHorizontalCollectionViewLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHorizontalCollectionViewLayout.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHorizontalCollectionViewLayout.h; sourceTree = "<group>"; };
+		72A2C5B5791C8023928E87FDA2811A79 /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
+		792214EBF9E2D93E9B753DD43B356007 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		7A06285B5F0C94DB8625C234FA9F83B3 /* libCNPPopupController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCNPPopupController.a; path = libCNPPopupController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C27955F92E60D57B0F31F37A12134A4 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
+		7C77FE6ECBDD44964A835B03D8BED97F /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		7D7092345A30BE8E093BF9C4D3EDF77A /* DRColorPicker+UIColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DRColorPicker+UIColor.m"; path = "DRColorPickerExample/DRColorPicker/DRColorPicker+UIColor.m"; sourceTree = "<group>"; };
+		7E758A506A88002F5159EDC9F4CF5FFA /* DRColorPickerGridViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerGridViewCell.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridViewCell.h; sourceTree = "<group>"; };
+		7F9923DC6035AFFB757782421B30FAB9 /* DRColorPickerBaseViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerBaseViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerBaseViewController.m; sourceTree = "<group>"; };
+		853BE5F0567FA4D5DE9DA5DB533A8EAF /* DRColorPickerStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerStore.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerStore.m; sourceTree = "<group>"; };
+		8AF2E60C02E9E742EE4A49B5E9CA66CD /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		8B1092B4EA69162BF1F068B14DDD573A /* DRColorPickerHueView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHueView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHueView.h; sourceTree = "<group>"; };
+		8FF8A87199BFBD2810C270A17FD46210 /* CNPPopupController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CNPPopupController-dummy.m"; sourceTree = "<group>"; };
+		9094595E7C423A9EBE5BD1C5EB9B4D4D /* DRColorPickerGridViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerGridViewCell.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridViewCell.m; sourceTree = "<group>"; };
 		90FEE2520B8FE67405825684115E3296 /* Pods-Telesto Basement App-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Telesto Basement App-acknowledgements.plist"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		970418971C1A8C7BB4171C026262CB1C /* DRColorPickerColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerColor.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerColor.h; sourceTree = "<group>"; };
-		A18140C321F4CB64880B68B499B9857B /* DRColorPickerWheelViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerWheelViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerWheelViewController.m; sourceTree = "<group>"; };
-		A8584B73601F06E1F84458A46E0BAC73 /* DRColorPickerStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerStore.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerStore.m; sourceTree = "<group>"; };
-		AC857505AAE820578F66B50549F636DB /* DRColorPickerHueView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHueView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHueView.m; sourceTree = "<group>"; };
-		B24E371C7ACFE48AD8A18982718634EF /* DRColorPickerHomeViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHomeViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHomeViewController.h; sourceTree = "<group>"; };
+		9554E4BDED8224C9C61FF509492AFBAC /* DRColorPickerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerViewController.h; sourceTree = "<group>"; };
+		977F49263094BBE031EBB9B2AA4081B2 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		99DCCA36EE92D576758B63D88EA03434 /* DRColorPickerGridViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerGridViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridViewController.m; sourceTree = "<group>"; };
+		A2916BDF8E3CD9BDDDA19E67C4754197 /* libPods-Telesto Basement App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Telesto Basement App.a"; path = "libPods-Telesto Basement App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4978F632088DB323BEDA08E2400FE60 /* CNPPopupController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CNPPopupController.xcconfig; sourceTree = "<group>"; };
+		A81C1EE0C19C913168F240B39BD8727C /* DRColorPickerWheelView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerWheelView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerWheelView.h; sourceTree = "<group>"; };
+		AA4028831DC5D4A6F3EBAF43924DB71A /* DRColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DRColorPicker.xcconfig; sourceTree = "<group>"; };
+		ABF7DFBFAAE432780A3E3D643DABD2BC /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
+		AC40FC32E46B59017C79391F5EC832F2 /* DRColorPickerWheelViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerWheelViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerWheelViewController.h; sourceTree = "<group>"; };
+		ADDDC5BF6019342F2F861256D4937503 /* DRColorPickerWheelView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerWheelView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerWheelView.m; sourceTree = "<group>"; };
+		AE33EAA291EB4230E319ADFBA836C5F4 /* DRColorPickerGridView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerGridView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridView.h; sourceTree = "<group>"; };
 		B303F676F71D9E6B706DF08DED8504CA /* Pods-Telesto Basement App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Telesto Basement App.release.xcconfig"; sourceTree = "<group>"; };
-		B37959D0C965607788467C4014114DB0 /* DRColorPickerStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerStore.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerStore.h; sourceTree = "<group>"; };
-		B721193584C7C9E987C5EDAD3866EB94 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		B851883938529DAB5178AAD938436A33 /* libCNPPopupController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCNPPopupController.a; path = libCNPPopupController.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C51A290C04AF5C191BD754B7D535B447 /* DRColorPickerGridViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerGridViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridViewController.h; sourceTree = "<group>"; };
-		C6BB3877835FADBF6A6E964EE18BD510 /* CNPPopupController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CNPPopupController-prefix.pch"; sourceTree = "<group>"; };
-		C7113A267D772825F0D524708AA13D13 /* DRColorPickerHomeView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHomeView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHomeView.m; sourceTree = "<group>"; };
-		D5226AB2D1A82D086216BC666BE999AE /* DRColorPickerColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerColor.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerColor.m; sourceTree = "<group>"; };
-		D70628578604D68FE27E52DE32E16A9B /* DRColorPickerGridViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerGridViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridViewController.m; sourceTree = "<group>"; };
-		E48E1AC06FF69C4B0BFE0B85124809FB /* DRColorPickerHomeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHomeView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHomeView.h; sourceTree = "<group>"; };
-		E53E1268E9FE629B0E145B3870C27F40 /* DRColorPickerHueViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHueViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHueViewController.h; sourceTree = "<group>"; };
-		EACF07307A897336EDCED77DB7E6D423 /* CNPPopupController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CNPPopupController-dummy.m"; sourceTree = "<group>"; };
-		F2752308A87C233F351AD517AC4CA293 /* DRColorPickerHueViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHueViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHueViewController.m; sourceTree = "<group>"; };
-		F76DCF027F649FA3B2BD2F9437FA761C /* DRColorPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPicker.m; path = DRColorPickerExample/DRColorPicker/DRColorPicker.m; sourceTree = "<group>"; };
-		FB56E473F7A7C51A105F6F1DDDBB38FD /* DRColorPickerGridViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerGridViewCell.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridViewCell.h; sourceTree = "<group>"; };
-		FD2F31401D4BF85E4D11EE6B442B41A8 /* DRColorPickerGridView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerGridView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerGridView.h; sourceTree = "<group>"; };
+		B78EF5A226A787E6ED6A104E4C0BD0A5 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		BE1755C9060837B4E39EC7BC8D534831 /* DRColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DRColorPicker-prefix.pch"; sourceTree = "<group>"; };
+		BE2ECB4628718C60A2004A091B678368 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+		C542A7A2A815BD764024C5626955572B /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
+		C58D348F2E6F320628DD168338AA9BA3 /* CNPPopupController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CNPPopupController.h; path = CNPPopupController/CNPPopupController.h; sourceTree = "<group>"; };
+		C8EF41CF2FF1EFDF5476950624D3095A /* DRColorPickerBaseViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerBaseViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerBaseViewController.h; sourceTree = "<group>"; };
+		CA092047A547D5283979696B3CD07BB8 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		CAF8D83CEFA09AF25779F8A969F9D831 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		CB64FDC1CD817695EC680922FDD047B7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		CD37D36B0F03EBD63C1AAC946724B6FC /* DRColorPickerHomeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHomeView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHomeView.h; sourceTree = "<group>"; };
+		D668229702A603DF06B25B3596792155 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		D8B613B0A3B7BBAD60D32EEA157E52B6 /* DRColorPickerHomeViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHomeViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHomeViewController.h; sourceTree = "<group>"; };
+		DAC9A145F771960425F65D62763CB10A /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		DB7923AE2BAB611AF6B86D4C8D2A59DE /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
+		DBC77EDD28B0DE59BB4FFDCF3A2D9012 /* DRColorPickerHorizontalCollectionViewLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHorizontalCollectionViewLayout.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHorizontalCollectionViewLayout.h; sourceTree = "<group>"; };
+		DDC6367C2D7FA2ACD93B39A066C65DFE /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		DDFEABDAC9B8F6989EDB6BB84D4FBB1E /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
+		DE795ABE2FEF64EB511B8E825411EFC0 /* DRColorPicker+UIColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DRColorPicker+UIColor.h"; path = "DRColorPickerExample/DRColorPicker/DRColorPicker+UIColor.h"; sourceTree = "<group>"; };
+		DED95E653BAF2F2D81EF07E1A02DE7E8 /* DRColorPickerHueViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerHueViewController.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerHueViewController.h; sourceTree = "<group>"; };
+		DFBFEA4B4EAEDC22C4E73BFC3E8E36F9 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		E07F7F22D033F139BA878CA515380F63 /* DRColorPickerColorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DRColorPickerColorView.h; path = DRColorPickerExample/DRColorPicker/DRColorPickerColorView.h; sourceTree = "<group>"; };
+		E201A8C3C0969558ABFAE90025B377FD /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		E531403CE074F4C89E19CF497F3FB9BA /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		E6CA8A14A7AD3548AA9259719CAA3D24 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
+		E765AB3E4297F2D4324F4ECA73826E0A /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		E8B30D7D9906CB43F577DAFA21316545 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		E8E97CA7196C0A53BEC70C932A201E35 /* DRColorPickerColorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerColorView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerColorView.m; sourceTree = "<group>"; };
+		EACC753811AB948C6D7E2FBD763C476D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		ED38AB503FB9548BB75FACEE02316F24 /* DRColorPickerHueViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHueViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHueViewController.m; sourceTree = "<group>"; };
+		EEA75BF71D579F107711C12D51304D4E /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		F01E40104C0E38DBF9BF19CF94331A39 /* DRColorPicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = DRColorPicker.bundle; path = DRColorPickerExample/DRColorPicker/DRColorPicker.bundle; sourceTree = "<group>"; };
+		F57060EC99DD55E5BD167BF56C603B2F /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
+		F6835BC3119D7346F158F65D33D9C09C /* DRColorPickerHomeView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHomeView.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHomeView.m; sourceTree = "<group>"; };
+		F9450F07A55499EA1C90386013F50F68 /* DRColorPickerHorizontalCollectionViewLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHorizontalCollectionViewLayout.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHorizontalCollectionViewLayout.m; sourceTree = "<group>"; };
+		FEAF27E4D114C320DE318F1C485D74C0 /* DRColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DRColorPicker-dummy.m"; sourceTree = "<group>"; };
+		FEE194D74539DB71AA1D4C1690513D8C /* DRColorPickerHomeViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DRColorPickerHomeViewController.m; path = DRColorPickerExample/DRColorPicker/DRColorPickerHomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AA6B61A457961EF284314B33A2F13CBF /* Frameworks */ = {
+		57A78B448454F1F7303228CE76958BA8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78998646B17D1C984E0C895B967FBA47 /* Foundation.framework in Frameworks */,
+				8E80877B1AC8F7FEF82619B47BB9DA87 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,55 +249,98 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F3284DBE3CA8932733932AD2A48445B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2843898C40D365BC1361BF1CD832E9B2 /* CoreGraphics.framework in Frameworks */,
+				AFD0634B4D580C7C585C242BE0008A0E /* Foundation.framework in Frameworks */,
+				8B1E1A45E0B423395CE2A513BB1B1010 /* MobileCoreServices.framework in Frameworks */,
+				D6661D944DA4B5402DA6B57914542DF9 /* Security.framework in Frameworks */,
+				E738C16AF8020F2D6948D867AA7109EF /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		023604637B384E49A1161DC26E15E361 /* CNPPopupController */ = {
+		0EB41591725E8114A1AD7ED3F60203AD /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				465D68908E96AA2B33741FAE0BD7DC40 /* CNPPopupController.h */,
-				091201072C6130056FAA94F3B2D0E4FF /* CNPPopupController.m */,
-				3473346C15843F649E303C1C0BF0829E /* Support Files */,
+				DFBFEA4B4EAEDC22C4E73BFC3E8E36F9 /* AFNetworking.h */,
+				643055DA2F58A8C4FEDC952C77375C78 /* NSURLSession */,
+				190E9AE2C918214E657CB47B87460909 /* Reachability */,
+				40FD571A61C5EA39753CA32FBB0D75C9 /* Security */,
+				CB796AC4C6B1959632BC34634A1D5CEC /* Serialization */,
+				702A06B7010374962DFA85E1292D7CA0 /* Support Files */,
+				8146E5A8F10A205F87B7A7567254B95E /* UIKit */,
+			);
+			name = AFNetworking;
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		190E9AE2C918214E657CB47B87460909 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				DDC6367C2D7FA2ACD93B39A066C65DFE /* AFNetworkReachabilityManager.h */,
+				792214EBF9E2D93E9B753DD43B356007 /* AFNetworkReachabilityManager.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		2A24BEA05428FFCC5B89C889E2280D0B /* CNPPopupController */ = {
+			isa = PBXGroup;
+			children = (
+				C58D348F2E6F320628DD168338AA9BA3 /* CNPPopupController.h */,
+				0FD500FF6EC33E6B8434BDE8C49F80BE /* CNPPopupController.m */,
+				C384E67E1B2BC35E8FC168BC20DC02F2 /* Support Files */,
 			);
 			name = CNPPopupController;
 			path = CNPPopupController;
 			sourceTree = "<group>";
 		};
-		0CD9456635834180DB526461F4C7A541 /* Resources */ = {
+		3543BE84ADD8591C7C6439AD0E3D30CC /* DRColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				6869F02655CD79DA9E5B70882046A9BE /* DRColorPicker.bundle */,
+				0F4E5B6548B83387CA9ECEEDB3299344 /* DRColorPicker.h */,
+				4B3A69A3B6F51BE6B0A20BA6CFA7D585 /* DRColorPicker.m */,
+				DE795ABE2FEF64EB511B8E825411EFC0 /* DRColorPicker+UIColor.h */,
+				7D7092345A30BE8E093BF9C4D3EDF77A /* DRColorPicker+UIColor.m */,
+				C8EF41CF2FF1EFDF5476950624D3095A /* DRColorPickerBaseViewController.h */,
+				7F9923DC6035AFFB757782421B30FAB9 /* DRColorPickerBaseViewController.m */,
+				141421B33255EB9EFCD28AFA8D70F912 /* DRColorPickerColor.h */,
+				5332C39C748090F6A2F47EDA46E2379F /* DRColorPickerColor.m */,
+				E07F7F22D033F139BA878CA515380F63 /* DRColorPickerColorView.h */,
+				E8E97CA7196C0A53BEC70C932A201E35 /* DRColorPickerColorView.m */,
+				AE33EAA291EB4230E319ADFBA836C5F4 /* DRColorPickerGridView.h */,
+				6A31A25EEBBF17AC5D51C6E03ED71AA4 /* DRColorPickerGridView.m */,
+				7E758A506A88002F5159EDC9F4CF5FFA /* DRColorPickerGridViewCell.h */,
+				9094595E7C423A9EBE5BD1C5EB9B4D4D /* DRColorPickerGridViewCell.m */,
+				5B5CE876114BB2BF295804946A4ABBEB /* DRColorPickerGridViewController.h */,
+				99DCCA36EE92D576758B63D88EA03434 /* DRColorPickerGridViewController.m */,
+				CD37D36B0F03EBD63C1AAC946724B6FC /* DRColorPickerHomeView.h */,
+				F6835BC3119D7346F158F65D33D9C09C /* DRColorPickerHomeView.m */,
+				D8B613B0A3B7BBAD60D32EEA157E52B6 /* DRColorPickerHomeViewController.h */,
+				FEE194D74539DB71AA1D4C1690513D8C /* DRColorPickerHomeViewController.m */,
+				DBC77EDD28B0DE59BB4FFDCF3A2D9012 /* DRColorPickerHorizontalCollectionViewLayout.h */,
+				F9450F07A55499EA1C90386013F50F68 /* DRColorPickerHorizontalCollectionViewLayout.m */,
+				8B1092B4EA69162BF1F068B14DDD573A /* DRColorPickerHueView.h */,
+				004FF5884096FFDC39A0615E099E2300 /* DRColorPickerHueView.m */,
+				DED95E653BAF2F2D81EF07E1A02DE7E8 /* DRColorPickerHueViewController.h */,
+				ED38AB503FB9548BB75FACEE02316F24 /* DRColorPickerHueViewController.m */,
+				40DBCB1965C2F45AE49C5B32C544599E /* DRColorPickerStore.h */,
+				853BE5F0567FA4D5DE9DA5DB533A8EAF /* DRColorPickerStore.m */,
+				9554E4BDED8224C9C61FF509492AFBAC /* DRColorPickerViewController.h */,
+				6347A045875434A5B9BFB45C1DB202BB /* DRColorPickerViewController.m */,
+				A81C1EE0C19C913168F240B39BD8727C /* DRColorPickerWheelView.h */,
+				ADDDC5BF6019342F2F861256D4937503 /* DRColorPickerWheelView.m */,
+				AC40FC32E46B59017C79391F5EC832F2 /* DRColorPickerWheelViewController.h */,
+				49C778996AC823580E24504561448ED8 /* DRColorPickerWheelViewController.m */,
+				D3F84D1A4EF4435D275D0A6EBA883947 /* Resources */,
+				A336C0BAF54EEBB1903D15DDE4402CD0 /* Support Files */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				53704228C80969F1590C5AF70F22A8CF /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3165D6D96EEE769F2510263BCF3BEB02 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B851883938529DAB5178AAD938436A33 /* libCNPPopupController.a */,
-				53824B741364BCC75D40B01E5A45B767 /* libDRColorPicker.a */,
-				5952E571A1768D1826A796C4A3DD0165 /* libPods-Telesto Basement App.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		3473346C15843F649E303C1C0BF0829E /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1A9C91E657D3B6B5A45A75A90769B582 /* CNPPopupController.xcconfig */,
-				EACF07307A897336EDCED77DB7E6D423 /* CNPPopupController-dummy.m */,
-				C6BB3877835FADBF6A6E964EE18BD510 /* CNPPopupController-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/CNPPopupController";
+			name = DRColorPicker;
+			path = DRColorPicker;
 			sourceTree = "<group>";
 		};
 		3D4D0DD991DBE7EAA108410DC8E6BCA4 /* Pods-Telesto Basement App */ = {
@@ -228,6 +358,15 @@
 			path = "Target Support Files/Pods-Telesto Basement App";
 			sourceTree = "<group>";
 		};
+		40FD571A61C5EA39753CA32FBB0D75C9 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				DDFEABDAC9B8F6989EDB6BB84D4FBB1E /* AFSecurityPolicy.h */,
+				BE2ECB4628718C60A2004A091B678368 /* AFSecurityPolicy.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
 		48B178E4232C827F0BC6F81D36B6B64D /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,90 +375,149 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		53704228C80969F1590C5AF70F22A8CF /* iOS */ = {
+		49609B4C4D45065F30ABFC9CB1FCF3CD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				20AAFAD6F0B7418EB664A68DC573CB65 /* Foundation.framework */,
-				0E9F282A574723109BB2D466CECD4B15 /* ImageIO.framework */,
-				1EF4235DA7BDF396961864D3C37C384A /* QuartzCore.framework */,
-				B721193584C7C9E987C5EDAD3866EB94 /* UIKit.framework */,
+				0EB41591725E8114A1AD7ED3F60203AD /* AFNetworking */,
+				2A24BEA05428FFCC5B89C889E2280D0B /* CNPPopupController */,
+				3543BE84ADD8591C7C6439AD0E3D30CC /* DRColorPicker */,
 			);
-			name = iOS;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		581A11E4382FA00E6AD3744D437D5F89 /* DRColorPicker */ = {
+		643055DA2F58A8C4FEDC952C77375C78 /* NSURLSession */ = {
 			isa = PBXGroup;
 			children = (
-				2EA466E5504A8FC4001275D4A305497F /* DRColorPicker.h */,
-				F76DCF027F649FA3B2BD2F9437FA761C /* DRColorPicker.m */,
-				5CDE9242B5BC7CD422957F68694A1A3E /* DRColorPicker+UIColor.h */,
-				205842E4489A53063B03CFBD44AC7325 /* DRColorPicker+UIColor.m */,
-				851FCC998EC99B9C978613ED934FFDCE /* DRColorPickerBaseViewController.h */,
-				6D0627803E4AFB7589BCD882437CD774 /* DRColorPickerBaseViewController.m */,
-				970418971C1A8C7BB4171C026262CB1C /* DRColorPickerColor.h */,
-				D5226AB2D1A82D086216BC666BE999AE /* DRColorPickerColor.m */,
-				04769BF2E9F02A5C511406EC253C272D /* DRColorPickerColorView.h */,
-				0A1303F9B75A41D3C1DCCD6D4F2347CD /* DRColorPickerColorView.m */,
-				FD2F31401D4BF85E4D11EE6B442B41A8 /* DRColorPickerGridView.h */,
-				55F7E3965DB1F370A975DB605F7C7125 /* DRColorPickerGridView.m */,
-				FB56E473F7A7C51A105F6F1DDDBB38FD /* DRColorPickerGridViewCell.h */,
-				421C3118A83C05854CB702B795964F45 /* DRColorPickerGridViewCell.m */,
-				C51A290C04AF5C191BD754B7D535B447 /* DRColorPickerGridViewController.h */,
-				D70628578604D68FE27E52DE32E16A9B /* DRColorPickerGridViewController.m */,
-				E48E1AC06FF69C4B0BFE0B85124809FB /* DRColorPickerHomeView.h */,
-				C7113A267D772825F0D524708AA13D13 /* DRColorPickerHomeView.m */,
-				B24E371C7ACFE48AD8A18982718634EF /* DRColorPickerHomeViewController.h */,
-				4AA61EBDA260FB0930C80F4C880F74E5 /* DRColorPickerHomeViewController.m */,
-				8D640BEB8B0DFA6A9DA7B6EED0E85B8F /* DRColorPickerHorizontalCollectionViewLayout.h */,
-				15ED5C153D89AE42D6E3E5416E582FBE /* DRColorPickerHorizontalCollectionViewLayout.m */,
-				4092101DDE274CDF86BF137DD6C30422 /* DRColorPickerHueView.h */,
-				AC857505AAE820578F66B50549F636DB /* DRColorPickerHueView.m */,
-				E53E1268E9FE629B0E145B3870C27F40 /* DRColorPickerHueViewController.h */,
-				F2752308A87C233F351AD517AC4CA293 /* DRColorPickerHueViewController.m */,
-				B37959D0C965607788467C4014114DB0 /* DRColorPickerStore.h */,
-				A8584B73601F06E1F84458A46E0BAC73 /* DRColorPickerStore.m */,
-				1A02F84B48163BB7B4E9B8C2B3F2A664 /* DRColorPickerViewController.h */,
-				3AB5E9C70E6AA359B350FC24B8CFA7E6 /* DRColorPickerViewController.m */,
-				0FC16EA77AA7FD837AD606B54FC866D6 /* DRColorPickerWheelView.h */,
-				60DEF187B85D6011842E117CEB6B3118 /* DRColorPickerWheelView.m */,
-				8B42D3649E7D3B538AA5D2AFC09C146B /* DRColorPickerWheelViewController.h */,
-				A18140C321F4CB64880B68B499B9857B /* DRColorPickerWheelViewController.m */,
-				0CD9456635834180DB526461F4C7A541 /* Resources */,
-				C6E9C9E2CB4A5C88B86E297F7D0DAD51 /* Support Files */,
+				619C853B797990CA567FB16BDF0D2FB5 /* AFHTTPSessionManager.h */,
+				2BA67FC4B378CF6B29C2DF8597B718B0 /* AFHTTPSessionManager.m */,
+				66354DE4A224136D56873C6ADE97E425 /* AFURLSessionManager.h */,
+				36B246B38F5951FF99D1655EC1AA1054 /* AFURLSessionManager.m */,
 			);
-			name = DRColorPicker;
-			path = DRColorPicker;
+			name = NSURLSession;
+			sourceTree = "<group>";
+		};
+		702A06B7010374962DFA85E1292D7CA0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				441793EBA5DCF9AAFE35DA227ACEF83D /* AFNetworking.xcconfig */,
+				DAC9A145F771960425F65D62763CB10A /* AFNetworking-dummy.m */,
+				3C0671389D712988CA0CC5A418473D84 /* AFNetworking-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AFNetworking";
+			sourceTree = "<group>";
+		};
+		785553737B06AFC3DA711DDEB7D56194 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F24A4FA940ACC848609A8275EDB8B198 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
-				F5CC01F723AD4EAC1EACF7C266D4F6DE /* Pods */,
-				3165D6D96EEE769F2510263BCF3BEB02 /* Products */,
+				785553737B06AFC3DA711DDEB7D56194 /* Frameworks */,
+				49609B4C4D45065F30ABFC9CB1FCF3CD /* Pods */,
+				AF195FACE732F91B2C3B148CC2384B40 /* Products */,
 				48B178E4232C827F0BC6F81D36B6B64D /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		C6E9C9E2CB4A5C88B86E297F7D0DAD51 /* Support Files */ = {
+		8146E5A8F10A205F87B7A7567254B95E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				73198ED76ACE4C04416FD642DF8ABD30 /* DRColorPicker.xcconfig */,
-				1CC40E76DDFC3D55F80B2C2BEC30F535 /* DRColorPicker-dummy.m */,
-				24D159A00F997B6978E9CF81011DB39C /* DRColorPicker-prefix.pch */,
+				7C27955F92E60D57B0F31F37A12134A4 /* AFAutoPurgingImageCache.h */,
+				0DCEE86B91A3238E342FD0AE9435E79C /* AFAutoPurgingImageCache.m */,
+				410E8D97684DA48E337B3C3CABEAB770 /* AFImageDownloader.h */,
+				C542A7A2A815BD764024C5626955572B /* AFImageDownloader.m */,
+				DB7923AE2BAB611AF6B86D4C8D2A59DE /* AFNetworkActivityIndicatorManager.h */,
+				2B81B2B48E8BB14F2ACE300B415192EE /* AFNetworkActivityIndicatorManager.m */,
+				E531403CE074F4C89E19CF497F3FB9BA /* UIActivityIndicatorView+AFNetworking.h */,
+				7C77FE6ECBDD44964A835B03D8BED97F /* UIActivityIndicatorView+AFNetworking.m */,
+				977F49263094BBE031EBB9B2AA4081B2 /* UIButton+AFNetworking.h */,
+				0387B5901FEE2E139BD6BC763BB5AC7C /* UIButton+AFNetworking.m */,
+				72A2C5B5791C8023928E87FDA2811A79 /* UIImage+AFNetworking.h */,
+				CAF8D83CEFA09AF25779F8A969F9D831 /* UIImageView+AFNetworking.h */,
+				EEA75BF71D579F107711C12D51304D4E /* UIImageView+AFNetworking.m */,
+				B78EF5A226A787E6ED6A104E4C0BD0A5 /* UIKit+AFNetworking.h */,
+				CA092047A547D5283979696B3CD07BB8 /* UIProgressView+AFNetworking.h */,
+				1C0AC1D74FE68482DEEF266A64A72A45 /* UIProgressView+AFNetworking.m */,
+				F57060EC99DD55E5BD167BF56C603B2F /* UIRefreshControl+AFNetworking.h */,
+				ABF7DFBFAAE432780A3E3D643DABD2BC /* UIRefreshControl+AFNetworking.m */,
+				6B9F678B0A728B37F7E7CF21D8082039 /* UIWebView+AFNetworking.h */,
+				444FBA8ADB1B940144BAB9D240DEBEC1 /* UIWebView+AFNetworking.m */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		A336C0BAF54EEBB1903D15DDE4402CD0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA4028831DC5D4A6F3EBAF43924DB71A /* DRColorPicker.xcconfig */,
+				FEAF27E4D114C320DE318F1C485D74C0 /* DRColorPicker-dummy.m */,
+				BE1755C9060837B4E39EC7BC8D534831 /* DRColorPicker-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/DRColorPicker";
 			sourceTree = "<group>";
 		};
-		F5CC01F723AD4EAC1EACF7C266D4F6DE /* Pods */ = {
+		AF195FACE732F91B2C3B148CC2384B40 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				023604637B384E49A1161DC26E15E361 /* CNPPopupController */,
-				581A11E4382FA00E6AD3744D437D5F89 /* DRColorPicker */,
+				626FE9E5B8A73533B4BE73B8A346FB29 /* libAFNetworking.a */,
+				7A06285B5F0C94DB8625C234FA9F83B3 /* libCNPPopupController.a */,
+				5480378B929185EC5519A049D3843C2D /* libDRColorPicker.a */,
+				A2916BDF8E3CD9BDDDA19E67C4754197 /* libPods-Telesto Basement App.a */,
 			);
-			name = Pods;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C384E67E1B2BC35E8FC168BC20DC02F2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A4978F632088DB323BEDA08E2400FE60 /* CNPPopupController.xcconfig */,
+				8FF8A87199BFBD2810C270A17FD46210 /* CNPPopupController-dummy.m */,
+				3753B265927E9724D24FE4D7A693328A /* CNPPopupController-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CNPPopupController";
+			sourceTree = "<group>";
+		};
+		CB796AC4C6B1959632BC34634A1D5CEC /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				8AF2E60C02E9E742EE4A49B5E9CA66CD /* AFURLRequestSerialization.h */,
+				E765AB3E4297F2D4324F4ECA73826E0A /* AFURLRequestSerialization.m */,
+				E201A8C3C0969558ABFAE90025B377FD /* AFURLResponseSerialization.h */,
+				21CD295772CE7C133E14B980AA803896 /* AFURLResponseSerialization.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
+		D3F84D1A4EF4435D275D0A6EBA883947 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F01E40104C0E38DBF9BF19CF94331A39 /* DRColorPicker.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F24A4FA940ACC848609A8275EDB8B198 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				4832899E11927733C8B858AF857DCC47 /* CoreGraphics.framework */,
+				EACC753811AB948C6D7E2FBD763C476D /* Foundation.framework */,
+				E6CA8A14A7AD3548AA9259719CAA3D24 /* ImageIO.framework */,
+				5817772794AE4D81CB064EE17EF7F073 /* MobileCoreServices.framework */,
+				CB64FDC1CD817695EC680922FDD047B7 /* QuartzCore.framework */,
+				311369F1788D2F10F1EC15B682818CBA /* Security.framework */,
+				D668229702A603DF06B25B3596792155 /* SystemConfiguration.framework */,
+				E8B30D7D9906CB43F577DAFA21316545 /* UIKit.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +547,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0A1C2B07813030B0D51EB1D804A4439E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1F93EE1AA5E870F2CE81325CE9EB643 /* AFAutoPurgingImageCache.h in Headers */,
+				6B71CE5BA32574F407349C1DA20605B4 /* AFHTTPSessionManager.h in Headers */,
+				707E818332E5033501DF2D7826C639DF /* AFImageDownloader.h in Headers */,
+				E7B0270BEDCBE116DDD853F76E27B0BA /* AFNetworkActivityIndicatorManager.h in Headers */,
+				46401F3C7FF0B0CFE2E9B14914780835 /* AFNetworking.h in Headers */,
+				DE31BBF6A7963C5871A19655EF5532BE /* AFNetworkReachabilityManager.h in Headers */,
+				D59FC98A74E440C4725B6FDC28F5951E /* AFSecurityPolicy.h in Headers */,
+				C1C0D7C93BF3DE14A26757273598D0FA /* AFURLRequestSerialization.h in Headers */,
+				66635EAAE52FF5571DBCDC626FB8CA86 /* AFURLResponseSerialization.h in Headers */,
+				F5CC06F3E0C232483A72DCCFAF393BE0 /* AFURLSessionManager.h in Headers */,
+				682B0E603612B6ADBCCF30580F9A4B09 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
+				2EBAA518CB8B2DAF89A63637091D4615 /* UIButton+AFNetworking.h in Headers */,
+				1341A7AC2439CB63D459D32EF985A414 /* UIImage+AFNetworking.h in Headers */,
+				D5CB999FB5FC80FC126A38AB4DF12227 /* UIImageView+AFNetworking.h in Headers */,
+				5719F06B809080CDEF7E6BC75DEA1A3C /* UIKit+AFNetworking.h in Headers */,
+				B40756412613B53C80EE77C4C223990F /* UIProgressView+AFNetworking.h in Headers */,
+				F099E5987DD80E8D78E909AF81D3C587 /* UIRefreshControl+AFNetworking.h in Headers */,
+				8958F2453EEBAF71BFEBD78FB48986EC /* UIWebView+AFNetworking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3992A54E5B634A5ACB7C67EC6EB38B49 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,24 +583,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		129D6E85D903CC568486B11B4C247E10 /* Pods-Telesto Basement App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EF8DD9F96A2F8E86757E7641395B1FE7 /* Build configuration list for PBXNativeTarget "Pods-Telesto Basement App" */;
-			buildPhases = (
-				B1B11DF6B4BF2576923634F2212CCA7E /* Sources */,
-				AA6B61A457961EF284314B33A2F13CBF /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C561F438FE2CED4EBEE62A5DD5FD1FF3 /* PBXTargetDependency */,
-				42A5C99606B3000873CCEEDD12FB3FF8 /* PBXTargetDependency */,
-			);
-			name = "Pods-Telesto Basement App";
-			productName = "Pods-Telesto Basement App";
-			productReference = 5952E571A1768D1826A796C4A3DD0165 /* libPods-Telesto Basement App.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		1413B9489D31E0B1968A0B2004E72B13 /* CNPPopupController */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FC57FCA8328E4E11C4F40768F03C8B7 /* Build configuration list for PBXNativeTarget "CNPPopupController" */;
@@ -392,7 +597,26 @@
 			);
 			name = CNPPopupController;
 			productName = CNPPopupController;
-			productReference = B851883938529DAB5178AAD938436A33 /* libCNPPopupController.a */;
+			productReference = 7A06285B5F0C94DB8625C234FA9F83B3 /* libCNPPopupController.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		504D5A6868B3E55D8482F2548922FD74 /* Pods-Telesto Basement App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B3331329C1C7189AFC8AA1D884026FC /* Build configuration list for PBXNativeTarget "Pods-Telesto Basement App" */;
+			buildPhases = (
+				1187E614C59CECB1E86D53B2917F0176 /* Sources */,
+				57A78B448454F1F7303228CE76958BA8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBEAA8EAF150B849AF6C348715309032 /* PBXTargetDependency */,
+				092FB23A556A514A09D26CF5BC77EDFD /* PBXTargetDependency */,
+				DB0B42B01D6296AEDE9092F5EA4A64CA /* PBXTargetDependency */,
+			);
+			name = "Pods-Telesto Basement App";
+			productName = "Pods-Telesto Basement App";
+			productReference = A2916BDF8E3CD9BDDDA19E67C4754197 /* libPods-Telesto Basement App.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		842A0D621639C1DDB8DAFE2CF36B978A /* DRColorPicker */ = {
@@ -409,7 +633,24 @@
 			);
 			name = DRColorPicker;
 			productName = DRColorPicker;
-			productReference = 53824B741364BCC75D40B01E5A45B767 /* libDRColorPicker.a */;
+			productReference = 5480378B929185EC5519A049D3843C2D /* libDRColorPicker.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9E033EDB5EC0819481B0546434FA577B /* AFNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 483FBC4A668BF7F1A8767452E7E188AC /* Build configuration list for PBXNativeTarget "AFNetworking" */;
+			buildPhases = (
+				0068413C89BADAAF4691AA78AFE62C3E /* Sources */,
+				F3284DBE3CA8932733932AD2A48445B2 /* Frameworks */,
+				0A1C2B07813030B0D51EB1D804A4439E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AFNetworking;
+			productName = AFNetworking;
+			productReference = 626FE9E5B8A73533B4BE73B8A346FB29 /* libAFNetworking.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -429,32 +670,56 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 3165D6D96EEE769F2510263BCF3BEB02 /* Products */;
+			productRefGroup = AF195FACE732F91B2C3B148CC2384B40 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				9E033EDB5EC0819481B0546434FA577B /* AFNetworking */,
 				1413B9489D31E0B1968A0B2004E72B13 /* CNPPopupController */,
 				842A0D621639C1DDB8DAFE2CF36B978A /* DRColorPicker */,
-				129D6E85D903CC568486B11B4C247E10 /* Pods-Telesto Basement App */,
+				504D5A6868B3E55D8482F2548922FD74 /* Pods-Telesto Basement App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0068413C89BADAAF4691AA78AFE62C3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				775CE7A8107457BDE59F113D40020839 /* AFAutoPurgingImageCache.m in Sources */,
+				73811DA312BCB537D44D62EC6AD15766 /* AFHTTPSessionManager.m in Sources */,
+				5C0696B2AD1DC23F6473F5A19FAB6296 /* AFImageDownloader.m in Sources */,
+				31ED9BD97AF9E62874AF3CDF2F8090CF /* AFNetworkActivityIndicatorManager.m in Sources */,
+				97A86FAAD4B1AD9B3292FF6AF1D8F82B /* AFNetworking-dummy.m in Sources */,
+				E0EF330DB2D3521ED26E67B2E8687A2E /* AFNetworkReachabilityManager.m in Sources */,
+				66E1040543AF7BA3DC3731FE17C85F5B /* AFSecurityPolicy.m in Sources */,
+				5945033488F9995134DBB7014DE2412F /* AFURLRequestSerialization.m in Sources */,
+				85D30678FF4F0AB306399A368EAA46B2 /* AFURLResponseSerialization.m in Sources */,
+				9F5BB6B4995BA4A3B2C6AEBA6C31A6DB /* AFURLSessionManager.m in Sources */,
+				2579663181BFA8F7DA4B5D7CF8537FC0 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				D10CC46035F7A0C868C0955664A34609 /* UIButton+AFNetworking.m in Sources */,
+				A277AD9070E44BED5A7DE0B1D64D6F15 /* UIImageView+AFNetworking.m in Sources */,
+				D4AA4704CA7863CC86E22AAF88635836 /* UIProgressView+AFNetworking.m in Sources */,
+				B84CD33084C9867E67BD56E47B7BFC04 /* UIRefreshControl+AFNetworking.m in Sources */,
+				A7F7FDCD36E2DD8D8E346DB19452CC03 /* UIWebView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1187E614C59CECB1E86D53B2917F0176 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F05ED5104C3E6F62FE469C9866AAF08 /* Pods-Telesto Basement App-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7D8A2B56A4EDCD68EFB8D1A3697D2FBF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B1BD947D805DFE03CD640AF4A3C38270 /* CNPPopupController-dummy.m in Sources */,
 				01FF46F9E2382806D548EE5D72E11BBC /* CNPPopupController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1B11DF6B4BF2576923634F2212CCA7E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				58FF016EDC796B7775EDDBF8B6751F61 /* Pods-Telesto Basement App-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,22 +751,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		42A5C99606B3000873CCEEDD12FB3FF8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DRColorPicker;
-			target = 842A0D621639C1DDB8DAFE2CF36B978A /* DRColorPicker */;
-			targetProxy = 69A264331C4030B16B9132A053935F49 /* PBXContainerItemProxy */;
-		};
-		C561F438FE2CED4EBEE62A5DD5FD1FF3 /* PBXTargetDependency */ = {
+		092FB23A556A514A09D26CF5BC77EDFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CNPPopupController;
 			target = 1413B9489D31E0B1968A0B2004E72B13 /* CNPPopupController */;
-			targetProxy = 8CCBFCB2AD174D665C3982C0471E218E /* PBXContainerItemProxy */;
+			targetProxy = ED1B0ECA57CE75402FCF416B3FC083A8 /* PBXContainerItemProxy */;
+		};
+		DB0B42B01D6296AEDE9092F5EA4A64CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DRColorPicker;
+			target = 842A0D621639C1DDB8DAFE2CF36B978A /* DRColorPicker */;
+			targetProxy = 4A79B8075E5DB3AB37D431CF42574F36 /* PBXContainerItemProxy */;
+		};
+		DBEAA8EAF150B849AF6C348715309032 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AFNetworking;
+			target = 9E033EDB5EC0819481B0546434FA577B /* AFNetworking */;
+			targetProxy = BFC02BE8291845E5B08318C5DA598CF3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1D035CA4D9CCAF7298A6A3CD42E77420 /* Release */ = {
+		01EA672C16A0229A284E125946BCC350 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B303F676F71D9E6B706DF08DED8504CA /* Pods-Telesto Basement App.release.xcconfig */;
 			buildSettings = {
@@ -526,7 +797,7 @@
 		};
 		4954DEB3EDE187D130672FC50DE8A3E7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A9C91E657D3B6B5A45A75A90769B582 /* CNPPopupController.xcconfig */;
+			baseConfigurationReference = A4978F632088DB323BEDA08E2400FE60 /* CNPPopupController.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -549,7 +820,7 @@
 		};
 		4FCB89F46F8F6A2B34695769A03236E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A9C91E657D3B6B5A45A75A90769B582 /* CNPPopupController.xcconfig */;
+			baseConfigurationReference = A4978F632088DB323BEDA08E2400FE60 /* CNPPopupController.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -614,9 +885,32 @@
 			};
 			name = Debug;
 		};
+		72D1B831316303C2E356BBAC53FEF78A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 441793EBA5DCF9AAFE35DA227ACEF83D /* AFNetworking.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		7F0E4646AA1307DAE1BAE8450D1D5F45 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73198ED76ACE4C04416FD642DF8ABD30 /* DRColorPicker.xcconfig */;
+			baseConfigurationReference = AA4028831DC5D4A6F3EBAF43924DB71A /* DRColorPicker.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -632,29 +926,6 @@
 				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		AE05A620D251B3A2E259199AE5509E75 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30D2317CE9164FE47A78874C0F7443F3 /* Pods-Telesto Basement App.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -700,9 +971,32 @@
 			};
 			name = Release;
 		};
+		C2FBF012562EB14B5E732FF5845D38C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30D2317CE9164FE47A78874C0F7443F3 /* Pods-Telesto Basement App.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
 		C5248A6DCC05E6921A22D83753719D76 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73198ED76ACE4C04416FD642DF8ABD30 /* DRColorPicker.xcconfig */;
+			baseConfigurationReference = AA4028831DC5D4A6F3EBAF43924DB71A /* DRColorPicker.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -722,6 +1016,29 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
+		};
+		FF778088B62C05BE1205DAE628D151DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 441793EBA5DCF9AAFE35DA227ACEF83D /* AFNetworking.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -744,6 +1061,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		483FBC4A668BF7F1A8767452E7E188AC /* Build configuration list for PBXNativeTarget "AFNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF778088B62C05BE1205DAE628D151DF /* Debug */,
+				72D1B831316303C2E356BBAC53FEF78A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		65DD76B61F0AF26AF655AB03D8A6C519 /* Build configuration list for PBXNativeTarget "DRColorPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -753,11 +1079,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF8DD9F96A2F8E86757E7641395B1FE7 /* Build configuration list for PBXNativeTarget "Pods-Telesto Basement App" */ = {
+		8B3331329C1C7189AFC8AA1D884026FC /* Build configuration list for PBXNativeTarget "Pods-Telesto Basement App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AE05A620D251B3A2E259199AE5509E75 /* Debug */,
-				1D035CA4D9CCAF7298A6A3CD42E77420 /* Release */,
+				C2FBF012562EB14B5E732FF5845D38C9 /* Debug */,
+				01EA672C16A0229A284E125946BCC350 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomerDetailInfoObject.h"
 #import "Utility.h"
+#import <AFNetworking.h>
 
 @class CustomerRecordViewController;
 @interface CustomerDataManager : NSObject

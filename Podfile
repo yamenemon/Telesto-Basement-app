@@ -9,6 +9,6 @@ target 'Telesto Basement App' do
 
 	pod 'DRColorPicker'
     pod 'CNPPopupController'
-    
+    pod 'AFNetworking', '~> 3.0'
 
 end

@@ -20,46 +20,10 @@
 
     return _sharedManager;
 }
--(void)saveCustomerData{
-
-}
-- (void)uploadMultipleImageInSingleRequest
-{
-    NSString *returnString;
-
-    NSString *urlString; // an url where the request to be posted
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSMutableURLRequest *request= [[NSMutableURLRequest alloc] initWithURL:url] ;
-
-    [request setURL:[NSURL URLWithString:urlString]];
-    [request setHTTPMethod:@"POST"];
-
-
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-}
--(NSString *) getHTTPBodyParamsFromDictionary: (NSDictionary *)params boundary:(NSString *)boundary
-{
-    NSMutableString *tempVal = [[NSMutableString alloc] init];
-    for(NSString * key in params)
-    {
-        [tempVal appendFormat:@"\r\n--%@\r\n", boundary];
-        [tempVal appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@",key,[params objectForKey:key]];
-    }
-    return [tempVal description];
-}
 -(void)createCustomer:(CustomerDetailInfoObject*)objects{
 
     NSString* tokenAsString = @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH";
     NSString *endPoint = @"create_customer";
-    /*
-     $customer->latitude = $req['latitude'];
-     $customer->longitude = $req['longitude'];
-     $customer->smsNotify = $req['smsNotify'];
-     $customer->emailNotify = $req['emailNotify'];
-     $customer->userId = $req['userId'];
-     */
-
     NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                     objects.customerFirstName,@"fName",
                                     objects.customerLastName,@"lName",
@@ -79,71 +43,23 @@
                                     tokenAsString,@"authKey",
                                     nil];
     NSLog(@"Parameter: %@\n",aParametersDic);
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseURL,endPoint]]];
-    NSString *boundary = @"---------------------------14737809831466499882746641449";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    request.timeoutInterval = 100000;
-    NSMutableData *postbody = [NSMutableData data];
-    NSString *postData = [self getHTTPBodyParamsFromDictionary:aParametersDic boundary:boundary];
-    [postbody appendData:[postData dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
-
+    NSData *imageData;
     if([objects.customerOtherImageDic count] > 0) {
         for (int i=0; i<objects.customerOtherImageDic.count; i++) {
             UIImage* image = [objects.customerOtherImageDic valueForKey:@"pp"];
-            NSData *imageData = UIImagePNGRepresentation(image);
-//            NSLog(@"Data :%@",imageData);
-            NSString *boundary = @"---------------------------14737809831466499882746641449";
-            NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-            [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-            [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[[NSString stringWithString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%d\"\r\n", 1]] dataUsingEncoding:NSUTF8StringEncoding]];
-            [postbody appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
-            [postbody appendData:[NSData dataWithData:imageData]];
-            [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES]];
-            [request setHTTPBody:postbody];
-
+            imageData = UIImagePNGRepresentation(image);
+            //            NSLog(@"Data :%@",imageData);
         }
     }
-    [self sendRequest:request];
-}
--(void)sendRequest:(NSURLRequest*)urlRequest{
 
-    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
-
-
-    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:urlRequest
-                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                           NSLog(@"Response:%@ %@\n", response, error.description);
-
-                                                           if(error == nil)
-                                                           {
-                                                               NSString * text = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-                                                               NSLog(@"Data = %@",text);
-                                                               if (data) {
-                                                                   BOOL isSuccessfull = [self parseJOSNLoginStatus:data];
-                                                                   if (isSuccessfull == YES) {
-
-                                                                   }
-                                                                   else{
-                                                                       NSLog(@"Not successful");
-                                                                   }
-//                                                                   [_baseController pop]
-                                                               }
-                                                               else{
-
-                                                               }
-                                                           }
-                                                       }];
-    [dataTask resume];
-}
-- (BOOL)parseJOSNLoginStatus:(NSData *)data {
-    NSError *e = nil;
-    NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error: &e];
-    long loginStatus = [[jsonArray objectForKey:@"success"] longValue];
-    return loginStatus;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:[NSString stringWithFormat:@"%@%@",BaseURL,endPoint] parameters:aParametersDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [formData appendPartWithFileData:imageData name:@"photo" fileName:@"profile_photo.jpg" mimeType:@"image/jpg"];
+    } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 -(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController{
@@ -153,6 +69,5 @@
     if (isValidEmail==YES) {
         [self createCustomer:objects];
     }
-
 }
 @end
