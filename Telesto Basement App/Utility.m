@@ -187,15 +187,9 @@
                                   message:@"Failed to Get Your Location"
                                   preferredStyle:UIAlertControllerStyleAlert];
 
-//    UIAlertAction* cancel = [UIAlertAction
-//                             actionWithTitle:@"Save & Continue"
-//                             style:UIAlertActionStyleDefault
-//                             handler:^(UIAlertAction * action)
-//                             {
-//
-//                             }];
-//    [alert addAction:cancel];
-
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        // Called when user taps outside
+    }]];
     [controller presentViewController:alert animated:YES completion:nil];
 
 }

@@ -24,13 +24,15 @@
     _galleryItems = [[NSMutableArray alloc] init];
     [self registerForKeyboardNotifications];
     [self loadSanpMediaContainer];
-    locationManager = [[CLLocationManager alloc] init];
     [self getCurrentLocation];
 }
 - (void)getCurrentLocation {
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate=self;
+    _locationManager.desiredAccuracy=kCLLocationAccuracyBest;
+    _locationManager.distanceFilter=kCLDistanceFilterNone;
+    [_locationManager requestWhenInUseAuthorization];
+    [_locationManager startUpdatingLocation];
 }
 -(void)loadSanpMediaContainer{
     UICollectionViewFlowLayout *flo = [[UICollectionViewFlowLayout alloc] init];
@@ -365,17 +367,12 @@
 
     if ([MTReachabilityManager isReachable]) {
 
-//        [self createCustomer];
         NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
         for (int i= 0; i<_galleryItems.count; i++) {
             UIImage *img = [_galleryItems objectAtIndex:i];
             [imageDic setObject:img forKey:[NSString stringWithFormat:@"%d",i]];
             
         }
-//        NSMutableDictionary* imageDic = [NSMutableDictionary dictionaryWithObjects:_galleryItems
-//                                                         forKeys:[_galleryItems valueForKey:@"intField"]];
-//        [imageDic setObject:self.customerImageView.image forKey:@"2"];
-//        NSMutableDictionary* imageDic = [self indexKeyedDictionaryFromArray:_galleryItems];
         [imageDic setObject:self.customerImageView.image forKey:@"pp"];
 
         CustomerDataManager *manager = [CustomerDataManager sharedManager];
@@ -419,20 +416,9 @@
     currentLocation = newLocation;
 
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

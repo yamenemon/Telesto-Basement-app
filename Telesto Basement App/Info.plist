@@ -35,6 +35,12 @@
 			</dict>
 		</dict>
 	</dict>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>I need Location</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>I need Location</string>
+    <key>privacy - location usage description</key>
+    <string>I need Location</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use.</string>
 	<key>NSContactsUsageDescription</key>

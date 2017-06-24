@@ -33,9 +33,10 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     CNPPopupController *popupController;
     UICollectionView *snapShotCollectionView;
     CameraMode cameraMode;
-    CLLocationManager *locationManager;
     CLLocation *currentLocation;
 }
+@property(nonatomic, strong) CLLocationManager *locationManager;
+
 @property (strong,nonatomic) NSMutableArray *galleryItems;
 
 @property (weak, nonatomic) IBOutlet UIView *customerName;
