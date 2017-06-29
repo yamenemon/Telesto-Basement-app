@@ -826,15 +826,15 @@
                                   message:@"What do you want to do?"
                                   preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"Save"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             savedDesignArray = [[basementDesignView subviews] mutableCopy];
-                             [self saveDesignView];
-                             [alert dismissViewControllerAnimated:YES completion:nil];
-                         }];
+//    UIAlertAction* ok = [UIAlertAction
+//                         actionWithTitle:@"Save"
+//                         style:UIAlertActionStyleDefault
+//                         handler:^(UIAlertAction * action)
+//                         {
+//                             savedDesignArray = [[basementDesignView subviews] mutableCopy];
+//                             [self saveDesignView];
+//                             [alert dismissViewControllerAnimated:YES completion:nil];
+//                         }];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Save & Continue"
                              style:UIAlertActionStyleDefault

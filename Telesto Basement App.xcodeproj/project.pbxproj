@@ -102,6 +102,20 @@
 		70CAA4731EE83E4000614BFB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CAA4721EE83E4000614BFB /* AssetsLibrary.framework */; };
 		70CAA4751EE83E5100614BFB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CAA4741EE83E5100614BFB /* CoreMedia.framework */; };
 		70CAA4771EE83E5A00614BFB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70CAA4761EE83E5A00614BFB /* AVFoundation.framework */; };
+		70CE841E1F04CED900867F91 /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CE84081F04CED900867F91 /* ELCAlbumPickerController.m */; };
+		70CE841F1F04CED900867F91 /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CE840A1F04CED900867F91 /* ELCAsset.m */; };
+		70CE84201F04CED900867F91 /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CE840C1F04CED900867F91 /* ELCAssetCell.m */; };
+		70CE84211F04CED900867F91 /* ELCAssetTablePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CE84101F04CED900867F91 /* ELCAssetTablePicker.m */; };
+		70CE84221F04CED900867F91 /* ELCConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CE84121F04CED900867F91 /* ELCConsole.m */; };
+		70CE84231F04CED900867F91 /* ELCImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CE84141F04CED900867F91 /* ELCImagePickerController.m */; };
+		70CE84241F04CED900867F91 /* ELCOverlayImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CE84171F04CED900867F91 /* ELCOverlayImageView.m */; };
+		70CE84251F04CED900867F91 /* ELCAlbumPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CE84191F04CED900867F91 /* ELCAlbumPickerController.xib */; };
+		70CE84261F04CED900867F91 /* ELCAssetPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CE841A1F04CED900867F91 /* ELCAssetPicker.xib */; };
+		70CE84271F04CED900867F91 /* ELCAssetTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CE841B1F04CED900867F91 /* ELCAssetTablePicker.xib */; };
+		70CE84281F04CED900867F91 /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CE841C1F04CED900867F91 /* Overlay.png */; };
+		70CE84291F04CED900867F91 /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CE841D1F04CED900867F91 /* Overlay@2x.png */; };
+		70CE842E1F05131A00867F91 /* BuidingMediaPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CE842D1F05131A00867F91 /* BuidingMediaPopUp.m */; };
+		70CE84301F05132800867F91 /* BuidingMediaPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CE842F1F05132800867F91 /* BuidingMediaPopUp.xib */; };
 		70CF140F1DF431B20045CF8F /* BackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70CF140E1DF431B20045CF8F /* BackButton@2x.png */; };
 		70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14111DF43C180045CF8F /* IQDropDownTextField.m */; };
 		70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF14141DF449350045CF8F /* CustomerRecordViewController.m */; };
@@ -271,6 +285,31 @@
 		70CAA4741EE83E5100614BFB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		70CAA4761EE83E5A00614BFB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		70CD67CA1ED6BE5E007980FA /* StringClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringClass.h; sourceTree = "<group>"; };
+		70CE84071F04CED900867F91 /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
+		70CE84081F04CED900867F91 /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
+		70CE84091F04CED900867F91 /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
+		70CE840A1F04CED900867F91 /* ELCAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAsset.m; sourceTree = "<group>"; };
+		70CE840B1F04CED900867F91 /* ELCAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetCell.h; sourceTree = "<group>"; };
+		70CE840C1F04CED900867F91 /* ELCAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetCell.m; sourceTree = "<group>"; };
+		70CE840D1F04CED900867F91 /* ELCAssetPickerFilterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetPickerFilterDelegate.h; sourceTree = "<group>"; };
+		70CE840E1F04CED900867F91 /* ELCAssetSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetSelectionDelegate.h; sourceTree = "<group>"; };
+		70CE840F1F04CED900867F91 /* ELCAssetTablePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetTablePicker.h; sourceTree = "<group>"; };
+		70CE84101F04CED900867F91 /* ELCAssetTablePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetTablePicker.m; sourceTree = "<group>"; };
+		70CE84111F04CED900867F91 /* ELCConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCConsole.h; sourceTree = "<group>"; };
+		70CE84121F04CED900867F91 /* ELCConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCConsole.m; sourceTree = "<group>"; };
+		70CE84131F04CED900867F91 /* ELCImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerController.h; sourceTree = "<group>"; };
+		70CE84141F04CED900867F91 /* ELCImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerController.m; sourceTree = "<group>"; };
+		70CE84151F04CED900867F91 /* ELCImagePickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerHeader.h; sourceTree = "<group>"; };
+		70CE84161F04CED900867F91 /* ELCOverlayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCOverlayImageView.h; sourceTree = "<group>"; };
+		70CE84171F04CED900867F91 /* ELCOverlayImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCOverlayImageView.m; sourceTree = "<group>"; };
+		70CE84191F04CED900867F91 /* ELCAlbumPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAlbumPickerController.xib; sourceTree = "<group>"; };
+		70CE841A1F04CED900867F91 /* ELCAssetPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetPicker.xib; sourceTree = "<group>"; };
+		70CE841B1F04CED900867F91 /* ELCAssetTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetTablePicker.xib; sourceTree = "<group>"; };
+		70CE841C1F04CED900867F91 /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlay.png; sourceTree = "<group>"; };
+		70CE841D1F04CED900867F91 /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Overlay@2x.png"; sourceTree = "<group>"; };
+		70CE842C1F05131A00867F91 /* BuidingMediaPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuidingMediaPopUp.h; sourceTree = "<group>"; };
+		70CE842D1F05131A00867F91 /* BuidingMediaPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuidingMediaPopUp.m; sourceTree = "<group>"; };
+		70CE842F1F05132800867F91 /* BuidingMediaPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuidingMediaPopUp.xib; sourceTree = "<group>"; };
 		70CF140E1DF431B20045CF8F /* BackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackButton@2x.png"; sourceTree = "<group>"; };
 		70CF14101DF43C180045CF8F /* IQDropDownTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDropDownTextField.h; sourceTree = "<group>"; };
 		70CF14111DF43C180045CF8F /* IQDropDownTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDropDownTextField.m; sourceTree = "<group>"; };
@@ -313,11 +352,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70CAA4731EE83E4000614BFB /* AssetsLibrary.framework in Frameworks */,
 				3B444B451EFA90740037A4E0 /* CoreLocation.framework in Frameworks */,
 				70CAA4771EE83E5A00614BFB /* AVFoundation.framework in Frameworks */,
 				70CAA4751EE83E5100614BFB /* CoreMedia.framework in Frameworks */,
 				704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */,
-				70CAA4731EE83E4000614BFB /* AssetsLibrary.framework in Frameworks */,
 				70CAA4711EE83E3A00614BFB /* MediaPlayer.framework in Frameworks */,
 				70CAA46F1EE83E3100614BFB /* MobileCoreServices.framework in Frameworks */,
 				167AB7714A412FA773401D90 /* libPods-Telesto Basement App.a in Frameworks */,
@@ -454,16 +493,13 @@
 		704B68911E13CA6200E6537D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				70EC57A11EDFF7CA00ABC263 /* CustomerRecord */,
 				3B6EB88D1DD845D900936AB9 /* AppDelegate.h */,
 				3B6EB88E1DD845D900936AB9 /* AppDelegate.m */,
-				70CF19641E1CE03D00C90EDD /* FaqsViewController.h */,
-				70CF19651E1CE03D00C90EDD /* FaqsViewController.m */,
-				7027C9BF1E1D15760062EB77 /* UserProfileViewController.h */,
-				7027C9C01E1D15760062EB77 /* UserProfileViewController.m */,
-				7027C9C21E1D35950062EB77 /* ProposalViewController.h */,
-				7027C9C31E1D35950062EB77 /* ProposalViewController.m */,
-				704B68931E13CB7B00E6537D /* Custom PopOver */,
+				70CE84051F04C4AC00867F91 /* Proposals */,
+				70CE84041F04C49E00867F91 /* UserProfile */,
+				70CE84031F04C48A00867F91 /* FAQS */,
+				70EC57A11EDFF7CA00ABC263 /* CustomerRecord */,
+				704B68931E13CB7B00E6537D /* Template PopOver */,
 				70CA54C81E71612500F7FE67 /* CustomerList */,
 				70CA54D41E7188CB00F7FE67 /* Customer Proposals */,
 				70CA54C41E71389300F7FE67 /* Login */,
@@ -471,13 +507,13 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		704B68931E13CB7B00E6537D /* Custom PopOver */ = {
+		704B68931E13CB7B00E6537D /* Template PopOver */ = {
 			isa = PBXGroup;
 			children = (
 				704B689A1E13CD0900E6537D /* TemplatePopOverViewController.h */,
 				704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */,
 			);
-			name = "Custom PopOver";
+			name = "Template PopOver";
 			sourceTree = "<group>";
 		};
 		705B782C1E13C6C800161991 /* SW */ = {
@@ -615,6 +651,70 @@
 			name = "Customer Proposals";
 			sourceTree = "<group>";
 		};
+		70CE84031F04C48A00867F91 /* FAQS */ = {
+			isa = PBXGroup;
+			children = (
+				70CF19641E1CE03D00C90EDD /* FaqsViewController.h */,
+				70CF19651E1CE03D00C90EDD /* FaqsViewController.m */,
+			);
+			name = FAQS;
+			sourceTree = "<group>";
+		};
+		70CE84041F04C49E00867F91 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				7027C9BF1E1D15760062EB77 /* UserProfileViewController.h */,
+				7027C9C01E1D15760062EB77 /* UserProfileViewController.m */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		70CE84051F04C4AC00867F91 /* Proposals */ = {
+			isa = PBXGroup;
+			children = (
+				7027C9C21E1D35950062EB77 /* ProposalViewController.h */,
+				7027C9C31E1D35950062EB77 /* ProposalViewController.m */,
+			);
+			name = Proposals;
+			sourceTree = "<group>";
+		};
+		70CE84061F04CED900867F91 /* ELCImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				70CE84071F04CED900867F91 /* ELCAlbumPickerController.h */,
+				70CE84081F04CED900867F91 /* ELCAlbumPickerController.m */,
+				70CE84091F04CED900867F91 /* ELCAsset.h */,
+				70CE840A1F04CED900867F91 /* ELCAsset.m */,
+				70CE840B1F04CED900867F91 /* ELCAssetCell.h */,
+				70CE840C1F04CED900867F91 /* ELCAssetCell.m */,
+				70CE840D1F04CED900867F91 /* ELCAssetPickerFilterDelegate.h */,
+				70CE840E1F04CED900867F91 /* ELCAssetSelectionDelegate.h */,
+				70CE840F1F04CED900867F91 /* ELCAssetTablePicker.h */,
+				70CE84101F04CED900867F91 /* ELCAssetTablePicker.m */,
+				70CE84111F04CED900867F91 /* ELCConsole.h */,
+				70CE84121F04CED900867F91 /* ELCConsole.m */,
+				70CE84131F04CED900867F91 /* ELCImagePickerController.h */,
+				70CE84141F04CED900867F91 /* ELCImagePickerController.m */,
+				70CE84151F04CED900867F91 /* ELCImagePickerHeader.h */,
+				70CE84161F04CED900867F91 /* ELCOverlayImageView.h */,
+				70CE84171F04CED900867F91 /* ELCOverlayImageView.m */,
+				70CE84181F04CED900867F91 /* Resources */,
+			);
+			path = ELCImagePicker;
+			sourceTree = "<group>";
+		};
+		70CE84181F04CED900867F91 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				70CE84191F04CED900867F91 /* ELCAlbumPickerController.xib */,
+				70CE841A1F04CED900867F91 /* ELCAssetPicker.xib */,
+				70CE841B1F04CED900867F91 /* ELCAssetTablePicker.xib */,
+				70CE841C1F04CED900867F91 /* Overlay.png */,
+				70CE841D1F04CED900867F91 /* Overlay@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		70EC57A11EDFF7CA00ABC263 /* CustomerRecord */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,8 +727,12 @@
 				70CAA4691EE7DB4100614BFB /* MediaPopUp.h */,
 				70CAA46A1EE7DB4100614BFB /* MediaPopUp.m */,
 				70CAA46C1EE7DB4E00614BFB /* MediaPopUp.xib */,
+				70CE842C1F05131A00867F91 /* BuidingMediaPopUp.h */,
+				70CE842D1F05131A00867F91 /* BuidingMediaPopUp.m */,
+				70CE842F1F05132800867F91 /* BuidingMediaPopUp.xib */,
 				70161B331EF2939800101BDB /* MapItViewController.h */,
 				70161B341EF2939800101BDB /* MapItViewController.m */,
+				70CE84061F04CED900867F91 /* ELCImagePicker */,
 			);
 			name = CustomerRecord;
 			sourceTree = "<group>";
@@ -714,10 +818,12 @@
 				705B78291E13C0B700161991 /* Temp2@2x.png in Resources */,
 				70EC80E61E067DB400A6D245 /* search@2x.png in Resources */,
 				70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */,
+				70CE84291F04CED900867F91 /* Overlay@2x.png in Resources */,
 				70EC80E71E067DB400A6D245 /* separator@2x.png in Resources */,
 				70CA54D21E7172A700F7FE67 /* CustomTableViewCell.xib in Resources */,
 				704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */,
 				70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */,
+				70CE84281F04CED900867F91 /* Overlay.png in Resources */,
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
 				705F05A41EDED8CE00D8B837 /* CustomVideoPopUpView.xib in Resources */,
 				70CAA46D1EE7DB4E00614BFB /* MediaPopUp.xib in Resources */,
@@ -747,14 +853,17 @@
 				705F05A21EDED8CE00D8B837 /* CustomTemplateNameView.xib in Resources */,
 				705B78261E13C0B700161991 /* Temp5@2x.png in Resources */,
 				705F64DB1DF97B7000082D55 /* Roboto-LightItalic.ttf in Resources */,
+				70CE84261F04CED900867F91 /* ELCAssetPicker.xib in Resources */,
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
 				705F05A71EDED8CE00D8B837 /* items.plist in Resources */,
 				70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */,
+				70CE84271F04CED900867F91 /* ELCAssetTablePicker.xib in Resources */,
 				705F64DD1DF97B7000082D55 /* Roboto-MediumItalic.ttf in Resources */,
 				70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */,
 				705F64DF1DF97B7000082D55 /* Roboto-Thin.ttf in Resources */,
 				705F64E11DF97B7000082D55 /* RobotoCondensed-Bold.ttf in Resources */,
 				705F64E31DF97B7000082D55 /* RobotoCondensed-Italic.ttf in Resources */,
+				70CE84301F05132800867F91 /* BuidingMediaPopUp.xib in Resources */,
 				705F64E51DF97B7000082D55 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				70EC80EA1E067DB400A6D245 /* traning_videos@2x.png in Resources */,
 				705F64E61DF97B7000082D55 /* RobotoCondensed-Regular.ttf in Resources */,
@@ -769,6 +878,7 @@
 				70D6E85A1E436495007E3F2F /* 5@2x.png in Resources */,
 				70D6E85E1E436495007E3F2F /* 9@2x.png in Resources */,
 				7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */,
+				70CE84251F04CED900867F91 /* ELCAlbumPickerController.xib in Resources */,
 				709B44371E6D6951008058F3 /* loginView.xib in Resources */,
 				70D6E85C1E436495007E3F2F /* 7@2x.png in Resources */,
 				705F64DA1DF97B7000082D55 /* Roboto-Light.ttf in Resources */,
@@ -857,15 +967,22 @@
 				70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */,
 				70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
+				70CE84201F04CED900867F91 /* ELCAssetCell.m in Sources */,
 				706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
+				70CE84211F04CED900867F91 /* ELCAssetTablePicker.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
+				70CE841F1F04CED900867F91 /* ELCAsset.m in Sources */,
 				704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */,
+				70CE84221F04CED900867F91 /* ELCConsole.m in Sources */,
 				705F05AE1EDED8CE00D8B837 /* ShowPriceViewController.m in Sources */,
 				705F05AB1EDED8CE00D8B837 /* ProductObject.m in Sources */,
+				70CE842E1F05131A00867F91 /* BuidingMediaPopUp.m in Sources */,
+				70CE84241F04CED900867F91 /* ELCOverlayImageView.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */,
+				70CE84231F04CED900867F91 /* ELCImagePickerController.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
 				70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */,
 				705F05A51EDED8CE00D8B837 /* DesignViewController.m in Sources */,
@@ -878,6 +995,7 @@
 				70161B351EF2939800101BDB /* MapItViewController.m in Sources */,
 				70EA296F1ECDA0C40002931F /* Downloader.m in Sources */,
 				705F05A61EDED8CE00D8B837 /* GalleryItem.m in Sources */,
+				70CE841E1F04CED900867F91 /* ELCAlbumPickerController.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
 				70CF14121DF43C180045CF8F /* IQDropDownTextField.m in Sources */,
 				705F05A01EDED8CE00D8B837 /* CustomProductView.m in Sources */,

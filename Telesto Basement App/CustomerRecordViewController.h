@@ -16,7 +16,9 @@
 #import "CNPPopupController.h"
 #import "MTReachabilityManager.h"
 #import <CoreLocation/CoreLocation.h>
-
+#import "ELCImagePickerController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 
 typedef NS_ENUM(NSInteger, CameraMode) {
     ProfilePicFromGallery,
@@ -27,13 +29,15 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     VideoForBuildingMediaFromCamera
 };
 
-@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,CLLocationManagerDelegate>{
+@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,CLLocationManagerDelegate,ELCImagePickerControllerDelegate,UIGestureRecognizerDelegate>{
     UITextField *activeField;
     MediaPopUp *mediaSelectionPopUp;
     CNPPopupController *popupController;
     UICollectionView *snapShotCollectionView;
     CameraMode cameraMode;
     CLLocation *currentLocation;
+    CGPoint point;
+    UIButton *_deleteButton;
 }
 @property(nonatomic, strong) CLLocationManager *locationManager;
 
@@ -60,4 +64,5 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 
 
 -(void)loadImageFromViaMedia:(CameraMode)mode;
+-(void)mediaPopUP;
 @end

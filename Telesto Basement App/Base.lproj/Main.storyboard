@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8568" y="-1717"/>
+            <point key="canvasLocation" x="-8568" y="-1669"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="JA0-7O-r5Q">
@@ -945,7 +945,7 @@ Washington, DC 20521-6170
                 <navigationController storyboardIdentifier="NavigationControllerMap" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y32-Z6-gDD" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5pt-MO-wRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5pt-MO-wRa">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1840,17 +1840,8 @@ A: Immediately</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Il-lQ-vxq" userLabel="BaseView">
                                 <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciX-Vv-U1n">
-                                        <rect key="frame" x="18" y="242" width="240" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="8kl-4k-ab5"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="25"/>
-                                        <color key="textColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GcT-qC-JR6">
-                                        <rect key="frame" x="8" y="340" width="270" height="356"/>
+                                        <rect key="frame" x="8" y="290" width="270" height="406"/>
                                         <color key="backgroundColor" red="0.91199655490478282" green="0.91199655490478282" blue="0.91199655490478282" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AJ-oA-z86">
@@ -1862,7 +1853,7 @@ A: Immediately</string>
                                                     <constraint firstAttribute="height" constant="31" id="8bB-nW-4pF"/>
                                                     <constraint firstAttribute="width" constant="162" id="ISE-w6-0rn"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
                                                 <color key="textColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1875,12 +1866,12 @@ A: Immediately</string>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AJV-sE-e6s">
                                                 <rect key="frame" x="10" y="69" width="328" height="45"/>
-                                                <color key="backgroundColor" red="0.91092729569999997" green="0.90816146139999998" blue="0.91103154419999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="328" id="EYj-A5-1ZL"/>
                                                     <constraint firstAttribute="height" constant="45" id="ld9-r4-UKa"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1889,8 +1880,8 @@ A: Immediately</string>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mqq-Rh-fnf">
                                                 <rect key="frame" x="367" y="69" width="347" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1899,7 +1890,7 @@ A: Immediately</string>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsG-2u-die">
                                                 <rect key="frame" x="10" y="123" width="162" height="31"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
                                                 <color key="textColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1912,11 +1903,11 @@ A: Immediately</string>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6e-xr-nsj">
                                                 <rect key="frame" x="8" y="165" width="706" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="HFo-qI-G6X"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1925,12 +1916,12 @@ A: Immediately</string>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnl-xo-xom">
                                                 <rect key="frame" x="10" y="218" width="290" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="290" id="PHa-R0-aBP"/>
                                                     <constraint firstAttribute="height" constant="45" id="V4r-cJ-mQk"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1939,11 +1930,11 @@ A: Immediately</string>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ST" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l98-F6-71S">
                                                 <rect key="frame" x="311" y="218" width="97" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="97" id="vf0-7e-Lfm"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1952,11 +1943,11 @@ A: Immediately</string>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eMS-RP-HmD">
                                                 <rect key="frame" x="422" y="218" width="292" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="292" id="CJs-ax-I03"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1965,11 +1956,11 @@ A: Immediately</string>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDX-1R-hsT">
                                                 <rect key="frame" x="8" y="271" width="706" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="CPD-Cc-0Nh"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1978,11 +1969,11 @@ A: Immediately</string>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="example@mail.com" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eml-DH-nKx">
                                                 <rect key="frame" x="10" y="377" width="704" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="I34-Fy-J84"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1998,12 +1989,12 @@ A: Immediately</string>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Area Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-Em-Xr6">
                                                 <rect key="frame" x="10" y="478" width="176" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="176" id="c1F-9e-7o4"/>
                                                     <constraint firstAttribute="height" constant="45" id="qn5-V3-tMS"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.68763673309999995" green="0.68450075389999998" blue="0.68771600720000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -2012,7 +2003,7 @@ A: Immediately</string>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="53a-aS-Se7">
                                                 <rect key="frame" x="194" y="478" width="520" height="45"/>
-                                                <color key="backgroundColor" red="0.91092252730000001" green="0.91161435840000005" blue="0.91102963690000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -2029,7 +2020,7 @@ A: Immediately</string>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezP-Vt-WgI">
                                                 <rect key="frame" x="10" y="436" width="162" height="31"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
                                                 <color key="textColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2047,11 +2038,10 @@ A: Immediately</string>
                                             </switch>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MpS-Eb-2kO">
                                                 <rect key="frame" x="10" y="538" width="704" height="158"/>
-                                                <color key="backgroundColor" red="0.90972405672073364" green="0.9098549485206604" blue="0.90969544649124146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="158" id="hgx-IF-4CK"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.79992926119999996" green="0.80004531150000002" blue="0.79990392919999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <connections>
@@ -2060,7 +2050,7 @@ A: Immediately</string>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpa-FD-9ng">
                                                 <rect key="frame" x="10" y="331" width="162" height="31"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="22"/>
                                                 <color key="textColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2153,7 +2143,7 @@ A: Immediately</string>
                                         </constraints>
                                         <inset key="scrollIndicatorInsets" minX="722" minY="0.0" maxX="704" maxY="0.0"/>
                                     </scrollView>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userName.png" translatesAutoresizingMaskIntoConstraints="NO" id="S4x-Ab-jgr">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="S4x-Ab-jgr">
                                         <rect key="frame" x="24" y="11" width="230" height="230"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="230" id="Da5-Lx-1dL"/>
@@ -2161,7 +2151,7 @@ A: Immediately</string>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOS-yK-UrQ">
-                                        <rect key="frame" x="208" y="204" width="46" height="30"/>
+                                        <rect key="frame" x="208" y="209" width="46" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="46" id="fmJ-Bp-XIx"/>
                                         </constraints>
@@ -2171,34 +2161,43 @@ A: Immediately</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building Media" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-Y8-N5H">
-                                        <rect key="frame" x="8" y="316" width="152" height="21"/>
+                                        <rect key="frame" x="8" y="266" width="152" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="152" id="I9s-7Q-VzX"/>
-                                            <constraint firstAttribute="height" constant="21" id="YAW-i5-5gY"/>
+                                            <constraint firstAttribute="height" constant="20" id="YAW-i5-5gY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                         <color key="textColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRq-NX-40u">
+                                        <rect key="frame" x="196" y="266" width="82" height="20"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
+                                        <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="buildingMediaEditing:" destination="E6b-Wl-O3C" eventType="touchUpInside" id="huV-03-KCJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="n2q-Y8-N5H" firstAttribute="top" secondItem="S4x-Ab-jgr" secondAttribute="bottom" constant="25" id="1yZ-4F-P9s"/>
                                     <constraint firstItem="S4x-Ab-jgr" firstAttribute="trailing" secondItem="kOS-yK-UrQ" secondAttribute="trailing" id="5Pu-ql-0lD"/>
                                     <constraint firstItem="8AJ-oA-z86" firstAttribute="leading" secondItem="S4x-Ab-jgr" secondAttribute="trailing" constant="32" id="5jZ-du-mPX"/>
-                                    <constraint firstItem="ciX-Vv-U1n" firstAttribute="top" secondItem="S4x-Ab-jgr" secondAttribute="bottom" constant="1" id="BlR-Gj-sBc"/>
+                                    <constraint firstItem="lRq-NX-40u" firstAttribute="top" secondItem="kOS-yK-UrQ" secondAttribute="bottom" constant="27" id="Bv8-QX-u6h"/>
                                     <constraint firstItem="S4x-Ab-jgr" firstAttribute="top" secondItem="1Il-lQ-vxq" secondAttribute="top" constant="11" id="Cc8-eN-W0j"/>
                                     <constraint firstItem="n2q-Y8-N5H" firstAttribute="leading" secondItem="1Il-lQ-vxq" secondAttribute="leadingMargin" id="EEv-ur-tAM"/>
                                     <constraint firstItem="8AJ-oA-z86" firstAttribute="top" secondItem="1Il-lQ-vxq" secondAttribute="top" id="FtF-43-UqQ"/>
-                                    <constraint firstItem="n2q-Y8-N5H" firstAttribute="top" secondItem="ciX-Vv-U1n" secondAttribute="bottom" constant="34" id="LCE-ve-oRK"/>
                                     <constraint firstItem="S4x-Ab-jgr" firstAttribute="leading" secondItem="1Il-lQ-vxq" secondAttribute="leading" constant="24" id="Pm6-pj-Evs"/>
                                     <constraint firstItem="n2q-Y8-N5H" firstAttribute="leading" secondItem="GcT-qC-JR6" secondAttribute="leading" id="Rhb-fR-WRw"/>
-                                    <constraint firstItem="GcT-qC-JR6" firstAttribute="top" secondItem="n2q-Y8-N5H" secondAttribute="bottom" constant="3" id="T0b-Ub-JON"/>
-                                    <constraint firstItem="8AJ-oA-z86" firstAttribute="leading" secondItem="ciX-Vv-U1n" secondAttribute="trailing" constant="28" id="Tfg-Dr-pGt"/>
+                                    <constraint firstItem="GcT-qC-JR6" firstAttribute="top" secondItem="n2q-Y8-N5H" secondAttribute="bottom" constant="4" id="T0b-Ub-JON"/>
+                                    <constraint firstItem="lRq-NX-40u" firstAttribute="height" secondItem="n2q-Y8-N5H" secondAttribute="height" id="V5U-Rt-GVz"/>
                                     <constraint firstAttribute="bottom" secondItem="8AJ-oA-z86" secondAttribute="bottom" id="YLr-Kt-D8F"/>
-                                    <constraint firstItem="ciX-Vv-U1n" firstAttribute="leading" secondItem="1Il-lQ-vxq" secondAttribute="leading" constant="18" id="Z2d-2q-zyu"/>
-                                    <constraint firstItem="ciX-Vv-U1n" firstAttribute="top" secondItem="kOS-yK-UrQ" secondAttribute="bottom" constant="8" symbolic="YES" id="bN2-2h-Zfb"/>
                                     <constraint firstItem="8AJ-oA-z86" firstAttribute="trailing" secondItem="1Il-lQ-vxq" secondAttribute="trailingMargin" id="dFn-dB-bT5"/>
+                                    <constraint firstItem="lRq-NX-40u" firstAttribute="top" secondItem="n2q-Y8-N5H" secondAttribute="top" id="fsa-aI-LNY"/>
+                                    <constraint firstItem="lRq-NX-40u" firstAttribute="leading" secondItem="n2q-Y8-N5H" secondAttribute="trailing" constant="36" id="kvQ-fr-SbK"/>
                                     <constraint firstItem="8AJ-oA-z86" firstAttribute="leading" secondItem="GcT-qC-JR6" secondAttribute="trailing" constant="8" symbolic="YES" id="m2R-zF-ciC"/>
+                                    <constraint firstItem="lRq-NX-40u" firstAttribute="trailing" secondItem="GcT-qC-JR6" secondAttribute="trailing" id="pIW-g4-0e8"/>
                                     <constraint firstItem="GcT-qC-JR6" firstAttribute="bottom" secondItem="1Il-lQ-vxq" secondAttribute="bottomMargin" id="vZ2-tM-X9v"/>
                                 </constraints>
                             </view>
@@ -2223,7 +2222,6 @@ A: Immediately</string>
                         <outlet property="cityTextField" destination="vnl-xo-xom" id="6U8-cE-IEZ"/>
                         <outlet property="countryTextField" destination="bDX-1R-hsT" id="hW8-0N-xJ4"/>
                         <outlet property="customerImageView" destination="S4x-Ab-jgr" id="szn-23-xch"/>
-                        <outlet property="customerName" destination="ciX-Vv-U1n" id="a5v-7c-0Ob"/>
                         <outlet property="customerRecordScrollView" destination="8AJ-oA-z86" id="pLa-Eb-pro"/>
                         <outlet property="emailNotificationSwitch" destination="eyt-qh-x76" id="5eH-3g-hRT"/>
                         <outlet property="emailTextField" destination="Eml-DH-nKx" id="FKH-Au-jWs"/>
@@ -2322,7 +2320,7 @@ A: Immediately</string>
         <scene sceneID="Pj7-jR-Ive">
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerColor" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2yX-Oq-Cx0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2340,7 +2338,7 @@ A: Immediately</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kjf-i3-4sV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="06f-FH-q6U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06f-FH-q6U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2358,7 +2356,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NFt-8r-g3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iwR-Im-04P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iwR-Im-04P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2414,7 +2412,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YaK-4u-ubd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dRc-JO-613">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRc-JO-613">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2432,7 +2430,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LRc-Nh-dvh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5YI-D9-RyG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5YI-D9-RyG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2450,7 +2448,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NlW-XZ-P4j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jTj-79-ilE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jTj-79-ilE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2468,7 +2466,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jnA-ng-Cws" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X66-ps-ua5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X66-ps-ua5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2494,11 +2492,11 @@ A: Immediately</string>
         <image name="new_customer.png" width="20" height="20"/>
         <image name="pdfImage" width="100" height="114"/>
         <image name="presentation.png" width="20" height="20"/>
+        <image name="profileAvatar" width="114" height="110"/>
         <image name="reveal-icon.png" width="22" height="17"/>
         <image name="settings___.png" width="20" height="20"/>
         <image name="traning_videos.png" width="20" height="20"/>
         <image name="tutorial" width="123" height="123"/>
-        <image name="userName.png" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XLw-tu-cxx"/>

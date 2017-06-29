@@ -23,7 +23,6 @@
      mediaSelectionPopUp = [[[NSBundle mainBundle] loadNibNamed:@"MediaPopUp" owner:self options:nil] objectAtIndex:0];
     _galleryItems = [[NSMutableArray alloc] init];
     [self registerForKeyboardNotifications];
-    [self loadSanpMediaContainer];
     [self getCurrentLocation];
 }
 - (void)getCurrentLocation {
@@ -37,14 +36,20 @@
 -(void)loadSanpMediaContainer{
     UICollectionViewFlowLayout *flo = [[UICollectionViewFlowLayout alloc] init];
     
-    snapShotCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, snapContainer.frame.size.width, snapContainer.frame.size.height) collectionViewLayout:flo];
+    snapShotCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(10, 10, snapContainer.frame.size.width-20, snapContainer.frame.size.height-20) collectionViewLayout:flo];
     snapShotCollectionView.delegate = self;
     snapShotCollectionView.dataSource = self;
     snapShotCollectionView.backgroundColor = [UIColor clearColor];
     [snapShotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewcell"];
     [snapContainer addSubview:snapShotCollectionView];
-    
     [snapShotCollectionView reloadData];
+//    UILongPressGestureRecognizer *lpgr
+//    = [[UILongPressGestureRecognizer alloc]
+//       initWithTarget:self action:@selector(handleLongPress:)];
+//    lpgr.minimumPressDuration = .3; // To detect after how many seconds you want shake the cells
+//    lpgr.delegate = self;
+//    [snapContainer addGestureRecognizer:lpgr];
+//    lpgr.delaysTouchesBegan = YES;
 }
 - (CNPPopupTheme *)defaultTheme {
     CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
@@ -66,6 +71,8 @@
     [self.view endEditing:YES];
 }
 -(void)viewDidLayoutSubviews{
+    [self loadSanpMediaContainer];
+
     self.customerImageView.layer.cornerRadius = self.customerImageView.frame.size.width / 2;
     self.customerImageView.layer.borderWidth = 3.0f;
     self.customerImageView.layer.borderColor = UIColorFromRGB(0x0A5571).CGColor;
@@ -154,37 +161,62 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+#pragma mark -
+#pragma Edit Profile Picture
+#pragma mark -
+
 - (IBAction)editProfilePicture:(id)sender {
     mediaSelectionPopUp.isFromBuildingMedia = NO;
     [self mediaPopUP];
 }
 -(void)mediaPopUP{
-    mediaSelectionPopUp.customerRecordVC = self;
-    [mediaSelectionPopUp initialize];
-    popupController = [[CNPPopupController alloc] initWithContents:@[mediaSelectionPopUp]];
-    popupController.theme = [self defaultTheme];
-    popupController.theme.popupStyle = CNPPopupStyleCentered;
-    popupController.delegate = self;
-    [popupController presentPopupControllerAnimated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mediaSelectionPopUp.customerRecordVC = self;
+        [mediaSelectionPopUp initialize];
+        popupController = [[CNPPopupController alloc] initWithContents:@[mediaSelectionPopUp]];
+        popupController.theme = [self defaultTheme];
+        popupController.theme.popupStyle = CNPPopupStyleCentered;
+        popupController.delegate = self;
+        [popupController presentPopupControllerAnimated:YES];
+    });
 }
 -(void)loadImageFromViaMedia:(CameraMode)mode{
     [popupController dismissPopupControllerAnimated:YES];
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    if (mode == ProfilePicFromCamera) {
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    if (mediaSelectionPopUp.isFromBuildingMedia == NO) {
+        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        if (mode == ProfilePicFromCamera) {
+            imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        else if (mode == ProfilePicFromGallery){
+            imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        cameraMode = mode;
+        imagePickerController.delegate = self;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+        
     }
-    else if (mode == ProfilePicFromGallery){
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    else{
+        if(mode == PictureForBuildingMediaFromGallery){
+            ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
+            elcPicker.maximumImagesCount = 100; //Set the maximum number of images to select to 100
+            elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
+            elcPicker.returnsImage = YES; //Return UIimage if YES. If NO, only return asset location information
+            elcPicker.onOrder = YES; //For multiple image selection, display and return order of selected images
+            elcPicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie]; //Supports image and movie types
+            elcPicker.imagePickerDelegate = self;
+            cameraMode = mode;
+            [self presentViewController:elcPicker animated:YES completion:nil];
+        }
+        else if(mode == PictureForBuildingMediaFromCamera){
+            UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+            imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            imagePickerController.delegate = self;
+            cameraMode = mode;
+            [self presentViewController:imagePickerController animated:YES completion:nil];
+        }
+        
     }
-    else if(mode == PictureForBuildingMediaFromGallery){
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    else if(mode == PictureForBuildingMediaFromCamera){
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    cameraMode = mode;
-    imagePickerController.delegate = self;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
+    
 }
 
 // This method is called when an image has been chosen from the library or taken from the camera.
@@ -196,138 +228,118 @@
 //    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
     if (cameraMode == ProfilePicFromCamera || cameraMode == ProfilePicFromGallery) {
         _customerImageView.image = image;
-        _customerImageView.contentMode = UIViewContentModeScaleToFill;
+        _customerImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     else{
         [_galleryItems addObject:image];
         [snapShotCollectionView reloadData];
     }
-    
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-//- (IBAction)PlayVideo:(id)sender {
-//    [self startMediaBrowserFromViewController: self usingDelegate: self];
-//}
-//
-//- (BOOL) startMediaBrowserFromViewController: (UIViewController*) controller
-//                               usingDelegate: (id <UIImagePickerControllerDelegate,
-//                                               UINavigationControllerDelegate>) delegate{
-//    
-//    if (([UIImagePickerController isSourceTypeAvailable:
-//          UIImagePickerControllerSourceTypeSavedPhotosAlbum] == NO)
-//        || (delegate == nil)
-//        || (controller == nil))
-//        return NO;
-//    
-//    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
-//    mediaUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-//    
-//    mediaUI.mediaTypes = [[NSArray alloc] initWithObjects: (NSString *) kUTTypeMovie, nil];
-//    
-//    // Hides the controls for moving & scaling pictures, or for
-//    // trimming movies. To instead show the controls, use YES.
-//    mediaUI.allowsEditing = YES;
-//    
-//    mediaUI.delegate = delegate;
-//    
-//    [controller presentModalViewController: mediaUI animated: YES];
-//    return YES;
-//    
-//}
-//// For responding to the user tapping Cancel.
-//- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
-//    
-//    [self dismissModalViewControllerAnimated: YES];
-//}
-//
-//// For responding to the user accepting a newly-captured picture or movie
-//- (void) imagePickerController: (UIImagePickerController *) picker
-// didFinishPickingMediaWithInfo: (NSDictionary *) info {
-//    
-//    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
-//    
-//    [self dismissModalViewControllerAnimated:NO];
-//    
-//    // Handle a movie capture
-//    if (CFStringCompare ((__bridge_retained CFStringRef)mediaType, kUTTypeMovie, 0)
-//        == kCFCompareEqualTo) {
-//        
-//        NSString *moviePath = [[info objectForKey:
-//                                UIImagePickerControllerMediaURL] path];
-//        MPMoviePlayerViewController* theMovie =
-//        [[MPMoviePlayerViewController alloc] initWithContentURL: [info objectForKey:
-//                                                                  UIImagePickerControllerMediaURL]];
-//        [self presentMoviePlayerViewControllerAnimated:theMovie];
-//        
-//        // Register for the playback finished notification
-//        [[NSNotificationCenter defaultCenter]
-//         addObserver: self
-//         selector: @selector(myMovieFinishedCallback:)
-//         name: MPMoviePlayerPlaybackDidFinishNotification
-//         object: theMovie];
-//        
-//        
-//    }
-//}
-//// When the movie is done, release the controller.
-//-(void) myMovieFinishedCallback: (NSNotification*) aNotification
-//{
-//    [self dismissMoviePlayerViewControllerAnimated];
-//    
-//    avmovi* theMovie = [aNotification object];
-//    
-//    [[NSNotificationCenter defaultCenter]
-//     removeObserver: self
-//     name: MPMoviePlayerPlaybackDidFinishNotification
-//     object: theMovie];
-//    // Release the movie instance created in playMovieAtURL:
-//}
-
 #pragma mark -
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [_galleryItems count]+1;
+    return [_galleryItems count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewcell" forIndexPath:indexPath];
-    //    cell.backgroundColor = [UIColor greenColor];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
     imageView.contentMode = UIViewContentModeScaleToFill;
     [cell addSubview:imageView];
-    if (indexPath.row==0) {
-        imageView.image = [UIImage imageNamed:@"cameraThumb"];
-    }
-    else{
-        imageView.image = [_galleryItems objectAtIndex:indexPath.row-1];
-    }
+    imageView.image = [_galleryItems objectAtIndex:indexPath.row];
+//    if([[[NSUserDefaults standardUserDefaults]valueForKey:@"longPressed"] isEqualToString:@"yes"])
+//    {
+//        CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+//        [anim setToValue:[NSNumber numberWithFloat:0.0f]];
+//        [anim setFromValue:[NSNumber numberWithDouble:M_PI/64]];
+//        [anim setDuration:0.1];
+//        [anim setRepeatCount:NSUIntegerMax];
+//        [anim setAutoreverses:YES];
+//        cell.layer.shouldRasterize = YES;
+//        [cell.layer addAnimation:anim forKey:@"SpringboardShake"];
+//        CGFloat delButtonSize = 20;
+//        
+//        _deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, delButtonSize, delButtonSize)];
+//        _deleteButton.center = CGPointMake(imageView.frame.size.width-10, 10);
+//        _deleteButton.backgroundColor = [UIColor clearColor];
+//        _deleteButton.tag = indexPath.row;
+//        [_deleteButton setImage: [UIImage imageNamed:@"Delete.png"] forState:UIControlStateNormal];
+//        [cell addSubview:_deleteButton];
+//        
+//        [_deleteButton addTarget:self action:@selector(deletePicture:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//    }
+//    else if ([[[NSUserDefaults standardUserDefaults]valueForKey:@"singleTap"] isEqualToString:@"yes"])
+//    {
+//        
+//        for(UIView *subview in [cell subviews]) {
+//            if([subview isKindOfClass:[UIButton class]]) {
+//                [subview removeFromSuperview];
+//            } else {
+//            }
+//        }
+//        [cell.layer removeAllAnimations];
+//    }
+    
+
     return cell;
 }
-
+-(void)deletePicture:(UIButton*)btn{
+    int index = (int)btn.tag;
+    [_galleryItems removeObjectAtIndex:index];
+    [snapShotCollectionView reloadData];
+}
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
-#pragma mark -
-#pragma mark - UICollectionViewDelegate
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0) {
-        mediaSelectionPopUp.isFromBuildingMedia = YES;
-        [self mediaPopUP];
-        [mediaSelectionPopUp.mediaPopUpTable reloadData];
-    }
-    else{
-//        _bigScreenImageView.image = [_galleryItems objectAtIndex:indexPath.row-1];
-    }
-}
 
+}
+//-(void)handleTap:(UITapGestureRecognizer *)gestureRecognizer
+//{
+//    NSLog(@"singleTap");
+//    if (gestureRecognizer.state != UIGestureRecognizerStateEnded) {
+//        return;
+//    }
+//    point = [gestureRecognizer locationInView:snapShotCollectionView];
+//    
+//    NSIndexPath *indexPath = [snapShotCollectionView indexPathForItemAtPoint:point];
+//    if (indexPath == nil){
+//        NSLog(@"couldn't find index path");
+//        [[NSUserDefaults standardUserDefaults]setValue:@"no" forKey:@"longPressed"];
+//        [[NSUserDefaults standardUserDefaults]setValue:@"yes" forKey:@"singleTap"];
+//        [snapShotCollectionView reloadData];
+//        
+//    } else {
+//        
+//    }
+//    
+//}
+//-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+//{
+//    if (gestureRecognizer.state != UIGestureRecognizerStateEnded) {
+//        return;
+//    }
+//    point = [gestureRecognizer locationInView:snapShotCollectionView];
+//    
+//    NSIndexPath *indexPath = [snapShotCollectionView indexPathForItemAtPoint:point];
+//    if (indexPath == nil){
+//        NSLog(@"couldn't find index path");
+//    } else {
+//        
+//        [[NSUserDefaults standardUserDefaults]setValue:@"yes" forKey:@"longPressed"];
+//        [snapShotCollectionView reloadData];
+//        
+//    }
+//}
 #pragma mark -
 #pragma mark - UICollectionViewFlowLayout
 
@@ -352,17 +364,6 @@
 }
 #pragma mark -
 #pragma mark CREATE CUSTOMER
-- (NSMutableDictionary *) indexKeyedDictionaryFromArray:(NSArray *)array
-{
-    id objectInstance;
-    unsigned int indexKey = 0U;
-    
-    NSMutableDictionary *mutableDictionary = [[NSMutableDictionary alloc] init];
-    for (objectInstance in array)
-        [mutableDictionary setObject:objectInstance forKey:[NSNumber numberWithUnsignedInt:indexKey++]];
-    
-    return (NSMutableDictionary *)mutableDictionary;
-}
 - (IBAction)saveBtnAction:(id)sender {
 
     if ([MTReachabilityManager isReachable]) {
@@ -407,7 +408,7 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);
-    [Utility showLocationError:self];
+//    [Utility showLocationError:self];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
@@ -420,5 +421,37 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark -
+#pragma mark Edit Button Actions
+- (IBAction)buildingMediaEditing:(id)sender {
+    mediaSelectionPopUp.isFromBuildingMedia = YES;
+    [self mediaPopUP];
+}
+#pragma mark ELCImagePickerControllerDelegate Methods
 
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+{
+    if (info.count>0) {
+        NSMutableArray *images = [[NSMutableArray alloc] init];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        for (NSMutableDictionary *dict in info) {
+            [images addObject:[dict valueForKey:@"UIImagePickerControllerOriginalImage"]];
+        }
+        if (cameraMode == ProfilePicFromCamera || cameraMode == ProfilePicFromGallery) {
+            _customerImageView.image = [images objectAtIndex:0]; //temp code need to delete
+            _customerImageView.contentMode = UIViewContentModeScaleToFill;
+        }
+        else{
+            if (images.count>0) {
+                [_galleryItems addObjectsFromArray:images];
+                [snapShotCollectionView reloadData];
+            }
+        }
+    }
+}
+
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

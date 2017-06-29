@@ -136,13 +136,13 @@
 
 + (void)showAlertWithTitle:(NSString*)title
                withMessage:(NSString*)message {
-    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:title
-                                                     message:message
-                                                    delegate:self
-                                           cancelButtonTitle:@"Ok"
-                                           otherButtonTitles: nil];
-    
-    [alert show];
+//    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:title
+//                                                     message:message
+//                                                    delegate:self
+//                                           cancelButtonTitle:@"Ok"
+//                                           otherButtonTitles: nil];
+//    
+//    [alert show];
 }
 
 
