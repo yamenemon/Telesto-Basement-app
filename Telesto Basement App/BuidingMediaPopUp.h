@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "iCarousel.h"
 
-@interface BuidingMediaPopUp : UIView
-
+@interface BuidingMediaPopUp : UIView<iCarouselDelegate,iCarouselDataSource>
+@property (weak, nonatomic) IBOutlet iCarousel *carousel;
+@property (nonatomic, strong) NSMutableArray *items;
 @end

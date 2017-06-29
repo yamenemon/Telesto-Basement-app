@@ -424,8 +424,17 @@
 #pragma mark -
 #pragma mark Edit Button Actions
 - (IBAction)buildingMediaEditing:(id)sender {
-    mediaSelectionPopUp.isFromBuildingMedia = YES;
-    [self mediaPopUP];
+//    mediaSelectionPopUp.isFromBuildingMedia = YES;
+//    [self mediaPopUP];
+    buidingMediaPopUp = [[[NSBundle mainBundle] loadNibNamed:@"BuidingMediaPopUp" owner:self options:nil] objectAtIndex:0];
+    
+    popupController = [[CNPPopupController alloc] initWithContents:@[buidingMediaPopUp]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = CNPPopupStyleCentered;
+    popupController.delegate = self;
+    popupController.theme.shouldDismissOnBackgroundTouch = NO;
+    [popupController presentPopupControllerAnimated:YES];
+    
 }
 #pragma mark ELCImagePickerControllerDelegate Methods
 

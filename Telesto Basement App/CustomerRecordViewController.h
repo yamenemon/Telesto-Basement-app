@@ -18,7 +18,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ELCImagePickerController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-#import <MobileCoreServices/UTCoreTypes.h>
+#import "BuidingMediaPopUp.h"
 
 typedef NS_ENUM(NSInteger, CameraMode) {
     ProfilePicFromGallery,
@@ -38,6 +38,8 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     CLLocation *currentLocation;
     CGPoint point;
     UIButton *_deleteButton;
+    BuidingMediaPopUp *buidingMediaPopUp;
+    
 }
 @property(nonatomic, strong) CLLocationManager *locationManager;
 

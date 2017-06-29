@@ -28,6 +28,9 @@
                                 <constraint firstAttribute="height" constant="45" id="jHH-cz-vwK"/>
                             </constraints>
                             <state key="normal" image="plus"/>
+                            <connections>
+                                <action selector="insertItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="nNL-ux-6Ga"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OZ-gH-cMm">
                             <rect key="frame" x="378" y="10" width="45" height="45"/>
@@ -36,6 +39,9 @@
                                 <constraint firstAttribute="width" constant="45" id="ukW-ej-D7O"/>
                             </constraints>
                             <state key="normal" backgroundImage="minus"/>
+                            <connections>
+                                <action selector="deleteItem:" destination="iN0-l3-epB" eventType="touchUpInside" id="ITU-0U-cog"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,6 +66,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="carousel" destination="Z0k-hS-zZv" id="RMB-3Y-lgv"/>
+            </connections>
             <point key="canvasLocation" x="132" y="-17"/>
         </view>
     </objects>
