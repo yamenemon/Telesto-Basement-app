@@ -17,11 +17,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qzd-D4-ilT">
                     <rect key="frame" x="0.0" y="0.0" width="588" height="530"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z0k-hS-zZv" customClass="iCarousel">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0k-hS-zZv" customClass="iCarousel">
                             <rect key="frame" x="8" y="66" width="572" height="456"/>
                             <color key="backgroundColor" red="1" green="0.25294609509999999" blue="0.39821880040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hB-ra-bc7">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hB-ra-bc7">
                             <rect key="frame" x="177" y="10" width="45" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="45" id="Reb-KN-Xwi"/>
@@ -29,7 +29,7 @@
                             </constraints>
                             <state key="normal" image="plus"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OZ-gH-cMm">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OZ-gH-cMm">
                             <rect key="frame" x="378" y="10" width="45" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="jxE-lg-SGb"/>
@@ -41,9 +41,12 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="6hB-ra-bc7" firstAttribute="leading" secondItem="Qzd-D4-ilT" secondAttribute="leading" constant="177" id="3ae-ND-vsz"/>
+                        <constraint firstItem="6hB-ra-bc7" firstAttribute="top" secondItem="Qzd-D4-ilT" secondAttribute="top" constant="10" id="4Gw-Db-OH4"/>
+                        <constraint firstItem="6hB-ra-bc7" firstAttribute="top" secondItem="8OZ-gH-cMm" secondAttribute="top" id="8v9-mf-Tea"/>
                         <constraint firstAttribute="trailing" secondItem="Z0k-hS-zZv" secondAttribute="trailing" constant="8" id="YaU-gi-WcZ"/>
                         <constraint firstAttribute="bottom" secondItem="Z0k-hS-zZv" secondAttribute="bottom" constant="8" id="Zwg-2q-ekI"/>
                         <constraint firstAttribute="trailing" secondItem="8OZ-gH-cMm" secondAttribute="trailing" constant="165" id="cmJ-Qu-Dq6"/>
+                        <constraint firstItem="Z0k-hS-zZv" firstAttribute="top" secondItem="6hB-ra-bc7" secondAttribute="bottom" constant="11" id="haG-Bh-J9R"/>
                         <constraint firstItem="Z0k-hS-zZv" firstAttribute="leading" secondItem="Qzd-D4-ilT" secondAttribute="leading" constant="8" id="laV-YL-H0P"/>
                     </constraints>
                 </view>
