@@ -19,6 +19,7 @@
 #import "ELCImagePickerController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "BuidingMediaPopUp.h"
+#import <MBProgressHUD.h>
 
 typedef NS_ENUM(NSInteger, CameraMode) {
     ProfilePicFromGallery,
@@ -38,7 +39,7 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     CGPoint point;
     UIButton *_deleteButton;
     BuidingMediaPopUp *buidingMediaPopUp;
-    
+    MBProgressHUD * hud;
 }
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic,strong) UICollectionView *snapShotCollectionView;
@@ -46,6 +47,7 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 
 @property (weak, nonatomic) IBOutlet UIView *customerName;
 @property (weak, nonatomic) IBOutlet UIImageView *customerImageView;
+@property (weak, nonatomic) IBOutlet UIButton *addBuildingMediaBtn;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *customerRecordScrollView;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;

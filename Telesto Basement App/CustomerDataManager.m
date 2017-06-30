@@ -8,7 +8,8 @@
 
 #import "CustomerDataManager.h"
 #import "CustomerRecordViewController.h"
-#define BaseURL  @"http://telesto.centralstationmarketing.com/"
+#define BASE_URL  @"http://telesto.centralstationmarketing.com/"
+#define TOKEN_STRING @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH"
 
 @implementation CustomerDataManager
 + (CustomerDataManager *)sharedManager {
@@ -22,7 +23,6 @@
 }
 -(void)createCustomer:(CustomerDetailInfoObject*)objects{
 
-    NSString* tokenAsString = @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH";
     NSString *endPoint = @"create_customer";
     NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                     objects.customerFirstName,@"fName",
@@ -35,12 +35,12 @@
                                     objects.customerEmailAddress,@"email",
                                     objects.customerNotes,@"details",
                                     objects.customerPhoneNumber,@"phone",
-                                    [NSNumber numberWithLong:objects.latitude],@"latitude",
-                                    [NSNumber numberWithLong:objects.longitude],@"longitude",
+                                    [NSNumber numberWithFloat:objects.latitude],@"latitude",
+                                    [NSNumber numberWithFloat:objects.longitude],@"longitude",
                                     [NSNumber numberWithBool:objects.smsReminder],@"smsNotify",
                                     [NSNumber numberWithBool:objects.emailNotification],@"emailNotify",
                                     [NSNumber numberWithLong:objects.customerId],@"userId",
-                                    tokenAsString,@"authKey",
+                                    TOKEN_STRING,@"authKey",
                                     nil];
     NSLog(@"Parameter: %@\n",aParametersDic);
     NSData *imageData;
@@ -53,7 +53,9 @@
     }
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:[NSString stringWithFormat:@"%@%@",BaseURL,endPoint] parameters:aParametersDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParametersDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     [formData appendPartWithFileData:imageData name:@"photo" fileName:@"profile_photo.jpg" mimeType:@"image/jpg"];
     } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response: %@", responseObject);
@@ -69,5 +71,39 @@
     if (isValidEmail==YES) {
         [self createCustomer:objects];
     }
+}
+-(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"upload_customer_file";
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",[NSNumber numberWithInt:2],@"fileType",[NSNumber numberWithUnsignedInteger:imageArray.count],@"imageCount",nil];
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParametersDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        int i = 0;
+        for(UIImage *eachImage in imageArray)
+        {
+            NSData *imageData = UIImagePNGRepresentation(eachImage);
+            [formData appendPartWithFileData:imageData name:[NSString stringWithFormat:@"file%d",i] fileName:[NSString stringWithFormat:@"file%d.jpg",i ] mimeType:@"image/jpg"];
+            i++;
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        // This is not called back on the main queue.
+        // You are responsible for dispatching to the main queue for UI updates
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Update the progress view
+            NSLog(@"Uploading Image");
+        });
+    }
+    success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+        NSError *e = nil;
+        NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+        NSLog(@"%@",jsonArray);
+        completionBlock();
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        completionBlock();
+    }];
 }
 @end

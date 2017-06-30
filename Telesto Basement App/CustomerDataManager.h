@@ -11,10 +11,12 @@
 #import "CustomerDetailInfoObject.h"
 #import "Utility.h"
 #import <AFNetworking.h>
+#import <AFURLRequestSerialization.h>
 
 @class CustomerRecordViewController;
 @interface CustomerDataManager : NSObject
 @property (strong,nonatomic) CustomerRecordViewController *baseController;
 + (CustomerDataManager *)sharedManager;
 -(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController*)rootController;
+-(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock;
 @end

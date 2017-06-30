@@ -17,6 +17,7 @@
 @implementation CustomerRecordViewController
 @synthesize snapContainer;
 @synthesize snapShotCollectionView;
+@synthesize addBuildingMediaBtn;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,7 +75,9 @@
     self.customerImageView.clipsToBounds = YES;
     _emailNotificationSwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
     _phoneNotifySwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
-    
+    _notesTextView.layer.borderColor = UIColorFromRGB(0xC4C6C9).CGColor;
+    _notesTextView.layer.borderWidth = 0.8f;
+    _notesTextView.layer.cornerRadius = 3.0f;
 
 }
 -(UITextField*)changeTextfieldStyle:(UITextField*)textField{
@@ -293,17 +296,29 @@
 #pragma mark -
 #pragma mark CREATE CUSTOMER
 - (IBAction)saveBtnAction:(id)sender {
-
+    [self createCustomer];
+}
+-(void)createCustomer{
     if ([MTReachabilityManager isReachable]) {
-
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Update the progress view
+            hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.center = self.view.center;
+            
+            hud.mode = MBProgressHUDModeIndeterminate;
+            NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information..."];
+            NSString *strloadingText2 = [NSString stringWithFormat:@" Please Wait.\r 1-2 Minutes"];
+            
+            hud.label.text = strloadingText;
+            hud.detailsLabel.text=strloadingText2;
+        });
         NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
         for (int i= 0; i<_galleryItems.count; i++) {
             UIImage *img = [_galleryItems objectAtIndex:i];
             [imageDic setObject:img forKey:[NSString stringWithFormat:@"%d",i]];
-            
         }
         [imageDic setObject:self.customerImageView.image forKey:@"pp"];
-
+        
         CustomerDataManager *manager = [CustomerDataManager sharedManager];
         CustomerDetailInfoObject *detailInfoObject = [[CustomerDetailInfoObject alloc] init];
         detailInfoObject.customerId = [[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue];
@@ -327,9 +342,7 @@
         [manager validateObjects:detailInfoObject withRootController:self];
     }
     else{
-
     }
-
 }
 #pragma mark - CLLocationManagerDelegate
 
@@ -372,12 +385,50 @@
         else{
             if (images.count>0) {
                 [_galleryItems addObjectsFromArray:images];
-                [snapShotCollectionView reloadData];
+                BOOL isReachable = [MTReachabilityManager isReachable];
+                if (isReachable) {
+                    [self uploadBuildingMediaImages:_galleryItems];
+                }
+                else{
+                    NSLog(@"Not Reachable");
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Internet Problem" message:@"You are out of network.Prese check your network settings." preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction* ok = [UIAlertAction
+                                         actionWithTitle:@"OK"
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction * action)
+                                         {
+                                             [alert dismissViewControllerAnimated:YES completion:nil];
+                                             
+                                         }];
+                    [alert addAction:ok];
+                    [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
             }
         }
     }
 }
-
+-(void)uploadBuildingMediaImages:(NSMutableArray*)mediaArray{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //Update the progress view
+        if (!hud) {
+            hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        }
+        hud.center = self.view.center;
+        
+        hud.mode = MBProgressHUDModeIndeterminate;
+        NSString *strloadingText = [NSString stringWithFormat:@"Uploading Building Images"];
+        NSString *strloadingText2 = [NSString stringWithFormat:@" Please Wait.\r 4-5 Minutes"];
+        
+        hud.label.text = strloadingText;
+        hud.detailsLabel.text=strloadingText2;
+    });
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    [manager uploadBuildingMediaImagesArray:mediaArray withController:self withCompletion:^{
+        [snapShotCollectionView reloadData];
+        [hud hideAnimated:YES];
+    }];
+}
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
