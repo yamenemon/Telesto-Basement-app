@@ -33,7 +33,6 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     UITextField *activeField;
     MediaPopUp *mediaSelectionPopUp;
     CNPPopupController *popupController;
-    UICollectionView *snapShotCollectionView;
     CameraMode cameraMode;
     CLLocation *currentLocation;
     CGPoint point;
@@ -42,7 +41,7 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     
 }
 @property(nonatomic, strong) CLLocationManager *locationManager;
-
+@property (nonatomic,strong) UICollectionView *snapShotCollectionView;
 @property (strong,nonatomic) NSMutableArray *galleryItems;
 
 @property (weak, nonatomic) IBOutlet UIView *customerName;

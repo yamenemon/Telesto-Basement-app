@@ -16,11 +16,13 @@
 
 @implementation CustomerRecordViewController
 @synthesize snapContainer;
+@synthesize snapShotCollectionView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Customer Records";
-     mediaSelectionPopUp = [[[NSBundle mainBundle] loadNibNamed:@"MediaPopUp" owner:self options:nil] objectAtIndex:0];
+    mediaSelectionPopUp = [[[NSBundle mainBundle] loadNibNamed:@"MediaPopUp" owner:self options:nil] objectAtIndex:0];
     _galleryItems = [[NSMutableArray alloc] init];
     [self registerForKeyboardNotifications];
     [self getCurrentLocation];
@@ -43,13 +45,6 @@
     [snapShotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewcell"];
     [snapContainer addSubview:snapShotCollectionView];
     [snapShotCollectionView reloadData];
-//    UILongPressGestureRecognizer *lpgr
-//    = [[UILongPressGestureRecognizer alloc]
-//       initWithTarget:self action:@selector(handleLongPress:)];
-//    lpgr.minimumPressDuration = .3; // To detect after how many seconds you want shake the cells
-//    lpgr.delegate = self;
-//    [snapContainer addGestureRecognizer:lpgr];
-//    lpgr.delaysTouchesBegan = YES;
 }
 - (CNPPopupTheme *)defaultTheme {
     CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
@@ -79,6 +74,7 @@
     self.customerImageView.clipsToBounds = YES;
     _emailNotificationSwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
     _phoneNotifySwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
+    
 
 }
 -(UITextField*)changeTextfieldStyle:(UITextField*)textField{
@@ -138,12 +134,9 @@
             [_customerRecordScrollView setContentOffset:scrollPoint animated:YES];
         }
     }
-    
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-
     activeField = textField;
-    
 }
 -(void)textViewDidBeginEditing:(UITextView *)textView{
     activeField = nil;
@@ -193,7 +186,6 @@
         cameraMode = mode;
         imagePickerController.delegate = self;
         [self presentViewController:imagePickerController animated:YES completion:nil];
-        
     }
     else{
         if(mode == PictureForBuildingMediaFromGallery){
@@ -214,9 +206,7 @@
             cameraMode = mode;
             [self presentViewController:imagePickerController animated:YES completion:nil];
         }
-        
     }
-    
 }
 
 // This method is called when an image has been chosen from the library or taken from the camera.
@@ -225,7 +215,6 @@
     //You can retrieve the actual UIImage
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     //Or you can get the image url from AssetsLibrary
-//    NSURL *path = [info valueForKey:UIImagePickerControllerReferenceURL];
     if (cameraMode == ProfilePicFromCamera || cameraMode == ProfilePicFromGallery) {
         _customerImageView.image = image;
         _customerImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -252,41 +241,6 @@
     imageView.contentMode = UIViewContentModeScaleToFill;
     [cell addSubview:imageView];
     imageView.image = [_galleryItems objectAtIndex:indexPath.row];
-//    if([[[NSUserDefaults standardUserDefaults]valueForKey:@"longPressed"] isEqualToString:@"yes"])
-//    {
-//        CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-//        [anim setToValue:[NSNumber numberWithFloat:0.0f]];
-//        [anim setFromValue:[NSNumber numberWithDouble:M_PI/64]];
-//        [anim setDuration:0.1];
-//        [anim setRepeatCount:NSUIntegerMax];
-//        [anim setAutoreverses:YES];
-//        cell.layer.shouldRasterize = YES;
-//        [cell.layer addAnimation:anim forKey:@"SpringboardShake"];
-//        CGFloat delButtonSize = 20;
-//        
-//        _deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, delButtonSize, delButtonSize)];
-//        _deleteButton.center = CGPointMake(imageView.frame.size.width-10, 10);
-//        _deleteButton.backgroundColor = [UIColor clearColor];
-//        _deleteButton.tag = indexPath.row;
-//        [_deleteButton setImage: [UIImage imageNamed:@"Delete.png"] forState:UIControlStateNormal];
-//        [cell addSubview:_deleteButton];
-//        
-//        [_deleteButton addTarget:self action:@selector(deletePicture:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//    }
-//    else if ([[[NSUserDefaults standardUserDefaults]valueForKey:@"singleTap"] isEqualToString:@"yes"])
-//    {
-//        
-//        for(UIView *subview in [cell subviews]) {
-//            if([subview isKindOfClass:[UIButton class]]) {
-//                [subview removeFromSuperview];
-//            } else {
-//            }
-//        }
-//        [cell.layer removeAllAnimations];
-//    }
-    
-
     return cell;
 }
 -(void)deletePicture:(UIButton*)btn{
@@ -301,45 +255,19 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+    buidingMediaPopUp = [[[NSBundle mainBundle] loadNibNamed:@"BuidingMediaPopUp" owner:self options:nil] objectAtIndex:0];
+    [buidingMediaPopUp initWithBaseController:self withImageArray:_galleryItems];
 
+    popupController = [[CNPPopupController alloc] initWithContents:@[buidingMediaPopUp]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = CNPPopupStyleCentered;
+    popupController.delegate = self;
+    popupController.theme.shouldDismissOnBackgroundTouch = YES;
+    [popupController presentPopupControllerAnimated:YES];
+    });
 }
-//-(void)handleTap:(UITapGestureRecognizer *)gestureRecognizer
-//{
-//    NSLog(@"singleTap");
-//    if (gestureRecognizer.state != UIGestureRecognizerStateEnded) {
-//        return;
-//    }
-//    point = [gestureRecognizer locationInView:snapShotCollectionView];
-//    
-//    NSIndexPath *indexPath = [snapShotCollectionView indexPathForItemAtPoint:point];
-//    if (indexPath == nil){
-//        NSLog(@"couldn't find index path");
-//        [[NSUserDefaults standardUserDefaults]setValue:@"no" forKey:@"longPressed"];
-//        [[NSUserDefaults standardUserDefaults]setValue:@"yes" forKey:@"singleTap"];
-//        [snapShotCollectionView reloadData];
-//        
-//    } else {
-//        
-//    }
-//    
-//}
-//-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
-//{
-//    if (gestureRecognizer.state != UIGestureRecognizerStateEnded) {
-//        return;
-//    }
-//    point = [gestureRecognizer locationInView:snapShotCollectionView];
-//    
-//    NSIndexPath *indexPath = [snapShotCollectionView indexPathForItemAtPoint:point];
-//    if (indexPath == nil){
-//        NSLog(@"couldn't find index path");
-//    } else {
-//        
-//        [[NSUserDefaults standardUserDefaults]setValue:@"yes" forKey:@"longPressed"];
-//        [snapShotCollectionView reloadData];
-//        
-//    }
-//}
 #pragma mark -
 #pragma mark - UICollectionViewFlowLayout
 
@@ -355,13 +283,13 @@
 }
 
 
--(BOOL)shouldAutorotate{
-    return NO;
-}
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-{
-    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
-}
+//-(BOOL)shouldAutorotate{
+//    return YES;
+//}
+//- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+//{
+//    return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+//}
 #pragma mark -
 #pragma mark CREATE CUSTOMER
 - (IBAction)saveBtnAction:(id)sender {
@@ -408,7 +336,6 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);
-//    [Utility showLocationError:self];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
@@ -424,18 +351,10 @@
 #pragma mark -
 #pragma mark Edit Button Actions
 - (IBAction)buildingMediaEditing:(id)sender {
-//    mediaSelectionPopUp.isFromBuildingMedia = YES;
-//    [self mediaPopUP];
-    buidingMediaPopUp = [[[NSBundle mainBundle] loadNibNamed:@"BuidingMediaPopUp" owner:self options:nil] objectAtIndex:0];
-    
-    popupController = [[CNPPopupController alloc] initWithContents:@[buidingMediaPopUp]];
-    popupController.theme = [self defaultTheme];
-    popupController.theme.popupStyle = CNPPopupStyleCentered;
-    popupController.delegate = self;
-    popupController.theme.shouldDismissOnBackgroundTouch = NO;
-    [popupController presentPopupControllerAnimated:YES];
-    
+    mediaSelectionPopUp.isFromBuildingMedia = YES;
+    [self mediaPopUP];
 }
+
 #pragma mark ELCImagePickerControllerDelegate Methods
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info

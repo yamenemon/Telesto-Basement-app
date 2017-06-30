@@ -7,6 +7,9 @@
 //
 
 #import "BuidingMediaPopUp.h"
+#import "CustomerRecordViewController.h"
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @implementation BuidingMediaPopUp
 @synthesize carousel;
@@ -18,32 +21,29 @@
     // Drawing code
 }
 */
-- (void)setUp
-{
-    //set up data
-    self.items = [NSMutableArray array];
-    for (int i = 0; i < 10; i++)
-    {
-        [self.items addObject:@(i)];
-    }
-}
--(void)initialize{
-    [self setUp];
-    self.carousel.type = iCarouselTypeCoverFlow2;
 
+-(void)initWithBaseController:(CustomerRecordViewController*)baseController withImageArray:(NSMutableArray*)imageArr{
+    self.items = imageArr;
+    _customerRecordController = baseController;
+    self.carousel.type = iCarouselTypeCylinder;
+    self.carousel.delegate = self;
+    self.carousel.dataSource = self;
+    [self.carousel reloadData];
 }
 
-- (IBAction)insertItem:(id)sender {
-    NSInteger index = MAX(0, self.carousel.currentItemIndex);
-    [self.items insertObject:@(self.carousel.numberOfItems) atIndex:(NSUInteger)index];
-    [self.carousel insertItemAtIndex:index animated:YES];
-}
+//- (IBAction)insertItem:(id)sender {
+//    NSInteger index = MAX(0, self.carousel.currentItemIndex);
+//    [self.items insertObject:@(self.carousel.numberOfItems) atIndex:(NSUInteger)index];
+//    [self.carousel insertItemAtIndex:index animated:YES];
+//}
 - (IBAction)deleteItem:(id)sender {
     if (self.carousel.numberOfItems > 0)
     {
         NSInteger index = self.carousel.currentItemIndex;
         [self.items removeObjectAtIndex:(NSUInteger)index];
         [self.carousel removeItemAtIndex:index animated:YES];
+        _customerRecordController.galleryItems = self.items;
+        [_customerRecordController.snapShotCollectionView reloadData];
     }
 }
 #pragma mark -
@@ -56,34 +56,14 @@
 
 - (UIView *)carousel:(__unused iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    UILabel *label = nil;
     
     //create new view if no view is available for recycling
-    if (view == nil)
-    {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 200.0)];
-        ((UIImageView *)view).image = [UIImage imageNamed:@"page.png"];
-        view.contentMode = UIViewContentModeCenter;
-        label = [[UILabel alloc] initWithFrame:view.bounds];
-        label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:50];
-        label.tag = 1;
-        [view addSubview:label];
-    }
-    else
-    {
-        //get a reference to the label in the recycled view
-        label = (UILabel *)[view viewWithTag:1];
-    }
-    
-    //set item label
-    //remember to always set any properties of your carousel item
-    //views outside of the `if (view == nil) {...}` check otherwise
-    //you'll get weird issues with carousel item content appearing
-    //in the wrong place in the carousel
-    label.text = [self.items[(NSUInteger)index] stringValue];
-    
+    view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
+    ((UIImageView *)view).image = [self.items objectAtIndex:index];
+    view.contentMode = UIViewContentModeScaleToFill;
+    view.layer.cornerRadius = 5.0f;
+    view.layer.borderWidth = 2.0f;
+    view.layer.borderColor = [UIColor whiteColor].CGColor;//UIColorFromRGB(0xFFFFF).CGColor;
     return view;
 }
 
@@ -95,38 +75,17 @@
 
 - (UIView *)carousel:(__unused iCarousel *)carousel placeholderViewAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-    UILabel *label = nil;
-    
     //create new view if no view is available for recycling
-    if (view == nil)
-    {
-        //don't do anything specific to the index within
-        //this `if (view == nil) {...}` statement because the view will be
-        //recycled and used with other index values later
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 200.0)];
-        ((UIImageView *)view).image = [UIImage imageNamed:@"page.png"];
-        view.contentMode = UIViewContentModeCenter;
-        
-        label = [[UILabel alloc] initWithFrame:view.bounds];
-        label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:50.0];
-        label.tag = 1;
-        [view addSubview:label];
-    }
-    else
-    {
-        //get a reference to the label in the recycled view
-        label = (UILabel *)[view viewWithTag:1];
-    }
-    
-    //set item label
-    //remember to always set any properties of your carousel item
-    //views outside of the `if (view == nil) {...}` check otherwise
-    //you'll get weird issues with carousel item content appearing
-    //in the wrong place in the carousel
-    label.text = (index == 0)? @"[": @"]";
-    
+
+    //don't do anything specific to the index within
+    //this `if (view == nil) {...}` statement because the view will be
+    //recycled and used with other index values later
+    view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
+    ((UIImageView *)view).image = [self.items objectAtIndex:index];
+    view.contentMode = UIViewContentModeScaleToFill;
+    view.layer.cornerRadius = 10.0f;
+    view.layer.borderWidth = 2.0f;
+    view.layer.borderColor = [UIColor blueColor].CGColor;
     return view;
 }
 

@@ -23,7 +23,6 @@
     _mediaPopUpTable.delegate = self;
     _mediaPopUpTable.dataSource = self;
     _mediaPopUpTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
