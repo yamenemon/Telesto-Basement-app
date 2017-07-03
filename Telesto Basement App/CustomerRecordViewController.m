@@ -18,6 +18,8 @@
 @synthesize snapContainer;
 @synthesize snapShotCollectionView;
 @synthesize addBuildingMediaBtn;
+@synthesize popupController;
+@synthesize hud;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -267,7 +269,7 @@
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = CNPPopupStyleCentered;
     popupController.delegate = self;
-    popupController.theme.shouldDismissOnBackgroundTouch = YES;
+    popupController.theme.shouldDismissOnBackgroundTouch = NO;
     [popupController presentPopupControllerAnimated:YES];
     });
 }
@@ -302,15 +304,18 @@
     if ([MTReachabilityManager isReachable]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             //Update the progress view
-            hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            if (!hud) {
+                hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            }
             hud.center = self.view.center;
             
             hud.mode = MBProgressHUDModeIndeterminate;
-            NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information..."];
-            NSString *strloadingText2 = [NSString stringWithFormat:@" Please Wait.\r 1-2 Minutes"];
+            NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information."];
+            NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
             
             hud.label.text = strloadingText;
             hud.detailsLabel.text=strloadingText2;
+            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         });
         NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
         for (int i= 0; i<_galleryItems.count; i++) {
@@ -339,7 +344,12 @@
         detailInfoObject.longitude = currentLocation.coordinate.longitude;
         detailInfoObject.emailNotification = [self.emailNotificationSwitch isOn]?YES:NO;
         detailInfoObject.smsReminder = [self.phoneNotifySwitch isOn]?YES:NO;
-        [manager validateObjects:detailInfoObject withRootController:self];
+        [manager validateObjects:detailInfoObject withRootController:self withCompletionBlock:^{
+            [snapShotCollectionView reloadData];
+            [hud hideAnimated:YES];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            
+        }];
     }
     else{
     }
@@ -418,15 +428,19 @@
         
         hud.mode = MBProgressHUDModeIndeterminate;
         NSString *strloadingText = [NSString stringWithFormat:@"Uploading Building Images"];
-        NSString *strloadingText2 = [NSString stringWithFormat:@" Please Wait.\r 4-5 Minutes"];
+        NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
         
         hud.label.text = strloadingText;
         hud.detailsLabel.text=strloadingText2;
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+
     });
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     [manager uploadBuildingMediaImagesArray:mediaArray withController:self withCompletion:^{
         [snapShotCollectionView reloadData];
         [hud hideAnimated:YES];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+
     }];
 }
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker

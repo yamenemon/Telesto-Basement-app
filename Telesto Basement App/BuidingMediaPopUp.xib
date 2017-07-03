@@ -12,6 +12,9 @@
         <array key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
         </array>
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
         <array key="RobotoCondensed-Bold.ttf">
             <string>RobotoCondensed-Bold</string>
         </array>
@@ -48,24 +51,41 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Building Snapes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwb-N7-0bR">
-                                    <rect key="frame" x="8" y="10" width="753" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="769" height="64"/>
                                     <color key="backgroundColor" red="0.65338705286111121" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="RobotoCondensed-Bold" family="Roboto Condensed" pointSize="35"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NC7-cb-WkC">
+                                    <rect key="frame" x="20" y="17" width="111" height="30"/>
+                                    <color key="backgroundColor" red="0.039215686270000001" green="0.33333333329999998" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="111" id="NYw-jw-Fkf"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="20"/>
+                                    <state key="normal" title="Cancel">
+                                        <color key="titleColor" red="0.9563587308" green="0.9683306813" blue="0.98498398070000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="dismissBuildingPopUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="blJ-Sy-Nbh"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.039215686270000001" green="0.33333333329999998" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="JfD-QZ-OUI" firstAttribute="top" secondItem="Z0k-hS-zZv" secondAttribute="bottom" constant="5" id="65k-jV-EJF"/>
-                                <constraint firstItem="dwb-N7-0bR" firstAttribute="leading" secondItem="CmH-lO-Tao" secondAttribute="leadingMargin" id="7Ss-om-0GW"/>
+                                <constraint firstItem="dwb-N7-0bR" firstAttribute="leading" secondItem="CmH-lO-Tao" secondAttribute="leadingMargin" constant="-8" id="7Ss-om-0GW"/>
                                 <constraint firstItem="Z0k-hS-zZv" firstAttribute="leading" secondItem="CmH-lO-Tao" secondAttribute="leading" constant="47" id="DIX-v7-DTx"/>
                                 <constraint firstAttribute="trailing" secondItem="Z0k-hS-zZv" secondAttribute="trailing" constant="46" id="L7G-r7-4Fn"/>
-                                <constraint firstItem="Z0k-hS-zZv" firstAttribute="top" secondItem="dwb-N7-0bR" secondAttribute="bottom" constant="5" id="PNz-32-amJ"/>
+                                <constraint firstItem="Z0k-hS-zZv" firstAttribute="top" secondItem="dwb-N7-0bR" secondAttribute="bottom" constant="15" id="PNz-32-amJ"/>
                                 <constraint firstItem="dwb-N7-0bR" firstAttribute="centerX" secondItem="Z0k-hS-zZv" secondAttribute="centerX" id="RHt-0c-aJq"/>
-                                <constraint firstItem="dwb-N7-0bR" firstAttribute="top" secondItem="CmH-lO-Tao" secondAttribute="top" constant="10" id="a8q-pu-RZQ"/>
+                                <constraint firstItem="NC7-cb-WkC" firstAttribute="centerY" secondItem="dwb-N7-0bR" secondAttribute="centerY" id="Tdc-9K-MKB"/>
+                                <constraint firstItem="Z0k-hS-zZv" firstAttribute="top" secondItem="NC7-cb-WkC" secondAttribute="bottom" constant="32" id="Ya7-4Q-ITs"/>
+                                <constraint firstItem="dwb-N7-0bR" firstAttribute="top" secondItem="CmH-lO-Tao" secondAttribute="top" id="a8q-pu-RZQ"/>
                                 <constraint firstItem="Z0k-hS-zZv" firstAttribute="top" secondItem="CmH-lO-Tao" secondAttribute="top" constant="79" id="bg3-h1-0dY"/>
-                                <constraint firstAttribute="trailing" secondItem="dwb-N7-0bR" secondAttribute="trailing" constant="8" id="jcU-k7-cDV"/>
+                                <constraint firstItem="NC7-cb-WkC" firstAttribute="leading" secondItem="CmH-lO-Tao" secondAttribute="leading" constant="20" id="jJR-Bf-GYH"/>
+                                <constraint firstAttribute="trailing" secondItem="dwb-N7-0bR" secondAttribute="trailing" id="jcU-k7-cDV"/>
                                 <constraint firstItem="JfD-QZ-OUI" firstAttribute="centerX" secondItem="Z0k-hS-zZv" secondAttribute="centerX" id="sUc-va-5oE"/>
                             </constraints>
                         </view>

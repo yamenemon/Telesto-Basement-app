@@ -39,8 +39,10 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     CGPoint point;
     UIButton *_deleteButton;
     BuidingMediaPopUp *buidingMediaPopUp;
-    MBProgressHUD * hud;
+    
 }
+@property (nonatomic,strong) MBProgressHUD * hud;
+@property (nonatomic,strong) CNPPopupController *popupController;
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic,strong) UICollectionView *snapShotCollectionView;
 @property (strong,nonatomic) NSMutableArray *galleryItems;

@@ -12,6 +12,8 @@
 #define TOKEN_STRING @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH"
 
 @implementation CustomerDataManager
+@synthesize uploadedBuildingMediaArray;
+
 + (CustomerDataManager *)sharedManager {
     static CustomerDataManager *_sharedManager = nil;
     static dispatch_once_t onceToken;
@@ -21,7 +23,7 @@
 
     return _sharedManager;
 }
--(void)createCustomer:(CustomerDetailInfoObject*)objects{
+-(void)createCustomer:(CustomerDetailInfoObject*)objects withCompletionBlock:(void (^)(void))completionBlock{
 
     NSString *endPoint = @"create_customer";
     NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
@@ -41,6 +43,7 @@
                                     [NSNumber numberWithBool:objects.emailNotification],@"emailNotify",
                                     [NSNumber numberWithLong:objects.customerId],@"userId",
                                     TOKEN_STRING,@"authKey",
+                                    uploadedBuildingMediaArray,@"buildingImages",
                                     nil];
     NSLog(@"Parameter: %@\n",aParametersDic);
     NSData *imageData;
@@ -62,14 +65,20 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    [_baseController.hud hideAnimated:YES];
+    
+    completionBlock();
 }
 
--(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController{
+-(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withCompletionBlock:(void (^)(void))completionBlock{
 
     _baseController = rootController;
     BOOL isValidEmail = [Utility NSStringIsValidEmail:objects.customerEmailAddress];
     if (isValidEmail==YES) {
-        [self createCustomer:objects];
+        [self createCustomer:objects withCompletionBlock:^{
+            completionBlock();
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        }];
     }
 }
 -(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock{
@@ -77,7 +86,7 @@
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *endPoint = @"upload_customer_file";
-    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",[NSNumber numberWithInt:2],@"fileType",[NSNumber numberWithUnsignedInteger:imageArray.count],@"imageCount",nil];
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",[NSNumber numberWithInt:1],@"fileType",[NSNumber numberWithUnsignedInteger:imageArray.count],@"imageCount",nil];
     
     [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParametersDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         int i = 0;
@@ -98,12 +107,27 @@
     success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response: %@", responseObject);
         NSError *e = nil;
-        NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
-        NSLog(@"%@",jsonArray);
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+        NSLog(@"%@",jsonDic);
+        NSMutableDictionary *dataDic = [jsonDic valueForKey:@"data"];
+        NSMutableArray *file = [dataDic valueForKey:@"file"];
+        NSMutableArray *fileType = [dataDic valueForKey:@"fileType"];
+        uploadedBuildingMediaArray = [[NSMutableArray alloc] init];
+
+        NSMutableArray *imageArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i<fileType.count; i++) {
+            [imageArray addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",[file objectAtIndex:i]],[NSString stringWithFormat:@"%@",[fileType objectAtIndex:i]], nil]];
+        }
+        [uploadedBuildingMediaArray addObject:imageArray];
+//        NSLog(@"Image Arr: %@\n",imageArray);
+        NSLog(@"responseArray Arr: %@",uploadedBuildingMediaArray);
         completionBlock();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
         completionBlock();
     }];
+}
+-(NSMutableArray*)uploadedBuildingMediaArray{
+    return uploadedBuildingMediaArray;
 }
 @end

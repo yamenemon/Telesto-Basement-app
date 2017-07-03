@@ -15,8 +15,11 @@
 
 @class CustomerRecordViewController;
 @interface CustomerDataManager : NSObject
+
+@property (strong,nonatomic) NSMutableArray *uploadedBuildingMediaArray;
 @property (strong,nonatomic) CustomerRecordViewController *baseController;
 + (CustomerDataManager *)sharedManager;
--(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController*)rootController;
+-(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock;
+-(NSMutableArray*)uploadedBuildingMediaArray;
 @end

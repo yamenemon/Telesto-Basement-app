@@ -150,5 +150,8 @@
 {
     NSLog(@"Index: %@", @(self.carousel.currentItemIndex));
 }
+- (IBAction)dismissBuildingPopUp:(id)sender {
+    [_customerRecordController.popupController dismissPopupControllerAnimated:YES];
+}
 
 @end
