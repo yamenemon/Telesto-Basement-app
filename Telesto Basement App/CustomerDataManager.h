@@ -22,4 +22,5 @@
 -(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock;
 -(NSMutableArray*)uploadedBuildingMediaArray;
+-(NSMutableArray*)loadCustomerListWithCompletionBlock:(void (^)(void))completionBlock;
 @end

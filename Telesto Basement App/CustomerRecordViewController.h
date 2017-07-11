@@ -70,4 +70,5 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 
 -(void)loadImageFromViaMedia:(CameraMode)mode;
 -(void)mediaPopUP;
+-(void)rootControllerBack;
 @end

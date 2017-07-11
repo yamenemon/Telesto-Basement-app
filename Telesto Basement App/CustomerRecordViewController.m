@@ -27,6 +27,7 @@
     self.title = @"Customer Records";
     mediaSelectionPopUp = [[[NSBundle mainBundle] loadNibNamed:@"MediaPopUp" owner:self options:nil] objectAtIndex:0];
     _galleryItems = [[NSMutableArray alloc] init];
+    [self loadCountryList];
     [self registerForKeyboardNotifications];
     [self getCurrentLocation];
 }
@@ -302,19 +303,19 @@
 }
 -(void)createCustomer{
     if ([MTReachabilityManager isReachable]) {
+        if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count == _galleryItems.count) {
+
         dispatch_async(dispatch_get_main_queue(), ^{
             //Update the progress view
-            if (!hud) {
-                hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            }
+            hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.center = self.view.center;
-            
             hud.mode = MBProgressHUDModeIndeterminate;
             NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information."];
             NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
             
             hud.label.text = strloadingText;
             hud.detailsLabel.text=strloadingText2;
+            [hud showAnimated:YES];
             [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         });
         NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
@@ -340,16 +341,30 @@
         detailInfoObject.customerPhoneNumber = self.phoneNumberTextField.text;
         detailInfoObject.customerNotes = self.notesTextView.text;
         detailInfoObject.customerOtherImageDic = imageDic;
-        detailInfoObject.latitude = currentLocation.coordinate.latitude;
-        detailInfoObject.longitude = currentLocation.coordinate.longitude;
+        detailInfoObject.latitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
+        detailInfoObject.longitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
         detailInfoObject.emailNotification = [self.emailNotificationSwitch isOn]?YES:NO;
         detailInfoObject.smsReminder = [self.phoneNotifySwitch isOn]?YES:NO;
+        detailInfoObject.buildingImages = [[CustomerDataManager sharedManager] uploadedBuildingMediaArray];
         [manager validateObjects:detailInfoObject withRootController:self withCompletionBlock:^{
             [snapShotCollectionView reloadData];
-            [hud hideAnimated:YES];
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-            
         }];
+        }
+        else{
+            NSLog(@"Media image not uploaded yet");
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uploading Error" message:@"Upload Media file first!!!" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            [alert addAction:ok];
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     }
     else{
     }
@@ -377,6 +392,43 @@
     mediaSelectionPopUp.isFromBuildingMedia = YES;
     [self mediaPopUP];
 }
+- (IBAction)uploadMediaFiles:(id)sender {
+    if (_galleryItems.count>0) {
+        BOOL isReachable = [MTReachabilityManager isReachable];
+        if (isReachable) {
+            [self uploadBuildingMediaImages:_galleryItems];
+        }
+        else{
+            NSLog(@"Not Reachable");
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Internet Problem" message:@"You are out of network.Prese check your network settings." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            [alert addAction:ok];
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }
+    else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Media Error" message:@"No Media to upload" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        [alert addAction:ok];
+        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
 
 #pragma mark ELCImagePickerControllerDelegate Methods
 
@@ -395,25 +447,8 @@
         else{
             if (images.count>0) {
                 [_galleryItems addObjectsFromArray:images];
-                BOOL isReachable = [MTReachabilityManager isReachable];
-                if (isReachable) {
-                    [self uploadBuildingMediaImages:_galleryItems];
-                }
-                else{
-                    NSLog(@"Not Reachable");
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Internet Problem" message:@"You are out of network.Prese check your network settings." preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction* ok = [UIAlertAction
-                                         actionWithTitle:@"OK"
-                                         style:UIAlertActionStyleDefault
-                                         handler:^(UIAlertAction * action)
-                                         {
-                                             [alert dismissViewControllerAnimated:YES completion:nil];
-                                             
-                                         }];
-                    [alert addAction:ok];
-                    [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
-                    [self presentViewController:alert animated:YES completion:nil];
-                }
+                [snapShotCollectionView reloadData];
+
             }
         }
     }
@@ -421,17 +456,15 @@
 -(void)uploadBuildingMediaImages:(NSMutableArray*)mediaArray{
     dispatch_async(dispatch_get_main_queue(), ^{
         //Update the progress view
-        if (!hud) {
-            hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        }
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.center = self.view.center;
-        
         hud.mode = MBProgressHUDModeIndeterminate;
         NSString *strloadingText = [NSString stringWithFormat:@"Uploading Building Images"];
         NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
         
         hud.label.text = strloadingText;
         hud.detailsLabel.text=strloadingText2;
+        [hud showAnimated:YES];
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
 
     });
@@ -446,5 +479,27 @@
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)loadCountryList{
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //Update the progress view
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.center = self.view.center;
+        hud.mode = MBProgressHUDModeIndeterminate;
+        NSString *strloadingText = [NSString stringWithFormat:@"Loading Country Lists"];
+        hud.label.text = strloadingText;
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        
+    });
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    [manager loadCustomerListWithCompletionBlock:^{
+        [hud hideAnimated:YES];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    }];
+
+}
+-(void)rootControllerBack{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end
