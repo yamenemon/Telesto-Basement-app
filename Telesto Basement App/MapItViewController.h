@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface MapItViewController : UIViewController
-
+@class CustomerInfoObject;
+@interface MapItViewController : UIViewController<MKMapViewDelegate> {
+    MKMapView *mapView;
+}
+@property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (strong,nonatomic) CustomerInfoObject *customInfoObject;
 @end

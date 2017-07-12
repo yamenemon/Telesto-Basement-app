@@ -15,7 +15,7 @@
     // Initialization code
     [self.cellImageView.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
     [self.cellImageView.layer setBorderWidth: 1.0];
-    [self.cellImageView.layer setCornerRadius:8.0];
+    [self.cellImageView.layer setCornerRadius:5.0];
     [self.infoBaseView.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
     [self.infoBaseView.layer setBorderWidth: 1.0];
     self.infoBaseView.layer.cornerRadius = 8.0;

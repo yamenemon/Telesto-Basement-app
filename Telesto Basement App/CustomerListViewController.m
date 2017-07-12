@@ -26,6 +26,9 @@
     [[UINavigationBar appearance] setBackgroundColor:[Utility colorWithHexString:@"0A5571"]];
     customerDataManager = [CustomerDataManager sharedManager];
     _customerInfoObjArray = [[NSMutableArray alloc] init];
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
     [self customSetup];
     [self getCustomerData];
 }
@@ -185,15 +188,29 @@
     cell.customProfileBtn.tag = indexPath.row;
     cell.customProfileBtn.layer.cornerRadius = 5.0;
     [cell.customProfileBtn addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.MapItBtn addTarget:self action:@selector(mapItBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 
     cell.cityTextLabel.text =  [NSString stringWithFormat:@": %@", customerInfoObjects.customerAddress];
     cell.lastLoginTextLabel.text = [NSString stringWithFormat:@": %@", customerInfoObjects.scheduleDate];
     cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObjects.customerName];
-    NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/%@",BASE_URL,customerInfoObjects.customerOtherImageDic];
+    NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/profile/%@",BASE_URL,customerInfoObjects.customerOtherImageDic];
     NSLog(@"%@",imageUrl);
-    [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    cell.cellImageView.contentMode = UIViewContentModeScaleToFill;
+    [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"profileAvatar"]];
 
     return cell;
+}
+-(void)mapItBtnAction:(UIButton*)sender{
+
+
+    UIButton *btn = (UIButton*)sender;
+    long tag = btn.tag;
+    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:tag];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MapItViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MapItViewController"];
+    vc.customInfoObject = customerInfoObject;
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)cellMethod:(UIButton*)sender{
     UIButton *btn = (UIButton*)sender;
@@ -207,7 +224,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 100;
+    return 110;
 
 }
 //-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

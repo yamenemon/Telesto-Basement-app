@@ -23,6 +23,7 @@
 		70161B351EF2939800101BDB /* MapItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70161B341EF2939800101BDB /* MapItViewController.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
+		70246CBB1F16673800274C23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70246CBA1F16673800274C23 /* MapKit.framework */; };
 		7025893D1EF00376006ACCC8 /* ProductInfoDetailsPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7025893C1EF00376006ACCC8 /* ProductInfoDetailsPopup.m */; };
 		7025893F1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7025893E1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib */; };
 		7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C01E1D15760062EB77 /* UserProfileViewController.m */; };
@@ -174,6 +175,7 @@
 		70161B341EF2939800101BDB /* MapItViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapItViewController.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon@2x.png"; sourceTree = "<group>"; };
+		70246CBA1F16673800274C23 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7025893B1EF00376006ACCC8 /* ProductInfoDetailsPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductInfoDetailsPopup.h; sourceTree = "<group>"; };
 		7025893C1EF00376006ACCC8 /* ProductInfoDetailsPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductInfoDetailsPopup.m; sourceTree = "<group>"; };
 		7025893E1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductInfoDetailsPopupView.xib; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				3B444B451EFA90740037A4E0 /* CoreLocation.framework in Frameworks */,
 				70CAA4771EE83E5A00614BFB /* AVFoundation.framework in Frameworks */,
 				70CAA4751EE83E5100614BFB /* CoreMedia.framework in Frameworks */,
+				70246CBB1F16673800274C23 /* MapKit.framework in Frameworks */,
 				704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */,
 				70CAA4711EE83E3A00614BFB /* MediaPlayer.framework in Frameworks */,
 				70CAA46F1EE83E3100614BFB /* MobileCoreServices.framework in Frameworks */,
@@ -492,6 +495,7 @@
 		704B688E1E13C9C000E6537D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70246CBA1F16673800274C23 /* MapKit.framework */,
 				3B444B441EFA90740037A4E0 /* CoreLocation.framework */,
 				70CAA4761EE83E5A00614BFB /* AVFoundation.framework */,
 				70CAA4741EE83E5100614BFB /* CoreMedia.framework */,
@@ -647,6 +651,8 @@
 				70CA54CE1E7172A700F7FE67 /* CustomTableViewCell.h */,
 				70CA54CF1E7172A700F7FE67 /* CustomTableViewCell.m */,
 				70CA54D01E7172A700F7FE67 /* CustomTableViewCell.xib */,
+				70161B331EF2939800101BDB /* MapItViewController.h */,
+				70161B341EF2939800101BDB /* MapItViewController.m */,
 			);
 			name = CustomerList;
 			sourceTree = "<group>";
@@ -738,8 +744,6 @@
 				70CE842C1F05131A00867F91 /* BuidingMediaPopUp.h */,
 				70CE842D1F05131A00867F91 /* BuidingMediaPopUp.m */,
 				70CE842F1F05132800867F91 /* BuidingMediaPopUp.xib */,
-				70161B331EF2939800101BDB /* MapItViewController.h */,
-				70161B341EF2939800101BDB /* MapItViewController.m */,
 				70CE84061F04CED900867F91 /* ELCImagePicker */,
 			);
 			name = CustomerRecord;
@@ -791,6 +795,9 @@
 						DevelopmentTeam = 8Y534JBUBF;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};

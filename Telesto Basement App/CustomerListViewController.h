@@ -12,6 +12,7 @@
 #import "CustomerInfoObject.h"
 #import "CustomTableViewCell.h"
 #import "CustomerProposalsViewController.h"
+#import "MapItViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 
