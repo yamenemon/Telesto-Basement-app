@@ -12,6 +12,8 @@
 #import "CustomerInfoObject.h"
 #import "CustomTableViewCell.h"
 #import "CustomerProposalsViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
 
 @class CustomerDataManager;
 @class CustomerInfoObject;

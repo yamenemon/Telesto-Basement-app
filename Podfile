@@ -11,4 +11,5 @@ target 'Telesto Basement App' do
     pod 'CNPPopupController'
     pod 'AFNetworking', '~> 3.0'
     pod 'MBProgressHUD', '~> 1.0.0'
+    pod 'SDWebImage', '~>3.8'
 end

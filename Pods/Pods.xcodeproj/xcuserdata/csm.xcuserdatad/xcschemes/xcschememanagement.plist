@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CNPPopupController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -14,7 +19,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Telesto Basement App.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>129D6E85D903CC568486B11B4C247E10</key>
+		<key>06A2B80560D2632440463C43DF76EF8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,17 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E2D8DE16D2B0F65983AE3A6B2C5232E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>842A0D621639C1DDB8DAFE2CF36B978A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>9E033EDB5EC0819481B0546434FA577B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE4895D96910F1768A5E88511A09585E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

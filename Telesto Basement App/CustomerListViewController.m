@@ -9,7 +9,7 @@
 #import "CustomerListViewController.h"
 #import "CustomerDataManager.h"
 #import "CustomerInfoObject.h"
-
+#define BASE_URL  @"http://telesto.centralstationmarketing.com/"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @interface CustomerListViewController ()
 
@@ -177,7 +177,6 @@
 
         cell.cellImageView.image = [UIImage imageNamed:@"userName"];
     
-//        [cell.proposalsBtn addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
     cell.MapItBtn.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
     cell.MapItBtn.tag = indexPath.row;
     cell.MapItBtn.layer.cornerRadius = 5.0;
@@ -190,6 +189,9 @@
     cell.cityTextLabel.text =  [NSString stringWithFormat:@": %@", customerInfoObjects.customerAddress];
     cell.lastLoginTextLabel.text = [NSString stringWithFormat:@": %@", customerInfoObjects.scheduleDate];
     cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObjects.customerName];
+    NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/%@",BASE_URL,customerInfoObjects.customerOtherImageDic];
+    NSLog(@"%@",imageUrl);
+    [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 
     return cell;
 }
@@ -225,15 +227,7 @@
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:vc animated:YES];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (IBAction)logoutBtnAction:(id)sender {
 
     
