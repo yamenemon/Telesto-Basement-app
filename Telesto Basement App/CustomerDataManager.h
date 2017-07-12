@@ -14,13 +14,17 @@
 #import <AFURLRequestSerialization.h>
 
 @class CustomerRecordViewController;
-@interface CustomerDataManager : NSObject
+@class CustomerListViewController;
 
+@interface CustomerDataManager : NSObject
+@property (strong,nonatomic) NSMutableDictionary *customerList;
 @property (strong,nonatomic) NSMutableArray *uploadedBuildingMediaArray;
 @property (strong,nonatomic) CustomerRecordViewController *baseController;
 + (CustomerDataManager *)sharedManager;
 -(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock;
 -(NSMutableArray*)uploadedBuildingMediaArray;
+-(NSMutableDictionary*)getCustomerData;
 -(NSMutableArray*)loadCustomerListWithCompletionBlock:(void (^)(void))completionBlock;
+-(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock;
 @end

@@ -7,18 +7,25 @@
 //
 
 #import "CustomerListViewController.h"
+#import "CustomerDataManager.h"
+#import "CustomerInfoObject.h"
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @interface CustomerListViewController ()
 
 @end
 
 @implementation CustomerListViewController
+@synthesize customerDataManager;
+//@synthesize customerInfoObject;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundColor:[Utility colorWithHexString:@"0A5571"]];
+    customerDataManager = [CustomerDataManager sharedManager];
+    _customerInfoObjArray = [[NSMutableArray alloc] init];
     [self customSetup];
     [self getCustomerData];
 }
@@ -28,43 +35,82 @@
     _customerListTableView.layer.borderWidth = 2.0;
     _customerListTableView.layer.cornerRadius = 2.0;
 }
+
 -(void)getCustomerData{
     _customerListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-    NSString *customerData = @"{ \"firstName\": \"Oliver\",\"lastName\": \"Smith\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
     
-    NSString *customerData2 = @"{ \"firstName\": \"Paul\",\"lastName\": \"A. Heckel\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    
-    NSString *customerData3 = @"{ \"firstName\": \"Archie\",\"lastName\": \"M. Milton\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    
-    NSString *customerData4 = @"{ \"firstName\": \"Charles\",\"lastName\": \"H. Ertl\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    
-    NSString *customerData5 = @"{ \"firstName\": \"Nathalie\",\"lastName\": \"D. Pittman\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    
-    NSString *customerData6 = @"{ \"firstName\": \"Courtney\",\"lastName\": \"C. Schroeder\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    
-    NSString *customerData7 = @"{ \"firstName\": \"Karen\",\"lastName\": \"J. Mauck\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    
-    NSString *customerData8 = @"{ \"firstName\": \"Janice\",\"lastName\": \"D. White\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    
-    NSString *customerData9 = @"{ \"firstName\": \"Leon\",\"lastName\": \"Halpern\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    
-    NSString *customerData10 = @"{ \"firstName\": \"Carolyn\",\"lastName\": \"Leger\",\"age\": 25,\"address\":\{\"streetAddress\":\"21 2nd Street\",\"city\":\"New York\",\"state\":\"NY\",        \"postalCode\":\"10021\"},\"phoneNumber\":[{\"type\": \"home\",\"number\": \"212 555-1234\"},{\"type\":\"fax\",\"number\": \"646 555-4567\"}]}";
-    NSArray *arr = [NSArray arrayWithObjects:customerData,customerData2,customerData3,customerData4,customerData5,customerData6,customerData7,customerData8,customerData9,customerData10, nil];
-    _customerInfoObjArray = [[NSMutableArray alloc] init];
-    for (int i=0; i<arr.count; i++) {
-        // Convert to JSON object:
-        NSArray *jsonObject = [NSJSONSerialization JSONObjectWithData:[[arr objectAtIndex:i] dataUsingEncoding:NSUTF8StringEncoding]
-                                                              options:0 error:NULL];
-//        NSLog(@"jsonObject=%@", jsonObject);
-        
-        CustomerInfoObject *customerInfoObj = [[CustomerInfoObject alloc] init];
-        customerInfoObj.customerName = [NSString stringWithFormat:@"%@ %@",[jsonObject valueForKey:@"firstName"],[jsonObject valueForKey:@"lastName"]] ;
-        customerInfoObj.customerAddress = [jsonObject valueForKey:@"address"];
-//        customerInfoObj.scheduleDate = [jsonObject valueForKey:@"number"];
-        [_customerInfoObjArray addObject:customerInfoObj];
-    }
-    
+     [customerDataManager getCustomerListWithBaseController:self withCompletionBlock:^{
+         _customerInfoDic = [customerDataManager getCustomerData];
+         for (NSMutableDictionary *dic in _customerInfoDic) {
+             
+             /*
+              address = thbggb;
+              city = ggbggb;
+              countryId = 4;
+              created = "2017-07-11 13:06:18";
+              details = Nfgvutngvgnvgtimtgimv;
+              email = "fgbggb@frf.ffl";
+              emailNotify = 1;
+              fName = ggbggvbtg;
+              id = 17;
+              lName = ggbggb;
+              latitude = "23.7832";
+              longitude = "90.3942";
+              modified = "0000-00-00 00:00:00";
+              phone = 7575;
+              photo = "1499778378ds32a2w13eq4.jpg";
+              smsNotify = 0;
+              state = ggbggbgg;
+              status = 1;
+              userId = 2;
+              zip = ggbggbgg;
+              
+              
+              @property (assign,nonatomic) long customerId;
+              @property (strong,nonatomic) NSString *customerFirstName;
+              @property (strong,nonatomic) NSString *customerLastName;
+              @property (strong,nonatomic) NSString *customerStreetAddress;
+              @property (strong,nonatomic) NSString *customerCityName;
+              @property (strong,nonatomic) NSString *customerStateName;
+              @property (strong,nonatomic) NSString *customerZipName;
+              @property (strong,nonatomic) NSString *customerCountryName;
+              @property (assign,nonatomic) BOOL emailNotification;
+              @property (strong,nonatomic) NSString *customerEmailAddress;
+              @property (assign,nonatomic) BOOL smsReminder;
+              @property (strong,nonatomic) NSString *customerPhoneNumber;
+              @property (strong,nonatomic) NSString *customerNotes;
+              @property (strong,nonatomic) NSDictionary *customerOtherImageDic;
+              @property (strong,nonatomic) NSMutableArray *buildingImages;
+              @property (strong,nonatomic) NSString* latitude;
+              @property (strong,nonatomic) NSString* longitude;
+              
+              */
+             
+             CustomerInfoObject *customerInfoObj = [[CustomerInfoObject alloc] init];
+             customerInfoObj.customerName = [NSString stringWithFormat:@"%@ %@",[dic valueForKey:@"fName"],[dic valueForKey:@"lName"]] ;
+             customerInfoObj.customerAddress = [dic valueForKey:@"address"];
+             customerInfoObj.scheduleDate = [dic valueForKey:@"created"];
+             customerInfoObj.customerId = [dic valueForKey:@"id"];
+             customerInfoObj.customerFirstName = [dic valueForKey:@"fName"];
+             customerInfoObj.customerLastName = [dic valueForKey:@"lName"];
+             customerInfoObj.customerCityName = [dic valueForKey:@"city"];
+             customerInfoObj.customerStateName = [dic valueForKey:@"state"];
+             customerInfoObj.customerZipName = [dic valueForKey:@"zip"];
+             customerInfoObj.customerCountryName = [dic valueForKey:@"countryId"];
+             customerInfoObj.emailNotification = [dic valueForKey:@"emailNotify"];
+             customerInfoObj.customerEmailAddress = [dic valueForKey:@"email"];
+             customerInfoObj.smsReminder = [dic valueForKey:@"smsNotify"];
+             customerInfoObj.customerPhoneNumber = [dic valueForKey:@"phone"];
+             customerInfoObj.customerNotes = [dic valueForKey:@"details"];
+             customerInfoObj.customerOtherImageDic = [dic valueForKey:@"photo"];
+             customerInfoObj.buildingImages = [dic valueForKey:@""];
+             customerInfoObj.latitude = [dic valueForKey:@"latitude"];
+             customerInfoObj.longitude = [dic valueForKey:@"longitude"];
+             [_customerInfoObjArray addObject:customerInfoObj];
+         }
+         [_customerListTableView reloadData];
+        NSLog(@"Customer data: %@",_customerInfoDic);
+    }];
 }
 - (void)customSetup
 {
@@ -114,11 +160,11 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;//[_customerInfoObjArray count];
+    return _customerInfoDic.count;//[_customerInfoObjArray count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
   
-    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:indexPath.row];
+    CustomerInfoObject *customerInfoObjects = [_customerInfoObjArray objectAtIndex:indexPath.row];
     static NSString *simpleTableIdentifier = @"CustomTableViewCell";
     
     CustomTableViewCell *cell = (CustomTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -141,10 +187,9 @@
     cell.customProfileBtn.layer.cornerRadius = 5.0;
     [cell.customProfileBtn addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
 
-    cell.cityTextLabel.text = @": 21 2nd Street.";
-    cell.lastLoginTextLabel.text = @": Monday, June 15, 2009 8:45:30 PM ";
-//    NSLog(@"\nCustomer Name: %@ \n Customer Address: %@ \n Customer Schedule: %@ \n",customerInfoObject.customerName,customerInfoObject.customerAddress,customerInfoObject.scheduleDate);
-    cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObject.customerName];
+    cell.cityTextLabel.text =  [NSString stringWithFormat:@": %@", customerInfoObjects.customerAddress];
+    cell.lastLoginTextLabel.text = [NSString stringWithFormat:@": %@", customerInfoObjects.scheduleDate];
+    cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObjects.customerName];
 
     return cell;
 }

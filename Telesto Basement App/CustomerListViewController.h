@@ -13,9 +13,15 @@
 #import "CustomTableViewCell.h"
 #import "CustomerProposalsViewController.h"
 
+@class CustomerDataManager;
+@class CustomerInfoObject;
 @interface CustomerListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *customerListTableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *customerSearchBar;
 @property (strong, nonatomic) NSMutableArray *customerInfoObjArray;
+@property (strong, nonatomic) NSMutableDictionary *customerInfoDic;
+
+@property (strong, nonatomic) CustomerDataManager *customerDataManager;
+//@property (strong, nonatomic) CustomerInfoObject *customerInfoObject;
 @end

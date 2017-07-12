@@ -8,6 +8,8 @@
 
 #import "CustomerDataManager.h"
 #import "CustomerRecordViewController.h"
+#import "CustomerListViewController.h"
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
@@ -185,4 +187,54 @@
     return countryList;
 
 }
+-(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock{
+    
+    _customerList = [[NSMutableDictionary alloc] init];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"customer_list";
+    NSString *customerListUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,endPoint];
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",nil];
+    [manager POST:customerListUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
+        NSError *e;
+        NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+        _customerList = [[jsonDic valueForKey:@"results"] valueForKey:@"customers"];
+//        NSLog(@"%@",_customerList);
+        completionBlock();
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@", @"Customer list not loaded".capitalizedString);
+        NSLog(@"%@",error);
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Customer not loaded" message:@"Reload?!!!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 [self getCustomerListWithBaseController:baseController withCompletionBlock:^{
+                                     completionBlock();
+                                 }];
+                             }];
+        [alert addAction:ok];
+        
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+        [alert addAction:cancel];
+        
+        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        [cancel setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+        completionBlock();
+    }];
+}
+
+-(NSMutableDictionary*)getCustomerData{
+    return _customerList;
+}
+
+
 @end

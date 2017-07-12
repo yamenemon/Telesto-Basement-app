@@ -23,7 +23,6 @@
 @property (assign,nonatomic) BOOL smsReminder;
 @property (strong,nonatomic) NSString *customerPhoneNumber;
 @property (strong,nonatomic) NSString *customerNotes;
-//@property (strong,nonatomic) UIImage *customerProfileImage;
 @property (strong,nonatomic) NSDictionary *customerOtherImageDic;
 @property (strong,nonatomic) NSMutableArray *buildingImages;
 @property (strong,nonatomic) NSString* latitude;
