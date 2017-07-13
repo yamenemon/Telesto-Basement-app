@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ActionSheetPicker-3.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CNPPopupController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +42,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06A2B80560D2632440463C43DF76EF8D</key>
+		<key>1413B9489D31E0B1968A0B2004E72B13</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1413B9489D31E0B1968A0B2004E72B13</key>
+		<key>14CDB49B186A5482620909590CF6C778</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,12 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>98DE1C9B1F48D74E0233313D4CB4EABB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9E033EDB5EC0819481B0546434FA577B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE4895D96910F1768A5E88511A09585E</key>
+		<key>FCBC386340B72667EFF8DE780C20C725</key>
 		<dict>
 			<key>primary</key>
 			<true/>

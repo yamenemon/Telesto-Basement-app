@@ -12,4 +12,5 @@ target 'Telesto Basement App' do
     pod 'AFNetworking', '~> 3.0'
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'SDWebImage', '~>3.8'
+    pod 'ActionSheetPicker-3.0', '~> 2.2.0'
 end

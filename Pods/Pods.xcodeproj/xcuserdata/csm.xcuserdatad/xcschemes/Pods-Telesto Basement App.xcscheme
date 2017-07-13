@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BE4895D96910F1768A5E88511A09585E'
+               BlueprintIdentifier = 'FCBC386340B72667EFF8DE780C20C725'
                BlueprintName = 'Pods-Telesto Basement App'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-Telesto Basement App.a'>
