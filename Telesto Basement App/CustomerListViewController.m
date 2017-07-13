@@ -187,7 +187,7 @@
     cell.customProfileBtn.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
     cell.customProfileBtn.tag = indexPath.row;
     cell.customProfileBtn.layer.cornerRadius = 5.0;
-    [cell.customProfileBtn addTarget:self action:@selector(cellMethod:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.customProfileBtn addTarget:self action:@selector(customProfileBtnActon:) forControlEvents:UIControlEventTouchUpInside];
     [cell.MapItBtn addTarget:self action:@selector(mapItBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 
     cell.cityTextLabel.text =  [NSString stringWithFormat:@": %@", customerInfoObjects.customerAddress];
@@ -200,9 +200,14 @@
 
     return cell;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 110;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:indexPath.row];
+    [self cellMethod:(long)indexPath.row withCustomerInfo:customerInfoObject];
+}
 -(void)mapItBtnAction:(UIButton*)sender{
-
-
     UIButton *btn = (UIButton*)sender;
     long tag = btn.tag;
     CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:tag];
@@ -212,25 +217,18 @@
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:vc animated:YES];
 }
--(void)cellMethod:(UIButton*)sender{
-    UIButton *btn = (UIButton*)sender;
-    long tag = btn.tag;
-    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:tag];
+-(void)cellMethod:(long)sender withCustomerInfo:(CustomerInfoObject*)infoObject{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     CustomerProposalsViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerProposals"];
-    vc.customInfoObject = customerInfoObject;
+    vc.customInfoObject = infoObject;
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:vc animated:YES];
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    return 110;
+-(void)customProfileBtnActon:(UIButton*)sender{
 
 }
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:indexPath.row];
-//    [self cellMethod:customerInfoObject];
-//}
+
+
 - (IBAction)createNewCustomer:(id)sender {
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -246,8 +244,6 @@
 }
 
 - (IBAction)logoutBtnAction:(id)sender {
-
-    
         UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:@"Log Out"
                                       message:@"Do you want to Log out?"
@@ -272,7 +268,6 @@
         [alert addAction:ok];
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
-
 }
 
 @end

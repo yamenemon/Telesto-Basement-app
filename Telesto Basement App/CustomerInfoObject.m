@@ -10,6 +10,5 @@
 
 @implementation CustomerInfoObject
 
-@synthesize customerName,scheduleDate,customerAddress;
-
+@synthesize customerName,scheduleDate,customerAddress,customerId,customerFirstName,customerLastName,customerStreetAddress,customerCityName,customerStateName,customerZipName,customerCountryName,emailNotification,customerEmailAddress,smsReminder,customerPhoneNumber,customerNotes,customerOtherImageDic,buildingImages,latitude,longitude;
 @end

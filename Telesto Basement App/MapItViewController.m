@@ -15,16 +15,13 @@
 
 @implementation MapItViewController
 @synthesize customInfoObject;
+@synthesize mapView;
 - (void)viewDidLoad {
     // AIzaSyB4I45UeOkUSSvnW070-1GFEf0THZjvZn0
     [super viewDidLoad];
         [super viewDidLoad];
         mapView = [[MKMapView alloc]
-                   initWithFrame:CGRectMake(0,
-                                            0,
-                                            self.view.bounds.size.width,
-                                            self.view.bounds.size.height)
-                   ];
+                   initWithFrame:CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height)];
 //        mapView.showsUserLocation = NO;
         mapView.mapType = MKMapTypeStandard;
         mapView.delegate = self;
@@ -47,8 +44,8 @@
     span.longitudeDelta = 1;//[customInfoObject.longitude floatValue];
     CLLocationCoordinate2D location;
     //37.276179,-104.6490397
-    location.latitude = [customInfoObject.latitude floatValue]+1;//aUserLocation.coordinate.latitude;
-    location.longitude = [customInfoObject.longitude floatValue]+1;//aUserLocation.coordinate.longitude;
+    location.latitude = [customInfoObject.latitude floatValue];//aUserLocation.coordinate.latitude;
+    location.longitude = [customInfoObject.longitude floatValue];//aUserLocation.coordinate.longitude;
     region.span = span;
     region.center = location;
     [aMapView setRegion:region animated:YES];

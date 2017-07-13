@@ -10,6 +10,8 @@
 #import "Utility.h"
 #import "CustomerInfoObject.h"
 #import "CustomerProposalTableViewCell.h"
+#define BASE_URL  @"http://telesto.centralstationmarketing.com/"
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface CustomerProposalsViewController ()
@@ -31,13 +33,21 @@
     [self setCustomerInfo:customInfoObject];
 }
 -(void)setCustomerInfo:(CustomerInfoObject*)customerInfo{
-
+    NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/profile/%@",BASE_URL,customerInfo.customerOtherImageDic];
+    NSLog(@"%@",imageUrl);
+    self.customerProfileImage.contentMode = UIViewContentModeScaleAspectFit;
+    [self.customerProfileImage sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"userName"]];
     self.customerNameLabel.text = [NSString stringWithFormat:@"%@",customerInfo.customerName];
-    self.stateLabel.text = [NSString stringWithFormat:@"%@",customerInfo.customerAddress];
+    self.streetLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerAddress];
+    self.cityLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerCityName];
+    self.stateLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerStateName];
+    self.zipLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerZipName];
+    self.phoneLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerPhoneNumber];
+    self.emailLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerEmailAddress];
 }
 -(void)viewDidLayoutSubviews{
    
-    self.customerProfileImage.layer.cornerRadius = self.customerProfileImage.frame.size.width / 2;
+    self.customerProfileImage.layer.cornerRadius = 10;
     self.customerProfileImage.layer.borderWidth = 2.0f;
     self.customerProfileImage.layer.borderColor = UIColorFromRGB(0x0A5571).CGColor;
     self.customerProfileImage.clipsToBounds = YES;

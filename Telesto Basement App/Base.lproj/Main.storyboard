@@ -1140,80 +1140,110 @@ Washington, DC 20521-6170
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="704"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colorPicker" translatesAutoresizingMaskIntoConstraints="NO" id="kco-PT-lZn">
-                                                <rect key="frame" x="54" y="15" width="190" height="190"/>
+                                                <rect key="frame" x="17" y="15" width="266" height="207"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="190" id="GYr-de-Ijs"/>
-                                                    <constraint firstAttribute="width" constant="190" id="h2k-sf-pnd"/>
+                                                    <constraint firstAttribute="height" constant="207" id="GYr-de-Ijs"/>
+                                                    <constraint firstAttribute="width" constant="266" id="h2k-sf-pnd"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8oX-Dp-JF9" userLabel="InfoView">
-                                                <rect key="frame" x="17" y="284" width="266" height="306"/>
+                                                <rect key="frame" x="17" y="271" width="266" height="319"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City,ST,Zip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNa-8I-X7r">
-                                                        <rect key="frame" x="14" y="79" width="100" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNa-8I-X7r">
+                                                        <rect key="frame" x="14" y="79" width="60" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74Z-j4-XAf">
+                                                        <rect key="frame" x="14" y="112" width="60" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKh-Ng-xr3">
+                                                        <rect key="frame" x="14" y="143" width="60" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ts-cj-JAh">
-                                                        <rect key="frame" x="14" y="109" width="100" height="21"/>
+                                                        <rect key="frame" x="14" y="176" width="60" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B84-3Y-mSq">
-                                                        <rect key="frame" x="14" y="139" width="100" height="21"/>
+                                                        <rect key="frame" x="14" y="206" width="60" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anthony" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vy5-yy-d23">
-                                                        <rect key="frame" x="14" y="8" width="238" height="33"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="266" height="41"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="20"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="23"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acO-3O-j4e">
-                                                        <rect key="frame" x="14" y="49" width="100" height="21"/>
+                                                        <rect key="frame" x="14" y="49" width="60" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhc-9X-LJw">
-                                                        <rect key="frame" x="122" y="49" width="130" height="21"/>
+                                                        <rect key="frame" x="82" y="49" width="176" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a84-60-0VW">
-                                                        <rect key="frame" x="122" y="79" width="130" height="21"/>
+                                                        <rect key="frame" x="82" y="79" width="176" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVL-m5-yaK">
+                                                        <rect key="frame" x="82" y="112" width="176" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzQ-cG-0jK">
-                                                        <rect key="frame" x="122" y="109" width="130" height="21"/>
+                                                        <rect key="frame" x="82" y="176" width="176" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCZ-I6-eCs">
-                                                        <rect key="frame" x="122" y="139" width="130" height="21"/>
+                                                        <rect key="frame" x="82" y="206" width="176" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-nr-C73">
+                                                        <rect key="frame" x="82" y="143" width="176" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1242,12 +1272,12 @@ Washington, DC 20521-6170
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhx-zX-Yhl">
-                                                <rect key="frame" x="54" y="215" width="190" height="35"/>
-                                                <color key="backgroundColor" red="0.039215686274509803" green="0.33333333333333331" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhx-zX-Yhl">
+                                                <rect key="frame" x="17" y="230" width="266" height="35"/>
+                                                <color key="backgroundColor" red="0.93719738720000001" green="0.57795637850000003" blue="0.29640921949999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                                 <state key="normal" title="Edit Profile">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <segue destination="NlW-XZ-P4j" kind="show" id="tcg-OG-Ea8"/>
@@ -1257,15 +1287,15 @@ Washington, DC 20521-6170
                                         <color key="backgroundColor" red="0.90311578546778726" green="0.9120575259179633" blue="0.9120575259179633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="m6E-ed-lKS" firstAttribute="centerX" secondItem="Scw-rI-7ZB" secondAttribute="centerX" constant="73" id="3xL-y7-muL"/>
-                                            <constraint firstItem="rhx-zX-Yhl" firstAttribute="top" secondItem="kco-PT-lZn" secondAttribute="bottom" constant="10" id="4Pm-gm-GgE"/>
+                                            <constraint firstItem="rhx-zX-Yhl" firstAttribute="top" secondItem="kco-PT-lZn" secondAttribute="bottom" constant="8" id="4Pm-gm-GgE"/>
                                             <constraint firstItem="zdz-te-dkx" firstAttribute="top" secondItem="m6E-ed-lKS" secondAttribute="top" id="4Rh-R5-Cgl"/>
                                             <constraint firstItem="zdz-te-dkx" firstAttribute="leading" secondItem="Scw-rI-7ZB" secondAttribute="leading" constant="6" id="7pE-9M-dn5"/>
-                                            <constraint firstItem="8oX-Dp-JF9" firstAttribute="top" secondItem="rhx-zX-Yhl" secondAttribute="bottom" constant="34" id="H0O-ee-NhJ"/>
+                                            <constraint firstItem="8oX-Dp-JF9" firstAttribute="top" secondItem="rhx-zX-Yhl" secondAttribute="bottom" constant="6" id="H0O-ee-NhJ"/>
                                             <constraint firstItem="zdz-te-dkx" firstAttribute="top" secondItem="8oX-Dp-JF9" secondAttribute="bottom" priority="250" constant="50" id="Ph9-Ti-IFp"/>
                                             <constraint firstAttribute="trailing" secondItem="8oX-Dp-JF9" secondAttribute="trailing" constant="17" id="PqV-Ya-aOq"/>
                                             <constraint firstItem="zdz-te-dkx" firstAttribute="height" secondItem="m6E-ed-lKS" secondAttribute="height" id="Rh5-8W-Lbo"/>
                                             <constraint firstAttribute="width" constant="300" id="UdC-9T-5wN"/>
-                                            <constraint firstItem="kco-PT-lZn" firstAttribute="centerX" secondItem="Scw-rI-7ZB" secondAttribute="centerX" constant="-1" id="YAZ-X4-xNX"/>
+                                            <constraint firstItem="kco-PT-lZn" firstAttribute="centerX" secondItem="Scw-rI-7ZB" secondAttribute="centerX" id="YAZ-X4-xNX"/>
                                             <constraint firstItem="zdz-te-dkx" firstAttribute="width" secondItem="m6E-ed-lKS" secondAttribute="width" id="aCU-JW-Uij"/>
                                             <constraint firstItem="m6E-ed-lKS" firstAttribute="leading" secondItem="zdz-te-dkx" secondAttribute="trailing" constant="7" id="bIE-hK-ktx"/>
                                             <constraint firstItem="rhx-zX-Yhl" firstAttribute="trailing" secondItem="kco-PT-lZn" secondAttribute="trailing" id="bqW-Wc-BaH"/>
@@ -1326,14 +1356,16 @@ Washington, DC 20521-6170
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="cityLabel" destination="Yhc-9X-LJw" id="dQY-bI-vXH"/>
-                        <outlet property="contactLabel" destination="mCZ-I6-eCs" id="rak-jH-Uq8"/>
+                        <outlet property="cityLabel" destination="a84-60-0VW" id="Esq-wP-3TN"/>
                         <outlet property="customerNameLabel" destination="vy5-yy-d23" id="PgC-pt-nmu"/>
                         <outlet property="customerProfileImage" destination="kco-PT-lZn" id="fnW-r3-jMi"/>
                         <outlet property="editProfileBTn" destination="rhx-zX-Yhl" id="GdH-WS-SZ7"/>
-                        <outlet property="postLabel" destination="a84-60-0VW" id="wGB-gL-Kep"/>
+                        <outlet property="emailLabel" destination="mCZ-I6-eCs" id="mUb-7N-lXF"/>
+                        <outlet property="phoneLabel" destination="GzQ-cG-0jK" id="ys4-Bc-aHj"/>
                         <outlet property="proposalBtn" destination="m6E-ed-lKS" id="dT1-nE-xib"/>
-                        <outlet property="stateLabel" destination="GzQ-cG-0jK" id="szq-K7-OIF"/>
+                        <outlet property="stateLabel" destination="yVL-m5-yaK" id="fmm-Ck-tuw"/>
+                        <outlet property="streetLabel" destination="Yhc-9X-LJw" id="rhi-0f-0NL"/>
+                        <outlet property="zipLabel" destination="8Ub-nr-C73" id="6yS-6w-RPu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdz-1d-mhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
