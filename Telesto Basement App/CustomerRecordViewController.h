@@ -20,6 +20,10 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "BuidingMediaPopUp.h"
 #import <MBProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+
+@class CustomerInfoObject;
+@class CountryListObject;
 
 typedef NS_ENUM(NSInteger, CameraMode) {
     ProfilePicFromGallery,
@@ -30,7 +34,7 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     VideoForBuildingMediaFromCamera
 };
 
-@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,CLLocationManagerDelegate,ELCImagePickerControllerDelegate,UIGestureRecognizerDelegate>{
+@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,CLLocationManagerDelegate,ELCImagePickerControllerDelegate,UIGestureRecognizerDelegate,UIPickerViewDelegate,UIPickerViewDataSource>{
     UITextField *activeField;
     MediaPopUp *mediaSelectionPopUp;
     CNPPopupController *popupController;
@@ -39,11 +43,14 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     CGPoint point;
     UIButton *_deleteButton;
     BuidingMediaPopUp *buidingMediaPopUp;
-    
+    NSMutableArray *countryList;
 }
+
+@property (strong,nonatomic) CustomerInfoObject *customerInfoObjects;
+@property (assign,nonatomic) BOOL isFromCustomProfile;
 @property (nonatomic,strong) MBProgressHUD * hud;
 @property (nonatomic,strong) CNPPopupController *popupController;
-@property(nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic,strong) UICollectionView *snapShotCollectionView;
 @property (strong,nonatomic) NSMutableArray *galleryItems;
 

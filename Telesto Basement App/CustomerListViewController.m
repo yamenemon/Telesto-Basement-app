@@ -9,6 +9,8 @@
 #import "CustomerListViewController.h"
 #import "CustomerDataManager.h"
 #import "CustomerInfoObject.h"
+#import "CustomerRecordViewController.h"
+
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @interface CustomerListViewController ()
@@ -99,7 +101,7 @@
              customerInfoObj.customerCityName = [dic valueForKey:@"city"];
              customerInfoObj.customerStateName = [dic valueForKey:@"state"];
              customerInfoObj.customerZipName = [dic valueForKey:@"zip"];
-             customerInfoObj.customerCountryName = [dic valueForKey:@"countryId"];
+             customerInfoObj.customerCountryName = [[dic valueForKey:@"countryId"] stringValue];
              customerInfoObj.emailNotification = [dic valueForKey:@"emailNotify"];
              customerInfoObj.customerEmailAddress = [dic valueForKey:@"email"];
              customerInfoObj.smsReminder = [dic valueForKey:@"smsNotify"];
@@ -196,7 +198,7 @@
     NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/profile/%@",BASE_URL,customerInfoObjects.customerOtherImageDic];
     NSLog(@"%@",imageUrl);
     cell.cellImageView.contentMode = UIViewContentModeScaleToFill;
-    [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"profileAvatar"]];
+    [cell.cellImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"userName"]];
 
     return cell;
 }
@@ -225,15 +227,24 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)customProfileBtnActon:(UIButton*)sender{
-
+    UIButton *btn = (UIButton*)sender;
+    long tag = btn.tag;
+    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:tag];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    CustomerRecordViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerRecordViewController"];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    vc.isFromCustomProfile = YES;
+    vc.customerInfoObjects = customerInfoObject;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
 - (IBAction)createNewCustomer:(id)sender {
     
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerRecordViewController"];
+    CustomerRecordViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerRecordViewController"];
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    vc.isFromCustomProfile = NO;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (IBAction)testBtnCalled:(id)sender {

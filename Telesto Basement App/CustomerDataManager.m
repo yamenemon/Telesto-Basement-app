@@ -9,6 +9,7 @@
 #import "CustomerDataManager.h"
 #import "CustomerRecordViewController.h"
 #import "CustomerListViewController.h"
+#import "CountryListObject.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -17,6 +18,8 @@
 
 @implementation CustomerDataManager
 @synthesize uploadedBuildingMediaArray;
+@synthesize downloadedBuildingMediaArray;
+@synthesize countryList;
 
 + (CustomerDataManager *)sharedManager {
     static CustomerDataManager *_sharedManager = nil;
@@ -153,9 +156,35 @@
 -(NSMutableArray*)uploadedBuildingMediaArray{
     return uploadedBuildingMediaArray;
 }
--(NSMutableArray*)loadCustomerListWithCompletionBlock:(void (^)(void))completionBlock{
+-(void)loadCustomerBuildingImagesWithCustomerId:(NSString*)customerId withCompletionBlock:(void (^)(void))completionBlock{
+    self.downloadedBuildingMediaArray = [[NSMutableArray alloc] init];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"customer_details";
+    NSString *customerBuildingImagesUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,endPoint];
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",customerId,@"customerId",nil];
+    [manager POST:customerBuildingImagesUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
+        NSError *e;
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+        NSMutableArray *arr = [NSMutableArray arrayWithObject:[[jsonDic valueForKey:@"files"] valueForKey:@"fileName"]];
+        NSMutableArray *tempArr = [arr objectAtIndex:0];
+        [self.downloadedBuildingMediaArray addObjectsFromArray:tempArr];
+//        NSLog(@"%@",jsonDic);
+        completionBlock();
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    
+    }];
+}
+-(NSMutableArray*)getDownloadedBuildingMediaArray{
+    return downloadedBuildingMediaArray;
+}
+-(NSMutableArray*)getCountryListArray{
+    return countryList;
+}
+-(NSMutableArray*)loadCountryListWithCompletionBlock:(void (^)(void))completionBlock{
 
-    NSMutableArray *countryList = [[NSMutableArray alloc] init];
+    countryList = [[NSMutableArray alloc] init];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -164,13 +193,21 @@
     NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",nil];
     [manager POST:countryListUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
         NSError *e;
-        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
-        NSLog(@"%@",jsonDic);
+        CountryListObject *countryObject = [[CountryListObject alloc] init];
+        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&e];
+        NSMutableDictionary *dic = [[jsonDic valueForKey:@"results"] valueForKey:@"country"];
+        for (NSMutableDictionary *temp in dic) {
+            countryObject.countryCode = [temp valueForKey:@"country_code"];
+            countryObject.countryName = [temp valueForKey:@"country_name"];
+            countryObject.countryId =   [[temp valueForKey:@"id"] intValue];
+            [countryList addObject:countryObject];
+        }
+        NSLog(@"%@",countryList);
         completionBlock();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", @"CountryList not loaded".capitalizedString);
         NSLog(@"%@",error);
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"CountryList not loaded" message:@"Press on country field to load the country list." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"CountryList not loaded" message:@"Press of country field" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* ok = [UIAlertAction
                              actionWithTitle:@"OK"
                              style:UIAlertActionStyleDefault
@@ -205,7 +242,7 @@
         completionBlock();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", @"Customer list not loaded".capitalizedString);
-        NSLog(@"%@",error);
+//        NSLog(@"%@",error);
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Customer not loaded" message:@"Reload?!!!" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* ok = [UIAlertAction
                              actionWithTitle:@"OK"

@@ -7,7 +7,9 @@
 //
 
 #import "CustomerRecordViewController.h"
-#define BaseURL  @"http://telesto.centralstationmarketing.com/"
+#import "CustomerInfoObject.h"
+#import "CountryListObject.h"
+#define BASE_URL  @"http://telesto.centralstationmarketing.com/"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @interface CustomerRecordViewController ()
@@ -15,11 +17,14 @@
 @end
 
 @implementation CustomerRecordViewController
+@synthesize customerInfoObjects;
+@synthesize isFromCustomProfile;
 @synthesize snapContainer;
 @synthesize snapShotCollectionView;
 @synthesize addBuildingMediaBtn;
 @synthesize popupController;
 @synthesize hud;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +36,67 @@
     [self registerForKeyboardNotifications];
     [self getCurrentLocation];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self.view endEditing:YES];
+    if (isFromCustomProfile == YES) {
+        self.firstNameTextField.text = customerInfoObjects.customerFirstName;
+        self.lastNameTextField.text = customerInfoObjects.customerLastName;
+        self.streetAddressTextField.text = customerInfoObjects.customerAddress;
+        self.cityTextField.text = customerInfoObjects.customerCityName;
+        self.stateNameTextField.text = customerInfoObjects.customerStateName;
+        self.zipCodeTextField.text = customerInfoObjects.customerZipName;
+        self.countryTextField.text = customerInfoObjects.customerCountryName;
+        self.emailTextField.text = customerInfoObjects.customerEmailAddress;
+        self.phoneNumberTextField.text = customerInfoObjects.customerPhoneNumber;
+        self.areaTextField.text = @"";
+        [self.emailNotificationSwitch setOn:customerInfoObjects.emailNotification animated:YES];
+        [self.phoneNotifySwitch setOn:customerInfoObjects.smsReminder animated:YES];
+        self.notesTextView.text = customerInfoObjects.customerNotes;
+        NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/profile/%@",BASE_URL,customerInfoObjects.customerOtherImageDic];
+        NSLog(@"%@",imageUrl);
+        self.customerImageView.contentMode = UIViewContentModeScaleToFill;
+        [self.customerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"userName"]];
+        
+        [self loadCustomerBuildingImages:customerInfoObjects];
+    }
+}
+-(void)viewDidLayoutSubviews{
+    [self loadSanpMediaContainer];
+    
+    self.customerImageView.layer.cornerRadius = self.customerImageView.frame.size.width / 2;
+    self.customerImageView.layer.borderWidth = 3.0f;
+    self.customerImageView.layer.borderColor = UIColorFromRGB(0x0A5571).CGColor;
+    self.customerImageView.clipsToBounds = YES;
+    _emailNotificationSwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
+    _phoneNotifySwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
+    _notesTextView.layer.borderColor = UIColorFromRGB(0xC4C6C9).CGColor;
+    _notesTextView.layer.borderWidth = 0.8f;
+    _notesTextView.layer.cornerRadius = 3.0f;
+}
+-(void)loadCustomerBuildingImages:(CustomerInfoObject*)customerInfo{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //Update the progress view
+        [hud removeFromSuperview];
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.center = self.view.center;
+        hud.mode = MBProgressHUDModeIndeterminate;
+        NSString *strloadingText = [NSString stringWithFormat:@"Loading Building Medias..."];
+        hud.label.text = strloadingText;
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    });
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    [manager loadCustomerBuildingImagesWithCustomerId:customerInfo.customerId withCompletionBlock:^{
+        [hud hideAnimated:YES];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [self reloadBuildingImageCollectionView];
+    }];
+}
+-(void)reloadBuildingImageCollectionView{
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    _galleryItems = [manager getDownloadedBuildingMediaArray];
+    [snapShotCollectionView reloadData];
+}
 - (void)getCurrentLocation {
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate=self;
@@ -41,7 +107,6 @@
 }
 -(void)loadSanpMediaContainer{
     UICollectionViewFlowLayout *flo = [[UICollectionViewFlowLayout alloc] init];
-    
     snapShotCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(10, 10, snapContainer.frame.size.width-20, snapContainer.frame.size.height-20) collectionViewLayout:flo];
     snapShotCollectionView.delegate = self;
     snapShotCollectionView.dataSource = self;
@@ -66,23 +131,7 @@
     defaultTheme.animationDuration = 0.65f;
     return defaultTheme;
 }
--(void)viewWillAppear:(BOOL)animated{
-    [self.view endEditing:YES];
-}
--(void)viewDidLayoutSubviews{
-    [self loadSanpMediaContainer];
 
-    self.customerImageView.layer.cornerRadius = self.customerImageView.frame.size.width / 2;
-    self.customerImageView.layer.borderWidth = 3.0f;
-    self.customerImageView.layer.borderColor = UIColorFromRGB(0x0A5571).CGColor;
-    self.customerImageView.clipsToBounds = YES;
-    _emailNotificationSwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
-    _phoneNotifySwitch.transform = CGAffineTransformMakeScale(0.65, 0.65);
-    _notesTextView.layer.borderColor = UIColorFromRGB(0xC4C6C9).CGColor;
-    _notesTextView.layer.borderWidth = 0.8f;
-    _notesTextView.layer.cornerRadius = 3.0f;
-
-}
 -(UITextField*)changeTextfieldStyle:(UITextField*)textField{
     
     UITextField *tempTextField = textField;
@@ -92,17 +141,12 @@
     tempTextField.layer.cornerRadius = 5;
     tempTextField.clipsToBounds      = YES;
     return tempTextField;
-    
 }
+
 // Call this method somewhere in your view controller setup code.
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:)
-                                                 name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
+- (void)registerForKeyboardNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:)     name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 // Called when the UIKeyboardDidShowNotification is sent.
@@ -147,10 +191,48 @@
 -(void)textViewDidBeginEditing:(UITextView *)textView{
     activeField = nil;
 }
+- (IBAction)countryPickerBtnAction:(id)sender {
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    countryList = [manager getCountryListArray];
+    UIPickerView *myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 200, self.view.frame.size.width, 200)];
+    [self.view addSubview:myPickerView];
+    myPickerView.delegate = self;
+    myPickerView.showsSelectionIndicator = YES;
+    myPickerView.backgroundColor = UIColorFromRGB(0x00FFFFFF);
+}
+// tell the picker how many rows are available for a given component
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    NSUInteger numRows = countryList.count;
+    
+    return numRows;
+}
 
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+// tell the picker how many components it will have
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+//    [fromButton setText:[NSString stringWithFormat:@"%@",[array_from objectAtIndex:[pickerView selectedRowInComponent:0]]]];
+    CountryListObject *countryListObject = [countryList objectAtIndex:row];
+
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    CountryListObject *countryListObject = [countryList objectAtIndex:row];
+    NSString *countryName = [NSString stringWithFormat:@"%@",countryListObject.countryName];
+    return countryName;
+}
+// tell the picker the width of each row for a given component
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    CGFloat componentWidth = 0.0;
+    componentWidth = 135.0;
+    
+    return componentWidth;
+}
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification{
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     _customerRecordScrollView.contentInset = contentInsets;
     _customerRecordScrollView.scrollIndicatorInsets = contentInsets;
@@ -216,8 +298,7 @@
 }
 
 // This method is called when an image has been chosen from the library or taken from the camera.
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     //You can retrieve the actual UIImage
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     //Or you can get the image url from AssetsLibrary
@@ -234,19 +315,24 @@
 #pragma mark -
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return [_galleryItems count];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionViewcell" forIndexPath:indexPath];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
     imageView.contentMode = UIViewContentModeScaleToFill;
     [cell addSubview:imageView];
-    imageView.image = [_galleryItems objectAtIndex:indexPath.row];
+    if (isFromCustomProfile == YES) {
+        NSURL *imageUrl =[NSURL URLWithString:[NSString stringWithFormat:@"%@",[_galleryItems objectAtIndex:indexPath.row]]];
+        NSLog(@"building image url: %@",imageUrl);
+        [imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"userName"]];
+    }
+    else{
+        imageView.image = [_galleryItems objectAtIndex:indexPath.row];
+    }
     return cell;
 }
 -(void)deletePicture:(UIButton*)btn{
@@ -254,14 +340,11 @@
     [_galleryItems removeObjectAtIndex:index];
     [snapShotCollectionView reloadData];
 }
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     dispatch_async(dispatch_get_main_queue(), ^{
     buidingMediaPopUp = [[[NSBundle mainBundle] loadNibNamed:@"BuidingMediaPopUp" owner:self options:nil] objectAtIndex:0];
     [buidingMediaPopUp initWithBaseController:self withImageArray:_galleryItems];
@@ -288,14 +371,6 @@
     return UIEdgeInsetsMake(0.5, 0.5, 0.5, 0.5);
 }
 
-
-//-(BOOL)shouldAutorotate{
-//    return YES;
-//}
-//- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-//{
-//    return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
-//}
 #pragma mark -
 #pragma mark CREATE CUSTOMER
 - (IBAction)saveBtnAction:(id)sender {
@@ -493,7 +568,7 @@
         
     });
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    [manager loadCustomerListWithCompletionBlock:^{
+    [manager loadCountryListWithCompletionBlock:^{
         [hud hideAnimated:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }];

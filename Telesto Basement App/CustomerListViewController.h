@@ -18,6 +18,8 @@
 
 @class CustomerDataManager;
 @class CustomerInfoObject;
+@class CustomerRecordViewController;
+
 @interface CustomerListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *customerListTableView;

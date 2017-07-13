@@ -2038,6 +2038,12 @@ A: Immediately</string>
                                                     <outlet property="delegate" destination="E6b-Wl-O3C" id="PCb-7G-5F0"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvb-hJ-1Oa" userLabel="CountryPickerButton">
+                                                <rect key="frame" x="8" y="270.5" width="706" height="45"/>
+                                                <connections>
+                                                    <action selector="countryPickerBtnAction:" destination="E6b-Wl-O3C" eventType="touchUpInside" id="6wi-Rw-pVX"/>
+                                                </connections>
+                                            </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="example@mail.com" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eml-DH-nKx">
                                                 <rect key="frame" x="10" y="377" width="704" height="45"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2152,6 +2158,7 @@ A: Immediately</string>
                                             <constraint firstItem="hzh-Rn-X3A" firstAttribute="leading" secondItem="AJV-sE-e6s" secondAttribute="leading" id="7z7-jf-a6u"/>
                                             <constraint firstItem="bDX-1R-hsT" firstAttribute="top" secondItem="vnl-xo-xom" secondAttribute="bottom" constant="8" symbolic="YES" id="8ca-6d-0ga"/>
                                             <constraint firstItem="Qpa-FD-9ng" firstAttribute="top" secondItem="bDX-1R-hsT" secondAttribute="bottom" constant="15" id="95V-uQ-hSB"/>
+                                            <constraint firstItem="fvb-hJ-1Oa" firstAttribute="centerY" secondItem="bDX-1R-hsT" secondAttribute="centerY" id="9oA-4s-Zhl"/>
                                             <constraint firstItem="ZGA-Em-Xr6" firstAttribute="height" secondItem="53a-aS-Se7" secondAttribute="height" id="BJ9-Yc-xrv"/>
                                             <constraint firstItem="VX0-Et-Usu" firstAttribute="top" secondItem="Qpa-FD-9ng" secondAttribute="bottom" constant="8" symbolic="YES" id="Cby-Gn-Q9Q"/>
                                             <constraint firstItem="ZGA-Em-Xr6" firstAttribute="baseline" secondItem="53a-aS-Se7" secondAttribute="baseline" id="Ddn-Kx-Azd"/>
@@ -2182,7 +2189,9 @@ A: Immediately</string>
                                             <constraint firstItem="ZGA-Em-Xr6" firstAttribute="bottom" secondItem="53a-aS-Se7" secondAttribute="bottom" id="VcH-Vc-rYZ"/>
                                             <constraint firstItem="rBc-ED-8oc" firstAttribute="leading" secondItem="hzh-Rn-X3A" secondAttribute="leading" id="Vfb-kl-dj6"/>
                                             <constraint firstItem="eyt-qh-x76" firstAttribute="trailing" secondItem="VX0-Et-Usu" secondAttribute="trailing" id="WKO-mX-jGF"/>
+                                            <constraint firstItem="fvb-hJ-1Oa" firstAttribute="width" secondItem="bDX-1R-hsT" secondAttribute="width" id="Xq4-eU-AM9"/>
                                             <constraint firstItem="AJV-sE-e6s" firstAttribute="leading" secondItem="UsG-2u-die" secondAttribute="leading" id="YYB-bY-IGv"/>
+                                            <constraint firstItem="fvb-hJ-1Oa" firstAttribute="trailing" secondItem="bDX-1R-hsT" secondAttribute="trailing" id="Ynb-6C-4hI"/>
                                             <constraint firstItem="Eml-DH-nKx" firstAttribute="leading" secondItem="ezP-Vt-WgI" secondAttribute="leading" id="bG5-Kd-ZbS"/>
                                             <constraint firstItem="uKU-96-d99" firstAttribute="trailing" secondItem="c6e-xr-nsj" secondAttribute="trailing" id="bKf-jE-rgd"/>
                                             <constraint firstItem="53a-aS-Se7" firstAttribute="trailing" secondItem="MpS-Eb-2kO" secondAttribute="trailing" id="bPa-9t-222"/>
@@ -2190,7 +2199,9 @@ A: Immediately</string>
                                             <constraint firstItem="eMS-RP-HmD" firstAttribute="trailing" secondItem="bDX-1R-hsT" secondAttribute="trailing" id="cgU-9F-c8c"/>
                                             <constraint firstItem="hzh-Rn-X3A" firstAttribute="top" secondItem="rBc-ED-8oc" secondAttribute="bottom" constant="7" id="cnB-mp-snr"/>
                                             <constraint firstItem="ZGA-Em-Xr6" firstAttribute="top" secondItem="GyM-O4-nIJ" secondAttribute="bottom" constant="5" id="eGr-RE-SMV"/>
+                                            <constraint firstItem="fvb-hJ-1Oa" firstAttribute="height" secondItem="bDX-1R-hsT" secondAttribute="height" id="eac-hD-o6W"/>
                                             <constraint firstItem="vnl-xo-xom" firstAttribute="height" secondItem="l98-F6-71S" secondAttribute="height" id="eqZ-CL-uzD"/>
+                                            <constraint firstItem="fvb-hJ-1Oa" firstAttribute="leading" secondItem="bDX-1R-hsT" secondAttribute="leading" id="fLb-Ps-adK"/>
                                             <constraint firstItem="ZGA-Em-Xr6" firstAttribute="leading" secondItem="MpS-Eb-2kO" secondAttribute="leading" id="g2H-12-yua"/>
                                             <constraint firstItem="ezP-Vt-WgI" firstAttribute="top" secondItem="lfY-eR-87A" secondAttribute="top" id="gHC-0P-TCJ"/>
                                             <constraint firstItem="UsG-2u-die" firstAttribute="leading" secondItem="vnl-xo-xom" secondAttribute="leading" id="gJJ-4m-d8p"/>
