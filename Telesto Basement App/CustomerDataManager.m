@@ -193,16 +193,16 @@
     NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",nil];
     [manager POST:countryListUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
         NSError *e;
-        CountryListObject *countryObject = [[CountryListObject alloc] init];
         NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:&e];
         NSMutableDictionary *dic = [[jsonDic valueForKey:@"results"] valueForKey:@"country"];
         for (NSMutableDictionary *temp in dic) {
+            CountryListObject *countryObject = [[CountryListObject alloc] init];
             countryObject.countryCode = [temp valueForKey:@"country_code"];
             countryObject.countryName = [temp valueForKey:@"country_name"];
             countryObject.countryId =   [[temp valueForKey:@"id"] intValue];
             [countryList addObject:countryObject];
         }
-        NSLog(@"%@",countryList);
+//        NSLog(@"%@",countryList);
         completionBlock();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", @"CountryList not loaded".capitalizedString);

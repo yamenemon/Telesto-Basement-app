@@ -45,6 +45,7 @@
         self.cityTextField.text = customerInfoObjects.customerCityName;
         self.stateNameTextField.text = customerInfoObjects.customerStateName;
         self.zipCodeTextField.text = customerInfoObjects.customerZipName;
+        
         self.countryTextField.text = customerInfoObjects.customerCountryName;
         self.emailTextField.text = customerInfoObjects.customerEmailAddress;
         self.phoneNumberTextField.text = customerInfoObjects.customerPhoneNumber;
@@ -58,6 +59,7 @@
         [self.customerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"userName"]];
         
         [self loadCustomerBuildingImages:customerInfoObjects];
+        
     }
 }
 -(void)viewDidLayoutSubviews{
@@ -142,7 +144,13 @@
     tempTextField.clipsToBounds      = YES;
     return tempTextField;
 }
-
+#pragma mark - KeyboardNotificationDelegate
+#pragma mark -
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    _customerRecordScrollView.contentInset = contentInsets;
+    _customerRecordScrollView.scrollIndicatorInsets = contentInsets;
+}
 // Call this method somewhere in your view controller setup code.
 - (void)registerForKeyboardNotifications{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:)     name:UIKeyboardDidShowNotification object:nil];
@@ -185,6 +193,8 @@
         }
     }
 }
+#pragma mark - UITextfieldDelegate
+#pragma mark -
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     activeField = textField;
 }
@@ -192,51 +202,31 @@
     activeField = nil;
 }
 - (IBAction)countryPickerBtnAction:(id)sender {
+    [self.view endEditing:YES];
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     countryList = [manager getCountryListArray];
-    UIPickerView *myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 200, self.view.frame.size.width, 200)];
-    [self.view addSubview:myPickerView];
-    myPickerView.delegate = self;
-    myPickerView.showsSelectionIndicator = YES;
-    myPickerView.backgroundColor = UIColorFromRGB(0x00FFFFFF);
-}
-// tell the picker how many rows are available for a given component
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    NSUInteger numRows = countryList.count;
+    NSMutableArray *tempCountryNameArr = [[NSMutableArray alloc] init];
+    for (CountryListObject *obj in countryList) {
+        [tempCountryNameArr addObject:obj.countryName];
+    }
+    NSArray *tempArr = [tempCountryNameArr sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    [ActionSheetStringPicker showPickerWithTitle:@"Select a Country"
+                                            rows:tempArr
+                                initialSelection:0
+                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                           NSLog(@"Picker: %@", picker);
+                                           NSLog(@"Selected Index: %ld", (long)selectedIndex);
+                                           NSLog(@"Selected Value: %@", selectedValue);
+                                           self.countryTextField.text = selectedValue;
+                                       }
+                                     cancelBlock:^(ActionSheetStringPicker *picker) {
+                                         NSLog(@"Block Picker Canceled");
+                                     }
+                                          origin:sender];
     
-    return numRows;
 }
 
-// tell the picker how many components it will have
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-//    [fromButton setText:[NSString stringWithFormat:@"%@",[array_from objectAtIndex:[pickerView selectedRowInComponent:0]]]];
-    CountryListObject *countryListObject = [countryList objectAtIndex:row];
 
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    CountryListObject *countryListObject = [countryList objectAtIndex:row];
-    NSString *countryName = [NSString stringWithFormat:@"%@",countryListObject.countryName];
-    return countryName;
-}
-// tell the picker the width of each row for a given component
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    CGFloat componentWidth = 0.0;
-    componentWidth = 135.0;
-    
-    return componentWidth;
-}
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification{
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    _customerRecordScrollView.contentInset = contentInsets;
-    _customerRecordScrollView.scrollIndicatorInsets = contentInsets;
-}
 
 - (IBAction)customerRecordPage:(id)sender {
     
@@ -312,8 +302,9 @@
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-#pragma mark -
+
 #pragma mark - UICollectionViewDataSource
+#pragma mark -
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return [_galleryItems count];
@@ -569,6 +560,12 @@
     });
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     [manager loadCountryListWithCompletionBlock:^{
+        if (isFromCustomProfile == YES) {
+            CustomerDataManager *manager = [CustomerDataManager sharedManager];
+            countryList = [manager getCountryListArray];
+            CountryListObject *obj = [countryList objectAtIndex:[customerInfoObjects.customerCountryName intValue]];
+            self.countryTextField.text = obj.countryName;
+        }
         [hud hideAnimated:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }];

@@ -21,6 +21,7 @@
 #import "BuidingMediaPopUp.h"
 #import <MBProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <ActionSheetStringPicker.h>
 
 @class CustomerInfoObject;
 @class CountryListObject;
@@ -34,7 +35,7 @@ typedef NS_ENUM(NSInteger, CameraMode) {
     VideoForBuildingMediaFromCamera
 };
 
-@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,CLLocationManagerDelegate,ELCImagePickerControllerDelegate,UIGestureRecognizerDelegate,UIPickerViewDelegate,UIPickerViewDataSource>{
+@interface CustomerRecordViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,CNPPopupControllerDelegate,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,CLLocationManagerDelegate,ELCImagePickerControllerDelegate,UIGestureRecognizerDelegate>{
     UITextField *activeField;
     MediaPopUp *mediaSelectionPopUp;
     CNPPopupController *popupController;
