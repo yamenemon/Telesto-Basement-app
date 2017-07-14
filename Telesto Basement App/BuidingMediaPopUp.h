@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "iCarousel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 @class CustomerRecordViewController;
 @interface BuidingMediaPopUp : UIView<iCarouselDelegate,iCarouselDataSource>
 @property (weak, nonatomic) IBOutlet iCarousel *carousel;
+@property (assign,nonatomic) BOOL isFromCustomeProfile;
 @property (nonatomic, strong) NSMutableArray *items;
 @property (nonatomic, strong) CustomerRecordViewController *customerRecordController;
 -(void)initWithBaseController:(CustomerRecordViewController*)baseController withImageArray:(NSMutableArray*)imageArr;

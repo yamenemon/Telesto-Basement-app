@@ -13,7 +13,7 @@
 
 @implementation BuidingMediaPopUp
 @synthesize carousel;
-
+@synthesize isFromCustomeProfile;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -81,7 +81,15 @@
     //this `if (view == nil) {...}` statement because the view will be
     //recycled and used with other index values later
     view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
-    ((UIImageView *)view).image = [self.items objectAtIndex:index];
+    if (isFromCustomeProfile == YES) {
+        NSURL *imageUrl =[NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.items objectAtIndex:index]]];
+        NSLog(@"building image url: %@",imageUrl);
+        [((UIImageView *)view) sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"userName"]];
+    }
+    else{
+        ((UIImageView *)view).image = [self.items objectAtIndex:index];
+    }
+    
     view.contentMode = UIViewContentModeScaleToFill;
     view.layer.cornerRadius = 10.0f;
     view.layer.borderWidth = 2.0f;

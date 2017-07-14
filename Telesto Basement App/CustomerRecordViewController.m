@@ -339,7 +339,12 @@
     dispatch_async(dispatch_get_main_queue(), ^{
     buidingMediaPopUp = [[[NSBundle mainBundle] loadNibNamed:@"BuidingMediaPopUp" owner:self options:nil] objectAtIndex:0];
     [buidingMediaPopUp initWithBaseController:self withImageArray:_galleryItems];
-
+        if (isFromCustomProfile == YES) {
+            buidingMediaPopUp.isFromCustomeProfile = YES;
+        }
+        else{
+            buidingMediaPopUp.isFromCustomeProfile = NO;
+        }
     popupController = [[CNPPopupController alloc] initWithContents:@[buidingMediaPopUp]];
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = CNPPopupStyleCentered;
