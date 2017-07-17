@@ -180,7 +180,6 @@
     }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        cell.cellImageView.image = [UIImage imageNamed:@"userName"];
     
     cell.MapItBtn.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
     cell.MapItBtn.tag = indexPath.row;

@@ -12,12 +12,15 @@
 #import "Utility.h"
 #import <AFNetworking.h>
 #import <AFURLRequestSerialization.h>
+#import "Product.h"
 
 @class CustomerRecordViewController;
 @class CustomerListViewController;
 @class CountryListObject;
+@class BaseViewController;
 
 @interface CustomerDataManager : NSObject
+@property (strong,nonatomic) NSMutableArray *productsArray;
 @property (strong,nonatomic) NSMutableArray *countryList;
 @property (strong,nonatomic) NSMutableDictionary *customerList;
 @property (strong,nonatomic) NSMutableArray *uploadedBuildingMediaArray;
@@ -33,4 +36,5 @@
 -(NSMutableArray*)loadCountryListWithCompletionBlock:(void (^)(void))completionBlock;
 -(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)loadCustomerBuildingImagesWithCustomerId:(NSString*)customerId withCompletionBlock:(void (^)(void))completionBlock;
+-(void)loadingProductImagesAndDefautlTemplatesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock;
 @end

@@ -10,6 +10,7 @@
 #import "CustomerRecordViewController.h"
 #import "CustomerListViewController.h"
 #import "CountryListObject.h"
+#import "BaseViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -272,6 +273,27 @@
 -(NSMutableDictionary*)getCustomerData{
     return _customerList;
 }
+//- (NSURLSessionDownloadTask *)downloadTaskWithRequest:(NSURLRequest *)request
+//                                             progress:(void (^)(NSProgress *downloadProgress)) downloadProgressBlock
+//                                          destination:(NSURL * (^)(NSURL *targetPath, NSURLResponse *response))destination
+//                                    completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler
+#pragma mark LOADING PRODUCT IMAGES
+-(void)loadingProductImagesAndDefautlTemplatesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock{
 
+    Product *productObj = [[Product alloc] init];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",nil];
+    NSString *endPoint = @"customer_list";
+    NSString *productUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,endPoint];
+    [manager POST:productUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
+    
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    
+    }];
+    
+    
+}
 
 @end
