@@ -371,6 +371,30 @@
     return path;
 }
 -(NSMutableArray*)getTemplateObjectArray{
+    if (templateObjectArray.count==0) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *myPath = [paths objectAtIndex:0];
+        // if you save fies in a folder
+        myPath = [myPath stringByAppendingPathComponent:[NSString stringWithFormat:@"template"]];
+        
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        // all files in the path
+        NSArray *directoryContents = [fileManager contentsOfDirectoryAtPath:myPath error:nil];
+        
+        // filter image files
+        NSMutableArray *subpredicates = [NSMutableArray array];
+        [subpredicates addObject:[NSPredicate predicateWithFormat:@"SELF ENDSWITH '.png'"]];
+        [subpredicates addObject:[NSPredicate predicateWithFormat:@"SELF ENDSWITH '.jpg'"]];
+        NSPredicate *filter = [NSCompoundPredicate orPredicateWithSubpredicates:subpredicates];
+        
+        NSArray *onlyImages = [directoryContents filteredArrayUsingPredicate:filter];
+        
+        for (int i = 0; i < onlyImages.count; i++) {
+            NSString *imagePath = [myPath stringByAppendingPathComponent:[onlyImages objectAtIndex:i]];
+            UIImage *tempImage = [UIImage imageWithContentsOfFile:imagePath];
+            // do something you want
+        }
+    }
     return templateObjectArray;
 }
 #pragma mark LOADING PRODUCT IMAGES -

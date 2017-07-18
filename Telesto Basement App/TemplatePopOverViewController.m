@@ -150,35 +150,6 @@
     }
 }
 
-
-//-(void)makeScrollView{
-//    int x = 0;
-//    CGRect frame;
-//    for (int i = 0; i < templateArray.count; i++) {
-//        
-//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//        
-//        if (i == 0) {
-//            frame = CGRectMake(10, 10, _templateScroller.frame.size.width - 20, _templateScroller.frame.size.height - 20);
-//        } else {
-//            frame = CGRectMake((i * (_templateScroller.frame.size.width - 20)) + (i*20) + 10, 10, _templateScroller.frame.size.width - 20, _templateScroller.frame.size.height - 20);
-//        }
-//        
-//        button.frame = frame;
-//        [button setTag:i];
-//        [button setImage:[UIImage imageNamed:[templateArray objectAtIndex:i]] forState:UIControlStateNormal];
-//        [button addTarget:self action:@selector(templateClicked:) forControlEvents:UIControlEventTouchUpInside];
-//        [_templateScroller addSubview:button];
-//        button.backgroundColor = [Utility colorWithHexString:@"0xCEDEE4"];
-//        
-//        if (i == templateArray.count) {
-//            x = CGRectGetMaxX(button.frame);
-//        }
-//    }
-//    
-//    _templateScroller.contentSize = CGSizeMake(x, _templateScroller.frame.size.height);
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

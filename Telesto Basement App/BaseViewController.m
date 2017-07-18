@@ -30,6 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self playBackgroundVideo];
+
+}
+-(void)viewWillAppear:(BOOL)animated{
     dispatch_async(dispatch_get_main_queue(), ^{
         //Update the progress view
         [hud removeFromSuperview];
@@ -55,8 +60,6 @@
             
         }
     }];
-    [self playBackgroundVideo];
-
 }
 -(void)storeDownloadedImagesAtDocumentDir{
 
