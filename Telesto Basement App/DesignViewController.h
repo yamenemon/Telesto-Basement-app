@@ -54,7 +54,7 @@
 @property (strong, nonatomic) ProductInfoDetailsPopup *productInfoDetails;
 @property (weak, nonatomic) IBOutlet UIScrollView *productSliderScrollView;
 
-- (void)setSavedTemplateNumber:(int)number;
+- (void)setSavedTemplateNumber:(NSString*)path;
 - (void)wallPopOverBtnAction:(id)sender;
 - (void)backButtonAction;
 - (void)revealButtonItemClicked:(id)sender;

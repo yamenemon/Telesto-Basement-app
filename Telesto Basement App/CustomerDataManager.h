@@ -13,6 +13,7 @@
 #import <AFNetworking.h>
 #import <AFURLRequestSerialization.h>
 #import "Product.h"
+#import "DefaultTemplateObject.h"
 
 @class CustomerRecordViewController;
 @class CustomerListViewController;
@@ -20,12 +21,15 @@
 @class BaseViewController;
 
 @interface CustomerDataManager : NSObject
+@property (strong,nonatomic) NSMutableArray *templateObjectArray;
+@property (strong,nonatomic) NSMutableArray *productObjectArray;
 @property (strong,nonatomic) NSMutableArray *productsArray;
 @property (strong,nonatomic) NSMutableArray *countryList;
 @property (strong,nonatomic) NSMutableDictionary *customerList;
 @property (strong,nonatomic) NSMutableArray *uploadedBuildingMediaArray;
 @property (strong,nonatomic) NSMutableArray *downloadedBuildingMediaArray;
 @property (strong,nonatomic) CustomerRecordViewController *baseController;
+
 + (CustomerDataManager *)sharedManager;
 -(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock;
@@ -33,8 +37,14 @@
 -(NSMutableDictionary*)getCustomerData;
 -(NSMutableArray*)getDownloadedBuildingMediaArray;
 -(NSMutableArray*)getCountryListArray;
+-(NSMutableArray*)getTemplateObjectArray;
+-(NSMutableArray*)getProductObjectArray;
 -(NSMutableArray*)loadCountryListWithCompletionBlock:(void (^)(void))completionBlock;
 -(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)loadCustomerBuildingImagesWithCustomerId:(NSString*)customerId withCompletionBlock:(void (^)(void))completionBlock;
--(void)loadingProductImagesAndDefautlTemplatesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock;
+-(void)loadingProductImagesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
+-(void)loadingDefaultTemplatesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
+
+- (NSString*)loadDefaultTemplateImageWithImageName:(NSString*)imageName;
+- (UIImage*)loadImageWithImageName:(NSString*)imageName;
 @end

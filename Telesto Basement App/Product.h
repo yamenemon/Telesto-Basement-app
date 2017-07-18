@@ -10,7 +10,12 @@
 
 @interface Product : NSObject
 @property (assign,nonatomic) int productId;
+@property (strong,nonatomic) NSString *productName;
 @property (strong,nonatomic) NSString *productImageName;
 @property (strong,nonatomic) NSString *productImageUrl;
-@property (assign,nonatomic) long productPrice;
+@property (assign,nonatomic) float productPrice;
+@property (strong,nonatomic) NSString *productDescription;
+@property (strong,nonatomic) NSString *unitType;
+@property (assign,nonatomic) float discount;
+
 @end

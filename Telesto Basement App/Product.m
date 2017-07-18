@@ -10,7 +10,11 @@
 
 @implementation Product
 @synthesize productId;
+@synthesize productName;
 @synthesize productImageName;
 @synthesize productImageUrl;
 @synthesize productPrice;
+@synthesize productDescription;
+@synthesize unitType;
+@synthesize discount;
 @end

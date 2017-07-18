@@ -182,8 +182,7 @@
     // DOWNLOAD PRODUCT HERE
     //-----------------------
      
-    Downloader *loader = [Downloader sharedManager];
-    [loader downloadProducts];
+
      
     
     //STORE DOWNLOADED PRODUCT
@@ -939,16 +938,16 @@
     [self showPopupWithStyle:CNPPopupStyleCentered];
 }
 
--(void)setSavedTemplateNumber:(int)number{
+-(void)setSavedTemplateNumber:(NSString*)path{
     
     if (drawingImageView) {
         [drawingImageView removeFromSuperview];
     }
     drawingImageView = [[UIImageView alloc] init];
-    
+    NSLog(@"Path %@",path);
     [templateController dismissViewControllerAnimated:YES completion:^{
         drawingImageView.frame = CGRectMake(0, 0, basementDesignView.frame.size.width, basementDesignView.frame.size.height);
-        [drawingImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Temp%d",number]]];
+        [drawingImageView setImage:[UIImage imageNamed:path]];
         [basementDesignView addSubview:drawingImageView];
     }];
 }

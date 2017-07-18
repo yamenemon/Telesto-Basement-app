@@ -20,7 +20,7 @@
 @implementation CustomerDataManager
 @synthesize uploadedBuildingMediaArray;
 @synthesize downloadedBuildingMediaArray;
-@synthesize countryList;
+@synthesize countryList,productObjectArray,templateObjectArray;
 
 + (CustomerDataManager *)sharedManager {
     static CustomerDataManager *_sharedManager = nil;
@@ -273,27 +273,198 @@
 -(NSMutableDictionary*)getCustomerData{
     return _customerList;
 }
-//- (NSURLSessionDownloadTask *)downloadTaskWithRequest:(NSURLRequest *)request
-//                                             progress:(void (^)(NSProgress *downloadProgress)) downloadProgressBlock
-//                                          destination:(NSURL * (^)(NSURL *targetPath, NSURLResponse *response))destination
-//                                    completionHandler:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler
-#pragma mark LOADING PRODUCT IMAGES
--(void)loadingProductImagesAndDefautlTemplatesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock{
+#pragma mark LOADING DEFAULT TEMPLATES IMAGES -
 
-    Product *productObj = [[Product alloc] init];
+-(void)loadingDefaultTemplatesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",nil];
-    NSString *endPoint = @"customer_list";
+    NSString *endPoint = @"template_list";
     NSString *productUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,endPoint];
     [manager POST:productUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
-    
+        NSError *e;
+        NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+        NSMutableArray *tempArr = [[jsonDic valueForKey:@"results"] valueForKey:@"templates"];
+        templateObjectArray = [[NSMutableArray alloc] init];
+        __block int count = (int)tempArr.count;
+        for (NSMutableDictionary *dic in tempArr) {
+            /*
+             created = "2017-07-18 04:52:32";
+             image = "Temp8@2x.png";
+             name = "Temp8@2x";
+             templateId = 8;
+             */
+            DefaultTemplateObject *defaultTempObj = [[DefaultTemplateObject alloc] init];
+            defaultTempObj.templateId = [[dic valueForKey:@"templateId"] intValue];
+            defaultTempObj.templateImage = [dic valueForKey:@"image"];
+            defaultTempObj.templateName = [dic valueForKey:@"name"];
+            
+            [templateObjectArray addObject:defaultTempObj];
+            [self downloadDefaultTemplateImageWithProductObject:defaultTempObj completionBlock:^(BOOL succeeded){
+                count--;
+                NSLog(@"Donwloaded template and Saved and count %d",count);
+                if (count == 0) {
+                    completionBlock(YES);
+                }
+            }];
+        }
+        //        NSLog(@"%@",tempArr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-    
     }];
+}
+- (void)downloadDefaultTemplateImageWithProductObject:(DefaultTemplateObject*)defaultTempObj completionBlock:(void (^)(BOOL succeeded))completionBlock
+{
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
     
+    NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@",defaultTempObj.templateImage]];
+    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:[NSURLRequest requestWithURL:imageUrl]
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           NSLog(@"Response:%@ %@\n", response, error);
+                                                           if ( !error )
+                                                           {
+                                                               UIImage *image = [[UIImage alloc] initWithData:data];
+                                                               [self saveDefaultTemplateImage:image withImageName:defaultTempObj.templateName completionBlock:^(BOOL succeeded) {
+                                                                   if (succeeded) {
+                                                                       NSLog(@"Downloaded %@ and Saved to document directory",defaultTempObj.templateName);
+                                                                       completionBlock(YES);
+                                                                   }
+                                                                   else{
+                                                                       NSLog(@"Not Downloaded %@ and Saved to document directory",defaultTempObj.templateName);
+                                                                   }
+                                                               }];
+                                                           } else{
+                                                               completionBlock(NO);
+                                                           }
+                                                       }];
+    [dataTask resume];
     
 }
+- (void)saveDefaultTemplateImage: (UIImage*)image withImageName:(NSString*)imageName completionBlock:(void (^)(BOOL succeeded))completionBlock{
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"/template"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
+    
+    
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/template/%@.png",imageName]];
+    NSData* data = UIImagePNGRepresentation(image);
+    BOOL saved = [data writeToFile:path options:NSASCIIStringEncoding error:&error];
+    if (error) {
+        NSLog(@"Fail: %@", [error localizedDescription]);
+        completionBlock(NO);
+    }
+    if (saved == YES) {
+        completionBlock(YES);
+    }
+}
+- (NSString*)loadDefaultTemplateImageWithImageName:(NSString*)imageName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"template/%@",imageName]];
+//    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    return path;
+}
+-(NSMutableArray*)getTemplateObjectArray{
+    return templateObjectArray;
+}
+#pragma mark LOADING PRODUCT IMAGES -
+-(void)loadingProductImagesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
 
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithInt:1],@"categoryId",nil];
+    NSString *endPoint = @"product_list";
+    NSString *productUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,endPoint];
+    [manager POST:productUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
+        NSError *e;
+        NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+        NSMutableArray *tempArr = [[jsonDic valueForKey:@"results"] valueForKey:@"products"];
+        productObjectArray = [[NSMutableArray alloc] init];
+        __block int count = (int)tempArr.count;
+        for (NSMutableDictionary *dic in tempArr) {
+            Product *productObj = [[Product alloc] init];
+            productObj.productDescription = [dic valueForKey:@"description"];
+            productObj.discount = [[dic valueForKey:@"discount"] floatValue];
+            productObj.productImageUrl = [dic valueForKey:@"image"];
+            productObj.productName = [dic valueForKey:@"name"];
+            productObj.productId = [[dic valueForKey:@"productId"] intValue];
+            productObj.productPrice = [[dic valueForKey:@"unitPrice"] floatValue];
+            productObj.unitType = [dic valueForKey:@"unitType"];
+            [productObjectArray addObject:productObj];
+            [self downloadImageWithProductObject:productObj completionBlock:^(BOOL succeeded){
+                count--;
+                NSLog(@"Donwloaded and Saved and count %d",count);
+                if (count == 0) {
+                    completionBlock(YES);
+                }
+            }];
+        }
+//        NSLog(@"%@",tempArr);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    }];
+}
+- (void)downloadImageWithProductObject:(Product*)productObj completionBlock:(void (^)(BOOL succeeded))completionBlock
+{
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    
+    NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@",productObj.productImageUrl]];
+    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:[NSURLRequest requestWithURL:imageUrl]
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           NSLog(@"Response:%@ %@\n", response, error);
+                                                           if ( !error )
+                                                           {
+                                                               UIImage *image = [[UIImage alloc] initWithData:data];
+                                                               [self saveImage:image withImageName:productObj.productName completionBlock:^(BOOL succeeded) {
+                                                                   if (succeeded) {
+                                                                       NSLog(@"Downloaded %@ and Saved to document directory",productObj.productName);
+                                                                       completionBlock(YES);
+                                                                   }
+                                                                   else{
+                                                                       NSLog(@"Not Downloaded %@ and Saved to document directory",productObj.productName);
+                                                                   }
+                                                               }];
+                                                           } else{
+                                                               completionBlock(NO);
+                                                           }
+                                                       }];
+    [dataTask resume];
+
+}
+- (void)saveImage: (UIImage*)image withImageName:(NSString*)imageName completionBlock:(void (^)(BOOL succeeded))completionBlock{
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"/products"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error]; //Create folder
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/products/%@.png",imageName]];
+    NSData* data = UIImagePNGRepresentation(image);
+    BOOL saved = [data writeToFile:path options:NSASCIIStringEncoding error:&error];
+    if (error) {
+        NSLog(@"Fail: %@", [error localizedDescription]);
+        completionBlock(NO);
+    }
+    if (saved == YES) {
+        completionBlock(YES);
+    }
+}
+- (UIImage*)loadImageWithImageName:(NSString*)imageName {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",imageName]];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    return image;
+}
+-(NSMutableArray*)getProductObjectArray{
+    return productObjectArray;
+}
 @end

@@ -29,11 +29,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    templateArray = [NSMutableArray arrayWithObjects:@"Temp1",@"Temp2",@"Temp3",@"Temp4",@"Temp5",@"Temp6",@"Temp7",@"Temp8", nil];
-
-    Downloader *loader = [Downloader sharedManager];
-    [loader downloadDefautlTemplates];
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    NSMutableArray *temp = [manager getTemplateObjectArray];
+    templateArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i<temp.count; i++) {
+        DefaultTemplateObject *obj = [temp objectAtIndex:i];
+        NSString *image = [manager loadDefaultTemplateImageWithImageName:obj.templateName];
+        [templateArray addObject:image];
+    }
+    NSLog(@"%@",templateArray);
     
     self.iCarouselView.delegate = self;
     self.iCarouselView.dataSource = self;
@@ -41,7 +45,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
 
-    [self makeScrollView];
+//    [self makeScrollView];
     
 
 }
@@ -84,13 +88,14 @@
     //create new view if no view is available for recycling
     if (view == nil)
     {
-        //don't do anything specific to the index within
-        //this `if (view == nil) {...}` statement because the view will be
-        //recycled and used with other index values later
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 200.0)];
-        NSString *imageName = [NSString stringWithFormat:@"carousel_%ld",(long)index+1];
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,500,300)];
+        NSString *imageName = [NSString stringWithFormat:@"%@",[templateArray objectAtIndex:index]];
         ((UIImageView *)view).image = [UIImage imageNamed:imageName];
         view.contentMode = UIViewContentModeScaleToFill;
+        view.layer.cornerRadius = 2.0f;
+        view.layer.borderColor = [UIColor darkGrayColor].CGColor;
+        view.layer.borderWidth = 2.0f;
+        view.backgroundColor = [UIColor lightTextColor];
     }
     return view;
 }
@@ -102,7 +107,7 @@
     return CATransform3DTranslate(transform, 0.0, 0.0, offset * self.iCarouselView.itemWidth);
 }
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
-    [parentClass setSavedTemplateNumber:(int)index];
+    [parentClass setSavedTemplateNumber:[templateArray objectAtIndex:index]];
 }
 - (CGFloat)carousel:(__unused iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
@@ -146,33 +151,33 @@
 }
 
 
--(void)makeScrollView{
-    int x = 0;
-    CGRect frame;
-    for (int i = 0; i < templateArray.count; i++) {
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        if (i == 0) {
-            frame = CGRectMake(10, 10, _templateScroller.frame.size.width - 20, _templateScroller.frame.size.height - 20);
-        } else {
-            frame = CGRectMake((i * (_templateScroller.frame.size.width - 20)) + (i*20) + 10, 10, _templateScroller.frame.size.width - 20, _templateScroller.frame.size.height - 20);
-        }
-        
-        button.frame = frame;
-        [button setTag:i];
-        [button setImage:[UIImage imageNamed:[templateArray objectAtIndex:i]] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(templateClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [_templateScroller addSubview:button];
-        button.backgroundColor = [Utility colorWithHexString:@"0xCEDEE4"];
-        
-        if (i == templateArray.count) {
-            x = CGRectGetMaxX(button.frame);
-        }
-    }
-    
-    _templateScroller.contentSize = CGSizeMake(x, _templateScroller.frame.size.height);
-}
+//-(void)makeScrollView{
+//    int x = 0;
+//    CGRect frame;
+//    for (int i = 0; i < templateArray.count; i++) {
+//        
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        
+//        if (i == 0) {
+//            frame = CGRectMake(10, 10, _templateScroller.frame.size.width - 20, _templateScroller.frame.size.height - 20);
+//        } else {
+//            frame = CGRectMake((i * (_templateScroller.frame.size.width - 20)) + (i*20) + 10, 10, _templateScroller.frame.size.width - 20, _templateScroller.frame.size.height - 20);
+//        }
+//        
+//        button.frame = frame;
+//        [button setTag:i];
+//        [button setImage:[UIImage imageNamed:[templateArray objectAtIndex:i]] forState:UIControlStateNormal];
+//        [button addTarget:self action:@selector(templateClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        [_templateScroller addSubview:button];
+//        button.backgroundColor = [Utility colorWithHexString:@"0xCEDEE4"];
+//        
+//        if (i == templateArray.count) {
+//            x = CGRectGetMaxX(button.frame);
+//        }
+//    }
+//    
+//    _templateScroller.contentSize = CGSizeMake(x, _templateScroller.frame.size.height);
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

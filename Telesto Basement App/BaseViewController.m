@@ -30,13 +30,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //Update the progress view
+        [hud removeFromSuperview];
+        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.center = self.view.center;
+        hud.mode = MBProgressHUDModeIndeterminate;
+        NSString *strloadingText = [NSString stringWithFormat:@"Initializing Application..."];
+        NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
+        
+        hud.label.text = strloadingText;
+        hud.detailsLabel.text=strloadingText2;
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    });
     CustomerDataManager *dataManager = [CustomerDataManager sharedManager];
-    [self playBackgroundVideo];
-    [dataManager loadingProductImagesAndDefautlTemplatesWithBaseController:self withCompletionBlock:^{
-        NSLog(@"Product Images and default images loaded");
+    [dataManager loadingProductImagesWithBaseController:self withCompletionBlock:^(BOOL succeeded){
+        if (succeeded == YES) {
+            NSLog(@"Product Images loaded");
+            [dataManager loadingDefaultTemplatesWithBaseController:self withCompletionBlock:^(BOOL success){\
+                NSLog(@"default template loaded");
+                [hud hideAnimated:YES];
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            }];
+            
+        }
     }];
-}
+    [self playBackgroundVideo];
 
+}
+-(void)storeDownloadedImagesAtDocumentDir{
+
+
+}
 -(void)playBackgroundVideo{
     
     self.items = [NSMutableArray array];

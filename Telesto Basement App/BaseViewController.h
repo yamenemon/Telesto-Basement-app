@@ -14,8 +14,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "MTReachabilityManager.h"
 #import "CustomerDataManager.h"
+#import <MBProgressHUD.h>
 
-@interface BaseViewController : UIViewController<UITextFieldDelegate>
+@interface BaseViewController : UIViewController<UITextFieldDelegate>{
+    MBProgressHUD *hud;
+}
 @property (strong,nonatomic) loginView *customLoginView;
 
 

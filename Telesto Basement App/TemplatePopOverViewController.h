@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DesignViewController.h"
 #import "iCarousel.h"
-#import "Downloader.h"
+#import "CustomerDataManager.h"
 
 @class DesignViewController;
 @interface TemplatePopOverViewController : UIViewController<iCarouselDelegate,iCarouselDataSource>
