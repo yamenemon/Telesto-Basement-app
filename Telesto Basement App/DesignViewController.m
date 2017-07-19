@@ -69,27 +69,30 @@
     rightNavBtnBar.frame = CGRectMake(self.view.frame.size.width - rightNavBtnBar.frame.size.width, 0, rightNavBtnBar.frame.size.width, rightNavBtnBar.frame.size.height);
     [self.navigationController.navigationBar addSubview:rightNavBtnBar];
     rightNavBtnBar.baseClass = self;
-}
--(void)viewDidLayoutSubviews{
-    /*Scrolling window*/
     
-    
-    
-}
--(void)viewDidAppear:(BOOL)animated{
-
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+        // Perform async operation
+        // Call your method/function here
+        // Example:
+        // NSString *result = [anObject calculateSomething];
+        
         [self downloadProductWithCompletionBlock:^(BOOL succeeded) {
-            if (succeeded == YES) {
-                isShown = YES;
-                productSliderView.hidden = YES;
-                [self productSliderCalled:nil];
-                [self createProductScroller];
-            }
-            else{
-                NSLog(@"product not loaded");
-            }
-            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                // Update UI
+                // Example:
+                if (succeeded == YES) {
+                    isShown = YES;
+                    productSliderView.hidden = YES;
+                    [self productSliderCalled:nil];
+                    [self createProductScroller];
+                }
+                else{
+                    NSLog(@"product not loaded");
+                }
+            });
         }];
+    });
 }
 -(void)viewWillDisappear:(BOOL)animated{
     leftNavBtnBar.hidden = YES;
@@ -247,7 +250,7 @@
     NSArray*ProductInfoDetailsPopupView = [[NSBundle mainBundle] loadNibNamed:@"ProductInfoDetailsPopupView" owner:self options:nil];
     self.productInfoDetails = [ProductInfoDetailsPopupView objectAtIndex:0];
     self.productInfoDetails.designViewController = self;
-    self.productInfoDetails.productName.text = product.productImageName;
+    self.productInfoDetails.productName.text = product.productName;
     self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%f",product.productPrice];
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];

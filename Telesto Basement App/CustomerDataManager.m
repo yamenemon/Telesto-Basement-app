@@ -415,6 +415,15 @@
         productObjectArray = [[NSMutableArray alloc] init];
         __block int count = (int)tempArr.count;
         for (NSMutableDictionary *dic in tempArr) {
+           /*
+            description = "demo description";
+            discount = 5;
+            image = "http://telesto.centralstationmarketing.com/images/products/-SFA.png";
+            name = "-SFA";
+            productId = 1;
+            unitPrice = "200.00";
+            unitType = piece;
+            */
             Product *productObj = [[Product alloc] init];
             productObj.productDescription = [dic valueForKey:@"description"];
             productObj.discount = [[dic valueForKey:@"discount"] floatValue];
