@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MTReachabilityManager.h"
+#import "SWRevealViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -53,7 +54,7 @@
     }
     if ([Utility isLoggedIn] == YES) {
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"SWRevealViewController"];
+        SWRevealViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"SWRevealViewController"];
         self.window.rootViewController = vc;
         [self.window makeKeyAndVisible];
     }

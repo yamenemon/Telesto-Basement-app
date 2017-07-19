@@ -46,5 +46,5 @@
 -(void)loadingDefaultTemplatesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
 
 - (NSString*)loadDefaultTemplateImageWithImageName:(NSString*)imageName;
-- (UIImage*)loadImageWithImageName:(NSString*)imageName;
+- (NSString*)loadProductImageWithImageName:(NSString*)imageName;
 @end

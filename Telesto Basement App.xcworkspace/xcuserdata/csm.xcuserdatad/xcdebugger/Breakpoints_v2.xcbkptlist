@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/CustomerDataManager.m"
-            timestampString = "521711651.927013"
+            filePath = "Telesto Basement App/DesignViewController.m"
+            timestampString = "522162781.690968"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-uploadBuildingMediaImagesArray:withController:withCompletion:"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-downloadProductWithCompletionBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,29 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/CustomerDataManager.m"
-            timestampString = "521711710.017701"
+            filePath = "Telesto Basement App/DesignViewController.m"
+            timestampString = "522164463.481298"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-uploadBuildingMediaImagesArray:withController:withCompletion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/CustomerDataManager.m"
-            timestampString = "521714325.043914"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-uploadBuildingMediaImagesArray:withController:withCompletion:"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-createProductScroller"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

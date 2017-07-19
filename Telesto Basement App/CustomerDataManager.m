@@ -289,12 +289,7 @@
         templateObjectArray = [[NSMutableArray alloc] init];
         __block int count = (int)tempArr.count;
         for (NSMutableDictionary *dic in tempArr) {
-            /*
-             created = "2017-07-18 04:52:32";
-             image = "Temp8@2x.png";
-             name = "Temp8@2x";
-             templateId = 8;
-             */
+            
             DefaultTemplateObject *defaultTempObj = [[DefaultTemplateObject alloc] init];
             defaultTempObj.templateId = [[dic valueForKey:@"templateId"] intValue];
             defaultTempObj.templateImage = [dic valueForKey:@"image"];
@@ -311,6 +306,8 @@
         }
         //        NSLog(@"%@",tempArr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completionBlock(NO);
+        NSLog(@"fail to connect and error %@",error);
     }];
 }
 - (void)downloadDefaultTemplateImageWithProductObject:(DefaultTemplateObject*)defaultTempObj completionBlock:(void (^)(BOOL succeeded))completionBlock
@@ -427,16 +424,32 @@
             productObj.productPrice = [[dic valueForKey:@"unitPrice"] floatValue];
             productObj.unitType = [dic valueForKey:@"unitType"];
             [productObjectArray addObject:productObj];
+            
+            
+            
+            
             [self downloadImageWithProductObject:productObj completionBlock:^(BOOL succeeded){
                 count--;
                 NSLog(@"Donwloaded and Saved and count %d",count);
                 if (count == 0) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        //Save in the document directory.
+                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                        NSString *documentsDirectory = [paths objectAtIndex:0];
+                        NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
+                        NSMutableArray *myObject=[NSMutableArray array];
+                        [myObject addObject:productObjectArray];
+                        
+                        [NSKeyedArchiver archiveRootObject:myObject toFile:appFile];
+                    });
                     completionBlock(YES);
                 }
             }];
         }
+        
 //        NSLog(@"%@",tempArr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completionBlock(NO);
     }];
 }
 - (void)downloadImageWithProductObject:(Product*)productObj completionBlock:(void (^)(BOOL succeeded))completionBlock
@@ -486,14 +499,23 @@
         completionBlock(YES);
     }
 }
-- (UIImage*)loadImageWithImageName:(NSString*)imageName {
+- (NSString*)loadProductImageWithImageName:(NSString*)imageName {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png",imageName]];
-    UIImage* image = [UIImage imageWithContentsOfFile:path];
-    return image;
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"products/%@",imageName]];
+    //    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    return path;
 }
 -(NSMutableArray*)getProductObjectArray{
+    if (productObjectArray.count==0) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
+        
+        productObjectArray = [NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
+    }
+
     return productObjectArray;
 }
 @end

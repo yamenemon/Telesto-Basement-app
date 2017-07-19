@@ -31,10 +31,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self playBackgroundVideo];
 
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [self showingTermsAndConditionScreen];
+}
+-(void)showingTermsAndConditionScreen{
+    
+    BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults] boolForKey:@"First_Logged_in"];
+    if(isLoggedIn == YES) {
+        NSLog(@"Show loginWindow");
+        [self playBackgroundVideo];
+//        [self performSelectorOnMainThread:@selector(loadDefaulImagesAndProductImages) withObject:nil waitUntilDone:2.0];
+//        [self performSelector:@selector(loadDefaulImagesAndProductImages) withObject:nil afterDelay:2.0];
+        [self loadDefaulImagesAndProductImages];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"First_Logged_in"];
+        [self displayTermsAndCondition];
+    }
+}
 -(void)viewWillAppear:(BOOL)animated{
+}
+-(void)loadDefaulImagesAndProductImages{
+
     dispatch_async(dispatch_get_main_queue(), ^{
         //Update the progress view
         [hud removeFromSuperview];
@@ -57,12 +76,8 @@
                 [hud hideAnimated:YES];
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             }];
-            
         }
     }];
-}
--(void)storeDownloadedImagesAtDocumentDir{
-
 
 }
 -(void)playBackgroundVideo{
@@ -173,19 +188,7 @@
         }
     }
 }
--(void)viewDidAppear:(BOOL)animated{
-    [self showingTermsAndConditionScreen];
-}
--(void)showingTermsAndConditionScreen{
 
-    BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults] boolForKey:@"First_Logged_in"];
-    if(isLoggedIn == YES) {
-        NSLog(@"Show loginWindow");
-    } else {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"First_Logged_in"];
-        [self displayTermsAndCondition];
-    }
-}
 - (void)viewDidLayoutSubviews{
 
 

@@ -77,23 +77,19 @@
     
 }
 -(void)viewDidAppear:(BOOL)animated{
-    
-    dispatch_queue_t _serialQueue = dispatch_queue_create("com.example.name", DISPATCH_QUEUE_SERIAL);
-    
-    dispatch_sync(_serialQueue, ^{
-        [self downloadProduct];
-    });
-    dispatch_sync(_serialQueue, ^{
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            //Run UI Updates
-            isShown = YES;
-            productSliderView.hidden = YES;
-            [self productSliderCalled:nil];
-            [self createProductScroller];
+
+        [self downloadProductWithCompletionBlock:^(BOOL succeeded) {
+            if (succeeded == YES) {
+                isShown = YES;
+                productSliderView.hidden = YES;
+                [self productSliderCalled:nil];
+                [self createProductScroller];
+            }
+            else{
+                NSLog(@"product not loaded");
+            }
             
-        });
-    });
-    
+        }];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     leftNavBtnBar.hidden = YES;
@@ -177,75 +173,28 @@
 }
 #pragma mark -
 #pragma mark - Product Slider Methods
--(void)downloadProduct{
+-(void)downloadProductWithCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
 
     // DOWNLOAD PRODUCT HERE
     //-----------------------
-     
-
-     
-    
-    //STORE DOWNLOADED PRODUCT
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
     downloadedProduct = [[NSMutableArray alloc] init];
-    Product *product = [[Product alloc] init];
-    product.productId = 908;
-    product.productImageName = @"Pro Series Sump Pumps";
-    product.productPrice = 200.0f;
-    [downloadedProduct addObject:product];
-    
-    Product *product2 = [[Product alloc] init];
-    product2.productId = 909;
-    product2.productImageName = @"Dehumidification";
-    product2.productPrice = 500.0f;
-    [downloadedProduct addObject:product2];
-    
-    Product *product3 = [[Product alloc] init];
-    product3.productId = 910;
-    product3.productImageName = @"Grate Drain";
-    product3.productPrice = 100.0f;
-    [downloadedProduct addObject:product3];
-    
-    Product *product4 = [[Product alloc] init];
-    product4.productId = 911;
-    product4.productImageName = @"Fast Drain";
-    product4.productPrice = 20.0f;
-    [downloadedProduct addObject:product4];
-    
-    Product *product5 = [[Product alloc] init];
-    product5.productId = 912;
-    product5.productImageName = @"Grate Trench";
-    product5.productPrice = 150.0f;
-    [downloadedProduct addObject:product5];
-    
-    Product *product6 = [[Product alloc] init];
-    product6.productId = 913;
-    product6.productImageName = @"FastSump Pump";
-    product6.productPrice = 185.0f;
-    [downloadedProduct addObject:product6];
-    
-    Product *product7 = [[Product alloc] init];
-    product7.productId = 983;
-    product7.productImageName = @"High Water Sump Alarm";
-    product7.productPrice = 185.0f;
-    [downloadedProduct addObject:product7];
-    
-    Product *product8 = [[Product alloc] init];
-    product8.productId = 983;
-    product8.productImageName = @"GrateSump Plus";
-    product8.productPrice = 185.0f;
-    [downloadedProduct addObject:product8];
-    
-    Product *product9 = [[Product alloc] init];
-    product9.productId = 935;
-    product9.productImageName = @"GrateSump Plus ||";
-    product9.productPrice = 185.0f;
-    [downloadedProduct addObject:product9];
+    downloadedProduct = [[manager getProductObjectArray] objectAtIndex:0];
+    if (downloadedProduct.count>0) {
+        completionBlock(YES);
+    }
+    else{
+        completionBlock(NO);
+    }
+    NSLog(@"%@",downloadedProduct);
 }
 -(void)createProductScroller{
     int y = 0;
     CGRect frame;
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
     for (int i = 0; i < downloadedProduct.count-1; i++) {
         
+        Product *proObj = [downloadedProduct objectAtIndex:i];
         
         NSArray*customSliderButtonView = [[NSBundle mainBundle] loadNibNamed:@"ProductSliderCustomView" owner:self options:nil];
         productSliderCustomView = [customSliderButtonView objectAtIndex:0];
@@ -267,15 +216,17 @@
         productSliderCustomView.frame = frame;
         [productSliderCustomView setNeedsLayout];
         [productSliderCustomView.productBtn setTag:i+1];
-        [productSliderCustomView.productBtn setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png",i+1]] forState:UIControlStateNormal];
+        NSString *imageUrl = [manager loadProductImageWithImageName:proObj.productName];
+        NSLog(@"Product image url: %@",imageUrl);
+
+        [productSliderCustomView.productBtn setBackgroundImage:[UIImage imageNamed:imageUrl] forState:UIControlStateNormal];
         [productSliderCustomView.productBtn addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.productSliderScrollView addSubview:productSliderCustomView];
         
         if (i == downloadedProduct.count-2) {
             y = CGRectGetMaxY(productSliderCustomView.frame);
         }
-        Product *product = [downloadedProduct objectAtIndex:i];
-        productSliderCustomView.productName.text = [NSString stringWithFormat:@"%@",product.productImageName];
+        productSliderCustomView.productName.text = [NSString stringWithFormat:@"%@",proObj.productName];
     }
     
     self.productSliderScrollView.contentSize = CGSizeMake(self.productSliderScrollView.frame.size.width,y);
@@ -297,9 +248,12 @@
     self.productInfoDetails = [ProductInfoDetailsPopupView objectAtIndex:0];
     self.productInfoDetails.designViewController = self;
     self.productInfoDetails.productName.text = product.productImageName;
-    self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%ld",product.productPrice];
-    self.productInfoDetails.productDetailImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",btnTag]];
-    self.productInfoDetails.productDescriptions.text = @"Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+    self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%f",product.productPrice];
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
+    NSLog(@"Product image url: %@",imageUrl);
+    self.productInfoDetails.productDetailImage.image = [UIImage imageNamed:imageUrl];
+    self.productInfoDetails.productDescriptions.text = product.productDescription;
     
     popupController = [[CNPPopupController alloc] initWithContents:@[self.productInfoDetails]];
     popupController.theme = [self defaultTheme];
@@ -319,6 +273,11 @@
             [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
         }
     }
+    Product *product = [downloadedProduct objectAtIndex:productBtn.tag];
+
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
+    NSLog(@"Product image url: %@",imageUrl);
     
     // (1) Create a user resizable view with a simple red background content view.
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
@@ -327,7 +286,7 @@
     userResizableView.productID = [newFolderId intValue];
     NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
     
-    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%ld.png",(long)productBtn.tag]]];
+    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageUrl]];
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
     userResizableView.baseVC = self;
