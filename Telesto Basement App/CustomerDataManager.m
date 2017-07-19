@@ -372,6 +372,7 @@
 }
 -(NSMutableArray*)getTemplateObjectArray{
     if (templateObjectArray.count==0) {
+        templateObjectArray = [[NSMutableArray alloc] init];
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *myPath = [paths objectAtIndex:0];
         // if you save fies in a folder
@@ -391,8 +392,12 @@
         
         for (int i = 0; i < onlyImages.count; i++) {
             NSString *imagePath = [myPath stringByAppendingPathComponent:[onlyImages objectAtIndex:i]];
-            UIImage *tempImage = [UIImage imageWithContentsOfFile:imagePath];
-            // do something you want
+
+            DefaultTemplateObject *defaultTempObj = [[DefaultTemplateObject alloc] init];
+            defaultTempObj.templateId = i;
+            defaultTempObj.templateImage = imagePath;
+            defaultTempObj.templateName = [onlyImages objectAtIndex:i];
+            [templateObjectArray addObject:defaultTempObj];
         }
     }
     return templateObjectArray;
