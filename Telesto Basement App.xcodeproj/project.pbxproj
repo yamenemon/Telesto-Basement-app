@@ -116,6 +116,16 @@
 		70D44C1B1F178CE00032FAA6 /* CountryListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D44C1A1F178CE00032FAA6 /* CountryListObject.m */; };
 		70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E8481E43426B007E3F2F /* SettingsViewController.m */; };
 		70DB1B5D1F1E1238006E55A2 /* DefaultTemplateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DB1B5C1F1E1238006E55A2 /* DefaultTemplateObject.m */; };
+		70E141511F20818000B5A935 /* TemperatureReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E141501F20818000B5A935 /* TemperatureReadingView.m */; };
+		70E141541F2081A500B5A935 /* VisualInspectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E141531F2081A500B5A935 /* VisualInspectionView.m */; };
+		70E141571F2081C400B5A935 /* BasementEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E141561F2081C400B5A935 /* BasementEvaluationView.m */; };
+		70E1415A1F20821200B5A935 /* BasicFAQView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E141591F20821200B5A935 /* BasicFAQView.m */; };
+		70E1415C1F20822400B5A935 /* BasicFAQView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E1415B1F20822400B5A935 /* BasicFAQView.xib */; };
+		70E1415E1F20826700B5A935 /* TemperatureReadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E1415D1F20826700B5A935 /* TemperatureReadingView.xib */; };
+		70E141601F20829B00B5A935 /* VisualInspectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E1415F1F20829B00B5A935 /* VisualInspectionView.xib */; };
+		70E141621F2082B000B5A935 /* BasementEvaluationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E141611F2082B000B5A935 /* BasementEvaluationView.xib */; };
+		70E141661F20DBF800B5A935 /* BasicFAQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E141641F20DBF800B5A935 /* BasicFAQTableViewCell.m */; };
+		70E141671F20DBF800B5A935 /* BasicFAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E141651F20DBF800B5A935 /* BasicFAQTableViewCell.xib */; };
 		70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */; };
 		70E5D8C81EEFC8AB004FE1BF /* ProductSliderCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
@@ -301,6 +311,21 @@
 		70D6E8481E43426B007E3F2F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		70DB1B5B1F1E1238006E55A2 /* DefaultTemplateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTemplateObject.h; sourceTree = "<group>"; };
 		70DB1B5C1F1E1238006E55A2 /* DefaultTemplateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTemplateObject.m; sourceTree = "<group>"; };
+		70E1414F1F20818000B5A935 /* TemperatureReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureReadingView.h; sourceTree = "<group>"; };
+		70E141501F20818000B5A935 /* TemperatureReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureReadingView.m; sourceTree = "<group>"; };
+		70E141521F2081A500B5A935 /* VisualInspectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualInspectionView.h; sourceTree = "<group>"; };
+		70E141531F2081A500B5A935 /* VisualInspectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualInspectionView.m; sourceTree = "<group>"; };
+		70E141551F2081C400B5A935 /* BasementEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasementEvaluationView.h; sourceTree = "<group>"; };
+		70E141561F2081C400B5A935 /* BasementEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasementEvaluationView.m; sourceTree = "<group>"; };
+		70E141581F20821200B5A935 /* BasicFAQView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicFAQView.h; sourceTree = "<group>"; };
+		70E141591F20821200B5A935 /* BasicFAQView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicFAQView.m; sourceTree = "<group>"; };
+		70E1415B1F20822400B5A935 /* BasicFAQView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicFAQView.xib; sourceTree = "<group>"; };
+		70E1415D1F20826700B5A935 /* TemperatureReadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TemperatureReadingView.xib; sourceTree = "<group>"; };
+		70E1415F1F20829B00B5A935 /* VisualInspectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisualInspectionView.xib; sourceTree = "<group>"; };
+		70E141611F2082B000B5A935 /* BasementEvaluationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasementEvaluationView.xib; sourceTree = "<group>"; };
+		70E141631F20DBF800B5A935 /* BasicFAQTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicFAQTableViewCell.h; sourceTree = "<group>"; };
+		70E141641F20DBF800B5A935 /* BasicFAQTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicFAQTableViewCell.m; sourceTree = "<group>"; };
+		70E141651F20DBF800B5A935 /* BasicFAQTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicFAQTableViewCell.xib; sourceTree = "<group>"; };
 		70E5D8C41EEFC89D004FE1BF /* ProductSliderCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSliderCustomView.h; sourceTree = "<group>"; };
 		70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSliderCustomView.m; sourceTree = "<group>"; };
 		70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductSliderCustomView.xib; sourceTree = "<group>"; };
@@ -626,6 +651,21 @@
 			children = (
 				70CF19641E1CE03D00C90EDD /* FaqsViewController.h */,
 				70CF19651E1CE03D00C90EDD /* FaqsViewController.m */,
+				70E141631F20DBF800B5A935 /* BasicFAQTableViewCell.h */,
+				70E141641F20DBF800B5A935 /* BasicFAQTableViewCell.m */,
+				70E141651F20DBF800B5A935 /* BasicFAQTableViewCell.xib */,
+				70E141581F20821200B5A935 /* BasicFAQView.h */,
+				70E141591F20821200B5A935 /* BasicFAQView.m */,
+				70E1415B1F20822400B5A935 /* BasicFAQView.xib */,
+				70E1414F1F20818000B5A935 /* TemperatureReadingView.h */,
+				70E141501F20818000B5A935 /* TemperatureReadingView.m */,
+				70E1415D1F20826700B5A935 /* TemperatureReadingView.xib */,
+				70E141521F2081A500B5A935 /* VisualInspectionView.h */,
+				70E141531F2081A500B5A935 /* VisualInspectionView.m */,
+				70E1415F1F20829B00B5A935 /* VisualInspectionView.xib */,
+				70E141551F2081C400B5A935 /* BasementEvaluationView.h */,
+				70E141561F2081C400B5A935 /* BasementEvaluationView.m */,
+				70E141611F2082B000B5A935 /* BasementEvaluationView.xib */,
 			);
 			name = FAQS;
 			sourceTree = "<group>";
@@ -782,6 +822,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70E141671F20DBF800B5A935 /* BasicFAQTableViewCell.xib in Resources */,
 				70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */,
 				70EC80E61E067DB400A6D245 /* search@2x.png in Resources */,
 				70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */,
@@ -795,9 +836,11 @@
 				705F05A41EDED8CE00D8B837 /* CustomVideoPopUpView.xib in Resources */,
 				70CAA46D1EE7DB4E00614BFB /* MediaPopUp.xib in Resources */,
 				7097799C1ED569430032F4FF /* horizentalWall@2x.png in Resources */,
+				70E141621F2082B000B5A935 /* BasementEvaluationView.xib in Resources */,
 				705F05A91EDED8CE00D8B837 /* LeftNavDrawingToolsView.xib in Resources */,
 				705F64EC1DF97F2600082D55 /* userName@2x.png in Resources */,
 				705F64D71DF97B7000082D55 /* Roboto-Bold.ttf in Resources */,
+				70E141601F20829B00B5A935 /* VisualInspectionView.xib in Resources */,
 				7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */,
 				70EC80E11E067DB400A6D245 /* log_out_@2x.png in Resources */,
 				705F64E21DF97B7000082D55 /* RobotoCondensed-BoldItalic.ttf in Resources */,
@@ -811,6 +854,7 @@
 				705F64D91DF97B7000082D55 /* Roboto-Italic.ttf in Resources */,
 				705F64D51DF97B7000082D55 /* Roboto-Black.ttf in Resources */,
 				705F05A21EDED8CE00D8B837 /* CustomTemplateNameView.xib in Resources */,
+				70E1415C1F20822400B5A935 /* BasicFAQView.xib in Resources */,
 				705F64DB1DF97B7000082D55 /* Roboto-LightItalic.ttf in Resources */,
 				70CE84261F04CED900867F91 /* ELCAssetPicker.xib in Resources */,
 				70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */,
@@ -823,6 +867,7 @@
 				705F64E11DF97B7000082D55 /* RobotoCondensed-Bold.ttf in Resources */,
 				705F64E31DF97B7000082D55 /* RobotoCondensed-Italic.ttf in Resources */,
 				70CE84301F05132800867F91 /* BuidingMediaPopUp.xib in Resources */,
+				70E1415E1F20826700B5A935 /* TemperatureReadingView.xib in Resources */,
 				705F64E51DF97B7000082D55 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				70EC80EA1E067DB400A6D245 /* traning_videos@2x.png in Resources */,
 				705F64E61DF97B7000082D55 /* RobotoCondensed-Regular.ttf in Resources */,
@@ -921,21 +966,26 @@
 				70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
 				70CE84201F04CED900867F91 /* ELCAssetCell.m in Sources */,
+				70E1415A1F20821200B5A935 /* BasicFAQView.m in Sources */,
 				706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
 				70CE84211F04CED900867F91 /* ELCAssetTablePicker.m in Sources */,
+				70E141661F20DBF800B5A935 /* BasicFAQTableViewCell.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
 				70CE841F1F04CED900867F91 /* ELCAsset.m in Sources */,
 				704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */,
+				70E141541F2081A500B5A935 /* VisualInspectionView.m in Sources */,
 				70CE84221F04CED900867F91 /* ELCConsole.m in Sources */,
 				705F05AE1EDED8CE00D8B837 /* ShowPriceViewController.m in Sources */,
 				705F05AB1EDED8CE00D8B837 /* ProductObject.m in Sources */,
 				70CE842E1F05131A00867F91 /* BuidingMediaPopUp.m in Sources */,
+				70E141571F2081C400B5A935 /* BasementEvaluationView.m in Sources */,
 				70CE84241F04CED900867F91 /* ELCOverlayImageView.m in Sources */,
 				70CF14151DF449350045CF8F /* CustomerRecordViewController.m in Sources */,
 				706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */,
 				70CE84231F04CED900867F91 /* ELCImagePickerController.m in Sources */,
+				70E141511F20818000B5A935 /* TemperatureReadingView.m in Sources */,
 				7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */,
 				70CA54D71E7188FD00F7FE67 /* CustomerProposalsViewController.m in Sources */,
 				705F05A51EDED8CE00D8B837 /* DesignViewController.m in Sources */,

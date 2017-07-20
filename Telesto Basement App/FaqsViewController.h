@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Utility.h"
+@class BasicFAQTableViewCell;
 
-@interface FaqsViewController : UIViewController <UITextViewDelegate>
+@interface FaqsViewController : UIViewController <UITextViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *faqViewScroller;
+@property (strong,nonatomic) UIScrollView *faqScroller;
+
+@property (strong,nonatomic) BasicFAQTableViewCell *basicFAQView;
+@property (weak, nonatomic) IBOutlet UITableView *inspectionTableView;
+
 @end

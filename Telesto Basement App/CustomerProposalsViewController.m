@@ -10,6 +10,7 @@
 #import "Utility.h"
 #import "CustomerInfoObject.h"
 #import "CustomerProposalTableViewCell.h"
+#import "FaqsViewController.h"
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -132,6 +133,13 @@
     [alert addAction:ok];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
+}
+- (IBAction)newProposalsBtnAction:(id)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FaqsViewController *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewController"];
+//    vc.customInfoObject = infoObject;
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*
