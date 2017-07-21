@@ -10,7 +10,7 @@
 #import "DRColorPicker.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
+#define TOKEN_STRING @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH"
 @interface DesignViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) DRColorPickerColor* color;
@@ -282,16 +282,38 @@
     NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
     NSLog(@"Product image url: %@",imageUrl);
     
+    /*
+     @synthesize productId;
+     @synthesize productName;
+     @synthesize productXcoordinate;
+     @synthesize productYcoordinate;
+     @synthesize productWidth;
+     @synthesize productHeight;
+     @synthesize storedMediaArray;
+     
+     product_id,product_name,product_x_coordinate,product_y_coordinate,product_width,product_height,image_count, product_image[file0,file1,file2]
+     */
+    
     // (1) Create a user resizable view with a simple red background content view.
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
     CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
     userResizableView.infoBtn.tag = [newFolderId intValue];
-    userResizableView.productID = [newFolderId intValue];
+    
+    
     NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
     
     UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageUrl]];
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
+    
+    userResizableView.productID = product.productId;
+    userResizableView.productObject.productId = product.productId;
+    userResizableView.productObject.productName = imageUrl;
+    userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+    userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+    userResizableView.productObject.productWidth = contentView.frame.size.width;
+    userResizableView.productObject.productHeight = contentView.frame.size.height;
+    
     userResizableView.baseVC = self;
     userResizableView.delegate = self;
     [userResizableView showEditingHandles];
@@ -305,6 +327,60 @@
     NSLog(@"Array after Adding: %@",productArray);
     
 }
+#pragma mark -
+#pragma mark Save User Design
+#pragma mark -
+-(void)saveUserDesignToServer{
+    NSLog(@"Product Array: %@",productArray);
+    
+    for (int i=0; i<productArray.count; i++) {
+        CustomProductView *view = [productArray objectAtIndex:i];
+        NSMutableArray *imagePath = [self listFileAtPath:_templateNameString withTag:(int)view.infoBtn.tag];
+        view.productObject.storedMediaArray = imagePath;
+        [productArray replaceObjectAtIndex:i withObject:view];
+        NSLog(@"Product object: %f %f %f %f %d",view.productObject.productXcoordinate,view.productObject.productYcoordinate,view.productObject.productWidth,view.productObject.productHeight,view.productObject.productId);
+    }
+    CustomTemplateObject *objects = [[CustomTemplateObject alloc] init];
+    objects.authKey = TOKEN_STRING;
+    objects.templateName = _templateNameString;
+//    objects.screenShot =
+
+
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    [manager saveUserDesignWithBaseController:self withProductArray:productArray withCompletionBlock:^(BOOL success){
+        if (success == YES) {
+            
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
+            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
+}
+-(NSMutableArray *)listFileAtPath:(NSString *)path withTag:(int)tag
+{
+    //-----> LIST ALL FILES <-----//
+    NSLog(@"LISTING ALL FILES FOUND");
+    NSLog(@"Path of the image: %@",path);
+    int count;
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@/%d",path,tag]];
+    NSLog(@"product folder path: %@",dataPath);
+    
+    NSMutableArray *imagePathArray = [[NSMutableArray alloc] init];
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:dataPath error:NULL];
+    for (count = 0; count < (int)[directoryContent count]; count++)
+    {
+        NSLog(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+        NSString *imagePath = [NSString stringWithFormat:@"%@/%@",dataPath,[directoryContent objectAtIndex:count]];
+        NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:imagePath]];
+        UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
+        [imagePathArray addObject:thumbNail];
+    }
+    return imagePathArray;
+}
 -(void)saveUserSelectedProductInfo:(NSString*)folderName{
 
     NSError *error;
@@ -316,7 +392,21 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
 }
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
+    NSInteger index = [productArray indexOfObject:lastEditedView];
+    CustomProductView *productView = (CustomProductView*)[productArray objectAtIndex:index];
+
+    productView.productObject = [self updateProductObject:productView.productObject withObject:userResizableView];
+    
+    [productArray replaceObjectAtIndex:index withObject:productView];
     lastEditedView = userResizableView;
+}
+-(ProductObject*)updateProductObject:(ProductObject*)oldObject withObject:(SPUserResizableView*)newObject {
+    oldObject.productId = oldObject.productId;
+    oldObject.productXcoordinate = newObject.frame.origin.x;
+    oldObject.productYcoordinate = newObject.frame.origin.y;
+    oldObject.productWidth = newObject.frame.size.width;
+    oldObject.productHeight = newObject.frame.size.height;
+    return oldObject;
 }
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([currentlyEditingView hitTest:[touch locationInView:currentlyEditingView] withEvent:nil]) {
@@ -801,10 +891,8 @@
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action)
                              {
-                                 UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                 UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
-                                 vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-                                 [self.navigationController pushViewController:vc animated:YES];
+                                 [self saveUserDesignToServer];
+                                 
                              }];
 //    [alert addAction:ok];
     [alert addAction:cancel];
@@ -892,7 +980,7 @@
     [basementDesignView.layer renderInContext:context];
     UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    NSString  *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@.jpg",templateName]];
+    NSString  *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@.jpg",_templateNameString]];
     [UIImageJPEGRepresentation(capturedImage, 0.95) writeToFile:imagePath atomically:YES];
     [popupController dismissPopupControllerAnimated:YES];
 }
@@ -1078,4 +1166,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 @end

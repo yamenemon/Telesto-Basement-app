@@ -19,6 +19,7 @@
 @class CustomerListViewController;
 @class CountryListObject;
 @class BaseViewController;
+@class DesignViewController;
 
 @interface CustomerDataManager : NSObject
 @property (strong,nonatomic) NSMutableArray *templateObjectArray;
@@ -47,4 +48,6 @@
 
 - (NSString*)loadDefaultTemplateImageWithImageName:(NSString*)imageName;
 - (NSString*)loadProductImageWithImageName:(NSString*)imageName;
+
+-(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withProductArray:(NSMutableArray*)productArr withCompletionBlock:(void(^)(BOOL succeeded))completionBlock;
 @end

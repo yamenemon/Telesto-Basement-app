@@ -11,7 +11,7 @@
 #import "CustomerListViewController.h"
 #import "CountryListObject.h"
 #import "BaseViewController.h"
-
+#import "DesignViewController.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
@@ -269,7 +269,6 @@
         completionBlock();
     }];
 }
-
 -(NSMutableDictionary*)getCustomerData{
     return _customerList;
 }
@@ -310,8 +309,7 @@
         NSLog(@"fail to connect and error %@",error);
     }];
 }
-- (void)downloadDefaultTemplateImageWithProductObject:(DefaultTemplateObject*)defaultTempObj completionBlock:(void (^)(BOOL succeeded))completionBlock
-{
+- (void)downloadDefaultTemplateImageWithProductObject:(DefaultTemplateObject*)defaultTempObj completionBlock:(void (^)(BOOL succeeded))completionBlock{
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
     
@@ -461,8 +459,7 @@
         completionBlock(NO);
     }];
 }
-- (void)downloadImageWithProductObject:(Product*)productObj completionBlock:(void (^)(BOOL succeeded))completionBlock
-{
+- (void)downloadImageWithProductObject:(Product*)productObj completionBlock:(void (^)(BOOL succeeded))completionBlock{
     NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
     
@@ -526,5 +523,15 @@
     }
 
     return productObjectArray;
+}
+#pragma mark -
+#pragma mark SAVE USER DESIGN
+-(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withProductArray:(NSMutableArray *)productArr withCompletionBlock:(void (^)(BOOL))completionBlock{
+    NSLog(@"Stored product: %@",productArr);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"upload_customer_file";
+//    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",[NSNumber numberWithInt:1],@"fileType",[NSNumber numberWithUnsignedInteger:imageArray.count],@"imageCount",nil];
 }
 @end

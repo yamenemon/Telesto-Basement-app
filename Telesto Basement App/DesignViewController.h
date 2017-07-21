@@ -20,6 +20,8 @@
 #import "Product.h"
 #import "ProductSliderCustomView.h"
 #import "ProductInfoDetailsPopup.h"
+#import "ProductObject.h"
+#import "CustomTemplateObject.h"
 
 @class  TemplatePopOverViewController;
 
@@ -39,6 +41,7 @@
     CustomVideoPopUpView *customVideoPopUpView;
     int lastClickedProductInfoBtn;
     BOOL isFromProduct;
+    UIImage *screenShot;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
