@@ -10,6 +10,17 @@
 #define DOMAIN_NAME @"jupiter.centralstationmarketing.com"
 
 @implementation Utility
+@synthesize customerId;
+
++ (Utility *)sharedManager {
+    static Utility *_sharedManager = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedManager = [[self alloc] init];
+    });
+    
+    return _sharedManager;
+}
 + (void)loadLoginView {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
@@ -192,5 +203,19 @@
     }]];
     [controller presentViewController:alert animated:YES completion:nil];
 
+}
+-(int)getCurrentCustomerId{
+    return customerId;
+}
+-(void)setCurrentCustomerId:(int)customerIdentification{
+    customerId = customerIdentification;
+}
+- (UIImage*)loadScreenShotImageWithImageName:(NSString*)imageName{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@%@.jpg",imageName,imageName,@"ScreenShot"]];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    return image;
 }
 @end

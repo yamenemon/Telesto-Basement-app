@@ -12,6 +12,8 @@
 #import "CountryListObject.h"
 #import "BaseViewController.h"
 #import "DesignViewController.h"
+#import "CustomTemplateObject.h"
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
@@ -433,8 +435,6 @@
             [productObjectArray addObject:productObj];
             
             
-            
-            
             [self downloadImageWithProductObject:productObj completionBlock:^(BOOL succeeded){
                 count--;
                 NSLog(@"Donwloaded and Saved and count %d",count);
@@ -526,12 +526,53 @@
 }
 #pragma mark -
 #pragma mark SAVE USER DESIGN
--(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withProductArray:(NSMutableArray *)productArr withCompletionBlock:(void (^)(BOOL))completionBlock{
-    NSLog(@"Stored product: %@",productArr);
+-(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withProductArray:(CustomTemplateObject *)customerTemplateObj withCompletionBlock:(void (^)(BOOL success))completionBlock{
+    NSLog(@"CustomerTemplateObj: %@",customerTemplateObj);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *endPoint = @"upload_customer_file";
-//    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",[NSNumber numberWithInt:1],@"fileType",[NSNumber numberWithUnsignedInteger:imageArray.count],@"imageCount",nil];
+    NSString *endPoint = @"create_custom_template";
+    /*
+     authKey, name, screenshot, customer_id, products[product_id,product_name,product_x_coordinate,product_y_coordinate,product_width,product_height,image_count, product_image[file0,file1,file2]]
+     */
+    NSData *screenshot = UIImagePNGRepresentation(customerTemplateObj.screenShot);
+    NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",customerTemplateObj.templateName,@"name",screenshot,@"screenshot",[NSNumber numberWithInteger:customerTemplateObj.customerId],@"customer_id",customerTemplateObj.productObjectArray,@"products",nil];
+
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        int i = 0;
+//        for(UIImage *eachImage in customerTemplateObj.productObjectArray)
+//        {
+//            NSData *imageData = UIImageJPEGRepresentation(eachImage, 0.95);
+//            [formData appendPartWithFileData:imageData name:[NSString stringWithFormat:@"file%d",i] fileName:[NSString stringWithFormat:@"file%d.jpg",i ] mimeType:@"image/jpg"];
+//            i++;
+//        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        // This is not called back on the main queue.
+        // You are responsible for dispatching to the main queue for UI updates
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Update the progress view
+            NSLog(@"Uploading Image");
+        });
+    }
+          success:^(NSURLSessionDataTask *task, id responseObject) {
+              NSLog(@"Response: %@", responseObject);
+//              NSError *e = nil;
+//              NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+//              NSLog(@"%@",jsonDic);
+//              NSMutableDictionary *dataDic = [jsonDic valueForKey:@"data"];
+//              NSMutableArray *file = [dataDic valueForKey:@"file"];
+//              NSMutableArray *fileType = [dataDic valueForKey:@"fileType"];
+//              uploadedBuildingMediaArray = [[NSMutableArray alloc] init];
+//              
+//              for (int i = 0; i<fileType.count; i++) {
+//                  [uploadedBuildingMediaArray addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",[file objectAtIndex:i]],[NSString stringWithFormat:@"%@",[fileType objectAtIndex:i]], nil]];
+//              }
+//              //        NSLog(@"Image Arr: %@\n",imageArray);
+//              NSLog(@"responseArray Arr: %@",uploadedBuildingMediaArray);
+              completionBlock(YES);
+          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+              NSLog(@"Error: %@", error);
+              completionBlock(NO);
+          }];
 }
 @end

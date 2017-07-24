@@ -337,17 +337,21 @@
         CustomProductView *view = [productArray objectAtIndex:i];
         NSMutableArray *imagePath = [self listFileAtPath:_templateNameString withTag:(int)view.infoBtn.tag];
         view.productObject.storedMediaArray = imagePath;
+        view.productObject.imageCount = (int)imagePath.count;
         [productArray replaceObjectAtIndex:i withObject:view];
-        NSLog(@"Product object: %f %f %f %f %d",view.productObject.productXcoordinate,view.productObject.productYcoordinate,view.productObject.productWidth,view.productObject.productHeight,view.productObject.productId);
+        NSLog(@"Product object: %f %f %f %f %d %d",view.productObject.productXcoordinate,view.productObject.productYcoordinate,view.productObject.productWidth,view.productObject.productHeight,view.productObject.productId,view.productObject.imageCount);
     }
+    //     authKey, name, screenshot, customer_id, products[product_id,product_name,product_x_coordinate,product_y_coordinate,product_width,product_height,image_count, product_image[file0,file1,file2]]
+
     CustomTemplateObject *objects = [[CustomTemplateObject alloc] init];
     objects.authKey = TOKEN_STRING;
     objects.templateName = _templateNameString;
-//    objects.screenShot =
-
+    objects.customerId = [[Utility sharedManager] getCurrentCustomerId];
+    objects.screenShot = [[Utility sharedManager] loadScreenShotImageWithImageName:_templateNameString];
+    objects.productObjectArray =  productArray;
 
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    [manager saveUserDesignWithBaseController:self withProductArray:productArray withCompletionBlock:^(BOOL success){
+    [manager saveUserDesignWithBaseController:self withProductArray:objects withCompletionBlock:^(BOOL success){
         if (success == YES) {
             
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -891,8 +895,11 @@
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action)
                              {
-                                 [self saveUserDesignToServer];
-                                 
+                                 [self savedTemplateViewForScreenShot:_templateNameString withCompletionBlock:^(BOOL success){
+                                     if (success) {
+                                         [self saveUserDesignToServer];
+                                     }
+                                 }];
                              }];
 //    [alert addAction:ok];
     [alert addAction:cancel];
@@ -972,17 +979,26 @@
     [popupController dismissPopupControllerAnimated:YES];
 
 }
--(void)savedTemplateViewForScreenShot:(NSString*)templateName{
+-(void)savedTemplateViewForScreenShot:(NSString*)templateName withCompletionBlock:(void(^)(BOOL success))completionBlock{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSError *error;
+        CGRect rect = [basementDesignView bounds];
+        UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [basementDesignView.layer renderInContext:context];
+        UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+        NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@%@.jpg",_templateNameString,_templateNameString,@"ScreenShot"]];
 
-    CGRect rect = [basementDesignView bounds];
-    UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [basementDesignView.layer renderInContext:context];
-    UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    NSString  *imagePath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@.jpg",_templateNameString]];
-    [UIImageJPEGRepresentation(capturedImage, 0.95) writeToFile:imagePath atomically:YES];
-    [popupController dismissPopupControllerAnimated:YES];
+        [UIImageJPEGRepresentation(capturedImage, 0.95) writeToFile:savedImagePath atomically:YES];
+//        [UIImageJPEGRepresentation(capturedImage, 0.95) writeToFile:imagePath options:NSDataWritingFileProtectionNone error:&error];
+        [popupController dismissPopupControllerAnimated:YES];
+        completionBlock(YES);
+    });
 }
 - (void)setCustomTemplateName{
     [self showPopupWithStyle:CNPPopupStyleCentered];

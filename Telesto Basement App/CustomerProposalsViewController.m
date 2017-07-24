@@ -137,7 +137,6 @@
 - (IBAction)newProposalsBtnAction:(id)sender {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     FaqsViewController *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewController"];
-//    vc.customInfoObject = infoObject;
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:vc animated:YES];
 }

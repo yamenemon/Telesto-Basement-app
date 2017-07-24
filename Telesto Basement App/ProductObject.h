@@ -15,5 +15,6 @@
 @property (nonatomic, assign) float productYcoordinate;
 @property (nonatomic, assign) float productWidth;
 @property (nonatomic, assign) float productHeight;
+@property (nonatomic, assign) int imageCount;
 @property (nonatomic, strong) NSMutableArray *storedMediaArray;
 @end

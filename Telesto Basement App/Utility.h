@@ -10,6 +10,9 @@
 #import <UIKit/UIKit.h>
 
 @interface Utility : NSObject
+
+@property (assign,nonatomic) int customerId;
++ (Utility *)sharedManager;
 + (BOOL)isLoggedIn;
 + (void)loadLoginView;
 + (void)showMainViewController;
@@ -35,4 +38,8 @@
 +(UIColor*)colorWithHexString:(NSString*)hex;
 +(BOOL)NSStringIsValidEmail:(NSString *)checkString;
 +(void)showLocationError:(UIViewController*)controller;
+
+-(int)getCurrentCustomerId;
+-(void)setCurrentCustomerId:(int)customerIdentification;
+- (UIImage*)loadScreenShotImageWithImageName:(NSString*)imageName;
 @end

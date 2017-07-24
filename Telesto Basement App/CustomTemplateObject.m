@@ -9,5 +9,5 @@
 #import "CustomTemplateObject.h"
 #import "ProductObject.h"
 @implementation CustomTemplateObject
-@synthesize authKey,templateName,screenShot,customerId,productObject;
+@synthesize authKey,templateName,screenShot,customerId,productObjectArray;
 @end

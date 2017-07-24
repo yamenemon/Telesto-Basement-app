@@ -15,5 +15,5 @@
 @property (strong,nonatomic) NSString *templateName;
 @property (strong,nonatomic) UIImage *screenShot;
 @property (assign,nonatomic) NSInteger customerId;
-@property (strong,nonatomic) ProductObject *productObject;
+@property (strong,nonatomic) NSMutableArray *productObjectArray;
 @end

@@ -222,6 +222,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     CustomerProposalsViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerProposals"];
     vc.customInfoObject = infoObject;
+    [[Utility sharedManager] setCurrentCustomerId:(int)infoObject.customerId];
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:vc animated:YES];
 }
