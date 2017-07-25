@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,36 +37,27 @@
                                 <rect key="frame" x="117" y="6" width="595" height="95"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Be2-4B-3vK">
-                                        <rect key="frame" x="8" y="1" width="564" height="24.5"/>
+                                        <rect key="frame" x="8" y="1" width="564" height="28"/>
                                         <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgr-aq-AHB">
-                                        <rect key="frame" x="8" y="43.5" width="136" height="32"/>
-                                        <color key="backgroundColor" red="0.03932344913" green="0.3544466496" blue="0.47187530989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="136" id="4yc-Um-CRV"/>
-                                            <constraint firstAttribute="height" constant="32" id="Plk-wG-7ty"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="17"/>
-                                        <state key="normal" title="Sign Proposals">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53m-xa-af4">
-                                        <rect key="frame" x="222" y="43.5" width="136" height="32"/>
-                                        <color key="backgroundColor" red="0.03932344913" green="0.3544466496" blue="0.47187530989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="17"/>
-                                        <state key="normal" title="Edit Proposals">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cij-l9-Jhd">
-                                        <rect key="frame" x="436" y="43.5" width="136" height="32"/>
+                                        <rect key="frame" x="312" y="47" width="260" height="35"/>
                                         <color key="backgroundColor" red="0.03932344913" green="0.3544466496" blue="0.47187530989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="17"/>
                                         <state key="normal" title="Copy Proposals">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53m-xa-af4">
+                                        <rect key="frame" x="8" y="47" width="260" height="32"/>
+                                        <color key="backgroundColor" red="0.03932344913" green="0.3544466496" blue="0.47187530989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="260" id="h7t-Te-bZF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="17"/>
+                                        <state key="normal" title="Edit Proposals">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -74,18 +65,14 @@
                                 <color key="backgroundColor" red="0.90972405672073364" green="0.9098549485206604" blue="0.90969544649124146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Be2-4B-3vK" secondAttribute="trailing" constant="23" id="2Iu-Ka-Ebm"/>
+                                    <constraint firstItem="53m-xa-af4" firstAttribute="leading" secondItem="Be2-4B-3vK" secondAttribute="leading" id="4ia-Z3-K4h"/>
+                                    <constraint firstItem="cij-l9-Jhd" firstAttribute="trailing" secondItem="Be2-4B-3vK" secondAttribute="trailing" id="5By-Zp-ggn"/>
                                     <constraint firstItem="Be2-4B-3vK" firstAttribute="leading" secondItem="mmP-GI-dik" secondAttribute="leading" constant="8" id="6gc-dX-3i5"/>
-                                    <constraint firstItem="53m-xa-af4" firstAttribute="leading" secondItem="Dgr-aq-AHB" secondAttribute="trailing" constant="78" id="9fV-jI-cxh"/>
-                                    <constraint firstItem="cij-l9-Jhd" firstAttribute="leading" secondItem="53m-xa-af4" secondAttribute="trailing" constant="78" id="Cr4-4s-ODT"/>
                                     <constraint firstItem="Be2-4B-3vK" firstAttribute="top" secondItem="mmP-GI-dik" secondAttribute="top" constant="1" id="IeJ-3K-qKt"/>
-                                    <constraint firstItem="Dgr-aq-AHB" firstAttribute="leading" secondItem="Be2-4B-3vK" secondAttribute="leading" id="JUK-BW-mus"/>
-                                    <constraint firstItem="53m-xa-af4" firstAttribute="width" secondItem="Dgr-aq-AHB" secondAttribute="width" id="SMF-Sr-SOh"/>
-                                    <constraint firstItem="53m-xa-af4" firstAttribute="baseline" secondItem="Dgr-aq-AHB" secondAttribute="baseline" id="XZs-Xq-woS"/>
-                                    <constraint firstItem="53m-xa-af4" firstAttribute="height" secondItem="Dgr-aq-AHB" secondAttribute="height" id="ZKh-XM-YMw"/>
-                                    <constraint firstItem="Dgr-aq-AHB" firstAttribute="top" secondItem="Be2-4B-3vK" secondAttribute="bottom" constant="18" id="fkm-mh-CcO"/>
-                                    <constraint firstItem="cij-l9-Jhd" firstAttribute="bottom" secondItem="53m-xa-af4" secondAttribute="bottom" id="hSZ-HB-DPU"/>
-                                    <constraint firstItem="cij-l9-Jhd" firstAttribute="width" secondItem="53m-xa-af4" secondAttribute="width" id="s8Q-qg-GxX"/>
-                                    <constraint firstItem="cij-l9-Jhd" firstAttribute="height" secondItem="53m-xa-af4" secondAttribute="height" id="yaG-Yf-Z0n"/>
+                                    <constraint firstItem="cij-l9-Jhd" firstAttribute="top" secondItem="Be2-4B-3vK" secondAttribute="bottom" constant="18" id="Jl9-1x-Iuc"/>
+                                    <constraint firstAttribute="bottom" secondItem="53m-xa-af4" secondAttribute="bottom" constant="16" id="ldx-uw-SKO"/>
+                                    <constraint firstItem="53m-xa-af4" firstAttribute="top" secondItem="Be2-4B-3vK" secondAttribute="bottom" constant="18" id="liH-tr-GKa"/>
+                                    <constraint firstItem="cij-l9-Jhd" firstAttribute="width" secondItem="53m-xa-af4" secondAttribute="width" id="yGx-zJ-2NF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -114,7 +101,6 @@
                 <outlet property="editProposals" destination="53m-xa-af4" id="twq-eE-se8"/>
                 <outlet property="infoView" destination="mmP-GI-dik" id="FME-ps-SaI"/>
                 <outlet property="proposalName" destination="Be2-4B-3vK" id="prY-Pi-VQe"/>
-                <outlet property="signProposals" destination="Dgr-aq-AHB" id="Bca-5v-rbD"/>
             </connections>
             <point key="canvasLocation" x="63" y="101.5"/>
         </tableViewCell>
