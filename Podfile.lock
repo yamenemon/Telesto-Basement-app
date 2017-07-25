@@ -17,6 +17,7 @@ PODS:
     - AFNetworking/NSURLSession
   - CNPPopupController (0.3.3)
   - DRColorPicker (1.0.11)
+  - IQDropDownTextField (1.1.0)
   - MBProgressHUD (1.0.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - CNPPopupController
   - DRColorPicker
+  - IQDropDownTextField
   - MBProgressHUD (~> 1.0.0)
   - SDWebImage (~> 3.8)
 
@@ -35,9 +37,10 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CNPPopupController: 59b06290762f68beab5fb0bbfa87eb4dcbefb7de
   DRColorPicker: d4291e8ac469f5762b1f1f6a98e8e1b3bf230ad6
+  IQDropDownTextField: 614f79ca905529c992045eaa112d0fc9ebb875d1
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 9e21f00ec6d2aa1097e4fef7dbc6eb541570905b
+PODFILE CHECKSUM: 81d3dfee21bdca60327dffe2e8eb04c47f29b7ed
 
 COCOAPODS: 1.2.0

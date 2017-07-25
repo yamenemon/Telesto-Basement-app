@@ -8,13 +8,31 @@
 
 #import <UIKit/UIKit.h>
 #import "Utility.h"
+#import "CustomTextField.h"
+#import "IQDropDownTextField.h"
+
+@class FaqsViewControllerStep2;
 @class BasicFAQTableViewCell;
 
-@interface FaqsViewController : UIViewController <UITextViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface FaqsViewController : UIViewController <UITextViewDelegate,IQDropDownTextFieldDataSource,IQDropDownTextFieldDataSource,UITextFieldDelegate>{
+    UITextField *activeField;
+}
 
 @property (strong,nonatomic) UIScrollView *faqScroller;
+@property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 
 @property (strong,nonatomic) BasicFAQTableViewCell *basicFAQView;
-@property (weak, nonatomic) IBOutlet UITableView *inspectionTableView;
+@property (weak, nonatomic) IBOutlet IQDropDownTextField *heatTextField;
+@property (weak, nonatomic) IBOutlet IQDropDownTextField *airTextField;
+    @property (weak, nonatomic) IBOutlet CustomTextField *currentOutsideConditionTextField;
 
+@property (weak, nonatomic) IBOutlet UITextField *outsideRelativeHumidity;
+@property (weak, nonatomic) IBOutlet UITextField *outsideTemperature;
+@property (weak, nonatomic) IBOutlet UITextField *firstFloorRelativeHumidity;
+@property (weak, nonatomic) IBOutlet UITextField *firstFloorTemperature;
+
+@property (weak, nonatomic) IBOutlet UITextField *basementRelativeHumidity;
+@property (weak, nonatomic) IBOutlet UITextField *basementTemperature;
+@property (weak, nonatomic) IBOutlet IQDropDownTextField *basementDehumidifier;
+@property (weak, nonatomic) IBOutlet UITextView *otherCommentsTextView;
 @end
