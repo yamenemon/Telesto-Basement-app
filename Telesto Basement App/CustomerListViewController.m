@@ -191,8 +191,37 @@
     [cell.customProfileBtn addTarget:self action:@selector(customProfileBtnActon:) forControlEvents:UIControlEventTouchUpInside];
     [cell.MapItBtn addTarget:self action:@selector(mapItBtnAction:) forControlEvents:UIControlEventTouchUpInside];
 
-    cell.cityTextLabel.text =  [NSString stringWithFormat:@": %@", customerInfoObjects.customerAddress];
-    cell.lastLoginTextLabel.text = [NSString stringWithFormat:@": %@", customerInfoObjects.scheduleDate];
+    /*
+     7 Saint Andrews Ct
+     Trophy Club, TX
+     Sales Appointment: July 21st, 2017 2:14PM
+     
+     address = Ashuganj;
+     city = fjeisdiiw;
+     countryId = 0;
+     created = "2017-07-21 14:14:17";
+     details = Skdjhfsdjcsdcoij;
+     email = "emon@gmail.com";
+     emailNotify = 1;
+     fName = Yamen;
+     id = 27;
+     lName = Emon;
+     latitude = "23.7831";
+     longitude = "90.3943";
+     modified = "0000-00-00 00:00:00";
+     phone = 748648;
+     photo = "1500646457a243wd3sq21e.jpg";
+     smsNotify = 0;
+     state = inij;
+     status = 1;
+     userId = 2;
+     zip = 3454;
+     */
+
+    cell.streetAddress.text = [NSString stringWithFormat:@"%@",customerInfoObjects.customerAddress];
+    
+    cell.citZip.text = [NSString stringWithFormat:@"%@,%@",customerInfoObjects.customerCityName,customerInfoObjects.customerStateName];
+    cell.salesAppointment.text = [NSString stringWithFormat:@"Sales Appointment : %@", customerInfoObjects.scheduleDate];
     cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObjects.customerName];
     NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/profile/%@",BASE_URL,customerInfoObjects.customerOtherImageDic];
     NSLog(@"%@",imageUrl);
