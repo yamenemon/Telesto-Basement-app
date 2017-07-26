@@ -17,6 +17,7 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
+#define AUTH_KEY @"authKey"
 #define TOKEN_STRING @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH"
 
 @implementation CustomerDataManager
@@ -526,6 +527,57 @@
 }
 #pragma mark -
 #pragma mark SAVE USER DESIGN
+
+-(void)saveUserTemplateName:(NSString*)templateName withUserFAQs:(NSMutableDictionary*)userFAQData withCompletionBlock:(void(^)(BOOL success))completionBlock{
+    //authKey, name, customer_id,faq
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"create_custom_template";
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:userFAQData
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    NSString *jsonString;
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+    } else {
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                          TOKEN_STRING,AUTH_KEY,
+                                          templateName,@"name",
+                                          [NSNumber numberWithInt:[[Utility sharedManager] getCurrentCustomerId]],@"customer_id",
+                                          jsonString,@"faq",
+                                          nil];
+    NSLog(@"%@",aParameterDic);
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        // This is not called back on the main queue.
+        // You are responsible for dispatching to the main queue for UI updates
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Update the progress view
+            NSLog(@"Uploading User FAQ and Use Template Name");
+        });
+    }
+          success:^(NSURLSessionDataTask *task, id responseObject) {
+              NSError *e;
+              NSLog(@"Response: %@", responseObject);
+              NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+              int success = [[jsonDic valueForKey:@"success"] intValue];
+              if (success == 1) {
+                  completionBlock(YES);
+              }
+              else{
+                  completionBlock(NO);
+              }
+          } failure:^(NSURLSessionDataTask *task, NSError *error) {
+              NSLog(@"Error: %@", error);
+              completionBlock(NO);
+          }];
+
+}
+
+
 -(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withProductArray:(CustomTemplateObject *)customerTemplateObj withCompletionBlock:(void (^)(BOOL success))completionBlock{
     NSLog(@"CustomerTemplateObj: %@",customerTemplateObj);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

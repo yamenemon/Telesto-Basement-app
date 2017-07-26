@@ -10,7 +10,7 @@
 #import "DesignViewController.h"
 
 @implementation CustomTemplateNameView
-
+@synthesize activityIndicator;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -24,10 +24,15 @@
         _messageLabel.text = @"Template name can not be empty.";
     }
     else{
-        _messageLabel.hidden = YES;
-//        [_designViewController savedTemplateViewForScreenShot:_templateNameTextField.text];
+        _messageLabel.text = @"Initializing template for proposal";
         [_designViewController saveTemplateName:_templateNameTextField.text];
     }
 }
-
+- (IBAction)dismissBaseController:(id)sender {
+    [_designViewController dismissController];
+}
+-(void)dismissKeyboardFromCustomTemplateNameWindow{
+    [activityIndicator startAnimating];
+    [_templateNameTextField resignFirstResponder];
+}
 @end

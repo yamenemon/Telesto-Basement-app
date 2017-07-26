@@ -26,6 +26,7 @@
 @synthesize infoBtnArray;
 @synthesize downloadedProduct;
 @synthesize productSliderCustomView;
+@synthesize isFromNewProposals,userSelectedDataDictionary;
 
 #pragma mark - ViewControllers Super Methods
 
@@ -52,9 +53,6 @@
     
     customTemplateNameView = [ nibViews objectAtIndex:0];
     customTemplateNameView.designViewController = self;
-    
-    [self setCustomTemplateName];
-    
 }
 -(BOOL)prefersStatusBarHidden{
     return NO;
@@ -70,29 +68,53 @@
     [self.navigationController.navigationBar addSubview:rightNavBtnBar];
     rightNavBtnBar.baseClass = self;
     
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-    dispatch_async(queue, ^{
-        // Perform async operation
-        // Call your method/function here
-        // Example:
-        // NSString *result = [anObject calculateSomething];
-        
-        [self downloadProductWithCompletionBlock:^(BOOL succeeded) {
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                // Update UI
-                // Example:
-                if (succeeded == YES) {
-                    isShown = YES;
-                    productSliderView.hidden = YES;
-                    [self productSliderCalled:nil];
-                    [self createProductScroller];
-                }
-                else{
-                    NSLog(@"product not loaded");
-                }
-            });
-        }];
+    if (isFromNewProposals == YES) {
+        [self setCustomTemplateName];
+        NSLog(@"%@",userSelectedDataDictionary);
+    }
+}
+-(void)saveTemplateName:(NSString*)templateName{
+    _templateNameString = templateName;
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",_templateNameString]];
+    NSLog(@"Template path: %@",dataPath);
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Update the UI
+        [customTemplateNameView dismissKeyboardFromCustomTemplateNameWindow];
+        [self downloadProduct];
+
+        [self.view endEditing:YES];
+        isShown = YES;
+        productSliderView.hidden = YES;
+        [self productSliderCalled:nil];
+        [self createProductScroller];
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     });
+    [self performSelector:@selector(initializeDesignWindow) withObject:nil afterDelay:1.0];
+
+}
+-(void)initializeDesignWindow{
+
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    [manager saveUserTemplateName:_templateNameString withUserFAQs:userSelectedDataDictionary withCompletionBlock:^(BOOL success){
+        if (success == YES) {
+            [customTemplateNameView.activityIndicator stopAnimating];
+                [popupController dismissPopupControllerAnimated:YES];
+        }
+        else{
+            NSLog(@"product not loaded");
+        }
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    }];
+}
+-(void)dismissController{
+    [popupController dismissPopupControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     leftNavBtnBar.hidden = YES;
@@ -176,19 +198,13 @@
 }
 #pragma mark -
 #pragma mark - Product Slider Methods
--(void)downloadProductWithCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
+-(void)downloadProduct{
 
     // DOWNLOAD PRODUCT HERE
     //-----------------------
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     downloadedProduct = [[NSMutableArray alloc] init];
     downloadedProduct = [[manager getProductObjectArray] objectAtIndex:0];
-    if (downloadedProduct.count>0) {
-        completionBlock(YES);
-    }
-    else{
-        completionBlock(NO);
-    }
     NSLog(@"%@",downloadedProduct);
 }
 -(void)createProductScroller{
@@ -967,21 +983,9 @@
         [self setCustomTemplateName];
     });
 }
--(void)saveTemplateName:(NSString*)templateName{
-    _templateNameString = templateName;
-    NSError *error;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",_templateNameString]];
-    NSLog(@"Template path: %@",dataPath);
-    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
-        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
-    [popupController dismissPopupControllerAnimated:YES];
 
-}
 -(void)savedTemplateViewForScreenShot:(NSString*)templateName withCompletionBlock:(void(^)(BOOL success))completionBlock{
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSError *error;
         CGRect rect = [basementDesignView bounds];
         UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
         CGContextRef context = UIGraphicsGetCurrentContext();

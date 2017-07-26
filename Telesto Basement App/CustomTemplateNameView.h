@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveBtnForSavingTemplate;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (strong,nonatomic) DesignViewController *designViewController;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+-(void)dismissKeyboardFromCustomTemplateNameWindow;
 @end

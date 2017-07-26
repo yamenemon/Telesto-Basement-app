@@ -18,14 +18,15 @@
     UITextField *activeField;
 }
 
+@property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
+
 @property (strong,nonatomic) UIScrollView *faqScroller;
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 
 @property (strong,nonatomic) BasicFAQTableViewCell *basicFAQView;
-@property (weak, nonatomic) IBOutlet IQDropDownTextField *heatTextField;
-@property (weak, nonatomic) IBOutlet IQDropDownTextField *airTextField;
-    @property (weak, nonatomic) IBOutlet CustomTextField *currentOutsideConditionTextField;
-
+@property (weak, nonatomic) IBOutlet CustomTextField *heatTextField;
+@property (weak, nonatomic) IBOutlet CustomTextField *airTextField;
+@property (weak, nonatomic) IBOutlet CustomTextField *currentOutsideConditionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *outsideRelativeHumidity;
 @property (weak, nonatomic) IBOutlet UITextField *outsideTemperature;
 @property (weak, nonatomic) IBOutlet UITextField *firstFloorRelativeHumidity;

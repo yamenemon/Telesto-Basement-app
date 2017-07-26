@@ -22,6 +22,8 @@
 #import "ProductInfoDetailsPopup.h"
 #import "ProductObject.h"
 #import "CustomTemplateObject.h"
+#import <MBProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @class  TemplatePopOverViewController;
 
@@ -43,7 +45,8 @@
     BOOL isFromProduct;
     UIImage *screenShot;
 }
-
+@property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
+@property (assign,nonatomic) BOOL isFromNewProposals;
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
 @property (weak, nonatomic) IBOutlet UIView *basementDesignView;
 @property (strong, nonatomic) NSMutableArray *savedDesignArray;
@@ -74,4 +77,5 @@
 -(void)saveTemplateName:(NSString*)templateName;
 -(void)openCameraWindow;
 -(void)showProductDetailsPopUp:(int)btnTag;
+-(void)dismissController;
 @end

@@ -21,6 +21,7 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
 @implementation FaqsViewController
 @synthesize scroller;
 @synthesize basicFAQView;
+@synthesize userSelectedDataDictionary;
 @synthesize currentOutsideConditionTextField,heatTextField,airTextField,basementDehumidifier;
 
 -(void)viewDidLoad{
@@ -32,7 +33,7 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
 
     currentDate.text = [NSString stringWithFormat:@"%@",string];
     [self registerForKeyboardNotifications];
-
+    
     [currentOutsideConditionTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Sunny", nil]];
     [heatTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Hot Water", nil]];
     [airTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Central", nil]];
@@ -98,6 +99,7 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
 }
 -(void)textField:(nonnull IQDropDownTextField*)textField didSelectItem:(nullable NSString*)item{
         NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
+
 }
     
 -(IQProposedSelection)textField:(nonnull IQDropDownTextField*)textField proposedSelectionModeForItem:(NSString*)item{
@@ -108,10 +110,36 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
 -(void)doneClicked:(UIBarButtonItem*)button{
         [self.view endEditing:YES];
 }
+-(void)storingUserSelectedDataWithCompletionBlock:(void (^)(BOOL success))completionBlock{
+    
+    
+    userSelectedDataDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                  [NSNumber numberWithInteger:[currentOutsideConditionTextField selectedRow]],@"currentOutsideConditionTextField",
+                                  [NSNumber numberWithInteger:[heatTextField selectedRow]],@"heatTextField",
+                                  _outsideRelativeHumidity.text,@"outsideRelativeHumidity",
+                                  [NSNumber numberWithInteger:[airTextField selectedRow]],@"airTextField",
+                                  _outsideTemperature.text,@"outsideTemperature",
+                                  _basementRelativeHumidity.text,@"basementRelativeHumidity",
+                                  _firstFloorRelativeHumidity.text,@"firstFloorRelativeHumidity",
+                                  _basementTemperature.text,@"basementTemperature",
+                                  _firstFloorTemperature.text,@"firstFloorTemperature",
+                                  [NSNumber numberWithInteger:[basementDehumidifier selectedRow]],@"basementDehumidifier",
+                                  _otherCommentsTextView.text,@"RelativeOtherCommentsField",
+                                  nil];
+//    NSLog(@"%@",userSelectedDataDictionary);
+    completionBlock(YES);
+
+}
 - (IBAction)pushNextFAQsController:(id)sender {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    FaqsViewControllerStep2 *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewControllerStep2"];
-    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self storingUserSelectedDataWithCompletionBlock:^(BOOL success){
+        if (success) {
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FaqsViewControllerStep2 *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewControllerStep2"];
+            vc.userSelectedDataDictionary = userSelectedDataDictionary;
+            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
+    
 }
 @end

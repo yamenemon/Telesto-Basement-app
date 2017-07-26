@@ -15,7 +15,8 @@
 @end
 
 @implementation FaqsViewControllerStep2
-    @synthesize groundWaterTextField,ironBacteriaTextField,condensationTextField,wallCracksTextField,floorCracksTextField,existingSumpPumpTextField,RandomSystemTextField,foundationTypeTextField,otherComments,groundWaterRatingField,ironWaterRatingField,condensationRatingField,wallCracksRatingField,floorCracksRatingField,existingDranageSystemTextField,drayerVentTextField,vulkHeadTextField,scroller;
+@synthesize groundWaterTextField,ironBacteriaTextField,condensationTextField,wallCracksTextField,floorCracksTextField,existingSumpPumpTextField,RandomSystemTextField,foundationTypeTextField,otherComments,groundWaterRatingField,ironWaterRatingField,condensationRatingField,wallCracksRatingField,floorCracksRatingField,existingDranageSystemTextField,drayerVentTextField,vulkHeadTextField,scroller;
+@synthesize userSelectedDataDictionary;
     
     
 - (void)viewDidLoad {
@@ -45,7 +46,9 @@
     [foundationTypeTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Poured", nil]];
 
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"%@",userSelectedDataDictionary);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -82,7 +85,7 @@
                 [scroller setContentOffset:scrollPoint animated:YES];
             }
         }
-        else{
+        else if ([activeField isKindOfClass:[UITextView class]]){
             NSDictionary* info = [aNotification userInfo];
             CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
             UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
@@ -119,20 +122,47 @@
 -(void)doneClicked:(UIBarButtonItem*)button{
     [self.view endEditing:YES];
 }
-/*
-#pragma mark - Navigation
+-(void)storingUserSelectedDataWithCompletionBlock:(void (^)(BOOL success))completionBlock{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[groundWaterTextField selectedRow]] forKey:@"groundWaterTextField"];
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[groundWaterRatingField selectedRow]] forKey:@"groundWaterRatingField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[ironBacteriaTextField selectedRow]] forKey:@"ironBacteriaTextField"];
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[ironWaterRatingField selectedRow]] forKey:@"ironWaterRatingField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[condensationTextField selectedRow]] forKey:@"condensationTextField"];
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[condensationRatingField selectedRow]] forKey:@"condensationRatingField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[wallCracksTextField selectedRow]] forKey:@"wallCracksTextField"];
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[wallCracksRatingField selectedRow]] forKey:@"wallCracksRatingField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[floorCracksTextField selectedRow]] forKey:@"floorCracksTextField"];
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[floorCracksRatingField selectedRow]] forKey:@"floorCracksRatingField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[existingSumpPumpTextField selectedRow]] forKey:@"existingSumpPumpTextField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[RandomSystemTextField selectedRow]] forKey:@"RandomSystemTextField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[existingDranageSystemTextField selectedRow]] forKey:@"existingDranageSystemTextField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[drayerVentTextField selectedRow]] forKey:@"drayerVentTextField"];
+    
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[vulkHeadTextField selectedRow]] forKey:@"vulkHeadTextField"];
+
+    completionBlock(YES);
+    
 }
-*/
 
 - (IBAction)pushNextFAQVC:(id)sender {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    FaqsViewControllerStep3 *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewControllerStep3"];
-    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    [self storingUserSelectedDataWithCompletionBlock:^(BOOL success){
+        if (success) {
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FaqsViewControllerStep3 *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewControllerStep3"];
+            vc.userSelectedDataDictionary = userSelectedDataDictionary;
+            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
 }
 @end
