@@ -30,6 +30,8 @@
 		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
 		7032B0611F21DBBC0046A201 /* FaqsViewControllerStep2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032B0601F21DBBC0046A201 /* FaqsViewControllerStep2.m */; };
 		7032B0641F21DBCE0046A201 /* FaqsViewControllerStep3.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032B0631F21DBCE0046A201 /* FaqsViewControllerStep3.m */; };
+		703B36001F29FF62004BD960 /* ShowPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703B35FE1F29FF62004BD960 /* ShowPriceTableViewCell.m */; };
+		703B36011F29FF62004BD960 /* ShowPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 703B35FF1F29FF62004BD960 /* ShowPriceTableViewCell.xib */; };
 		704B68901E13C9C000E6537D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704B688F1E13C9C000E6537D /* QuartzCore.framework */; };
 		704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */; };
 		704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */ = {isa = PBXBuildFile; fileRef = 704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */; };
@@ -174,6 +176,9 @@
 		7032B0601F21DBBC0046A201 /* FaqsViewControllerStep2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqsViewControllerStep2.m; sourceTree = "<group>"; };
 		7032B0621F21DBCE0046A201 /* FaqsViewControllerStep3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqsViewControllerStep3.h; sourceTree = "<group>"; };
 		7032B0631F21DBCE0046A201 /* FaqsViewControllerStep3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqsViewControllerStep3.m; sourceTree = "<group>"; };
+		703B35FD1F29FF62004BD960 /* ShowPriceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPriceTableViewCell.h; sourceTree = "<group>"; };
+		703B35FE1F29FF62004BD960 /* ShowPriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPriceTableViewCell.m; sourceTree = "<group>"; };
+		703B35FF1F29FF62004BD960 /* ShowPriceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowPriceTableViewCell.xib; sourceTree = "<group>"; };
 		704B688F1E13C9C000E6537D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		704B689A1E13CD0900E6537D /* TemplatePopOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatePopOverViewController.h; sourceTree = "<group>"; };
 		704B689B1E13CD0900E6537D /* TemplatePopOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatePopOverViewController.m; sourceTree = "<group>"; };
@@ -561,6 +566,9 @@
 				705F059D1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib */,
 				705F059E1EDED8CE00D8B837 /* ShowPriceViewController.h */,
 				705F059F1EDED8CE00D8B837 /* ShowPriceViewController.m */,
+				703B35FD1F29FF62004BD960 /* ShowPriceTableViewCell.h */,
+				703B35FE1F29FF62004BD960 /* ShowPriceTableViewCell.m */,
+				703B35FF1F29FF62004BD960 /* ShowPriceTableViewCell.xib */,
 			);
 			name = "Design Window";
 			sourceTree = "<group>";
@@ -850,6 +858,7 @@
 				70CE84251F04CED900867F91 /* ELCAlbumPickerController.xib in Resources */,
 				709B44371E6D6951008058F3 /* loginView.xib in Resources */,
 				705F64DA1DF97B7000082D55 /* Roboto-Light.ttf in Resources */,
+				703B36011F29FF62004BD960 /* ShowPriceTableViewCell.xib in Resources */,
 				705F64DC1DF97B7000082D55 /* Roboto-Medium.ttf in Resources */,
 				705F64E01DF97B7000082D55 /* Roboto-ThinItalic.ttf in Resources */,
 				70EC80E51E067DB400A6D245 /* presentation@2x.png in Resources */,
@@ -916,6 +925,7 @@
 				7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */,
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				70D44C1B1F178CE00032FAA6 /* CountryListObject.m in Sources */,
+				703B36001F29FF62004BD960 /* ShowPriceTableViewCell.m in Sources */,
 				7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */,
 				7025893D1EF00376006ACCC8 /* ProductInfoDetailsPopup.m in Sources */,
 				705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */,

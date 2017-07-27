@@ -353,7 +353,6 @@
 #pragma mark -
 -(void)saveUserDesignToServer{
     NSLog(@"Product Array: %@",productArray);
-    NSMutableArray *totatProductObjectArray = [[NSMutableArray alloc] init];
     for (int i=0; i<productArray.count; i++) {
         CustomProductView *view = [productArray objectAtIndex:i];
         NSMutableArray *imagePath = [self listFileAtPath:_templateNameString withTag:(int)view.infoBtn.tag];
@@ -392,6 +391,10 @@
             UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
             vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             [self.navigationController pushViewController:vc animated:YES];
+        }
+        else{
+            NSLog(@"Not uploaded show the alert");
+        
         }
     }];
 }

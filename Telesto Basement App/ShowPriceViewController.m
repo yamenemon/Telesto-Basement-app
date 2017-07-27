@@ -7,7 +7,8 @@
 //
 
 #import "ShowPriceViewController.h"
-
+#import "DesignViewController.h"
+#import "CustomProductView.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -16,7 +17,7 @@
 @end
 
 @implementation ShowPriceViewController
-
+@synthesize showPriceTableCell,customProductView,baseController;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -35,99 +36,32 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    tableView.backgroundColor = [UIColor clearColor];
+    static NSString *simpleTableIdentifier = @"PriceTableCell";
     
-    UILabel *productName;
-    UILabel *quantity;
-    UILabel *price;
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-        
-        productName = [[UILabel alloc] init];
-        productName.frame = CGRectMake(5, 5, tableView.frame.size.width/3 - 5, 35);
-        productName.backgroundColor =[UIColor clearColor];
-        [cell addSubview:productName];
-        productName.tag = 1;
-        
-        quantity = [[UILabel alloc] init];
-        quantity.frame = CGRectMake(productName.frame.size.width + 10, 5, tableView.frame.size.width/3 - 5, 35);
-        [cell addSubview:quantity];
-        quantity.backgroundColor = [UIColor clearColor];
-        quantity.tag = 2;
-        quantity.textAlignment = NSTextAlignmentCenter;
-        
-        price = [[UILabel alloc] init];
-        price.frame = CGRectMake(quantity.frame.size.width+productName.frame.size.width+15, 5, tableView.frame.size.width/3 - 5, 35);
-        [cell addSubview:price];
-        price.backgroundColor = [UIColor clearColor];
-        price.tag = 3;
+    ShowPriceTableViewCell *cell = (ShowPriceTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (showPriceTableCell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShowPriceTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
-    else{
-        productName = [cell viewWithTag:1];
-        quantity = [cell viewWithTag:2];
-        price = [cell viewWithTag:3];
+    if (indexPath.row == 0) {
+        cell.productName.text = @"Product Name";
+        cell.quantityxPrice.text = @"Quantity x Price";
+        cell.discount.text = @"Discount";
+        cell.totalPrice.text = @"Price";
+        [cell.productName setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
+        cell.productName.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
+        cell.quantityxPrice.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.discount setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
+        cell.discount.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
+        cell.totalPrice.textAlignment = NSTextAlignmentRight;
     }
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = [UIColor clearColor];
-    switch (indexPath.row) {
-        case 0:
-            productName.text = @"Product Name";
-            quantity.text = @"Quantity";
-            price.text = @"Price";
-            break;
-        case 1:
-            productName.text = @"Greate Sump Plus";
-            quantity.text = @"1";
-            price.text = @"$500";
-            break;
-        case 2:
-            productName.text = @"Vapor Barrier";
-            quantity.text = @"2";
-            price.text = @"$300";
-            break;
-        case 3:
-            productName.text = @"Greate Trench";
-            quantity.text = @"1";
-            price.text = @"$100";
-            break;
-        case 4:
-            productName.text = @"Fast Sump";
-            quantity.text = @"1";
-            price.text = @"$500";
-            break;
-        case 5:
-            productName.text = @"Battery Backup";
-            quantity.text = @"1";
-            price.text = @"600";
-            break;
-        case 6:
-            productName.text =@"Data Sump";
-            quantity.text = @"1";
-            price.text = @"100";
-            break;
-        case 7:
-            productName.text =@"Corner Port";
-            quantity.text = @"1";
-            price.text = @"$100";
-            break;
-        case 8:
-            productName.text =@"Finish Shield";
-            quantity.text = @"1";
-            price.text = @"$1000";
-            break;
-        case 10:
-            productName.text =@"Total";
-            quantity.text = @"= 9";
-            price.text = @"= $3200";
-            break;
-            
-        default:
-            break;
-    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -140,6 +74,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, tableView.frame.size.width, 25)];
     [label setFont:[UIFont fontWithName:@"Roboto-Bold" size:20]];
     label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
     NSString *string =@"Pricing";
     /* Section header is in 0th index... */
     [label setText:string];

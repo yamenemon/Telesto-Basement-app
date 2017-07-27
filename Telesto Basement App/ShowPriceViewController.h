@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ShowPriceTableViewCell.h"
+@class DesignViewController;
+@class CustomProductView;
 @interface ShowPriceViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
-
+@property (strong, nonatomic) DesignViewController* baseController;
+@property (strong, nonatomic) CustomProductView* customProductView;
+@property (strong, nonatomic) ShowPriceTableViewCell *showPriceTableCell;
 @end
