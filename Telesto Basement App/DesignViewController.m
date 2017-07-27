@@ -26,7 +26,7 @@
 @synthesize infoBtnArray;
 @synthesize downloadedProduct;
 @synthesize productSliderCustomView;
-@synthesize isFromNewProposals,userSelectedDataDictionary;
+@synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID;
 
 #pragma mark - ViewControllers Super Methods
 
@@ -53,6 +53,11 @@
     
     customTemplateNameView = [ nibViews objectAtIndex:0];
     customTemplateNameView.designViewController = self;
+    
+    if (isFromNewProposals == YES) {
+        [self setCustomTemplateName];
+        NSLog(@"%@",userSelectedDataDictionary);
+    }
 }
 -(BOOL)prefersStatusBarHidden{
     return NO;
@@ -68,10 +73,7 @@
     [self.navigationController.navigationBar addSubview:rightNavBtnBar];
     rightNavBtnBar.baseClass = self;
     
-    if (isFromNewProposals == YES) {
-        [self setCustomTemplateName];
-        NSLog(@"%@",userSelectedDataDictionary);
-    }
+    
 }
 -(void)saveTemplateName:(NSString*)templateName{
     _templateNameString = templateName;
@@ -101,7 +103,7 @@
 -(void)initializeDesignWindow{
 
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    [manager saveUserTemplateName:_templateNameString withUserFAQs:userSelectedDataDictionary withCompletionBlock:^(BOOL success){
+    [manager saveUserTemplateName:_templateNameString withUserFAQs:userSelectedDataDictionary withRootController:self withCompletionBlock:^(BOOL success){
         if (success == YES) {
             [customTemplateNameView.activityIndicator stopAnimating];
                 [popupController dismissPopupControllerAnimated:YES];
@@ -329,6 +331,9 @@
     userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
     userResizableView.productObject.productWidth = contentView.frame.size.width;
     userResizableView.productObject.productHeight = contentView.frame.size.height;
+    userResizableView.productObject.productPrice = product.productPrice;
+    userResizableView.productObject.unitType = product.unitType;
+    userResizableView.productObject.discount = product.discount;
     
     userResizableView.baseVC = self;
     userResizableView.delegate = self;
@@ -348,26 +353,39 @@
 #pragma mark -
 -(void)saveUserDesignToServer{
     NSLog(@"Product Array: %@",productArray);
-    
+    NSMutableArray *totatProductObjectArray = [[NSMutableArray alloc] init];
     for (int i=0; i<productArray.count; i++) {
         CustomProductView *view = [productArray objectAtIndex:i];
         NSMutableArray *imagePath = [self listFileAtPath:_templateNameString withTag:(int)view.infoBtn.tag];
         view.productObject.storedMediaArray = imagePath;
         view.productObject.imageCount = (int)imagePath.count;
         [productArray replaceObjectAtIndex:i withObject:view];
-        NSLog(@"Product object: %f %f %f %f %d %d",view.productObject.productXcoordinate,view.productObject.productYcoordinate,view.productObject.productWidth,view.productObject.productHeight,view.productObject.productId,view.productObject.imageCount);
+        NSLog(@"Product object: %@ %f %f %f %f %f %d %@",
+              view.productObject.productName,
+              view.productObject.productPrice,
+              view.productObject.productXcoordinate,
+              view.productObject.productYcoordinate,
+              view.productObject.productWidth,
+              view.productObject.productHeight,
+              view.productObject.imageCount,
+              view.productObject.storedMediaArray);
     }
-    //     authKey, name, screenshot, customer_id, products[product_id,product_name,product_x_coordinate,product_y_coordinate,product_width,product_height,image_count, product_image[file0,file1,file2]]
-
-    CustomTemplateObject *objects = [[CustomTemplateObject alloc] init];
-    objects.authKey = TOKEN_STRING;
-    objects.templateName = _templateNameString;
-    objects.customerId = [[Utility sharedManager] getCurrentCustomerId];
-    objects.screenShot = [[Utility sharedManager] loadScreenShotImageWithImageName:_templateNameString];
-    objects.productObjectArray =  productArray;
+    /*
+     end point : add_custom_template_products
+     Method : post
+     POST KEY : authKey,custom_template_id,custom_template_name,product_name,product_price,product_x_coordinate,product_y_coordinate,product_width,product_height,product_images,imageCount
+     Optional : type. If send then value should be “update”
+     */
+    
+//    CustomTemplateObject *objects = [[CustomTemplateObject alloc] init];
+//    objects.authKey = TOKEN_STRING;
+//    objects.customTemplateName = _templateNameString;
+//    objects.customerId = [[Utility sharedManager] getCurrentCustomerId];
+//    objects.screenShot = [[Utility sharedManager] loadScreenShotImageWithImageName:_templateNameString];
+//    objects.productObjectArray =  productArray;
 
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    [manager saveUserDesignWithBaseController:self withProductArray:objects withCompletionBlock:^(BOOL success){
+    [manager saveUserDesignWithBaseController:self withCustomTemplateID:currentActiveTemplateID withCustomTemplateName:_templateNameString withProductArray:productArray withCompletionBlock:^(BOOL success){
         if (success == YES) {
             
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

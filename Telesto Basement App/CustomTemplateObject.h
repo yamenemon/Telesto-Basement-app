@@ -10,10 +10,12 @@
 #import <UIKit/UIKit.h>
 @class ProductObject;
 @interface CustomTemplateObject : NSObject
-//authKey, name, screenshot, customer_id,
 @property (strong,nonatomic) NSString *authKey;
-@property (strong,nonatomic) NSString *templateName;
+@property (assign,nonatomic) int customTemplateId;
+@property (strong,nonatomic) NSString *customTemplateName;
 @property (strong,nonatomic) UIImage *screenShot;
 @property (assign,nonatomic) NSInteger customerId;
 @property (strong,nonatomic) NSMutableArray *productObjectArray;
 @end
+//POST KEY : authKey,custom_template_id,custom_template_name,product_name,product_price,product_x_coordinate,product_y_coordinate,product_width,product_height,product_images,imageCount
+//Optional : type. If send then value should be “update”

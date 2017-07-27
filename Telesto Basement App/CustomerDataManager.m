@@ -528,8 +528,10 @@
 #pragma mark -
 #pragma mark SAVE USER DESIGN
 
--(void)saveUserTemplateName:(NSString*)templateName withUserFAQs:(NSMutableDictionary*)userFAQData withCompletionBlock:(void(^)(BOOL success))completionBlock{
+-(void)saveUserTemplateName:(NSString*)templateName withUserFAQs:(NSMutableDictionary*)userFAQData withRootController:(DesignViewController*)baseController withCompletionBlock:(void(^)(BOOL success))completionBlock{
     //authKey, name, customer_id,faq
+    __block int customTemplateId = 0;
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -563,8 +565,13 @@
               NSError *e;
               NSLog(@"Response: %@", responseObject);
               NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+              NSLog(@"json Dic: %@",jsonDic);
               int success = [[jsonDic valueForKey:@"success"] intValue];
               if (success == 1) {
+                  int templateId = [[[jsonDic valueForKey:@"customTemplate"] valueForKey:@"id"] intValue];
+                  customTemplateId = templateId;
+                  baseController.currentActiveTemplateID = customTemplateId;
+                  NSLog(@"Customer ID: %d",customTemplateId);
                   completionBlock(YES);
               }
               else{
@@ -574,57 +581,60 @@
               NSLog(@"Error: %@", error);
               completionBlock(NO);
           }];
-
 }
 
 
--(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withProductArray:(CustomTemplateObject *)customerTemplateObj withCompletionBlock:(void (^)(BOOL success))completionBlock{
-    NSLog(@"CustomerTemplateObj: %@",customerTemplateObj);
+-(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withCustomTemplateID:(int)templateId withCustomTemplateName:(NSString*)templateName withProductArray:(NSMutableArray *)customerTemplateObjArr withCompletionBlock:(void (^)(BOOL success))completionBlock{
+    NSLog(@"CustomerTemplateObj: %@",customerTemplateObjArr);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *endPoint = @"create_custom_template";
-    /*
-     authKey, name, screenshot, customer_id, products[product_id,product_name,product_x_coordinate,product_y_coordinate,product_width,product_height,image_count, product_image[file0,file1,file2]]
-     */
-    NSData *screenshot = UIImagePNGRepresentation(customerTemplateObj.screenShot);
-    NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",customerTemplateObj.templateName,@"name",screenshot,@"screenshot",[NSNumber numberWithInteger:customerTemplateObj.customerId],@"customer_id",customerTemplateObj.productObjectArray,@"products",nil];
-
-    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-//        int i = 0;
-//        for(UIImage *eachImage in customerTemplateObj.productObjectArray)
-//        {
-//            NSData *imageData = UIImageJPEGRepresentation(eachImage, 0.95);
-//            [formData appendPartWithFileData:imageData name:[NSString stringWithFormat:@"file%d",i] fileName:[NSString stringWithFormat:@"file%d.jpg",i ] mimeType:@"image/jpg"];
-//            i++;
-//        }
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        // This is not called back on the main queue.
-        // You are responsible for dispatching to the main queue for UI updates
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //Update the progress view
-            NSLog(@"Uploading Image");
-        });
+    NSString *endPoint = @"add_custom_template_products";
+    
+    for (CustomProductView *view in customerTemplateObjArr) {
+        NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                              TOKEN_STRING,AUTH_KEY,
+                                              [NSNumber numberWithInt:templateId],@"custom_template_id",
+                                              templateName,@"custom_template_name",
+                                              view.productObject.productName,@"product_name",
+                                              [NSNumber numberWithFloat:view.productObject.productPrice],@"product_price",
+                                              [NSNumber numberWithFloat:view.productObject.productXcoordinate],@"product_x_coordinate",
+                                              [NSNumber numberWithFloat:view.productObject.productYcoordinate],@"product_y_coordinate",
+                                              [NSNumber numberWithFloat:view.productObject.productWidth],@"product_width",
+                                              [NSNumber numberWithFloat:view.productObject.productHeight],@"product_height",
+                                              [NSNumber numberWithInt:view.productObject.imageCount],@"imageCount",
+                                              nil];
+        
+        
+        [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            int i = 0;
+            for(UIImage *eachImage in view.productObject.storedMediaArray)
+            {
+                NSData *imageData = UIImagePNGRepresentation(eachImage);
+                [formData appendPartWithFileData:imageData name:[NSString stringWithFormat:@"file%d",i] fileName:[NSString stringWithFormat:@"file%d.jpg",i ] mimeType:@"image/jpg"];
+                i++;
+            }
+        } progress:^(NSProgress * _Nonnull uploadProgress) {
+            // This is not called back on the main queue.
+            // You are responsible for dispatching to the main queue for UI updates
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //Update the progress view
+                NSLog(@"Uploading Image");
+            });
+        }
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                  NSLog(@"Response: %@", responseObject);
+                  
+                  completionBlock(YES);
+              } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  NSLog(@"Error: %@", error);
+                  completionBlock(NO);
+              }];
     }
-          success:^(NSURLSessionDataTask *task, id responseObject) {
-              NSLog(@"Response: %@", responseObject);
-//              NSError *e = nil;
-//              NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
-//              NSLog(@"%@",jsonDic);
-//              NSMutableDictionary *dataDic = [jsonDic valueForKey:@"data"];
-//              NSMutableArray *file = [dataDic valueForKey:@"file"];
-//              NSMutableArray *fileType = [dataDic valueForKey:@"fileType"];
-//              uploadedBuildingMediaArray = [[NSMutableArray alloc] init];
-//              
-//              for (int i = 0; i<fileType.count; i++) {
-//                  [uploadedBuildingMediaArray addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@",[file objectAtIndex:i]],[NSString stringWithFormat:@"%@",[fileType objectAtIndex:i]], nil]];
-//              }
-//              //        NSLog(@"Image Arr: %@\n",imageArray);
-//              NSLog(@"responseArray Arr: %@",uploadedBuildingMediaArray);
-              completionBlock(YES);
-          } failure:^(NSURLSessionDataTask *task, NSError *error) {
-              NSLog(@"Error: %@", error);
-              completionBlock(NO);
-          }];
+    
+    /*
+     authKey,custom_template_id,custom_template_name,product_name,product_price,product_x_coordinate,product_y_coordinate,product_width,product_height,product_images,imageCount
+     */
+    
 }
 @end

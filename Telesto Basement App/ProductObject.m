@@ -16,7 +16,8 @@
 @synthesize productYcoordinate;
 @synthesize productWidth;
 @synthesize productHeight;
-@synthesize storedMediaArray;
+@synthesize productPrice;
+@synthesize storedMediaArray,productDescription,unitType,discount;
 
 -(instancetype)init{
     self = [super init];

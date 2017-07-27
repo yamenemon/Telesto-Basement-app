@@ -50,6 +50,6 @@
 - (NSString*)loadDefaultTemplateImageWithImageName:(NSString*)imageName;
 - (NSString*)loadProductImageWithImageName:(NSString*)imageName;
 
--(void)saveUserTemplateName:(NSString*)templateName withUserFAQs:(NSMutableDictionary*)userFAQData withCompletionBlock:(void(^)(BOOL success))completionBlock;
--(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withProductArray:(CustomTemplateObject *)customerTemplateObj withCompletionBlock:(void (^)(BOOL))completionBlock;
+-(void)saveUserTemplateName:(NSString*)templateName withUserFAQs:(NSMutableDictionary*)userFAQData withRootController:(DesignViewController*)baseController withCompletionBlock:(void(^)(BOOL success))completionBlock;
+-(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withCustomTemplateID:(int)templateId withCustomTemplateName:(NSString*)templateName withProductArray:(NSMutableArray *)customerTemplateObjArr withCompletionBlock:(void (^)(BOOL success))completionBlock;
 @end

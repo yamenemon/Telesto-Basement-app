@@ -45,6 +45,7 @@
     BOOL isFromProduct;
     UIImage *screenShot;
 }
+@property (assign,nonatomic) int currentActiveTemplateID;
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
 @property (assign,nonatomic) BOOL isFromNewProposals;
 @property (weak, nonatomic) IBOutlet UIView *productSliderView;
@@ -72,7 +73,7 @@
 - (void)doorButtonAction:(id)sender;
 - (void)windowSliderButtonAction:(id)sender;
 - (void)saveButtonAction:(id)sender;
--(void)savedTemplateViewForScreenShot:(NSString*)templateName;
+-(void)savedTemplateViewForScreenShot:(NSString*)templateName withCompletionBlock:(void(^)(BOOL success))completionBlock;
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender;
 -(void)saveTemplateName:(NSString*)templateName;
 -(void)openCameraWindow;
