@@ -9,7 +9,6 @@
 #import "ShowPriceViewController.h"
 #import "DesignViewController.h"
 #import "CustomProductView.h"
-
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface ShowPriceViewController ()
@@ -17,12 +16,40 @@
 @end
 
 @implementation ShowPriceViewController
-@synthesize showPriceTableCell,customProductView,baseController;
+@synthesize showPriceTableCell,productArray,baseController,downloadedProduct;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
 }
+-(void)viewWillAppear:(BOOL)animated{
 
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    NSMutableArray *totalArr = [[NSMutableArray alloc] init];
+    
+    NSMutableArray *twoDArr = [NSMutableArray arrayWithCapacity:productArray.count];
+    for (int i = 0; i<productArray.count; i++) {
+        [twoDArr addObject:[NSNumber numberWithInt:1]];
+    }
+    for (CustomProductView *view in productArray) {
+        [temp addObject:[NSNumber numberWithInt:view.productObject.productId]];
+    }
+    NSCountedSet *countedSet = [[NSCountedSet alloc] initWithArray:temp];
+    NSLog(@"%@", countedSet);
+    for (int i = 0; i < downloadedProduct.count-1; i++) {
+        Product *proObj = [downloadedProduct objectAtIndex:i];
+        for (int j = 0; j< productArray.count-1; j++) {
+            CustomProductView *view = [productArray objectAtIndex:j];
+            if ([[NSNumber numberWithInt:proObj.productId] isEqualToNumber:[NSNumber numberWithInt:view.productID]]) {
+                view.productObject.productName = proObj.productName;
+                [productArray replaceObjectAtIndex:j withObject:view];
+            }
+        }
+        
+    }
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -32,7 +59,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 15;
+    return productArray.count+1;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -61,7 +88,15 @@
         [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
         cell.totalPrice.textAlignment = NSTextAlignmentRight;
     }
+    else{
+        CustomProductView *view = [productArray objectAtIndex:indexPath.row-1];
+        cell.productName.text = view.productObject.productName;
+        cell.quantityxPrice.text = [NSString stringWithFormat:@"1 x $ %.2f",view.productObject.productPrice];
+        cell.discount.text = [NSString stringWithFormat:@"%.2f%%",view.productObject.discount];
+        cell.totalPrice.text = [NSString stringWithFormat:@"$ %.2f",view.productObject.productPrice];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -75,7 +110,7 @@
     [label setFont:[UIFont fontWithName:@"Roboto-Bold" size:20]];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];
-    NSString *string =@"Pricing";
+    NSString *string =@"Price Summary";
     /* Section header is in 0th index... */
     [label setText:string];
     [view addSubview:label];

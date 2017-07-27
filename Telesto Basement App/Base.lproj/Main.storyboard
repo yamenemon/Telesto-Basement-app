@@ -946,7 +946,7 @@ Washington, DC 20521-6170
                 <navigationController storyboardIdentifier="NavigationControllerMap" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y32-Z6-gDD" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5pt-MO-wRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5pt-MO-wRa">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1420,16 +1420,29 @@ Washington, DC 20521-6170
                                             <constraint firstAttribute="bottom" secondItem="XfR-vY-Io8" secondAttribute="bottom" id="pzR-qI-Ipu"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVc-ND-Ofg">
+                                        <rect key="frame" x="30" y="66" width="964" height="27"/>
+                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="XrA-SI-R8M"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Cyv-eD-Xrr" secondAttribute="bottom" id="8mD-DA-NUf"/>
+                                    <constraint firstItem="NVc-ND-Ofg" firstAttribute="leading" secondItem="lEO-sm-dTp" secondAttribute="leading" id="N2f-Gp-zr3"/>
                                     <constraint firstAttribute="bottom" secondItem="lEO-sm-dTp" secondAttribute="bottom" constant="31" id="NuA-YB-UF8"/>
                                     <constraint firstItem="lEO-sm-dTp" firstAttribute="leading" secondItem="imp-Rh-cPl" secondAttribute="leading" constant="30" id="R9p-JF-hzh"/>
+                                    <constraint firstItem="lEO-sm-dTp" firstAttribute="top" secondItem="NVc-ND-Ofg" secondAttribute="bottom" constant="2" id="adK-ZI-fyk"/>
                                     <constraint firstItem="lEO-sm-dTp" firstAttribute="top" secondItem="imp-Rh-cPl" secondAttribute="top" constant="95" id="d54-9Q-yUf"/>
                                     <constraint firstItem="Cyv-eD-Xrr" firstAttribute="top" secondItem="imp-Rh-cPl" secondAttribute="top" constant="64" id="gpJ-Jz-vyD"/>
                                     <constraint firstAttribute="trailing" secondItem="lEO-sm-dTp" secondAttribute="trailing" constant="30" id="jPE-GI-KnN"/>
                                     <constraint firstItem="Cyv-eD-Xrr" firstAttribute="leading" secondItem="imp-Rh-cPl" secondAttribute="leading" id="uLf-05-cMZ"/>
+                                    <constraint firstItem="NVc-ND-Ofg" firstAttribute="trailing" secondItem="lEO-sm-dTp" secondAttribute="trailing" id="uvG-EY-bMp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1445,11 +1458,12 @@ Washington, DC 20521-6170
                         <outlet property="basementDesignView" destination="lEO-sm-dTp" id="Hfc-sI-OOO"/>
                         <outlet property="productSliderScrollView" destination="XfR-vY-Io8" id="o2y-yF-IKy"/>
                         <outlet property="productSliderView" destination="Cyv-eD-Xrr" id="c0z-Nf-BG6"/>
+                        <outlet property="templateNameLabel" destination="NVc-ND-Ofg" id="t1s-BY-aRe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FwD-rE-Igs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2383" y="252"/>
+            <point key="canvasLocation" x="-2383.0078125" y="251.5625"/>
         </scene>
         <!--Faqs View Controller Step3-->
         <scene sceneID="U7c-cK-wrQ">
@@ -3449,7 +3463,7 @@ A: Immediately</string>
         <scene sceneID="Pj7-jR-Ive">
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerColor" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2yX-Oq-Cx0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3467,7 +3481,7 @@ A: Immediately</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kjf-i3-4sV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06f-FH-q6U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="06f-FH-q6U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3485,7 +3499,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NFt-8r-g3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iwR-Im-04P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iwR-Im-04P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3541,7 +3555,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YaK-4u-ubd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRc-JO-613">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dRc-JO-613">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3559,7 +3573,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LRc-Nh-dvh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5YI-D9-RyG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5YI-D9-RyG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3577,7 +3591,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NlW-XZ-P4j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jTj-79-ilE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jTj-79-ilE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3595,7 +3609,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jnA-ng-Cws" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X66-ps-ua5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X66-ps-ua5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3613,7 +3627,7 @@ A: Immediately</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZIf-LY-Ob5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pAL-Zx-znX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pAL-Zx-znX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4036,7 +4050,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pdC-w7-CPj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HLg-xT-m7t">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HLg-xT-m7t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4054,7 +4068,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AZp-uq-wIO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wev-ba-Sqw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wev-ba-Sqw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4072,7 +4086,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y8q-yr-hbt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Egr-Mk-70R">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Egr-Mk-70R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

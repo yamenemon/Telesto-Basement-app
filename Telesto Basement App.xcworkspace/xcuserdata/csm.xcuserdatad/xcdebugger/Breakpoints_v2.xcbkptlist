@@ -90,12 +90,12 @@
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerDataManager.m"
-                  timestampString = "522846263.573143"
+                  timestampString = "522857557.012099"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "609"
                   endingLineNumber = "609"
-                  offsetFromSymbolStart = "2238">
+                  offsetFromSymbolStart = "1912">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +105,12 @@
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerDataManager.m"
-                  timestampString = "522846263.574732"
+                  timestampString = "522857557.013652"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "609"
                   endingLineNumber = "609"
-                  offsetFromSymbolStart = "39">
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -118,15 +118,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/ShowPriceViewController.m"
-            timestampString = "522844875.922436"
+            timestampString = "522858049.084959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>

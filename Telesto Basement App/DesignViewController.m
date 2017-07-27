@@ -27,6 +27,7 @@
 @synthesize downloadedProduct;
 @synthesize productSliderCustomView;
 @synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID;
+@synthesize templateNameLabel;
 
 #pragma mark - ViewControllers Super Methods
 
@@ -53,7 +54,7 @@
     
     customTemplateNameView = [ nibViews objectAtIndex:0];
     customTemplateNameView.designViewController = self;
-    
+    templateNameLabel.backgroundColor = [UIColor groupTableViewBackgroundColor];
     if (isFromNewProposals == YES) {
         [self setCustomTemplateName];
         NSLog(@"%@",userSelectedDataDictionary);
@@ -77,6 +78,7 @@
 }
 -(void)saveTemplateName:(NSString*)templateName{
     _templateNameString = templateName;
+    templateNameLabel.text = _templateNameString;
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
@@ -553,18 +555,39 @@
     
     
     UIAlertAction *showPrice =  [UIAlertAction actionWithTitle: @"Show Price" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-    
-        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ShowPriceViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ShowPriceViewController"];
-        vc.preferredContentSize = CGSizeMake(600, 500);
+        if (productArray.count>0) {
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            ShowPriceViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ShowPriceViewController"];
+            vc.preferredContentSize = CGSizeMake(600, 500);
+            vc.baseController = self;
+            vc.productArray = productArray;
+            vc.downloadedProduct = downloadedProduct;
+            vc.modalPresentationStyle = UIModalPresentationPopover;
+            UIPopoverPresentationController *popPC = vc.popoverPresentationController;
+            vc.popoverPresentationController.sourceRect = menuBtn.bounds;
+            vc.popoverPresentationController.sourceView = menuBtn;
+            popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+            popPC.delegate = self;
+            [self presentViewController:vc animated:YES completion:nil];
+        }
+        else{
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"Error!!!"
+                                          message:@"Add Some Products in Drawing Window."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+                UIAlertAction* ok = [UIAlertAction
+                                     actionWithTitle:@"Ok"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                     }];
+                [alert addAction:ok];
+            
+            [self presentViewController:alert animated:YES completion:nil];
         
-        vc.modalPresentationStyle = UIModalPresentationPopover;
-        UIPopoverPresentationController *popPC = vc.popoverPresentationController;
-        vc.popoverPresentationController.sourceRect = menuBtn.bounds;
-        vc.popoverPresentationController.sourceView = menuBtn;
-        popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
-        popPC.delegate = self;
-        [self presentViewController:vc animated:YES completion:nil];
+        }
     }];
     [showPrice setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
     

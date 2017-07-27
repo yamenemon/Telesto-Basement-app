@@ -45,6 +45,7 @@
     BOOL isFromProduct;
     UIImage *screenShot;
 }
+@property (weak, nonatomic) IBOutlet UILabel *templateNameLabel;
 @property (assign,nonatomic) int currentActiveTemplateID;
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
 @property (assign,nonatomic) BOOL isFromNewProposals;
