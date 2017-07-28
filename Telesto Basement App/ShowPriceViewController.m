@@ -152,13 +152,5 @@
     [view setBackgroundColor:UIColorFromRGB(0x0A5A78)]; //your background color...
     return view;
 }
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"PriceTableFooterView"
-                                                      owner:self
-                                                    options:nil];
-    
-    PriceTableFooterView *view = [ nibViews objectAtIndex:0];
-    return view;
-}
+
 @end

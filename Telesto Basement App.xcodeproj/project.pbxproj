@@ -82,6 +82,9 @@
 		70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */; };
 		706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B21ECEFC4F003E7247 /* Reachability.m */; };
 		706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */; };
+		70824CC41F2B800F00FE53AC /* Checklist.png in Resources */ = {isa = PBXBuildFile; fileRef = 70824CC31F2B800F00FE53AC /* Checklist.png */; };
+		70824CC71F2B835100FE53AC /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70824CC61F2B835100FE53AC /* SignatureViewController.m */; };
+		70824CCB1F2B842200FE53AC /* SignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70824CCA1F2B842200FE53AC /* SignatureView.m */; };
 		7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */; };
 		7097799C1ED569430032F4FF /* horizentalWall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7097799A1ED569420032F4FF /* horizentalWall@2x.png */; };
 		7097799D1ED569430032F4FF /* verticalWall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7097799B1ED569420032F4FF /* verticalWall@2x.png */; };
@@ -119,8 +122,6 @@
 		70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CF19651E1CE03D00C90EDD /* FaqsViewController.m */; };
 		70D44C1B1F178CE00032FAA6 /* CountryListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D44C1A1F178CE00032FAA6 /* CountryListObject.m */; };
 		70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E8481E43426B007E3F2F /* SettingsViewController.m */; };
-		70DA8D731F2B721C0088FC23 /* PriceTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DA8D721F2B721C0088FC23 /* PriceTableFooterView.m */; };
-		70DA8D751F2B722D0088FC23 /* PriceTableFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70DA8D741F2B722D0088FC23 /* PriceTableFooterView.xib */; };
 		70DB1B5D1F1E1238006E55A2 /* DefaultTemplateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DB1B5C1F1E1238006E55A2 /* DefaultTemplateObject.m */; };
 		70E0268E1F2739BE007417F8 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0268D1F2739BE007417F8 /* CustomTextField.m */; };
 		70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */; };
@@ -252,6 +253,11 @@
 		706FA6B21ECEFC4F003E7247 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		706FA6B41ECEFCAE003E7247 /* MTReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTReachabilityManager.h; sourceTree = "<group>"; };
 		706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTReachabilityManager.m; sourceTree = "<group>"; };
+		70824CC31F2B800F00FE53AC /* Checklist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Checklist.png; sourceTree = "<group>"; };
+		70824CC51F2B835100FE53AC /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
+		70824CC61F2B835100FE53AC /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureViewController.m; sourceTree = "<group>"; };
+		70824CC91F2B842200FE53AC /* SignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureView.h; sourceTree = "<group>"; };
+		70824CCA1F2B842200FE53AC /* SignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureView.m; sourceTree = "<group>"; };
 		7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
 		7097799A1ED569420032F4FF /* horizentalWall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "horizentalWall@2x.png"; sourceTree = "<group>"; };
@@ -313,9 +319,6 @@
 		70D44C1A1F178CE00032FAA6 /* CountryListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListObject.m; sourceTree = "<group>"; };
 		70D6E8471E43426B007E3F2F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		70D6E8481E43426B007E3F2F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		70DA8D711F2B721C0088FC23 /* PriceTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceTableFooterView.h; sourceTree = "<group>"; };
-		70DA8D721F2B721C0088FC23 /* PriceTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceTableFooterView.m; sourceTree = "<group>"; };
-		70DA8D741F2B722D0088FC23 /* PriceTableFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceTableFooterView.xib; sourceTree = "<group>"; };
 		70DB1B5B1F1E1238006E55A2 /* DefaultTemplateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTemplateObject.h; sourceTree = "<group>"; };
 		70DB1B5C1F1E1238006E55A2 /* DefaultTemplateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTemplateObject.m; sourceTree = "<group>"; };
 		70E0268C1F2739BE007417F8 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
@@ -423,6 +426,7 @@
 		70015E951DF6910500DF542E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				70824CC31F2B800F00FE53AC /* Checklist.png */,
 				704B689D1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png */,
 				70FDF6181E094C1E00CF32EF /* customerList@2x.png */,
 				70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */,
@@ -535,6 +539,17 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
+		70824CC81F2B83EE00FE53AC /* Signature */ = {
+			isa = PBXGroup;
+			children = (
+				70824CC51F2B835100FE53AC /* SignatureViewController.h */,
+				70824CC61F2B835100FE53AC /* SignatureViewController.m */,
+				70824CC91F2B842200FE53AC /* SignatureView.h */,
+				70824CCA1F2B842200FE53AC /* SignatureView.m */,
+			);
+			name = Signature;
+			sourceTree = "<group>";
+		};
 		709F4BD41E76B30C00C8B8DA /* Design Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -571,12 +586,10 @@
 				705F059D1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib */,
 				705F059E1EDED8CE00D8B837 /* ShowPriceViewController.h */,
 				705F059F1EDED8CE00D8B837 /* ShowPriceViewController.m */,
-				70DA8D711F2B721C0088FC23 /* PriceTableFooterView.h */,
-				70DA8D721F2B721C0088FC23 /* PriceTableFooterView.m */,
-				70DA8D741F2B722D0088FC23 /* PriceTableFooterView.xib */,
 				703B35FD1F29FF62004BD960 /* ShowPriceTableViewCell.h */,
 				703B35FE1F29FF62004BD960 /* ShowPriceTableViewCell.m */,
 				703B35FF1F29FF62004BD960 /* ShowPriceTableViewCell.xib */,
+				70824CC81F2B83EE00FE53AC /* Signature */,
 			);
 			name = "Design Window";
 			sourceTree = "<group>";
@@ -823,7 +836,6 @@
 				70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */,
 				70CE84281F04CED900867F91 /* Overlay.png in Resources */,
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
-				70DA8D751F2B722D0088FC23 /* PriceTableFooterView.xib in Resources */,
 				705F05A41EDED8CE00D8B837 /* CustomVideoPopUpView.xib in Resources */,
 				70CAA46D1EE7DB4E00614BFB /* MediaPopUp.xib in Resources */,
 				7097799C1ED569430032F4FF /* horizentalWall@2x.png in Resources */,
@@ -861,6 +873,7 @@
 				705F64EB1DF97F2600082D55 /* telesto-logo@2x.png in Resources */,
 				705F64D81DF97B7000082D55 /* Roboto-BoldItalic.ttf in Resources */,
 				705F64D61DF97B7000082D55 /* Roboto-BlackItalic.ttf in Resources */,
+				70824CC41F2B800F00FE53AC /* Checklist.png in Resources */,
 				7097799D1ED569430032F4FF /* verticalWall@2x.png in Resources */,
 				705F05AD1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib in Resources */,
 				7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */,
@@ -935,9 +948,9 @@
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				70D44C1B1F178CE00032FAA6 /* CountryListObject.m in Sources */,
 				703B36001F29FF62004BD960 /* ShowPriceTableViewCell.m in Sources */,
+				70824CCB1F2B842200FE53AC /* SignatureView.m in Sources */,
 				7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */,
 				7025893D1EF00376006ACCC8 /* ProductInfoDetailsPopup.m in Sources */,
-				70DA8D731F2B721C0088FC23 /* PriceTableFooterView.m in Sources */,
 				705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */,
 				3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */,
 				3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */,
@@ -981,6 +994,7 @@
 				705F05A81EDED8CE00D8B837 /* LeftNavDrawingToolsView.m in Sources */,
 				709B44351E6D6942008058F3 /* loginView.m in Sources */,
 				705F05A31EDED8CE00D8B837 /* CustomVideoPopUpView.m in Sources */,
+				70824CC71F2B835100FE53AC /* SignatureViewController.m in Sources */,
 				70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */,
 				70C28A0F1F223C3300EB5DD9 /* CustomTemplateObject.m in Sources */,
 				70161B351EF2939800101BDB /* MapItViewController.m in Sources */,

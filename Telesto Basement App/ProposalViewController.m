@@ -145,5 +145,10 @@
     [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
     return view;
 }
+- (IBAction)FaqListBtnAction:(id)sender {
+}
+- (IBAction)emailToCustomerAction:(id)sender {
+    
+}
 
 @end

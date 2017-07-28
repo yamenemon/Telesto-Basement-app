@@ -1,5 +1,5 @@
 //
-//  PriceTableFooterView.h
+//  SignatureView.h
 //  Telesto Basement App
 //
 //  Created by CSM on 7/28/17.
@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PriceTableFooterView : UIView
+@interface SignatureView : UIView{
+    
+    UIBezierPath *_path;
+}
+- (void)erase;
 
 @end

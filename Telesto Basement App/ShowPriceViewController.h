@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ShowPriceTableViewCell.h"
-#import "PriceTableFooterView.h"
 @class DesignViewController;
 @interface ShowPriceViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *priceTable;

@@ -2089,52 +2089,21 @@ Washington, DC 20521-6170
                                                 <rect key="frame" x="8" y="8" width="461" height="204"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Check List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jp-N4-PJ5">
-                                                        <rect key="frame" x="131" y="9" width="200" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FAQs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jp-N4-PJ5">
+                                                        <rect key="frame" x="131" y="5" width="200" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="beH-D8-pGn">
-                                                        <rect key="frame" x="8" y="47" width="445" height="149"/>
+                                                    <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oz-1u-xSF">
+                                                        <rect key="frame" x="95" y="42" width="273" height="156"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <string key="text">Q: What led you to call our company?
-A: My basement leaks every time it rains and need to waterproof the basement
-
-Q: What year was your house built?
-A: 1978
-
-Q: How long have you owned the home?
-A: 12 years
-
-Q: Selling Soon? If no, do you plan to stay 5, 10, 15+ years?
-A: No, I plan on staying for another 5 years
-
-Q: What's the specific problem?
-A: North basement wall leaks 
-
-Q: How long has this gone on?
-A: Last 2 weeks
-
-Q: What frustrates you the most?
-A: It gets flooded on heavy rain and ruined all my stuff on the last rain
-
-Q: Who else has/will look at the problem?
-A:
-
-Q: Do you agree with solution offered?
-A:
-
-Q: What have you budgeted to fix it?
-A: Not much
-
-Q: How quickly do you want it fixed?
-A: Immediately</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    </textView>
+                                                        <state key="normal" backgroundImage="Checklist.png"/>
+                                                        <connections>
+                                                            <action selector="FaqListBtnAction:" destination="b5M-Ek-zPn" eventType="touchUpInside" id="5F6-Qv-5RD"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
@@ -2167,7 +2136,7 @@ A: Immediately</string>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9vY-La-XBI">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vY-La-XBI">
                                                         <rect key="frame" x="8" y="44" width="445" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2204,18 +2173,18 @@ A: Immediately</string>
                                         <rect key="frame" x="10" y="634" width="1004" height="62"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Z7-aI-4wj">
-                                                <rect key="frame" x="8" y="0.0" width="270" height="42"/>
+                                                <rect key="frame" x="98" y="0.0" width="270" height="42"/>
                                                 <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="25"/>
                                                 <state key="normal" title="Sign To Doc">
                                                     <color key="titleColor" red="0.99991267920000004" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="IjR-sf-ZgW" kind="show" id="ytZ-2Z-Ocg"/>
+                                                    <segue destination="dOZ-tZ-S1O" kind="show" id="ytZ-2Z-Ocg"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCt-XQ-iKM">
-                                                <rect key="frame" x="367" y="0.0" width="270" height="42"/>
+                                                <rect key="frame" x="621" y="0.0" width="270" height="42"/>
                                                 <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="270" id="EPR-kh-dOY"/>
@@ -2224,27 +2193,17 @@ A: Immediately</string>
                                                 <state key="normal" title="Email To Customer">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                            </button>
-                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FrI-4M-lZk">
-                                                <rect key="frame" x="725" y="0.0" width="270" height="42"/>
-                                                <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="25"/>
-                                                <state key="normal" title="Send To Office">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
+                                                <connections>
+                                                    <action selector="emailToCustomerAction:" destination="b5M-Ek-zPn" eventType="touchUpInside" id="0tj-rO-ViR"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="FrI-4M-lZk" secondAttribute="trailing" constant="9" id="2uP-Bx-vvn"/>
                                             <constraint firstItem="HCt-XQ-iKM" firstAttribute="width" secondItem="3Z7-aI-4wj" secondAttribute="width" id="Aeh-fx-qQV"/>
-                                            <constraint firstItem="HCt-XQ-iKM" firstAttribute="centerX" secondItem="LCf-1b-5BZ" secondAttribute="centerX" id="Ath-4a-GsO"/>
-                                            <constraint firstItem="FrI-4M-lZk" firstAttribute="width" secondItem="HCt-XQ-iKM" secondAttribute="width" id="C8a-XM-dsZ"/>
+                                            <constraint firstItem="HCt-XQ-iKM" firstAttribute="centerX" secondItem="LCf-1b-5BZ" secondAttribute="centerX" constant="254" id="Ath-4a-GsO"/>
                                             <constraint firstItem="3Z7-aI-4wj" firstAttribute="height" secondItem="HCt-XQ-iKM" secondAttribute="height" id="GRE-xA-kCO"/>
                                             <constraint firstAttribute="bottom" secondItem="3Z7-aI-4wj" secondAttribute="bottom" constant="20" id="Pt4-Oi-eZE"/>
-                                            <constraint firstItem="FrI-4M-lZk" firstAttribute="top" secondItem="HCt-XQ-iKM" secondAttribute="top" id="TRV-9I-WK9"/>
-                                            <constraint firstItem="FrI-4M-lZk" firstAttribute="top" secondItem="LCf-1b-5BZ" secondAttribute="top" id="eih-AV-swt"/>
-                                            <constraint firstItem="3Z7-aI-4wj" firstAttribute="leading" secondItem="LCf-1b-5BZ" secondAttribute="leading" constant="8" id="oJG-wo-1qT"/>
-                                            <constraint firstItem="HCt-XQ-iKM" firstAttribute="height" secondItem="FrI-4M-lZk" secondAttribute="height" id="opw-wg-DVF"/>
+                                            <constraint firstItem="3Z7-aI-4wj" firstAttribute="leading" secondItem="LCf-1b-5BZ" secondAttribute="leading" constant="98" id="oJG-wo-1qT"/>
                                             <constraint firstItem="3Z7-aI-4wj" firstAttribute="top" secondItem="LCf-1b-5BZ" secondAttribute="top" id="s7A-Gg-ujQ"/>
                                             <constraint firstItem="3Z7-aI-4wj" firstAttribute="top" secondItem="HCt-XQ-iKM" secondAttribute="top" id="x56-Nb-JE1"/>
                                         </constraints>
@@ -2283,12 +2242,12 @@ A: Immediately</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bo6-oM-K0h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7285" y="-2078"/>
+            <point key="canvasLocation" x="-7285.5468749999991" y="-2078.125"/>
         </scene>
         <!--Confirmation-->
         <scene sceneID="L52-jR-0Xy">
             <objects>
-                <viewController title="Confirmation" id="IjR-sf-ZgW" sceneMemberID="viewController">
+                <viewController title="Confirmation" id="IjR-sf-ZgW" customClass="SignatureViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pnd-f4-68p"/>
                         <viewControllerLayoutGuide type="bottom" id="ngn-UV-9ce"/>
@@ -2299,56 +2258,7 @@ A: Immediately</string>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtP-G2-DzC" userLabel="BaseView">
                                 <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Proposal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uww-Ze-QqI">
-                                        <rect key="frame" x="124" y="53" width="777" height="40"/>
-                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U62-TB-ivz">
-                                        <rect key="frame" x="337" y="527" width="350" height="60"/>
-                                        <color key="backgroundColor" red="0.039215686270000001" green="0.33333333329999998" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="qG1-zH-chg"/>
-                                            <constraint firstAttribute="width" constant="350" id="ty7-ZS-pvT"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="25"/>
-                                        <state key="normal" title="ACCEPT">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egz-n6-1iH">
-                                        <rect key="frame" x="124" y="128" width="777" height="369"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Area" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jtk-p2-PPX">
-                                                <rect key="frame" x="203" y="157" width="370" height="33"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.87264424559999998" green="0.91362124680000001" blue="0.93038696050000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Jtk-p2-PPX" secondAttribute="trailing" constant="204" id="5PU-Wq-g69"/>
-                                            <constraint firstAttribute="bottom" secondItem="Jtk-p2-PPX" secondAttribute="bottom" constant="179" id="G2G-8O-6wy"/>
-                                            <constraint firstItem="Jtk-p2-PPX" firstAttribute="top" secondItem="Egz-n6-1iH" secondAttribute="top" constant="157" id="a73-MF-aPP"/>
-                                            <constraint firstItem="Jtk-p2-PPX" firstAttribute="leading" secondItem="Egz-n6-1iH" secondAttribute="leading" constant="203" id="x2B-C5-IG0"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="U62-TB-ivz" secondAttribute="bottom" priority="250" constant="97" id="JdR-ks-kky"/>
-                                    <constraint firstItem="U62-TB-ivz" firstAttribute="centerX" secondItem="Egz-n6-1iH" secondAttribute="centerX" id="Ka7-Zv-eZt"/>
-                                    <constraint firstAttribute="trailing" secondItem="Egz-n6-1iH" secondAttribute="trailing" constant="123" id="NYp-MB-93y"/>
-                                    <constraint firstItem="Uww-Ze-QqI" firstAttribute="leading" secondItem="YtP-G2-DzC" secondAttribute="leading" constant="124" id="PSN-Kx-xYW"/>
-                                    <constraint firstAttribute="trailing" secondItem="Uww-Ze-QqI" secondAttribute="trailing" constant="123" id="U9Q-7s-3eD"/>
-                                    <constraint firstItem="U62-TB-ivz" firstAttribute="top" secondItem="Egz-n6-1iH" secondAttribute="bottom" constant="30" id="Z3z-My-DpX"/>
-                                    <constraint firstItem="Uww-Ze-QqI" firstAttribute="top" secondItem="YtP-G2-DzC" secondAttribute="top" constant="53" id="ehf-Fj-zLx"/>
-                                    <constraint firstItem="Egz-n6-1iH" firstAttribute="top" secondItem="Uww-Ze-QqI" secondAttribute="bottom" constant="35" id="rKX-TD-WVU"/>
-                                    <constraint firstItem="Egz-n6-1iH" firstAttribute="leading" secondItem="YtP-G2-DzC" secondAttribute="leading" constant="124" id="zhG-Tb-WL7"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2359,10 +2269,13 @@ A: Immediately</string>
                             <constraint firstAttribute="trailing" secondItem="YtP-G2-DzC" secondAttribute="trailing" id="xBG-7n-MXr"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="XKw-Ys-lcP">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="6T8-K6-kcT"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6wJ-4J-AvZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6612" y="-2078"/>
+            <point key="canvasLocation" x="-5888.0859375" y="-2078.125"/>
         </scene>
         <!--Faqs View Controller Step2-->
         <scene sceneID="rv0-T0-jRp">
@@ -2888,7 +2801,7 @@ A: Immediately</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylj-Rg-W4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6001.171875" y="-2144.53125"/>
+            <point key="canvasLocation" x="-5276.953125" y="-2144.53125"/>
         </scene>
         <!--Show Price View Controller-->
         <scene sceneID="Jqs-oM-Xbo">
@@ -2939,7 +2852,7 @@ A: Immediately</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PIg-Ux-Cuo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5571" y="-2184"/>
+            <point key="canvasLocation" x="-4846.875" y="-2184.375"/>
         </scene>
         <!--Customer Record View Controller-->
         <scene sceneID="Kdb-7x-sZI">
@@ -4102,9 +4015,28 @@ Ma# 112382 RI#3934</string>
             </objects>
             <point key="canvasLocation" x="-3149" y="252"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HAb-eR-v1h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dOZ-tZ-S1O" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DdL-BR-xGI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IjR-sf-ZgW" kind="relationship" relationship="rootViewController" id="azI-Ky-UME"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wnn-aY-Hxq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6612.3046875" y="-2078.125"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CarouselBackground" width="25" height="234"/>
+        <image name="Checklist.png" width="2054" height="1220"/>
         <image name="ProductSliderButton" width="32" height="210"/>
         <image name="Temp6.png" width="400" height="316"/>
         <image name="colorPicker" width="50" height="50"/>
