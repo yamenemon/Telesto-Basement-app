@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/CustomerDataManager.m"
-            timestampString = "522839957.739469"
+            timestampString = "522928669.48949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
+            startingLineNumber = "635"
+            endingLineNumber = "635"
             landmarkName = "-saveUserDesignWithBaseController:withCustomTemplateID:withCustomTemplateName:withProductArray:withCompletionBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -38,39 +38,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/CustomerDataManager.m"
-            timestampString = "522839957.739469"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "628"
-            endingLineNumber = "628"
-            landmarkName = "-saveUserDesignWithBaseController:withCustomTemplateID:withCustomTemplateName:withProductArray:withCompletionBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/CustomerDataManager.m"
-            timestampString = "522839957.739469"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "631"
-            endingLineNumber = "631"
-            landmarkName = "-saveUserDesignWithBaseController:withCustomTemplateID:withCustomTemplateName:withProductArray:withCompletionBlock:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/CustomerDataManager.m"
@@ -83,34 +51,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[CustomerDataManager saveUserDesignWithBaseController:withCustomTemplateID:withCustomTemplateName:withProductArray:withCompletionBlock:]"
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerDataManager.m"
-                  timestampString = "522857557.012099"
+                  timestampString = "522918208.486964"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "609"
                   endingLineNumber = "609"
-                  offsetFromSymbolStart = "1912">
+                  offsetFromSymbolStart = "2238">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__137-[CustomerDataManager saveUserDesignWithBaseController:withCustomTemplateID:withCustomTemplateName:withProductArray:withCompletionBlock:]_block_invoke"
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerDataManager.m"
-                  timestampString = "522857557.013652"
+                  timestampString = "522918208.488174"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "609"
                   endingLineNumber = "609"
-                  offsetFromSymbolStart = "56">
+                  offsetFromSymbolStart = "39">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -122,12 +90,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/ShowPriceViewController.m"
-            timestampString = "522858049.084959"
+            timestampString = "522942278.18774"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/ShowPriceViewController.m"
+            timestampString = "522943044.076601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-tableView:viewForFooterInSection:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

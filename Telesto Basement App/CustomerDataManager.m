@@ -590,7 +590,7 @@
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *endPoint = @"add_custom_template_products";
-    
+    __block int uploadedIndex = (int)customerTemplateObjArr.count;
     for (CustomProductView *view in customerTemplateObjArr) {
         NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                               TOKEN_STRING,AUTH_KEY,
@@ -605,7 +605,7 @@
                                               [NSNumber numberWithInt:view.productObject.imageCount],@"imageCount",
                                               nil];
         
-        
+        NSLog(@"Dictionary of Parameter: %@",aParameterDic);
         [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             int i = 0;
             for(UIImage *eachImage in view.productObject.storedMediaArray)
@@ -625,7 +625,11 @@
               success:^(NSURLSessionDataTask *task, id responseObject) {
                   NSLog(@"Response: %@", responseObject);
                   
-                  completionBlock(YES);
+                  uploadedIndex--;
+                  NSLog(@"uploadedIndex: %d",uploadedIndex);
+                  if (uploadedIndex == 0) {
+                      completionBlock(YES);
+                  }
               } failure:^(NSURLSessionDataTask *task, NSError *error) {
                   NSLog(@"Error: %@", error);
                   completionBlock(NO);

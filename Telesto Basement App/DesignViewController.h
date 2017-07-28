@@ -44,6 +44,7 @@
     int lastClickedProductInfoBtn;
     BOOL isFromProduct;
     UIImage *screenShot;
+    NSMutableArray *productNameArray;
 }
 @property (weak, nonatomic) IBOutlet UILabel *templateNameLabel;
 @property (assign,nonatomic) int currentActiveTemplateID;

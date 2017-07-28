@@ -214,6 +214,7 @@
 -(void)createProductScroller{
     int y = 0;
     CGRect frame;
+    productNameArray = [[NSMutableArray alloc] init];
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     for (int i = 0; i < downloadedProduct.count-1; i++) {
         
@@ -250,6 +251,7 @@
             y = CGRectGetMaxY(productSliderCustomView.frame);
         }
         productSliderCustomView.productName.text = [NSString stringWithFormat:@"%@",proObj.productName];
+        [productNameArray addObject:proObj.productName];
     }
     
     self.productSliderScrollView.contentSize = CGSizeMake(self.productSliderScrollView.frame.size.width,y);
@@ -558,17 +560,26 @@
         if (productArray.count>0) {
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             ShowPriceViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ShowPriceViewController"];
-            vc.preferredContentSize = CGSizeMake(600, 500);
+//            vc.preferredContentSize = CGSizeMake(600, 500);
             vc.baseController = self;
             vc.productArray = productArray;
             vc.downloadedProduct = downloadedProduct;
-            vc.modalPresentationStyle = UIModalPresentationPopover;
-            UIPopoverPresentationController *popPC = vc.popoverPresentationController;
-            vc.popoverPresentationController.sourceRect = menuBtn.bounds;
-            vc.popoverPresentationController.sourceView = menuBtn;
-            popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
-            popPC.delegate = self;
-            [self presentViewController:vc animated:YES completion:nil];
+            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+//            vc.modalPresentationStyle = UIModalPresentationPopover;
+//            UIPopoverPresentationController *popPC = vc.popoverPresentationController;
+//            vc.popoverPresentationController.sourceRect = menuBtn.bounds;
+//            vc.popoverPresentationController.sourceView = menuBtn;
+//            popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+//            popPC.delegate = self;
+//            [self presentViewController:vc animated:YES completion:nil];
+//            
+//            popupController = [[CNPPopupController alloc] initWithContents:@[vc]];
+//            popupController.theme = [self defaultTheme];
+//            popupController.theme.popupStyle = CNPPopupStyleCentered;
+//            popupController.delegate = self;
+//            [popupController presentPopupControllerAnimated:YES];
         }
         else{
             UIAlertController * alert=   [UIAlertController

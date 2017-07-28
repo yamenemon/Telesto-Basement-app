@@ -2906,7 +2906,7 @@ A: Immediately</string>
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J94-oj-LGE">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="490"/>
+                                        <rect key="frame" x="10" y="30" width="580" height="440"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="dataSource" destination="txa-fo-0d8" id="ev1-XW-zJ8"/>
@@ -2916,10 +2916,10 @@ A: Immediately</string>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="J94-oj-LGE" firstAttribute="top" secondItem="HjH-Xd-2bL" secondAttribute="top" id="Br2-Nc-nqT"/>
-                                    <constraint firstAttribute="bottom" secondItem="J94-oj-LGE" secondAttribute="bottom" constant="10" id="If4-Ej-Ku5"/>
-                                    <constraint firstItem="J94-oj-LGE" firstAttribute="leading" secondItem="HjH-Xd-2bL" secondAttribute="leading" id="KU8-TI-o04"/>
-                                    <constraint firstAttribute="trailing" secondItem="J94-oj-LGE" secondAttribute="trailing" id="fzd-t7-Y6b"/>
+                                    <constraint firstItem="J94-oj-LGE" firstAttribute="top" secondItem="HjH-Xd-2bL" secondAttribute="top" constant="30" id="Br2-Nc-nqT"/>
+                                    <constraint firstAttribute="bottom" secondItem="J94-oj-LGE" secondAttribute="bottom" constant="30" id="If4-Ej-Ku5"/>
+                                    <constraint firstItem="J94-oj-LGE" firstAttribute="leading" secondItem="HjH-Xd-2bL" secondAttribute="leading" constant="10" id="KU8-TI-o04"/>
+                                    <constraint firstAttribute="trailing" secondItem="J94-oj-LGE" secondAttribute="trailing" constant="10" id="fzd-t7-Y6b"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2933,6 +2933,9 @@ A: Immediately</string>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="500"/>
+                    <connections>
+                        <outlet property="priceTable" destination="J94-oj-LGE" id="yDU-MX-gDZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PIg-Ux-Cuo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

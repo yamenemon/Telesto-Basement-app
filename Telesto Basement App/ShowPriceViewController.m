@@ -20,26 +20,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
+    _priceTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 -(void)viewWillAppear:(BOOL)animated{
 
     NSMutableArray *temp = [[NSMutableArray alloc] init];
-    NSMutableArray *totalArr = [[NSMutableArray alloc] init];
     
     NSMutableArray *twoDArr = [NSMutableArray arrayWithCapacity:productArray.count];
     for (int i = 0; i<productArray.count; i++) {
         [twoDArr addObject:[NSNumber numberWithInt:1]];
     }
+    
+    
     for (CustomProductView *view in productArray) {
         [temp addObject:[NSNumber numberWithInt:view.productObject.productId]];
     }
-    NSCountedSet *countedSet = [[NSCountedSet alloc] initWithArray:temp];
-    NSLog(@"%@", countedSet);
-    for (int i = 0; i < downloadedProduct.count-1; i++) {
+    
+    NSCountedSet *set = [[NSCountedSet alloc] initWithArray:temp];
+    NSMutableArray *countedArr = [[NSMutableArray alloc] init];
+    int i = 0;
+    for (id item in set) {
+        NSLog(@"Name=%@, Count=%lu", item, (unsigned long)[set countForObject:item]);
+        [countedArr insertObject:item atIndex:i];
+        i++;
+    }
+    NSLog(@"Inset object: %@",countedArr);
+    
+    
+    for (int i = 0; i < downloadedProduct.count; i++) {
         Product *proObj = [downloadedProduct objectAtIndex:i];
-        for (int j = 0; j< productArray.count-1; j++) {
+        for (int j = 0; j< productArray.count; j++) {
             CustomProductView *view = [productArray objectAtIndex:j];
             if ([[NSNumber numberWithInt:proObj.productId] isEqualToNumber:[NSNumber numberWithInt:view.productID]]) {
                 view.productObject.productName = proObj.productName;
@@ -59,7 +69,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return productArray.count+1;
+    return productArray.count+2;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -74,25 +84,50 @@
     if (indexPath.row == 0) {
         cell.productName.text = @"Product Name";
         cell.quantityxPrice.text = @"Quantity x Price";
-        cell.discount.text = @"Discount";
         cell.totalPrice.text = @"Price";
+        
+        cell.discountTextField.text = @"Percentage Discount (%)";
+        cell.discountPriceTextField.text = @"Price Discount ($)";
+        
+        cell.discountTextField.borderStyle = UITextBorderStyleNone;
+        cell.discountPriceTextField.borderStyle = UITextBorderStyleNone;
+        
         [cell.productName setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
         cell.productName.textAlignment = NSTextAlignmentCenter;
+        
+
+        [cell.discountTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
+        cell.discountTextField.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.discountPriceTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
+        cell.discountPriceTextField.textAlignment = NSTextAlignmentCenter;
         
         [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
         cell.quantityxPrice.textAlignment = NSTextAlignmentCenter;
         
-        [cell.discount setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
-        cell.discount.textAlignment = NSTextAlignmentCenter;
-        
-        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:17]];
-        cell.totalPrice.textAlignment = NSTextAlignmentRight;
+        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:20]];
+        cell.totalPrice.textAlignment = NSTextAlignmentCenter;
     }
-    else{
+    else if (indexPath.row == productArray.count+1){
+        cell.productName.text = @"";
+        cell.quantityxPrice.text = @"Total";
+        cell.discountTextField.hidden = YES;
+        cell.discountPriceTextField.hidden = YES;
+        int sum = 0;
+        for (int j = 0; j< productArray.count; j++) {
+            CustomProductView *view = [productArray objectAtIndex:j];
+            sum = sum + view.productObject.productPrice;
+        }
+        cell.totalPrice.text = [NSString stringWithFormat:@"%d",sum];
+    } else{
         CustomProductView *view = [productArray objectAtIndex:indexPath.row-1];
+        cell.productName.textAlignment = NSTextAlignmentCenter;
+
         cell.productName.text = view.productObject.productName;
-        cell.quantityxPrice.text = [NSString stringWithFormat:@"1 x $ %.2f",view.productObject.productPrice];
-        cell.discount.text = [NSString stringWithFormat:@"%.2f%%",view.productObject.discount];
+        cell.quantityxPrice.text = [NSString stringWithFormat:@"1 %@ x $ %.2f",view.productObject.unitType,view.productObject.productPrice];
+        if ([view.productObject.unitType isEqualToString:@"piece"]) {
+            cell.discountTextField.text = [NSString stringWithFormat:@"%.2f",view.productObject.discount];
+        }
         cell.totalPrice.text = [NSString stringWithFormat:@"$ %.2f",view.productObject.productPrice];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -117,5 +152,13 @@
     [view setBackgroundColor:UIColorFromRGB(0x0A5A78)]; //your background color...
     return view;
 }
-
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"PriceTableFooterView"
+                                                      owner:self
+                                                    options:nil];
+    
+    PriceTableFooterView *view = [ nibViews objectAtIndex:0];
+    return view;
+}
 @end

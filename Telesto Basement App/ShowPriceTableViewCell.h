@@ -11,6 +11,7 @@
 @interface ShowPriceTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *quantityxPrice;
-@property (weak, nonatomic) IBOutlet UILabel *discount;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+@property (weak, nonatomic) IBOutlet UITextField *discountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *discountPriceTextField;
 @end
