@@ -16,14 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Proposal Confirmation";
     // Do any additional setup after loading the view.
-    SignatureView *signView= [[ SignatureView alloc] initWithFrame: CGRectMake(10, 10, self.view.frame.size.width-40, 500)];
+    SignatureView *signView= [[ SignatureView alloc] initWithFrame: CGRectMake(10, 64, self.view.frame.size.width-40, 500)];
     [signView setBackgroundColor:[UIColor whiteColor]];
     signView.layer.borderColor = [[UIColor lightGrayColor]CGColor];
     signView.layer.borderWidth = 1.0;
     [self.view addSubview:signView];
     
-    UILabel *confirmationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 515, self.view.frame.size.width-40, 30)];
+    UILabel *confirmationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 515+64, self.view.frame.size.width-40, 30)];
     [self.view addSubview:confirmationLabel];
     confirmationLabel.textColor = [UIColor darkGrayColor];
     confirmationLabel.backgroundColor = [UIColor lightGrayColor];
