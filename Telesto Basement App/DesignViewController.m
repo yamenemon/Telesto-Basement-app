@@ -26,7 +26,7 @@
 @synthesize infoBtnArray;
 @synthesize downloadedProduct;
 @synthesize productSliderCustomView;
-@synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID;
+@synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID,currentDefaultTemplateIndex;
 @synthesize templateNameLabel;
 
 #pragma mark - ViewControllers Super Methods
@@ -59,6 +59,7 @@
         [self setCustomTemplateName];
         NSLog(@"%@",userSelectedDataDictionary);
     }
+    currentDefaultTemplateIndex = 10000;
 }
 -(BOOL)prefersStatusBarHidden{
     return NO;
@@ -373,32 +374,24 @@
               view.productObject.imageCount,
               view.productObject.storedMediaArray);
     }
-    /*
-     end point : add_custom_template_products
-     Method : post
-     POST KEY : authKey,custom_template_id,custom_template_name,product_name,product_price,product_x_coordinate,product_y_coordinate,product_width,product_height,product_images,imageCount
-     Optional : type. If send then value should be “update”
-     */
-    
-//    CustomTemplateObject *objects = [[CustomTemplateObject alloc] init];
-//    objects.authKey = TOKEN_STRING;
-//    objects.customTemplateName = _templateNameString;
-//    objects.customerId = [[Utility sharedManager] getCurrentCustomerId];
-//    objects.screenShot = [[Utility sharedManager] loadScreenShotImageWithImageName:_templateNameString];
-//    objects.productObjectArray =  productArray;
-
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     [manager saveUserDesignWithBaseController:self withCustomTemplateID:currentActiveTemplateID withCustomTemplateName:_templateNameString withProductArray:productArray withCompletionBlock:^(BOOL success){
         if (success == YES) {
             
-            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
-            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self.navigationController pushViewController:vc animated:YES];
+            [manager saveCustomTemplatewithCustomTemplateID:currentActiveTemplateID withCustomTemplateName:_templateNameString withScreenShot:[[Utility sharedManager] loadScreenShotImageWithImageName:_templateNameString] withDefaultTemplateId:currentDefaultTemplateIndex withCompletionBlock:^(BOOL success){
+                if (success == YES) {
+                    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
+                    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                else{
+                    NSLog(@"Not uploaded show the alert");
+                }
+            }];
         }
         else{
             NSLog(@"Not uploaded show the alert");
-        
         }
     }];
 }
@@ -1063,13 +1056,14 @@
     [self showPopupWithStyle:CNPPopupStyleCentered];
 }
 
--(void)setSavedTemplateNumber:(NSString*)path{
+-(void)setSavedTemplateNumber:(NSString*)path withTemplateIndex:(int)defaultTemplateIndex{
     
     if (drawingImageView) {
         [drawingImageView removeFromSuperview];
     }
     drawingImageView = [[UIImageView alloc] init];
-    NSLog(@"Path %@",path);
+    currentDefaultTemplateIndex = defaultTemplateIndex;
+    NSLog(@"Path %@ and default template index: %d",path,currentDefaultTemplateIndex);
     [templateController dismissViewControllerAnimated:YES completion:^{
         drawingImageView.frame = CGRectMake(0, 0, basementDesignView.frame.size.width, basementDesignView.frame.size.height);
         [drawingImageView setImage:[UIImage imageNamed:path]];

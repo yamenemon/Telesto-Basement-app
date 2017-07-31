@@ -99,6 +99,7 @@
         [alert addAction:ok];
         [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+        completionBlock();
     }
     
 }
@@ -564,6 +565,8 @@
           success:^(NSURLSessionDataTask *task, id responseObject) {
               NSError *e;
               NSLog(@"Response: %@", responseObject);
+              NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+
               NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
               NSLog(@"json Dic: %@",jsonDic);
               int success = [[jsonDic valueForKey:@"success"] intValue];
@@ -592,11 +595,15 @@
     NSString *endPoint = @"add_custom_template_products";
     __block int uploadedIndex = (int)customerTemplateObjArr.count;
     for (CustomProductView *view in customerTemplateObjArr) {
+        /*
+         authKey,custom_template_id,custom_template_name,product_name,product_price,product_x_coordinate,product_y_coordinate,product_width,product_height,product_images,imageCount
+         */
         NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                               TOKEN_STRING,AUTH_KEY,
                                               [NSNumber numberWithInt:templateId],@"custom_template_id",
                                               templateName,@"custom_template_name",
                                               view.productObject.productName,@"product_name",
+                                              [NSNumber numberWithInt:view.productObject.productId],@"product_id",
                                               [NSNumber numberWithFloat:view.productObject.productPrice],@"product_price",
                                               [NSNumber numberWithFloat:view.productObject.productXcoordinate],@"product_x_coordinate",
                                               [NSNumber numberWithFloat:view.productObject.productYcoordinate],@"product_y_coordinate",
@@ -624,7 +631,8 @@
         }
               success:^(NSURLSessionDataTask *task, id responseObject) {
                   NSLog(@"Response: %@", responseObject);
-                  
+                  NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+
                   uploadedIndex--;
                   NSLog(@"uploadedIndex: %d",uploadedIndex);
                   if (uploadedIndex == 0) {
@@ -633,12 +641,42 @@
               } failure:^(NSURLSessionDataTask *task, NSError *error) {
                   NSLog(@"Error: %@", error);
                   completionBlock(NO);
-              }];
+        }];
     }
-    
+}
+-(void)saveCustomTemplatewithCustomTemplateID:(int)templateId withCustomTemplateName:(NSString*)templateName withScreenShot:(UIImage*)screenShot withDefaultTemplateId:(int)defaultTemplateId withCompletionBlock:(void (^)(BOOL success))completionBlock{
     /*
-     authKey,custom_template_id,custom_template_name,product_name,product_price,product_x_coordinate,product_y_coordinate,product_width,product_height,product_images,imageCount
+     end point : save_custom_template
+     Method : post
+     POST KEY : authKey,custom_template_id,custom_template_name, screenshot,
+     Optional : default_template_id
      */
     
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"save_custom_template";
+
+    NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                              TOKEN_STRING,AUTH_KEY,
+                                              [NSNumber numberWithInt:templateId],@"custom_template_id",
+                                              templateName,@"custom_template_name",
+                                              [NSNumber numberWithInt:defaultTemplateId],@"default_template_id",
+                                              nil];
+        
+    NSLog(@"Dictionary of Parameter: %@",aParameterDic);
+
+    NSData* imageData = UIImagePNGRepresentation(screenShot);
+
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:@"screenshot" fileName:@"screenshot.jpg" mimeType:@"image/jpg"];
+    } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+        NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+        completionBlock(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        completionBlock(NO);
+    }];
 }
 @end

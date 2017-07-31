@@ -62,8 +62,8 @@
 @property (strong, nonatomic) ProductSliderCustomView *productSliderCustomView;
 @property (strong, nonatomic) ProductInfoDetailsPopup *productInfoDetails;
 @property (weak, nonatomic) IBOutlet UIScrollView *productSliderScrollView;
-
-- (void)setSavedTemplateNumber:(NSString*)path;
+@property (assign, nonatomic) int currentDefaultTemplateIndex;
+-(void)setSavedTemplateNumber:(NSString*)path withTemplateIndex:(int)defaultTemplateIndex;
 - (void)wallPopOverBtnAction:(id)sender;
 - (void)backButtonAction;
 - (void)revealButtonItemClicked:(id)sender;

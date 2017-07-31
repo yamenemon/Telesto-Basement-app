@@ -107,7 +107,7 @@
     return CATransform3DTranslate(transform, 0.0, 0.0, offset * self.iCarouselView.itemWidth);
 }
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
-    [parentClass setSavedTemplateNumber:[templateArray objectAtIndex:index]];
+    [parentClass setSavedTemplateNumber:[templateArray objectAtIndex:index] withTemplateIndex:(int)index+1];
 }
 - (CGFloat)carousel:(__unused iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {

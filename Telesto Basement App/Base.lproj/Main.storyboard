@@ -673,14 +673,6 @@ Washington, DC 20521-6170
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgB-7K-eoa" userLabel="BottomBarView">
                                 <rect key="frame" x="0.0" y="710" width="1024" height="58"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMv-tl-dTn">
-                                        <rect key="frame" x="15" y="0.0" width="70" height="58"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="25"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelButtonPressed:" destination="Jee-Ym-M8I" eventType="touchUpInside" id="ZRF-Db-2kz"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGk-gB-0uz">
                                         <rect key="frame" x="947" y="0.0" width="62" height="58"/>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="25"/>
@@ -695,10 +687,7 @@ Washington, DC 20521-6170
                                     <constraint firstAttribute="bottom" secondItem="cGk-gB-0uz" secondAttribute="bottom" id="2TP-sz-QjI"/>
                                     <constraint firstAttribute="height" constant="58" id="2UW-Wu-UYo"/>
                                     <constraint firstItem="cGk-gB-0uz" firstAttribute="top" secondItem="fgB-7K-eoa" secondAttribute="top" id="O91-Zi-ifc"/>
-                                    <constraint firstAttribute="bottom" secondItem="AMv-tl-dTn" secondAttribute="bottom" id="erj-dp-AFh"/>
-                                    <constraint firstItem="AMv-tl-dTn" firstAttribute="leading" secondItem="fgB-7K-eoa" secondAttribute="leading" constant="15" id="fGw-Zd-afg"/>
                                     <constraint firstAttribute="trailing" secondItem="cGk-gB-0uz" secondAttribute="trailing" constant="15" id="gpc-TN-Btz"/>
-                                    <constraint firstItem="AMv-tl-dTn" firstAttribute="top" secondItem="fgB-7K-eoa" secondAttribute="top" id="tUU-00-pl1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -4020,7 +4009,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dOZ-tZ-S1O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DdL-BR-xGI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DdL-BR-xGI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
