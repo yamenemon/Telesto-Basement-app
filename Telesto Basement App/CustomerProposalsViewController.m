@@ -32,6 +32,18 @@
 
     NSLog(@"customInfoObject === %@",customInfoObject);
     [self setCustomerInfo:customInfoObject];
+    
+    [self getUserProposals];
+}
+-(void)getUserProposals{
+
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    [manager getCustomerProposalsWithCustomerId:[[Utility sharedManager] getCurrentCustomerId] withBaseController:self withCompletionBlock:^(BOOL success){
+        if (success) {
+            
+        }
+    }];
+
 }
 -(void)setCustomerInfo:(CustomerInfoObject*)customerInfo{
     NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/profile/%@",BASE_URL,customerInfo.customerOtherImageDic];

@@ -13,6 +13,7 @@
 #import "BaseViewController.h"
 #import "DesignViewController.h"
 #import "CustomTemplateObject.h"
+#import "CustomerProposalsViewController.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -679,4 +680,49 @@
         completionBlock(NO);
     }];
 }
+/*
+ end point : custom_template_list
+ Method : post
+ POST KEY : authKey, customer_id,
+
+ */
+-(void)getCustomerProposalsWithCustomerId:(int)customerId withBaseController:(CustomerProposalsViewController*)baseController withCompletionBlock:(void (^)(BOOL success))completionBlock{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"custom_template_list";
+    
+    NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                          TOKEN_STRING,AUTH_KEY,
+                                          [NSNumber numberWithInt:customerId],@"customer_id",
+                                          nil];
+    
+    NSLog(@"Dictionary of Parameter: %@",aParameterDic);
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+        NSError *error;
+        NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+        NSMutableDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseObject
+                                                                        options:NSJSONReadingMutableContainers
+                                                                          error:&error];
+        NSMutableDictionary *dataDic = [[jsonData valueForKey:@"results"] valueForKey:@"templates"];
+        long defaultTemplateId = [dataDic valueForKey:@"defaultTemplateId"];
+        NSMutableDictionary *userSelectedFaq = [dataDic valueForKey:@"faq"];
+        NSString *templateName = [dataDic valueForKey:@"name"];
+        NSString *screenshot = [dataDic valueForKey:@"screenshot"];
+        long templateId = [dataDic valueForKey:@"templateId"];
+
+        NSString *jsonString;
+        if (! jsonData) {
+            NSLog(@"Got an error: %@", error);
+        } else {
+            jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        }
+        completionBlock(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        completionBlock(NO);
+    }];
+}
+
 @end

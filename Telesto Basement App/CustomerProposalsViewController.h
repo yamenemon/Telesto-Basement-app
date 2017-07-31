@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomerInfoObject.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "CustomerDataManager.h"
 @class FaqsViewController;
 @interface CustomerProposalsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 

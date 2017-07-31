@@ -21,7 +21,7 @@
 @class BaseViewController;
 @class DesignViewController;
 @class CustomTemplateObject;
-
+@class CustomerProposalsViewController;
 @interface CustomerDataManager : NSObject
 @property (strong,nonatomic) NSMutableArray *templateObjectArray;
 @property (strong,nonatomic) NSMutableArray *productObjectArray;
@@ -53,4 +53,7 @@
 -(void)saveUserTemplateName:(NSString*)templateName withUserFAQs:(NSMutableDictionary*)userFAQData withRootController:(DesignViewController*)baseController withCompletionBlock:(void(^)(BOOL success))completionBlock;
 -(void)saveUserDesignWithBaseController:(DesignViewController*)baseController withCustomTemplateID:(int)templateId withCustomTemplateName:(NSString*)templateName withProductArray:(NSMutableArray *)customerTemplateObjArr withCompletionBlock:(void (^)(BOOL success))completionBlock;
 -(void)saveCustomTemplatewithCustomTemplateID:(int)templateId withCustomTemplateName:(NSString*)templateName withScreenShot:(UIImage*)screenShot withDefaultTemplateId:(int)defaultTemplateId withCompletionBlock:(void (^)(BOOL success))completionBlock;
+
+
+-(void)getCustomerProposalsWithCustomerId:(int)customerId withBaseController:(CustomerProposalsViewController*)baseController withCompletionBlock:(void (^)(BOOL success))completionBlock;
 @end
