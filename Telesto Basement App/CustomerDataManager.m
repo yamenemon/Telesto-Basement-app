@@ -711,7 +711,10 @@
             CustomerProposalObject *proposalListObject = [[CustomerProposalObject alloc] init];
             
             NSNumber* defaultTemplateId = [dic valueForKey:@"defaultTemplateId"];
-            NSMutableDictionary *faq = [dic valueForKey:@"faq"];
+            NSData *data = [[dic valueForKey:@"faq"] dataUsingEncoding:NSUTF8StringEncoding];
+            id jsonOutput = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"%@",jsonOutput);
+            NSMutableDictionary *faq = jsonOutput;
             NSString *screenshot = [dic valueForKey:@"screenshot"];
             NSString *name = [dic valueForKey:@"name"];
             NSNumber *templateId = [dic valueForKey:@"templateId"];

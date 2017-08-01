@@ -101,10 +101,6 @@
         cell.cellImage.contentMode = UIViewContentModeScaleToFill;
         cell.proposalName.text = obj.templateName;
         
-        cell.signProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
-        cell.signProposals.tag = indexPath.row;
-        cell.signProposals.layer.cornerRadius = 5.0;
-        
         cell.editProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
         cell.editProposals.tag = indexPath.row;
         cell.editProposals.layer.cornerRadius = 5.0;
@@ -112,11 +108,21 @@
         cell.duplicateProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
         cell.duplicateProposals.tag = indexPath.row;
         cell.duplicateProposals.layer.cornerRadius = 5.0;
+        
+        [cell.editProposals addTarget:self action:@selector(loadFaqForEditingProposals) forControlEvents:UIControlEventTouchUpInside];
     }
     else{
         cell.textLabel.text = @"No Proposal Available";
     }
     return cell;
+}
+-(void)loadFaqForEditingProposals{
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    FaqsViewController *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewController"];
+    vc.downloadedCustomTemplateProposalInfo = [manager getdownloadedProposalObject];
+    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 100;

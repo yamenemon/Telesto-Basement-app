@@ -13,11 +13,12 @@
 
 @class FaqsViewControllerStep2;
 @class BasicFAQTableViewCell;
+@class CustomerProposalObject;
 
 @interface FaqsViewController : UIViewController <UITextViewDelegate,IQDropDownTextFieldDataSource,IQDropDownTextFieldDataSource,UITextFieldDelegate>{
     UITextField *activeField;
 }
-
+@property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
 
 @property (strong,nonatomic) UIScrollView *faqScroller;

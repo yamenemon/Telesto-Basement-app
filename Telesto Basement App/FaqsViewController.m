@@ -7,6 +7,7 @@
 //
 #import "FaqsViewControllerStep2.h"
 #import "FaqsViewController.h"
+#import "CustomerProposalObject.h"
 
 static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdentifier";
 
@@ -23,7 +24,7 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
 @synthesize basicFAQView;
 @synthesize userSelectedDataDictionary;
 @synthesize currentOutsideConditionTextField,heatTextField,airTextField,basementDehumidifier;
-
+@synthesize downloadedCustomTemplateProposalInfo;
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.title = @"FAQs";
@@ -38,7 +39,29 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
     [heatTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Hot Water", nil]];
     [airTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Central", nil]];
     [basementDehumidifier setItemList:[NSArray arrayWithObjects:@"Select One",@"Yes 40 Pint", nil]];
-    
+    [self assignData];
+}
+-(void)assignData{
+    userSelectedDataDictionary = [[NSMutableDictionary alloc] init];
+    if (downloadedCustomTemplateProposalInfo.count>0) {
+        NSLog(@"%@",downloadedCustomTemplateProposalInfo);
+        CustomerProposalObject *proposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
+        userSelectedDataDictionary = proposalObject.faq;
+        NSLog(@"Total dic: %@",userSelectedDataDictionary);
+        heatTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"heatTextField"] intValue];
+        airTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"airTextField"] intValue];
+        currentOutsideConditionTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"currentOutsideConditionTextField"] intValue];
+        _outsideRelativeHumidity.text = [userSelectedDataDictionary valueForKey:@"outsideRelativeHumidity"];
+        _outsideTemperature.text = [userSelectedDataDictionary valueForKey:@"outsideTemperature"];
+        _firstFloorRelativeHumidity.text = [userSelectedDataDictionary valueForKey:@"firstFloorRelativeHumidity"];
+        _firstFloorTemperature.text = [userSelectedDataDictionary valueForKey:@"firstFloorTemperature"];
+        _basementRelativeHumidity.text = [userSelectedDataDictionary valueForKey:@"basementRelativeHumidity"];
+        _basementTemperature.text = [userSelectedDataDictionary valueForKey:@"basementTemperature"];
+        basementDehumidifier.selectedRow = [[userSelectedDataDictionary valueForKey:@"basementDehumidifier"] intValue];
+        _otherCommentsTextView.text = [userSelectedDataDictionary valueForKey:@"RelativeOtherCommentsField"];
+    }
+}
+-(void)viewWillAppear:(BOOL)animated{
 }
 #pragma mark - KeyboardNotificationDelegate
 #pragma mark -
@@ -112,21 +135,36 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
 }
 -(void)storingUserSelectedDataWithCompletionBlock:(void (^)(BOOL success))completionBlock{
     
+    if (downloadedCustomTemplateProposalInfo.count>0) {
+//        [userSelectedDataDictionary setValue:[NSNumber numberWithInteger:[currentOutsideConditionTextField selectedRow]] forKey:@"currentOutsideConditionTextField"];
+//        [userSelectedDataDictionary setValue:[NSNumber numberWithInteger:[heatTextField selectedRow]] forKey:@"heatTextField"];
+//        [userSelectedDataDictionary setValue:_outsideRelativeHumidity.text forKey:@"outsideRelativeHumidity"];
+//        [userSelectedDataDictionary setValue:[NSNumber numberWithInteger:[airTextField selectedRow]] forKey:@"airTextField"];
+//        [userSelectedDataDictionary setValue:_outsideTemperature.text forKey:@"outsideTemperature"];
+//        [userSelectedDataDictionary setValue:_basementRelativeHumidity.text forKey:@"basementRelativeHumidity"];
+//        [userSelectedDataDictionary setValue:_firstFloorRelativeHumidity.text forKey:@"firstFloorRelativeHumidity"];
+//        [userSelectedDataDictionary setValue:_basementTemperature.text forKey:@"basementTemperature"];
+//        [userSelectedDataDictionary setValue:_firstFloorTemperature.text forKey:@"firstFloorTemperature"];
+//        [userSelectedDataDictionary setValue:[NSNumber numberWithInteger:[basementDehumidifier selectedRow]] forKey:@"basementDehumidifier"];
+//        [userSelectedDataDictionary setValue:_otherCommentsTextView.text forKey:@"RelativeOtherCommentsField"];
+    }
+    else{
+        userSelectedDataDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                      [NSNumber numberWithInteger:[currentOutsideConditionTextField selectedRow]],@"currentOutsideConditionTextField",
+                                      [NSNumber numberWithInteger:[heatTextField selectedRow]],@"heatTextField",
+                                      _outsideRelativeHumidity.text,@"outsideRelativeHumidity",
+                                      [NSNumber numberWithInteger:[airTextField selectedRow]],@"airTextField",
+                                      _outsideTemperature.text,@"outsideTemperature",
+                                      _basementRelativeHumidity.text,@"basementRelativeHumidity",
+                                      _firstFloorRelativeHumidity.text,@"firstFloorRelativeHumidity",
+                                      _basementTemperature.text,@"basementTemperature",
+                                      _firstFloorTemperature.text,@"firstFloorTemperature",
+                                      [NSNumber numberWithInteger:[basementDehumidifier selectedRow]],@"basementDehumidifier",
+                                      _otherCommentsTextView.text,@"RelativeOtherCommentsField",
+                                      nil];
+    }
     
-    userSelectedDataDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                  [NSNumber numberWithInteger:[currentOutsideConditionTextField selectedRow]],@"currentOutsideConditionTextField",
-                                  [NSNumber numberWithInteger:[heatTextField selectedRow]],@"heatTextField",
-                                  _outsideRelativeHumidity.text,@"outsideRelativeHumidity",
-                                  [NSNumber numberWithInteger:[airTextField selectedRow]],@"airTextField",
-                                  _outsideTemperature.text,@"outsideTemperature",
-                                  _basementRelativeHumidity.text,@"basementRelativeHumidity",
-                                  _firstFloorRelativeHumidity.text,@"firstFloorRelativeHumidity",
-                                  _basementTemperature.text,@"basementTemperature",
-                                  _firstFloorTemperature.text,@"firstFloorTemperature",
-                                  [NSNumber numberWithInteger:[basementDehumidifier selectedRow]],@"basementDehumidifier",
-                                  _otherCommentsTextView.text,@"RelativeOtherCommentsField",
-                                  nil];
-//    NSLog(@"%@",userSelectedDataDictionary);
+    NSLog(@"%@",userSelectedDataDictionary);
     completionBlock(YES);
 
 }
