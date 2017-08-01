@@ -11,10 +11,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "CustomerDataManager.h"
 @class FaqsViewController;
+@class CustomerProposalObject;
 @interface CustomerProposalsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-
+@property (strong,nonatomic) NSMutableArray *proposalListObject;
 @property (strong,nonatomic) CustomerInfoObject *customInfoObject;
+@property (weak, nonatomic) IBOutlet UITableView *proposalListTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *customerProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *customerNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *proposalBtn;

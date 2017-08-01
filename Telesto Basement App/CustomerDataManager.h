@@ -22,6 +22,8 @@
 @class DesignViewController;
 @class CustomTemplateObject;
 @class CustomerProposalsViewController;
+@class CustomerProposalObject;
+
 @interface CustomerDataManager : NSObject
 @property (strong,nonatomic) NSMutableArray *templateObjectArray;
 @property (strong,nonatomic) NSMutableArray *productObjectArray;
@@ -30,6 +32,7 @@
 @property (strong,nonatomic) NSMutableDictionary *customerList;
 @property (strong,nonatomic) NSMutableArray *uploadedBuildingMediaArray;
 @property (strong,nonatomic) NSMutableArray *downloadedBuildingMediaArray;
+@property (strong,nonatomic) NSMutableArray *downloadedProposalObject;
 @property (strong,nonatomic) CustomerRecordViewController *baseController;
 
 + (CustomerDataManager *)sharedManager;
@@ -41,6 +44,7 @@
 -(NSMutableArray*)getCountryListArray;
 -(NSMutableArray*)getTemplateObjectArray;
 -(NSMutableArray*)getProductObjectArray;
+-(NSMutableArray*)getdownloadedProposalObject;
 -(NSMutableArray*)loadCountryListWithCompletionBlock:(void (^)(void))completionBlock;
 -(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)loadCustomerBuildingImagesWithCustomerId:(NSString*)customerId withCompletionBlock:(void (^)(void))completionBlock;

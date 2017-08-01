@@ -14,7 +14,7 @@
 #import "DesignViewController.h"
 #import "CustomTemplateObject.h"
 #import "CustomerProposalsViewController.h"
-
+#import "CustomerProposalObject.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
@@ -705,18 +705,31 @@
         NSMutableDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseObject
                                                                         options:NSJSONReadingMutableContainers
                                                                           error:&error];
-        NSMutableDictionary *dataDic = [[jsonData valueForKey:@"results"] valueForKey:@"templates"];
-        long defaultTemplateId = [dataDic valueForKey:@"defaultTemplateId"];
-        NSMutableDictionary *userSelectedFaq = [dataDic valueForKey:@"faq"];
-        NSString *templateName = [dataDic valueForKey:@"name"];
-        NSString *screenshot = [dataDic valueForKey:@"screenshot"];
-        long templateId = [dataDic valueForKey:@"templateId"];
-
-        NSString *jsonString;
-        if (! jsonData) {
-            NSLog(@"Got an error: %@", error);
-        } else {
-            jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        _downloadedProposalObject = [[NSMutableArray alloc] init];
+        NSMutableArray *dataDic = [[jsonData valueForKey:@"results"] valueForKey:@"templates"];
+        for (NSMutableDictionary *dic in dataDic) {
+            CustomerProposalObject *proposalListObject = [[CustomerProposalObject alloc] init];
+            
+            NSNumber* defaultTemplateId = [dic valueForKey:@"defaultTemplateId"];
+            NSMutableDictionary *faq = [dic valueForKey:@"faq"];
+            NSString *screenshot = [dic valueForKey:@"screenshot"];
+            NSString *name = [dic valueForKey:@"name"];
+            NSNumber *templateId = [dic valueForKey:@"templateId"];
+            NSLog(@"%@,%@,%@,%@,%@",defaultTemplateId,templateId,faq,screenshot,name);
+            
+            proposalListObject.templateID = [templateId longValue];
+            proposalListObject.faq = faq;
+            proposalListObject.templateName = name;
+            proposalListObject.defaultTemplateID = [defaultTemplateId longValue];
+            proposalListObject.screenShotImageName = screenshot;
+            
+            //Load Template products info
+            [self loadCustomTemplateProductObjectsWithTemplateID:proposalListObject withCompletionBlock:^(BOOL success){
+            
+            }];
+            
+            
+            [_downloadedProposalObject addObject:proposalListObject];
         }
         completionBlock(YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -724,5 +737,40 @@
         completionBlock(NO);
     }];
 }
+-(NSMutableArray *)getdownloadedProposalObject{
+    return _downloadedProposalObject;
+}
+-(void)loadCustomTemplateProductObjectsWithTemplateID:(CustomerProposalObject*)proposalObject withCompletionBlock:(void (^)(BOOL success))completionBlock{
 
+    /*
+     end point : custom_template_detail
+     Method : post
+     POST KEY : authKey,custom_template_id,
+     */
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"custom_template_detail";
+    
+    NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                          TOKEN_STRING,AUTH_KEY,
+                                          [NSNumber numberWithLong:proposalObject.templateID],@"custom_template_id",
+                                          nil];
+    
+    NSLog(@"Dictionary of Parameter: %@",aParameterDic);
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+        NSError *error;
+        NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+        NSMutableDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseObject
+                                                                        options:NSJSONReadingMutableContainers
+                                                                          error:&error];
+        [_downloadedProposalObject addObject:proposalObject];
+        completionBlock(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        completionBlock(NO);
+    }];
+
+}
 @end

@@ -90,7 +90,7 @@
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/DesignViewController.m"
-                  timestampString = "523199633.395508"
+                  timestampString = "523278405.824496"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1067"
@@ -105,7 +105,7 @@
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/DesignViewController.m"
-                  timestampString = "523199633.396736"
+                  timestampString = "523278405.825645"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1068"
@@ -186,7 +186,7 @@
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/DesignViewController.m"
-                  timestampString = "523199633.406878"
+                  timestampString = "523278405.848915"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "381"
@@ -201,7 +201,7 @@
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/DesignViewController.m"
-                  timestampString = "523199633.408053"
+                  timestampString = "523278405.850472"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "382"
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/CustomerDataManager.m"
-            timestampString = "523199089.120393"
+            timestampString = "523269300.149297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "721"
-            endingLineNumber = "721"
+            startingLineNumber = "734"
+            endingLineNumber = "734"
             landmarkName = "-getCustomerProposalsWithCustomerId:withBaseController:withCompletionBlock:"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,12 +250,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/CustomerDataManager.m"
-            timestampString = "523199089.120393"
+            timestampString = "523268387.376206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "715"
-            endingLineNumber = "715"
+            startingLineNumber = "707"
+            endingLineNumber = "707"
             landmarkName = "-getCustomerProposalsWithCustomerId:withBaseController:withCompletionBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerDataManager.m"
+            timestampString = "523269287.741711"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "768"
+            endingLineNumber = "768"
+            landmarkName = "-loadCustomTemplateProductObjectsWithTemplateID:withCompletionBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

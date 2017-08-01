@@ -123,6 +123,7 @@
 		70D44C1B1F178CE00032FAA6 /* CountryListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D44C1A1F178CE00032FAA6 /* CountryListObject.m */; };
 		70D6E8491E43426B007E3F2F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70D6E8481E43426B007E3F2F /* SettingsViewController.m */; };
 		70DB1B5D1F1E1238006E55A2 /* DefaultTemplateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DB1B5C1F1E1238006E55A2 /* DefaultTemplateObject.m */; };
+		70DD3BA81F306A2800FC8DAA /* CustomerProposalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DD3BA71F306A2800FC8DAA /* CustomerProposalObject.m */; };
 		70E0268E1F2739BE007417F8 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0268D1F2739BE007417F8 /* CustomTextField.m */; };
 		70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */; };
 		70E5D8C81EEFC8AB004FE1BF /* ProductSliderCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */; };
@@ -321,6 +322,8 @@
 		70D6E8481E43426B007E3F2F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		70DB1B5B1F1E1238006E55A2 /* DefaultTemplateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTemplateObject.h; sourceTree = "<group>"; };
 		70DB1B5C1F1E1238006E55A2 /* DefaultTemplateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTemplateObject.m; sourceTree = "<group>"; };
+		70DD3BA61F306A2800FC8DAA /* CustomerProposalObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerProposalObject.h; sourceTree = "<group>"; };
+		70DD3BA71F306A2800FC8DAA /* CustomerProposalObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerProposalObject.m; sourceTree = "<group>"; };
 		70E0268C1F2739BE007417F8 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		70E0268D1F2739BE007417F8 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		70E5D8C41EEFC89D004FE1BF /* ProductSliderCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSliderCustomView.h; sourceTree = "<group>"; };
@@ -655,6 +658,8 @@
 				70641E531E72AE660085FFE6 /* CustomerProposalTableViewCell.h */,
 				70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */,
 				70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */,
+				70DD3BA61F306A2800FC8DAA /* CustomerProposalObject.h */,
+				70DD3BA71F306A2800FC8DAA /* CustomerProposalObject.m */,
 			);
 			name = "Customer Proposals";
 			sourceTree = "<group>";
@@ -976,6 +981,7 @@
 				70CE84211F04CED900867F91 /* ELCAssetTablePicker.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
+				70DD3BA81F306A2800FC8DAA /* CustomerProposalObject.m in Sources */,
 				70CE841F1F04CED900867F91 /* ELCAsset.m in Sources */,
 				704B689C1E13CD0900E6537D /* TemplatePopOverViewController.m in Sources */,
 				70CE84221F04CED900867F91 /* ELCConsole.m in Sources */,

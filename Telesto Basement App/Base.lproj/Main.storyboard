@@ -1358,6 +1358,7 @@ Washington, DC 20521-6170
                         <outlet property="emailLabel" destination="mCZ-I6-eCs" id="mUb-7N-lXF"/>
                         <outlet property="phoneLabel" destination="GzQ-cG-0jK" id="ys4-Bc-aHj"/>
                         <outlet property="proposalBtn" destination="m6E-ed-lKS" id="dT1-nE-xib"/>
+                        <outlet property="proposalListTableView" destination="kMV-zG-Jtf" id="MlR-3i-krC"/>
                         <outlet property="stateLabel" destination="yVL-m5-yaK" id="fmm-Ck-tuw"/>
                         <outlet property="streetLabel" destination="Yhc-9X-LJw" id="rhi-0f-0NL"/>
                         <outlet property="zipLabel" destination="8Ub-nr-C73" id="6yS-6w-RPu"/>

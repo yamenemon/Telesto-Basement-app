@@ -11,6 +11,7 @@
 #import "CustomerInfoObject.h"
 #import "CustomerProposalTableViewCell.h"
 #import "FaqsViewController.h"
+#import "CustomerProposalObject.h"
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
@@ -32,7 +33,8 @@
 
     NSLog(@"customInfoObject === %@",customInfoObject);
     [self setCustomerInfo:customInfoObject];
-    
+    _proposalListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
     [self getUserProposals];
 }
 -(void)getUserProposals{
@@ -40,7 +42,8 @@
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     [manager getCustomerProposalsWithCustomerId:[[Utility sharedManager] getCurrentCustomerId] withBaseController:self withCompletionBlock:^(BOOL success){
         if (success) {
-            
+           _proposalListObject  = [manager getdownloadedProposalObject];
+            [_proposalListTableView reloadData];
         }
     }];
 
@@ -77,7 +80,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;//[_customerInfoObjArray count];
+    return _proposalListObject.count;//[_customerInfoObjArray count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -92,28 +95,31 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.cellImage.image = [UIImage imageNamed:@"userName"];
-    
-    cell.proposalName.text = @"Basement Waterproofing";
-    
-    cell.signProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
-    cell.signProposals.tag = indexPath.row;
-    cell.signProposals.layer.cornerRadius = 5.0;
-    
-    cell.editProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
-    cell.editProposals.tag = indexPath.row;
-    cell.editProposals.layer.cornerRadius = 5.0;
-    
-    cell.duplicateProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
-    cell.duplicateProposals.tag = indexPath.row;
-    cell.duplicateProposals.layer.cornerRadius = 5.0;
-    
+    if (_proposalListObject.count>0) {
+        CustomerProposalObject *obj = [_proposalListObject objectAtIndex:indexPath.row];
+        [cell.cellImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",obj.screenShotImageName]] placeholderImage:[UIImage imageNamed:@"username"]];
+        cell.cellImage.contentMode = UIViewContentModeScaleToFill;
+        cell.proposalName.text = obj.templateName;
+        
+        cell.signProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+        cell.signProposals.tag = indexPath.row;
+        cell.signProposals.layer.cornerRadius = 5.0;
+        
+        cell.editProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+        cell.editProposals.tag = indexPath.row;
+        cell.editProposals.layer.cornerRadius = 5.0;
+        
+        cell.duplicateProposals.backgroundColor = [Utility colorWithHexString:@"0x0A5A78"];
+        cell.duplicateProposals.tag = indexPath.row;
+        cell.duplicateProposals.layer.cornerRadius = 5.0;
+    }
+    else{
+        cell.textLabel.text = @"No Proposal Available";
+    }
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     return 100;
-    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
