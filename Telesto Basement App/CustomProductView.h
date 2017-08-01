@@ -9,6 +9,7 @@
 #import "SPUserResizableView.h"
 @class DesignViewController;
 @class ProductObject;
+
 @interface CustomProductView : SPUserResizableView
 {
 //    UIButton *cameraBtn;
@@ -17,5 +18,4 @@
 @property (nonatomic, assign) int productID;
 @property (nonatomic,strong) DesignViewController *baseVC;
 @property (strong,nonatomic) ProductObject *productObject;
-
 @end

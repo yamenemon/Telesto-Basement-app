@@ -725,21 +725,20 @@
             
             //Load Template products info
             [self loadCustomTemplateProductObjectsWithTemplateID:proposalListObject withCompletionBlock:^(BOOL success){
-            
+                if (success == YES) {
+                    completionBlock(YES);
+                }
+                else{
+                    NSLog(@"NO DATA AVAILABLE");
+                }
             }];
-            
-            
-            [_downloadedProposalObject addObject:proposalListObject];
         }
-        completionBlock(YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
         completionBlock(NO);
     }];
 }
--(NSMutableArray *)getdownloadedProposalObject{
-    return _downloadedProposalObject;
-}
+
 -(void)loadCustomTemplateProductObjectsWithTemplateID:(CustomerProposalObject*)proposalObject withCompletionBlock:(void (^)(BOOL success))completionBlock{
 
     /*
@@ -765,12 +764,33 @@
         NSMutableDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:responseObject
                                                                         options:NSJSONReadingMutableContainers
                                                                           error:&error];
+        NSMutableArray *dataDic = [jsonData valueForKey:@"customTemplateproducts"];
+        NSMutableArray *productArr = [[NSMutableArray alloc] init];
+        for (NSMutableDictionary *productDic in dataDic) {
+            CustomProductView *customView = [[CustomProductView alloc] init];
+            customView.productObject.productId = [[productDic valueForKey:@"productId"] intValue];
+            customView.productObject.productName = [productDic valueForKey:@"productName"];
+            customView.productObject.productXcoordinate = [[productDic valueForKey:@"productXCoordinate"] floatValue];
+            customView.productObject.productYcoordinate = [[productDic valueForKey:@"productYCoordinate"] floatValue];
+            customView.productObject.productWidth = [[productDic valueForKey:@"productWidth"] floatValue];
+            customView.productObject.productHeight = [[productDic valueForKey:@"productHeight"] floatValue];
+            customView.productObject.productPrice = [[productDic valueForKey:@"productPrice"] floatValue];
+            customView.productObject.storedMediaArray = [productDic valueForKey:@"productImages"];
+            [productArr addObject:customView];
+        }
+        NSLog(@"%@",productArr);
+
+        proposalObject.productArray = productArr;
         [_downloadedProposalObject addObject:proposalObject];
+
+        NSLog(@"%@",_downloadedProposalObject);
         completionBlock(YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
         completionBlock(NO);
     }];
-
+}
+-(NSMutableArray *)getdownloadedProposalObject{
+    return _downloadedProposalObject;
 }
 @end

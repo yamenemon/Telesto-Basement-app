@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface CustomerProposalObject : NSObject
 @property (assign,nonatomic) long defaultTemplateID;
 @property (strong,nonatomic) NSMutableDictionary *faq;
 @property (strong,nonatomic) NSString *templateName;
 @property (strong,nonatomic) NSString *screenShotImageName;
 @property (assign,nonatomic) long templateID;
+@property (strong,nonatomic) NSMutableArray *productArray;
 @end
