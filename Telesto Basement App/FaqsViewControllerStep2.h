@@ -18,6 +18,8 @@
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
+@property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
+
 @property (weak, nonatomic) IBOutlet CustomTextField *groundWaterTextField;
 @property (weak, nonatomic) IBOutlet CustomTextField *ironBacteriaTextField;
 @property (weak, nonatomic) IBOutlet CustomTextField *condensationTextField;

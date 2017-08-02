@@ -1,0 +1,19 @@
+//
+//  FAQObject.m
+//  Telesto Basement App
+//
+//  Created by CSM on 8/2/17.
+//  Copyright © 2017 csm. All rights reserved.
+//
+
+#import "FAQObject.h"
+
+@implementation FAQObject
+@synthesize heatTextField,airTextField,currentOutsideConditionTextField,outsideRelativeHumidity,outsideTemperature,firstFloorRelativeHumidity,firstFloorTemperature;
+
+@synthesize basementRelativeHumidity,basementTemperature,basementDehumidifier,otherCommentsTextView;
+
+@synthesize groundWaterTextField,ironBacteriaTextField,condensationTextField,wallCracksTextField,floorCracksTextField,existingSumpPumpTextField,RandomSystemTextField,foundationTypeTextField,otherComments;
+
+@synthesize  groundWaterRatingField,ironWaterRatingField,condensationRatingField,wallCracksRatingField,floorCracksRatingField,existingDranageSystemTextField,drayerVentTextField,vulkHeadTextField,questionOneBoolField,questionOneTextField,questionTwoBoolField,questionTwoTextField,question3BoolField,question4BoolField,question4TextField,question5BoolField,question5TextField,question6BoolField,question6TextField,question7BoolField,question7TextField,question8BoolField,question8TextField,question9TextField,question10BoolField,question10TextField,question11BoolField,question11TextField,question12BoolField,question12BoolField2,question13TextField,question14BoolField,question14TextField,question15BoolField,question15BoolField2,commentTextView;
+@end

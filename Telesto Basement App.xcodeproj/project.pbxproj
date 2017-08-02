@@ -20,6 +20,7 @@
 		3BA8D3AB1EF8363400517C65 /* CustomerDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA8D3A71EF8363400517C65 /* CustomerDataManager.m */; };
 		3BA8D3AC1EF8363400517C65 /* CustomerDetailInfoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA8D3AA1EF8363400517C65 /* CustomerDetailInfoObject.m */; };
 		70015E981DF6913200DF542E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 70015E971DF6913200DF542E /* Utility.m */; };
+		7012796C1F31A9850067FC09 /* FAQObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7012796B1F31A9850067FC09 /* FAQObject.m */; };
 		70161B351EF2939800101BDB /* MapItViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70161B341EF2939800101BDB /* MapItViewController.m */; };
 		7017E9411DEFF608009FB76A /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93E1DEFF608009FB76A /* reveal-icon.png */; };
 		7017E9421DEFF608009FB76A /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7017E93F1DEFF608009FB76A /* reveal-icon@2x.png */; };
@@ -164,6 +165,8 @@
 		474EE36DEBC3BD902C3C33C8 /* Pods-Telesto Basement App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telesto Basement App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App.debug.xcconfig"; sourceTree = "<group>"; };
 		70015E961DF6913200DF542E /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		70015E971DF6913200DF542E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		7012796A1F31A9850067FC09 /* FAQObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQObject.h; sourceTree = "<group>"; };
+		7012796B1F31A9850067FC09 /* FAQObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQObject.m; sourceTree = "<group>"; };
 		70161B331EF2939800101BDB /* MapItViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapItViewController.h; sourceTree = "<group>"; };
 		70161B341EF2939800101BDB /* MapItViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapItViewController.m; sourceTree = "<group>"; };
 		7017E93E1DEFF608009FB76A /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
@@ -675,6 +678,8 @@
 				7032B0631F21DBCE0046A201 /* FaqsViewControllerStep3.m */,
 				70E0268C1F2739BE007417F8 /* CustomTextField.h */,
 				70E0268D1F2739BE007417F8 /* CustomTextField.m */,
+				7012796A1F31A9850067FC09 /* FAQObject.h */,
+				7012796B1F31A9850067FC09 /* FAQObject.m */,
 			);
 			name = FAQS;
 			sourceTree = "<group>";
@@ -978,6 +983,7 @@
 				70CE84201F04CED900867F91 /* ELCAssetCell.m in Sources */,
 				706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */,
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
+				7012796C1F31A9850067FC09 /* FAQObject.m in Sources */,
 				70CE84211F04CED900867F91 /* ELCAssetTablePicker.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,

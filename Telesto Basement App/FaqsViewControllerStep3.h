@@ -14,7 +14,7 @@
     UITextField *activeField;
 }
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
-
+@property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (weak, nonatomic) IBOutlet CustomTextField *questionOneBoolField;
 @property (weak, nonatomic) IBOutlet UITextField *questionOneTextField;
 

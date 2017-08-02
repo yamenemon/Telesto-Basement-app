@@ -26,7 +26,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @class  TemplatePopOverViewController;
-
+@class CustomerProposalObject;
 @interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate,CNPPopupControllerDelegate,UIImagePickerControllerDelegate> {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
@@ -46,6 +46,7 @@
     UIImage *screenShot;
     NSMutableArray *productNameArray;
 }
+@property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (weak, nonatomic) IBOutlet UILabel *templateNameLabel;
 @property (assign,nonatomic) int currentActiveTemplateID;
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;

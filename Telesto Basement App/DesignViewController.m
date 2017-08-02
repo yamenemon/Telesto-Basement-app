@@ -8,7 +8,7 @@
 
 #import "DesignViewController.h"
 #import "DRColorPicker.h"
-
+#import "CustomerProposalObject.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define TOKEN_STRING @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH"
 @interface DesignViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -26,7 +26,7 @@
 @synthesize infoBtnArray;
 @synthesize downloadedProduct;
 @synthesize productSliderCustomView;
-@synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID,currentDefaultTemplateIndex;
+@synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID,currentDefaultTemplateIndex,downloadedCustomTemplateProposalInfo;
 @synthesize templateNameLabel;
 
 #pragma mark - ViewControllers Super Methods
@@ -55,11 +55,12 @@
     customTemplateNameView = [ nibViews objectAtIndex:0];
     customTemplateNameView.designViewController = self;
     templateNameLabel.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    currentDefaultTemplateIndex = 10000;
+
     if (isFromNewProposals == YES) {
         [self setCustomTemplateName];
         NSLog(@"%@",userSelectedDataDictionary);
     }
-    currentDefaultTemplateIndex = 10000;
 }
 -(BOOL)prefersStatusBarHidden{
     return NO;
@@ -74,9 +75,11 @@
     rightNavBtnBar.frame = CGRectMake(self.view.frame.size.width - rightNavBtnBar.frame.size.width, 0, rightNavBtnBar.frame.size.width, rightNavBtnBar.frame.size.height);
     [self.navigationController.navigationBar addSubview:rightNavBtnBar];
     rightNavBtnBar.baseClass = self;
-    
-    
+    if (isFromNewProposals == NO) {
+     [self reloadTheViewForEditing];
+    }
 }
+
 -(void)saveTemplateName:(NSString*)templateName{
     _templateNameString = templateName;
     templateNameLabel.text = _templateNameString;
@@ -287,20 +290,18 @@
     popupController.delegate = self;
     [popupController presentPopupControllerAnimated:YES];
 }
--(void)productBtnClicked:(id)sender{
-    UIButton *productBtn = (UIButton*)sender;
+-(void)clickOnProduct:(int)btnTag{
+    NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:btnTag]];
     
-    NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:productBtn.tag]];
-    
-    NSString *newFolderId = [NSString stringWithFormat:@"%@%ld",productCurrentId,productBtn.tag];
+    NSString *newFolderId = [NSString stringWithFormat:@"%@%d",productCurrentId,btnTag];
     [self saveUserSelectedProductInfo:newFolderId];
     for (int i=0; i<_productInWindowArray.count; i++) {
-        if (i == productBtn.tag) {
+        if (i == btnTag) {
             [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
         }
     }
-    Product *product = [downloadedProduct objectAtIndex:productBtn.tag];
-
+    Product *product = [downloadedProduct objectAtIndex:btnTag];
+    
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
     NSLog(@"Product image url: %@",imageUrl);
@@ -351,7 +352,10 @@
     
     [productArray addObject:lastEditedView];
     NSLog(@"Array after Adding: %@",productArray);
-    
+}
+-(void)productBtnClicked:(id)sender{
+    UIButton *productBtn = (UIButton*)sender;
+    [self clickOnProduct:(int)productBtn.tag];
 }
 #pragma mark -
 #pragma mark Save User Design
@@ -1230,7 +1234,42 @@
     [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
 #pragma mark -
+#pragma mark Editing Design View -
+
+-(void)initializePreviousDataWithCompletionBlock:(void (^)(BOOL success))completionBlock{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self downloadProduct];
+        isShown = YES;
+        productSliderView.hidden = YES;
+        [self productSliderCalled:nil];
+        [self createProductScroller];
+        completionBlock (YES);
+    });
+    
+}
+
+-(void)reloadTheViewForEditing{
+
+    [self initializePreviousDataWithCompletionBlock:^(BOOL success){
+        if (success) {
+            NSLog(@"%@",downloadedCustomTemplateProposalInfo);
+            CustomerProposalObject *editingProposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
+            templateNameLabel.text = editingProposalObject.templateName;
+            CustomerDataManager *manager = [CustomerDataManager sharedManager];
+            if ((int)editingProposalObject.defaultTemplateID<[manager getTemplateObjectArray].count) {
+                [self setSavedTemplateNumber:[[manager getTemplateObjectArray] objectAtIndex:editingProposalObject.defaultTemplateID] withTemplateIndex:(int)editingProposalObject.defaultTemplateID];
+            }
+            for (CustomProductView *view in editingProposalObject.productArray) {
+                [self clickOnProduct:view.productObject.productId];
+            }
+            [self.view setNeedsDisplay];
+
+        }
+    }];
+}
+#pragma mark Memory Warning -
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

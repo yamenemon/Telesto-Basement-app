@@ -16,7 +16,7 @@
 
 @implementation FaqsViewControllerStep2
 @synthesize groundWaterTextField,ironBacteriaTextField,condensationTextField,wallCracksTextField,floorCracksTextField,existingSumpPumpTextField,RandomSystemTextField,foundationTypeTextField,otherComments,groundWaterRatingField,ironWaterRatingField,condensationRatingField,wallCracksRatingField,floorCracksRatingField,existingDranageSystemTextField,drayerVentTextField,vulkHeadTextField,scroller;
-@synthesize userSelectedDataDictionary;
+@synthesize userSelectedDataDictionary,downloadedCustomTemplateProposalInfo;
     
     
 - (void)viewDidLoad {
@@ -48,6 +48,27 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     NSLog(@"%@",userSelectedDataDictionary);
+    if (userSelectedDataDictionary.count>0) {
+
+        groundWaterTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"groundWaterTextField"] intValue];
+        ironBacteriaTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"ironBacteriaTextField"] intValue];
+        condensationTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"condensationTextField"] intValue];
+        wallCracksTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"wallCracksTextField"] intValue];
+        floorCracksTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"floorCracksTextField"] intValue];
+        existingSumpPumpTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"existingSumpPumpTextField"] intValue];
+        RandomSystemTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"RandomSystemTextField"] intValue];
+        foundationTypeTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"foundationTypeTextField"] intValue];
+        
+        groundWaterRatingField.selectedRow = [[userSelectedDataDictionary valueForKey:@"groundWaterRatingField"] intValue];
+        ironWaterRatingField.selectedRow = [[userSelectedDataDictionary valueForKey:@"ironWaterRatingField"] intValue];
+        condensationRatingField.selectedRow = [[userSelectedDataDictionary valueForKey:@"condensationRatingField"] intValue];
+        wallCracksRatingField.selectedRow = [[userSelectedDataDictionary valueForKey:@"wallCracksRatingField"] intValue];
+        floorCracksRatingField.selectedRow = [[userSelectedDataDictionary valueForKey:@"floorCracksRatingField"] intValue];
+        existingDranageSystemTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"existingDranageSystemTextField"] intValue];
+        drayerVentTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"drayerVentTextField"] intValue];
+        vulkHeadTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"vulkHeadTextField"] intValue];
+        otherComments.text = [userSelectedDataDictionary valueForKey:@"faq2CommentsField"];
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -133,6 +154,8 @@
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[condensationTextField selectedRow]] forKey:@"condensationTextField"];
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[condensationRatingField selectedRow]] forKey:@"condensationRatingField"];
     
+    [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[foundationTypeTextField selectedRow]] forKey:@"foundationTypeTextField"];
+    
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[wallCracksTextField selectedRow]] forKey:@"wallCracksTextField"];
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[wallCracksRatingField selectedRow]] forKey:@"wallCracksRatingField"];
     
@@ -148,6 +171,7 @@
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[drayerVentTextField selectedRow]] forKey:@"drayerVentTextField"];
     
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[vulkHeadTextField selectedRow]] forKey:@"vulkHeadTextField"];
+    [userSelectedDataDictionary setObject:otherComments.text forKey:@"faq2CommentsField"];
 
     completionBlock(YES);
     
@@ -160,6 +184,7 @@
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             FaqsViewControllerStep3 *vc = [sb instantiateViewControllerWithIdentifier:@"FaqsViewControllerStep3"];
             vc.userSelectedDataDictionary = userSelectedDataDictionary;
+            vc.downloadedCustomTemplateProposalInfo = downloadedCustomTemplateProposalInfo;
             vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             [self.navigationController pushViewController:vc animated:YES];
         }
