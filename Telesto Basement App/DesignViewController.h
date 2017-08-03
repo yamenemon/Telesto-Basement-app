@@ -45,6 +45,7 @@
     BOOL isFromProduct;
     UIImage *screenShot;
     NSMutableArray *productNameArray;
+    MBProgressHUD *hud;
 }
 @property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (weak, nonatomic) IBOutlet UILabel *templateNameLabel;

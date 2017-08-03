@@ -150,8 +150,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [imageData writeToFile:savedImagePath atomically:YES];
     });
-//    NSError *error;
-//    [imageData writeToFile:savedImagePath options:NSDataWritingFileProtectionNone error:&error];
 }
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender{
     
@@ -213,7 +211,7 @@
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     downloadedProduct = [[NSMutableArray alloc] init];
     downloadedProduct = [[manager getProductObjectArray] objectAtIndex:0];
-    NSLog(@"%@",downloadedProduct);
+//    NSLog(@"%@",downloadedProduct);
 }
 -(void)createProductScroller{
     int y = 0;
@@ -245,7 +243,7 @@
         [productSliderCustomView setNeedsLayout];
         [productSliderCustomView.productBtn setTag:i+1];
         NSString *imageUrl = [manager loadProductImageWithImageName:proObj.productName];
-        NSLog(@"Product image url: %@",imageUrl);
+//        NSLog(@"Product image url: %@",imageUrl);
 
         [productSliderCustomView.productBtn setBackgroundImage:[UIImage imageNamed:imageUrl] forState:UIControlStateNormal];
         [productSliderCustomView.productBtn addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -280,7 +278,7 @@
     self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%f",product.productPrice];
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
-    NSLog(@"Product image url: %@",imageUrl);
+//    NSLog(@"Product image url: %@",imageUrl);
     self.productInfoDetails.productDetailImage.image = [UIImage imageNamed:imageUrl];
     self.productInfoDetails.productDescriptions.text = product.productDescription;
     
@@ -304,22 +302,11 @@
     
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
-    NSLog(@"Product image url: %@",imageUrl);
-    
-    /*
-     @synthesize productId;
-     @synthesize productName;
-     @synthesize productXcoordinate;
-     @synthesize productYcoordinate;
-     @synthesize productWidth;
-     @synthesize productHeight;
-     @synthesize storedMediaArray;
-     
-     product_id,product_name,product_x_coordinate,product_y_coordinate,product_width,product_height,image_count, product_image[file0,file1,file2]
-     */
+//    NSLog(@"Product image url: %@",imageUrl);
     
     // (1) Create a user resizable view with a simple red background content view.
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
+
     CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
     userResizableView.infoBtn.tag = [newFolderId intValue];
     
@@ -355,7 +342,7 @@
 }
 -(void)productBtnClicked:(id)sender{
     UIButton *productBtn = (UIButton*)sender;
-    [self clickOnProduct:(int)productBtn.tag];
+    [self clickOnProduct:(int)productBtn.tag - 1];
 }
 #pragma mark -
 #pragma mark Save User Design
@@ -919,8 +906,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-
-        
     }];
     [verticalWindow setValue:[[UIImage imageNamed:@"sliderWindowVertical"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [verticalWindow setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -948,16 +933,6 @@
                                   alertControllerWithTitle:@"Save Only!!!"
                                   message:@"What do you want to do?"
                                   preferredStyle:UIAlertControllerStyleAlert];
-    
-//    UIAlertAction* ok = [UIAlertAction
-//                         actionWithTitle:@"Save"
-//                         style:UIAlertActionStyleDefault
-//                         handler:^(UIAlertAction * action)
-//                         {
-//                             savedDesignArray = [[basementDesignView subviews] mutableCopy];
-//                             [self saveDesignView];
-//                             [alert dismissViewControllerAnimated:YES completion:nil];
-//                         }];
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Save & Continue"
                              style:UIAlertActionStyleDefault
@@ -1247,27 +1222,119 @@
         [self createProductScroller];
         completionBlock (YES);
     });
-    
 }
 
 -(void)reloadTheViewForEditing{
-
-    [self initializePreviousDataWithCompletionBlock:^(BOOL success){
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_group_t group = dispatch_group_create();
+    // Add a task to the group
+    dispatch_group_async(group, queue, ^{
+        // Some asynchronous work
+        
+        [self initializePreviousDataWithCompletionBlock:^(BOOL success){
+            if (success) {
+                NSLog(@"%@",downloadedCustomTemplateProposalInfo);
+                
+                CustomerProposalObject *editingProposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
+                _templateNameString = editingProposalObject.templateName;
+                templateNameLabel.text = _templateNameString;
+                CustomerDataManager *manager = [CustomerDataManager sharedManager];
+                if ((int)editingProposalObject.defaultTemplateID<[manager getTemplateObjectArray].count) {
+                    [self setSavedTemplateNumber:[[manager getTemplateObjectArray] objectAtIndex:editingProposalObject.defaultTemplateID] withTemplateIndex:(int)editingProposalObject.defaultTemplateID];
+                }
+                for (CustomProductView *view in editingProposalObject.productArray) {
+                    [self reloadProduct:view];
+                }
+                [self.view setNeedsDisplay];
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            }
+        }];
+    });
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+}
+-(void)createFolderForEditing:(NSString*)templateName{
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",_templateNameString]];
+    NSLog(@"Template path: %@",dataPath);
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
+}
+-(void)reloadProduct:(CustomProductView*)productObject{
+    NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:productObject.productObject.productId]];
+    
+    NSString *newFolderId = [NSString stringWithFormat:@"%@%d",productCurrentId,productObject.productObject.productId];
+    [self saveUserSelectedProductInfo:newFolderId];
+    for (int i=0; i<_productInWindowArray.count; i++) {
+        if (i == productObject.productObject.productId) {
+            [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
+        }
+    }
+//    Product *product = [downloadedProduct objectAtIndex:productObject.productObject.productId]; // Don't uncomment it.
+    
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    NSArray *arr = [productObject.productObject.productName componentsSeparatedByString:@"/"];
+    NSString *newString = [arr lastObject];
+    NSString *imageUrl = [manager loadProductImageWithImageName:newString];
+    NSLog(@"Product image url: %@",imageUrl);
+    
+    // (1) Create a user resizable view with a simple red background content view.
+    CGRect gripFrame = CGRectMake(productObject.productObject.productXcoordinate, productObject.productObject.productYcoordinate, productObject.productObject.productWidth,productObject.productObject.productHeight);
+    NSLog(@"Product object: %f %f %f %f",productObject.productObject.productXcoordinate, productObject.productObject.productYcoordinate, productObject.productObject.productWidth,productObject.productObject.productHeight);
+    CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
+    userResizableView.infoBtn.tag = [newFolderId intValue];
+    
+    
+    NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
+    
+    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageUrl]];
+    contentView.frame = gripFrame;
+    userResizableView.contentView = contentView;
+    
+    userResizableView.productID = productObject.productObject.productId;
+    userResizableView.productObject.productId = productObject.productObject.productId;
+    userResizableView.productObject.productName = imageUrl;
+    userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+    userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+    userResizableView.productObject.productWidth = contentView.frame.size.width;
+    userResizableView.productObject.productHeight = contentView.frame.size.height;
+    userResizableView.productObject.productPrice = productObject.productObject.productPrice;
+    userResizableView.productObject.unitType = productObject.productObject.unitType;
+    userResizableView.productObject.discount = productObject.productObject.discount;
+    
+    userResizableView.baseVC = self;
+    userResizableView.delegate = self;
+    [userResizableView showEditingHandles];
+    currentlyEditingView = userResizableView;
+    lastEditedView = userResizableView;
+    [basementDesignView addSubview:userResizableView];
+    [userResizableView bringSubviewToFront:userResizableView.infoBtn];
+    [self productSliderCalled:nil];
+    [self createFolderForEditing:newString];
+    if (![productObject.productObject.storedMediaArray isKindOfClass:[NSNull class]]) {
+        NSLog(@"productObject.productObject.storedMediaArray: %@",productObject.productObject.storedMediaArray);
+        NSLog(@"Media count: %ld",productObject.productObject.storedMediaArray.count);
+        for (int i = 0; i<productObject.productObject.storedMediaArray.count; i++) {
+            [self saveImageWithBtnInfoTag:(int)userResizableView.infoBtn.tag withPath:_templateNameString withMediaImageUrl:productObject.productObject.storedMediaArray[i]];
+        }
+    }
+    
+    
+    [productArray addObject:lastEditedView];
+    NSLog(@"Array after Adding: %@",productArray);
+}
+- (void)saveImageWithBtnInfoTag:(int)btnTag withPath:(NSString*)path withMediaImageUrl:(id)imageUrlArr {
+    
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    [manager loadingStoredMediaWithFolderTag:btnTag withPath:_templateNameString withMediaURL:imageUrlArr withCompletionBlock:^(BOOL success){
         if (success) {
-            NSLog(@"%@",downloadedCustomTemplateProposalInfo);
-            CustomerProposalObject *editingProposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
-            templateNameLabel.text = editingProposalObject.templateName;
-            CustomerDataManager *manager = [CustomerDataManager sharedManager];
-            if ((int)editingProposalObject.defaultTemplateID<[manager getTemplateObjectArray].count) {
-                [self setSavedTemplateNumber:[[manager getTemplateObjectArray] objectAtIndex:editingProposalObject.defaultTemplateID] withTemplateIndex:(int)editingProposalObject.defaultTemplateID];
-            }
-            for (CustomProductView *view in editingProposalObject.productArray) {
-                [self clickOnProduct:view.productObject.productId];
-            }
-            [self.view setNeedsDisplay];
-
+            NSLog(@"DownloadStoredMediaImage");
         }
     }];
+    
+    
 }
 #pragma mark Memory Warning -
 - (void)didReceiveMemoryWarning {

@@ -34,15 +34,19 @@
     NSLog(@"customInfoObject === %@",customInfoObject);
     [self setCustomerInfo:customInfoObject];
     _proposalListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
+    
     [self getUserProposals];
 }
 -(void)getUserProposals{
-
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIView *window = [UIApplication sharedApplication].keyWindow;
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
+        [hud showAnimated:YES];
+    });
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     [manager getCustomerProposalsWithCustomerId:[[Utility sharedManager] getCurrentCustomerId] withBaseController:self withCompletionBlock:^(BOOL success){
         if (success) {
-           _proposalListObject  = [manager getdownloadedProposalObject];
+            _proposalListObject  = [manager getdownloadedProposalObject];
             [_proposalListTableView reloadData];
         }
     }];

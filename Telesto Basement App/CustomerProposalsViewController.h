@@ -10,6 +10,7 @@
 #import "CustomerInfoObject.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "CustomerDataManager.h"
+#import <MBProgressHUD.h>
 @class FaqsViewController;
 @class CustomerProposalObject;
 @interface CustomerProposalsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>

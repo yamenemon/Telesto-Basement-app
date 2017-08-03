@@ -60,4 +60,6 @@
 
 
 -(void)getCustomerProposalsWithCustomerId:(int)customerId withBaseController:(CustomerProposalsViewController*)baseController withCompletionBlock:(void (^)(BOOL success))completionBlock;
+
+-(void)loadingStoredMediaWithFolderTag:(int)folderTag withPath:(NSString*)path withMediaURL:(id)imageURL withCompletionBlock:(void (^)(BOOL success))completionBlock;
 @end

@@ -233,22 +233,39 @@
 -(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock{
     
     _customerList = [[NSMutableDictionary alloc] init];
-    
+    UIView *window = [UIApplication sharedApplication].keyWindow;
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     NSString *endPoint = @"customer_list";
     NSString *customerListUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,endPoint];
     NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",nil];
-    [manager POST:customerListUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
+    [manager POST:customerListUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+        // This is not called back on the main queue.
+        // You are responsible for dispatching to the main queue for UI updates
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Update the progress view
+            NSLog(@"Uploading User FAQ and Use Template Name");
+            [hud showAnimated:YES];
+
+        });
+    } success:^(NSURLSessionDataTask *task, id responseObject){
         NSError *e;
         NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
         _customerList = [[jsonDic valueForKey:@"results"] valueForKey:@"customers"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //Update the progress view
+            NSLog(@"Uploading User FAQ and Use Template Name");
+            [hud hideAnimated:YES];
+        });
 //        NSLog(@"%@",_customerList);
         completionBlock();
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", @"Customer list not loaded".capitalizedString);
 //        NSLog(@"%@",error);
+        [hud hideAnimated:YES];
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Customer not loaded" message:@"Reload?!!!" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* ok = [UIAlertAction
                              actionWithTitle:@"OK"
@@ -707,35 +724,59 @@
                                                                           error:&error];
         _downloadedProposalObject = [[NSMutableArray alloc] init];
         NSMutableArray *dataDic = [[jsonData valueForKey:@"results"] valueForKey:@"templates"];
-        for (NSMutableDictionary *dic in dataDic) {
-            CustomerProposalObject *proposalListObject = [[CustomerProposalObject alloc] init];
-            
-            NSNumber* defaultTemplateId = [dic valueForKey:@"defaultTemplateId"];
-            NSData *data = [[dic valueForKey:@"faq"] dataUsingEncoding:NSUTF8StringEncoding];
-            id jsonOutput = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"%@",jsonOutput);
-            NSMutableDictionary *faq = jsonOutput;
-            NSString *screenshot = [dic valueForKey:@"screenshot"];
-            NSString *name = [dic valueForKey:@"name"];
-            NSNumber *templateId = [dic valueForKey:@"templateId"];
-            NSLog(@"%@,%@,%@,%@,%@",defaultTemplateId,templateId,faq,screenshot,name);
-            
-            proposalListObject.templateID = [templateId longValue];
-            proposalListObject.faq = faq;
-            proposalListObject.templateName = name;
-            proposalListObject.defaultTemplateID = [defaultTemplateId longValue];
-            proposalListObject.screenShotImageName = screenshot;
-            
-            //Load Template products info
-            [self loadCustomTemplateProductObjectsWithTemplateID:proposalListObject withCompletionBlock:^(BOOL success){
-                if (success == YES) {
-                    completionBlock(YES);
+        if (dataDic.count>0) {
+            for (NSMutableDictionary *dic in dataDic) {
+                CustomerProposalObject *proposalListObject = [[CustomerProposalObject alloc] init];
+                
+                NSNumber* defaultTemplateId = [dic valueForKey:@"defaultTemplateId"];
+                NSData *data = [[dic valueForKey:@"faq"] dataUsingEncoding:NSUTF8StringEncoding];
+                id jsonOutput = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                NSLog(@"%@",jsonOutput);
+                NSMutableDictionary *faq = jsonOutput;
+                NSString *screenshot = [dic valueForKey:@"screenshot"];
+                NSString *name = [dic valueForKey:@"name"];
+                NSNumber *templateId = [dic valueForKey:@"templateId"];
+                NSLog(@"%@,%@,%@,%@,%@",defaultTemplateId,templateId,faq,screenshot,name);
+                if (![defaultTemplateId isKindOfClass:[NSNull class]]) {
+                    proposalListObject.defaultTemplateID = [defaultTemplateId longValue];
                 }
                 else{
-                    NSLog(@"NO DATA AVAILABLE");
+                    proposalListObject.defaultTemplateID = 10000;
+                    
                 }
-            }];
+                proposalListObject.templateID = [templateId longValue];
+                proposalListObject.faq = faq;
+                proposalListObject.templateName = name;
+                proposalListObject.screenShotImageName = screenshot;
+                
+                //Load Template products info
+                [self loadCustomTemplateProductObjectsWithTemplateID:proposalListObject withCompletionBlock:^(BOOL success){
+                    if (success == YES) {
+                        completionBlock(YES);
+                    }
+                    else{
+                        NSLog(@"NO DATA AVAILABLE");
+                    }
+                }];
+            }
         }
+        else{
+            [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Data Error!!" message:@"No Proposal Available. Create Your Own Proposal" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+            [alert addAction:ok];
+            
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];            
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+            completionBlock(NO);
+        }
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
         completionBlock(NO);
@@ -796,4 +837,36 @@
 -(NSMutableArray *)getdownloadedProposalObject{
     return _downloadedProposalObject;
 }
+#pragma mark -
+#pragma mark Reload Image While Editing -
+//(int)btnTag withPath:(NSString*)path withMediaImageArray:(UIImage*)imageUrlArr
+-(void)loadingStoredMediaWithFolderTag:(int)folderTag withPath:(NSString*)path withMediaURL:(id)imageURL withCompletionBlock:(void (^)(BOOL success))completionBlock{
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFImageResponseSerializer serializer];
+    NSString *link = [NSString stringWithFormat:@"%@%@",BASE_URL,imageURL];
+//    link = [link stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    NSLog(@"URL Hauwa: %@",link);
+    [manager GET:[link stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionTask *task, id responseObject) {
+             UIImage*downloadedImage = (UIImage *) responseObject;
+             [self storeMediaWithPath:path withFolderTag:folderTag withImage:downloadedImage];
+         } failure:^(NSURLSessionTask *operation, NSError *error) {
+             NSLog(@"Load Image error - %@", [error description]);
+         }];
+}
+-(void)storeMediaWithPath:(NSString*)path withFolderTag:(int)btnTag withImage:(UIImage*)downloadedImage{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d/%@.png",path,btnTag,downloadedImage]];
+    NSLog(@"Saving folder directory: %@",savedImagePath);
+    NSData *imageData = UIImagePNGRepresentation(downloadedImage);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [imageData writeToFile:savedImagePath atomically:YES];
+    });
+}
+
 @end
