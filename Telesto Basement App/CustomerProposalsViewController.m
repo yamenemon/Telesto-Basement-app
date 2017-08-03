@@ -46,6 +46,7 @@
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     [manager getCustomerProposalsWithCustomerId:[[Utility sharedManager] getCurrentCustomerId] withBaseController:self withCompletionBlock:^(BOOL success){
         if (success) {
+            [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
             _proposalListObject  = [manager getdownloadedProposalObject];
             [_proposalListTableView reloadData];
         }

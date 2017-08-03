@@ -349,42 +349,67 @@
 #pragma mark -
 -(void)saveUserDesignToServer{
     NSLog(@"Product Array: %@",productArray);
-    for (int i=0; i<productArray.count; i++) {
-        CustomProductView *view = [productArray objectAtIndex:i];
-        NSMutableArray *imagePath = [self listFileAtPath:_templateNameString withTag:(int)view.infoBtn.tag];
-        view.productObject.storedMediaArray = imagePath;
-        view.productObject.imageCount = (int)imagePath.count;
-        [productArray replaceObjectAtIndex:i withObject:view];
-        NSLog(@"Product object: %@ %f %f %f %f %f %d %@",
-              view.productObject.productName,
-              view.productObject.productPrice,
-              view.productObject.productXcoordinate,
-              view.productObject.productYcoordinate,
-              view.productObject.productWidth,
-              view.productObject.productHeight,
-              view.productObject.imageCount,
-              view.productObject.storedMediaArray);
+    if (productArray.count>0) {
+        [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        for (int i=0; i<productArray.count; i++) {
+            CustomProductView *view = [productArray objectAtIndex:i];
+            NSMutableArray *imagePath = [self listFileAtPath:_templateNameString withTag:(int)view.infoBtn.tag];
+            view.productObject.storedMediaArray = imagePath;
+            view.productObject.imageCount = (int)imagePath.count;
+            [productArray replaceObjectAtIndex:i withObject:view];
+            NSLog(@"Product object: %@ %f %f %f %f %f %d %@",
+                  view.productObject.productName,
+                  view.productObject.productPrice,
+                  view.productObject.productXcoordinate,
+                  view.productObject.productYcoordinate,
+                  view.productObject.productWidth,
+                  view.productObject.productHeight,
+                  view.productObject.imageCount,
+                  view.productObject.storedMediaArray);
+        }
+        CustomerDataManager *manager = [CustomerDataManager sharedManager];
+        [manager saveUserDesignWithBaseController:self withCustomTemplateID:currentActiveTemplateID withCustomTemplateName:_templateNameString withProductArray:productArray withCompletionBlock:^(BOOL success){
+            if (success == YES) {
+                
+                [manager saveCustomTemplatewithCustomTemplateID:currentActiveTemplateID withCustomTemplateName:_templateNameString withScreenShot:[[Utility sharedManager] loadScreenShotImageWithImageName:_templateNameString] withDefaultTemplateId:currentDefaultTemplateIndex withCompletionBlock:^(BOOL success){
+                    if (success == YES) {
+                        [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
+                        vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }
+                    else{
+                        NSLog(@"Not uploaded show the alert");
+                    }
+                }];
+            }
+            else{
+                NSLog(@"Not uploaded show the alert");
+            }
+        }];
     }
-    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    [manager saveUserDesignWithBaseController:self withCustomTemplateID:currentActiveTemplateID withCustomTemplateName:_templateNameString withProductArray:productArray withCompletionBlock:^(BOOL success){
-        if (success == YES) {
-            
-            [manager saveCustomTemplatewithCustomTemplateID:currentActiveTemplateID withCustomTemplateName:_templateNameString withScreenShot:[[Utility sharedManager] loadScreenShotImageWithImageName:_templateNameString] withDefaultTemplateId:currentDefaultTemplateIndex withCompletionBlock:^(BOOL success){
-                if (success == YES) {
-                    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
-                    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-                else{
-                    NSLog(@"Not uploaded show the alert");
-                }
-            }];
-        }
-        else{
-            NSLog(@"Not uploaded show the alert");
-        }
-    }];
+    else{
+        [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Error!!!"
+                                      message:@"Add Some Products in Drawing Window."
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"Ok"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 [hud removeFromSuperview];
+                             }];
+        [alert addAction:ok];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    }
+    
 }
 -(NSMutableArray *)listFileAtPath:(NSString *)path withTag:(int)tag
 {
