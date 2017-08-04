@@ -629,7 +629,10 @@
                                               [NSNumber numberWithFloat:view.productObject.productHeight],@"product_height",
                                               [NSNumber numberWithInt:view.productObject.imageCount],@"imageCount",
                                               nil];
-        
+        /*Check Editing proposal or New Proposal for server store*/
+        if (baseController.isFromNewProposals == NO) {
+            [aParameterDic setObject:@"type" forKey:@"update"];
+        }
         NSLog(@"Dictionary of Parameter: %@",aParameterDic);
         [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             int i = 0;

@@ -47,6 +47,7 @@
     NSMutableArray *productNameArray;
     MBProgressHUD *hud;
 }
+
 @property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (weak, nonatomic) IBOutlet UILabel *templateNameLabel;
 @property (assign,nonatomic) int currentActiveTemplateID;

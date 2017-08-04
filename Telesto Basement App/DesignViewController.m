@@ -368,6 +368,8 @@
                   view.productObject.imageCount,
                   view.productObject.storedMediaArray);
         }
+        
+        
         CustomerDataManager *manager = [CustomerDataManager sharedManager];
         [manager saveUserDesignWithBaseController:self withCustomTemplateID:currentActiveTemplateID withCustomTemplateName:_templateNameString withProductArray:productArray withCompletionBlock:^(BOOL success){
             if (success == YES) {
@@ -1111,6 +1113,15 @@
                                   alertControllerWithTitle:@"Save Only!!!"
                                   message:@"What do you want to do?"
                                   preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"Ok"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+    
     UIAlertAction* cancel = [UIAlertAction
                              actionWithTitle:@"Save & Continue"
                              style:UIAlertActionStyleDefault
@@ -1122,7 +1133,7 @@
                                      }
                                  }];
                              }];
-//    [alert addAction:ok];
+    [alert addAction:ok];
     [alert addAction:cancel];
     
     [self presentViewController:alert animated:YES completion:nil];
@@ -1512,11 +1523,11 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         
         
-        
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",productObject.productObject.productName]]];
         contentView.frame = gripFrame;
-        userResizableView.contentView = contentView;
         
+        
+
         userResizableView.productID = productObject.productObject.productId;
         userResizableView.productObject.productId = productObject.productObject.productId;
         userResizableView.productObject.productName = [NSString stringWithFormat:@"%@",productObject.productObject.productName];
@@ -1527,6 +1538,13 @@
         userResizableView.productObject.productPrice = productObject.productObject.productPrice;
         userResizableView.productObject.unitType = productObject.productObject.unitType;
         userResizableView.productObject.discount = productObject.productObject.discount;
+        
+        UIGraphicsBeginImageContext(contentView.frame.size);
+        [[UIImage imageNamed:[NSString stringWithFormat:@"%@",productObject.productObject.productName]] drawInRect:contentView.bounds];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [contentView setBackgroundColor:[UIColor colorWithPatternImage:image]];
+        userResizableView.contentView = contentView;
         
         userResizableView.baseVC = self;
         userResizableView.delegate = self;
