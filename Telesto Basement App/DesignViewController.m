@@ -11,6 +11,7 @@
 #import "CustomerProposalObject.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define TOKEN_STRING @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH"
+#define NON_PRODUCT_ID 999999
 @interface DesignViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) DRColorPickerColor* color;
@@ -646,6 +647,19 @@
         
         [contentView setBackgroundColor:[UIColor colorWithPatternImage:image]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"horizentalWall";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -673,6 +687,19 @@
         UIGraphicsEndImageContext();
         [contentView setBackgroundColor:[UIColor colorWithPatternImage:image]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"verticalWall";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -707,6 +734,19 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairUp"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"stairUp";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -729,6 +769,19 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairLeft"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"stairLeft";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -750,6 +803,19 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairRight"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"stairRight";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -771,6 +837,18 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"stairBottom"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"stairBottom";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -807,6 +885,18 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipTop"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"flipTop";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -828,6 +918,19 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipLeft"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"flipLeft";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -848,6 +951,19 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipRight"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"flipRight";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -868,6 +984,18 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"flipBottom"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"flipBottom";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -903,6 +1031,18 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"sliderWindowHorizontal_big"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"sliderWindowHorizontal_big";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -924,6 +1064,19 @@
         CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
         UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"sliderWindowVertical_Big"]]];
         userResizableView.contentView = contentView;
+        
+        userResizableView.productID = NON_PRODUCT_ID;
+        userResizableView.productObject.productId = NON_PRODUCT_ID;
+        userResizableView.productObject.productName = @"sliderWindowVertical_Big";
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = NON_PRODUCT_ID;
+        userResizableView.productObject.unitType = @"NOT A PRODUCT";
+        userResizableView.productObject.discount = NON_PRODUCT_ID;
+        
+        
         userResizableView.delegate = self;
         userResizableView.infoBtn.hidden = YES;
         [userResizableView showEditingHandles];
@@ -1288,67 +1441,107 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
 }
 -(void)reloadProduct:(CustomProductView*)productObject{
-    NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:productObject.productObject.productId]];
-    
-    NSString *newFolderId = [NSString stringWithFormat:@"%@%d",productCurrentId,productObject.productObject.productId];
-    [self saveUserSelectedProductInfo:newFolderId];
-    for (int i=0; i<_productInWindowArray.count; i++) {
-        if (i == productObject.productObject.productId) {
-            [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
-        }
+    if (productObject.productObject.productId<NON_PRODUCT_ID) {
+            NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:productObject.productObject.productId]];
+            
+            NSString *newFolderId = [NSString stringWithFormat:@"%@%d",productCurrentId,productObject.productObject.productId];
+            [self saveUserSelectedProductInfo:newFolderId];
+            for (int i=0; i<_productInWindowArray.count; i++) {
+                if (i == productObject.productObject.productId) {
+                    [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
+                }
+            }
+            //    Product *product = [downloadedProduct objectAtIndex:productObject.productObject.productId]; // Don't uncomment it.
+            
+            CustomerDataManager *manager = [CustomerDataManager sharedManager];
+            NSArray *arr = [productObject.productObject.productName componentsSeparatedByString:@"/"];
+            NSString *newString = [arr lastObject];
+            NSString *imageUrl = [manager loadProductImageWithImageName:newString];
+            NSLog(@"Product image url: %@",imageUrl);
+            
+            // (1) Create a user resizable view with a simple red background content view.
+            CGRect gripFrame = CGRectMake(productObject.productObject.productXcoordinate, productObject.productObject.productYcoordinate, productObject.productObject.productWidth,productObject.productObject.productHeight);
+            NSLog(@"Product object: %f %f %f %f",productObject.productObject.productXcoordinate, productObject.productObject.productYcoordinate, productObject.productObject.productWidth,productObject.productObject.productHeight);
+            CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
+            userResizableView.infoBtn.tag = [newFolderId intValue];
+            
+            
+            NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
+            
+            UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageUrl]];
+            contentView.frame = gripFrame;
+            userResizableView.contentView = contentView;
+            
+            userResizableView.productID = productObject.productObject.productId;
+            userResizableView.productObject.productId = productObject.productObject.productId;
+            userResizableView.productObject.productName = imageUrl;
+            userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+            userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+            userResizableView.productObject.productWidth = contentView.frame.size.width;
+            userResizableView.productObject.productHeight = contentView.frame.size.height;
+            userResizableView.productObject.productPrice = productObject.productObject.productPrice;
+            userResizableView.productObject.unitType = productObject.productObject.unitType;
+            userResizableView.productObject.discount = productObject.productObject.discount;
+            
+            userResizableView.baseVC = self;
+            userResizableView.delegate = self;
+            [userResizableView showEditingHandles];
+            currentlyEditingView = userResizableView;
+            lastEditedView = userResizableView;
+            [basementDesignView addSubview:userResizableView];
+            [userResizableView bringSubviewToFront:userResizableView.infoBtn];
+            [self productSliderCalled:nil];
+            [self createFolderForEditing:newString];
+            if (![productObject.productObject.storedMediaArray isKindOfClass:[NSNull class]]) {
+                NSLog(@"productObject.productObject.storedMediaArray: %@",productObject.productObject.storedMediaArray);
+                NSLog(@"Media count: %ld",productObject.productObject.storedMediaArray.count);
+                for (int i = 0; i<productObject.productObject.storedMediaArray.count; i++) {
+                    [self saveImageWithBtnInfoTag:(int)userResizableView.infoBtn.tag withPath:_templateNameString withMediaImageUrl:productObject.productObject.storedMediaArray[i]];
+                }
+            }
+            
+            
+            [productArray addObject:lastEditedView];
+            NSLog(@"Array after Adding: %@",productArray);
+        
     }
-//    Product *product = [downloadedProduct objectAtIndex:productObject.productObject.productId]; // Don't uncomment it.
-    
-    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    NSArray *arr = [productObject.productObject.productName componentsSeparatedByString:@"/"];
-    NSString *newString = [arr lastObject];
-    NSString *imageUrl = [manager loadProductImageWithImageName:newString];
-    NSLog(@"Product image url: %@",imageUrl);
-    
-    // (1) Create a user resizable view with a simple red background content view.
-    CGRect gripFrame = CGRectMake(productObject.productObject.productXcoordinate, productObject.productObject.productYcoordinate, productObject.productObject.productWidth,productObject.productObject.productHeight);
-    NSLog(@"Product object: %f %f %f %f",productObject.productObject.productXcoordinate, productObject.productObject.productYcoordinate, productObject.productObject.productWidth,productObject.productObject.productHeight);
-    CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
-    userResizableView.infoBtn.tag = [newFolderId intValue];
-    
-    
-    NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
-    
-    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageUrl]];
-    contentView.frame = gripFrame;
-    userResizableView.contentView = contentView;
-    
-    userResizableView.productID = productObject.productObject.productId;
-    userResizableView.productObject.productId = productObject.productObject.productId;
-    userResizableView.productObject.productName = imageUrl;
-    userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
-    userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
-    userResizableView.productObject.productWidth = contentView.frame.size.width;
-    userResizableView.productObject.productHeight = contentView.frame.size.height;
-    userResizableView.productObject.productPrice = productObject.productObject.productPrice;
-    userResizableView.productObject.unitType = productObject.productObject.unitType;
-    userResizableView.productObject.discount = productObject.productObject.discount;
-    
-    userResizableView.baseVC = self;
-    userResizableView.delegate = self;
-    [userResizableView showEditingHandles];
-    currentlyEditingView = userResizableView;
-    lastEditedView = userResizableView;
-    [basementDesignView addSubview:userResizableView];
-    [userResizableView bringSubviewToFront:userResizableView.infoBtn];
-    [self productSliderCalled:nil];
-    [self createFolderForEditing:newString];
-    if (![productObject.productObject.storedMediaArray isKindOfClass:[NSNull class]]) {
-        NSLog(@"productObject.productObject.storedMediaArray: %@",productObject.productObject.storedMediaArray);
-        NSLog(@"Media count: %ld",productObject.productObject.storedMediaArray.count);
-        for (int i = 0; i<productObject.productObject.storedMediaArray.count; i++) {
-            [self saveImageWithBtnInfoTag:(int)userResizableView.infoBtn.tag withPath:_templateNameString withMediaImageUrl:productObject.productObject.storedMediaArray[i]];
-        }
+    else{
+        // (1) Create a user resizable view with a simple red background content view.
+        CGRect gripFrame = CGRectMake(productObject.productObject.productXcoordinate, productObject.productObject.productYcoordinate, productObject.productObject.productWidth,productObject.productObject.productHeight);
+        NSLog(@"Product object: %f %f %f %f",productObject.productObject.productXcoordinate, productObject.productObject.productYcoordinate, productObject.productObject.productWidth,productObject.productObject.productHeight);
+        CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
+        
+        
+        
+        UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",productObject.productObject.productName]]];
+        contentView.frame = gripFrame;
+        userResizableView.contentView = contentView;
+        
+        userResizableView.productID = productObject.productObject.productId;
+        userResizableView.productObject.productId = productObject.productObject.productId;
+        userResizableView.productObject.productName = [NSString stringWithFormat:@"%@",productObject.productObject.productName];
+        userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
+        userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
+        userResizableView.productObject.productWidth = contentView.frame.size.width;
+        userResizableView.productObject.productHeight = contentView.frame.size.height;
+        userResizableView.productObject.productPrice = productObject.productObject.productPrice;
+        userResizableView.productObject.unitType = productObject.productObject.unitType;
+        userResizableView.productObject.discount = productObject.productObject.discount;
+        
+        userResizableView.baseVC = self;
+        userResizableView.delegate = self;
+        [userResizableView showEditingHandles];
+        userResizableView.infoBtn.hidden = YES;
+        currentlyEditingView = userResizableView;
+        lastEditedView = userResizableView;
+        [basementDesignView addSubview:userResizableView];
+        [userResizableView bringSubviewToFront:userResizableView.infoBtn];
+        
+        
+        [productArray addObject:lastEditedView];
+        NSLog(@"Array after Adding: %@",productArray);
     }
-    
-    
-    [productArray addObject:lastEditedView];
-    NSLog(@"Array after Adding: %@",productArray);
+
 }
 - (void)saveImageWithBtnInfoTag:(int)btnTag withPath:(NSString*)path withMediaImageUrl:(id)imageUrlArr {
     
