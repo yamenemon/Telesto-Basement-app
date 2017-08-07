@@ -17,7 +17,7 @@
 @end
 
 @implementation ShowPriceViewController
-@synthesize showPriceTableCell,productArray,baseController,downloadedProduct;
+@synthesize showPriceTableCell,productArray,baseController,downloadedProduct,nonProductArray,priceListArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -25,28 +25,6 @@
     
 }
 -(void)viewWillAppear:(BOOL)animated{
-
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
-    
-    NSMutableArray *twoDArr = [NSMutableArray arrayWithCapacity:productArray.count];
-    for (int i = 0; i<productArray.count; i++) {
-        [twoDArr addObject:[NSNumber numberWithInt:1]];
-    }
-    
-    
-    for (CustomProductView *view in productArray) {
-        [temp addObject:[NSNumber numberWithInt:view.productObject.productId]];
-    }
-    
-    NSCountedSet *set = [[NSCountedSet alloc] initWithArray:temp];
-    NSMutableArray *countedArr = [[NSMutableArray alloc] init];
-    int i = 0;
-    for (id item in set) {
-        NSLog(@"Name=%@, Count=%lu", item, (unsigned long)[set countForObject:item]);
-        [countedArr insertObject:item atIndex:i];
-        i++;
-    }
-    NSLog(@"Inset object: %@",countedArr);
     summation = 0;
     
     for (int i = 0; i < downloadedProduct.count; i++) {
@@ -55,11 +33,20 @@
             CustomProductView *view = [productArray objectAtIndex:j];
             if ([[NSNumber numberWithInt:proObj.productId] isEqualToNumber:[NSNumber numberWithInt:view.productID]]) {
                 view.productObject.productName = proObj.productName;
+                view.productObject.unitType = proObj.unitType;
                 [productArray replaceObjectAtIndex:j withObject:view];
             }
         }
-        
     }
+    priceListArray = [[NSMutableArray alloc] initWithArray:productArray];
+
+    for (int j= 0; j<productArray.count; j++) {
+        CustomProductView *view = [productArray objectAtIndex:j];
+        if (view.productObject.productId == 999999) {
+            [priceListArray removeObjectAtIndex:j];
+        }
+    }
+    NSLog(@"%@",priceListArray);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -70,7 +57,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return productArray.count+2;
+    return priceListArray.count+2;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -110,7 +97,7 @@
         [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
         cell.totalPrice.textAlignment = NSTextAlignmentCenter;
     }
-    else if (indexPath.row == productArray.count+1){
+    else if (indexPath.row == priceListArray.count+1){
         cell.productName.text = @"";
         cell.quantityxPrice.text = @"Total";
         cell.discountTextField.hidden = YES;
@@ -126,11 +113,9 @@
         cell.totalPrice.text = [NSString stringWithFormat:@"$ %.2f",summation];
         summation = 0;
     } else{
-        CustomProductView *view = [productArray objectAtIndex:indexPath.row-1];
+        CustomProductView *view = [priceListArray objectAtIndex:indexPath.row-1];
         cell.productName.textAlignment = NSTextAlignmentCenter;
         cell.productName.text = view.productObject.productName;
-        
-        
         cell.discountTextField.tag = indexPath.row-1;
         cell.discountPriceTextField.tag = indexPath.row-1;
         cell.editBtn.tag = indexPath.row-1;
@@ -166,30 +151,6 @@
     [view addSubview:label];
     [view setBackgroundColor:UIColorFromRGB(0x0A5A78)]; //your background color...
     
-//    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [saveButton addTarget:self
-//               action:@selector(saveButtonAction:)
-//     forControlEvents:UIControlEventTouchUpInside];
-//    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
-//    saveButton.titleLabel.font = [UIFont fontWithName:@"Roboto-Bold" size:16];
-//    saveButton.titleLabel.textColor = [UIColor whiteColor];
-//    saveButton.frame = CGRectMake(tableView.frame.size.width - 160.0, 5, 150.0, 25.0);
-//    saveButton.backgroundColor = [UIColor lightGrayColor];
-//    saveButton.layer.cornerRadius = 5.0;
-//    [view addSubview:saveButton];
-    
-//    UIButton *refreshbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [refreshbutton addTarget:self
-//               action:@selector(refreshbuttonAction:)
-//     forControlEvents:UIControlEventTouchUpInside];
-//    [refreshbutton setTitle:@"Refresh" forState:UIControlStateNormal];
-//    refreshbutton.titleLabel.font = [UIFont fontWithName:@"Roboto-Bold" size:16];
-//    refreshbutton.titleLabel.textColor = [UIColor whiteColor];
-//    refreshbutton.frame = CGRectMake(10, 5, 150.0, 25.0);
-//    refreshbutton.backgroundColor = [UIColor grayColor];
-//    refreshbutton.layer.cornerRadius = 5.0;
-//    [view addSubview:refreshbutton];
-    
     return view;
 }
 -(void)priceDiscountPopUP:(UIButton*)sender{
@@ -197,7 +158,7 @@
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"PricePopOver" owner:self options:nil];
     pricePopOver = [ nibViews objectAtIndex:0];
     pricePopOver.showPriceVC = self;
-    CustomProductView *view = [productArray objectAtIndex:tag];
+    CustomProductView *view = [priceListArray objectAtIndex:tag];
 
     [pricePopOver editableWindowWithProductObject:view.productObject withSelectedItemTag:tag];
     [self showPopupWithStyle:CNPPopupStyleCentered];
@@ -228,13 +189,21 @@
 }
 -(void)updateProductObjectWithObject:(ProductObject*)obj withSelectedRow:(int)selectedRow{
     [popupController dismissPopupControllerAnimated:YES];
-    CustomProductView *view = [productArray objectAtIndex:selectedRow];
-    view.productObject = obj;
-    [productArray replaceObjectAtIndex:selectedRow withObject:view];
+//    CustomProductView *view = [productArray objectAtIndex:selectedRow];
+//    view.productObject = obj;
+//    [productArray replaceObjectAtIndex:selectedRow withObject:view];
+    
+    
+    for (int i = 0; i<productArray.count; i++) {
+        CustomProductView *productArrayView = [productArray objectAtIndex:i];
+        for (int j=0; j<priceListArray.count; j++) {
+            CustomProductView *priceListArrayView = [priceListArray objectAtIndex:j];
+            if (productArrayView.productObject.productId == priceListArrayView.productObject.productId) {
+                [productArray replaceObjectAtIndex:i withObject:priceListArrayView];
+            }
+        }
+    }
     [_priceTable reloadData];
-}
-
--(void)refreshbuttonAction:(id)sender{
-    [_priceTable reloadData];
+    baseController.productArray = productArray;
 }
 @end

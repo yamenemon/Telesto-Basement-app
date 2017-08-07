@@ -49,7 +49,7 @@
     MBProgressHUD *hud;
     NSString *screenShotImagePath;
 }
-
+@property (strong,nonatomic) NSMutableArray *nonProductArray;
 @property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (weak, nonatomic) IBOutlet UILabel *templateNameLabel;
 @property (assign,nonatomic) int currentActiveTemplateID;

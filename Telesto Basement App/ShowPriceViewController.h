@@ -18,6 +18,8 @@
     CNPPopupController *popupController;
     PricePopOver *pricePopOver;
 }
+@property (strong,nonatomic) NSMutableArray *priceListArray;
+@property (strong,nonatomic) NSMutableArray*nonProductArray;
 @property (weak, nonatomic) IBOutlet UITableView *priceTable;
 @property (strong, nonatomic) DesignViewController* baseController;
 @property (strong, nonatomic) NSMutableArray* productArray;

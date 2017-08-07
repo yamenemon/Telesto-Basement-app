@@ -627,6 +627,7 @@
                                               [NSNumber numberWithFloat:view.productObject.productYcoordinate],@"product_y_coordinate",
                                               [NSNumber numberWithFloat:view.productObject.productWidth],@"product_width",
                                               [NSNumber numberWithFloat:view.productObject.productHeight],@"product_height",
+                                              [NSNumber numberWithFloat:view.productObject.discount],@"discount",
                                               [NSNumber numberWithInt:view.productObject.imageCount],@"imageCount",
                                               nil];
         /*Check Editing proposal or New Proposal for server store*/
@@ -814,6 +815,22 @@
         NSMutableArray *dataDic = [jsonData valueForKey:@"customTemplateproducts"];
         NSMutableArray *productArr = [[NSMutableArray alloc] init];
         for (NSMutableDictionary *productDic in dataDic) {
+            /*
+             created = "2017-08-07 14:02:34";
+             customTemplateId = 165;
+             discount = 999999;
+             id = 116;
+             productHeight = 90;
+             productId = 999999;
+             productImages = "";
+             productName = horizentalWall;
+             productPrice = 999999;
+             productWidth = 90;
+             productXCoordinate = 100;
+             productYCoordinate = 10;
+             */
+            
+            
             CustomProductView *customView = [[CustomProductView alloc] init];
             customView.productObject.productId = [[productDic valueForKey:@"productId"] intValue];
             customView.productObject.productName = [productDic valueForKey:@"productName"];
@@ -822,6 +839,7 @@
             customView.productObject.productWidth = [[productDic valueForKey:@"productWidth"] floatValue];
             customView.productObject.productHeight = [[productDic valueForKey:@"productHeight"] floatValue];
             customView.productObject.productPrice = [[productDic valueForKey:@"productPrice"] floatValue];
+            customView.productObject.discount = [[productDic valueForKey:@"discount"] floatValue];
             customView.productObject.storedMediaArray = [productDic valueForKey:@"productImages"];
             [productArr addObject:customView];
         }

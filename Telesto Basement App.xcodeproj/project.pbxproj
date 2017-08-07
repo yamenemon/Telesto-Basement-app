@@ -477,6 +477,21 @@
 			name = Customer;
 			sourceTree = "<group>";
 		};
+		702B741B1F3897C600E207D8 /* Price */ = {
+			isa = PBXGroup;
+			children = (
+				705F059E1EDED8CE00D8B837 /* ShowPriceViewController.h */,
+				705F059F1EDED8CE00D8B837 /* ShowPriceViewController.m */,
+				702B74141F38597A00E207D8 /* PricePopOver.h */,
+				702B74151F38597A00E207D8 /* PricePopOver.m */,
+				702B74191F385CA900E207D8 /* PricePopOver.xib */,
+				703B35FD1F29FF62004BD960 /* ShowPriceTableViewCell.h */,
+				703B35FE1F29FF62004BD960 /* ShowPriceTableViewCell.m */,
+				703B35FF1F29FF62004BD960 /* ShowPriceTableViewCell.xib */,
+			);
+			name = Price;
+			sourceTree = "<group>";
+		};
 		704B688E1E13C9C000E6537D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,14 +613,7 @@
 				705F059B1EDED8CE00D8B837 /* RightNavDrwaingToolsView.h */,
 				705F059C1EDED8CE00D8B837 /* RightNavDrwaingToolsView.m */,
 				705F059D1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib */,
-				705F059E1EDED8CE00D8B837 /* ShowPriceViewController.h */,
-				705F059F1EDED8CE00D8B837 /* ShowPriceViewController.m */,
-				702B74141F38597A00E207D8 /* PricePopOver.h */,
-				702B74151F38597A00E207D8 /* PricePopOver.m */,
-				702B74191F385CA900E207D8 /* PricePopOver.xib */,
-				703B35FD1F29FF62004BD960 /* ShowPriceTableViewCell.h */,
-				703B35FE1F29FF62004BD960 /* ShowPriceTableViewCell.m */,
-				703B35FF1F29FF62004BD960 /* ShowPriceTableViewCell.xib */,
+				702B741B1F3897C600E207D8 /* Price */,
 				70824CC81F2B83EE00FE53AC /* Signature */,
 			);
 			name = "Design Window";

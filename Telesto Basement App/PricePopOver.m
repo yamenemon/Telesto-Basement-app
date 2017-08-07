@@ -31,8 +31,8 @@
     _priceField.delegate = self;
     
     float discountPrice = (proObject.discount * proObject.productPrice)/100;
-    _priceField.text = [NSString stringWithFormat:@"%0.2f",discountPrice];
-    _percentField.text = [NSString stringWithFormat:@"%0.2f",proObject.discount];
+    _priceField.text = [NSString stringWithFormat:@"$ %0.2f",discountPrice];
+    _percentField.text = [NSString stringWithFormat:@"%0.2f %%",proObject.discount];
 }
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
         activeField = textField;
