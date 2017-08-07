@@ -14,13 +14,20 @@
 @end
 
 @implementation ProposalViewController
-
+@synthesize agreementTextView,floorPlanImageView,screenShotImagePath;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.hidesBackButton = YES;
+//    self.navigationItem.hidesBackButton = YES;
+    [self initializeController];
 }
-
+-(void)initializeController{
+    if (screenShotImagePath.length>0) {
+        NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:screenShotImagePath]];
+        UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
+        floorPlanImageView.image = thumbNail;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

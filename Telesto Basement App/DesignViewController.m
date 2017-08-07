@@ -378,7 +378,8 @@
                     if (success == YES) {
                         [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
                         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                        UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
+                        ProposalViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
+                        vc.screenShotImagePath = screenShotImagePath;
                         vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                         [self.navigationController pushViewController:vc animated:YES];
                     }
@@ -1213,9 +1214,8 @@
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
         NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@%@.jpg",_templateNameString,_templateNameString,@"ScreenShot"]];
-
+        screenShotImagePath = savedImagePath;
         [UIImageJPEGRepresentation(capturedImage, 0.95) writeToFile:savedImagePath atomically:YES];
-//        [UIImageJPEGRepresentation(capturedImage, 0.95) writeToFile:imagePath options:NSDataWritingFileProtectionNone error:&error];
         [popupController dismissPopupControllerAnimated:YES];
         completionBlock(YES);
     });
@@ -1505,7 +1505,7 @@
             [self createFolderForEditing:newString];
             if (![productObject.productObject.storedMediaArray isKindOfClass:[NSNull class]]) {
                 NSLog(@"productObject.productObject.storedMediaArray: %@",productObject.productObject.storedMediaArray);
-                NSLog(@"Media count: %ld",productObject.productObject.storedMediaArray.count);
+                NSLog(@"Media count: %lu",(unsigned long)productObject.productObject.storedMediaArray.count);
                 for (int i = 0; i<productObject.productObject.storedMediaArray.count; i++) {
                     [self saveImageWithBtnInfoTag:(int)userResizableView.infoBtn.tag withPath:_templateNameString withMediaImageUrl:productObject.productObject.storedMediaArray[i]];
                 }

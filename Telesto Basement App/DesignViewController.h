@@ -24,6 +24,7 @@
 #import "CustomTemplateObject.h"
 #import <MBProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ProposalViewController.h"
 
 @class  TemplatePopOverViewController;
 @class CustomerProposalObject;
@@ -46,6 +47,7 @@
     UIImage *screenShot;
     NSMutableArray *productNameArray;
     MBProgressHUD *hud;
+    NSString *screenShotImagePath;
 }
 
 @property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
