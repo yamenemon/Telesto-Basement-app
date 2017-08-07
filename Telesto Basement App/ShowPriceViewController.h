@@ -8,11 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "ShowPriceTableViewCell.h"
+#import <CNPPopupController.h>
 @class DesignViewController;
-@interface ShowPriceViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@class PricePopOver;
+@class ProductObject;
+
+@interface ShowPriceViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,CNPPopupControllerDelegate>{
+    float summation;
+    CNPPopupController *popupController;
+    PricePopOver *pricePopOver;
+}
 @property (weak, nonatomic) IBOutlet UITableView *priceTable;
 @property (strong, nonatomic) DesignViewController* baseController;
 @property (strong, nonatomic) NSMutableArray* productArray;
 @property (strong, nonatomic) ShowPriceTableViewCell *showPriceTableCell;
 @property (strong, nonatomic) NSMutableArray *downloadedProduct;
+-(void)updateProductObjectWithObject:(ProductObject*)obj withSelectedRow:(int)selectedRow;
 @end

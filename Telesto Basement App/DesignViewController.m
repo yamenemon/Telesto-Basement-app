@@ -573,25 +573,25 @@
         if (productArray.count>0) {
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             ShowPriceViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ShowPriceViewController"];
-//            vc.preferredContentSize = CGSizeMake(600, 500);
+            vc.preferredContentSize = CGSizeMake(910, 750);
             vc.baseController = self;
             vc.productArray = productArray;
             vc.downloadedProduct = downloadedProduct;
-            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self.navigationController pushViewController:vc animated:YES];
+//            vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//            [self.navigationController pushViewController:vc animated:YES];
             
-//            vc.modalPresentationStyle = UIModalPresentationPopover;
-//            UIPopoverPresentationController *popPC = vc.popoverPresentationController;
-//            vc.popoverPresentationController.sourceRect = menuBtn.bounds;
-//            vc.popoverPresentationController.sourceView = menuBtn;
-//            popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
-//            popPC.delegate = self;
-//            [self presentViewController:vc animated:YES completion:nil];
-//            
+            vc.modalPresentationStyle = UIModalPresentationPopover;
+            UIPopoverPresentationController *popPC = vc.popoverPresentationController;
+            vc.popoverPresentationController.sourceRect = menuBtn.bounds;
+            vc.popoverPresentationController.sourceView = menuBtn;
+            popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+            popPC.delegate = self;
+            [self presentViewController:vc animated:YES completion:nil];
+            
 //            popupController = [[CNPPopupController alloc] initWithContents:@[vc]];
 //            popupController.theme = [self defaultTheme];
 //            popupController.theme.popupStyle = CNPPopupStyleCentered;
-//            popupController.delegate = self;
+////            popupController.delegate = self;
 //            [popupController presentPopupControllerAnimated:YES];
         }
         else{
@@ -616,8 +616,6 @@
     [showPrice setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
     
     [alertController addAction:showPrice];
-    
-    
     
     
     alertController.modalPresentationStyle = UIModalPresentationPopover;

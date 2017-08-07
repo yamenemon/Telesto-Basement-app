@@ -30,6 +30,8 @@
 		7025893F1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7025893E1EF00385006ACCC8 /* ProductInfoDetailsPopupView.xib */; };
 		7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C01E1D15760062EB77 /* UserProfileViewController.m */; };
 		7027C9C41E1D35950062EB77 /* ProposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7027C9C31E1D35950062EB77 /* ProposalViewController.m */; };
+		702B74161F38597A00E207D8 /* PricePopOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 702B74151F38597A00E207D8 /* PricePopOver.m */; };
+		702B741A1F385CA900E207D8 /* PricePopOver.xib in Resources */ = {isa = PBXBuildFile; fileRef = 702B74191F385CA900E207D8 /* PricePopOver.xib */; };
 		7032B0611F21DBBC0046A201 /* FaqsViewControllerStep2.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032B0601F21DBBC0046A201 /* FaqsViewControllerStep2.m */; };
 		7032B0641F21DBCE0046A201 /* FaqsViewControllerStep3.m in Sources */ = {isa = PBXBuildFile; fileRef = 7032B0631F21DBCE0046A201 /* FaqsViewControllerStep3.m */; };
 		703B36001F29FF62004BD960 /* ShowPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 703B35FE1F29FF62004BD960 /* ShowPriceTableViewCell.m */; };
@@ -182,6 +184,9 @@
 		7027C9C01E1D15760062EB77 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		7027C9C21E1D35950062EB77 /* ProposalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalViewController.h; sourceTree = "<group>"; };
 		7027C9C31E1D35950062EB77 /* ProposalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalViewController.m; sourceTree = "<group>"; };
+		702B74141F38597A00E207D8 /* PricePopOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PricePopOver.h; sourceTree = "<group>"; };
+		702B74151F38597A00E207D8 /* PricePopOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PricePopOver.m; sourceTree = "<group>"; };
+		702B74191F385CA900E207D8 /* PricePopOver.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PricePopOver.xib; sourceTree = "<group>"; };
 		7032B05F1F21DBBC0046A201 /* FaqsViewControllerStep2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqsViewControllerStep2.h; sourceTree = "<group>"; };
 		7032B0601F21DBBC0046A201 /* FaqsViewControllerStep2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqsViewControllerStep2.m; sourceTree = "<group>"; };
 		7032B0621F21DBCE0046A201 /* FaqsViewControllerStep3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqsViewControllerStep3.h; sourceTree = "<group>"; };
@@ -595,6 +600,9 @@
 				705F059D1EDED8CE00D8B837 /* RightNavDrwaingToolsView.xib */,
 				705F059E1EDED8CE00D8B837 /* ShowPriceViewController.h */,
 				705F059F1EDED8CE00D8B837 /* ShowPriceViewController.m */,
+				702B74141F38597A00E207D8 /* PricePopOver.h */,
+				702B74151F38597A00E207D8 /* PricePopOver.m */,
+				702B74191F385CA900E207D8 /* PricePopOver.xib */,
 				703B35FD1F29FF62004BD960 /* ShowPriceTableViewCell.h */,
 				703B35FE1F29FF62004BD960 /* ShowPriceTableViewCell.m */,
 				703B35FF1F29FF62004BD960 /* ShowPriceTableViewCell.xib */,
@@ -899,6 +907,7 @@
 				705F64DC1DF97B7000082D55 /* Roboto-Medium.ttf in Resources */,
 				705F64E01DF97B7000082D55 /* Roboto-ThinItalic.ttf in Resources */,
 				70EC80E51E067DB400A6D245 /* presentation@2x.png in Resources */,
+				702B741A1F385CA900E207D8 /* PricePopOver.xib in Resources */,
 				3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */,
 				3B6EB8951DD845D900936AB9 /* Main.storyboard in Resources */,
 			);
@@ -1018,6 +1027,7 @@
 				70161B351EF2939800101BDB /* MapItViewController.m in Sources */,
 				705F05A61EDED8CE00D8B837 /* GalleryItem.m in Sources */,
 				70DB1B5D1F1E1238006E55A2 /* DefaultTemplateObject.m in Sources */,
+				702B74161F38597A00E207D8 /* PricePopOver.m in Sources */,
 				70CE841E1F04CED900867F91 /* ELCAlbumPickerController.m in Sources */,
 				705B78421E13C71D00161991 /* PresentationsViewController.m in Sources */,
 				705F05A01EDED8CE00D8B837 /* CustomProductView.m in Sources */,

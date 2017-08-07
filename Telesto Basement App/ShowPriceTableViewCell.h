@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
 @property (weak, nonatomic) IBOutlet UITextField *discountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *discountPriceTextField;
+@property (weak, nonatomic) IBOutlet UIButton *editBtn;
 @end
