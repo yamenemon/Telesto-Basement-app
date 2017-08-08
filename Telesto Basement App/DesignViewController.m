@@ -28,7 +28,7 @@
 @synthesize downloadedProduct;
 @synthesize productSliderCustomView;
 @synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID,currentDefaultTemplateIndex,downloadedCustomTemplateProposalInfo;
-@synthesize templateNameLabel,nonProductArray;
+@synthesize templateNameLabel;
 
 #pragma mark - ViewControllers Super Methods
 
@@ -47,7 +47,6 @@
     });
     
     productArray = [[NSMutableArray alloc] init];
-    nonProductArray = [[NSMutableArray alloc] init];
     self.color = [[DRColorPickerColor alloc] initWithColor:UIColor.blueColor];
     
     NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"CustomTemplateNameView"
@@ -381,6 +380,9 @@
                         UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                         ProposalViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProposalViewController"];
                         vc.screenShotImagePath = screenShotImagePath;
+                        vc.baseController = self;
+                        vc.productArr = productArray;
+                        vc.downloadedProduct = downloadedProduct;
                         vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                         [self.navigationController pushViewController:vc animated:YES];
                     }
@@ -571,41 +573,7 @@
     
     
     UIAlertAction *showPrice =  [UIAlertAction actionWithTitle: @"Show Price" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        if (productArray.count>0) {
-            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            ShowPriceViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ShowPriceViewController"];
-            vc.preferredContentSize = CGSizeMake(910, 750);
-            vc.baseController = self;
-            vc.productArray = productArray;
-            vc.nonProductArray = nonProductArray;
-            vc.downloadedProduct = downloadedProduct;
-            
-            vc.modalPresentationStyle = UIModalPresentationPopover;
-            UIPopoverPresentationController *popPC = vc.popoverPresentationController;
-            vc.popoverPresentationController.sourceRect = menuBtn.bounds;
-            vc.popoverPresentationController.sourceView = menuBtn;
-            popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
-            popPC.delegate = self;
-            [self presentViewController:vc animated:YES completion:nil];
-        }
-        else{
-            UIAlertController * alert=   [UIAlertController
-                                          alertControllerWithTitle:@"Error!!!"
-                                          message:@"Add Some Products in Drawing Window."
-                                          preferredStyle:UIAlertControllerStyleAlert];
-            
-                UIAlertAction* ok = [UIAlertAction
-                                     actionWithTitle:@"Ok"
-                                     style:UIAlertActionStyleDefault
-                                     handler:^(UIAlertAction * action)
-                                     {
-                                         [alert dismissViewControllerAnimated:YES completion:nil];
-                                     }];
-                [alert addAction:ok];
-            
-            [self presentViewController:alert animated:YES completion:nil];
-        
-        }
+        [self showPriceListWithSourceRect:menuBtn.bounds withSourceView:menuBtn];
     }];
     [showPrice setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
     
@@ -620,7 +588,42 @@
     popover.sourceRect = menuBtn.bounds;
     
     [self presentViewController: alertController animated: YES completion: nil];
-
+}
+-(void)showPriceListWithSourceRect:(CGRect)senderRect withSourceView:(UIView*)sourceView{
+    if (productArray.count>0) {
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ShowPriceViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ShowPriceViewController"];
+        vc.preferredContentSize = CGSizeMake(910, 750);
+        vc.baseController = self;
+        vc.productArray = productArray;
+        vc.downloadedProduct = downloadedProduct;
+        
+        vc.modalPresentationStyle = UIModalPresentationPopover;
+        UIPopoverPresentationController *popPC = vc.popoverPresentationController;
+        vc.popoverPresentationController.sourceRect = senderRect;
+        vc.popoverPresentationController.sourceView = sourceView;
+        popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+        popPC.delegate = self;
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+    else{
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Error!!!"
+                                      message:@"Add Some Products in Drawing Window."
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"Ok"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+        [alert addAction:ok];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
 }
 - (void)wallPopOverBtnAction:(id)sender {
     
@@ -661,7 +664,6 @@
         currentlyEditingView = userResizableView;
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
-        [nonProductArray addObject:lastEditedView];
         [productArray addObject:lastEditedView];
     }];
     [horizentalAction setValue:[[UIImage imageNamed:@"horizentalWall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
@@ -701,7 +703,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [verticalAction setValue:[[UIImage imageNamed:@"verticalWall"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [verticalAction setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -747,7 +748,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [upStair setValue:[[UIImage imageNamed:@"stairUp"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [upStair setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -781,7 +781,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [leftStair setValue:[[UIImage imageNamed:@"stairLeft"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [leftStair setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -814,7 +813,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [rightStair setValue:[[UIImage imageNamed:@"stairRight"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [rightStair setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -846,7 +844,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [downStair setValue:[[UIImage imageNamed:@"stairBottom"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [downStair setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -893,7 +890,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [flipTop setValue:[[UIImage imageNamed:@"flipTop"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [flipTop setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -926,7 +922,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [flipLeft setValue:[[UIImage imageNamed:@"flipLeft"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [flipLeft setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -958,7 +953,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [flipRight setValue:[[UIImage imageNamed:@"flipRight"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [flipRight setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -989,7 +983,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [flipBottom setValue:[[UIImage imageNamed:@"flipBottom"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [flipBottom setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -1035,7 +1028,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [HorizontalWindow setValue:[[UIImage imageNamed:@"sliderWindowHorizontal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [HorizontalWindow setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
@@ -1068,7 +1060,6 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [productArray addObject:lastEditedView];
-        [nonProductArray addObject:lastEditedView];
     }];
     [verticalWindow setValue:[[UIImage imageNamed:@"sliderWindowVertical"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forKey:@"image"];
     [verticalWindow setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];

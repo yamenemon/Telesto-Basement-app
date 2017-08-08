@@ -7,19 +7,25 @@
 //
 
 #import "ProposalViewController.h"
+#import "DesignViewController.h"
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface ProposalViewController ()
+@interface ProposalViewController (){
+    int summation;
+}
 @property (weak, nonatomic) IBOutlet UITableView *pricingTable;
 
 @end
 
 @implementation ProposalViewController
-@synthesize agreementTextView,floorPlanImageView,screenShotImagePath;
+@synthesize agreementTextView,floorPlanImageView,screenShotImagePath,baseController,productArr,downloadedProduct,priceListArray,showPriceTableCell;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.navigationItem.hidesBackButton = YES;
     [self initializeController];
+    _priceTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
 }
 -(void)initializeController{
     if (screenShotImagePath.length>0) {
@@ -27,6 +33,31 @@
         UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
         floorPlanImageView.image = thumbNail;
     }
+    summation = 0;
+    
+    for (int i = 0; i < downloadedProduct.count; i++) {
+        Product *proObj = [downloadedProduct objectAtIndex:i];
+        for (int j = 0; j< productArr.count; j++) {
+            CustomProductView *view = [productArr objectAtIndex:j];
+            if ([[NSNumber numberWithInt:proObj.productId] isEqualToNumber:[NSNumber numberWithInt:view.productID]]) {
+                view.productObject.productName = proObj.productName;
+                view.productObject.unitType = proObj.unitType;
+                [productArr replaceObjectAtIndex:j withObject:view];
+            }
+        }
+    }
+    priceListArray = [[NSMutableArray alloc] initWithArray:productArr];
+    
+    NSMutableArray *toDelete = [NSMutableArray array];
+    for (CustomProductView *view in priceListArray) {
+        if (view.productObject.productId == 999999) {
+            [toDelete addObject:view];
+        }
+    }
+    // Remove them
+    [priceListArray removeObjectsInArray:toDelete];
+    
+    NSLog(@"%@",priceListArray);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -37,103 +68,81 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 15;
+    return priceListArray.count+2;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell;
-    cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    tableView.backgroundColor = [UIColor clearColor];
+    static NSString *simpleTableIdentifier = @"PriceTableCell";
     
-    UILabel *productName;
-    UILabel *quantity;
-    UILabel *price;
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-
-        productName = [[UILabel alloc] init];
-        productName.frame = CGRectMake(5, 5, tableView.frame.size.width/3 - 5, 35);
-        productName.backgroundColor =[UIColor clearColor];
-        [cell addSubview:productName];
-        productName.tag = 1;
-        
-        quantity = [[UILabel alloc] init];
-        quantity.frame = CGRectMake(productName.frame.size.width + 10, 5, tableView.frame.size.width/3 - 5, 35);
-        [cell addSubview:quantity];
-        quantity.backgroundColor = [UIColor clearColor];
-        quantity.tag = 2;
-        quantity.textAlignment = NSTextAlignmentCenter;
-        
-        price = [[UILabel alloc] init];
-        price.frame = CGRectMake(quantity.frame.size.width+productName.frame.size.width+15, 5, tableView.frame.size.width/3 - 5, 35);
-        [cell addSubview:price];
-        price.backgroundColor = [UIColor clearColor];
-        price.tag = 3;
+    ShowPriceTableViewCell *cell = (ShowPriceTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (showPriceTableCell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ShowPriceTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
     }
-    else{
-        productName = [cell viewWithTag:1];
-        quantity = [cell viewWithTag:2];
-        price = [cell viewWithTag:3];
+    if (indexPath.row == 0) {
+        cell.productName.text = @"Product Name";
+        cell.quantityxPrice.text = @"Price";
+        cell.totalPrice.text = @"Price";
+        
+        cell.discountTextField.text = @"(%) Discount";
+        cell.discountPriceTextField.text = @"($) Discount";
+        cell.editBtn.hidden = YES;
+        
+        cell.discountTextField.borderStyle = UITextBorderStyleNone;
+        cell.discountPriceTextField.borderStyle = UITextBorderStyleNone;
+        
+        [cell.productName setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        cell.productName.textAlignment = NSTextAlignmentCenter;
+        
+        
+        [cell.discountTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        cell.discountTextField.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.discountPriceTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        cell.discountPriceTextField.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        cell.quantityxPrice.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        cell.totalPrice.textAlignment = NSTextAlignmentCenter;
     }
-
+    else if (indexPath.row == priceListArray.count+1){
+        cell.productName.text = @"";
+        cell.quantityxPrice.text = @"Total";
+        cell.discountTextField.hidden = YES;
+        cell.discountPriceTextField.hidden = YES;
+        cell.editBtn.hidden = YES;
+        
+        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:20]];
+        cell.totalPrice.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:20]];
+        cell.quantityxPrice.textAlignment = NSTextAlignmentCenter;
+        
+        cell.totalPrice.text = [NSString stringWithFormat:@"$ %d",summation];
+        summation = 0;
+    } else{
+        CustomProductView *view = [priceListArray objectAtIndex:indexPath.row-1];
+        cell.productName.textAlignment = NSTextAlignmentCenter;
+        cell.productName.text = view.productObject.productName;
+        cell.discountTextField.tag = indexPath.row-1;
+        cell.discountPriceTextField.tag = indexPath.row-1;
+        cell.editBtn.tag = indexPath.row-1;
+        cell.editBtn.hidden = YES;
+        cell.quantityxPrice.text = [NSString stringWithFormat:@"$ %.2f",view.productObject.productPrice];
+        if ([view.productObject.unitType isEqualToString:@"piece"]) {
+            cell.discountTextField.text = [NSString stringWithFormat:@"%.2f %%",view.productObject.discount];
+        }
+        float discountPrice = (view.productObject.discount * view.productObject.productPrice)/100;
+        float totalPrice = view.productObject.productPrice -  discountPrice;
+        cell.discountPriceTextField.text = [NSString stringWithFormat:@"$ %.2f",discountPrice];
+        cell.totalPrice.text = [NSString stringWithFormat:@"$ %.2f",totalPrice];
+        summation = summation +totalPrice;
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.backgroundColor = [UIColor clearColor];
-    switch (indexPath.row) {
-        case 0:
-            productName.text = @"Product Name";
-            quantity.text = @"Quantity";
-            price.text = @"Price";
-            break;
-        case 1:
-            productName.text = @"Greate Sump Plus";
-            quantity.text = @"1";
-            price.text = @"$500";
-            break;
-        case 2:
-            productName.text = @"Vapor Barrier";
-            quantity.text = @"2";
-            price.text = @"$300";
-            break;
-        case 3:
-            productName.text = @"Greate Trench";
-            quantity.text = @"1";
-            price.text = @"$100";
-            break;
-        case 4:
-            productName.text = @"Fast Sump";
-            quantity.text = @"1";
-            price.text = @"$500";
-            break;
-        case 5:
-            productName.text = @"Battery Backup";
-            quantity.text = @"1";
-            price.text = @"600";
-            break;
-        case 6:
-            productName.text =@"Data Sump";
-            quantity.text = @"1";
-            price.text = @"100";
-            break;
-        case 7:
-            productName.text =@"Corner Port";
-            quantity.text = @"1";
-            price.text = @"$100";
-            break;
-        case 8:
-            productName.text =@"Finish Shield";
-            quantity.text = @"1";
-            price.text = @"$1000";
-            break;
-        case 10:
-            productName.text =@"Total";
-            quantity.text = @"= 9";
-            price.text = @"= $3200";
-            break;
-            
-        default:
-            break;
-    }
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -146,11 +155,13 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, tableView.frame.size.width, 25)];
     [label setFont:[UIFont fontWithName:@"Roboto-Bold" size:20]];
     label.textAlignment = NSTextAlignmentCenter;
-    NSString *string =@"Pricing";
+    label.textColor = [UIColor whiteColor];
+    NSString *string =@"Price Summary";
     /* Section header is in 0th index... */
     [label setText:string];
     [view addSubview:label];
-    [view setBackgroundColor:[UIColor colorWithRed:166/255.0 green:177/255.0 blue:186/255.0 alpha:1.0]]; //your background color...
+    [view setBackgroundColor:UIColorFromRGB(0x0A5A78)]; //your background color...
+    
     return view;
 }
 - (IBAction)FaqListBtnAction:(id)sender {

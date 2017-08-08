@@ -17,7 +17,7 @@
 @end
 
 @implementation ShowPriceViewController
-@synthesize showPriceTableCell,productArray,baseController,downloadedProduct,nonProductArray,priceListArray;
+@synthesize showPriceTableCell,productArray,baseController,downloadedProduct,priceListArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -205,11 +205,6 @@
 }
 -(void)updateProductObjectWithObject:(ProductObject*)obj withSelectedRow:(int)selectedRow{
     [popupController dismissPopupControllerAnimated:YES];
-//    CustomProductView *view = [productArray objectAtIndex:selectedRow];
-//    view.productObject = obj;
-//    [productArray replaceObjectAtIndex:selectedRow withObject:view];
-    
-    
     for (int i = 0; i<productArray.count; i++) {
         CustomProductView *productArrayView = [productArray objectAtIndex:i];
         for (int j=0; j<priceListArray.count; j++) {

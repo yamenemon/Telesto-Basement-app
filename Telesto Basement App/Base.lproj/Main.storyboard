@@ -2229,6 +2229,7 @@ Washington, DC 20521-6170
                     <connections>
                         <outlet property="agreementTextView" destination="9vY-La-XBI" id="dzF-KO-EQ5"/>
                         <outlet property="floorPlanImageView" destination="auA-Ox-BVl" id="yqC-4S-dDG"/>
+                        <outlet property="priceTable" destination="wfB-j3-v2F" id="avc-Ph-zQF"/>
                         <outlet property="pricingTable" destination="wfB-j3-v2F" id="o2N-7G-tyj"/>
                     </connections>
                 </viewController>
