@@ -841,6 +841,7 @@
             customView.productObject.productPrice = [[productDic valueForKey:@"productPrice"] floatValue];
             customView.productObject.discount = [[productDic valueForKey:@"discount"] floatValue];
             customView.productObject.storedMediaArray = [productDic valueForKey:@"productImages"];
+            proposalObject.templateID = [[productDic valueForKey:@"customTemplateId"] intValue];
             [productArr addObject:customView];
         }
         NSLog(@"%@",productArr);

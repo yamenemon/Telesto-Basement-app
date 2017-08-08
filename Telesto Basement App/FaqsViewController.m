@@ -44,10 +44,10 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
 -(void)assignData{
     userSelectedDataDictionary = [[NSMutableDictionary alloc] init];
     if (downloadedCustomTemplateProposalInfo.count>0) {
-        NSLog(@"%@",downloadedCustomTemplateProposalInfo);
+//        NSLog(@"%@",downloadedCustomTemplateProposalInfo);
         CustomerProposalObject *proposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
         userSelectedDataDictionary = [NSMutableDictionary dictionaryWithDictionary:proposalObject.faq];
-        NSLog(@"Total dic: %@",userSelectedDataDictionary);
+//        NSLog(@"Total dic: %@",userSelectedDataDictionary);
         heatTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"heatTextField"] intValue];
         airTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"airTextField"] intValue];
         currentOutsideConditionTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"currentOutsideConditionTextField"] intValue];
@@ -121,12 +121,12 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
     activeField = nil;
 }
 -(void)textField:(nonnull IQDropDownTextField*)textField didSelectItem:(nullable NSString*)item{
-        NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
+//        NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
 
 }
     
 -(IQProposedSelection)textField:(nonnull IQDropDownTextField*)textField proposedSelectionModeForItem:(NSString*)item{
-        NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
+//        NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
         return IQProposedSelectionBoth;
 }
     
@@ -136,7 +136,7 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
 -(void)storingUserSelectedDataWithCompletionBlock:(void (^)(BOOL success))completionBlock{
     
     if (downloadedCustomTemplateProposalInfo.count>0) {
-        NSLog(@"%@",userSelectedDataDictionary);
+//        NSLog(@"%@",userSelectedDataDictionary);
         [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[currentOutsideConditionTextField selectedRow]] forKey:@"currentOutsideConditionTextField"];
         [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[heatTextField selectedRow]] forKey:@"heatTextField"];
         [userSelectedDataDictionary setObject:_outsideRelativeHumidity.text forKey:@"outsideRelativeHumidity"];
@@ -165,7 +165,7 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
                                       nil];
     }
     
-    NSLog(@"%@",userSelectedDataDictionary);
+//    NSLog(@"%@",userSelectedDataDictionary);
     completionBlock(YES);
 
 }

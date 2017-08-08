@@ -47,7 +47,7 @@
 
 }
 -(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"%@",userSelectedDataDictionary);
+//    NSLog(@"%@",userSelectedDataDictionary);
     if (userSelectedDataDictionary.count>0) {
 
         groundWaterTextField.selectedRow = [[userSelectedDataDictionary valueForKey:@"groundWaterTextField"] intValue];
@@ -132,11 +132,11 @@
     activeField = nil;
 }
 -(void)textField:(nonnull IQDropDownTextField*)textField didSelectItem:(nullable NSString*)item{
-    NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
+//    NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
 }
     
 -(IQProposedSelection)textField:(nonnull IQDropDownTextField*)textField proposedSelectionModeForItem:(NSString*)item{
-    NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
+//    NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
     return IQProposedSelectionBoth;
 }
     

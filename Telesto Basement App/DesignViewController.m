@@ -1410,6 +1410,7 @@
                 CustomerProposalObject *editingProposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
                 _templateNameString = editingProposalObject.templateName;
                 templateNameLabel.text = _templateNameString;
+                currentActiveTemplateID = (int)editingProposalObject.templateID;
                 CustomerDataManager *manager = [CustomerDataManager sharedManager];
                 if ((int)editingProposalObject.defaultTemplateID<[manager getTemplateObjectArray].count) {
                     [self setSavedTemplateNumber:[[manager getTemplateObjectArray] objectAtIndex:editingProposalObject.defaultTemplateID] withTemplateIndex:(int)editingProposalObject.defaultTemplateID];
@@ -1430,8 +1431,10 @@
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",_templateNameString]];
     NSLog(@"Template path: %@",dataPath);
-    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
+    }
+
 }
 -(void)reloadProduct:(CustomProductView*)productObject{
     if (productObject.productObject.productId<NON_PRODUCT_ID) {
@@ -1486,17 +1489,12 @@
             [self productSliderCalled:nil];
             [self createFolderForEditing:newString];
             if (![productObject.productObject.storedMediaArray isKindOfClass:[NSNull class]]) {
-                NSLog(@"productObject.productObject.storedMediaArray: %@",productObject.productObject.storedMediaArray);
-                NSLog(@"Media count: %lu",(unsigned long)productObject.productObject.storedMediaArray.count);
+                NSLog(@"Count %lu productObject.productObject.storedMediaArray: %@ ",(unsigned long)productObject.productObject.storedMediaArray.count,productObject.productObject.storedMediaArray);
                 for (int i = 0; i<productObject.productObject.storedMediaArray.count; i++) {
                     [self saveImageWithBtnInfoTag:(int)userResizableView.infoBtn.tag withPath:_templateNameString withMediaImageUrl:productObject.productObject.storedMediaArray[i]];
                 }
             }
-            
-            
             [productArray addObject:lastEditedView];
-            NSLog(@"Array after Adding: %@",productArray);
-        
     }
     else{
         // (1) Create a user resizable view with a simple red background content view.
@@ -1513,6 +1511,7 @@
         userResizableView.productID = productObject.productObject.productId;
         userResizableView.productObject.productId = productObject.productObject.productId;
         userResizableView.productObject.productName = [NSString stringWithFormat:@"%@",productObject.productObject.productName];
+        NSLog(@"%@",userResizableView.productObject.productName);
         userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
         userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
         userResizableView.productObject.productWidth = contentView.frame.size.width;
@@ -1536,11 +1535,9 @@
         lastEditedView = userResizableView;
         [basementDesignView addSubview:userResizableView];
         [userResizableView bringSubviewToFront:userResizableView.infoBtn];
-        
-        
         [productArray addObject:lastEditedView];
-        NSLog(@"Array after Adding: %@",productArray);
     }
+    NSLog(@"Array after Adding: %@",productArray);
 
 }
 - (void)saveImageWithBtnInfoTag:(int)btnTag withPath:(NSString*)path withMediaImageUrl:(id)imageUrlArr {

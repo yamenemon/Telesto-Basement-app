@@ -21,7 +21,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self initializeTextFieldSet];
-    NSLog(@"%@",userSelectedDataDictionary);
+//    NSLog(@"%@",userSelectedDataDictionary);
     if (userSelectedDataDictionary.count>0) {
         _questionOneBoolField.selectedRow = [[userSelectedDataDictionary valueForKey:@"questionOneBoolField"] intValue];
         _questionOneTextField.text = [userSelectedDataDictionary valueForKey:@"questionOneTextField"];
@@ -159,11 +159,11 @@
     activeField = nil;
 }
 -(void)textField:(nonnull IQDropDownTextField*)textField didSelectItem:(nullable NSString*)item{
-    NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
+//    NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
 }
 
 -(IQProposedSelection)textField:(nonnull IQDropDownTextField*)textField proposedSelectionModeForItem:(NSString*)item{
-    NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
+//    NSLog(@"%@: %@",NSStringFromSelector(_cmd),item);
     return IQProposedSelectionBoth;
 }
 -(void)storingUserSelectedDataWithCompletionBlock:(void (^)(BOOL success))completionBlock{
@@ -210,7 +210,7 @@
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[_question15BoolField2 selectedRow]] forKey:@"question15BoolField2"];
     
     [userSelectedDataDictionary setObject:_commentTextView.text forKey:@"faq3commentTextView"];
-    NSLog(@"%@",userSelectedDataDictionary);
+//    NSLog(@"%@",userSelectedDataDictionary);
     completionBlock(YES);
     
 }

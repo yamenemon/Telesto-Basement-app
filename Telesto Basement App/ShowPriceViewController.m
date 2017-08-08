@@ -40,12 +40,28 @@
     }
     priceListArray = [[NSMutableArray alloc] initWithArray:productArray];
 
-    for (int j= 0; j<productArray.count; j++) {
-        CustomProductView *view = [productArray objectAtIndex:j];
+//    for (int j= 0; j<=productArray.count; j++) {
+//        CustomProductView *view = [priceListArray objectAtIndex:j];
+//        if (view.productObject.productId == 999999) {
+//            NSLog(@"%d",j);
+//            [priceListArray removeObjectAtIndex:j];
+//        }
+//    }
+//    for (CustomProductView *view in priceListArray) {
+//        if (view.productObject.productId == 999999) {
+//            [priceListArray removeObject:view];
+//        }
+//    }
+    
+    NSMutableArray *toDelete = [NSMutableArray array];
+    for (CustomProductView *view in priceListArray) {
         if (view.productObject.productId == 999999) {
-            [priceListArray removeObjectAtIndex:j];
+            [toDelete addObject:view];
         }
     }
+    // Remove them
+    [priceListArray removeObjectsInArray:toDelete];
+    
     NSLog(@"%@",priceListArray);
 }
 - (void)didReceiveMemoryWarning {
