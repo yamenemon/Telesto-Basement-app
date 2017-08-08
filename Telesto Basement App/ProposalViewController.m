@@ -169,5 +169,17 @@
 - (IBAction)emailToCustomerAction:(id)sender {
     
 }
-
+- (NSString *)createPdfWithName: (NSString *)name array:(NSArray*)images {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docspath = [paths objectAtIndex:0];
+    NSString *pdfFileName = [docspath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.pdf",name]];
+    UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);
+    for (int index = 0; index <[images count] ; index++) {
+        UIImage *pngImage=[images objectAtIndex:index];;
+        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height)), nil);
+        [pngImage drawInRect:CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height))];
+    }
+    UIGraphicsEndPDFContext();
+    return pdfFileName;
+}
 @end
