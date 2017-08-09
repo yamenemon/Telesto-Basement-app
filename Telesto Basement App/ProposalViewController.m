@@ -227,18 +227,25 @@
 - (IBAction)FaqListBtnAction:(id)sender {
 }
 - (IBAction)emailToCustomerAction:(id)sender {
+    
     NSMutableArray *totalArray = [[NSMutableArray alloc] init];
-    UIImage*priceImage = [self takingScreenShot];
+    
+    UIImage *agreementImage = [UIImage imageNamed:@"agreement"];
+    [totalArray addObject:agreementImage];
+    
+    for (id obj in [Utility sharedManager].faqImageArray) {
+        [totalArray addObject:obj];
+    }
     
     NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:screenShotImagePath]];
-    
     UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
-    UIImage *agreementImage = [UIImage imageNamed:@"agreement"];
-    
-    [totalArray addObject:agreementImage];
     [totalArray addObject:thumbNail];
-    [totalArray addObject:[Utility sharedManager].faqImageArray];
+    
+    UIImage*priceImage = [self takingScreenShot];
     [totalArray addObject:priceImage];
+    
+    
+
     
     NSString *fileName = [self createPdfWithName:@"FaqImageScreenShot" array:totalArray];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -253,7 +260,9 @@
     UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);
     for (int index = 0; index <[images count] ; index++) {
         UIImage *pngImage=[images objectAtIndex:index];;
+//        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height)), nil);
         UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height)), nil);
+        
         [pngImage drawInRect:CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height))];
     }
     UIGraphicsEndPDFContext();
