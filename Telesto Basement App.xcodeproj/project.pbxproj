@@ -86,6 +86,8 @@
 		70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */; };
 		70682B231F3AFE3D00162D3E /* AgreementPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 70682B221F3AFE3D00162D3E /* AgreementPopUp.m */; };
 		70682B251F3AFE4F00162D3E /* AgreementPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70682B241F3AFE4F00162D3E /* AgreementPopUp.xib */; };
+		70682B281F3B21EF00162D3E /* ProposalPdfView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70682B271F3B21EF00162D3E /* ProposalPdfView.m */; };
+		70682B2A1F3B21FE00162D3E /* ProposalPdfView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70682B291F3B21FE00162D3E /* ProposalPdfView.xib */; };
 		706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B21ECEFC4F003E7247 /* Reachability.m */; };
 		706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */; };
 		70824CC41F2B800F00FE53AC /* Checklist.png in Resources */ = {isa = PBXBuildFile; fileRef = 70824CC31F2B800F00FE53AC /* Checklist.png */; };
@@ -266,6 +268,9 @@
 		70682B211F3AFE3D00162D3E /* AgreementPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementPopUp.h; sourceTree = "<group>"; };
 		70682B221F3AFE3D00162D3E /* AgreementPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementPopUp.m; sourceTree = "<group>"; };
 		70682B241F3AFE4F00162D3E /* AgreementPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementPopUp.xib; sourceTree = "<group>"; };
+		70682B261F3B21EF00162D3E /* ProposalPdfView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProposalPdfView.h; sourceTree = "<group>"; };
+		70682B271F3B21EF00162D3E /* ProposalPdfView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProposalPdfView.m; sourceTree = "<group>"; };
+		70682B291F3B21FE00162D3E /* ProposalPdfView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProposalPdfView.xib; sourceTree = "<group>"; };
 		706FA6B11ECEFC4F003E7247 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		706FA6B21ECEFC4F003E7247 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		706FA6B41ECEFCAE003E7247 /* MTReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTReachabilityManager.h; sourceTree = "<group>"; };
@@ -724,6 +729,9 @@
 			children = (
 				7027C9C21E1D35950062EB77 /* ProposalViewController.h */,
 				7027C9C31E1D35950062EB77 /* ProposalViewController.m */,
+				70682B261F3B21EF00162D3E /* ProposalPdfView.h */,
+				70682B271F3B21EF00162D3E /* ProposalPdfView.m */,
+				70682B291F3B21FE00162D3E /* ProposalPdfView.xib */,
 				70682B211F3AFE3D00162D3E /* AgreementPopUp.h */,
 				70682B221F3AFE3D00162D3E /* AgreementPopUp.m */,
 				70682B241F3AFE4F00162D3E /* AgreementPopUp.xib */,
@@ -870,6 +878,7 @@
 				70EC80E21E067DB400A6D245 /* log_out@2x.png in Resources */,
 				70CE84291F04CED900867F91 /* Overlay@2x.png in Resources */,
 				70EC80E71E067DB400A6D245 /* separator@2x.png in Resources */,
+				70682B2A1F3B21FE00162D3E /* ProposalPdfView.xib in Resources */,
 				70CA54D21E7172A700F7FE67 /* CustomTableViewCell.xib in Resources */,
 				704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */,
 				70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */,
@@ -1009,6 +1018,7 @@
 				70CF19661E1CE03D00C90EDD /* FaqsViewController.m in Sources */,
 				705F05AC1EDED8CE00D8B837 /* RightNavDrwaingToolsView.m in Sources */,
 				70015E981DF6913200DF542E /* Utility.m in Sources */,
+				70682B281F3B21EF00162D3E /* ProposalPdfView.m in Sources */,
 				70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */,
 				7032B0611F21DBBC0046A201 /* FaqsViewControllerStep2.m in Sources */,
 				70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */,

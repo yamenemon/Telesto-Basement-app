@@ -44,52 +44,9 @@
 -(void)getCustomerData{
     _customerListTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-     [customerDataManager getCustomerListWithBaseController:self withCompletionBlock:^{
+     [customerDataManager getCustomerListWithBaseController:self withCompletionBlock:^(BOOL success){
          _customerInfoDic = [customerDataManager getCustomerData];
          for (NSMutableDictionary *dic in _customerInfoDic) {
-             
-             /*
-              address = thbggb;
-              city = ggbggb;
-              countryId = 4;
-              created = "2017-07-11 13:06:18";
-              details = Nfgvutngvgnvgtimtgimv;
-              email = "fgbggb@frf.ffl";
-              emailNotify = 1;
-              fName = ggbggvbtg;
-              id = 17;
-              lName = ggbggb;
-              latitude = "23.7832";
-              longitude = "90.3942";
-              modified = "0000-00-00 00:00:00";
-              phone = 7575;
-              photo = "1499778378ds32a2w13eq4.jpg";
-              smsNotify = 0;
-              state = ggbggbgg;
-              status = 1;
-              userId = 2;
-              zip = ggbggbgg;
-              
-              
-              @property (assign,nonatomic) long customerId;
-              @property (strong,nonatomic) NSString *customerFirstName;
-              @property (strong,nonatomic) NSString *customerLastName;
-              @property (strong,nonatomic) NSString *customerStreetAddress;
-              @property (strong,nonatomic) NSString *customerCityName;
-              @property (strong,nonatomic) NSString *customerStateName;
-              @property (strong,nonatomic) NSString *customerZipName;
-              @property (strong,nonatomic) NSString *customerCountryName;
-              @property (assign,nonatomic) BOOL emailNotification;
-              @property (strong,nonatomic) NSString *customerEmailAddress;
-              @property (assign,nonatomic) BOOL smsReminder;
-              @property (strong,nonatomic) NSString *customerPhoneNumber;
-              @property (strong,nonatomic) NSString *customerNotes;
-              @property (strong,nonatomic) NSDictionary *customerOtherImageDic;
-              @property (strong,nonatomic) NSMutableArray *buildingImages;
-              @property (strong,nonatomic) NSString* latitude;
-              @property (strong,nonatomic) NSString* longitude;
-              
-              */
              
              CustomerInfoObject *customerInfoObj = [[CustomerInfoObject alloc] init];
              customerInfoObj.customerName = [NSString stringWithFormat:@"%@ %@",[dic valueForKey:@"fName"],[dic valueForKey:@"lName"]] ;

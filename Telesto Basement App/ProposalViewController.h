@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CNPPopupController.h>
 #import "AgreementPopUp.h"
-
+#import "ProposalPdfView.h"
 @class DesignViewController;
 @class ShowPriceTableViewCell;
 @interface ProposalViewController : UIViewController <UITextViewDelegate,UIGestureRecognizerDelegate,CNPPopupControllerDelegate>{

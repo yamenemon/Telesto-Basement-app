@@ -230,7 +230,7 @@
     return countryList;
 
 }
--(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(void))completionBlock{
+-(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
     
     _customerList = [[NSMutableDictionary alloc] init];
     UIView *window = [UIApplication sharedApplication].keyWindow;
@@ -261,7 +261,7 @@
             [hud hideAnimated:YES];
         });
 //        NSLog(@"%@",_customerList);
-        completionBlock();
+        completionBlock(YES);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", @"Customer list not loaded".capitalizedString);
 //        NSLog(@"%@",error);
@@ -273,8 +273,8 @@
                              handler:^(UIAlertAction * action)
                              {
                                  [alert dismissViewControllerAnimated:YES completion:nil];
-                                 [self getCustomerListWithBaseController:baseController withCompletionBlock:^{
-                                     completionBlock();
+                                 [self getCustomerListWithBaseController:baseController withCompletionBlock:^(BOOL success){
+                                     completionBlock(NO);
                                  }];
                              }];
         [alert addAction:ok];
@@ -288,7 +288,7 @@
         [cancel setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
 
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
-        completionBlock();
+        completionBlock(NO);
     }];
 }
 -(NSMutableDictionary*)getCustomerData{
@@ -783,6 +783,26 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
+        [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Proposal Not Loaded" message:@"Reload?!!!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+        [alert addAction:ok];
+        
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alert addAction:cancel];
+        
+        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        [cancel setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
         completionBlock(NO);
     }];
 }

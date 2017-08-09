@@ -164,10 +164,22 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
                                       _otherCommentsTextView.text,@"RelativeOtherCommentsField",
                                       nil];
     }
-    
+    [self takingScreenShot];
 //    NSLog(@"%@",userSelectedDataDictionary);
     completionBlock(YES);
-
+}
+-(void)takingScreenShot{
+    Utility *utility = [Utility sharedManager];
+    utility.faqImageArray = [[NSMutableArray alloc] init];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGRect rect = [_containerView bounds];
+        UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [_containerView.layer renderInContext:context];
+        UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [utility.faqImageArray addObject:capturedImage];
+    });
 }
 - (IBAction)pushNextFAQsController:(id)sender {
     [self storingUserSelectedDataWithCompletionBlock:^(BOOL success){

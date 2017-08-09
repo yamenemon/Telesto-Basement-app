@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "IQDropDownTextField.h"
+#import "Utility.h"
 
 @class CustomTextField;
 @class FaqsViewControllerStep3;
@@ -16,6 +17,7 @@
 
     UITextField *activeField;
 }
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
 @property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;

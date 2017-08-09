@@ -173,12 +173,24 @@
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[vulkHeadTextField selectedRow]] forKey:@"vulkHeadTextField"];
     [userSelectedDataDictionary setObject:otherComments.text forKey:@"faq2CommentsField"];
 
+    [self takingScreenShot];
+    
     completionBlock(YES);
     
 }
-
+-(void)takingScreenShot{
+    Utility *utility = [Utility sharedManager];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGRect rect = [_containerView bounds];
+        UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [_containerView.layer renderInContext:context];
+        UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [utility.faqImageArray addObject:capturedImage];
+    });
+}
 - (IBAction)pushNextFAQVC:(id)sender {
-    
     [self storingUserSelectedDataWithCompletionBlock:^(BOOL success){
         if (success) {
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

@@ -210,9 +210,24 @@
     [userSelectedDataDictionary setObject:[NSNumber numberWithInteger:[_question15BoolField2 selectedRow]] forKey:@"question15BoolField2"];
     
     [userSelectedDataDictionary setObject:_commentTextView.text forKey:@"faq3commentTextView"];
-//    NSLog(@"%@",userSelectedDataDictionary);
+    
+    [self takingScreenShot];
+    
     completionBlock(YES);
     
+}
+-(void)takingScreenShot{
+    Utility *utility = [Utility sharedManager];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGRect rect = [_containerView bounds];
+        UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [_containerView.layer renderInContext:context];
+        UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [utility.faqImageArray addObject:capturedImage];
+        NSLog(@"Faq screenshots: %@",utility.faqImageArray);
+    });
 }
 - (IBAction)saveBtnAction:(id)sender {
     [self storingUserSelectedDataWithCompletionBlock:^(BOOL success){

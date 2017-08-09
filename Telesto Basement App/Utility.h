@@ -12,6 +12,7 @@
 @interface Utility : NSObject
 
 @property (assign,nonatomic) int customerId;
+@property (strong,nonatomic) NSMutableArray *faqImageArray;
 + (Utility *)sharedManager;
 + (BOOL)isLoggedIn;
 + (void)loadLoginView;
@@ -42,4 +43,7 @@
 -(int)getCurrentCustomerId;
 -(void)setCurrentCustomerId:(int)customerIdentification;
 - (UIImage*)loadScreenShotImageWithImageName:(NSString*)imageName;
+
+-(void)storeImage:(NSMutableArray*)arr;
+-(NSMutableArray*)getImageFromArr;
 @end

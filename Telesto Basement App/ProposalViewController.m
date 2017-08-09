@@ -25,14 +25,12 @@
 //    self.navigationItem.hidesBackButton = YES;
     [self initializeController];
     _priceTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _priceTable.backgroundColor = [UIColor whiteColor];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(textViewTapped:)];
     tap.delegate = self;
     tap.numberOfTapsRequired = 1;
     [agreementTextView addGestureRecognizer:tap];
 }
-
-
-
 - (void)textViewTapped:(UITapGestureRecognizer *)tap {
     //DO SOMTHING
     AgreementPopUp *agreementView = [[[NSBundle mainBundle] loadNibNamed:@"AgreementPopUp" owner:self options:nil] objectAtIndex:0];
@@ -128,20 +126,20 @@
         cell.discountTextField.borderStyle = UITextBorderStyleNone;
         cell.discountPriceTextField.borderStyle = UITextBorderStyleNone;
         
-        [cell.productName setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        [cell.productName setFont:[UIFont fontWithName:@"Roboto-Bold" size:12]];
         cell.productName.textAlignment = NSTextAlignmentCenter;
         
         
-        [cell.discountTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        [cell.discountTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:12]];
         cell.discountTextField.textAlignment = NSTextAlignmentCenter;
         
-        [cell.discountPriceTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        [cell.discountPriceTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:12]];
         cell.discountPriceTextField.textAlignment = NSTextAlignmentCenter;
         
-        [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:12]];
         cell.quantityxPrice.textAlignment = NSTextAlignmentCenter;
         
-        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:16]];
+        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:12]];
         cell.totalPrice.textAlignment = NSTextAlignmentCenter;
     }
     else if (indexPath.row == priceListArray.count+1){
@@ -160,6 +158,23 @@
         cell.totalPrice.text = [NSString stringWithFormat:@"$ %d",summation];
         summation = 0;
     } else{
+        [cell.productName setFont:[UIFont fontWithName:@"Roboto-Bold" size:10]];
+        cell.productName.textAlignment = NSTextAlignmentCenter;
+        
+        
+        [cell.discountTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:10]];
+        cell.discountTextField.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.discountPriceTextField setFont:[UIFont fontWithName:@"Roboto-Bold" size:10]];
+        cell.discountPriceTextField.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:10]];
+        cell.quantityxPrice.textAlignment = NSTextAlignmentCenter;
+        
+        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:10]];
+        cell.totalPrice.textAlignment = NSTextAlignmentCenter;
+        
+        
         CustomProductView *view = [priceListArray objectAtIndex:indexPath.row-1];
         cell.productName.textAlignment = NSTextAlignmentCenter;
         cell.productName.text = view.productObject.productName;
@@ -200,22 +215,59 @@
     
     return view;
 }
+-(UIImage*)takingScreenShot{
+    CGRect rect = [_priceTable bounds];
+    UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [_priceTable.layer renderInContext:context];
+    UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return capturedImage;
+}
 - (IBAction)FaqListBtnAction:(id)sender {
 }
 - (IBAction)emailToCustomerAction:(id)sender {
+    NSMutableArray *totalArray = [[NSMutableArray alloc] init];
+    UIImage*priceImage = [self takingScreenShot];
     
+    NSData *imgData = [[NSData alloc] initWithContentsOfURL:[NSURL fileURLWithPath:screenShotImagePath]];
+    
+    UIImage *thumbNail = [[UIImage alloc] initWithData:imgData];
+    UIImage *agreementImage = [UIImage imageNamed:@"agreement"];
+    
+    [totalArray addObject:agreementImage];
+    [totalArray addObject:thumbNail];
+    [totalArray addObject:[Utility sharedManager].faqImageArray];
+    [totalArray addObject:priceImage];
+    
+    NSString *fileName = [self createPdfWithName:@"FaqImageScreenShot" array:totalArray];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self loadPdf:fileName];
+    });
 }
 - (NSString *)createPdfWithName: (NSString *)name array:(NSArray*)images {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docspath = [paths objectAtIndex:0];
     NSString *pdfFileName = [docspath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.pdf",name]];
+    NSLog(@"pdf file name: %@",pdfFileName);
     UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);
     for (int index = 0; index <[images count] ; index++) {
         UIImage *pngImage=[images objectAtIndex:index];;
-        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height)), nil);
-        [pngImage drawInRect:CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height))];
+        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height)), nil);
+        [pngImage drawInRect:CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height))];
     }
     UIGraphicsEndPDFContext();
     return pdfFileName;
+}
+
+- (void)loadPdf:(NSString*)fileName {
+    //DO SOMTHING
+    ProposalPdfView *pdfViewer = [[[NSBundle mainBundle] loadNibNamed:@"ProposalPdfView" owner:self options:nil] objectAtIndex:0];
+    [pdfViewer showPdfInView:fileName];
+    popupController = [[CNPPopupController alloc] initWithContents:@[pdfViewer]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = CNPPopupStyleCentered;
+    popupController.delegate = self;
+    [popupController presentPopupControllerAnimated:YES];
 }
 @end

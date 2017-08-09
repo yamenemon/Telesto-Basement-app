@@ -13,6 +13,7 @@
 @interface FaqsViewControllerStep3 : UIViewController<UITextFieldDelegate,UITextViewDelegate,IQDropDownTextFieldDataSource,IQDropDownTextFieldDelegate>{
     UITextField *activeField;
 }
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
 @property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (weak, nonatomic) IBOutlet CustomTextField *questionOneBoolField;

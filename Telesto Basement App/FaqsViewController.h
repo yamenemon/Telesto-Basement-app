@@ -20,6 +20,7 @@
 }
 @property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (strong,nonatomic) NSMutableDictionary *userSelectedDataDictionary;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @property (strong,nonatomic) UIScrollView *faqScroller;
 @property (weak, nonatomic) IBOutlet UIScrollView *scroller;

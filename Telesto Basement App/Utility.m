@@ -10,7 +10,7 @@
 #define DOMAIN_NAME @"jupiter.centralstationmarketing.com"
 
 @implementation Utility
-@synthesize customerId;
+@synthesize customerId,faqImageArray;
 
 + (Utility *)sharedManager {
     static Utility *_sharedManager = nil;
@@ -100,7 +100,6 @@
 + (BOOL)isLoggedIn{
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"isLoggedIn"];
 }
-
 + (void)storeCookie {
     for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
         NSLog(@"Cookie Domain: %@", [cookie domain]);
@@ -111,8 +110,6 @@
         }
     }
 }
-
-
 + (void)restoreCookie {
     NSData *cookiesdata = [[NSUserDefaults standardUserDefaults] objectForKey:DOMAIN_NAME];
     @try {
@@ -126,8 +123,6 @@
     }
     
 }
-
-
 + (void)removeCookie {
     for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
         if([[cookie domain] isEqualToString:DOMAIN_NAME]) {
@@ -137,26 +132,10 @@
         }
     }
 }
-
-
 + (void)authenticationRequired {
     [self removeCookie];
     [self loadLoginView];
 }
-
-
-+ (void)showAlertWithTitle:(NSString*)title
-               withMessage:(NSString*)message {
-//    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:title
-//                                                     message:message
-//                                                    delegate:self
-//                                           cancelButtonTitle:@"Ok"
-//                                           otherButtonTitles: nil];
-//    
-//    [alert show];
-}
-
-
 +(UIImage*)imageWithImage:(UIImage*)sourceImage
              scaledToWidth:(float)i_width {
     float oldWidth = sourceImage.size.width;
@@ -171,8 +150,6 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
-
-
 +(void)showConnectionErroMessage {
     [self showAlertWithTitle:@"Error"
                           withMessage:@"Error while getting data from server, please try later"];
@@ -217,5 +194,11 @@
     NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@%@.jpg",imageName,imageName,@"ScreenShot"]];
     UIImage* image = [UIImage imageWithContentsOfFile:path];
     return image;
+}
+-(void)storeImage:(NSMutableArray*)arr{
+    faqImageArray = arr;
+}
+-(NSMutableArray*)getImageFromArr{
+    return faqImageArray;
 }
 @end
