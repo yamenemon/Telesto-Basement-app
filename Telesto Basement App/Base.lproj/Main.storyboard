@@ -935,7 +935,7 @@ Washington, DC 20521-6170
                 <navigationController storyboardIdentifier="NavigationControllerMap" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y32-Z6-gDD" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5pt-MO-wRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5pt-MO-wRa">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2130,8 +2130,8 @@ Washington, DC 20521-6170
                                                         <rect key="frame" x="8" y="44" width="445" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <mutableString key="text">Any alteration or deviation from above specs involving extra costs will be executed only upon written orders and will become an extra charge over and above the proposed price.  Our workers are fully covered by worker compensation insurance. Homeowner assumes all responsibility for damage due to breakage of any hidden fuel/utility service lines, though we will do our best to avoid such damage. Proposal is based primarily on homeowners description of problem. I fully understand and accept the transferable warranty which covers only the areas of the basement addressed. There will be no charge for service calls which are leaks in the system covered under warranty. Partial systems carry a limited warranty. Sump pumps are covered under a separate manufacturers warranty. Battery Back Up Pumps are strongly recommended to protect from pump failure and/or power loss. Even with a Battery Back Up Pump we recommend a generator to protect from extended power outages.  Installation of a Perimeter Baseboard system covers only the wall/floor perimeter.  Only the installation of a full perimeter GrateDrain system covers floor cracks. Installation DOES NOT include painting, finished carpentry, flooring, carpeting, electrical work and can not prevent condensation or window well flooding. Homeowner responsible for moving objects 4 feet away from the walls and back, water once pumped from the house. Some dust should be expected from work. Pioneer Basement recommends that all drainage systems should have a wall vapor barrier installed to ensure a sealed system that will also protect from any wall leaks. Homeowner responsible to remove + replace any finished perimeter walls in the work area prior to Pioneer Basement job starting date. Additional costs will occur if crew cannot perform the job on the schedule date because walls were not removed prior to Pioneer Basement job starting date. Payments to be made in full upon completion of job.</mutableString>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
@@ -3372,7 +3372,7 @@ Washington, DC 20521-6170
         <scene sceneID="Pj7-jR-Ive">
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerColor" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2yX-Oq-Cx0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3390,7 +3390,7 @@ Washington, DC 20521-6170
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kjf-i3-4sV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06f-FH-q6U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="06f-FH-q6U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3408,7 +3408,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NFt-8r-g3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iwR-Im-04P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iwR-Im-04P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3464,7 +3464,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YaK-4u-ubd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRc-JO-613">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dRc-JO-613">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3482,7 +3482,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LRc-Nh-dvh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5YI-D9-RyG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5YI-D9-RyG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3500,7 +3500,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NlW-XZ-P4j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jTj-79-ilE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jTj-79-ilE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3518,7 +3518,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jnA-ng-Cws" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X66-ps-ua5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X66-ps-ua5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3536,7 +3536,7 @@ Washington, DC 20521-6170
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZIf-LY-Ob5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pAL-Zx-znX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pAL-Zx-znX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3959,7 +3959,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pdC-w7-CPj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HLg-xT-m7t">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HLg-xT-m7t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3977,7 +3977,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AZp-uq-wIO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wev-ba-Sqw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wev-ba-Sqw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3995,7 +3995,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y8q-yr-hbt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Egr-Mk-70R">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Egr-Mk-70R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4013,7 +4013,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dOZ-tZ-S1O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DdL-BR-xGI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DdL-BR-xGI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

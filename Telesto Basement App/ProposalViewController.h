@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CNPPopupController.h>
+#import "AgreementPopUp.h"
+
 @class DesignViewController;
 @class ShowPriceTableViewCell;
-@interface ProposalViewController : UIViewController
+@interface ProposalViewController : UIViewController <UITextViewDelegate,UIGestureRecognizerDelegate,CNPPopupControllerDelegate>{
+
+    CNPPopupController *popupController;
+}
 @property (strong,nonatomic) NSMutableArray *priceListArray;
 @property (strong,nonatomic) NSMutableArray *downloadedProduct;
 @property (strong,nonatomic) NSMutableArray *productArr;

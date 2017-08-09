@@ -25,7 +25,43 @@
 //    self.navigationItem.hidesBackButton = YES;
     [self initializeController];
     _priceTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(textViewTapped:)];
+    tap.delegate = self;
+    tap.numberOfTapsRequired = 1;
+    [agreementTextView addGestureRecognizer:tap];
+}
 
+
+
+- (void)textViewTapped:(UITapGestureRecognizer *)tap {
+    //DO SOMTHING
+    AgreementPopUp *agreementView = [[[NSBundle mainBundle] loadNibNamed:@"AgreementPopUp" owner:self options:nil] objectAtIndex:0];
+    popupController = [[CNPPopupController alloc] initWithContents:@[agreementView]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.popupStyle = CNPPopupStyleCentered;
+    popupController.delegate = self;
+    [popupController presentPopupControllerAnimated:YES];
+}
+- (CNPPopupTheme *)defaultTheme {
+    CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
+    defaultTheme.backgroundColor = [UIColor whiteColor];
+    defaultTheme.cornerRadius = 5.0f;
+    defaultTheme.popupContentInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    defaultTheme.popupStyle = CNPPopupStyleCentered;
+    defaultTheme.presentationStyle = CNPPopupPresentationStyleFadeIn;
+    defaultTheme.dismissesOppositeDirection = NO;
+    defaultTheme.maskType = CNPPopupMaskTypeDimmed;
+    defaultTheme.shouldDismissOnBackgroundTouch = YES;
+    defaultTheme.movesAboveKeyboard = YES;
+    defaultTheme.contentVerticalPadding = 16.0f;
+    defaultTheme.maxPopupWidth = self.view.frame.size.width/2;
+    defaultTheme.animationDuration = 0.65f;
+    return defaultTheme;
+}
+#pragma mark - Gesture recognizer delegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 -(void)initializeController{
     if (screenShotImagePath.length>0) {

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AgreementPopUp">
+            <rect key="frame" x="0.0" y="0.0" width="750" height="550"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dM-05-dJh" userLabel="BaseView">
+                    <rect key="frame" x="0.0" y="0.0" width="750" height="550"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtQ-LP-Hej" userLabel="NavView">
+                            <rect key="frame" x="0.0" y="0.0" width="750" height="53"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBV-qm-lyS">
+                                    <rect key="frame" x="288" y="0.0" width="175" height="53"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="175" id="HLQ-qB-vkq"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="33"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.039215686270000001" green="0.33333333329999998" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="nBV-qm-lyS" firstAttribute="centerY" secondItem="xtQ-LP-Hej" secondAttribute="centerY" id="9uM-fs-ljC"/>
+                                <constraint firstItem="nBV-qm-lyS" firstAttribute="centerX" secondItem="xtQ-LP-Hej" secondAttribute="centerX" id="Kjx-hK-VGn"/>
+                                <constraint firstItem="nBV-qm-lyS" firstAttribute="height" secondItem="xtQ-LP-Hej" secondAttribute="height" id="Qg2-uc-74w"/>
+                                <constraint firstAttribute="height" constant="53" id="RRC-Zs-kja"/>
+                            </constraints>
+                        </view>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ktQ-xc-owj" userLabel="AgreementTextView">
+                            <rect key="frame" x="8" y="61" width="734" height="481"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <mutableString key="text">Any alteration or deviation from above specs involving extra costs will be executed only upon written orders and will become an extra charge over and above the proposed price.  Our workers are fully covered by worker compensation insurance. Homeowner assumes all responsibility for damage due to breakage of any hidden fuel/utility service lines, though we will do our best to avoid such damage. Proposal is based primarily on homeowners description of problem. I fully understand and accept the transferable warranty which covers only the areas of the basement addressed. There will be no charge for service calls which are leaks in the system covered under warranty. Partial systems carry a limited warranty. Sump pumps are covered under a separate manufacturers warranty. Battery Back Up Pumps are strongly recommended to protect from pump failure and/or power loss. Even with a Battery Back Up Pump we recommend a generator to protect from extended power outages.  Installation of a Perimeter Baseboard system covers only the wall/floor perimeter.  Only the installation of a full perimeter GrateDrain system covers floor cracks. Installation DOES NOT include painting, finished carpentry, flooring, carpeting, electrical work and can not prevent condensation or window well flooding. Homeowner responsible for moving objects 4 feet away from the walls and back, water once pumped from the house. Some dust should be expected from work. Pioneer Basement recommends that all drainage systems should have a wall vapor barrier installed to ensure a sealed system that will also protect from any wall leaks. Homeowner responsible to remove + replace any finished perimeter walls in the work area prior to Pioneer Basement job starting date. Additional costs will occur if crew cannot perform the job on the schedule date because walls were not removed prior to Pioneer Basement job starting date. Payments to be made in full upon completion of job.</mutableString>
+                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="20"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ktQ-xc-owj" firstAttribute="top" secondItem="xtQ-LP-Hej" secondAttribute="bottom" constant="8" id="BYI-fm-HjD"/>
+                        <constraint firstAttribute="trailing" secondItem="xtQ-LP-Hej" secondAttribute="trailing" id="IzT-uQ-LIf"/>
+                        <constraint firstItem="xtQ-LP-Hej" firstAttribute="top" secondItem="2dM-05-dJh" secondAttribute="top" id="Jaz-Na-4mG"/>
+                        <constraint firstAttribute="trailing" secondItem="ktQ-xc-owj" secondAttribute="trailing" constant="8" id="X1p-ig-MOS"/>
+                        <constraint firstItem="xtQ-LP-Hej" firstAttribute="leading" secondItem="2dM-05-dJh" secondAttribute="leading" id="ivt-e2-arm"/>
+                        <constraint firstAttribute="bottom" secondItem="ktQ-xc-owj" secondAttribute="bottom" constant="8" id="kD9-om-1wG"/>
+                        <constraint firstItem="ktQ-xc-owj" firstAttribute="leading" secondItem="2dM-05-dJh" secondAttribute="leading" constant="8" id="rXE-tJ-wKD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2dM-05-dJh" secondAttribute="trailing" id="0ci-Zr-mMG"/>
+                <constraint firstItem="2dM-05-dJh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6gx-Jg-ff0"/>
+                <constraint firstAttribute="bottom" secondItem="2dM-05-dJh" secondAttribute="bottom" id="cLB-En-w05"/>
+                <constraint firstItem="2dM-05-dJh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rJX-zu-ej2"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="213" y="-6"/>
+        </view>
+    </objects>
+</document>

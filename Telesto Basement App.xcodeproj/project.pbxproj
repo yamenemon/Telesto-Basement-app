@@ -84,6 +84,8 @@
 		705F64EE1DF97F5A00082D55 /* passwordIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 705F64ED1DF97F5A00082D55 /* passwordIcon@2x.png */; };
 		70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */; };
 		70641E571E72AE660085FFE6 /* CustomerProposalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */; };
+		70682B231F3AFE3D00162D3E /* AgreementPopUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 70682B221F3AFE3D00162D3E /* AgreementPopUp.m */; };
+		70682B251F3AFE4F00162D3E /* AgreementPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70682B241F3AFE4F00162D3E /* AgreementPopUp.xib */; };
 		706FA6B31ECEFC4F003E7247 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B21ECEFC4F003E7247 /* Reachability.m */; };
 		706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */; };
 		70824CC41F2B800F00FE53AC /* Checklist.png in Resources */ = {isa = PBXBuildFile; fileRef = 70824CC31F2B800F00FE53AC /* Checklist.png */; };
@@ -261,6 +263,9 @@
 		70641E531E72AE660085FFE6 /* CustomerProposalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerProposalTableViewCell.h; sourceTree = "<group>"; };
 		70641E541E72AE660085FFE6 /* CustomerProposalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerProposalTableViewCell.m; sourceTree = "<group>"; };
 		70641E551E72AE660085FFE6 /* CustomerProposalTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomerProposalTableViewCell.xib; sourceTree = "<group>"; };
+		70682B211F3AFE3D00162D3E /* AgreementPopUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementPopUp.h; sourceTree = "<group>"; };
+		70682B221F3AFE3D00162D3E /* AgreementPopUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementPopUp.m; sourceTree = "<group>"; };
+		70682B241F3AFE4F00162D3E /* AgreementPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementPopUp.xib; sourceTree = "<group>"; };
 		706FA6B11ECEFC4F003E7247 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		706FA6B21ECEFC4F003E7247 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		706FA6B41ECEFCAE003E7247 /* MTReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTReachabilityManager.h; sourceTree = "<group>"; };
@@ -719,6 +724,9 @@
 			children = (
 				7027C9C21E1D35950062EB77 /* ProposalViewController.h */,
 				7027C9C31E1D35950062EB77 /* ProposalViewController.m */,
+				70682B211F3AFE3D00162D3E /* AgreementPopUp.h */,
+				70682B221F3AFE3D00162D3E /* AgreementPopUp.m */,
+				70682B241F3AFE4F00162D3E /* AgreementPopUp.xib */,
 			);
 			name = Proposals;
 			sourceTree = "<group>";
@@ -868,6 +876,7 @@
 				70CE84281F04CED900867F91 /* Overlay.png in Resources */,
 				3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */,
 				705F05A41EDED8CE00D8B837 /* CustomVideoPopUpView.xib in Resources */,
+				70682B251F3AFE4F00162D3E /* AgreementPopUp.xib in Resources */,
 				70CAA46D1EE7DB4E00614BFB /* MediaPopUp.xib in Resources */,
 				7097799C1ED569430032F4FF /* horizentalWall@2x.png in Resources */,
 				705F05A91EDED8CE00D8B837 /* LeftNavDrawingToolsView.xib in Resources */,
@@ -977,6 +986,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BDCAB931F31FC9F00502F03 /* IQDropDownTextField.m in Sources */,
+				70682B231F3AFE3D00162D3E /* AgreementPopUp.m in Sources */,
 				7027C9C11E1D15760062EB77 /* UserProfileViewController.m in Sources */,
 				3B428ACC1DDB3E57008ADABF /* BaseViewController.m in Sources */,
 				70D44C1B1F178CE00032FAA6 /* CountryListObject.m in Sources */,
