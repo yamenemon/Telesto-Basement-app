@@ -766,7 +766,7 @@
         }
         else{
             [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Data Error!!" message:@"No Proposal Available. Create Your Own Proposal" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry!!" message:@"No Proposal Available. Make Your Own Proposal" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* ok = [UIAlertAction
                                  actionWithTitle:@"OK"
                                  style:UIAlertActionStyleDefault
@@ -784,7 +784,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Error: %@", error);
         [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Proposal Not Loaded" message:@"Reload?!!!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Proposal Not Loaded" message:@"Reload The Screen." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* ok = [UIAlertAction
                              actionWithTitle:@"OK"
                              style:UIAlertActionStyleDefault

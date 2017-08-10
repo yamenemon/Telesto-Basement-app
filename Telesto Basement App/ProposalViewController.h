@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <CNPPopupController.h>
 #import "AgreementPopUp.h"
-#import "ProposalPdfView.h"
+#import "SignaturePopUpView.h"
+#import <MessageUI/MessageUI.h>
+
 @class DesignViewController;
 @class ShowPriceTableViewCell;
-@interface ProposalViewController : UIViewController <UITextViewDelegate,UIGestureRecognizerDelegate,CNPPopupControllerDelegate>{
+@interface ProposalViewController : UIViewController <UITextViewDelegate,UIGestureRecognizerDelegate,CNPPopupControllerDelegate,MFMailComposeViewControllerDelegate>{
 
     CNPPopupController *popupController;
 }
@@ -25,4 +27,6 @@
 @property (strong, nonatomic) ShowPriceTableViewCell *showPriceTableCell;
 @property (weak, nonatomic) IBOutlet UIImageView *floorPlanImageView;
 @property (weak, nonatomic) IBOutlet UITableView *priceTable;
+-(void)removePopUpView;
+-(void)showEmailComposerWithPdfPath:(NSString*)composerString;
 @end

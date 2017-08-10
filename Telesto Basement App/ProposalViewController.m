@@ -149,10 +149,10 @@
         cell.discountPriceTextField.hidden = YES;
         cell.editBtn.hidden = YES;
         
-        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:20]];
+        [cell.totalPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:15]];
         cell.totalPrice.textAlignment = NSTextAlignmentCenter;
         
-        [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:20]];
+        [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:15]];
         cell.quantityxPrice.textAlignment = NSTextAlignmentCenter;
         
         cell.totalPrice.text = [NSString stringWithFormat:@"$ %d",summation];
@@ -244,39 +244,109 @@
     UIImage*priceImage = [self takingScreenShot];
     [totalArray addObject:priceImage];
     
-    
-
-    
-    NSString *fileName = [self createPdfWithName:@"FaqImageScreenShot" array:totalArray];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self loadPdf:fileName];
-    });
-}
-- (NSString *)createPdfWithName: (NSString *)name array:(NSArray*)images {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docspath = [paths objectAtIndex:0];
-    NSString *pdfFileName = [docspath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.pdf",name]];
-    NSLog(@"pdf file name: %@",pdfFileName);
-    UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);
-    for (int index = 0; index <[images count] ; index++) {
-        UIImage *pngImage=[images objectAtIndex:index];;
-//        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height)), nil);
-        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height)), nil);
-        
-        [pngImage drawInRect:CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height))];
-    }
-    UIGraphicsEndPDFContext();
-    return pdfFileName;
-}
-
-- (void)loadPdf:(NSString*)fileName {
-    //DO SOMTHING
-    ProposalPdfView *pdfViewer = [[[NSBundle mainBundle] loadNibNamed:@"ProposalPdfView" owner:self options:nil] objectAtIndex:0];
-    [pdfViewer showPdfInView:fileName];
-    popupController = [[CNPPopupController alloc] initWithContents:@[pdfViewer]];
+    SignaturePopUpView *signaturePopUpView = [[[NSBundle mainBundle] loadNibNamed:@"SignaturePopUpView" owner:self options:nil] objectAtIndex:0];
+    [signaturePopUpView pdfCreation:totalArray];
+    signaturePopUpView.baseController = self;
+    popupController = [[CNPPopupController alloc] initWithContents:@[signaturePopUpView]];
     popupController.theme = [self defaultTheme];
     popupController.theme.popupStyle = CNPPopupStyleCentered;
     popupController.delegate = self;
     [popupController presentPopupControllerAnimated:YES];
+    
+    
+}
+-(void)removePopUpView{
+    [popupController dismissPopupControllerAnimated:YES];
+}
+-(void)showEmailComposerWithPdfPath:(NSString*)pathString{
+//    if ([MFMailComposeViewController canSendMail]) {
+//        NSString *emailTitle =  @"Telesto Email";
+//        
+//        NSString *messageBody = @"Hi ! \n Below I send you the proposal pdf.";
+//        
+//        NSArray *toRecipents = [NSArray arrayWithObject:@"emon.ioscsm@gmail.com"];
+//        
+//        NSData *myData = [NSData dataWithContentsOfFile: pathString];
+//        
+//        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+//        
+//        mc.mailComposeDelegate = self;
+//        [mc setSubject:emailTitle];
+//        [mc setMessageBody:messageBody isHTML:NO];
+//        [mc addAttachmentData:myData mimeType:@"application/pdf" fileName:@"Proposal.pdf"];
+//        [mc setToRecipients:toRecipents];
+//        [self presentViewController:mc animated:YES completion:NULL];
+//        
+//        
+//    }
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        
+        mailer.mailComposeDelegate = self;
+        
+        [mailer setSubject:@"Email From Telestho Application"];
+        
+        NSArray *toRecipients = [NSArray arrayWithObjects:@"emon.ioscsm@gmail.com", nil];
+        [mailer setToRecipients:toRecipients];
+        
+        
+        NSData *pdfData = [NSData dataWithContentsOfFile: pathString];
+        
+        [mailer addAttachmentData:pdfData mimeType:@"application/pdf" fileName:@"Proposal.pdf"];
+
+        
+        NSString *messageBody = @"Hi ! \n Below I send you the proposal pdf.";
+        
+        [mailer setMessageBody:messageBody isHTML:NO];
+        
+        [self presentViewController:mailer animated:YES completion:NULL];
+        
+    }
+    else
+    {
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Error!!!"
+                                      message:@"Mailbox is not configured."
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"Ok"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+        [alert addAction:ok];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+
+}
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    
+    // Remove the mail view
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)sendToOffice:(id)sender {
 }
 @end

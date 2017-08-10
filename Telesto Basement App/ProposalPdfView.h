@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class SignaturePopUpView;
 @interface ProposalPdfView : UIView
+@property (strong, nonatomic) SignaturePopUpView *baseView;
 @property (weak, nonatomic) IBOutlet UIWebView *pdfViewer;
 -(void)showPdfInView:(NSString*)filePath;
 @end

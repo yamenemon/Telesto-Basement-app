@@ -7,9 +7,9 @@
 //
 
 #import "ProposalPdfView.h"
-
+#import "SignaturePopUpView.h"
 @implementation ProposalPdfView
-@synthesize pdfViewer;
+@synthesize pdfViewer,baseView;
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -25,5 +25,8 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
     [self.pdfViewer loadRequest:request];
     self.pdfViewer.backgroundColor = [UIColor whiteColor];
+}
+- (IBAction)doneBtnClicked:(id)sender {
+    [baseView removePopOver];
 }
 @end

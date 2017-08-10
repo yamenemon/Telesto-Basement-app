@@ -26,18 +26,35 @@
                             <rect key="frame" x="0.0" y="0.0" width="850" height="64"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Proposal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGb-rf-CSS">
-                                    <rect key="frame" x="0.0" y="0.0" width="850" height="64"/>
+                                    <rect key="frame" x="347" y="0.0" width="156.5" height="64"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="39"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aF7-eP-hRB">
+                                    <rect key="frame" x="705" y="11" width="137" height="42"/>
+                                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="137" id="TuW-jd-GZ1"/>
+                                        <constraint firstAttribute="height" constant="42" id="vBx-gT-i16"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                    <state key="normal" title="Done">
+                                        <color key="titleColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="doneBtnClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Awg-Fg-pCr"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.039215686270000001" green="0.33333333329999998" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="IGb-rf-CSS" secondAttribute="bottom" id="1uE-xR-L9L"/>
-                                <constraint firstAttribute="trailing" secondItem="IGb-rf-CSS" secondAttribute="trailing" id="KvT-6V-znh"/>
-                                <constraint firstItem="IGb-rf-CSS" firstAttribute="top" secondItem="jns-ZM-O4N" secondAttribute="top" id="bDY-rA-8Pg"/>
-                                <constraint firstItem="IGb-rf-CSS" firstAttribute="leading" secondItem="jns-ZM-O4N" secondAttribute="leading" id="uRO-TA-5UB"/>
+                                <constraint firstItem="IGb-rf-CSS" firstAttribute="centerY" secondItem="jns-ZM-O4N" secondAttribute="centerY" id="Dau-sD-njM"/>
+                                <constraint firstAttribute="trailing" secondItem="aF7-eP-hRB" secondAttribute="trailing" constant="8" id="NXA-Lb-TkW"/>
+                                <constraint firstAttribute="bottom" secondItem="aF7-eP-hRB" secondAttribute="bottom" constant="11" id="Tft-DD-iVJ"/>
+                                <constraint firstItem="IGb-rf-CSS" firstAttribute="height" secondItem="jns-ZM-O4N" secondAttribute="height" id="VuL-N5-ujm"/>
+                                <constraint firstItem="IGb-rf-CSS" firstAttribute="centerX" secondItem="jns-ZM-O4N" secondAttribute="centerX" id="tku-Aq-RJX"/>
+                                <constraint firstItem="aF7-eP-hRB" firstAttribute="top" secondItem="jns-ZM-O4N" secondAttribute="top" constant="11" id="zaB-6d-tTo"/>
                             </constraints>
                         </view>
                         <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i61-7V-2av">
