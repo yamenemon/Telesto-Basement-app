@@ -23,6 +23,7 @@
 @class CustomTemplateObject;
 @class CustomerProposalsViewController;
 @class CustomerProposalObject;
+@class ProposalViewController;
 
 @interface CustomerDataManager : NSObject
 @property (strong,nonatomic) NSMutableArray *templateObjectArray;
@@ -62,4 +63,6 @@
 -(void)getCustomerProposalsWithCustomerId:(int)customerId withBaseController:(CustomerProposalsViewController*)baseController withCompletionBlock:(void (^)(BOOL success))completionBlock;
 
 -(void)loadingStoredMediaWithFolderTag:(int)folderTag withPath:(NSString*)path withMediaURL:(id)imageURL withCompletionBlock:(void (^)(BOOL success))completionBlock;
+
+-(void)savingUserPDFWithBaseController:(ProposalViewController*)baseController withObjects:(NSMutableDictionary*)templateDictionary withCompletionBlock:(void (^)(BOOL success))completionBlock;
 @end

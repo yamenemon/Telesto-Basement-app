@@ -15,6 +15,8 @@
 #import "CustomTemplateObject.h"
 #import "CustomerProposalsViewController.h"
 #import "CustomerProposalObject.h"
+#import "ProposalViewController.h"
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
@@ -909,6 +911,46 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [imageData writeToFile:savedImagePath atomically:YES];
     });
+}
+#pragma mark Saving User Sign and ProposalPDF -
+
+-(void)savingUserPDFWithBaseController:(ProposalViewController*)baseController withObjects:(NSMutableDictionary*)templateDictionary withCompletionBlock:(void (^)(BOOL success))completionBlock{
+
+    NSLog(@"%@",templateDictionary);
+    /*
+     end point : save_custom_template
+     Method : post
+     POST KEY : authKey,custom_template_id,custom_template_name, screenshot,
+     Optional : default_template_id
+     */
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"save_custom_template";
+    
+    NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                          TOKEN_STRING,AUTH_KEY,
+                                          [templateDictionary valueForKey:@"templateId"],@"custom_template_id",
+                                          [templateDictionary valueForKey:@"templateName"],@"custom_template_name",
+                                          [templateDictionary valueForKey:@"pdfFile"],@"pdfFile",
+                                          nil];
+    
+    NSLog(@"Dictionary of Parameter: %@",aParameterDic);
+    UIImage *screenShot = [templateDictionary valueForKey:@"image"];
+    NSData* imageData = UIImagePNGRepresentation(screenShot);
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData name:@"screenshot" fileName:@"screenshot.jpg" mimeType:@"image/jpg"];
+    } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+        NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+        completionBlock(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        completionBlock(NO);
+    }];
+
 }
 
 @end

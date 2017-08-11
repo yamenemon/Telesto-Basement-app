@@ -18,7 +18,7 @@
 @end
 
 @implementation ProposalViewController
-@synthesize agreementTextView,floorPlanImageView,screenShotImagePath,baseController,productArr,downloadedProduct,priceListArray,showPriceTableCell;
+@synthesize agreementTextView,floorPlanImageView,screenShotImagePath,baseController,productArr,downloadedProduct,priceListArray,showPriceTableCell,pdfPath,screenShotArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -259,26 +259,7 @@
     [popupController dismissPopupControllerAnimated:YES];
 }
 -(void)showEmailComposerWithPdfPath:(NSString*)pathString{
-//    if ([MFMailComposeViewController canSendMail]) {
-//        NSString *emailTitle =  @"Telesto Email";
-//        
-//        NSString *messageBody = @"Hi ! \n Below I send you the proposal pdf.";
-//        
-//        NSArray *toRecipents = [NSArray arrayWithObject:@"emon.ioscsm@gmail.com"];
-//        
-//        NSData *myData = [NSData dataWithContentsOfFile: pathString];
-//        
-//        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-//        
-//        mc.mailComposeDelegate = self;
-//        [mc setSubject:emailTitle];
-//        [mc setMessageBody:messageBody isHTML:NO];
-//        [mc addAttachmentData:myData mimeType:@"application/pdf" fileName:@"Proposal.pdf"];
-//        [mc setToRecipients:toRecipents];
-//        [self presentViewController:mc animated:YES completion:NULL];
-//        
-//        
-//    }
+
     if ([MFMailComposeViewController canSendMail])
     {
         MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
@@ -345,7 +326,32 @@
     }
     
     // Remove the mail view
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"%ld",(long)result);
+        
+        NSLog(@"%d", baseController.currentActiveTemplateID);
+        NSLog(@"%@", baseController.templateNameString);
+        NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
+
+        NSMutableDictionary *templateDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:baseController.currentActiveTemplateID],@"templateId",
+                                            baseController.templateNameString,@"templateName",
+                                            [screenShotArray lastObject],@"image",
+                                            pdfData,@"pdfFile",nil];
+        
+        CustomerDataManager *manager = [CustomerDataManager sharedManager];
+        [manager savingUserPDFWithBaseController:self withObjects:templateDic withCompletionBlock:^(BOOL success){
+            if (success) {
+                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                CustomerListViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerListViewController"];
+                vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            else{
+                NSLog(@"Not saved");
+            }
+        
+        }];
+    }];
 }
 - (IBAction)sendToOffice:(id)sender {
 }

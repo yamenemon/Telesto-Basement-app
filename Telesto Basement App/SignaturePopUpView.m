@@ -52,9 +52,7 @@
     UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);
     for (int index = 0; index <[images count] ; index++) {
         UIImage *pngImage=[images objectAtIndex:index];;
-        //        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height)), nil);
         UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height)), nil);
-        
         [pngImage drawInRect:CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height))];
     }
     UIGraphicsEndPDFContext();
@@ -100,7 +98,8 @@
     [baseController removePopUpView];
     [imageArr addObject:[self takingScreenShot]];
     pdfFileNamePaths = [self createPdfWithName:@"FaqImageScreenShot" array:imageArr];
-
+    baseController.pdfPath = pdfFileNamePaths;
+    baseController.screenShotArray = imageArr;
     dispatch_async(dispatch_get_main_queue(), ^{
         [self loadPdf:pdfFileNamePaths];
     });
@@ -113,22 +112,5 @@
     UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return capturedImage;
-}
-- (IBAction)dateBtnAction:(id)sender {
-    ActionSheetDatePicker *datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"Select a time"
-                                                                      datePickerMode:UIDatePickerModeDate
-                                                                        selectedDate:[NSDate date]
-                                                                              target:self
-                                                                              action:@selector(changeCancellationField:)
-                                                                              origin:sender
-                                                                        cancelAction:@selector(datePickerCancelled:)];
-    [datePicker showActionSheetPicker];
-
-}
--(void)changeCancellationField:(ActionSheetDatePicker*)picker{
-    
-}
--(void)datePickerCancelled:(ActionSheetDatePicker*)picker{
-
 }
 @end

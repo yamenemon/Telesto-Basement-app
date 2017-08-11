@@ -11,6 +11,7 @@
 #import "AgreementPopUp.h"
 #import "SignaturePopUpView.h"
 #import <MessageUI/MessageUI.h>
+#import "CustomerListViewController.h"
 
 @class DesignViewController;
 @class ShowPriceTableViewCell;
@@ -18,6 +19,8 @@
 
     CNPPopupController *popupController;
 }
+@property (strong,nonatomic) NSMutableArray* screenShotArray;
+@property (strong,nonatomic) NSString *pdfPath;
 @property (strong,nonatomic) NSMutableArray *priceListArray;
 @property (strong,nonatomic) NSMutableArray *downloadedProduct;
 @property (strong,nonatomic) NSMutableArray *productArr;
