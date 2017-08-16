@@ -372,9 +372,23 @@
 - (IBAction)saveBtnAction:(id)sender {
     [self createCustomer];
 }
+-(BOOL)IsInternet
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
 -(void)createCustomer{
-    if ([MTReachabilityManager isReachable]) {
-        if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count == _galleryItems.count) {
+    BOOL newtworkAvailable = [self IsInternet];
+    if ( newtworkAvailable == YES) {
+        if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count == _galleryItems.count && [[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count>0) {
 
         dispatch_async(dispatch_get_main_queue(), ^{
             //Update the progress view
@@ -419,25 +433,27 @@
         detailInfoObject.buildingImages = [[CustomerDataManager sharedManager] uploadedBuildingMediaArray];
         [manager validateObjects:detailInfoObject withRootController:self withCompletionBlock:^{
             [snapShotCollectionView reloadData];
+            [hud hideAnimated:YES];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         }];
         }
         else{
-            NSLog(@"Media image not uploaded yet");
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uploading Error" message:@"Upload Media file first!!!" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* ok = [UIAlertAction
-                                 actionWithTitle:@"OK"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                     
-                                 }];
-            [alert addAction:ok];
-            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
-            [self presentViewController:alert animated:YES completion:nil];
+                [hud hideAnimated:YES];
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                NSLog(@"Media image not uploaded yet");
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uploading Error" message:@"Upload Media file first!!!" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* ok = [UIAlertAction
+                                     actionWithTitle:@"OK"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+                [alert addAction:ok];
+                [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+                [self presentViewController:alert animated:YES completion:nil];
         }
-    }
-    else{
     }
 }
 #pragma mark - CLLocationManagerDelegate
@@ -544,7 +560,20 @@
         [snapShotCollectionView reloadData];
         [hud hideAnimated:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-
+        if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count>0) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Media Uploaded" message:@"Now Save user information." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            [alert addAction:ok];
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     }];
 }
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker

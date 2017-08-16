@@ -37,6 +37,9 @@
 
     return _sharedManager;
 }
+- (BOOL)connected {
+    return [AFNetworkReachabilityManager sharedManager].reachable;
+}
 -(void)createCustomer:(CustomerDetailInfoObject*)objects withCompletionBlock:(void (^)(void))completionBlock{
 
     if (uploadedBuildingMediaArray.count>0) {
@@ -536,6 +539,10 @@
     return path;
 }
 -(NSMutableArray*)getProductObjectArray{
+    
+    return productObjectArray;
+}
+-(NSMutableArray*)loadingProductObjectArray{
     if (productObjectArray.count==0) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -543,7 +550,7 @@
         
         productObjectArray = [NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
     }
-
+    
     return productObjectArray;
 }
 #pragma mark -

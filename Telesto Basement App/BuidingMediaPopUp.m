@@ -39,11 +39,28 @@
 - (IBAction)deleteItem:(id)sender {
     if (self.carousel.numberOfItems > 0)
     {
-        NSInteger index = self.carousel.currentItemIndex;
-        [self.items removeObjectAtIndex:(NSUInteger)index];
-        [self.carousel removeItemAtIndex:index animated:YES];
-        _customerRecordController.galleryItems = self.items;
-        [_customerRecordController.snapShotCollectionView reloadData];
+        if (self.carousel.numberOfItems == 1) {
+            [_customerRecordController.popupController dismissPopupControllerAnimated:YES];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry!!" message:@"At least one building media should be there." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                     actionWithTitle:@"OK"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+            [alert addAction:ok];
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+        }
+        else{
+            NSInteger index = self.carousel.currentItemIndex;
+            [self.items removeObjectAtIndex:(NSUInteger)index];
+            [self.carousel removeItemAtIndex:index animated:YES];
+            _customerRecordController.galleryItems = self.items;
+            [_customerRecordController.snapShotCollectionView reloadData];
+        }
     }
 }
 #pragma mark -

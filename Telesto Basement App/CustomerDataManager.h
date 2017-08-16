@@ -37,6 +37,7 @@
 @property (strong,nonatomic) CustomerRecordViewController *baseController;
 
 + (CustomerDataManager *)sharedManager;
+- (BOOL)connected;
 -(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock;
 -(NSMutableArray*)uploadedBuildingMediaArray;
@@ -45,6 +46,7 @@
 -(NSMutableArray*)getCountryListArray;
 -(NSMutableArray*)getTemplateObjectArray;
 -(NSMutableArray*)getProductObjectArray;
+-(NSMutableArray*)loadingProductObjectArray;
 -(NSMutableArray*)getdownloadedProposalObject;
 -(NSMutableArray*)loadCountryListWithCompletionBlock:(void (^)(void))completionBlock;
 -(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;

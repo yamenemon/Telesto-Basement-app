@@ -46,32 +46,49 @@
     
      [customerDataManager getCustomerListWithBaseController:self withCompletionBlock:^(BOOL success){
          _customerInfoDic = [customerDataManager getCustomerData];
-         for (NSMutableDictionary *dic in _customerInfoDic) {
-             
-             CustomerInfoObject *customerInfoObj = [[CustomerInfoObject alloc] init];
-             customerInfoObj.customerName = [NSString stringWithFormat:@"%@ %@",[dic valueForKey:@"fName"],[dic valueForKey:@"lName"]] ;
-             customerInfoObj.customerAddress = [dic valueForKey:@"address"];
-             customerInfoObj.scheduleDate = [dic valueForKey:@"created"];
-             customerInfoObj.customerId = [dic valueForKey:@"id"];
-             customerInfoObj.customerFirstName = [dic valueForKey:@"fName"];
-             customerInfoObj.customerLastName = [dic valueForKey:@"lName"];
-             customerInfoObj.customerCityName = [dic valueForKey:@"city"];
-             customerInfoObj.customerStateName = [dic valueForKey:@"state"];
-             customerInfoObj.customerZipName = [dic valueForKey:@"zip"];
-             customerInfoObj.customerCountryName = [[dic valueForKey:@"countryId"] stringValue];
-             customerInfoObj.emailNotification = [dic valueForKey:@"emailNotify"];
-             customerInfoObj.customerEmailAddress = [dic valueForKey:@"email"];
-             customerInfoObj.smsReminder = [dic valueForKey:@"smsNotify"];
-             customerInfoObj.customerPhoneNumber = [dic valueForKey:@"phone"];
-             customerInfoObj.customerNotes = [dic valueForKey:@"details"];
-             customerInfoObj.customerOtherImageDic = [dic valueForKey:@"photo"];
-             customerInfoObj.buildingImages = [dic valueForKey:@""];
-             customerInfoObj.latitude = [dic valueForKey:@"latitude"];
-             customerInfoObj.longitude = [dic valueForKey:@"longitude"];
-             [_customerInfoObjArray addObject:customerInfoObj];
+         if (_customerInfoDic.count>0) {
+             for (NSMutableDictionary *dic in _customerInfoDic) {
+                 
+                 CustomerInfoObject *customerInfoObj = [[CustomerInfoObject alloc] init];
+                 customerInfoObj.customerName = [NSString stringWithFormat:@"%@ %@",[dic valueForKey:@"fName"],[dic valueForKey:@"lName"]] ;
+                 customerInfoObj.customerAddress = [dic valueForKey:@"address"];
+                 customerInfoObj.scheduleDate = [dic valueForKey:@"created"];
+                 customerInfoObj.customerId = [dic valueForKey:@"id"];
+                 customerInfoObj.customerFirstName = [dic valueForKey:@"fName"];
+                 customerInfoObj.customerLastName = [dic valueForKey:@"lName"];
+                 customerInfoObj.customerCityName = [dic valueForKey:@"city"];
+                 customerInfoObj.customerStateName = [dic valueForKey:@"state"];
+                 customerInfoObj.customerZipName = [dic valueForKey:@"zip"];
+                 customerInfoObj.customerCountryName = [[dic valueForKey:@"countryId"] stringValue];
+                 customerInfoObj.emailNotification = [dic valueForKey:@"emailNotify"];
+                 customerInfoObj.customerEmailAddress = [dic valueForKey:@"email"];
+                 customerInfoObj.smsReminder = [dic valueForKey:@"smsNotify"];
+                 customerInfoObj.customerPhoneNumber = [dic valueForKey:@"phone"];
+                 customerInfoObj.customerNotes = [dic valueForKey:@"details"];
+                 customerInfoObj.customerOtherImageDic = [dic valueForKey:@"photo"];
+                 customerInfoObj.buildingImages = [dic valueForKey:@""];
+                 customerInfoObj.latitude = [dic valueForKey:@"latitude"];
+                 customerInfoObj.longitude = [dic valueForKey:@"longitude"];
+                 [_customerInfoObjArray addObject:customerInfoObj];
+             }
+             [_customerListTableView reloadData];
+             NSLog(@"Customer data: %@",_customerInfoDic);
          }
-         [_customerListTableView reloadData];
-        NSLog(@"Customer data: %@",_customerInfoDic);
+         else{
+             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Customer!!" message:@"There is no user for this user.Please create new customer from top navigation bar." preferredStyle:UIAlertControllerStyleAlert];
+             UIAlertAction* ok = [UIAlertAction
+                                  actionWithTitle:@"OK"
+                                  style:UIAlertActionStyleDefault
+                                  handler:^(UIAlertAction * action)
+                                  {
+                                      [alert dismissViewControllerAnimated:YES completion:nil];
+                                      
+                                  }];
+             [alert addAction:ok];
+             [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+             [self presentViewController:alert animated:YES completion:nil];
+         }
+         
     }];
 }
 - (void)customSetup

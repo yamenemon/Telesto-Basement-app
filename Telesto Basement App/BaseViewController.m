@@ -42,9 +42,9 @@
     if(isLoggedIn == YES) {
         NSLog(@"Show loginWindow");
         [self playBackgroundVideo];
-//        [self performSelectorOnMainThread:@selector(loadDefaulImagesAndProductImages) withObject:nil waitUntilDone:2.0];
-//        [self performSelector:@selector(loadDefaulImagesAndProductImages) withObject:nil afterDelay:2.0];
-        [self loadDefaulImagesAndProductImages];
+        if ([[CustomerDataManager sharedManager] connected] == YES) {
+            [self loadDefaulImagesAndProductImages];
+        }
     } else {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"First_Logged_in"];
         [self displayTermsAndCondition];
@@ -69,6 +69,7 @@
     });
     CustomerDataManager *dataManager = [CustomerDataManager sharedManager];
     [dataManager loadingProductImagesWithBaseController:self withCompletionBlock:^(BOOL succeeded){
+        [dataManager loadingProductObjectArray];
         if (succeeded == YES) {
             NSLog(@"Product Images loaded");
             [dataManager loadingDefaultTemplatesWithBaseController:self withCompletionBlock:^(BOOL success){\

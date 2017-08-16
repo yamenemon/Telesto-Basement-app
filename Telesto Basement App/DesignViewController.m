@@ -211,62 +211,71 @@
     //-----------------------
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     downloadedProduct = [[NSMutableArray alloc] init];
-    downloadedProduct = [[manager getProductObjectArray] objectAtIndex:0];
+    downloadedProduct = [manager getProductObjectArray];
 //    NSLog(@"%@",downloadedProduct);
 }
 -(void)createProductScroller{
-    int y = 0;
-    CGRect frame;
-    productNameArray = [[NSMutableArray alloc] init];
-    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    for (int i = 0; i < downloadedProduct.count-1; i++) {
-        
-        Product *proObj = [downloadedProduct objectAtIndex:i];
-        
-        NSArray*customSliderButtonView = [[NSBundle mainBundle] loadNibNamed:@"ProductSliderCustomView" owner:self options:nil];
-        productSliderCustomView = [customSliderButtonView objectAtIndex:0];
-        productSliderCustomView.designViewController = self;
-        productSliderCustomView.backgroundColor = [UIColor clearColor];
-
-        if (i == 0) {
-            frame = CGRectMake(0,
-                               5,
-                               self.productSliderScrollView.frame.size.width,
-                               self.productSliderCustomView.frame.size.height);
-        } else {
-            frame = CGRectMake(0,
-                               (i * productSliderCustomView.frame.size.height) + 10,
-                               self.productSliderScrollView.frame.size.width,
-                               productSliderCustomView.frame.size.height);
-        }
     
-        productSliderCustomView.frame = frame;
-        [productSliderCustomView setNeedsLayout];
-        [productSliderCustomView.productBtn setTag:i+1];
-        NSString *imageUrl = [manager loadProductImageWithImageName:proObj.productName];
-//        NSLog(@"Product image url: %@",imageUrl);
-
-        [productSliderCustomView.productBtn setBackgroundImage:[UIImage imageNamed:imageUrl] forState:UIControlStateNormal];
-        [productSliderCustomView.productBtn addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self.productSliderScrollView addSubview:productSliderCustomView];
-        
-        if (i == downloadedProduct.count-2) {
-            y = CGRectGetMaxY(productSliderCustomView.frame);
+    if (downloadedProduct.count>0) {
+        int y = 0;
+        CGRect frame;
+        productNameArray = [[NSMutableArray alloc] init];
+        CustomerDataManager *manager = [CustomerDataManager sharedManager];
+        for (int i = 0; i < downloadedProduct.count-1; i++) {
+            
+            Product *proObj = [downloadedProduct objectAtIndex:i];
+            
+            NSArray*customSliderButtonView = [[NSBundle mainBundle] loadNibNamed:@"ProductSliderCustomView" owner:self options:nil];
+            productSliderCustomView = [customSliderButtonView objectAtIndex:0];
+            productSliderCustomView.designViewController = self;
+            productSliderCustomView.backgroundColor = [UIColor clearColor];
+            
+            if (i == 0) {
+                frame = CGRectMake(0,
+                                   5,
+                                   self.productSliderScrollView.frame.size.width,
+                                   self.productSliderCustomView.frame.size.height);
+            } else {
+                frame = CGRectMake(0,
+                                   (i * productSliderCustomView.frame.size.height) + 10,
+                                   self.productSliderScrollView.frame.size.width,
+                                   productSliderCustomView.frame.size.height);
+            }
+            
+            productSliderCustomView.frame = frame;
+            [productSliderCustomView setNeedsLayout];
+            [productSliderCustomView.productBtn setTag:i+1];
+            NSString *imageUrl = [manager loadProductImageWithImageName:proObj.productName];
+            //        NSLog(@"Product image url: %@",imageUrl);
+            
+            [productSliderCustomView.productBtn setBackgroundImage:[UIImage imageNamed:imageUrl] forState:UIControlStateNormal];
+            [productSliderCustomView.productBtn addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [self.productSliderScrollView addSubview:productSliderCustomView];
+            
+            if (i == downloadedProduct.count-2) {
+                y = CGRectGetMaxY(productSliderCustomView.frame);
+            }
+            productSliderCustomView.productName.text = [NSString stringWithFormat:@"%@",proObj.productName];
+            [productNameArray addObject:proObj.productName];
         }
-        productSliderCustomView.productName.text = [NSString stringWithFormat:@"%@",proObj.productName];
-        [productNameArray addObject:proObj.productName];
+        
+        self.productSliderScrollView.contentSize = CGSizeMake(self.productSliderScrollView.frame.size.width,y);
+        self.productSliderScrollView.backgroundColor = [UIColorFromRGB(0x0A5A78) colorWithAlphaComponent:0.3]; ;
+        [productSliderView addSubview:self.productSliderScrollView];
+        productSliderView.hidden = NO;
+        
+        _productInWindowArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i< downloadedProduct.count; i++) {
+            Product *product = (Product*)[downloadedProduct objectAtIndex:i];
+            [_productInWindowArray addObject:[NSNumber numberWithInt:product.productId]];
+        }
+    }
+    else{
+        CustomerDataManager *manager = [CustomerDataManager sharedManager];
+        downloadedProduct = [manager getProductObjectArray];
+        [self createProductScroller];
     }
     
-    self.productSliderScrollView.contentSize = CGSizeMake(self.productSliderScrollView.frame.size.width,y);
-    self.productSliderScrollView.backgroundColor = [UIColorFromRGB(0x0A5A78) colorWithAlphaComponent:0.3]; ;
-    [productSliderView addSubview:self.productSliderScrollView];
-    productSliderView.hidden = NO;
-    
-    _productInWindowArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i< downloadedProduct.count; i++) {
-        Product *product = (Product*)[downloadedProduct objectAtIndex:i];
-        [_productInWindowArray addObject:[NSNumber numberWithInt:product.productId]];
-    }
 }
 -(void)showProductDetailsPopUp:(int)btnTag{
     
