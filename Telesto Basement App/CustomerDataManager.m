@@ -40,6 +40,76 @@
 - (BOOL)connected {
     return [AFNetworkReachabilityManager sharedManager].reachable;
 }
+-(void)createCustomerAfterEditing:(CustomerDetailInfoObject*)objects withCompletionBlock:(void (^)(void))completionBlock{
+    
+    if (uploadedBuildingMediaArray.count>0) {
+        NSString *endPoint = @"edit_customer";
+        NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                               [NSNumber numberWithLong:objects.customerId],@"customerId",
+                                               objects.customerFirstName,@"fName",
+                                               objects.customerLastName,@"lName",
+                                               objects.customerStreetAddress,@"address",
+                                               objects.customerCityName,@"city",
+                                               objects.customerStateName,@"state",
+                                               objects.customerZipName,@"zip",
+                                               objects.customerCountryName,@"countryId",
+                                               objects.customerEmailAddress,@"email",
+                                               objects.customerNotes,@"details",
+                                               objects.customerPhoneNumber,@"phone",
+                                               objects.latitude,@"latitude",
+                                               objects.longitude,@"longitude",
+                                               [NSNumber numberWithBool:objects.smsReminder],@"smsNotify",
+                                               [NSNumber numberWithBool:objects.emailNotification],@"emailNotify",
+                                               [NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",
+                                               TOKEN_STRING,@"authKey",
+                                               uploadedBuildingMediaArray,@"buildingImages",
+                                               nil];
+        NSLog(@"Parameter: %@\n",aParametersDic);
+        NSData *imageData;
+        if([objects.customerOtherImageDic count] > 0) {
+            for (int i=0; i<objects.customerOtherImageDic.count; i++) {
+                UIImage* image = [objects.customerOtherImageDic valueForKey:@"pp"];
+                imageData = UIImagePNGRepresentation(image);
+            }
+        }
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParametersDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFileData:imageData name:@"photo" fileName:@"profile_photo.jpg" mimeType:@"image/jpg"];
+        } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"Response: %@", responseObject);
+            NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            [_baseController.hud hideAnimated:YES];
+            [_baseController rootControllerBack];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"Error: %@", error);
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            [_baseController.hud hideAnimated:YES];
+        }];
+        
+        
+        completionBlock();
+    }
+    else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Upload Error" message:@"Upload minimum One building image" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        [alert addAction:ok];
+        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+        completionBlock();
+    }
+    
+}
 -(void)createCustomer:(CustomerDetailInfoObject*)objects withCompletionBlock:(void (^)(void))completionBlock{
 
     if (uploadedBuildingMediaArray.count>0) {
@@ -107,11 +177,47 @@
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
         completionBlock();
     }
-    
+}
+
+-(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withAfterEditing:(BOOL)isEditing withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
+
+    _baseController = rootController;
+    BOOL isValidEmail = [Utility NSStringIsValidEmail:objects.customerEmailAddress];
+    if (isValidEmail==YES) {
+        if (isEditing == YES) {
+            [self createCustomerAfterEditing:objects withCompletionBlock:^{
+                completionBlock(YES);
+            }];
+        }
+        else{
+            [self createCustomer:objects withCompletionBlock:^{
+                completionBlock(YES);
+            }];
+        }
+        
+    }
+    else{
+//        [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow.rootViewController.view animated:YES];
+//        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uploading Error" message:@"Email is not correct!!!" preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction* ok = [UIAlertAction
+//                             actionWithTitle:@"OK"
+//                             style:UIAlertActionStyleDefault
+//                             handler:^(UIAlertAction * action)
+//                             {
+//                                 [alert dismissViewControllerAnimated:YES completion:nil];
+//                                 
+//                             }];
+//        [alert addAction:ok];
+//        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+//        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+        completionBlock(NO);
+
+    }
 }
 
 -(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withCompletionBlock:(void (^)(void))completionBlock{
-
+    
     _baseController = rootController;
     BOOL isValidEmail = [Utility NSStringIsValidEmail:objects.customerEmailAddress];
     if (isValidEmail==YES) {

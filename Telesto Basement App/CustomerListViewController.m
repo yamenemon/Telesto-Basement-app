@@ -26,11 +26,12 @@
     [super viewDidLoad];
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundColor:[Utility colorWithHexString:@"0A5571"]];
-    customerDataManager = [CustomerDataManager sharedManager];
-    _customerInfoObjArray = [[NSMutableArray alloc] init];
+
     
 }
 -(void)viewWillAppear:(BOOL)animated{
+    customerDataManager = [CustomerDataManager sharedManager];
+    _customerInfoObjArray = [[NSMutableArray alloc] init];
     [self customSetup];
     [self getCustomerData];
 }

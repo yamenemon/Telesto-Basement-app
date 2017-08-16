@@ -36,13 +36,26 @@
 -(void)viewDidAppear:(BOOL)animated{
     [self showingTermsAndConditionScreen];
 }
+-(BOOL)IsInternet
+{
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
 -(void)showingTermsAndConditionScreen{
     
     BOOL isLoggedIn = [[NSUserDefaults standardUserDefaults] boolForKey:@"First_Logged_in"];
     if(isLoggedIn == YES) {
         NSLog(@"Show loginWindow");
         [self playBackgroundVideo];
-        if ([[CustomerDataManager sharedManager] connected] == YES) {
+        if ([self IsInternet] == YES) {
             [self loadDefaulImagesAndProductImages];
         }
     } else {

@@ -38,7 +38,6 @@
 
 + (CustomerDataManager *)sharedManager;
 - (BOOL)connected;
--(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withCompletionBlock:(void (^)(void))completionBlock;
 -(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock;
 -(NSMutableArray*)uploadedBuildingMediaArray;
 -(NSMutableDictionary*)getCustomerData;
@@ -49,6 +48,9 @@
 -(NSMutableArray*)loadingProductObjectArray;
 -(NSMutableArray*)getdownloadedProposalObject;
 -(NSMutableArray*)loadCountryListWithCompletionBlock:(void (^)(void))completionBlock;
+
+-(void)validateObjects:(CustomerDetailInfoObject*)objects withRootController:(CustomerRecordViewController *)rootController withAfterEditing:(BOOL)isEditing withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
+
 -(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
 -(void)loadCustomerBuildingImagesWithCustomerId:(NSString*)customerId withCompletionBlock:(void (^)(void))completionBlock;
 -(void)loadingProductImagesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;

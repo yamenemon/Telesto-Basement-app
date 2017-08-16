@@ -35,9 +35,7 @@
     [self loadCountryList];
     [self registerForKeyboardNotifications];
     [self getCurrentLocation];
-}
--(void)viewWillAppear:(BOOL)animated{
-    [self.view endEditing:YES];
+    
     if (isFromCustomProfile == YES) {
         self.firstNameTextField.text = customerInfoObjects.customerFirstName;
         self.lastNameTextField.text = customerInfoObjects.customerLastName;
@@ -59,8 +57,11 @@
         [self.customerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"userName"]];
         
         [self loadCustomerBuildingImages:customerInfoObjects];
-        
     }
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self.view endEditing:YES];
+    
 }
 -(void)viewDidLayoutSubviews{
     [self loadSanpMediaContainer];
@@ -74,6 +75,19 @@
     _notesTextView.layer.borderColor = UIColorFromRGB(0xC4C6C9).CGColor;
     _notesTextView.layer.borderWidth = 0.8f;
     _notesTextView.layer.cornerRadius = 3.0f;
+    _notesTextView.placeholderText = @"Users Note Regarding creating user information";
+    
+    self.firstNameTextField.delegate = self;
+    self.lastNameTextField.delegate = self;
+    self.streetAddressTextField.delegate = self;
+    self.cityTextField.delegate = self;
+    self.stateNameTextField.delegate = self;
+    self.zipCodeTextField.delegate = self;
+    self.countryTextField.delegate = self;
+    self.emailTextField.delegate = self;
+    self.areaTextField.delegate = self;
+    self.phoneNumberTextField.delegate = self;
+    self.notesTextView.delegate = self;
 }
 -(void)loadCustomerBuildingImages:(CustomerInfoObject*)customerInfo{
     
@@ -97,7 +111,32 @@
 -(void)reloadBuildingImageCollectionView{
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     _galleryItems = [manager getDownloadedBuildingMediaArray];
-    [snapShotCollectionView reloadData];
+    NSMutableArray *arr = [NSMutableArray arrayWithArray:_galleryItems];
+    [_galleryItems removeAllObjects];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //Update the progress view
+//        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        hud.center = self.view.center;
+//        hud.mode = MBProgressHUDModeIndeterminate;
+//        NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information."];
+//        NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
+//        
+//        hud.label.text = strloadingText;
+//        hud.detailsLabel.text=strloadingText2;
+//        [hud showAnimated:YES];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    });
+    for (int i=0; i<arr.count; i++) {
+        [self loadImageInArray:arr[i] withCompletionBlock:^(BOOL success){
+            if (success == YES) {
+                [snapShotCollectionView reloadData];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            }
+        }];
+    }
+    
 }
 - (void)getCurrentLocation {
     _locationManager = [[CLLocationManager alloc] init];
@@ -106,6 +145,29 @@
     _locationManager.distanceFilter=kCLDistanceFilterNone;
     [_locationManager requestWhenInUseAuthorization];
     [_locationManager startUpdatingLocation];
+}
+-(void)loadImageInArray:(NSString*)imageUrlString withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
+    
+
+    NSURLSessionConfiguration *defaultConfigObject = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *defaultSession = [NSURLSession sessionWithConfiguration: defaultConfigObject delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    
+    NSURL *imageUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@",imageUrlString]];
+    NSLog(@"image url: %@",imageUrl);
+    NSURLSessionDataTask * dataTask =[defaultSession dataTaskWithRequest:[NSURLRequest requestWithURL:imageUrl]
+                                                       completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                           NSLog(@"Response:%@ %@\n", response, error);
+                                                           if ( !error)
+                                                           {
+                                                               UIImage *image = [[UIImage alloc] initWithData:data];
+                                                               [_galleryItems addObject:image];
+                                                               [snapShotCollectionView reloadData];
+                                                               completionBlock(YES);
+                                                           } else{
+                                                               completionBlock(NO);
+                                                           }
+                                                       }];
+    [dataTask resume];
 }
 -(void)loadSanpMediaContainer{
     UICollectionViewFlowLayout *flo = [[UICollectionViewFlowLayout alloc] init];
@@ -217,7 +279,7 @@
                                            NSLog(@"Picker: %@", picker);
                                            NSLog(@"Selected Index: %ld", (long)selectedIndex);
                                            NSLog(@"Selected Value: %@", selectedValue);
-                                           self.countryTextField.text = selectedValue;
+                                           self.countryTextField.text = [tempArr objectAtIndex:229];
                                        }
                                      cancelBlock:^(ActionSheetStringPicker *picker) {
                                          NSLog(@"Block Picker Canceled");
@@ -316,14 +378,14 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
     imageView.contentMode = UIViewContentModeScaleToFill;
     [cell addSubview:imageView];
-    if (isFromCustomProfile == YES) {
-        NSURL *imageUrl =[NSURL URLWithString:[NSString stringWithFormat:@"%@",[_galleryItems objectAtIndex:indexPath.row]]];
-        NSLog(@"building image url: %@",imageUrl);
-        [imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"userName"]];
-    }
-    else{
+//    if (isFromCustomProfile == YES) {
+//        NSURL *imageUrl =[NSURL URLWithString:[NSString stringWithFormat:@"%@",[_galleryItems objectAtIndex:indexPath.row]]];
+//        NSLog(@"building image url: %@",imageUrl);
+//        [imageView sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"userName"]];
+//    }
+//    else{
         imageView.image = [_galleryItems objectAtIndex:indexPath.row];
-    }
+//    }
     return cell;
 }
 -(void)deletePicture:(UIButton*)btn{
@@ -370,7 +432,93 @@
 #pragma mark -
 #pragma mark CREATE CUSTOMER
 - (IBAction)saveBtnAction:(id)sender {
-    [self createCustomer];
+    if (isFromCustomProfile == YES) {
+        [self createCustomerAfterEditing];
+
+    }
+    else{
+        [self createCustomer];
+
+    }
+}
+-(void)createCustomerAfterEditing{
+    BOOL newtworkAvailable = [self IsInternet];
+    if ( newtworkAvailable == YES) {
+        if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count == _galleryItems.count && [[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count>0) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //Update the progress view
+                hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.center = self.view.center;
+                hud.mode = MBProgressHUDModeIndeterminate;
+                NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information."];
+                NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
+                
+                hud.label.text = strloadingText;
+                hud.detailsLabel.text=strloadingText2;
+                [hud showAnimated:YES];
+                [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            });
+            NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
+            for (int i= 0; i<_galleryItems.count; i++) {
+                UIImage *img = [_galleryItems objectAtIndex:i];
+                [imageDic setObject:img forKey:[NSString stringWithFormat:@"%d",i]];
+            }
+            [imageDic setObject:self.customerImageView.image forKey:@"pp"];
+            
+            CustomerDataManager *manager = [CustomerDataManager sharedManager];
+            CustomerDetailInfoObject *detailInfoObject = [[CustomerDetailInfoObject alloc] init];
+            detailInfoObject.customerId = [customerInfoObjects.customerId longLongValue];
+            NSLog(@"userId : %lld",[customerInfoObjects.customerId longLongValue]);
+
+            detailInfoObject.customerFirstName = self.firstNameTextField.text;
+            detailInfoObject.customerLastName = self.lastNameTextField.text;
+            detailInfoObject.customerStreetAddress = self.streetAddressTextField.text;
+            detailInfoObject.customerCityName = self.cityTextField.text;
+            detailInfoObject.customerStateName = self.stateNameTextField.text;
+            detailInfoObject.customerZipName = self.zipCodeTextField.text;
+            detailInfoObject.customerCountryName = self.countryTextField.text;
+            detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
+            detailInfoObject.customerEmailAddress = self.emailTextField.text;
+            detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
+            detailInfoObject.customerPhoneNumber = self.phoneNumberTextField.text;
+            detailInfoObject.customerNotes = self.notesTextView.text;
+            detailInfoObject.customerOtherImageDic = imageDic;
+            detailInfoObject.latitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
+            detailInfoObject.longitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
+            detailInfoObject.emailNotification = [self.emailNotificationSwitch isOn]?YES:NO;
+            detailInfoObject.smsReminder = [self.phoneNotifySwitch isOn]?YES:NO;
+            detailInfoObject.buildingImages = [[CustomerDataManager sharedManager] uploadedBuildingMediaArray];
+            [manager validateObjects:detailInfoObject withRootController:self withAfterEditing:isFromCustomProfile withCompletionBlock:^(BOOL success){
+                if (success == YES) {
+                    [snapShotCollectionView reloadData];
+                    [hud hideAnimated:YES];
+                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                }
+                {
+                    NSLog(@"NOT SAVE IN THE SERVER AFTER EDITING");
+                }
+                
+            }];
+        }
+        else{
+            [hud hideAnimated:YES];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            NSLog(@"Media image not uploaded yet");
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uploading Error" message:@"Upload Media file first!!!" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            [alert addAction:ok];
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }
 }
 -(BOOL)IsInternet
 {
@@ -413,6 +561,7 @@
         CustomerDataManager *manager = [CustomerDataManager sharedManager];
         CustomerDetailInfoObject *detailInfoObject = [[CustomerDetailInfoObject alloc] init];
         detailInfoObject.customerId = [[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue];
+            NSLog(@"userId : %ld",[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]);
         detailInfoObject.customerFirstName = self.firstNameTextField.text;
         detailInfoObject.customerLastName = self.lastNameTextField.text;
         detailInfoObject.customerStreetAddress = self.streetAddressTextField.text;
@@ -431,10 +580,16 @@
         detailInfoObject.emailNotification = [self.emailNotificationSwitch isOn]?YES:NO;
         detailInfoObject.smsReminder = [self.phoneNotifySwitch isOn]?YES:NO;
         detailInfoObject.buildingImages = [[CustomerDataManager sharedManager] uploadedBuildingMediaArray];
-        [manager validateObjects:detailInfoObject withRootController:self withCompletionBlock:^{
-            [snapShotCollectionView reloadData];
-            [hud hideAnimated:YES];
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        [manager validateObjects:detailInfoObject withRootController:self withAfterEditing:isFromCustomProfile withCompletionBlock:^(BOOL success){
+            if (success == YES) {
+                [snapShotCollectionView reloadData];
+                [hud hideAnimated:YES];
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            }
+            else{
+                [hud hideAnimated:YES];
+                NSLog(@"NOT SAVE NEW CUSTOMER");
+            }
         }];
         }
         else{
@@ -469,6 +624,72 @@
     currentLocation = newLocation;
 
 }
+#pragma mark -
+// NOTE: This code assumes you have set the UITextField(s)'s delegate property to the object that will contain this code, because otherwise it would never be called.
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    // allow backspace
+    if (!string.length)
+    {
+        return YES;
+    }
+    
+    // Prevent invalid character input, if keyboard is numberpad
+    if (textField.keyboardType == UIKeyboardTypeNumberPad)
+    {
+        if ([string rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet].invertedSet].location != NSNotFound)
+        {
+            // BasicAlert(@"", @"This field accepts only numeric entries.");
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Character Error!!" message:@"This field accepts only numeric entries." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            [alert addAction:ok];
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            [self presentViewController:alert animated:YES completion:nil];
+            return NO;
+        }
+    }
+    
+    // verify max length has not been exceeded
+    NSString *proposedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    if (proposedText.length > 30) // 4 was chosen for SSN verification
+    {
+        // suppress the max length message only when the user is typing
+        // easy: pasted data has a length greater than 1; who copy/pastes one character?
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Character Error!!" message:@"This field accepts a maximum of 30 characters." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        [alert addAction:ok];
+        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        [self presentViewController:alert animated:YES completion:nil];
+        if (string.length > 1)
+        {
+            // BasicAlert(@"", @"This field accepts a maximum of 4 characters.");
+            
+        }
+        
+        return NO;
+    }
+    
+    // only enable the OK/submit button if they have entered all numbers for the last four of their SSN (prevents early submissions/trips to authentication server)
+//    self.answerButton.enabled = (proposedText.length == 4);
+    
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -22,6 +22,7 @@
 #import <MBProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ActionSheetStringPicker.h>
+#import "MPTextView.h"
 
 @class CustomerInfoObject;
 @class CountryListObject;
@@ -71,8 +72,8 @@ typedef NS_ENUM(NSInteger, CameraMode) {
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *areaTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *emailNotificationSwitch;
+@property (weak, nonatomic) IBOutlet MPTextView *notesTextView;
 @property (weak, nonatomic) IBOutlet UISwitch *phoneNotifySwitch;
-@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 @property (weak, nonatomic) IBOutlet UIView *snapContainer;
 
 
