@@ -61,7 +61,8 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.view endEditing:YES];
-    
+    [snapShotCollectionView reloadData];
+
 }
 -(void)viewDidLayoutSubviews{
     [self loadSanpMediaContainer];
@@ -106,6 +107,8 @@
         [hud hideAnimated:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         [self reloadBuildingImageCollectionView];
+        [snapShotCollectionView reloadData];
+
     }];
 }
 -(void)reloadBuildingImageCollectionView{
@@ -113,28 +116,47 @@
     _galleryItems = [manager getDownloadedBuildingMediaArray];
     NSMutableArray *arr = [NSMutableArray arrayWithArray:_galleryItems];
     [_galleryItems removeAllObjects];
+    __block MBProgressHUD* huds;
     dispatch_async(dispatch_get_main_queue(), ^{
-        //Update the progress view
-//        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        hud.center = self.view.center;
-//        hud.mode = MBProgressHUDModeIndeterminate;
-//        NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information."];
-//        NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
-//        
-//        hud.label.text = strloadingText;
-//        hud.detailsLabel.text=strloadingText2;
-//        [hud showAnimated:YES];
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            //Update the progress view
+            huds =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            huds.center = self.view.center;
+            huds.mode = MBProgressHUDModeIndeterminate;
+            NSString *strloadingText = [NSString stringWithFormat:@"Loading Building Medias..."];
+            huds.label.text = strloadingText;
+            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     });
+    AFHTTPSessionManager *managers = [AFHTTPSessionManager manager];
+    managers.requestSerializer = [AFHTTPRequestSerializer serializer];
+    managers.responseSerializer = [AFHTTPResponseSerializer serializer];
+    __block int count = (int)arr.count;
     for (int i=0; i<arr.count; i++) {
-        [self loadImageInArray:arr[i] withCompletionBlock:^(BOOL success){
-            if (success == YES) {
-                [snapShotCollectionView reloadData];
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+        NSString *customerBuildingImagesUrl = [NSString stringWithFormat:@"%@",arr[i]];
+        NSLog(@"Customer Url: %@",customerBuildingImagesUrl);
+        [managers GET:customerBuildingImagesUrl parameters:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
+            NSData *data = [[NSData alloc] initWithData:responseObject];
+            UIImage *image = [[UIImage alloc] initWithData:data];
+            [_galleryItems addObject:image];
+            [snapShotCollectionView reloadData];
+            count--;
+            if (count == 0) {
+                [huds hideAnimated:YES];
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                [snapShotCollectionView reloadData];
             }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"Error: %@",error);
+            _galleryItems = [NSMutableArray arrayWithArray:arr];
+            [self reloadBuildingImageCollectionView];
         }];
+
+//        [self loadImageInArray:arr[i] withCompletionBlock:^(BOOL success){
+//            if (success == YES) {
+//                [snapShotCollectionView reloadData];
+//                [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//            }
+//        }];
     }
     
 }
@@ -391,6 +413,9 @@
 -(void)deletePicture:(UIButton*)btn{
     int index = (int)btn.tag;
     [_galleryItems removeObjectAtIndex:index];
+    [snapShotCollectionView reloadData];
+}
+-(void)reloadCollectionView{
     [snapShotCollectionView reloadData];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -816,10 +841,10 @@
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     [manager loadCountryListWithCompletionBlock:^{
         if (isFromCustomProfile == YES) {
-            CustomerDataManager *manager = [CustomerDataManager sharedManager];
-            countryList = [manager getCountryListArray];
-            CountryListObject *obj = [countryList objectAtIndex:[customerInfoObjects.customerCountryName intValue]];
-            self.countryTextField.text = obj.countryName;
+//            CustomerDataManager *manager = [CustomerDataManager sharedManager];
+//            countryList = [manager getCountryListArray];
+//            CountryListObject *obj = [countryList objectAtIndex:[customerInfoObjects.customerCountryName intValue]];
+            self.countryTextField.text = @"United States";
         }
         [hud hideAnimated:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];

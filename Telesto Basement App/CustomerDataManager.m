@@ -747,7 +747,7 @@
                                               nil];
         /*Check Editing proposal or New Proposal for server store*/
         if (baseController.isFromNewProposals == NO) {
-            [aParameterDic setObject:@"type" forKey:@"update"];
+            [aParameterDic setObject:@"update" forKey:@"type"];
         }
         NSLog(@"Dictionary of Parameter: %@",aParameterDic);
         [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
@@ -1064,6 +1064,40 @@
         completionBlock(NO);
     }];
 
+}
+#pragma mark -
+-(void)removeObjectFromProposalsWhileEditing:(CustomProductView*)productView templateId:(int)templateId templateName:(NSString*)templateName withCompletionBlock:(void (^)(BOOL success))completionBlock{
+    /*
+     end point : delete_custom_template_products
+     Method : post
+     POST KEY : authKey,custom_template_id,custom_template_name,product_id,
+     */
+    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"delete_custom_template_products";
+    
+    NSMutableDictionary *aParameterDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                          TOKEN_STRING,AUTH_KEY,
+                                          [NSNumber numberWithInt:templateId],@"custom_template_id",
+                                          templateName,@"custom_template_name",
+                                          [NSNumber numberWithInt:productView.productObject.productId],@"product_id",
+                                          nil];
+    
+    NSLog(@"Dictionary of Parameter: %@",aParameterDic);
+    [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"Response: %@", responseObject);
+        NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+        [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        completionBlock(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Error: %@", error);
+        completionBlock(NO);
+        [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+    }];
+    
 }
 
 @end

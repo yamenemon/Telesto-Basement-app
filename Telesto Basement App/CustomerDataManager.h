@@ -24,6 +24,7 @@
 @class CustomerProposalsViewController;
 @class CustomerProposalObject;
 @class ProposalViewController;
+@class CustomProductView;
 
 @interface CustomerDataManager : NSObject
 @property (strong,nonatomic) NSMutableArray *templateObjectArray;
@@ -69,4 +70,6 @@
 -(void)loadingStoredMediaWithFolderTag:(int)folderTag withPath:(NSString*)path withMediaURL:(id)imageURL withCompletionBlock:(void (^)(BOOL success))completionBlock;
 
 -(void)savingUserPDFWithBaseController:(ProposalViewController*)baseController withObjects:(NSMutableDictionary*)templateDictionary withCompletionBlock:(void (^)(BOOL success))completionBlock;
+
+-(void)removeObjectFromProposalsWhileEditing:(CustomProductView*)productView templateId:(int)templateId templateName:(NSString*)templateName withCompletionBlock:(void (^)(BOOL success))completionBlock;
 @end

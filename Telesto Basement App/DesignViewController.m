@@ -211,16 +211,17 @@
     //-----------------------
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     downloadedProduct = [[NSMutableArray alloc] init];
-    downloadedProduct = [manager getProductObjectArray];
+    NSMutableArray *arr = [manager getProductObjectArray];
+    downloadedProduct = [arr objectAtIndex:0];
 //    NSLog(@"%@",downloadedProduct);
 }
 -(void)createProductScroller{
-    
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+
     if (downloadedProduct.count>0) {
         int y = 0;
         CGRect frame;
         productNameArray = [[NSMutableArray alloc] init];
-        CustomerDataManager *manager = [CustomerDataManager sharedManager];
         for (int i = 0; i < downloadedProduct.count-1; i++) {
             
             Product *proObj = [downloadedProduct objectAtIndex:i];
@@ -244,7 +245,8 @@
             
             productSliderCustomView.frame = frame;
             [productSliderCustomView setNeedsLayout];
-            [productSliderCustomView.productBtn setTag:i+1];
+            [productSliderCustomView.productBtn setTag:proObj.productId];
+            NSLog(@"Product btn tag when application loading : %d",proObj.productId);
             NSString *imageUrl = [manager loadProductImageWithImageName:proObj.productName];
             //        NSLog(@"Product image url: %@",imageUrl);
             
@@ -271,8 +273,8 @@
         }
     }
     else{
-        CustomerDataManager *manager = [CustomerDataManager sharedManager];
-        downloadedProduct = [manager getProductObjectArray];
+        NSMutableArray *arr = [manager loadingProductObjectArray];
+        downloadedProduct = [arr objectAtIndex:0];
         [self createProductScroller];
     }
     
@@ -468,6 +470,9 @@
     productView.productObject = [self updateProductObject:productView.productObject withObject:userResizableView];
     
     [productArray replaceObjectAtIndex:index withObject:productView];
+    lastEditedView = userResizableView;
+}
+- (void)userResizableViewDidBeginEditing:(SPUserResizableView *)userResizableView{
     lastEditedView = userResizableView;
 }
 -(ProductObject*)updateProductObject:(ProductObject*)oldObject withObject:(SPUserResizableView*)newObject {
@@ -1143,8 +1148,7 @@
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {
-                             [lastEditedView removeFromSuperview];
-                             [productArray removeObjectAtIndex:removeObjectIndex];
+                             
 
                              NSFileManager *fileManager = [NSFileManager defaultManager];
                              
@@ -1157,8 +1161,19 @@
                              BOOL success = [fileManager removeItemAtPath:dataPath error:&error];
                              if (success) {
                                  NSLog(@"Successfylly Deleted");
+                                 if (isFromNewProposals == NO) {
+                                     CustomerDataManager *manager = [CustomerDataManager sharedManager];
+                                     [manager removeObjectFromProposalsWhileEditing:productView templateId:currentActiveTemplateID templateName:_templateNameString withCompletionBlock:^(BOOL success){
+                                         if (success == NO) {
+                                             [lastEditedView removeFromSuperview];
+                                             [productArray removeObjectAtIndex:removeObjectIndex];
+                                         }
+                                     }];
+                                 }
                              }
                              else {
+                                 [lastEditedView removeFromSuperview];
+                                 [productArray removeObjectAtIndex:removeObjectIndex];
                                  NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
                              }
 

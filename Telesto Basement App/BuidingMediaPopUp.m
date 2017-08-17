@@ -59,7 +59,7 @@
             [self.items removeObjectAtIndex:(NSUInteger)index];
             [self.carousel removeItemAtIndex:index animated:YES];
             _customerRecordController.galleryItems = self.items;
-            [_customerRecordController.snapShotCollectionView reloadData];
+            [_customerRecordController reloadCollectionView];
         }
     }
 }
