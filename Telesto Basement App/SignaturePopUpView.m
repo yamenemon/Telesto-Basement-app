@@ -47,7 +47,7 @@
 - (NSString *)createPdfWithName: (NSString *)name array:(NSArray*)images {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docspath = [paths objectAtIndex:0];
-    NSString *pdfFileName = [docspath stringByAppendingPathComponent:[NSString stringWithFormat:@"/pdf/%@.pdf",name]];
+    NSString *pdfFileName = [docspath stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@.pdf",@"pdf"]];
     NSLog(@"pdf file name: %@",pdfFileName);
     UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);
     for (int index = 0; index <[images count] ; index++) {

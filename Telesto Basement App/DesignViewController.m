@@ -1149,7 +1149,8 @@
                          handler:^(UIAlertAction * action)
                          {
                              
-
+                             [lastEditedView removeFromSuperview];
+                             [productArray removeObjectAtIndex:removeObjectIndex];
                              NSFileManager *fileManager = [NSFileManager defaultManager];
                              
                              NSError *error;
@@ -1161,19 +1162,17 @@
                              BOOL success = [fileManager removeItemAtPath:dataPath error:&error];
                              if (success) {
                                  NSLog(@"Successfylly Deleted");
-                                 if (isFromNewProposals == NO) {
-                                     CustomerDataManager *manager = [CustomerDataManager sharedManager];
-                                     [manager removeObjectFromProposalsWhileEditing:productView templateId:currentActiveTemplateID templateName:_templateNameString withCompletionBlock:^(BOOL success){
-                                         if (success == NO) {
-                                             [lastEditedView removeFromSuperview];
-                                             [productArray removeObjectAtIndex:removeObjectIndex];
-                                         }
-                                     }];
-                                 }
+//                                 if (isFromNewProposals == NO) {
+//                                     CustomerDataManager *manager = [CustomerDataManager sharedManager];
+//                                     [manager removeObjectFromProposalsWhileEditing:productView templateId:currentActiveTemplateID templateName:_templateNameString withCompletionBlock:^(BOOL success){
+//                                         if (success == NO) {
+//                                             [lastEditedView removeFromSuperview];
+//                                             [productArray removeObjectAtIndex:removeObjectIndex];
+//                                         }
+//                                     }];
+//                                 }
                              }
                              else {
-                                 [lastEditedView removeFromSuperview];
-                                 [productArray removeObjectAtIndex:removeObjectIndex];
                                  NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
                              }
 

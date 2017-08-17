@@ -1050,7 +1050,7 @@
                                           nil];
     
     NSLog(@"Dictionary of Parameter: %@",aParameterDic);
-    UIImage *screenShot = [templateDictionary valueForKey:@"image"];
+    UIImage *screenShot = [templateDictionary valueForKey:@"signature"];
     NSData* imageData = UIImagePNGRepresentation(screenShot);
     
     [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {

@@ -328,29 +328,33 @@
     // Remove the mail view
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"%ld",(long)result);
-        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         NSLog(@"%d", baseController.currentActiveTemplateID);
         NSLog(@"%@", baseController.templateNameString);
         NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
 
-        NSMutableDictionary *templateDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:baseController.currentActiveTemplateID],@"templateId",
-                                            baseController.templateNameString,@"templateName",
-                                            [screenShotArray lastObject],@"image",
-                                            pdfData,@"pdfFile",nil];
+        if (screenShotArray.count>0) {
+            NSMutableDictionary *templateDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:baseController.currentActiveTemplateID],@"templateId",
+                                                baseController.templateNameString,@"templateName",
+                                                [screenShotArray lastObject],@"signature",
+                                                pdfData,@"pdfFile",nil];
+            
+            CustomerDataManager *manager = [CustomerDataManager sharedManager];
+            [manager savingUserPDFWithBaseController:self withObjects:templateDic withCompletionBlock:^(BOOL success){
+                if (success) {
+                    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    CustomerListViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerListViewController"];
+                    vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                }
+                else{
+                    NSLog(@"Not saved");
+                }
+                
+            }];
+        }
         
-        CustomerDataManager *manager = [CustomerDataManager sharedManager];
-        [manager savingUserPDFWithBaseController:self withObjects:templateDic withCompletionBlock:^(BOOL success){
-            if (success) {
-                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                CustomerListViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerListViewController"];
-                vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            else{
-                NSLog(@"Not saved");
-            }
-        
-        }];
     }];
 }
 - (IBAction)sendToOffice:(id)sender {
