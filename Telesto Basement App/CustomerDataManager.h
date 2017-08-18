@@ -54,7 +54,7 @@
 
 -(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
 -(void)loadCustomerBuildingImagesWithCustomerId:(NSString*)customerId withCompletionBlock:(void (^)(void))completionBlock;
--(void)loadingProductImagesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
+-(void)loadingProductImagesWithBaseController:(UIViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
 -(void)loadingDefaultTemplatesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock;
 
 - (NSString*)loadDefaultTemplateImageWithImageName:(NSString*)imageName;

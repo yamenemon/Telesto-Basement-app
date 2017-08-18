@@ -57,7 +57,7 @@
     customTemplateNameView.designViewController = self;
     templateNameLabel.backgroundColor = [UIColor groupTableViewBackgroundColor];
     currentDefaultTemplateIndex = 10000;
-
+    self.productSliderScrollView.delegate = self;
     if (isFromNewProposals == YES) {
         [self setCustomTemplateName];
         NSLog(@"%@",userSelectedDataDictionary);
@@ -205,15 +205,21 @@
 }
 #pragma mark -
 #pragma mark - Product Slider Methods
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.productSliderScrollView reloadInputViews];
+}
 -(void)downloadProduct{
 
     // DOWNLOAD PRODUCT HERE
     //-----------------------
-    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    downloadedProduct = [[NSMutableArray alloc] init];
-    NSMutableArray *arr = [manager getProductObjectArray];
-    downloadedProduct = [arr objectAtIndex:0];
-//    NSLog(@"%@",downloadedProduct);
+//    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+//    downloadedProduct = [[NSMutableArray alloc] init];
+//    NSMutableArray *arr = [manager getProductObjectArray];
+//    downloadedProduct = [arr objectAtIndex:0];
+    
+    AppDelegate *mainDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    downloadedProduct = mainDelegate.sharedProductArray;
+    NSLog(@"%@",downloadedProduct);
 }
 -(void)createProductScroller{
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
@@ -248,7 +254,7 @@
             [productSliderCustomView.productBtn setTag:proObj.productId];
             NSLog(@"Product btn tag when application loading : %d",proObj.productId);
             NSString *imageUrl = [manager loadProductImageWithImageName:proObj.productName];
-            //        NSLog(@"Product image url: %@",imageUrl);
+             NSLog(@"Product image url: %@",imageUrl);
             
             [productSliderCustomView.productBtn setBackgroundImage:[UIImage imageNamed:imageUrl] forState:UIControlStateNormal];
             [productSliderCustomView.productBtn addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -273,9 +279,15 @@
         }
     }
     else{
-        NSMutableArray *arr = [manager loadingProductObjectArray];
-        downloadedProduct = [arr objectAtIndex:0];
-        [self createProductScroller];
+        [manager loadingProductImagesWithBaseController:self withCompletionBlock:^(BOOL success){
+            if (success == YES) {
+                [self downloadedProduct];
+                [self createProductScroller];
+            }
+            else{
+                NSLog(@"Internet Problem");
+            }
+        }];
     }
     
 }
@@ -495,7 +507,6 @@
     [lastEditedView hideEditingHandles];
 }
 - (IBAction)productSliderCalled:(id)sender {
-    
     if (isShown==NO) {
         [UIView animateWithDuration:0.5
                               delay:0.1

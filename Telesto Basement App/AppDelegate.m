@@ -14,7 +14,7 @@
 @end
 
 @implementation AppDelegate
-
+@synthesize sharedProductArray;
 //- (void)setOldCookieForAutoLogin {
 //    NSData* cookieDictionary = [[NSUserDefaults standardUserDefaults] valueForKey:DOMAIN_NAME];
 //    if(cookieDictionary) {
@@ -27,7 +27,7 @@
     self.deviceTokenString = @"";
     
     [MTReachabilityManager sharedManager];
-
+    sharedProductArray = [[NSMutableArray alloc] init];
     
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName, nil]];

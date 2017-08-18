@@ -531,7 +531,7 @@
     return templateObjectArray;
 }
 #pragma mark LOADING PRODUCT IMAGES -
--(void)loadingProductImagesWithBaseController:(BaseViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
+-(void)loadingProductImagesWithBaseController:(UIViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
@@ -542,8 +542,21 @@
     [manager POST:productUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
         NSError *e;
         NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
-        NSMutableArray *tempArr = [[jsonDic valueForKey:@"results"] valueForKey:@"products"];
+        NSMutableArray *tempArrProductArr = [[jsonDic valueForKey:@"results"] valueForKey:@"products"];
         productObjectArray = [[NSMutableArray alloc] init];
+        
+        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        for (NSMutableDictionary *dics in tempArrProductArr) {
+            NSString *imageUrl = [dics valueForKey:@"image"];
+            
+            NSURL *candidateURL = [NSURL URLWithString:imageUrl];
+            // WARNING > "test" is an URL according to RFCs, being just a path
+            // so you still should check scheme and all other NSURL attributes you need
+            if (candidateURL && candidateURL.scheme && candidateURL.host) {
+                [tempArr addObject:dics];
+            }
+        }
+        
         __block int count = (int)tempArr.count;
         for (NSMutableDictionary *dic in tempArr) {
            /*
@@ -555,37 +568,36 @@
             unitPrice = "200.00";
             unitType = piece;
             */
-            Product *productObj = [[Product alloc] init];
-            productObj.productDescription = [dic valueForKey:@"description"];
-            productObj.discount = [[dic valueForKey:@"discount"] floatValue];
-            productObj.productImageUrl = [dic valueForKey:@"image"];
-            productObj.productName = [dic valueForKey:@"name"];
-            productObj.productId = [[dic valueForKey:@"productId"] intValue];
-            productObj.productPrice = [[dic valueForKey:@"unitPrice"] floatValue];
-            productObj.unitType = [dic valueForKey:@"unitType"];
-            [productObjectArray addObject:productObj];
-            
-            
-            [self downloadImageWithProductObject:productObj completionBlock:^(BOOL succeeded){
-                count--;
-                NSLog(@"Donwloaded and Saved and count %d",count);
-                if (count == 0) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        //Save in the document directory.
-                        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                        NSString *documentsDirectory = [paths objectAtIndex:0];
-                        NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
-                        NSMutableArray *myObject=[NSMutableArray array];
-                        [myObject addObject:productObjectArray];
-                        
-                        [NSKeyedArchiver archiveRootObject:myObject toFile:appFile];
-                    });
-                    completionBlock(YES);
-                }
-            }];
+
+                Product *productObj = [[Product alloc] init];
+                productObj.productDescription = [dic valueForKey:@"description"];
+                productObj.discount = [[dic valueForKey:@"discount"] floatValue];
+                productObj.productImageUrl = [dic valueForKey:@"image"];
+                productObj.productName = [dic valueForKey:@"name"];
+                productObj.productId = [[dic valueForKey:@"productId"] intValue];
+                productObj.productPrice = [[dic valueForKey:@"unitPrice"] floatValue];
+                productObj.unitType = [dic valueForKey:@"unitType"];
+                [productObjectArray addObject:productObj];
+                
+                [self downloadImageWithProductObject:productObj completionBlock:^(BOOL succeeded){
+                    count--;
+                    NSLog(@"Donwloaded and Saved and count %d",count);
+                    if (count == 0) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            //Save in the document directory.
+//                            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//                            NSString *documentsDirectory = [paths objectAtIndex:0];
+//                            NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
+//                            NSMutableArray *myObject=[NSMutableArray array];
+//                            [myObject addObject:productObjectArray];
+                            AppDelegate *mainDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+                            mainDelegate.sharedProductArray = productObjectArray;
+//                            [NSKeyedArchiver archiveRootObject:myObject toFile:appFile];
+                        });
+                        completionBlock(YES);
+                    }
+                }];
         }
-        
-//        NSLog(@"%@",tempArr);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completionBlock(NO);
     }];

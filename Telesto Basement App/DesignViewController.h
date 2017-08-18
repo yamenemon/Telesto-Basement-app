@@ -25,10 +25,11 @@
 #import <MBProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ProposalViewController.h"
+#import "AppDelegate.h"
 
 @class  TemplatePopOverViewController;
 @class CustomerProposalObject;
-@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate,CNPPopupControllerDelegate,UIImagePickerControllerDelegate> {
+@interface DesignViewController : UIViewController <UIGestureRecognizerDelegate, SPUserResizableViewDelegate,UIPopoverPresentationControllerDelegate,UIAlertViewDelegate,CNPPopupControllerDelegate,UIImagePickerControllerDelegate,UIScrollViewDelegate> {
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
     UILabel* priceLabel;

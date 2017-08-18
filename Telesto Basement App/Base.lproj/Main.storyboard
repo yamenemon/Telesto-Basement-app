@@ -666,7 +666,7 @@ Washington, DC 20521-6170
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Q3-lb-2e2">
                                 <rect key="frame" x="0.0" y="59" width="1024" height="652"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">SOFTWARE LICENSE TERMS AND CONDITIONS
+                                <string key="text">SOFTWARE LICENSE TERMS AND CONDITIONS
 
 Version 4.0
 
@@ -858,7 +858,7 @@ Prevail as between Part II and Part I: Certain Software is licensed subject to t
 
 The following clauses apply to Status Check Software only:
 13.1 Subject to clause 13.2 below, upon expiry or termination of this Agreement (whether for a Trial or paid subscription), Customer’s license and right to use the Status Check Software or any part thereof shall end immediately and Customer must uninstall  the Software and confirm by email to Supplier on evan.islam@centralstationmarketing.com that the said Software has been uninstalled.
-13.2 Where Customer subscribes to the Software from the expiry date of any Trial Period, subject to the execution of a new Order Form, Customer shall not be required to uninstall the Software as set out in clause 13.1 above.</mutableString>
+13.2 Where Customer subscribes to the Software from the expiry date of any Trial Period, subject to the execution of a new Order Form, Customer shall not be required to uninstall the Software as set out in clause 13.1 above.</string>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

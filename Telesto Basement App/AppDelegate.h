@@ -18,7 +18,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 @property (strong, nonatomic) NSString *deviceTokenString;
-
+@property (strong,nonatomic) NSMutableArray *sharedProductArray;
 -(NSString*)deviceToken;
 - (void)saveContext;
 
