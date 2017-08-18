@@ -212,14 +212,14 @@
 
     // DOWNLOAD PRODUCT HERE
     //-----------------------
-//    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
 //    downloadedProduct = [[NSMutableArray alloc] init];
-//    NSMutableArray *arr = [manager getProductObjectArray];
-//    downloadedProduct = [arr objectAtIndex:0];
+    NSMutableArray *arr = [manager loadingProductObjectArray];
+    downloadedProduct = [NSMutableArray arrayWithArray:arr];//[arr objectAtIndex:0];
     
-    AppDelegate *mainDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    downloadedProduct = mainDelegate.sharedProductArray;
-    NSLog(@"%@",downloadedProduct);
+//    AppDelegate *mainDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+//    downloadedProduct = mainDelegate.sharedProductArray;
+//    NSLog(@"%@",downloadedProduct);
 }
 -(void)createProductScroller{
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
@@ -279,15 +279,8 @@
         }
     }
     else{
-        [manager loadingProductImagesWithBaseController:self withCompletionBlock:^(BOOL success){
-            if (success == YES) {
-                [self downloadedProduct];
-                [self createProductScroller];
-            }
-            else{
-                NSLog(@"Internet Problem");
-            }
-        }];
+        NSMutableArray *arr = [manager loadingProductObjectArray];
+        downloadedProduct = [NSMutableArray arrayWithArray:arr];//[arr objectAtIndex:0];
     }
     
 }
@@ -1421,6 +1414,9 @@
 }
 
 -(void)reloadTheViewForEditing{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    });
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_group_t group = dispatch_group_create();
@@ -1443,6 +1439,9 @@
                 for (CustomProductView *view in editingProposalObject.productArray) {
                     [self reloadProduct:view];
                 }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                });
                 [self.view setNeedsDisplay];
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             }

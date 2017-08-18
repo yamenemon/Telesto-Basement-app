@@ -22,16 +22,223 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerRecordViewController.m"
+            timestampString = "524745971.913102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
+            landmarkName = "-createCustomerAfterEditing"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__58-[CustomerRecordViewController createCustomerAfterEditing]_block_invoke.512"
+                  moduleName = "Telesto Basement App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerRecordViewController.m"
+                  timestampString = "524745972.528058"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "527"
+                  endingLineNumber = "527"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.515"
+                  moduleName = "Telesto Basement App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerRecordViewController.m"
+                  timestampString = "524745972.529251"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "527"
+                  endingLineNumber = "527"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.516"
+                  moduleName = "Telesto Basement App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerRecordViewController.m"
+                  timestampString = "524745972.530385"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "527"
+                  endingLineNumber = "527"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/DesignViewController.m"
-            timestampString = "524742749.001018"
+            filePath = "Telesto Basement App/CustomerDataManager.m"
+            timestampString = "524746002.759274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "-createProductScroller"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-validateObjects:withRootController:withAfterEditing:withCompletionBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CustomerDataManager validateObjects:withRootController:withAfterEditing:withCompletionBlock:]"
+                  moduleName = "Telesto Basement App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerDataManager.m"
+                  timestampString = "524750283.17582"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__95-[CustomerDataManager validateObjects:withRootController:withAfterEditing:withCompletionBlock:]_block_invoke"
+                  moduleName = "Telesto Basement App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerDataManager.m"
+                  timestampString = "524750283.177051"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerDataManager.m"
+            timestampString = "524746026.790968"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-validateObjects:withRootController:withAfterEditing:withCompletionBlock:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CustomerDataManager validateObjects:withRootController:withAfterEditing:withCompletionBlock:]"
+                  moduleName = "Telesto Basement App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerDataManager.m"
+                  timestampString = "524750283.179973"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "480">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__95-[CustomerDataManager validateObjects:withRootController:withAfterEditing:withCompletionBlock:]_block_invoke.227"
+                  moduleName = "Telesto Basement App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/CSM/Telesto/Telesto-Basement-app/Telesto%20Basement%20App/CustomerDataManager.m"
+                  timestampString = "524750283.181153"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerDataManager.m"
+            timestampString = "524746078.715249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-createCustomerAfterEditing:withCompletionBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerDataManager.m"
+            timestampString = "524746093.794515"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-createCustomerAfterEditing:withCompletionBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerDataManager.m"
+            timestampString = "524746095.482031"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "-createCustomerAfterEditing:withCompletionBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerRecordViewController.m"
+            timestampString = "524746282.091647"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +249,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/DesignViewController.m"
-            timestampString = "524742961.135166"
+            timestampString = "524749352.646249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "-downloadProduct"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/DesignViewController.m"
+            timestampString = "524749266.072735"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-createProductScroller"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerDataManager.m"
+            timestampString = "524750000.982072"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "684"
+            endingLineNumber = "684"
+            landmarkName = "-loadingProductObjectArray"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -585,14 +585,14 @@
                     if (count == 0) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             //Save in the document directory.
-//                            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//                            NSString *documentsDirectory = [paths objectAtIndex:0];
-//                            NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
-//                            NSMutableArray *myObject=[NSMutableArray array];
-//                            [myObject addObject:productObjectArray];
+                            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                            NSString *documentsDirectory = [paths objectAtIndex:0];
+                            NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
+                            NSMutableArray *myObject=[NSMutableArray array];
+                            [myObject addObject:productObjectArray];
                             AppDelegate *mainDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
                             mainDelegate.sharedProductArray = productObjectArray;
-//                            [NSKeyedArchiver archiveRootObject:myObject toFile:appFile];
+                            [NSKeyedArchiver archiveRootObject:myObject toFile:appFile];
                         });
                         completionBlock(YES);
                     }
@@ -666,7 +666,7 @@
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
         
-        productObjectArray = [NSKeyedUnarchiver unarchiveObjectWithFile:appFile];
+        productObjectArray = [[NSKeyedUnarchiver unarchiveObjectWithFile:appFile] objectAtIndex:0];
     }
     
     return productObjectArray;

@@ -520,6 +520,7 @@
                     [hud hideAnimated:YES];
                     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
                 }
+                else
                 {
                     NSLog(@"NOT SAVE IN THE SERVER AFTER EDITING");
                 }
