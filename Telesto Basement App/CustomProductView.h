@@ -15,6 +15,7 @@
 //    UIButton *cameraBtn;
 }
 @property (nonatomic,strong) UIButton *infoBtn;
+@property (assign, nonatomic) int customTemplateProductUniqueId;
 @property (nonatomic, assign) int productID;
 @property (nonatomic,strong) DesignViewController *baseVC;
 @property (strong,nonatomic) ProductObject *productObject;

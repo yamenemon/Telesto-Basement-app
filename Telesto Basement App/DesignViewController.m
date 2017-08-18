@@ -286,7 +286,7 @@
 }
 -(void)showProductDetailsPopUp:(int)btnTag{
     
-    Product *product = [downloadedProduct objectAtIndex:btnTag];
+    Product *product = [downloadedProduct objectAtIndex:btnTag-1];
     
     NSArray*ProductInfoDetailsPopupView = [[NSBundle mainBundle] loadNibNamed:@"ProductInfoDetailsPopupView" owner:self options:nil];
     self.productInfoDetails = [ProductInfoDetailsPopupView objectAtIndex:0];
@@ -374,7 +374,8 @@
             view.productObject.storedMediaArray = imagePath;
             view.productObject.imageCount = (int)imagePath.count;
             [productArray replaceObjectAtIndex:i withObject:view];
-            NSLog(@"Product object: %@ %f %f %f %f %f %d %@",
+            NSLog(@"Product object: %d %@ %f %f %f %f %f %d %@",
+                  view.customTemplateProductUniqueId,
                   view.productObject.productName,
                   view.productObject.productPrice,
                   view.productObject.productXcoordinate,
@@ -404,11 +405,47 @@
                     }
                     else{
                         NSLog(@"Not uploaded show the alert");
+                        [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                        UIAlertController * alert=   [UIAlertController
+                                                      alertControllerWithTitle:@"Network Error!!!"
+                                                      message:@"Not Uploaded save again"
+                                                      preferredStyle:UIAlertControllerStyleAlert];
+                        
+                        UIAlertAction* ok = [UIAlertAction
+                                             actionWithTitle:@"Ok"
+                                             style:UIAlertActionStyleDefault
+                                             handler:^(UIAlertAction * action)
+                                             {
+                                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                                 [hud removeFromSuperview];
+                                             }];
+                        [alert addAction:ok];
+                        
+                        [self presentViewController:alert animated:YES completion:nil];
+                        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
                     }
                 }];
             }
             else{
                 NSLog(@"Not uploaded show the alert");
+                [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:@"Network Error!!!"
+                                              message:@"Not Uploaded save again"
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* ok = [UIAlertAction
+                                     actionWithTitle:@"Ok"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         [hud removeFromSuperview];
+                                     }];
+                [alert addAction:ok];
+                
+                [self presentViewController:alert animated:YES completion:nil];
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             }
         }];
     }
@@ -1414,40 +1451,90 @@
 }
 
 -(void)reloadTheViewForEditing{
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     });
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_group_t group = dispatch_group_create();
-    // Add a task to the group
-    dispatch_group_async(group, queue, ^{
-        // Some asynchronous work
+    NSOperationQueue *operationQueue = [NSOperationQueue new];
+    NSBlockOperation *blockCompletionOperation = [NSBlockOperation blockOperationWithBlock:^{
+        NSLog(@"The block operation ended, Do something such as show a successmessage etc");
+        //This the completion block operation
+        NSLog(@"%@",downloadedCustomTemplateProposalInfo);
+        
+        CustomerProposalObject *editingProposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
+        _templateNameString = editingProposalObject.templateName;
+        templateNameLabel.text = _templateNameString;
+        currentActiveTemplateID = (int)editingProposalObject.templateID;
+        CustomerDataManager *manager = [CustomerDataManager sharedManager];
+        if ((int)editingProposalObject.defaultTemplateID<[manager getTemplateObjectArray].count) {
+            [self setSavedTemplateNumber:[[manager getTemplateObjectArray] objectAtIndex:editingProposalObject.defaultTemplateID] withTemplateIndex:(int)editingProposalObject.defaultTemplateID];
+        }
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+        dispatch_async(queue, ^{
+            for (CustomProductView *view in editingProposalObject.productArray) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self reloadProduct:view];
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                });
+            }
+        });
+        
+        [self.view setNeedsDisplay];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    }];
+    NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        //This is the worker block operation
         
         [self initializePreviousDataWithCompletionBlock:^(BOOL success){
-            if (success) {
-                NSLog(@"%@",downloadedCustomTemplateProposalInfo);
-                
-                CustomerProposalObject *editingProposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
-                _templateNameString = editingProposalObject.templateName;
-                templateNameLabel.text = _templateNameString;
-                currentActiveTemplateID = (int)editingProposalObject.templateID;
-                CustomerDataManager *manager = [CustomerDataManager sharedManager];
-                if ((int)editingProposalObject.defaultTemplateID<[manager getTemplateObjectArray].count) {
-                    [self setSavedTemplateNumber:[[manager getTemplateObjectArray] objectAtIndex:editingProposalObject.defaultTemplateID] withTemplateIndex:(int)editingProposalObject.defaultTemplateID];
-                }
-                for (CustomProductView *view in editingProposalObject.productArray) {
-                    [self reloadProduct:view];
-                }
+            if (success == YES) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });
-                [self.view setNeedsDisplay];
-                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             }
         }];
-    });
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+
+    }];
+    [blockCompletionOperation addDependency:blockOperation];
+    [operationQueue addOperation:blockCompletionOperation];
+    [operationQueue addOperation:blockOperation];
+    
+    
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_group_t group = dispatch_group_create();
+//    // Add a task to the group
+//    dispatch_group_async(group, queue, ^{
+//        // Some asynchronous work
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        });
+//        [self initializePreviousDataWithCompletionBlock:^(BOOL success){
+//            if (success) {
+//                NSLog(@"%@",downloadedCustomTemplateProposalInfo);
+//                
+//                CustomerProposalObject *editingProposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
+//                _templateNameString = editingProposalObject.templateName;
+//                templateNameLabel.text = _templateNameString;
+//                currentActiveTemplateID = (int)editingProposalObject.templateID;
+//                CustomerDataManager *manager = [CustomerDataManager sharedManager];
+//                if ((int)editingProposalObject.defaultTemplateID<[manager getTemplateObjectArray].count) {
+//                    [self setSavedTemplateNumber:[[manager getTemplateObjectArray] objectAtIndex:editingProposalObject.defaultTemplateID] withTemplateIndex:(int)editingProposalObject.defaultTemplateID];
+//                }
+//                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
+//                dispatch_async(queue, ^{
+//                    for (CustomProductView *view in editingProposalObject.productArray) {
+//                        dispatch_async(dispatch_get_main_queue(), ^{
+//                            [self reloadProduct:view];
+//                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+//                        });
+//                    }
+//                });
+//
+//                [self.view setNeedsDisplay];
+//                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//            }
+//        }];
+//    });
+//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
 }
 -(void)createFolderForEditing:(NSString*)templateName{
     NSError *error;
@@ -1461,6 +1548,7 @@
 
 }
 -(void)reloadProduct:(CustomProductView*)productObject{
+    NSLog(@"Product id: %d",productObject.productObject.productId);
     if (productObject.productObject.productId<NON_PRODUCT_ID) {
             NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:productObject.productObject.productId]];
             
@@ -1491,7 +1579,9 @@
             UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageUrl]];
             contentView.frame = gripFrame;
             userResizableView.contentView = contentView;
-            
+        
+            userResizableView.customTemplateProductUniqueId = productObject.customTemplateProductUniqueId;
+        
             userResizableView.productID = productObject.productObject.productId;
             userResizableView.productObject.productId = productObject.productObject.productId;
             userResizableView.productObject.productName = imageUrl;
@@ -1531,6 +1621,7 @@
         contentView.frame = gripFrame;
         
         
+        userResizableView.customTemplateProductUniqueId = productObject.customTemplateProductUniqueId;
 
         userResizableView.productID = productObject.productObject.productId;
         userResizableView.productObject.productId = productObject.productObject.productId;

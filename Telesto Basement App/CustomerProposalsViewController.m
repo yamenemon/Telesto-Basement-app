@@ -115,11 +115,30 @@
         cell.duplicateProposals.layer.cornerRadius = 5.0;
         
         [cell.editProposals addTarget:self action:@selector(loadFaqForEditingProposals) forControlEvents:UIControlEventTouchUpInside];
+        [cell.duplicateProposals addTarget:self action:@selector(duplicateProposalsBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+
     }
     else{
         cell.textLabel.text = @"No Proposal Available";
     }
     return cell;
+}
+-(void)duplicateProposalsBtnAction{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Maintainance Error!!!"
+                                  message:@"This page is under maintainance."
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"Ok"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                         }];
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 -(void)loadFaqForEditingProposals{
     CustomerDataManager *manager = [CustomerDataManager sharedManager];

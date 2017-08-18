@@ -12,6 +12,7 @@
 
 @implementation CustomProductView
 @synthesize infoBtn;
+@synthesize customTemplateProductUniqueId;
 @synthesize productID;
 @synthesize baseVC;
 @synthesize productObject;

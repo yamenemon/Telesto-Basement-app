@@ -747,6 +747,7 @@
                                               TOKEN_STRING,AUTH_KEY,
                                               [NSNumber numberWithInt:templateId],@"custom_template_id",
                                               templateName,@"custom_template_name",
+                                              [NSNumber numberWithInt:view.customTemplateProductUniqueId],@"custom_template_product_id",
                                               view.productObject.productName,@"product_name",
                                               [NSNumber numberWithInt:view.productObject.productId],@"product_id",
                                               [NSNumber numberWithFloat:view.productObject.productPrice],@"product_price",
@@ -979,6 +980,7 @@
             
             
             CustomProductView *customView = [[CustomProductView alloc] init];
+            customView.customTemplateProductUniqueId = [[productDic valueForKey:@"id"] intValue];
             customView.productObject.productId = [[productDic valueForKey:@"productId"] intValue];
             customView.productObject.productName = [productDic valueForKey:@"productName"];
             customView.productObject.productXcoordinate = [[productDic valueForKey:@"productXCoordinate"] floatValue];
