@@ -1068,7 +1068,7 @@
     NSData* imageData = UIImagePNGRepresentation(screenShot);
     
     [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:imageData name:@"screenshot" fileName:@"screenshot.jpg" mimeType:@"image/jpg"];
+        [formData appendPartWithFileData:imageData name:@"signature" fileName:@"screenshot.jpg" mimeType:@"image/jpg"];
     } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response: %@", responseObject);
         NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);

@@ -123,7 +123,7 @@
     }
     return cell;
 }
--(void)duplicateProposalsBtnAction{
+-(void)duplicateProposalsBtnAction:(id)sender{
     UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:@"Maintainance Error!!!"
                                   message:@"This page is under maintainance."
