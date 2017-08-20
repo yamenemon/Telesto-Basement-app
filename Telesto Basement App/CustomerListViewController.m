@@ -164,7 +164,7 @@
     cell.customProfileBtn.tag = indexPath.row;
     cell.customProfileBtn.layer.cornerRadius = 5.0;
     [cell.customProfileBtn addTarget:self action:@selector(customProfileBtnActon:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.MapItBtn addTarget:self action:@selector(mapItBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.MapItBtn addTarget:self action:@selector(mapsDirections:) forControlEvents:UIControlEventTouchUpInside];
 
     /*
      7 Saint Andrews Ct
@@ -194,9 +194,16 @@
      */
 
     cell.streetAddress.text = [NSString stringWithFormat:@"%@",customerInfoObjects.customerAddress];
+    //City, ST Zip
+    cell.citZip.text = [NSString stringWithFormat:@"%@,%@ %@",customerInfoObjects.customerCityName,customerInfoObjects.customerStateName,customerInfoObjects.customerZipName];
     
-    cell.citZip.text = [NSString stringWithFormat:@"%@,%@",customerInfoObjects.customerCityName,customerInfoObjects.customerStateName];
-    cell.salesAppointment.text = [NSString stringWithFormat:@"Sales Appointment : %@", customerInfoObjects.scheduleDate];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    NSDate *appointDate = [formatter dateFromString:[NSString stringWithFormat:@"%@",customerInfoObjects.scheduleDate]];
+    formatter.dateFormat = @"MMMM d, yyyy HH:mm a"; //September 17th, 2017 5:29pm
+    NSString *string = [formatter stringFromDate:appointDate];
+    
+    cell.salesAppointment.text = [NSString stringWithFormat:@"Sales Appointment : %@", string];
     cell.nameTextLabel.text = [NSString stringWithFormat:@"%@", customerInfoObjects.customerName];
     NSString *imageUrl = [NSString stringWithFormat:@"%@images/customer/profile/%@",BASE_URL,customerInfoObjects.customerOtherImageDic];
     NSLog(@"%@",imageUrl);
@@ -205,6 +212,7 @@
 
     return cell;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 110;
 }
@@ -221,6 +229,16 @@
     vc.customInfoObject = customerInfoObject;
     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)mapsDirections:(UIButton*)sender {
+    
+    UIButton *btn = (UIButton*)sender;
+    long tag = btn.tag;
+    CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:tag];
+    
+    /*https://stackoverflow.com/questions/21983559/opens-apple-maps-app-from-ios-app-with-directions*/
+    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=41.6779257,-71.10870929999999&daddr=%f,%f",[[customerInfoObject latitude] floatValue],[[customerInfoObject longitude] floatValue]];
+    [[UIApplication sharedApplication] openURL: [NSURL URLWithString: directionsURL]];
 }
 -(void)cellMethod:(long)sender withCustomerInfo:(CustomerInfoObject*)infoObject{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

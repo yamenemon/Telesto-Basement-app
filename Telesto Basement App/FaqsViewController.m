@@ -29,7 +29,7 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
     [super viewDidLoad];
     self.title = @"FAQs";
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"d MMMM, yyyy";
+    formatter.dateFormat = @"MMMM d, yyyy";
     NSString *string = [formatter stringFromDate:[NSDate date]];
 
     currentDate.text = [NSString stringWithFormat:@"%@",string];

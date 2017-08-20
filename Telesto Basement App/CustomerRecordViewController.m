@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"Customer Records";
+    self.title = @"Create New Customer";
     mediaSelectionPopUp = [[[NSBundle mainBundle] loadNibNamed:@"MediaPopUp" owner:self options:nil] objectAtIndex:0];
     _galleryItems = [[NSMutableArray alloc] init];
     [self loadCountryList];

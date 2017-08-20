@@ -46,7 +46,7 @@
                                         <rect key="frame" x="312" y="47" width="260" height="40"/>
                                         <color key="backgroundColor" red="0.03932344913" green="0.3544466496" blue="0.47187530989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="17"/>
-                                        <state key="normal" title="Copy Proposals">
+                                        <state key="normal" title="Copy Proposal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -58,7 +58,7 @@
                                             <constraint firstAttribute="width" constant="260" id="Sp5-Kd-LX5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Roboto-Black" family="Roboto" pointSize="17"/>
-                                        <state key="normal" title="Edit Proposals">
+                                        <state key="normal" title="Edit Proposal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
