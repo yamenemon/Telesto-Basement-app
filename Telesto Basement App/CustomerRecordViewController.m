@@ -502,7 +502,7 @@
             detailInfoObject.customerCityName = self.cityTextField.text;
             detailInfoObject.customerStateName = self.stateNameTextField.text;
             detailInfoObject.customerZipName = self.zipCodeTextField.text;
-            detailInfoObject.customerCountryName = self.countryTextField.text;
+            detailInfoObject.customerCountryName = @"0";
             detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
             detailInfoObject.customerEmailAddress = self.emailTextField.text;
             detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
@@ -594,7 +594,7 @@
         detailInfoObject.customerCityName = self.cityTextField.text;
         detailInfoObject.customerStateName = self.stateNameTextField.text;
         detailInfoObject.customerZipName = self.zipCodeTextField.text;
-        detailInfoObject.customerCountryName = self.countryTextField.text;
+        detailInfoObject.customerCountryName = @"0";
         detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
         detailInfoObject.customerEmailAddress = self.emailTextField.text;
         detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
@@ -723,10 +723,13 @@
 #pragma mark -
 #pragma mark Edit Button Actions
 - (IBAction)buildingMediaEditing:(id)sender {
+    [self.view endEditing:YES];
+
     mediaSelectionPopUp.isFromBuildingMedia = YES;
     [self mediaPopUP];
 }
 - (IBAction)uploadMediaFiles:(id)sender {
+    [self.view endEditing:YES];
     if (_galleryItems.count>0) {
         BOOL isReachable = [MTReachabilityManager isReachable];
         if (isReachable) {
@@ -829,27 +832,27 @@
 }
 -(void)loadCountryList{
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        //Update the progress view
-        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.center = self.view.center;
-        hud.mode = MBProgressHUDModeIndeterminate;
-        NSString *strloadingText = [NSString stringWithFormat:@"Loading Country Lists"];
-        hud.label.text = strloadingText;
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        
-    });
-    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    [manager loadCountryListWithCompletionBlock:^{
-        if (isFromCustomProfile == YES) {
-//            CustomerDataManager *manager = [CustomerDataManager sharedManager];
-//            countryList = [manager getCountryListArray];
-//            CountryListObject *obj = [countryList objectAtIndex:[customerInfoObjects.customerCountryName intValue]];
-            self.countryTextField.text = @"United States";
-        }
-        [hud hideAnimated:YES];
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    }];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        //Update the progress view
+//        hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        hud.center = self.view.center;
+//        hud.mode = MBProgressHUDModeIndeterminate;
+//        NSString *strloadingText = [NSString stringWithFormat:@"Loading Country Lists"];
+//        hud.label.text = strloadingText;
+//        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+//        
+//    });
+//    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+//    [manager loadCountryListWithCompletionBlock:^{
+//        if (isFromCustomProfile == YES) {
+////            CustomerDataManager *manager = [CustomerDataManager sharedManager];
+////            countryList = [manager getCountryListArray];
+////            CountryListObject *obj = [countryList objectAtIndex:[customerInfoObjects.customerCountryName intValue]];
+//            self.countryTextField.text = @"United States";
+//        }
+//        [hud hideAnimated:YES];
+//        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//    }];
 
 }
 -(void)rootControllerBack{

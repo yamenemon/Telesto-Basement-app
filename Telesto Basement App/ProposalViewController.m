@@ -332,7 +332,7 @@
         NSLog(@"%d", baseController.currentActiveTemplateID);
         NSLog(@"%@", baseController.templateNameString);
         NSData *pdfData = [NSData dataWithContentsOfFile:pdfPath];
-
+        [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
         if (screenShotArray.count>0) {
             NSMutableDictionary *templateDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:baseController.currentActiveTemplateID],@"templateId",
                                                 baseController.templateNameString,@"templateName",
@@ -346,7 +346,7 @@
                     CustomerListViewController *vc = [sb instantiateViewControllerWithIdentifier:@"CustomerListViewController"];
                     vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                     [self.navigationController pushViewController:vc animated:YES];
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
                 }
                 else{
                     NSLog(@"Not saved");

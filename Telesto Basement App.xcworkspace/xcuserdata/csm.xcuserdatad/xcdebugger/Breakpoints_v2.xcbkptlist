@@ -57,22 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/CustomerRecordViewController.m"
-            timestampString = "524917972.944595"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
-            landmarkName = "-keyboardWasShown:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/FaqsViewControllerStep2.m"
             timestampString = "524918400.808436"
             startingColumnNumber = "9223372036854775807"
@@ -112,6 +96,22 @@
             startingLineNumber = "165"
             endingLineNumber = "165"
             landmarkName = "-keyboardWasShown:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Telesto Basement App/CustomerRecordViewController.m"
+            timestampString = "524926895.707735"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "732"
+            endingLineNumber = "732"
+            landmarkName = "-uploadMediaFiles:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
