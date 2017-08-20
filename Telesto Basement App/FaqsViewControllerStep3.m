@@ -68,6 +68,51 @@
         _commentTextView.text = [userSelectedDataDictionary valueForKey:@"faq3commentTextView"];
     }
 }
+-(void)viewDidLayoutSubviews{
+    self.questionOneBoolField.delegate = self;
+    self.questionOneTextField.delegate = self;
+    
+    self.questionTwoBoolField.delegate = self;
+    self.questionTwoTextField.delegate = self;
+    
+    self.question3BoolField.delegate = self;
+    self.question4BoolField.delegate = self;
+    
+    self.question4TextField.delegate = self;
+    
+    self.question5BoolField.delegate = self;
+    self.question5TextField.delegate = self;
+    
+    self.question6BoolField.delegate = self;
+    self.question6TextField.delegate = self;
+    
+    self.question7BoolField.delegate = self;
+    self.question7TextField.delegate = self;
+    
+    self.question8BoolField.delegate = self;
+    self.question8TextField.delegate = self;
+    
+    self.question9TextField.delegate = self;
+    
+    self.question10BoolField.delegate = self;
+    self.question10TextField.delegate = self;
+    
+    self.question11BoolField.delegate = self;
+    self.question11TextField.delegate = self;
+    
+    self.question12BoolField.delegate = self;
+    self.question12BoolField2.delegate = self;
+    
+    self.question13TextField.delegate = self;
+    
+    self.question14BoolField.delegate = self;
+    self.question14TextField.delegate = self;
+    
+    self.question15BoolField.delegate = self;
+    self.question15BoolField2.delegate = self;
+    
+    self.commentTextView.delegate = self;
+}
 -(void)initializeTextFieldSet{
 
     NSMutableArray *booleanArray = [NSMutableArray arrayWithObjects:@"YES",@"NO", nil];
@@ -144,10 +189,10 @@
         // Your application might not need or want this behavior.
         CGRect aRect = self.view.frame;
         aRect.size.height -= kbSize.height;
-        if (!CGRectContainsPoint(aRect, _commentTextView.frame.origin) ) {
-            CGPoint scrollPoint = CGPointMake(0.0, _commentTextView.frame.origin.y-kbSize.height+210);
+//        if (!CGRectContainsPoint(aRect, _commentTextView.frame.origin) ) {
+            CGPoint scrollPoint = CGPointMake(0.0, _commentTextView.frame.origin.y-kbSize.height+350);
             [scroller setContentOffset:scrollPoint animated:YES];
-        }
+//        }
     }
 }
 #pragma mark - UITextfieldDelegate

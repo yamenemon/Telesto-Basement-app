@@ -52,13 +52,12 @@
     UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);
     for (int index = 0; index <[images count] ; index++) {
         UIImage *pngImage=[images objectAtIndex:index];;
-        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height)), nil);
-        [pngImage drawInRect:CGRectMake(0, 0, (pngImage.size.height), (pngImage.size.height))];
+        UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height)), nil);
+        [pngImage drawInRect:CGRectMake(0, 0, (pngImage.size.width), (pngImage.size.height))];
     }
     UIGraphicsEndPDFContext();
     return pdfFileName;
 }
-
 - (void)loadPdf:(NSString*)fileName {
     //DO SOMTHING
     [popupController dismissPopupControllerAnimated:YES];
@@ -105,10 +104,10 @@
     });
 }
 -(UIImage*)takingScreenShot{
-    CGRect rect = [_signatureView bounds];
+    CGRect rect = [self bounds];
     UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
     CGContextRef context = UIGraphicsGetCurrentContext();
-    [_signatureView.layer renderInContext:context];
+    [self.layer renderInContext:context];
     UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return capturedImage;

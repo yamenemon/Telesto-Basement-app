@@ -50,6 +50,9 @@
             _proposalListObject  = [manager getdownloadedProposalObject];
             [_proposalListTableView reloadData];
         }
+        else{
+            [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+        }
     }];
 
 }

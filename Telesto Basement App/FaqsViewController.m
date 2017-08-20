@@ -62,6 +62,10 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
     }
 }
 -(void)viewWillAppear:(BOOL)animated{
+    
+}
+-(void)viewDidLayoutSubviews{
+    _otherCommentsTextView.delegate = self;
 }
 #pragma mark - KeyboardNotificationDelegate
 #pragma mark -
@@ -106,10 +110,11 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
         // Your application might not need or want this behavior.
         CGRect aRect = self.view.frame;
         aRect.size.height -= kbSize.height;
-        if (!CGRectContainsPoint(aRect, _otherCommentsTextView.frame.origin) ) {
-            CGPoint scrollPoint = CGPointMake(0.0, _otherCommentsTextView.frame.origin.y-kbSize.height+210);
+        NSLog(@"%f%f",aRect.origin.y,_otherCommentsTextView.frame.origin.y);
+//        if (!CGRectContainsPoint(aRect, _otherCommentsTextView.frame.origin) ) {
+            CGPoint scrollPoint = CGPointMake(0.0, _otherCommentsTextView.frame.origin.y-kbSize.height+350);
             [scroller setContentOffset:scrollPoint animated:YES];
-        }
+//        }
     }
 }
 #pragma mark - UITextfieldDelegate

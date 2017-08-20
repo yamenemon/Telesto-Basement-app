@@ -70,6 +70,27 @@
         otherComments.text = [userSelectedDataDictionary valueForKey:@"faq2CommentsField"];
     }
 }
+-(void)viewDidLayoutSubviews{
+    self.groundWaterTextField.delegate = self;
+    self.ironBacteriaTextField.delegate = self;
+    self.condensationTextField.delegate = self;
+    self.wallCracksTextField.delegate = self;
+    self.floorCracksTextField.delegate = self;
+    self.existingSumpPumpTextField.delegate = self;
+    self.RandomSystemTextField.delegate = self;
+    self.foundationTypeTextField.delegate = self;
+    self.otherComments.delegate = self;
+    
+    self.groundWaterRatingField.delegate = self;
+    self.ironWaterRatingField.delegate = self;
+    self.condensationRatingField.delegate = self;
+    self.wallCracksRatingField.delegate = self;
+    self.floorCracksRatingField.delegate = self;
+    
+    self.existingDranageSystemTextField.delegate = self;
+    self.drayerVentTextField.delegate = self;
+    self.vulkHeadTextField.delegate = self;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -106,7 +127,7 @@
                 [scroller setContentOffset:scrollPoint animated:YES];
             }
         }
-        else if ([activeField isKindOfClass:[UITextView class]]){
+        else{
             NSDictionary* info = [aNotification userInfo];
             CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
             UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
@@ -117,11 +138,10 @@
             // Your application might not need or want this behavior.
             CGRect aRect = self.view.frame;
             aRect.size.height -= kbSize.height;
-            if (!CGRectContainsPoint(aRect, otherComments.frame.origin) ) {
-                CGPoint scrollPoint = CGPointMake(0.0, otherComments.frame.origin.y-kbSize.height+210);
+//            if (!CGRectContainsPoint(aRect, otherComments.frame.origin) ) {
+                CGPoint scrollPoint = CGPointMake(0.0, otherComments.frame.origin.y-kbSize.height+350);
                 [scroller setContentOffset:scrollPoint animated:YES];
             }
-        }
     }
 #pragma mark - UITextfieldDelegate
 #pragma mark -
