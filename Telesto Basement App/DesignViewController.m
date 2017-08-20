@@ -292,7 +292,7 @@
     self.productInfoDetails = [ProductInfoDetailsPopupView objectAtIndex:0];
     self.productInfoDetails.designViewController = self;
     self.productInfoDetails.productName.text = product.productName;
-    self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%f",product.productPrice];
+    self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%0.2f",product.productPrice];
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
 //    NSLog(@"Product image url: %@",imageUrl);
@@ -1139,12 +1139,12 @@
 - (void)saveButtonAction:(id)sender{
 
     UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:@"Save Only!!!"
+                                  alertControllerWithTitle:@"Save Proposal or Save & Continue"
                                   message:@"What do you want to do?"
                                   preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* ok = [UIAlertAction
-                             actionWithTitle:@"Ok"
+                             actionWithTitle:@"Save Proposal"
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action)
                              {

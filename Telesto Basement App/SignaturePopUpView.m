@@ -23,7 +23,7 @@
     imageArr = [[NSMutableArray alloc] initWithArray:array];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"d MMMM, yyyy";
+    formatter.dateFormat = @"MMMM d, yyyy";
     NSString *string = [formatter stringFromDate:[NSDate date]];
 
     _DatePickerTextField.text = [NSString stringWithFormat:@"%@",string];

@@ -893,19 +893,19 @@
             }
         }
         else{
-            [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry!!" message:@"No Proposal Available. Make Your Own Proposal" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* ok = [UIAlertAction
-                                 actionWithTitle:@"OK"
-                                 style:UIAlertActionStyleDefault
-                                 handler:^(UIAlertAction * action)
-                                 {
-                                     [alert dismissViewControllerAnimated:YES completion:nil];
-                                 }];
-            [alert addAction:ok];
-            
-            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];            
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+//            [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry!!" message:@"No Proposal Available. Make Your Own Proposal" preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction* ok = [UIAlertAction
+//                                 actionWithTitle:@"OK"
+//                                 style:UIAlertActionStyleDefault
+//                                 handler:^(UIAlertAction * action)
+//                                 {
+//                                     [alert dismissViewControllerAnimated:YES completion:nil];
+//                                 }];
+//            [alert addAction:ok];
+//            
+//            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];            
+//            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
             completionBlock(NO);
         }
         

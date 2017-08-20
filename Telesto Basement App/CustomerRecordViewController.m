@@ -76,7 +76,7 @@
     _notesTextView.layer.borderColor = UIColorFromRGB(0xC4C6C9).CGColor;
     _notesTextView.layer.borderWidth = 0.8f;
     _notesTextView.layer.cornerRadius = 3.0f;
-    _notesTextView.placeholderText = @"Users Note Regarding creating user information";
+    _notesTextView.placeholderText = @"Notes on the house or customer.";
     
     self.firstNameTextField.delegate = self;
     self.lastNameTextField.delegate = self;
@@ -475,9 +475,9 @@
                 //Update the progress view
                 hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                 hud.center = self.view.center;
-                hud.mode = MBProgressHUDModeIndeterminate;
-                NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information."];
-                NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
+                hud.mode = MBProgressHUDModeIndeterminate; //Change to "Creating Customer Record. <br /> This may take a minute or two..."
+                NSString *strloadingText = [NSString stringWithFormat:@"Creating Customer Record."];
+                NSString *strloadingText2 = [NSString stringWithFormat:@"This may take a minute or two..."];
                 
                 hud.label.text = strloadingText;
                 hud.detailsLabel.text=strloadingText2;
@@ -793,8 +793,8 @@
         hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.center = self.view.center;
         hud.mode = MBProgressHUDModeIndeterminate;
-        NSString *strloadingText = [NSString stringWithFormat:@"Uploading Building Images"];
-        NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
+        NSString *strloadingText = [NSString stringWithFormat:@"Uploading Images"]; //Uploading Images <br /> This may take a minute or two...
+        NSString *strloadingText2 = [NSString stringWithFormat:@"This may take a minute or two..."];
         
         hud.label.text = strloadingText;
         hud.detailsLabel.text=strloadingText2;
@@ -807,8 +807,8 @@
         [snapShotCollectionView reloadData];
         [hud hideAnimated:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-        if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count>0) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Media Uploaded" message:@"Now Save user information." preferredStyle:UIAlertControllerStyleAlert];
+        if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count>0) { //Change to "Images Uploaded <br /> Now save the customer's information"
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Images Uploaded" message:@"Now save the customer's information" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* ok = [UIAlertAction
                                  actionWithTitle:@"OK"
                                  style:UIAlertActionStyleDefault
