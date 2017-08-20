@@ -44,12 +44,12 @@
     if (isFromBuildingMedia == YES) {
         switch (indexPath.row) {
             case 0:
-                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.imageView.image = [UIImage imageNamed:@"GalleryIcon"];
                 cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
                 cell.textLabel.text = @"Gallery Picture";
                 break;
             case 1:
-                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.imageView.image = [UIImage imageNamed:@"cameraPicture"];
                 cell.textLabel.text = @"Capture Picture";
                 break;
                 // TODO::
@@ -68,13 +68,13 @@
     else{
         switch (indexPath.row) {
             case 0:
-                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.imageView.image = [UIImage imageNamed:@"GalleryIcon"];
                 cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
                 cell.textLabel.text = @"Gallery Picture";
 
                 break;
             case 1:
-                cell.imageView.image = [UIImage imageNamed:@"pdfImage"];
+                cell.imageView.image = [UIImage imageNamed:@"cameraPicture"];
                 cell.textLabel.text = @"Capture Picture";
                 break;
             default:
