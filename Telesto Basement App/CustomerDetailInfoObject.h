@@ -17,6 +17,7 @@
 @property (strong,nonatomic) NSString *customerCityName;
 @property (strong,nonatomic) NSString *customerStateName;
 @property (strong,nonatomic) NSString *customerZipName;
+@property (strong,nonatomic) NSString *customerAreaCode;
 @property (strong,nonatomic) NSString *customerCountryName;
 @property (assign,nonatomic) BOOL emailNotification;
 @property (strong,nonatomic) NSString *customerEmailAddress;

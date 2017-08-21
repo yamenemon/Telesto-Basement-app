@@ -26,6 +26,9 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ProposalViewController.h"
 #import "AppDelegate.h"
+#import "GalleryItem.h"
+#import "StoreImageDescriptionView.h"
+#import "ProductStoreImageDescriptionViewController.h"
 
 @class  TemplatePopOverViewController;
 @class CustomerProposalObject;
@@ -49,7 +52,10 @@
     NSMutableArray *productNameArray;
     MBProgressHUD *hud;
     NSString *screenShotImagePath;
+    
 }
+@property (strong, nonatomic) ProductStoreImageDescriptionViewController *productStoreImageVC;
+@property (strong,nonatomic) StoreImageDescriptionView *storeImageDescripView;
 @property (strong,nonatomic) NSMutableArray *downloadedCustomTemplateProposalInfo;
 @property (weak, nonatomic) IBOutlet UILabel *templateNameLabel;
 @property (assign,nonatomic) int currentActiveTemplateID;

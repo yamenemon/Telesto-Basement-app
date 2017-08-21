@@ -47,7 +47,7 @@
         self.countryTextField.text = customerInfoObjects.customerCountryName;
         self.emailTextField.text = customerInfoObjects.customerEmailAddress;
         self.phoneNumberTextField.text = customerInfoObjects.customerPhoneNumber;
-        self.areaTextField.text = @"";
+        self.areaTextField.text = customerInfoObjects.customerAreaCode;
         [self.emailNotificationSwitch setOn:customerInfoObjects.emailNotification animated:YES];
         [self.phoneNotifySwitch setOn:customerInfoObjects.smsReminder animated:YES];
         self.notesTextView.text = customerInfoObjects.customerNotes;
@@ -506,6 +506,7 @@
             detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
             detailInfoObject.customerEmailAddress = self.emailTextField.text;
             detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
+            detailInfoObject.customerAreaCode = self.areaTextField.text;
             detailInfoObject.customerPhoneNumber = self.phoneNumberTextField.text;
             detailInfoObject.customerNotes = self.notesTextView.text;
             detailInfoObject.customerOtherImageDic = imageDic;
@@ -563,60 +564,86 @@
     BOOL newtworkAvailable = [self IsInternet];
     if ( newtworkAvailable == YES) {
         if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count == _galleryItems.count && [[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count>0) {
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //Update the progress view
-            hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.center = self.view.center;
-            hud.mode = MBProgressHUDModeIndeterminate;
-            NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information."];
-            NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
-            
-            hud.label.text = strloadingText;
-            hud.detailsLabel.text=strloadingText2;
-            [hud showAnimated:YES];
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        });
-        NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
-        for (int i= 0; i<_galleryItems.count; i++) {
-            UIImage *img = [_galleryItems objectAtIndex:i];
-            [imageDic setObject:img forKey:[NSString stringWithFormat:@"%d",i]];
-        }
-        [imageDic setObject:self.customerImageView.image forKey:@"pp"];
-        
-        CustomerDataManager *manager = [CustomerDataManager sharedManager];
-        CustomerDetailInfoObject *detailInfoObject = [[CustomerDetailInfoObject alloc] init];
-        detailInfoObject.customerId = [[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue];
-            NSLog(@"userId : %ld",[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]);
-        detailInfoObject.customerFirstName = self.firstNameTextField.text;
-        detailInfoObject.customerLastName = self.lastNameTextField.text;
-        detailInfoObject.customerStreetAddress = self.streetAddressTextField.text;
-        detailInfoObject.customerCityName = self.cityTextField.text;
-        detailInfoObject.customerStateName = self.stateNameTextField.text;
-        detailInfoObject.customerZipName = self.zipCodeTextField.text;
-        detailInfoObject.customerCountryName = @"0";
-        detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
-        detailInfoObject.customerEmailAddress = self.emailTextField.text;
-        detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
-        detailInfoObject.customerPhoneNumber = self.phoneNumberTextField.text;
-        detailInfoObject.customerNotes = self.notesTextView.text;
-        detailInfoObject.customerOtherImageDic = imageDic;
-        detailInfoObject.latitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
-        detailInfoObject.longitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
-        detailInfoObject.emailNotification = [self.emailNotificationSwitch isOn]?YES:NO;
-        detailInfoObject.smsReminder = [self.phoneNotifySwitch isOn]?YES:NO;
-        detailInfoObject.buildingImages = [[CustomerDataManager sharedManager] uploadedBuildingMediaArray];
-        [manager validateObjects:detailInfoObject withRootController:self withAfterEditing:isFromCustomProfile withCompletionBlock:^(BOOL success){
-            if (success == YES) {
-                [snapShotCollectionView reloadData];
-                [hud hideAnimated:YES];
-                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            if ([self.firstNameTextField.text length] == 0 ||
+                [self.lastNameTextField.text length] == 0 ||
+                [self.streetAddressTextField.text length] == 0 ||
+                [self.cityTextField.text length] == 0 ||
+                [self.stateNameTextField.text length] == 0 ||
+                [self.zipCodeTextField.text length] == 0 ||
+                [self.emailTextField.text length] == 0 ||
+                [self.areaTextField.text length] == 0 ||
+                [self.phoneNumberTextField.text length] == 0 ||
+                [self.notesTextView.text length] == 0) {
+                NSLog(@"Please fill up all field");
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uploading Error" message:@"Please fill all field!!!" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* ok = [UIAlertAction
+                                     actionWithTitle:@"OK"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         
+                                     }];
+                [alert addAction:ok];
+                [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+                [self presentViewController:alert animated:YES completion:nil];
             }
             else{
-                [hud hideAnimated:YES];
-                NSLog(@"NOT SAVE NEW CUSTOMER");
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //Update the progress view
+                    hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    hud.center = self.view.center;
+                    hud.mode = MBProgressHUDModeIndeterminate;
+                    NSString *strloadingText = [NSString stringWithFormat:@"Uploading User Information."];
+                    NSString *strloadingText2 = [NSString stringWithFormat:@" Please wait some moments..."];
+                    
+                    hud.label.text = strloadingText;
+                    hud.detailsLabel.text=strloadingText2;
+                    [hud showAnimated:YES];
+                    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+                });
+                NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
+                for (int i= 0; i<_galleryItems.count; i++) {
+                    UIImage *img = [_galleryItems objectAtIndex:i];
+                    [imageDic setObject:img forKey:[NSString stringWithFormat:@"%d",i]];
+                }
+                [imageDic setObject:self.customerImageView.image forKey:@"pp"];
+                
+                CustomerDataManager *manager = [CustomerDataManager sharedManager];
+                CustomerDetailInfoObject *detailInfoObject = [[CustomerDetailInfoObject alloc] init];
+                detailInfoObject.customerId = [[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue];
+                NSLog(@"userId : %ld",[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]);
+                detailInfoObject.customerFirstName = self.firstNameTextField.text;
+                detailInfoObject.customerLastName = self.lastNameTextField.text;
+                detailInfoObject.customerStreetAddress = self.streetAddressTextField.text;
+                detailInfoObject.customerCityName = self.cityTextField.text;
+                detailInfoObject.customerStateName = self.stateNameTextField.text;
+                detailInfoObject.customerZipName = self.zipCodeTextField.text;
+                detailInfoObject.customerCountryName = @"0";
+                detailInfoObject.emailNotification = self.emailNotificationSwitch.state;
+                detailInfoObject.customerEmailAddress = self.emailTextField.text;
+                detailInfoObject.smsReminder = self.phoneNotifySwitch.state;
+                detailInfoObject.customerAreaCode = self.areaTextField.text;
+                detailInfoObject.customerPhoneNumber = self.phoneNumberTextField.text;
+                detailInfoObject.customerNotes = self.notesTextView.text;
+                detailInfoObject.customerOtherImageDic = imageDic;
+                detailInfoObject.latitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
+                detailInfoObject.longitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
+                detailInfoObject.emailNotification = [self.emailNotificationSwitch isOn]?YES:NO;
+                detailInfoObject.smsReminder = [self.phoneNotifySwitch isOn]?YES:NO;
+                detailInfoObject.buildingImages = [[CustomerDataManager sharedManager] uploadedBuildingMediaArray];
+                [manager validateObjects:detailInfoObject withRootController:self withAfterEditing:isFromCustomProfile withCompletionBlock:^(BOOL success){
+                    if (success == YES) {
+                        [snapShotCollectionView reloadData];
+                        [hud hideAnimated:YES];
+                        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                    }
+                    else{
+                        [hud hideAnimated:YES];
+                        NSLog(@"NOT SAVE NEW CUSTOMER");
+                    }
+                }];
             }
-        }];
         }
         else{
                 [hud hideAnimated:YES];

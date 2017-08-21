@@ -24,6 +24,7 @@
 @property (strong,nonatomic) NSString *customerEmailAddress;
 @property (assign,nonatomic) BOOL smsReminder;
 @property (strong,nonatomic) NSString *customerPhoneNumber;
+@property (strong,nonatomic) NSString *customerAreaCode;
 @property (strong,nonatomic) NSString *customerNotes;
 @property (strong,nonatomic) NSDictionary *customerOtherImageDic;
 @property (strong,nonatomic) NSMutableArray *buildingImages;

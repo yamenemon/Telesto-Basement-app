@@ -27,7 +27,7 @@
 @synthesize infoBtnArray;
 @synthesize downloadedProduct;
 @synthesize productSliderCustomView;
-@synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID,currentDefaultTemplateIndex,downloadedCustomTemplateProposalInfo;
+@synthesize isFromNewProposals,userSelectedDataDictionary,currentActiveTemplateID,currentDefaultTemplateIndex,downloadedCustomTemplateProposalInfo,storeImageDescripView;
 @synthesize templateNameLabel;
 
 #pragma mark - ViewControllers Super Methods
@@ -141,30 +141,8 @@
     
     [self presentViewController:picker animated:YES completion:NULL];
 }
-- (void)saveImage:(UIImage*)selectedImage {
 
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d/%@.png",_templateNameString,lastClickedProductInfoBtn,selectedImage]];
-    NSLog(@"Saving folder directory: %@",savedImagePath);
-    NSData *imageData = UIImagePNGRepresentation(selectedImage);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [imageData writeToFile:savedImagePath atomically:YES];
-    });
-}
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender{
-    
-    NSLog(@"sender tag: %ld", (long)sender.tag);
-    for (int i = 1; i<productArray.count; i++) {
-        UIView *view = [productArray objectAtIndex:i];
-        BOOL isCustomProductClass = [view isKindOfClass:[CustomProductView class]];
-        if (isCustomProductClass == YES) {
-            CustomProductView*view = [productArray objectAtIndex:i];
-            if (sender.tag == view.infoBtn.tag) {
-                NSLog(@"Same tag");
-            }
-        }
-    }
     customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
     customVideoPopUpView.baseView = self;
     lastClickedProductInfoBtn = (int)sender.tag;
@@ -174,9 +152,19 @@
     isFromProduct = YES;
     popupController = [[CNPPopupController alloc] initWithContents:@[customVideoPopUpView]];
     popupController.theme = [self defaultTheme];
+    popupController.theme.movesAboveKeyboard = NO;
     popupController.theme.popupStyle = popupStyle;
     popupController.delegate = self;
+    
     [popupController presentPopupControllerAnimated:YES];
+    
+//    lastClickedProductInfoBtn = (int)sender.tag;
+//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    ProductStoreImageDescriptionViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProductStoreImageDescriptionViewController"];
+//    vc.baseView = self;
+//    vc.selectedButtonIndex = lastClickedProductInfoBtn;
+//    [self.navigationController presentViewController:vc animated:YES completion:nil];
+
 }
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
     
@@ -213,13 +201,8 @@
     // DOWNLOAD PRODUCT HERE
     //-----------------------
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
-//    downloadedProduct = [[NSMutableArray alloc] init];
     NSMutableArray *arr = [manager loadingProductObjectArray];
     downloadedProduct = [NSMutableArray arrayWithArray:arr];//[arr objectAtIndex:0];
-    
-//    AppDelegate *mainDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-//    downloadedProduct = mainDelegate.sharedProductArray;
-//    NSLog(@"%@",downloadedProduct);
 }
 -(void)createProductScroller{
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
@@ -1299,6 +1282,59 @@
 }
 #pragma mark -
 #pragma mark Color Picker Methods -
+
+- (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info{
+    // get the image
+    UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
+    if(!img) img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    if (isFromProduct == YES) {
+        [self saveImage:img];
+        [picker dismissViewControllerAnimated:YES completion:nil];
+        [self storeImageString:img];
+        isFromProduct = NO;
+    }
+    else{
+        // tell the color picker to finish importing
+        [self.colorPickerVC.rootViewController finishImport:img];
+        
+        // dismiss the image picker
+        [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+- (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker{
+    // image picker cancel, just dismiss it
+    [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)saveImage:(UIImage*)selectedImage {
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d/%@.png",_templateNameString,lastClickedProductInfoBtn,selectedImage]];
+    NSLog(@"Saving folder directory: %@",savedImagePath);
+    NSData *imageData = UIImagePNGRepresentation(selectedImage);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [imageData writeToFile:savedImagePath atomically:YES];
+    });
+}
+-(void)storeImageString:(UIImage*)image{
+    
+    GalleryItem *galleryContent = [[GalleryItem alloc] init];
+    galleryContent.itemId = [NSNumber numberWithInt:lastClickedProductInfoBtn];
+    galleryContent.itemImage = image;
+    
+    storeImageDescripView = [[[NSBundle mainBundle] loadNibNamed:@"StoreImageDescriptionView" owner:self options:nil] objectAtIndex:0];
+    storeImageDescripView.baseView = self;
+    storeImageDescripView.galleryItem = galleryContent;
+    
+    popupController = [[CNPPopupController alloc] initWithContents:@[storeImageDescripView]];
+    popupController.theme = [self defaultTheme];
+    popupController.theme.movesAboveKeyboard = YES;
+    popupController.theme.popupStyle = CNPPopupStyleCentered;
+    popupController.delegate = self;
+    
+}
 - (void)showColorPickerButtonTapped:(id)sender{
     // Setup the color picker - this only has to be done once, but can be called again and again if the values need to change while the app runs
     //    DRColorPickerThumbnailSizeInPointsPhone = 44.0f; // default is 42
@@ -1401,7 +1437,7 @@
         if (color.rgbColor == nil)
         {
             lastEditedView.contentView.backgroundColor = [UIColor colorWithPatternImage:color.image];
-
+            
         }
         else
         {
@@ -1412,30 +1448,6 @@
     // finally, present the color picker
     [self presentViewController:vc animated:YES completion:nil];
 }
-- (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info{
-    // get the image
-    UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
-    if(!img) img = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
-    if (isFromProduct == YES) {
-        [self saveImage:img];
-        [picker dismissViewControllerAnimated:YES completion:nil];
-        isFromProduct = NO;
-    }
-    else{
-        // tell the color picker to finish importing
-        [self.colorPickerVC.rootViewController finishImport:img];
-        
-        // dismiss the image picker
-        [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
-    }
-}
-- (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker{
-    // image picker cancel, just dismiss it
-    [self.colorPickerVC dismissViewControllerAnimated:YES completion:nil];
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
 #pragma mark -
 #pragma mark Editing Design View -
 
@@ -1454,7 +1466,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    });
+
     NSOperationQueue *operationQueue = [NSOperationQueue new];
     NSBlockOperation *blockCompletionOperation = [NSBlockOperation blockOperationWithBlock:^{
         NSLog(@"The block operation ended, Do something such as show a successmessage etc");
@@ -1497,44 +1509,7 @@
     [blockCompletionOperation addDependency:blockOperation];
     [operationQueue addOperation:blockCompletionOperation];
     [operationQueue addOperation:blockOperation];
-    
-    
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_group_t group = dispatch_group_create();
-//    // Add a task to the group
-//    dispatch_group_async(group, queue, ^{
-//        // Some asynchronous work
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        });
-//        [self initializePreviousDataWithCompletionBlock:^(BOOL success){
-//            if (success) {
-//                NSLog(@"%@",downloadedCustomTemplateProposalInfo);
-//                
-//                CustomerProposalObject *editingProposalObject = [downloadedCustomTemplateProposalInfo objectAtIndex:0];
-//                _templateNameString = editingProposalObject.templateName;
-//                templateNameLabel.text = _templateNameString;
-//                currentActiveTemplateID = (int)editingProposalObject.templateID;
-//                CustomerDataManager *manager = [CustomerDataManager sharedManager];
-//                if ((int)editingProposalObject.defaultTemplateID<[manager getTemplateObjectArray].count) {
-//                    [self setSavedTemplateNumber:[[manager getTemplateObjectArray] objectAtIndex:editingProposalObject.defaultTemplateID] withTemplateIndex:(int)editingProposalObject.defaultTemplateID];
-//                }
-//                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
-//                dispatch_async(queue, ^{
-//                    for (CustomProductView *view in editingProposalObject.productArray) {
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [self reloadProduct:view];
-//                            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//                        });
-//                    }
-//                });
-//
-//                [self.view setNeedsDisplay];
-//                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-//            }
-//        }];
-//    });
-//    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+    });
 }
 -(void)createFolderForEditing:(NSString*)templateName{
     NSError *error;

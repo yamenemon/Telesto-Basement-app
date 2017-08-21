@@ -14,7 +14,6 @@
 		3B6EB88C1DD845D900936AB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB88B1DD845D900936AB9 /* main.m */; };
 		3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB88E1DD845D900936AB9 /* AppDelegate.m */; };
 		3B6EB8951DD845D900936AB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8931DD845D900936AB9 /* Main.storyboard */; };
-		3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */; };
 		3B6EB89A1DD845DA00936AB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB8991DD845DA00936AB9 /* Assets.xcassets */; };
 		3B6EB89D1DD845DA00936AB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B6EB89B1DD845DA00936AB9 /* LaunchScreen.storyboard */; };
 		3BA8D3AB1EF8363400517C65 /* CustomerDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA8D3A71EF8363400517C65 /* CustomerDataManager.m */; };
@@ -135,6 +134,9 @@
 		70DB1B5D1F1E1238006E55A2 /* DefaultTemplateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DB1B5C1F1E1238006E55A2 /* DefaultTemplateObject.m */; };
 		70DD3BA81F306A2800FC8DAA /* CustomerProposalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70DD3BA71F306A2800FC8DAA /* CustomerProposalObject.m */; };
 		70E0268E1F2739BE007417F8 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E0268D1F2739BE007417F8 /* CustomTextField.m */; };
+		70E1FBC81F4AE3BC001520D1 /* StoreImageDescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E1FBC71F4AE3BC001520D1 /* StoreImageDescriptionView.m */; };
+		70E1FBCA1F4AE3CF001520D1 /* StoreImageDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E1FBC91F4AE3CF001520D1 /* StoreImageDescriptionView.xib */; };
+		70E1FBD31F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E1FBD21F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.m */; };
 		70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */; };
 		70E5D8C81EEFC8AB004FE1BF /* ProductSliderCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */; };
 		70EC80E01E067DB400A6D245 /* creat_new_customer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80D51E067DB400A6D245 /* creat_new_customer@2x.png */; };
@@ -162,7 +164,6 @@
 		3B6EB88D1DD845D900936AB9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B6EB88E1DD845D900936AB9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3B6EB8941DD845D900936AB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3B6EB8971DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Telesto_Basement_App.xcdatamodel; sourceTree = "<group>"; };
 		3B6EB8991DD845DA00936AB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B6EB89C1DD845DA00936AB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B6EB89E1DD845DA00936AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -352,6 +353,13 @@
 		70DD3BA71F306A2800FC8DAA /* CustomerProposalObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerProposalObject.m; sourceTree = "<group>"; };
 		70E0268C1F2739BE007417F8 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		70E0268D1F2739BE007417F8 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		70E1FBC21F4AD359001520D1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		70E1FBC31F4AD359001520D1 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		70E1FBC61F4AE3BC001520D1 /* StoreImageDescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreImageDescriptionView.h; sourceTree = "<group>"; };
+		70E1FBC71F4AE3BC001520D1 /* StoreImageDescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreImageDescriptionView.m; sourceTree = "<group>"; };
+		70E1FBC91F4AE3CF001520D1 /* StoreImageDescriptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreImageDescriptionView.xib; sourceTree = "<group>"; };
+		70E1FBD11F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStoreImageDescriptionViewController.h; sourceTree = "<group>"; };
+		70E1FBD21F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStoreImageDescriptionViewController.m; sourceTree = "<group>"; };
 		70E5D8C41EEFC89D004FE1BF /* ProductSliderCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSliderCustomView.h; sourceTree = "<group>"; };
 		70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSliderCustomView.m; sourceTree = "<group>"; };
 		70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductSliderCustomView.xib; sourceTree = "<group>"; };
@@ -429,7 +437,6 @@
 				7097799A1ED569420032F4FF /* horizentalWall@2x.png */,
 				7097799B1ED569420032F4FF /* verticalWall@2x.png */,
 				3B6EB89E1DD845DA00936AB9 /* Info.plist */,
-				3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */,
 				705F64C21DF97B5500082D55 /* Font */,
 				3B6EB88B1DD845D900936AB9 /* main.m */,
 			);
@@ -512,6 +519,8 @@
 		704B688E1E13C9C000E6537D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				70E1FBC21F4AD359001520D1 /* libsqlite3.0.tbd */,
+				70E1FBC31F4AD359001520D1 /* libsqlite3.tbd */,
 				70246CBA1F16673800274C23 /* MapKit.framework */,
 				3B444B441EFA90740037A4E0 /* CoreLocation.framework */,
 				70CAA4761EE83E5A00614BFB /* AVFoundation.framework */,
@@ -604,6 +613,11 @@
 				70C28A0E1F223C3300EB5DD9 /* CustomTemplateObject.m */,
 				705F058F1EDED8CE00D8B837 /* DesignViewController.h */,
 				705F05901EDED8CE00D8B837 /* DesignViewController.m */,
+				70E1FBD11F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.h */,
+				70E1FBD21F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.m */,
+				70E1FBC61F4AE3BC001520D1 /* StoreImageDescriptionView.h */,
+				70E1FBC71F4AE3BC001520D1 /* StoreImageDescriptionView.m */,
+				70E1FBC91F4AE3CF001520D1 /* StoreImageDescriptionView.xib */,
 				70E5D8C41EEFC89D004FE1BF /* ProductSliderCustomView.h */,
 				70E5D8C51EEFC89D004FE1BF /* ProductSliderCustomView.m */,
 				70E5D8C71EEFC8AB004FE1BF /* ProductSliderCustomView.xib */,
@@ -888,6 +902,7 @@
 				70EC80E71E067DB400A6D245 /* separator@2x.png in Resources */,
 				70682B2A1F3B21FE00162D3E /* ProposalPdfView.xib in Resources */,
 				70CA54D21E7172A700F7FE67 /* CustomTableViewCell.xib in Resources */,
+				70E1FBCA1F4AE3CF001520D1 /* StoreImageDescriptionView.xib in Resources */,
 				704B689E1E13E8B800E6537D /* 12.9_inch_iPad_Pro@2x-png.png in Resources */,
 				70688A781F3C5FFC004B4CD9 /* SignaturePopUpView.xib in Resources */,
 				70EC80E41E067DB400A6D245 /* old_proposal@2x.png in Resources */,
@@ -1014,13 +1029,13 @@
 				7084E9A61E07C60100EA5AE8 /* SPUserResizableView.m in Sources */,
 				7025893D1EF00376006ACCC8 /* ProductInfoDetailsPopup.m in Sources */,
 				705B78431E13C71D00161991 /* SWRevealViewController.m in Sources */,
-				3B6EB8981DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld in Sources */,
 				3B6EB88F1DD845D900936AB9 /* AppDelegate.m in Sources */,
 				3BA8D3AC1EF8363400517C65 /* CustomerDetailInfoObject.m in Sources */,
 				70CAA46B1EE7DB4100614BFB /* MediaPopUp.m in Sources */,
 				70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */,
 				705B783E1E13C71D00161991 /* CustomerListViewController.m in Sources */,
 				705B78441E13C71D00161991 /* TrainingVideoViewController.m in Sources */,
+				70E1FBC81F4AE3BC001520D1 /* StoreImageDescriptionView.m in Sources */,
 				3B69A9C71DDB0E4800163A80 /* TermsAndConditionViewController.m in Sources */,
 				7032B0641F21DBCE0046A201 /* FaqsViewControllerStep3.m in Sources */,
 				705F05A11EDED8CE00D8B837 /* CustomTemplateNameView.m in Sources */,
@@ -1038,6 +1053,7 @@
 				705B78411E13C71D00161991 /* OldProposalsViewController.m in Sources */,
 				7012796C1F31A9850067FC09 /* FAQObject.m in Sources */,
 				70CE84211F04CED900867F91 /* ELCAssetTablePicker.m in Sources */,
+				70E1FBD31F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.m in Sources */,
 				3B6EB88C1DD845D900936AB9 /* main.m in Sources */,
 				705B78401E13C71D00161991 /* MenuViewController.m in Sources */,
 				70DD3BA81F306A2800FC8DAA /* CustomerProposalObject.m in Sources */,
@@ -1252,19 +1268,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		3B6EB8961DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				3B6EB8971DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodel */,
-			);
-			currentVersion = 3B6EB8971DD845DA00936AB9 /* Telesto_Basement_App.xcdatamodel */;
-			path = Telesto_Basement_App.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3B6EB87F1DD845D900936AB9 /* Project object */;
 }

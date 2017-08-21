@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface GalleryItem : NSObject
 
-@property (nonatomic, strong) NSString *itemImage;
+@property (nonatomic, assign) int itemId;
+@property (nonatomic, strong) UIImage *itemImage;
+@property (nonatomic, strong) NSString *itemDescription;
 
 + (instancetype)galleryItemWithDictionary:(NSDictionary *)dictionary;
 

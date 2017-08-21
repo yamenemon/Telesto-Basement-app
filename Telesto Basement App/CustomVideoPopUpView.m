@@ -108,7 +108,7 @@
 - (UIImageView*)setGalleryItem:(GalleryItem *)item withImageView:(UIImageView*)_itemImageView
 {
     
-    _itemImageView.image = [UIImage imageNamed:item.itemImage];
+//    _itemImageView.image = [UIImage imageNamed:item.itemImage];
     return _itemImageView;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

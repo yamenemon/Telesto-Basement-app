@@ -64,6 +64,7 @@
                  customerInfoObj.emailNotification = [dic valueForKey:@"emailNotify"];
                  customerInfoObj.customerEmailAddress = [dic valueForKey:@"email"];
                  customerInfoObj.smsReminder = [dic valueForKey:@"smsNotify"];
+                 customerInfoObj.customerAreaCode = [dic valueForKey:@"area_code"];
                  customerInfoObj.customerPhoneNumber = [dic valueForKey:@"phone"];
                  customerInfoObj.customerNotes = [dic valueForKey:@"details"];
                  customerInfoObj.customerOtherImageDic = [dic valueForKey:@"photo"];

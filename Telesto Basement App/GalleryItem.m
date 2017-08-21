@@ -14,8 +14,9 @@
 {
     GalleryItem *item = [[GalleryItem alloc] init];
     
+    item.itemId = dictionary[@"itemId"];
     item.itemImage = dictionary[@"itemImage"];
-    
+    item.itemDescription = dictionary[@"itemDescription"];
     return item;
 }
 
