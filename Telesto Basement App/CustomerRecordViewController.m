@@ -374,7 +374,23 @@
 // This method is called when an image has been chosen from the library or taken from the camera.
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     //You can retrieve the actual UIImage
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    UIImage *originalImage = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    
+    NSData *imgDatas= UIImageJPEGRepresentation(originalImage,1 /*compressionQuality*/);
+    
+    int imageSizes   = (int)imgDatas.length;
+    NSLog(@"size of original image in KB: %f ", imageSizes/1024.0);
+    
+    
+    NSData *imgData= UIImageJPEGRepresentation(originalImage,0.1 /*compressionQuality*/);
+    
+    int imageSize   = (int)imgData.length;
+    NSLog(@"size of image in KB: %f ", imageSize/1024.0);
+    
+    
+    UIImage *image=[UIImage imageWithData:imgData];
+
     //Or you can get the image url from AssetsLibrary
     if (cameraMode == ProfilePicFromCamera || cameraMode == ProfilePicFromGallery) {
         _customerImageView.image = image;
@@ -607,7 +623,8 @@
                     UIImage *img = [_galleryItems objectAtIndex:i];
                     [imageDic setObject:img forKey:[NSString stringWithFormat:@"%d",i]];
                 }
-                [imageDic setObject:self.customerImageView.image forKey:@"pp"];
+                UIImage *ppImage = [self fixOrientation:self.customerImageView.image];
+                [imageDic setObject:ppImage forKey:@"pp"];
                 
                 CustomerDataManager *manager = [CustomerDataManager sharedManager];
                 CustomerDetailInfoObject *detailInfoObject = [[CustomerDetailInfoObject alloc] init];
@@ -663,6 +680,85 @@
                 [self presentViewController:alert animated:YES completion:nil];
         }
     }
+}
+- (UIImage *)fixOrientation:(UIImage*)image {
+    
+    // No-op if the orientation is already correct
+    if (image.imageOrientation == UIImageOrientationUp) return image;
+    
+    // We need to calculate the proper transformation to make the image upright.
+    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (image.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, image.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, image.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationUpMirrored:
+            break;
+    }
+    
+    switch (image.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationDown:
+        case UIImageOrientationLeft:
+        case UIImageOrientationRight:
+            break;
+    }
+    
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, image.size.width, image.size.height,
+                                             CGImageGetBitsPerComponent(image.CGImage), 0,
+                                             CGImageGetColorSpace(image.CGImage),
+                                             CGImageGetBitmapInfo(image.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (image.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,image.size.height,image.size.width), image.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,image.size.width,image.size.height), image.CGImage);
+            break;
+    }
+    
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
 }
 #pragma mark - CLLocationManagerDelegate
 

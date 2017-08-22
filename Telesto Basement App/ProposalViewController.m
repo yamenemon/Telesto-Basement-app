@@ -155,7 +155,7 @@
         [cell.quantityxPrice setFont:[UIFont fontWithName:@"Roboto-Bold" size:15]];
         cell.quantityxPrice.textAlignment = NSTextAlignmentCenter;
         
-        cell.totalPrice.text = [NSString stringWithFormat:@"$ %d",summation];
+        cell.totalPrice.text = [NSString stringWithFormat:@"$ %f",summation];
         summation = 0;
     } else{
         [cell.productName setFont:[UIFont fontWithName:@"Roboto-Bold" size:10]];

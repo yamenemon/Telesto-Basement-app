@@ -37,7 +37,7 @@
     snapShotCollectionView.backgroundColor = [UIColor clearColor];
     [snapShotCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionViewcell"];
     [snapContainer addSubview:snapShotCollectionView];
-    
+    _bigScreenImageView.contentMode = UIViewContentModeScaleToFill;
     [snapShotCollectionView reloadData];
 }
 - (void)initGalleryItems

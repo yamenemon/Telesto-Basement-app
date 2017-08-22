@@ -1285,14 +1285,23 @@
 
 - (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info{
     // get the image
-    UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
-    if(!img) img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *originalImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    if(!originalImage) originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSData *imgData= UIImageJPEGRepresentation(originalImage,0.1 /*compressionQuality*/);
+    
+    int imageSize   = (int)imgData.length;
+    NSLog(@"size of image in KB: %f ", imageSize/1024.0);
+    
+    
+    UIImage *img=[UIImage imageWithData:imgData];
     
     if (isFromProduct == YES) {
-        [self saveImage:img];
-        [picker dismissViewControllerAnimated:YES completion:nil];
-        [self storeImageString:img];
-        isFromProduct = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self saveImage:img];
+            [picker dismissViewControllerAnimated:YES completion:nil];
+            [self storeImageString:img];
+            isFromProduct = NO;
+        });
     }
     else{
         // tell the color picker to finish importing

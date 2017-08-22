@@ -26,7 +26,12 @@
     [super viewDidLoad];
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundColor:[Utility colorWithHexString:@"0A5571"]];
-
+    
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    [locationManager startUpdatingLocation];
     
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -237,8 +242,11 @@
     long tag = btn.tag;
     CustomerInfoObject *customerInfoObject = [_customerInfoObjArray objectAtIndex:tag];
     
+    float latitude = locationManager.location.coordinate.latitude;
+    float longitude = locationManager.location.coordinate.longitude;
+    
     /*https://stackoverflow.com/questions/21983559/opens-apple-maps-app-from-ios-app-with-directions*/
-    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=41.6779257,-71.10870929999999&daddr=%f,%f",[[customerInfoObject latitude] floatValue],[[customerInfoObject longitude] floatValue]];
+    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?saddr=%f,%f&daddr=%f,%f",latitude,longitude,[[customerInfoObject latitude] floatValue],[[customerInfoObject longitude] floatValue]];
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: directionsURL]];
 }
 -(void)cellMethod:(long)sender withCustomerInfo:(CustomerInfoObject*)infoObject{

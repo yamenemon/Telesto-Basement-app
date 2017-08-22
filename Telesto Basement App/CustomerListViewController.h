@@ -14,13 +14,17 @@
 #import "CustomerProposalsViewController.h"
 #import "MapItViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <CoreLocation/CoreLocation.h>
 
 
 @class CustomerDataManager;
 @class CustomerInfoObject;
 @class CustomerRecordViewController;
 
-@interface CustomerListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface CustomerListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>{
+    CLLocationManager *locationManager;
+
+}
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *customerListTableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *customerSearchBar;
