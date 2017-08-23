@@ -2431,10 +2431,12 @@ The following clauses apply to Status Check Software only:
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCf-1b-5BZ" userLabel="BottomPanelView">
                                         <rect key="frame" x="10" y="634" width="1004" height="62"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCt-XQ-iKM">
-                                                <rect key="frame" x="117" y="10" width="270" height="42"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCt-XQ-iKM">
+                                                <rect key="frame" x="8" y="10" width="270" height="42"/>
                                                 <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="270" id="tH2-tZ-8V4"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="25"/>
                                                 <state key="normal" title="Email To Customer">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2443,9 +2445,8 @@ The following clauses apply to Status Check Software only:
                                                     <action selector="emailToCustomerAction:" destination="b5M-Ek-zPn" eventType="touchUpInside" id="0tj-rO-ViR"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYC-zX-CnG">
-                                                <rect key="frame" x="650" y="10" width="270" height="42"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYC-zX-CnG">
+                                                <rect key="frame" x="726" y="10" width="270" height="42"/>
                                                 <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="25"/>
                                                 <state key="normal" title="Send To Office">
@@ -2456,7 +2457,36 @@ The following clauses apply to Status Check Software only:
                                                     <action selector="sendToOffice:" destination="b5M-Ek-zPn" eventType="touchUpInside" id="LZC-ql-XaX"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWe-Eu-tIG">
+                                                <rect key="frame" x="367" y="10" width="270" height="42"/>
+                                                <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="25"/>
+                                                <state key="normal" title="Sign To Doc">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="emailToCustomerAction:" destination="b5M-Ek-zPn" eventType="touchUpInside" id="skj-N2-QLE"/>
+                                                    <action selector="sendToOffice:" destination="b5M-Ek-zPn" eventType="touchUpInside" id="JC7-2k-N4J"/>
+                                                    <action selector="signToDoc:" destination="b5M-Ek-zPn" eventType="touchUpInside" id="0Pf-c7-N19"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ZYC-zX-CnG" firstAttribute="top" secondItem="LCf-1b-5BZ" secondAttribute="top" constant="10" id="59A-wQ-VlF"/>
+                                            <constraint firstItem="HCt-XQ-iKM" firstAttribute="leading" secondItem="LCf-1b-5BZ" secondAttribute="leading" constant="8" id="5Zt-Ga-s5x"/>
+                                            <constraint firstItem="ZYC-zX-CnG" firstAttribute="height" secondItem="XWe-Eu-tIG" secondAttribute="height" id="600-yc-90L"/>
+                                            <constraint firstItem="HCt-XQ-iKM" firstAttribute="centerY" secondItem="LCf-1b-5BZ" secondAttribute="centerY" id="AcE-tM-Dt2"/>
+                                            <constraint firstItem="XWe-Eu-tIG" firstAttribute="width" secondItem="HCt-XQ-iKM" secondAttribute="width" id="H4M-Ga-PMs"/>
+                                            <constraint firstItem="XWe-Eu-tIG" firstAttribute="height" secondItem="HCt-XQ-iKM" secondAttribute="height" id="Hpe-P5-dyF"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZYC-zX-CnG" secondAttribute="trailing" constant="8" id="Huf-yq-Frh"/>
+                                            <constraint firstItem="ZYC-zX-CnG" firstAttribute="width" secondItem="XWe-Eu-tIG" secondAttribute="width" id="InT-C5-kd1"/>
+                                            <constraint firstAttribute="bottom" secondItem="HCt-XQ-iKM" secondAttribute="bottom" constant="10" id="Nhu-be-5ZZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZYC-zX-CnG" secondAttribute="bottom" constant="10" id="OG5-4l-fNG"/>
+                                            <constraint firstItem="ZYC-zX-CnG" firstAttribute="centerY" secondItem="LCf-1b-5BZ" secondAttribute="centerY" id="RY9-bL-jYF"/>
+                                            <constraint firstItem="HCt-XQ-iKM" firstAttribute="top" secondItem="LCf-1b-5BZ" secondAttribute="top" constant="10" id="X1H-Fk-wxe"/>
+                                            <constraint firstItem="XWe-Eu-tIG" firstAttribute="centerY" secondItem="LCf-1b-5BZ" secondAttribute="centerY" id="fCb-zN-COX"/>
+                                            <constraint firstItem="XWe-Eu-tIG" firstAttribute="centerX" secondItem="LCf-1b-5BZ" secondAttribute="centerX" id="hlD-ea-Lme"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.87264424562454224" green="0.91362124681472778" blue="0.93038696050643921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

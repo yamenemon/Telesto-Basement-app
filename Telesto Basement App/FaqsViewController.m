@@ -35,8 +35,8 @@ static NSString *const kTableViewCellReuseIdentifier = @"TableViewCellReuseIdent
     currentDate.text = [NSString stringWithFormat:@"%@",string];
     [self registerForKeyboardNotifications];
     
-    [currentOutsideConditionTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Sunny", nil]];
-    [heatTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Hot Water", nil]];
+    [currentOutsideConditionTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Sunny",@"Rainy", nil]];
+    [heatTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Hot Water",@"Cold Water", nil]];
     [airTextField setItemList:[NSArray arrayWithObjects:@"Select One",@"Central", nil]];
     [basementDehumidifier setItemList:[NSArray arrayWithObjects:@"Select One",@"Yes 40 Pint", nil]];
     [self assignData];

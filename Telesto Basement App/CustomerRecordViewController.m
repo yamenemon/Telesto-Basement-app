@@ -473,6 +473,7 @@
 #pragma mark -
 #pragma mark CREATE CUSTOMER
 - (IBAction)saveBtnAction:(id)sender {
+    [self.view endEditing:YES];
     if (isFromCustomProfile == YES) {
         [self createCustomerAfterEditing];
 

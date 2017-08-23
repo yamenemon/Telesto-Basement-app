@@ -540,7 +540,6 @@
 				3B6EB88D1DD845D900936AB9 /* AppDelegate.h */,
 				3B6EB88E1DD845D900936AB9 /* AppDelegate.m */,
 				70246CB91F16235B00274C23 /* Customer */,
-				70CE84051F04C4AC00867F91 /* Proposals */,
 				70CE84041F04C49E00867F91 /* UserProfile */,
 				70CE84031F04C48A00867F91 /* FAQS */,
 				704B68931E13CB7B00E6537D /* Template PopOver */,
@@ -563,6 +562,7 @@
 		705B782C1E13C6C800161991 /* SW */ = {
 			isa = PBXGroup;
 			children = (
+				70CE84051F04C4AC00867F91 /* Proposals */,
 				70BFBF571E781549007F0862 /* Menu Controllers */,
 				709F4BD41E76B30C00C8B8DA /* Design Window */,
 			);
