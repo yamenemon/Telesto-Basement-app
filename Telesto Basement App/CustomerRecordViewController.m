@@ -25,7 +25,28 @@
 @synthesize popupController;
 @synthesize hud;
 
-
+-(CLLocationCoordinate2D) getLocationFromAddressString: (NSString*) addressStr {
+    double latitude = 0, longitude = 0;
+    NSString *esc_addr =  [addressStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
+    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
+    if (result) {
+        NSScanner *scanner = [NSScanner scannerWithString:result];
+        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
+            [scanner scanDouble:&latitude];
+            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
+                [scanner scanDouble:&longitude];
+            }
+        }
+    }
+    CLLocationCoordinate2D center;
+    center.latitude=latitude;
+    center.longitude = longitude;
+    NSLog(@"View Controller get Location Logitute : %f",center.latitude);
+    NSLog(@"View Controller get Location Latitute : %f",center.longitude);
+    return center;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -55,7 +76,7 @@
         NSLog(@"%@",imageUrl);
         self.customerImageView.contentMode = UIViewContentModeScaleToFill;
         [self.customerImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"userName"]];
-        
+        [self getLocationFromAddressString:customerInfoObjects.customerAddress];
         [self loadCustomerBuildingImages:customerInfoObjects];
     }
 }
@@ -474,14 +495,58 @@
 #pragma mark CREATE CUSTOMER
 - (IBAction)saveBtnAction:(id)sender {
     [self.view endEditing:YES];
-    if (isFromCustomProfile == YES) {
-        [self createCustomerAfterEditing];
-
+    if ([self.firstNameTextField.text length] == 0 ||
+        [self.lastNameTextField.text length] == 0 ||
+        [self.streetAddressTextField.text length] == 0 ||
+        [self.cityTextField.text length] == 0 ||
+        [self.stateNameTextField.text length] == 0 ||
+        [self.zipCodeTextField.text length] == 0 ||
+        [self.emailTextField.text length] == 0 ||
+        [self.areaTextField.text length] == 0 ||
+        [self.phoneNumberTextField.text length] == 0 ||
+        [self.notesTextView.text length] == 0) {
+        NSLog(@"Please fill up all field");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uploading Error" message:@"Please fill all field!!!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        [alert addAction:ok];
+        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     else{
-        [self createCustomer];
-
+        CLLocationCoordinate2D center = [self getLocationFromAddressString:[NSString stringWithFormat:@"%@,%@,%@,%@",self.streetAddressTextField.text,self.cityTextField.text,self.stateNameTextField.text,self.zipCodeTextField.text]];
+        if (!(center.latitude == 0) && !(center.longitude == 0)) {
+            if (isFromCustomProfile == YES) {
+                [self createCustomerAfterEditing];
+            }
+            else{
+                [self createCustomer];
+            }
+        }
+        else{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Location Error" message:@"Your Address is Invalid" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
+            [alert addAction:ok];
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
     }
+    
+    
+    
 }
 -(void)createCustomerAfterEditing{
     BOOL newtworkAvailable = [self IsInternet];
@@ -581,31 +646,6 @@
     BOOL newtworkAvailable = [self IsInternet];
     if ( newtworkAvailable == YES) {
         if ([[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count == _galleryItems.count && [[CustomerDataManager sharedManager] uploadedBuildingMediaArray].count>0) {
-            if ([self.firstNameTextField.text length] == 0 ||
-                [self.lastNameTextField.text length] == 0 ||
-                [self.streetAddressTextField.text length] == 0 ||
-                [self.cityTextField.text length] == 0 ||
-                [self.stateNameTextField.text length] == 0 ||
-                [self.zipCodeTextField.text length] == 0 ||
-                [self.emailTextField.text length] == 0 ||
-                [self.areaTextField.text length] == 0 ||
-                [self.phoneNumberTextField.text length] == 0 ||
-                [self.notesTextView.text length] == 0) {
-                NSLog(@"Please fill up all field");
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uploading Error" message:@"Please fill all field!!!" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction* ok = [UIAlertAction
-                                     actionWithTitle:@"OK"
-                                     style:UIAlertActionStyleDefault
-                                     handler:^(UIAlertAction * action)
-                                     {
-                                         [alert dismissViewControllerAnimated:YES completion:nil];
-                                         
-                                     }];
-                [alert addAction:ok];
-                [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-            else{
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //Update the progress view
                     hud =  [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -661,7 +701,6 @@
                         NSLog(@"NOT SAVE NEW CUSTOMER");
                     }
                 }];
-            }
         }
         else{
                 [hud hideAnimated:YES];
