@@ -27,15 +27,22 @@
 @synthesize uploadedBuildingMediaArray;
 @synthesize downloadedBuildingMediaArray;
 @synthesize countryList,productObjectArray,templateObjectArray;
+@synthesize dbHandler;
 
 + (CustomerDataManager *)sharedManager {
     static CustomerDataManager *_sharedManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedManager = [[self alloc] init];
+        _sharedManager = [[super allocWithZone:NULL] init];
     });
 
     return _sharedManager;
+}
+-(id)init{
+    if(self = [super init]){
+        dbHandler = [[CoreDataHelper alloc] init];
+    }
+    return self;
 }
 - (BOOL)connected {
     return [AFNetworkReachabilityManager sharedManager].reachable;
@@ -534,7 +541,8 @@
 }
 #pragma mark LOADING PRODUCT IMAGES -
 -(void)loadingProductImagesWithBaseController:(UIViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
-
+    
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -587,14 +595,14 @@
                     if (count == 0) {
                         dispatch_async(dispatch_get_main_queue(), ^{
                             //Save in the document directory.
-                            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                            NSString *documentsDirectory = [paths objectAtIndex:0];
-                            NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
-                            NSMutableArray *myObject=[NSMutableArray array];
-                            [myObject addObject:productObjectArray];
-                            AppDelegate *mainDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-                            mainDelegate.sharedProductArray = productObjectArray;
-                            [NSKeyedArchiver archiveRootObject:myObject toFile:appFile];
+//                            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//                            NSString *documentsDirectory = [paths objectAtIndex:0];
+//                            NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
+//                            NSMutableArray *myObject=[NSMutableArray array];
+//                            [myObject addObject:productObjectArray];
+//                            AppDelegate *mainDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+//                            mainDelegate.sharedProductArray = productObjectArray;
+//                            [NSKeyedArchiver archiveRootObject:myObject toFile:appFile];
                         });
                         completionBlock(YES);
                     }
@@ -614,22 +622,59 @@
                                                            NSLog(@"Response:%@ %@\n", response, error);
                                                            if ( !error )
                                                            {
-                                                               UIImage *image = [[UIImage alloc] initWithData:data];
-                                                               [self saveImage:image withImageName:productObj.productName completionBlock:^(BOOL succeeded) {
-                                                                   if (succeeded) {
+//                                                               UIImage *image = [[UIImage alloc] initWithData:data];
+//                                                               [self saveImage:image withImageName:productObj.productName completionBlock:^(BOOL succeeded) {
+//                                                                   if (succeeded) {
                                                                        NSLog(@"Downloaded %@ and Saved to document directory",productObj.productName);
-                                                                       completionBlock(YES);
-                                                                   }
-                                                                   else{
-                                                                       NSLog(@"Not Downloaded %@ and Saved to document directory",productObj.productName);
-                                                                   }
-                                                               }];
+//                                                                       completionBlock(YES);
+//                                                                   }
+//                                                                   else{
+//                                                                       NSLog(@"Not Downloaded %@ and Saved to document directory",productObj.productName);
+//                                                                   }
+//                                                               }];
+                                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                                   
+                                                                   [self saveProductDetailsInDatabaseWithProductObject:productObj withProductImage:data completionBlock:^(BOOL success){
+                                                                       if (success == YES) {
+                                                                           NSLog(@"save at database");
+                                                                           completionBlock(YES);
+                                                                       }
+                                                                   }];
+                                                               });
+                                                               
                                                            } else{
                                                                completionBlock(NO);
                                                            }
                                                        }];
     [dataTask resume];
 
+}
+
+-(void)saveProductDetailsInDatabaseWithProductObject:(Product*)productObject withProductImage:(NSData*)data completionBlock:(void (^)(BOOL succeeded))completionBlock{
+    
+    /*
+     @property (assign,nonatomic) int productId;
+     @property (strong,nonatomic) NSString *productName;
+     @property (strong,nonatomic) NSString *productImage;
+     @property (assign,nonatomic) float productPrice;
+     @property (strong,nonatomic) NSString *productDescription;
+     @property (strong,nonatomic) NSString *unitType;
+     @property (assign,nonatomic) float discount;
+     */
+    NSManagedObjectContext  *localContext=[[NSManagedObjectContext alloc] initWithConcurrencyType:NSPersistentStoreOpenError];//[dbHandler managedObjectContext];
+    localContext.persistentStoreCoordinator = [dbHandler persistentStoreCoordinator];
+    GrateProducts *grateProducts = [NSEntityDescription insertNewObjectForEntityForName:@"GrateProduct" inManagedObjectContext:localContext];
+    grateProducts.productId = [NSNumber numberWithInt:productObject.productId];
+    grateProducts.productName = productObject.productName;
+    grateProducts.productImage = data;
+    grateProducts.productPrice = productObject.productPrice;
+    grateProducts.productDescription = productObject.productDescription;
+    grateProducts.unitType = productObject.unitType;
+    grateProducts.discount = productObject.discount;
+    NSError *error;
+    if (![localContext save:&error]) {
+        NSLog(@"Sorry");
+    }
 }
 - (void)saveImage: (UIImage*)image withImageName:(NSString*)imageName completionBlock:(void (^)(BOOL succeeded))completionBlock{
     NSError *error = nil;

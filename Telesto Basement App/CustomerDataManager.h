@@ -14,6 +14,8 @@
 #import <AFURLRequestSerialization.h>
 #import "Product.h"
 #import "DefaultTemplateObject.h"
+#import "CoreDataHelper.h"
+#import "GrateProducts.h"
 
 @class CustomerRecordViewController;
 @class CustomerListViewController;
@@ -27,6 +29,9 @@
 @class CustomProductView;
 
 @interface CustomerDataManager : NSObject
+
+@property (strong,nonatomic) CoreDataHelper *dbHandler;
+
 @property (strong,nonatomic) NSMutableArray *templateObjectArray;
 @property (strong,nonatomic) NSMutableArray *productObjectArray;
 @property (strong,nonatomic) NSMutableArray *productsArray;
