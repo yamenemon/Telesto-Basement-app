@@ -622,10 +622,12 @@
                                                            NSLog(@"Response:%@ %@\n", response, error);
                                                            if ( !error )
                                                            {
-//                                                               UIImage *image = [[UIImage alloc] initWithData:data];
+                                                               UIImage *image = [[UIImage alloc] initWithData:data];
+                                                               NSData *imageData = UIImagePNGRepresentation(image);
+
 //                                                               [self saveImage:image withImageName:productObj.productName completionBlock:^(BOOL succeeded) {
 //                                                                   if (succeeded) {
-                                                                       NSLog(@"Downloaded %@ and Saved to document directory",productObj.productName);
+//                                                                       NSLog(@"Downloaded %@ and Saved to document directory",productObj.productName);
 //                                                                       completionBlock(YES);
 //                                                                   }
 //                                                                   else{
@@ -634,7 +636,7 @@
 //                                                               }];
                                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                                    
-                                                                   [self saveProductDetailsInDatabaseWithProductObject:productObj withProductImage:data completionBlock:^(BOOL success){
+                                                                   [self saveProductDetailsInDatabaseWithProductObject:productObj withProductImage:imageData completionBlock:^(BOOL success){
                                                                        if (success == YES) {
                                                                            NSLog(@"save at database");
                                                                            completionBlock(YES);
@@ -652,28 +654,24 @@
 
 -(void)saveProductDetailsInDatabaseWithProductObject:(Product*)productObject withProductImage:(NSData*)data completionBlock:(void (^)(BOOL succeeded))completionBlock{
     
-    /*
-     @property (assign,nonatomic) int productId;
-     @property (strong,nonatomic) NSString *productName;
-     @property (strong,nonatomic) NSString *productImage;
-     @property (assign,nonatomic) float productPrice;
-     @property (strong,nonatomic) NSString *productDescription;
-     @property (strong,nonatomic) NSString *unitType;
-     @property (assign,nonatomic) float discount;
-     */
     NSManagedObjectContext  *localContext=[[NSManagedObjectContext alloc] initWithConcurrencyType:NSPersistentStoreOpenError];//[dbHandler managedObjectContext];
     localContext.persistentStoreCoordinator = [dbHandler persistentStoreCoordinator];
     GrateProducts *grateProducts = [NSEntityDescription insertNewObjectForEntityForName:@"GrateProduct" inManagedObjectContext:localContext];
     grateProducts.productId = [NSNumber numberWithInt:productObject.productId];
     grateProducts.productName = productObject.productName;
-    grateProducts.productImage = data;
+    grateProducts.image = data;
     grateProducts.productPrice = productObject.productPrice;
     grateProducts.productDescription = productObject.productDescription;
     grateProducts.unitType = productObject.unitType;
     grateProducts.discount = productObject.discount;
+    NSLog(@"Local Context: %@",localContext);
     NSError *error;
     if (![localContext save:&error]) {
         NSLog(@"Sorry");
+        completionBlock(NO);
+    }
+    else{
+        completionBlock(YES);
     }
 }
 - (void)saveImage: (UIImage*)image withImageName:(NSString*)imageName completionBlock:(void (^)(BOOL succeeded))completionBlock{

@@ -9,5 +9,5 @@
 #import "GrateProducts.h"
 
 @implementation GrateProducts
-@synthesize productId,productDescription,productPrice,productImage,productName,unitType,discount;
+@synthesize productId,productDescription,productPrice,image,productName,unitType,discount;
 @end

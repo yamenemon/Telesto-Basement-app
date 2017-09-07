@@ -17,6 +17,7 @@
 @synthesize productDescription;
 @synthesize unitType;
 @synthesize discount;
+@synthesize imageData;
 
 -(void)encodeWithCoder:(NSCoder *)encoder{
     [encoder encodeObject:[NSNumber numberWithInt:self.productId] forKey:@"productId"];
@@ -27,6 +28,7 @@
     [encoder encodeObject:self.productDescription forKey:@"productDescription"];
     [encoder encodeObject:self.unitType forKey:@"unitType"];
     [encoder encodeObject:[NSNumber numberWithFloat:self.discount] forKey:@"discount"];
+    [encoder encodeObject:imageData forKey:@"imageData"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -39,6 +41,7 @@
         self.productDescription = [decoder decodeObjectForKey:@"productDescription"];
         self.unitType = [decoder decodeObjectForKey:@"unitType"];
         self.discount = [[decoder decodeObjectForKey:@"discount"] floatValue];
+        self.imageData = [decoder decodeObjectForKey:@"imageData"];
     }
     return self;
 }

@@ -202,6 +202,9 @@
     //-----------------------
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     NSMutableArray *arr = [manager loadingProductObjectArray];
+    NSArray *productArray = [[DataHandler sharedManager] fetchAllProductData];
+    
+    
     downloadedProduct = [NSMutableArray arrayWithArray:arr];//[arr objectAtIndex:0];
 }
 -(void)createProductScroller{

@@ -17,5 +17,5 @@
 @property (strong,nonatomic) NSString *productDescription;
 @property (strong,nonatomic) NSString *unitType;
 @property (assign,nonatomic) float discount;
-
+@property (strong,nonatomic) NSData *imageData;
 @end

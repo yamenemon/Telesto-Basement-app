@@ -29,6 +29,7 @@
 #import "GalleryItem.h"
 #import "StoreImageDescriptionView.h"
 #import "ProductStoreImageDescriptionViewController.h"
+#import "DataHandler.h"
 
 @class  TemplatePopOverViewController;
 @class CustomerProposalObject;

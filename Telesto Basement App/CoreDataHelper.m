@@ -78,7 +78,7 @@
         return _persistentStoreCoordinator;
     }
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"CoreDataDB.sqlite"];
-    
+    NSLog(@"\nStored URL: %@\n",storeURL);
     // handle db upgrade
     
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
