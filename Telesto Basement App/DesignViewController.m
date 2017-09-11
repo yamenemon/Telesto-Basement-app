@@ -104,7 +104,7 @@
         [self createProductScroller];
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     });
-    [self performSelector:@selector(initializeDesignWindow) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(initializeDesignWindow) withObject:nil afterDelay:0.0];
 
 }
 -(void)initializeDesignWindow{
@@ -293,7 +293,7 @@
     NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:btnTag]];
     
     NSString *newFolderId = [NSString stringWithFormat:@"%@%d",productCurrentId,btnTag];
-    [self saveUserSelectedProductInfo:newFolderId];
+//    [self saveUserSelectedProductInfo:newFolderId];
     for (int i=0; i<_productInWindowArray.count; i++) {
         if (i == btnTag) {
             [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
@@ -1321,14 +1321,26 @@
 }
 - (void)saveImage:(UIImage*)selectedImage {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d/%@.png",_templateNameString,lastClickedProductInfoBtn,selectedImage]];
-    NSLog(@"Saving folder directory: %@",savedImagePath);
-    NSData *imageData = UIImagePNGRepresentation(selectedImage);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [imageData writeToFile:savedImagePath atomically:YES];
-    });
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%d/%@.png",_templateNameString,lastClickedProductInfoBtn,selectedImage]];
+//    NSLog(@"Saving folder directory: %@",savedImagePath);
+//    NSData *imageData = UIImagePNGRepresentation(selectedImage);
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [imageData writeToFile:savedImagePath atomically:YES];
+//    });
+    for (CustomProductView *userResizableView in productArray) {
+        if (userResizableView.productID == lastClickedProductInfoBtn) {
+            NSInteger anIndex=[productArray indexOfObject:userResizableView];
+            NSMutableArray *imageArr = [[NSMutableArray alloc] initWithCapacity:30];
+            
+            [imageArr insertObject:[NSMutableArray arrayWithObjects:[NSNumber numberWithInt:lastClickedProductInfoBtn],selectedImage,@"0",nil] atIndex:0];
+
+            
+            [userResizableView.productObject.storedMediaArray addObject:selectedImage];
+            [productArray replaceObjectAtIndex:anIndex withObject:userResizableView];
+        }
+    }
 }
 -(void)storeImageString:(UIImage*)image{
     
