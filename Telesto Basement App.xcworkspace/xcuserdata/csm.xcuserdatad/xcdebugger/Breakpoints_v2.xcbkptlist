@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/CustomerRecordViewController.m"
-            timestampString = "525181307.152223"
+            filePath = "Telesto Basement App/CustomerDataManager.m"
+            timestampString = "526381724.960585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-getLocationFromAddressString:"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-uploadBuildingMediaImagesArray:withController:withCompletion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1083,7 +1083,6 @@ The following clauses apply to Status Check Software only:
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="label" destination="RYx-Ml-iQ2" id="qsZ-Fh-IeT"/>
-                                    <segue destination="2yX-Oq-Cx0" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="4Md-iU-Oop"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Old Proposals" id="rN4-hb-hoq" customClass="SWUITableViewCell">
@@ -1100,7 +1099,7 @@ The following clauses apply to Status Check Software only:
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="new_customer.png" translatesAutoresizingMaskIntoConstraints="NO" id="nz3-dc-oiB">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="presentation.png" translatesAutoresizingMaskIntoConstraints="NO" id="nz3-dc-oiB">
                                             <rect key="frame" x="20" y="5" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -1109,7 +1108,6 @@ The following clauses apply to Status Check Software only:
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="label" destination="gA4-Jg-GfB" id="q0U-Mn-VNm"/>
-                                    <segue destination="Kjf-i3-4sV" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="8QZ-hP-jm5"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Training Videos" id="a7y-Pf-r0m" customClass="SWUITableViewCell">
@@ -1133,9 +1131,6 @@ The following clauses apply to Status Check Software only:
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="NFt-8r-g3Z" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="lQe-zT-olj"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Presentations" id="7Nc-v2-d5E" customClass="SWUITableViewCell">
                                 <rect key="frame" x="0.0" y="198" width="1024" height="44"/>
@@ -1151,16 +1146,13 @@ The following clauses apply to Status Check Software only:
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="presentation.png" translatesAutoresizingMaskIntoConstraints="NO" id="FgU-8r-cxT">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="log_out.png" translatesAutoresizingMaskIntoConstraints="NO" id="FgU-8r-cxT">
                                             <rect key="frame" x="20" y="5" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="YaK-4u-ubd" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="vJd-ZH-ode"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="none" id="cVx-jK-JJn">
                                 <rect key="frame" x="0.0" y="242" width="1024" height="44"/>
@@ -1227,7 +1219,7 @@ The following clauses apply to Status Check Software only:
                 <navigationController storyboardIdentifier="NavigationControllerMap" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y32-Z6-gDD" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5pt-MO-wRa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5pt-MO-wRa">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3634,7 +3626,7 @@ The following clauses apply to Status Check Software only:
         <scene sceneID="Pj7-jR-Ive">
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerColor" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2yX-Oq-Cx0" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="NavigationBar" id="IkB-6b-ZeL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3652,7 +3644,7 @@ The following clauses apply to Status Check Software only:
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kjf-i3-4sV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="06f-FH-q6U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06f-FH-q6U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3670,7 +3662,7 @@ The following clauses apply to Status Check Software only:
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NFt-8r-g3Z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iwR-Im-04P">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iwR-Im-04P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3726,7 +3718,7 @@ The following clauses apply to Status Check Software only:
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YaK-4u-ubd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dRc-JO-613">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dRc-JO-613">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3744,7 +3736,7 @@ The following clauses apply to Status Check Software only:
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LRc-Nh-dvh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5YI-D9-RyG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5YI-D9-RyG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3762,7 +3754,7 @@ The following clauses apply to Status Check Software only:
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NlW-XZ-P4j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jTj-79-ilE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jTj-79-ilE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3780,7 +3772,7 @@ The following clauses apply to Status Check Software only:
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jnA-ng-Cws" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="X66-ps-ua5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X66-ps-ua5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3798,7 +3790,7 @@ The following clauses apply to Status Check Software only:
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZIf-LY-Ob5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pAL-Zx-znX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pAL-Zx-znX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4226,7 +4218,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pdC-w7-CPj" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HLg-xT-m7t">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HLg-xT-m7t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4244,7 +4236,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AZp-uq-wIO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wev-ba-Sqw">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wev-ba-Sqw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4262,7 +4254,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y8q-yr-hbt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Egr-Mk-70R">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Egr-Mk-70R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4280,7 +4272,7 @@ Ma# 112382 RI#3934</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dOZ-tZ-S1O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="DdL-BR-xGI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DdL-BR-xGI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -4304,7 +4296,6 @@ Ma# 112382 RI#3934</string>
         <image name="log_out.png" width="30" height="30"/>
         <image name="login" width="109" height="126"/>
         <image name="newCustomer" width="30" height="30"/>
-        <image name="new_customer.png" width="20" height="20"/>
         <image name="pdfImage" width="100" height="114"/>
         <image name="plus" width="50" height="50"/>
         <image name="presentation.png" width="20" height="20"/>
