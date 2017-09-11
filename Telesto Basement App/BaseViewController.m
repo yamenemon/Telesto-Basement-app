@@ -82,7 +82,6 @@
     });
     CustomerDataManager *dataManager = [CustomerDataManager sharedManager];
     [dataManager loadingProductImagesWithBaseController:self withCompletionBlock:^(BOOL succeeded){
-        [dataManager loadingProductObjectArray];
         if (succeeded == YES) {
             NSLog(@"Product Images loaded");
             [dataManager loadingDefaultTemplatesWithBaseController:self withCompletionBlock:^(BOOL success){\

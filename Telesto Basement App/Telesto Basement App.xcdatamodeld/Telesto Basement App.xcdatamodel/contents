@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="CustomTemplateProducts" representedClassName="CustomTemplateProducts" syncable="YES" codeGenerationType="class">
+        <attribute name="customTemplateId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="discount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productHeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productImagesNote" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productImagesUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productPrice" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productWidth" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productXCoordinate" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productYCoordinate" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="CustomTemplates" representedClassName="CustomTemplates" syncable="YES" codeGenerationType="class">
+        <attribute name="customerId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="defaultTemplateId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="faq" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="proposalCompletionStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="proposalPdf" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="screenshot" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="signImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="templateId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="templateName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="GrateProduct" representedClassName="GrateProducts" syncable="YES">
         <attribute name="discount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
@@ -11,5 +35,7 @@
     </entity>
     <elements>
         <element name="GrateProduct" positionX="-54" positionY="-9" width="128" height="150"/>
+        <element name="CustomTemplates" positionX="-54" positionY="45" width="128" height="180"/>
+        <element name="CustomTemplateProducts" positionX="-45" positionY="99" width="128" height="210"/>
     </elements>
 </model>
