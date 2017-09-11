@@ -202,10 +202,10 @@
     //-----------------------
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
     NSMutableArray *arr = [manager loadingProductObjectArray];
-    NSArray *productArray = [[DataHandler sharedManager] fetchAllProductData];
+    NSArray *arrays = [[DataHandler sharedManager] fetchAllProductData];
     
     
-    downloadedProduct = [NSMutableArray arrayWithArray:arr];//[arr objectAtIndex:0];
+    downloadedProduct = [NSMutableArray arrayWithArray:arrays];//[arr objectAtIndex:0];
 }
 -(void)createProductScroller{
     CustomerDataManager *manager = [CustomerDataManager sharedManager];
@@ -237,12 +237,12 @@
             
             productSliderCustomView.frame = frame;
             [productSliderCustomView setNeedsLayout];
-            [productSliderCustomView.productBtn setTag:proObj.productId];
+            [productSliderCustomView.productBtn setTag:i];
             NSLog(@"Product btn tag when application loading : %d",proObj.productId);
             NSString *imageUrl = [manager loadProductImageWithImageName:proObj.productName];
              NSLog(@"Product image url: %@",imageUrl);
-            
-            [productSliderCustomView.productBtn setBackgroundImage:[UIImage imageNamed:imageUrl] forState:UIControlStateNormal];
+            UIImage *image = [UIImage imageWithData:proObj.imageData];
+            [productSliderCustomView.productBtn setBackgroundImage:image forState:UIControlStateNormal];
             [productSliderCustomView.productBtn addTarget:self action:@selector(productBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self.productSliderScrollView addSubview:productSliderCustomView];
             
@@ -272,17 +272,23 @@
 }
 -(void)showProductDetailsPopUp:(int)btnTag{
     
-    Product *product = [downloadedProduct objectAtIndex:btnTag-1];
+    Product *product;
+    for (Product *productObjs in downloadedProduct) {
+        if (productObjs.productId == btnTag) {
+            product = [downloadedProduct objectAtIndex:btnTag];
+        }
+    }
     
     NSArray*ProductInfoDetailsPopupView = [[NSBundle mainBundle] loadNibNamed:@"ProductInfoDetailsPopupView" owner:self options:nil];
     self.productInfoDetails = [ProductInfoDetailsPopupView objectAtIndex:0];
     self.productInfoDetails.designViewController = self;
     self.productInfoDetails.productName.text = product.productName;
     self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%0.2f",product.productPrice];
-    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
+//    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+//    NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
 //    NSLog(@"Product image url: %@",imageUrl);
-    self.productInfoDetails.productDetailImage.image = [UIImage imageNamed:imageUrl];
+    UIImage *image = [UIImage imageWithData:product.imageData];
+    self.productInfoDetails.productDetailImage.image = image;
     self.productInfoDetails.productDescriptions.text = product.productDescription;
     
     popupController = [[CNPPopupController alloc] initWithContents:@[self.productInfoDetails]];
@@ -316,7 +322,9 @@
     
     NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
     
-    UIImageView *contentView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageUrl]];
+    UIImage *image = [UIImage imageWithData:product.imageData];
+    
+    UIImageView *contentView = [[UIImageView alloc] initWithImage:image];
     contentView.frame = gripFrame;
     userResizableView.contentView = contentView;
     

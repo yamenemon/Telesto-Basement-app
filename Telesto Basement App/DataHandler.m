@@ -34,19 +34,18 @@ static DataHandler *sharedManager = nil;
 //    NSArray *results = [moc executeFetchRequest:request error:&error];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
-//    NSSortDescriptor *sortByDate = [[NSSortDescriptor alloc] initWithKey:@"swingDate" ascending:NO];
-//    NSSortDescriptor *sortByTime = [[NSSortDescriptor alloc] initWithKey:@"swingTime" ascending:NO];
-//    [request setSortDescriptors:[NSArray arrayWithObjects:sortByDate,sortByTime,nil]];
-    [request setEntity:[NSEntityDescription entityForName:@"GrateProduct" inManagedObjectContext:moc]];
-    NSSortDescriptor *sortByTime = [[NSSortDescriptor alloc] initWithKey:@"productId" ascending:NO];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"GrateProduct" inManagedObjectContext:moc];
+    [request setEntity:entityDescription];
+    NSSortDescriptor *sortByTime = [[NSSortDescriptor alloc] initWithKey:@"productId" ascending:YES];
     [request setSortDescriptors:[NSArray arrayWithObjects:sortByTime,nil]];
+    [request setReturnsObjectsAsFaults:NO];
     NSArray *results = [moc  executeFetchRequest:request error:&error];
     
     
     for (int i = 0; i<results.count; i++) {
         Product *product = [[Product alloc] init];
         GrateProducts *grateProduct = [results objectAtIndex:i];
-        product.productId = (int)grateProduct.productId;
+        product.productId = [grateProduct.productId intValue];
         product.productName = grateProduct.productName;
         product.productPrice = grateProduct.productPrice;
         product.imageData = grateProduct.image;
