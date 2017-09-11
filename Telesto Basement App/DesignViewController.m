@@ -200,11 +200,7 @@
 
     // DOWNLOAD PRODUCT HERE
     //-----------------------
-    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    NSMutableArray *arr = [manager loadingProductObjectArray];
     NSArray *arrays = [[DataHandler sharedManager] fetchAllProductData];
-    
-    
     downloadedProduct = [NSMutableArray arrayWithArray:arrays];//[arr objectAtIndex:0];
 }
 -(void)createProductScroller{
@@ -265,8 +261,7 @@
         }
     }
     else{
-        NSMutableArray *arr = [manager loadingProductObjectArray];
-        downloadedProduct = [NSMutableArray arrayWithArray:arr];//[arr objectAtIndex:0];
+        NSLog(@"Product image is not downloaded perfectly..Please Try it Again");
     }
     
 }
@@ -284,9 +279,6 @@
     self.productInfoDetails.designViewController = self;
     self.productInfoDetails.productName.text = product.productName;
     self.productInfoDetails.productPrice.text = [NSString stringWithFormat:@"%0.2f",product.productPrice];
-//    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-//    NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
-//    NSLog(@"Product image url: %@",imageUrl);
     UIImage *image = [UIImage imageWithData:product.imageData];
     self.productInfoDetails.productDetailImage.image = image;
     self.productInfoDetails.productDescriptions.text = product.productDescription;

@@ -51,7 +51,7 @@
 -(NSMutableArray*)getCountryListArray;
 -(NSMutableArray*)getTemplateObjectArray;
 -(NSMutableArray*)getProductObjectArray;
--(NSMutableArray*)loadingProductObjectArray;
+//-(NSMutableArray*)loadingProductObjectArray;
 -(NSMutableArray*)getdownloadedProposalObject;
 -(NSMutableArray*)loadCountryListWithCompletionBlock:(void (^)(void))completionBlock;
 

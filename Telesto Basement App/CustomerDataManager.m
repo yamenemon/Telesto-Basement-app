@@ -705,17 +705,17 @@
     
     return productObjectArray;
 }
--(NSMutableArray*)loadingProductObjectArray{
-    if (productObjectArray.count==0) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
-        
-        productObjectArray = [[NSKeyedUnarchiver unarchiveObjectWithFile:appFile] objectAtIndex:0];
-    }
-    
-    return productObjectArray;
-}
+//-(NSMutableArray*)loadingProductObjectArray{
+//    if (productObjectArray.count==0) {
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentsDirectory = [paths objectAtIndex:0];
+//        NSString *appFile = [documentsDirectory stringByAppendingPathComponent:@"set.txt"];
+//        
+//        productObjectArray = [[NSKeyedUnarchiver unarchiveObjectWithFile:appFile] objectAtIndex:0];
+//    }
+//    
+//    return productObjectArray;
+//}
 #pragma mark -
 #pragma mark SAVE USER DESIGN
 
