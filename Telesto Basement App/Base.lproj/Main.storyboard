@@ -650,8 +650,21 @@ Washington, DC 20521-6170
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ij7-e2-uih">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="64"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWp-xV-Y10">
+                                                <rect key="frame" x="8" y="0.0" width="98" height="64"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelBtnAction:" destination="xdv-MR-toW" eventType="touchUpInside" id="rWT-MB-Iht"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-xI-Mqq">
+                                                <rect key="frame" x="895" y="0.0" width="98" height="64"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
+                                                <state key="normal" title="Cancel"/>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVU-8t-PfZ">
-                                                <rect key="frame" x="909" y="0.0" width="98" height="64"/>
+                                                <rect key="frame" x="767" y="0.0" width="98" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="98" id="bal-MF-bST"/>
                                                 </constraints>
@@ -663,23 +676,19 @@ Washington, DC 20521-6170
                                                     <action selector="addBtnAction:" destination="xdv-MR-toW" eventType="touchUpInside" id="Ru4-Cx-2wr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWp-xV-Y10">
-                                                <rect key="frame" x="8" y="0.0" width="98" height="64"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
-                                                <state key="normal" title="Cancel"/>
-                                                <connections>
-                                                    <action selector="cancelBtnAction:" destination="xdv-MR-toW" eventType="touchUpInside" id="rWT-MB-Iht"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="KWp-xV-Y10" secondAttribute="bottom" id="1b3-GK-oWY"/>
+                                            <constraint firstItem="jAv-xI-Mqq" firstAttribute="width" secondItem="MVU-8t-PfZ" secondAttribute="width" id="7mf-cQ-qIV"/>
+                                            <constraint firstAttribute="trailing" secondItem="jAv-xI-Mqq" secondAttribute="trailing" constant="31" id="GZo-Rq-fRe"/>
+                                            <constraint firstItem="jAv-xI-Mqq" firstAttribute="leading" secondItem="MVU-8t-PfZ" secondAttribute="trailing" constant="30" id="NIL-rx-2QF"/>
                                             <constraint firstItem="KWp-xV-Y10" firstAttribute="top" secondItem="ij7-e2-uih" secondAttribute="top" id="Q9G-X0-2wg"/>
                                             <constraint firstAttribute="width" constant="1024" id="Qsc-6u-5B8"/>
+                                            <constraint firstItem="jAv-xI-Mqq" firstAttribute="height" secondItem="MVU-8t-PfZ" secondAttribute="height" id="SZj-kg-Bgj"/>
                                             <constraint firstAttribute="height" constant="64" id="W9R-sf-kxc"/>
                                             <constraint firstItem="KWp-xV-Y10" firstAttribute="width" secondItem="MVU-8t-PfZ" secondAttribute="width" id="eo1-HK-ush"/>
-                                            <constraint firstAttribute="trailing" secondItem="MVU-8t-PfZ" secondAttribute="trailing" constant="17" id="mNp-sT-2kd"/>
+                                            <constraint firstItem="jAv-xI-Mqq" firstAttribute="top" secondItem="MVU-8t-PfZ" secondAttribute="top" id="i7M-iH-f5d"/>
                                             <constraint firstItem="MVU-8t-PfZ" firstAttribute="top" secondItem="ij7-e2-uih" secondAttribute="top" id="tKB-uw-BZL"/>
                                             <constraint firstItem="KWp-xV-Y10" firstAttribute="leading" secondItem="ij7-e2-uih" secondAttribute="leading" constant="8" id="ybx-Lt-6rY"/>
                                             <constraint firstAttribute="bottom" secondItem="MVU-8t-PfZ" secondAttribute="bottom" id="znB-NK-N5P"/>

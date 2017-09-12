@@ -7,7 +7,7 @@
 //
 
 #import "ProductStoreImageDescriptionViewController.h"
-
+#import "DesignViewController.h"
 @interface ProductStoreImageDescriptionViewController ()
 
 @end
@@ -15,22 +15,32 @@
 @implementation ProductStoreImageDescriptionViewController
 @synthesize baseView,selectedButtonIndex,items;
 @synthesize storeImageDescripView;
+@synthesize productArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
+    
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
     self.carousel.type = iCarouselTypeCylinder;
-
+    
     self.items = [[NSMutableArray alloc] init];
-
-    GalleryItem *gallery = [[GalleryItem alloc] init];
-    gallery.itemId = selectedButtonIndex;
-    gallery.itemDescription = @"Bal";
-    [self.items addObject:gallery];
-    [self.carousel reloadData];
-}
--(void)viewWillAppear:(BOOL)animated{
+    
+    for (CustomProductView *productObject  in productArray) {
+        if (productObject.productObject.storedMediaArray.count>1) {
+            self.items = productObject.productObject.storedMediaArray;
+        }
+        else{
+            GalleryItem *gallery = [[GalleryItem alloc] init];
+            gallery.itemId = selectedButtonIndex;
+            gallery.itemDescription = @"Add Some Pictures.";
+            [self.items addObject:gallery];
+        }
+        [self.carousel reloadData];
+    }
     NSLog(@"%@",self.items);
 }
 - (void)didReceiveMemoryWarning {
@@ -60,6 +70,7 @@
     
     //create new view if no view is available for recycling
     view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
+
     GalleryItem *galleryitems = [self.items objectAtIndex:index];
     ((UIImageView *)view).image = galleryitems.itemImage;
     view.contentMode = UIViewContentModeScaleToFill;
@@ -83,18 +94,8 @@
     //this `if (view == nil) {...}` statement because the view will be
     //recycled and used with other index values later
     view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];
-    //    if (isFromCustomeProfile == YES) {
-    //        NSURL *imageUrl =[NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.items objectAtIndex:index]]];
-    //        NSLog(@"building image url: %@",imageUrl);
-    //        [((UIImageView *)view) sd_setImageWithURL:imageUrl placeholderImage:[UIImage imageNamed:@"userName"]];
-    //    }
-    //    else{
-//            ((UIImageView *)view).image = [self.items objectAtIndex:index];
-    //    }
-    //
     GalleryItem *galleryitems = [self.items objectAtIndex:index];
     ((UIImageView *)view).image = galleryitems.itemImage;
-
     view.contentMode = UIViewContentModeScaleToFill;
     view.layer.cornerRadius = 10.0f;
     view.layer.borderWidth = 2.0f;
@@ -181,12 +182,20 @@
     // get the image
     UIImage *img = [info objectForKey:UIImagePickerControllerEditedImage];
     if(!img) img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSData *imgData= UIImageJPEGRepresentation(img,0.1 /*compressionQuality*/);
+    
+    int imageSize   = (int)imgData.length;
+    NSLog(@"size of image in KB: %f ", imageSize/1024.0);
+    
+    
+    UIImage *image=[UIImage imageWithData:imgData];
+    
+    
     galleryItem = [[GalleryItem alloc] init];
-    galleryItem.itemImage = img;
+    galleryItem.itemImage = image;
     
     [picker dismissViewControllerAnimated:YES completion:nil];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.carousel reloadData];
         [self showTextField];
     });
 }
@@ -229,6 +238,14 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.carousel reloadData];
     });
+    for (CustomProductView *productView in productArray) {
+        NSUInteger atIndex = [productArray indexOfObject:productView];
+        if (atIndex == selectedButtonIndex) {
+            [productView.productObject.storedMediaArray addObject:self.items];
+            [productArray replaceObjectAtIndex:atIndex withObject:productView];
+            baseView.productArray = productArray;
+        }
+    }
 }
 
 @end

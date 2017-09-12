@@ -143,27 +143,28 @@
 }
 
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender{
-    customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
-    customVideoPopUpView.baseView = self;
-    lastClickedProductInfoBtn = (int)sender.tag;
-    customVideoPopUpView.selectedVideoPopUpBtnTag = (int)sender.tag;
-    customVideoPopUpView.userCapturedImageUrl = _templateNameString;
-    [customVideoPopUpView initGalleryItems];
-    isFromProduct = YES;
-    popupController = [[CNPPopupController alloc] initWithContents:@[customVideoPopUpView]];
-    popupController.theme = [self defaultTheme];
-    popupController.theme.movesAboveKeyboard = NO;
-    popupController.theme.popupStyle = popupStyle;
-    popupController.delegate = self;
-    
-    [popupController presentPopupControllerAnimated:YES];
-    
+//    customVideoPopUpView = [[[NSBundle mainBundle] loadNibNamed:@"CustomVideoPopUpView" owner:self options:nil] objectAtIndex:0];
+//    customVideoPopUpView.baseView = self;
 //    lastClickedProductInfoBtn = (int)sender.tag;
-//    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    ProductStoreImageDescriptionViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProductStoreImageDescriptionViewController"];
-//    vc.baseView = self;
-//    vc.selectedButtonIndex = lastClickedProductInfoBtn;
-//    [self.navigationController presentViewController:vc animated:YES completion:nil];
+//    customVideoPopUpView.selectedVideoPopUpBtnTag = (int)sender.tag;
+//    customVideoPopUpView.userCapturedImageUrl = _templateNameString;
+//    [customVideoPopUpView initGalleryItems];
+//    isFromProduct = YES;
+//    popupController = [[CNPPopupController alloc] initWithContents:@[customVideoPopUpView]];
+//    popupController.theme = [self defaultTheme];
+//    popupController.theme.movesAboveKeyboard = NO;
+//    popupController.theme.popupStyle = popupStyle;
+//    popupController.delegate = self;
+//    
+//    [popupController presentPopupControllerAnimated:YES];
+    
+    lastClickedProductInfoBtn = (int)sender.tag;
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ProductStoreImageDescriptionViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProductStoreImageDescriptionViewController"];
+    vc.baseView = self;
+    vc.selectedButtonIndex = lastClickedProductInfoBtn;
+    vc.productArray = productArray;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 
 }
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
@@ -1218,6 +1219,9 @@
     
 
 }
+
+#pragma mark -
+#pragma mark Saving Actions -
 -(void)saveDesignView{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self setCustomTemplateName];
@@ -1300,9 +1304,9 @@
     
     if (isFromProduct == YES) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self saveImage:img];
+//            [self saveImage:img];
             [picker dismissViewControllerAnimated:YES completion:nil];
-            [self storeImageString:img];
+//            [self storeImageString:img];
             isFromProduct = NO;
         });
     }
@@ -1329,35 +1333,15 @@
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        [imageData writeToFile:savedImagePath atomically:YES];
 //    });
-    for (CustomProductView *userResizableView in productArray) {
-        if (userResizableView.productID == lastClickedProductInfoBtn) {
-            NSInteger anIndex=[productArray indexOfObject:userResizableView];
-            NSMutableArray *imageArr = [[NSMutableArray alloc] initWithCapacity:30];
-            
-            [imageArr insertObject:[NSMutableArray arrayWithObjects:[NSNumber numberWithInt:lastClickedProductInfoBtn],selectedImage,@"0",nil] atIndex:0];
-
-            
-            [userResizableView.productObject.storedMediaArray addObject:selectedImage];
-            [productArray replaceObjectAtIndex:anIndex withObject:userResizableView];
-        }
-    }
-}
--(void)storeImageString:(UIImage*)image{
-    
-    GalleryItem *galleryContent = [[GalleryItem alloc] init];
-    galleryContent.itemId = [NSNumber numberWithInt:lastClickedProductInfoBtn];
-    galleryContent.itemImage = image;
-    
-    storeImageDescripView = [[[NSBundle mainBundle] loadNibNamed:@"StoreImageDescriptionView" owner:self options:nil] objectAtIndex:0];
-    storeImageDescripView.baseView = self;
-    storeImageDescripView.galleryItem = galleryContent;
-    
-    popupController = [[CNPPopupController alloc] initWithContents:@[storeImageDescripView]];
-    popupController.theme = [self defaultTheme];
-    popupController.theme.movesAboveKeyboard = YES;
-    popupController.theme.popupStyle = CNPPopupStyleCentered;
-    popupController.delegate = self;
-    
+//    for (CustomProductView *userResizableView in productArray) {
+//        if (userResizableView.productID == lastClickedProductInfoBtn) {
+//            NSInteger anIndex=[productArray indexOfObject:userResizableView];
+//            NSMutableArray *imageArr = [[NSMutableArray alloc] init];
+//            [imageArr addObject:[NSMutableArray arrayWithObjects:[NSNumber numberWithInt:lastClickedProductInfoBtn],selectedImage,nil]];
+//            [userResizableView.productObject.storedMediaArray addObject:imageArr];
+//            [productArray replaceObjectAtIndex:anIndex withObject:userResizableView];
+//        }
+//    }
 }
 - (void)showColorPickerButtonTapped:(id)sender{
     // Setup the color picker - this only has to be done once, but can be called again and again if the values need to change while the app runs
