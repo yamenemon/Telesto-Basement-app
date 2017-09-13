@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/ProductStoreImageDescriptionViewController.m"
-            timestampString = "526920223.975395"
+            timestampString = "526997673.582159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -154,12 +154,12 @@
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Sub%20Development/Telesto-Basement-app/Telesto%20Basement%20App/ProductStoreImageDescriptionViewController.m"
-                  timestampString = "526920224.072792"
+                  timestampString = "527000718.012795"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
                   endingLineNumber = "32"
-                  offsetFromSymbolStart = "400">
+                  offsetFromSymbolStart = "176">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -169,12 +169,12 @@
                   moduleName = "Telesto Basement App"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/Work/CSM/Telesto/Sub%20Development/Telesto-Basement-app/Telesto%20Basement%20App/ProductStoreImageDescriptionViewController.m"
-                  timestampString = "526920224.074198"
+                  timestampString = "527000718.014026"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "32"
                   endingLineNumber = "32"
-                  offsetFromSymbolStart = "420">
+                  offsetFromSymbolStart = "196">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -186,39 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/ProductStoreImageDescriptionViewController.m"
-            timestampString = "526920223.975395"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "-carousel:placeholderViewAtIndex:reusingView:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/ProductStoreImageDescriptionViewController.m"
-            timestampString = "526920223.975395"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-viewWillAppear:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Telesto Basement App/ProductStoreImageDescriptionViewController.m"
-            timestampString = "526920223.975395"
+            timestampString = "526997673.582159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -234,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/ProductStoreImageDescriptionViewController.m"
-            timestampString = "526920223.975395"
+            timestampString = "526997673.582159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Telesto Basement App/ProductStoreImageDescriptionViewController.m"
-            timestampString = "526920276.161207"
+            timestampString = "526997712.142874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "-viewWillAppear:"
             landmarkType = "7">
          </BreakpointContent>

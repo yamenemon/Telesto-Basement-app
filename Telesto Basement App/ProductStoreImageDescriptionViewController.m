@@ -19,13 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-}
--(void)viewWillAppear:(BOOL)animated{
-    
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
     self.carousel.type = iCarouselTypeCylinder;
+    galleryItem = [[GalleryItem alloc] init];
+
+}
+-(void)viewWillAppear:(BOOL)animated{
     
     self.items = [[NSMutableArray alloc] init];
     
@@ -34,10 +34,9 @@
             self.items = productObject.productObject.storedMediaArray;
         }
         else{
-            GalleryItem *gallery = [[GalleryItem alloc] init];
-            gallery.itemId = selectedButtonIndex;
-            gallery.itemDescription = @"Add Some Pictures.";
-            [self.items addObject:gallery];
+            galleryItem.itemId = selectedButtonIndex;
+            galleryItem.itemDescription = @"Add Some Pictures.";
+            [self.items addObject:galleryItem];
         }
         [self.carousel reloadData];
     }
@@ -172,11 +171,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)addBtnAction:(id)sender {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:picker animated:YES completion:NULL];
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    [self presentViewController:picker animated:YES completion:NULL];
 }
 - (void) imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info{
     // get the image
@@ -191,7 +190,6 @@
     UIImage *image=[UIImage imageWithData:imgData];
     
     
-    galleryItem = [[GalleryItem alloc] init];
     galleryItem.itemImage = image;
     
     [picker dismissViewControllerAnimated:YES completion:nil];

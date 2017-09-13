@@ -380,6 +380,75 @@ Washington, DC 20521-6170
             <point key="canvasLocation" x="-4886" y="2285"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="Zv3-iV-H2z">
+            <objects>
+                <viewController id="wTX-jU-Ta5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8n3-lR-uev"/>
+                        <viewControllerLayoutGuide type="bottom" id="jQ3-n6-CVB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MPo-U3-xFd">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8d-ZB-y6U">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2M0-0T-9Av">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="64"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N9-tY-BTJ">
+                                                <rect key="frame" x="8" y="17" width="87" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="ZLa-rY-eUi"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-Fv-dio">
+                                        <rect key="frame" x="8" y="72" width="1008" height="365"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="cameraThumb"/>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JVf-Va-Px4">
+                                        <rect key="frame" x="8" y="445" width="1008" height="315"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2M0-0T-9Av" firstAttribute="leading" secondItem="z8d-ZB-y6U" secondAttribute="leading" id="3nA-Fm-b4C"/>
+                                    <constraint firstAttribute="trailing" secondItem="2M0-0T-9Av" secondAttribute="trailing" id="kuj-wR-4ZM"/>
+                                    <constraint firstItem="2M0-0T-9Av" firstAttribute="top" secondItem="z8d-ZB-y6U" secondAttribute="top" id="xOo-fR-d7m"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jQ3-n6-CVB" firstAttribute="top" secondItem="z8d-ZB-y6U" secondAttribute="bottom" id="foG-HX-ZgS"/>
+                            <constraint firstAttribute="trailing" secondItem="z8d-ZB-y6U" secondAttribute="trailing" id="gDz-lE-4Ky"/>
+                            <constraint firstItem="z8d-ZB-y6U" firstAttribute="top" secondItem="8n3-lR-uev" secondAttribute="bottom" id="hNN-A8-zhz"/>
+                            <constraint firstItem="z8d-ZB-y6U" firstAttribute="leading" secondItem="MPo-U3-xFd" secondAttribute="leading" id="qP1-wR-iiB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="o36-Ha-JWK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="voD-0o-loR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3979.1015624999995" y="2997.65625"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="Xco-ti-65d">
             <objects>
                 <viewController id="I6O-wX-zsx" sceneMemberID="viewController">
@@ -660,20 +729,21 @@ Washington, DC 20521-6170
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAv-xI-Mqq">
                                                 <rect key="frame" x="895" y="0.0" width="98" height="64"/>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="21"/>
-                                                <state key="normal" title="Cancel"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                                <state key="normal" title="Delete"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVU-8t-PfZ">
                                                 <rect key="frame" x="767" y="0.0" width="98" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="98" id="bal-MF-bST"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                                 <state key="normal" title="Add">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="addBtnAction:" destination="xdv-MR-toW" eventType="touchUpInside" id="Ru4-Cx-2wr"/>
+                                                    <segue destination="wTX-jU-Ta5" kind="presentation" id="iHc-zY-nXW"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -731,7 +801,9 @@ Washington, DC 20521-6170
                             <constraint firstAttribute="trailing" secondItem="pjs-cB-Pa2" secondAttribute="trailing" id="wj4-dI-oRG"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="7I0-Td-9P7"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="carousel" destination="aiI-kV-esp" id="tb5-dE-ACP"/>
                         <outlet property="imageDescripField" destination="ULg-0W-eeY" id="mX6-ee-2pe"/>
@@ -739,7 +811,7 @@ Washington, DC 20521-6170
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWY-uz-rAe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5341.40625" y="2998.4375"/>
+            <point key="canvasLocation" x="-4617.1875" y="2998.4375"/>
         </scene>
         <!--Terms And Condition View Controller-->
         <scene sceneID="yEt-zc-uxA">
@@ -4308,6 +4380,7 @@ Ma# 112382 RI#3934</string>
         <image name="Checklist.png" width="2054" height="1220"/>
         <image name="ProductSliderButton" width="32" height="210"/>
         <image name="Temp6.png" width="400" height="316"/>
+        <image name="cameraThumb" width="256" height="256"/>
         <image name="colorPicker" width="50" height="50"/>
         <image name="customerList.png" width="20" height="20"/>
         <image name="log_out.png" width="30" height="30"/>
