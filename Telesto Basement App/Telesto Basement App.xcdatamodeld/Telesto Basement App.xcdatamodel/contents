@@ -20,6 +20,7 @@
         <attribute name="proposalCompletionStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="proposalPdf" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="screenshot" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="serverSynced" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="signImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="templateId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="templateName" optional="YES" attributeType="String" syncable="YES"/>
@@ -34,8 +35,8 @@
         <attribute name="unitType" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GrateProduct" positionX="-54" positionY="-9" width="128" height="150"/>
-        <element name="CustomTemplates" positionX="-54" positionY="45" width="128" height="180"/>
         <element name="CustomTemplateProducts" positionX="-45" positionY="99" width="128" height="210"/>
+        <element name="CustomTemplates" positionX="-54" positionY="45" width="128" height="195"/>
+        <element name="GrateProduct" positionX="-54" positionY="-9" width="128" height="150"/>
     </elements>
 </model>

@@ -88,7 +88,10 @@
 - (void)windowSliderButtonAction:(id)sender;
 - (void)saveButtonAction:(id)sender;
 -(void)savedTemplateViewForScreenShot:(NSString*)templateName withCompletionBlock:(void(^)(BOOL success))completionBlock;
+
 - (void)showVideoPopupWithStyle:(CNPPopupStyle)popupStyle withSender:(UIButton*)sender;
+-(void)updateProductArrayWithProductImage:(NSMutableArray*)productImageArr;
+
 -(void)saveTemplateName:(NSString*)templateName;
 -(void)openCameraWindow;
 -(void)showProductDetailsPopUp:(int)btnTag;

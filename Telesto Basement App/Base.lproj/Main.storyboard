@@ -379,10 +379,10 @@ Washington, DC 20521-6170
             </objects>
             <point key="canvasLocation" x="-4886" y="2285"/>
         </scene>
-        <!--View Controller-->
+        <!--Product Store Image Editing Controller View Controller-->
         <scene sceneID="Zv3-iV-H2z">
             <objects>
-                <viewController id="wTX-jU-Ta5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductStoreImageEditingControllerViewController" id="wTX-jU-Ta5" customClass="ProductStoreImageEditingControllerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8n3-lR-uev"/>
                         <viewControllerLayoutGuide type="bottom" id="jQ3-n6-CVB"/>
@@ -391,45 +391,89 @@ Washington, DC 20521-6170
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8d-ZB-y6U">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8d-ZB-y6U" userLabel="BaseView">
+                                <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2M0-0T-9Av">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2M0-0T-9Av" userLabel="NavView">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="64"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N9-tY-BTJ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8N9-tY-BTJ">
                                                 <rect key="frame" x="8" y="17" width="87" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="87" id="zlX-5D-Qnv"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG4-iJ-P5R">
+                                                <rect key="frame" x="917" y="19" width="87" height="30"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveBtnAction:" destination="wTX-jU-Ta5" eventType="touchUpInside" id="fHI-kr-FQX"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="dG4-iJ-P5R" secondAttribute="bottom" constant="15" id="3wU-xp-8sD"/>
+                                            <constraint firstItem="dG4-iJ-P5R" firstAttribute="height" secondItem="8N9-tY-BTJ" secondAttribute="height" id="8vp-AQ-Eoc"/>
+                                            <constraint firstItem="dG4-iJ-P5R" firstAttribute="top" secondItem="2M0-0T-9Av" secondAttribute="top" constant="19" id="LPj-ZN-zjT"/>
+                                            <constraint firstItem="8N9-tY-BTJ" firstAttribute="centerY" secondItem="2M0-0T-9Av" secondAttribute="centerY" id="Pzi-wO-rBL"/>
+                                            <constraint firstItem="8N9-tY-BTJ" firstAttribute="leading" secondItem="2M0-0T-9Av" secondAttribute="leadingMargin" id="ROX-zn-wjt"/>
                                             <constraint firstAttribute="height" constant="64" id="ZLa-rY-eUi"/>
+                                            <constraint firstItem="dG4-iJ-P5R" firstAttribute="width" secondItem="8N9-tY-BTJ" secondAttribute="width" id="eMf-ng-Nsf"/>
+                                            <constraint firstAttribute="trailing" secondItem="dG4-iJ-P5R" secondAttribute="trailing" constant="20" id="waW-Wh-Qrj"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-Fv-dio">
-                                        <rect key="frame" x="8" y="72" width="1008" height="365"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="cameraThumb"/>
-                                    </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JVf-Va-Px4">
-                                        <rect key="frame" x="8" y="445" width="1008" height="315"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnm-5Y-3HK" userLabel="BaseScroller">
+                                        <rect key="frame" x="0.0" y="64" width="1024" height="684"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-Fv-dio">
+                                                <rect key="frame" x="8" y="8" width="1008" height="357"/>
+                                                <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="357" id="qNA-9T-mac"/>
+                                                </constraints>
+                                                <state key="normal" image="cameraThumb"/>
+                                                <connections>
+                                                    <action selector="cameraBtnAction:" destination="wTX-jU-Ta5" eventType="touchUpInside" id="VfC-8T-mdY"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JVf-Va-Px4" customClass="MPTextView">
+                                                <rect key="frame" x="8" y="360" width="1008" height="315"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="315" id="Iol-ve-r2u"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="FGS-Fv-dio" firstAttribute="trailing" secondItem="JVf-Va-Px4" secondAttribute="trailing" id="Aui-pu-SsU"/>
+                                            <constraint firstItem="FGS-Fv-dio" firstAttribute="centerX" secondItem="xnm-5Y-3HK" secondAttribute="centerX" id="DYJ-DQ-DOs"/>
+                                            <constraint firstItem="FGS-Fv-dio" firstAttribute="trailing" secondItem="xnm-5Y-3HK" secondAttribute="trailingMargin" id="M4M-bM-FWp"/>
+                                            <constraint firstItem="JVf-Va-Px4" firstAttribute="top" secondItem="FGS-Fv-dio" secondAttribute="bottom" constant="-5" id="bH3-sj-yXw"/>
+                                            <constraint firstAttribute="bottom" secondItem="JVf-Va-Px4" secondAttribute="bottom" constant="9" id="fdL-tS-nLS"/>
+                                            <constraint firstItem="FGS-Fv-dio" firstAttribute="leading" secondItem="xnm-5Y-3HK" secondAttribute="leadingMargin" id="nvB-Sf-aMs"/>
+                                            <constraint firstItem="FGS-Fv-dio" firstAttribute="leading" secondItem="JVf-Va-Px4" secondAttribute="leading" id="qvD-xD-7Y5"/>
+                                            <constraint firstItem="FGS-Fv-dio" firstAttribute="top" secondItem="xnm-5Y-3HK" secondAttribute="top" constant="8" id="yt3-PE-AGV"/>
+                                        </constraints>
+                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="2M0-0T-9Av" firstAttribute="leading" secondItem="z8d-ZB-y6U" secondAttribute="leading" id="3nA-Fm-b4C"/>
+                                    <constraint firstItem="xnm-5Y-3HK" firstAttribute="leading" secondItem="2M0-0T-9Av" secondAttribute="leading" id="Zug-JK-mQe"/>
+                                    <constraint firstItem="xnm-5Y-3HK" firstAttribute="trailing" secondItem="2M0-0T-9Av" secondAttribute="trailing" id="cs8-Ho-hkC"/>
+                                    <constraint firstItem="xnm-5Y-3HK" firstAttribute="top" secondItem="2M0-0T-9Av" secondAttribute="bottom" id="erh-pO-RdB"/>
                                     <constraint firstAttribute="trailing" secondItem="2M0-0T-9Av" secondAttribute="trailing" id="kuj-wR-4ZM"/>
+                                    <constraint firstAttribute="bottom" secondItem="xnm-5Y-3HK" secondAttribute="bottom" id="oCi-X0-1eo"/>
                                     <constraint firstItem="2M0-0T-9Av" firstAttribute="top" secondItem="z8d-ZB-y6U" secondAttribute="top" id="xOo-fR-d7m"/>
                                 </constraints>
                             </view>
@@ -443,10 +487,16 @@ Washington, DC 20521-6170
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="o36-Ha-JWK"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="baseScroller" destination="xnm-5Y-3HK" id="hU6-lK-iCr"/>
+                        <outlet property="imageViewer" destination="FGS-Fv-dio" id="Zt2-nu-GnN"/>
+                        <outlet property="productDescriptionTextField" destination="JVf-Va-Px4" id="Ppd-OJ-Pbd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voD-0o-loR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3979.1015624999995" y="2997.65625"/>
+            <point key="canvasLocation" x="-3275.390625" y="2997.65625"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Xco-ti-65d">
@@ -742,8 +792,7 @@ Washington, DC 20521-6170
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="addBtnAction:" destination="xdv-MR-toW" eventType="touchUpInside" id="Ru4-Cx-2wr"/>
-                                                    <segue destination="wTX-jU-Ta5" kind="presentation" id="iHc-zY-nXW"/>
+                                                    <action selector="addImageAndDescription:" destination="xdv-MR-toW" eventType="touchUpInside" id="d6B-xU-VD2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -811,7 +860,7 @@ Washington, DC 20521-6170
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWY-uz-rAe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4617.1875" y="2998.4375"/>
+            <point key="canvasLocation" x="-3892.9687499999995" y="2998.4375"/>
         </scene>
         <!--Terms And Condition View Controller-->
         <scene sceneID="yEt-zc-uxA">

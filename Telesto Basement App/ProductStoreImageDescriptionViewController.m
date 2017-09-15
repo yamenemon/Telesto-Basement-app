@@ -15,31 +15,33 @@
 @implementation ProductStoreImageDescriptionViewController
 @synthesize baseView,selectedButtonIndex,items;
 @synthesize storeImageDescripView;
-@synthesize productArray;
+@synthesize productImageDescriptionArray;
+@synthesize recentGalleryItem;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
+
+    self.items = [[NSMutableArray alloc] init];
+    galleryItem = [[GalleryItem alloc] init];
+    
+    if (productImageDescriptionArray.count>1) {
+        self.items = productImageDescriptionArray;
+    }
+    else{
+        galleryItem.itemId = selectedButtonIndex;
+        galleryItem.itemDescription = @"Add Some Pictures.";
+        galleryItem.itemImage = [UIImage imageNamed:@"GalleryIcon"];
+        [self.items addObject:galleryItem];
+         productImageDescriptionArray = self.items;
+    }
     self.carousel.delegate = self;
     self.carousel.dataSource = self;
     self.carousel.type = iCarouselTypeCylinder;
-    galleryItem = [[GalleryItem alloc] init];
-
-}
--(void)viewWillAppear:(BOOL)animated{
+    [self.carousel reloadData];
     
-    self.items = [[NSMutableArray alloc] init];
-    
-    for (CustomProductView *productObject  in productArray) {
-        if (productObject.productObject.storedMediaArray.count>1) {
-            self.items = productObject.productObject.storedMediaArray;
-        }
-        else{
-            galleryItem.itemId = selectedButtonIndex;
-            galleryItem.itemDescription = @"Add Some Pictures.";
-            [self.items addObject:galleryItem];
-        }
-        [self.carousel reloadData];
-    }
     NSLog(@"%@",self.items);
 }
 - (void)didReceiveMemoryWarning {
@@ -168,6 +170,7 @@
 }
 
 - (IBAction)cancelBtnAction:(id)sender {
+    [baseView updateProductArrayWithProductImage:productImageDescriptionArray];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)addBtnAction:(id)sender {
@@ -236,14 +239,17 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.carousel reloadData];
     });
-    for (CustomProductView *productView in productArray) {
-        NSUInteger atIndex = [productArray indexOfObject:productView];
-        if (atIndex == selectedButtonIndex) {
-            [productView.productObject.storedMediaArray addObject:self.items];
-            [productArray replaceObjectAtIndex:atIndex withObject:productView];
-            baseView.productArray = productArray;
-        }
-    }
+    [productImageDescriptionArray addObject:galleryItem];
 }
-
+- (IBAction)addImageAndDescription:(id)sender {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ProductStoreImageEditingControllerViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProductStoreImageEditingControllerViewController"];
+    vc.baseViewController  = self;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+-(void)getGalleryItem:(GalleryItem*)galleryItems{
+    recentGalleryItem = galleryItems;
+    [productImageDescriptionArray addObject:recentGalleryItem];
+    [self.carousel reloadData];
+}
 @end

@@ -163,9 +163,23 @@
     ProductStoreImageDescriptionViewController *vc = [sb instantiateViewControllerWithIdentifier:@"ProductStoreImageDescriptionViewController"];
     vc.baseView = self;
     vc.selectedButtonIndex = lastClickedProductInfoBtn;
-    vc.productArray = productArray;
+    
+    for (CustomProductView *product in productArray) {
+        if (product.productObject.productId == lastClickedProductInfoBtn){
+            vc.productImageDescriptionArray = product.productObject.storedMediaArray;
+        }
+    }
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 
+}
+-(void)updateProductArrayWithProductImage:(NSMutableArray*)productImageArr{
+    for (CustomProductView *product in productArray) {
+        if (product.productObject.productId == lastClickedProductInfoBtn){
+            product.productObject.storedMediaArray = productImageArr;
+            NSUInteger atIndex = [productArray indexOfObject:product];
+            [productArray replaceObjectAtIndex:atIndex withObject:product];
+        }
+    }
 }
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
     
@@ -291,26 +305,24 @@
     [popupController presentPopupControllerAnimated:YES];
 }
 -(void)clickOnProduct:(int)btnTag{
-    NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:btnTag]];
+//    NSString *productCurrentId = [NSString stringWithFormat:@"%@",[_productInWindowArray objectAtIndex:btnTag]];
     
-    NSString *newFolderId = [NSString stringWithFormat:@"%@%d",productCurrentId,btnTag];
+//    NSString *newFolderId = [NSString stringWithFormat:@"%@%d",productCurrentId,btnTag];
 //    [self saveUserSelectedProductInfo:newFolderId];
-    for (int i=0; i<_productInWindowArray.count; i++) {
-        if (i == btnTag) {
-            [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
-        }
-    }
+//    for (int i=0; i<_productInWindowArray.count; i++) {
+//        if (i == btnTag) {
+//            [_productInWindowArray replaceObjectAtIndex:i withObject:[NSString stringWithFormat:@"%@",newFolderId]];
+//        }
+//    }
     Product *product = [downloadedProduct objectAtIndex:btnTag];
     
-    CustomerDataManager *manager = [CustomerDataManager sharedManager];
-    NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
-//    NSLog(@"Product image url: %@",imageUrl);
+//    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+//    NSString *imageUrl = [manager loadProductImageWithImageName:product.productName];
     
     // (1) Create a user resizable view with a simple red background content view.
     CGRect gripFrame = CGRectMake(100, 10, 90, 90);
 
     CustomProductView *userResizableView = [[CustomProductView alloc] initWithFrame:gripFrame];
-    userResizableView.infoBtn.tag = [newFolderId intValue];
     
     
     NSLog(@"sender tag: %ld",(long)userResizableView.infoBtn.tag);
@@ -323,7 +335,7 @@
     
     userResizableView.productID = product.productId;
     userResizableView.productObject.productId = product.productId;
-    userResizableView.productObject.productName = imageUrl;
+    userResizableView.productObject.productName = product.productName;
     userResizableView.productObject.productXcoordinate = contentView.frame.origin.x;
     userResizableView.productObject.productYcoordinate = contentView.frame.origin.y;
     userResizableView.productObject.productWidth = contentView.frame.size.width;
@@ -331,6 +343,9 @@
     userResizableView.productObject.productPrice = product.productPrice;
     userResizableView.productObject.unitType = product.unitType;
     userResizableView.productObject.discount = product.discount;
+    
+    userResizableView.infoBtn.tag = product.productId;
+
     
     userResizableView.baseVC = self;
     userResizableView.delegate = self;
@@ -357,9 +372,9 @@
         [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
         for (int i=0; i<productArray.count; i++) {
             CustomProductView *view = [productArray objectAtIndex:i];
-            NSMutableArray *imagePath = [self listFileAtPath:_templateNameString withTag:(int)view.infoBtn.tag];
-            view.productObject.storedMediaArray = imagePath;
-            view.productObject.imageCount = (int)imagePath.count;
+//            NSMutableArray *imagePath = [self listFileAtPath:_templateNameString withTag:(int)view.infoBtn.tag];
+//            view.productObject.storedMediaArray = imagePath;
+            view.productObject.imageCount = (int)view.productObject.storedMediaArray.count;
             [productArray replaceObjectAtIndex:i withObject:view];
             NSLog(@"Product object: %d %@ %f %f %f %f %f %d %@",
                   view.customTemplateProductUniqueId,

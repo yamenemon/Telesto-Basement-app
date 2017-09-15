@@ -13,6 +13,7 @@
 #import "StoreImageDescriptionView.h"
 #import "CustomProductView.h"
 #import "ProductObject.h"
+#import "ProductStoreImageEditingControllerViewController.h"
 @class DesignViewController;
 
 @interface ProductStoreImageDescriptionViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,iCarouselDelegate,iCarouselDataSource,CNPPopupControllerDelegate>{
@@ -25,7 +26,9 @@
 @property (weak, nonatomic) IBOutlet iCarousel *carousel;
 @property (weak, nonatomic) IBOutlet UITextView *imageDescripField;
 @property (nonatomic, strong) NSMutableArray *items;
-@property (nonatomic,strong) NSMutableArray *productArray;
+@property (nonatomic,strong) NSMutableArray *productImageDescriptionArray;
+@property (nonatomic,strong) GalleryItem *recentGalleryItem;
 
 -(void)updateCarouselWithText:(NSString*)text;
+-(void)getGalleryItem:(GalleryItem*)galleryItems;
 @end

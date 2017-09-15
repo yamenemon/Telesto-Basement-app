@@ -107,6 +107,7 @@
 		709CC31B1F4D8CA500798858 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E1FBC21F4AD359001520D1 /* libsqlite3.0.tbd */; };
 		709CC31C1F4D8CA500798858 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E1FBC31F4AD359001520D1 /* libsqlite3.tbd */; };
 		70A9A7BA1F4434E80027585A /* MPTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A9A7B91F4434E80027585A /* MPTextView.m */; };
+		70BE0FAF1F6A630700A6549A /* ProductStoreImageEditingControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70BE0FAE1F6A630700A6549A /* ProductStoreImageEditingControllerViewController.m */; };
 		70C216F51E6EC5B600464968 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C216F41E6EC5B600464968 /* TutorialViewController.m */; };
 		70C28A0F1F223C3300EB5DD9 /* CustomTemplateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 70C28A0E1F223C3300EB5DD9 /* CustomTemplateObject.m */; };
 		70CA54C71E7138F600F7FE67 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 70CA54C61E7138F600F7FE67 /* iCarousel.m */; };
@@ -311,6 +312,8 @@
 		709B44361E6D6951008058F3 /* loginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginView.xib; sourceTree = "<group>"; };
 		70A9A7B81F4434E80027585A /* MPTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTextView.h; sourceTree = "<group>"; };
 		70A9A7B91F4434E80027585A /* MPTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTextView.m; sourceTree = "<group>"; };
+		70BE0FAD1F6A630700A6549A /* ProductStoreImageEditingControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStoreImageEditingControllerViewController.h; sourceTree = "<group>"; };
+		70BE0FAE1F6A630700A6549A /* ProductStoreImageEditingControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStoreImageEditingControllerViewController.m; sourceTree = "<group>"; };
 		70C216F31E6EC5B600464968 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
 		70C216F41E6EC5B600464968 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
 		70C28A0D1F223C3300EB5DD9 /* CustomTemplateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTemplateObject.h; sourceTree = "<group>"; };
@@ -654,6 +657,8 @@
 				705F05901EDED8CE00D8B837 /* DesignViewController.m */,
 				70E1FBD11F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.h */,
 				70E1FBD21F4AF53D001520D1 /* ProductStoreImageDescriptionViewController.m */,
+				70BE0FAD1F6A630700A6549A /* ProductStoreImageEditingControllerViewController.h */,
+				70BE0FAE1F6A630700A6549A /* ProductStoreImageEditingControllerViewController.m */,
 				70E1FBC61F4AE3BC001520D1 /* StoreImageDescriptionView.h */,
 				70E1FBC71F4AE3BC001520D1 /* StoreImageDescriptionView.m */,
 				70E1FBC91F4AE3CF001520D1 /* StoreImageDescriptionView.xib */,
@@ -1117,6 +1122,7 @@
 				705F05A51EDED8CE00D8B837 /* DesignViewController.m in Sources */,
 				705F05AA1EDED8CE00D8B837 /* Product.m in Sources */,
 				70641E561E72AE660085FFE6 /* CustomerProposalTableViewCell.m in Sources */,
+				70BE0FAF1F6A630700A6549A /* ProductStoreImageEditingControllerViewController.m in Sources */,
 				705F05A81EDED8CE00D8B837 /* LeftNavDrawingToolsView.m in Sources */,
 				709B44351E6D6942008058F3 /* loginView.m in Sources */,
 				705F05A31EDED8CE00D8B837 /* CustomVideoPopUpView.m in Sources */,
