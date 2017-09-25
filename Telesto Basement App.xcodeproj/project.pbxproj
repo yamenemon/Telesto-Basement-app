@@ -149,6 +149,7 @@
 		70EC80E81E067DB400A6D245 /* settings___@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DD1E067DB400A6D245 /* settings___@2x.png */; };
 		70EC80E91E067DB400A6D245 /* settings__@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DE1E067DB400A6D245 /* settings__@2x.png */; };
 		70EC80EA1E067DB400A6D245 /* traning_videos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70EC80DF1E067DB400A6D245 /* traning_videos@2x.png */; };
+		70F1BDC91F79052700E3CD3B /* WebLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F1BDC81F79052700E3CD3B /* WebLoginViewController.m */; };
 		70FDF6191E094C1E00CF32EF /* customerList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70FDF6181E094C1E00CF32EF /* customerList@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -373,6 +374,8 @@
 		70EC80DD1E067DB400A6D245 /* settings___@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings___@2x.png"; sourceTree = "<group>"; };
 		70EC80DE1E067DB400A6D245 /* settings__@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings__@2x.png"; sourceTree = "<group>"; };
 		70EC80DF1E067DB400A6D245 /* traning_videos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "traning_videos@2x.png"; sourceTree = "<group>"; };
+		70F1BDC71F79052700E3CD3B /* WebLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLoginViewController.h; sourceTree = "<group>"; };
+		70F1BDC81F79052700E3CD3B /* WebLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebLoginViewController.m; sourceTree = "<group>"; };
 		70FDF6181E094C1E00CF32EF /* customerList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "customerList@2x.png"; sourceTree = "<group>"; };
 		C60A664EF7D6CA664CB25D5C /* Pods-Telesto Basement App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telesto Basement App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Telesto Basement App/Pods-Telesto Basement App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -683,6 +686,8 @@
 				709B44331E6D6942008058F3 /* loginView.h */,
 				709B44341E6D6942008058F3 /* loginView.m */,
 				709B44361E6D6951008058F3 /* loginView.xib */,
+				70F1BDC71F79052700E3CD3B /* WebLoginViewController.h */,
+				70F1BDC81F79052700E3CD3B /* WebLoginViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1047,6 +1052,7 @@
 				70CA54D11E7172A700F7FE67 /* CustomTableViewCell.m in Sources */,
 				7032B0611F21DBBC0046A201 /* FaqsViewControllerStep2.m in Sources */,
 				70E5D8C61EEFC89D004FE1BF /* ProductSliderCustomView.m in Sources */,
+				70F1BDC91F79052700E3CD3B /* WebLoginViewController.m in Sources */,
 				705B783D1E13C71D00161991 /* CustomerInfoObject.m in Sources */,
 				70CE84201F04CED900867F91 /* ELCAssetCell.m in Sources */,
 				706FA6B61ECEFCAE003E7247 /* MTReachabilityManager.m in Sources */,

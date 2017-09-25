@@ -15,8 +15,9 @@
 #import "MTReachabilityManager.h"
 #import "CustomerDataManager.h"
 #import <MBProgressHUD.h>
+#import "WebLoginViewController.h"
 
-@interface BaseViewController : UIViewController<UITextFieldDelegate>{
+@interface BaseViewController : UIViewController<UITextFieldDelegate,UIPopoverPresentationControllerDelegate,UIPopoverControllerDelegate>{
     MBProgressHUD *hud;
 }
 @property (strong,nonatomic) loginView *customLoginView;

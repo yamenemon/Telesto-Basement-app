@@ -28,4 +28,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *zipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *salesAppointmentTime;
 @end

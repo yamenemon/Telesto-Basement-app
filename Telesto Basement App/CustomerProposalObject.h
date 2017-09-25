@@ -14,4 +14,6 @@
 @property (strong,nonatomic) NSString *screenShotImageName;
 @property (assign,nonatomic) long templateID;
 @property (strong,nonatomic) NSMutableArray *productArray;
+@property (assign,nonatomic) int proposalComplete;
+@property (strong,nonatomic) NSString *signatureUrl;
 @end

@@ -882,6 +882,8 @@
                 proposalListObject.faq = faq;
                 proposalListObject.templateName = name;
                 proposalListObject.screenShotImageName = screenshot;
+                proposalListObject.signatureUrl = [dic valueForKey:@"signature"];
+                proposalListObject.proposalComplete = [[dic valueForKey:@"proposal_complete"] intValue];
                 
                 //Load Template products info
                 [self loadCustomTemplateProductObjectsWithTemplateID:proposalListObject withCompletionBlock:^(BOOL success){
@@ -1062,7 +1064,7 @@
                                           TOKEN_STRING,AUTH_KEY,
                                           [templateDictionary valueForKey:@"templateId"],@"custom_template_id",
                                           [templateDictionary valueForKey:@"templateName"],@"custom_template_name",
-                                          [templateDictionary valueForKey:@"pdfFile"],@"pdfFile",
+//                                          [templateDictionary valueForKey:@"pdfFile"],@"pdfFile",
                                           nil];
     
     NSLog(@"Dictionary of Parameter: %@",aParameterDic);
@@ -1071,6 +1073,8 @@
     
     [manager POST:[NSString stringWithFormat:@"%@%@",BASE_URL,endPoint] parameters:aParameterDic constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:imageData name:@"signature" fileName:@"screenshot.jpg" mimeType:@"image/jpg"];
+        [formData appendPartWithFileData:[templateDictionary valueForKey:@"pdfFile"] name:@"pdfFile" fileName:@"pdfFileOfFinalProposal.pdf" mimeType:@"application/pdf"];
+
     } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"Response: %@", responseObject);
         NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);

@@ -281,11 +281,27 @@
 }
 - (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
     
-    self.popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */_customLoginView]];
-    self.popupController.theme = [self defaultTheme];
-    self.popupController.theme.popupStyle = popupStyle;
-    self.popupController.delegate = self;
-    [self.popupController presentPopupControllerAnimated:YES];
+    
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WebLoginViewController *webViewController = [sb instantiateViewControllerWithIdentifier:@"WebLoginViewController"];
+    webViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    webViewController.preferredContentSize = CGSizeMake(910, 750);
+    
+    webViewController.modalPresentationStyle = UIModalPresentationPopover;
+    UIPopoverPresentationController *popPC = webViewController.popoverPresentationController;
+    webViewController.popoverPresentationController.sourceRect = _loginButton.frame;
+    webViewController.popoverPresentationController.sourceView = self.view;
+    popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popPC.delegate = self;
+    [self presentViewController:webViewController animated:YES completion:nil];
+    
+    
+    
+//    self.popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */webViewController]];
+//    self.popupController.theme = [self defaultTheme];
+//    self.popupController.theme.popupStyle = popupStyle;
+//    self.popupController.delegate = self;
+//    [self.popupController presentPopupControllerAnimated:YES];
 }
 - (CNPPopupTheme *)defaultTheme {
     CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];

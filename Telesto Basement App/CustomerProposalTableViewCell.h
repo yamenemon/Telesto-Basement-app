@@ -15,4 +15,5 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *editProposals;
 @property (weak, nonatomic) IBOutlet UIButton *duplicateProposals;
+@property (weak, nonatomic) IBOutlet UIButton *galleryBtn;
 @end

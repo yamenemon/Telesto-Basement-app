@@ -9,5 +9,5 @@
 #import "CustomerProposalObject.h"
 
 @implementation CustomerProposalObject
-@synthesize defaultTemplateID,templateName,templateID,screenShotImageName,productArray;
+@synthesize defaultTemplateID,templateName,templateID,screenShotImageName,productArray,proposalComplete,signatureUrl;
 @end

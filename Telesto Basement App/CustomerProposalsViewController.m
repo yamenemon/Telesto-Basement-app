@@ -68,6 +68,16 @@
     self.zipLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerZipName];
     self.phoneLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerPhoneNumber];
     self.emailLabel.text = [NSString stringWithFormat:@": %@",customerInfo.customerEmailAddress];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date  = [formatter dateFromString:customerInfo.scheduleDate];
+    
+    // Convert to new Date Format
+    [formatter setDateFormat:@"MMMM d, yyyy HH:mm:ss a"];
+    NSString *newDate = [formatter stringFromDate:date];
+    
+    self.salesAppointmentTime.text = [NSString stringWithFormat:@"%@",newDate];
 }
 -(void)viewDidLayoutSubviews{
    
@@ -88,11 +98,10 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return _proposalListObject.count;//[_customerInfoObjArray count];
+    return _proposalListObject.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    CustomerInfoObject *customerInfoObject ;//= [_customerInfoObjArray objectAtIndex:indexPath.row];
     static NSString *simpleTableIdentifier = @"CustomerProposalTableViewCell";
     
     CustomerProposalTableViewCell *cell = (CustomerProposalTableViewCell*)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -105,6 +114,14 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (_proposalListObject.count>0) {
         CustomerProposalObject *obj = [_proposalListObject objectAtIndex:indexPath.row];
+        if (obj.proposalComplete == 1) {
+            cell.editProposals.enabled = NO;
+            cell.editProposals.alpha = 0.5;
+        }
+        else{
+            cell.editProposals.enabled = YES;
+            cell.editProposals.alpha = 1.0;
+        }
         [cell.cellImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",obj.screenShotImageName]] placeholderImage:[UIImage imageNamed:@"username"]];
         cell.cellImage.contentMode = UIViewContentModeScaleToFill;
         cell.proposalName.text = obj.templateName;
