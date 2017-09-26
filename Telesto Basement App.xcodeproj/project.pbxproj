@@ -449,6 +449,8 @@
 		70015E941DF690E100DF542E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3BA8D3A81EF8363400517C65 /* CustomerDataManager.h */,
+				3BA8D3A71EF8363400517C65 /* CustomerDataManager.m */,
 				7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */,
 				7084E9A51E07C60100EA5AE8 /* SPUserResizableView.m */,
 				706FA6B41ECEFCAE003E7247 /* MTReachabilityManager.h */,
@@ -493,8 +495,6 @@
 		70246CB91F16235B00274C23 /* Customer */ = {
 			isa = PBXGroup;
 			children = (
-				3BA8D3A81EF8363400517C65 /* CustomerDataManager.h */,
-				3BA8D3A71EF8363400517C65 /* CustomerDataManager.m */,
 				3BA8D3A91EF8363400517C65 /* CustomerDetailInfoObject.h */,
 				3BA8D3AA1EF8363400517C65 /* CustomerDetailInfoObject.m */,
 				70EC57A11EDFF7CA00ABC263 /* CustomerRecord */,

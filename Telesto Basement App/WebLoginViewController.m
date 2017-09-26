@@ -18,6 +18,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     webView.delegate = self;
+    NSString *deviceToken = [(AppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken];
+
+    NSString *urlString =[NSString stringWithFormat:@"http://api.web1.stag.csm.to/1.0/login?response_type=token&state=%@&redirect_uri=telesto://authorize",deviceToken] ;
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:urlRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,15 +41,39 @@
 }
 */
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    
+    NSURL *url = request.URL;
+    if (![url.scheme isEqual:@"http"] && ![url.scheme isEqual:@"https"]) {
+        if ([[UIApplication sharedApplication]canOpenURL:url]) {
+            [[UIApplication sharedApplication]openURL:url];
+            return NO;
+        }
+        else{
+            NSString *redirectString = url.absoluteString;
+            NSArray *temp = [redirectString componentsSeparatedByString:@"="];
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:[temp objectAtIndex:2] forKey:@"access_token"];
+            [userDefaults synchronize];
+            NSLog(@"%@",temp);
+            [self dismissViewControllerAnimated:YES completion:nil];
+            [self sendNotification:[temp objectAtIndex:2]];
+            return YES;
+        }
+    }
     return YES;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
+    NSLog(@"webViewDidStartLoad");
+
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSLog(@"web did finished");
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    NSLog(@"didFailLoadWithError");
 
+}
+- (void)sendNotification:(NSString*)accessToken {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissLoginWebView" object:accessToken];
 }
 - (IBAction)cancelBtnAction:(id)sender {
     

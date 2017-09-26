@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "WebLoginViewController.h"
 
 @interface Utility : NSObject
 
@@ -46,4 +47,6 @@
 
 -(void)storeImage:(NSMutableArray*)arr;
 -(NSMutableArray*)getImageFromArr;
+
+-(UIViewController*)showWebViewLoginViewController;
 @end

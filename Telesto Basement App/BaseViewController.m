@@ -28,10 +28,22 @@
 @implementation BaseViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"dismissLoginWebView"
+                                               object:nil];
+}
 
+- (void)receiveNotification:(NSNotification *)notification
+{
+    if ([[notification name] isEqualToString:@"dismissLoginWebView"]) {
+        NSString *accessToken = (NSString *)notification.object;
+        NSLog(@"Access Token is: %@",accessToken);
+        //doSomething here.
+        if ([self IsInternet] == YES && accessToken.length>0) {
+            [self loadDefaulImagesAndProductImages];
+        }
+    }
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self showingTermsAndConditionScreen];
@@ -55,15 +67,14 @@
     if(isLoggedIn == YES) {
         NSLog(@"Show loginWindow");
         [self playBackgroundVideo];
-        if ([self IsInternet] == YES) {
-            [self loadDefaulImagesAndProductImages];
-        }
+        
     } else {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"First_Logged_in"];
         [self displayTermsAndCondition];
     }
 }
 -(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"View will appear has called");
 }
 -(void)loadDefaulImagesAndProductImages{
 
@@ -88,11 +99,71 @@
             [dataManager loadingDefaultTemplatesWithBaseController:self withCompletionBlock:^(BOOL success){\
                 NSLog(@"default template loaded");
                 [hud hideAnimated:YES];
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    [Utility showCustomerListViewController];
+                });
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             }];
         }
     }];
 
+}
+- (IBAction)loginButtonClicked:(id)sender {
+    BOOL isReachable = [MTReachabilityManager isReachable];
+    if (isReachable) {
+        [self showPopupWithStyle:CNPPopupStyleCentered];
+    }
+    else{
+        NSLog(@"Not Reachable");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Internet Problem" message:@"You are out of network.Prese check your network settings." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        [alert addAction:ok];
+        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
+    
+    
+    UIViewController *webViewController = [[Utility sharedManager] showWebViewLoginViewController];
+    UIPopoverPresentationController *popPC = webViewController.popoverPresentationController;
+    webViewController.popoverPresentationController.sourceRect = _loginButton.frame;
+    webViewController.popoverPresentationController.sourceView = self.view;
+    popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    popPC.delegate = self;
+    [self presentViewController:webViewController animated:YES completion:nil];
+    
+    
+    
+    //    self.popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */webViewController]];
+    //    self.popupController.theme = [self defaultTheme];
+    //    self.popupController.theme.popupStyle = popupStyle;
+    //    self.popupController.delegate = self;
+    //    [self.popupController presentPopupControllerAnimated:YES];
+}
+
+- (CNPPopupTheme *)defaultTheme {
+    CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
+    defaultTheme.backgroundColor = [UIColor whiteColor];
+    defaultTheme.cornerRadius = 5.0f;
+    defaultTheme.popupContentInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+    defaultTheme.popupStyle = CNPPopupStyleCentered;
+    defaultTheme.presentationStyle = CNPPopupPresentationStyleFadeIn;
+    defaultTheme.dismissesOppositeDirection = NO;
+    defaultTheme.maskType = CNPPopupMaskTypeDimmed;
+    defaultTheme.shouldDismissOnBackgroundTouch = YES;
+    defaultTheme.movesAboveKeyboard = YES;
+    defaultTheme.contentVerticalPadding = 16.0f;
+    defaultTheme.maxPopupWidth = self.view.frame.size.width/2;
+    defaultTheme.animationDuration = 0.65f;
+    return defaultTheme;
 }
 -(void)playBackgroundVideo{
     
@@ -258,67 +329,7 @@
     [self.view addSubview:self.aSpinner];
     [self.aSpinner startAnimating];
 }
-- (IBAction)loginButtonClicked:(id)sender {
-    BOOL isReachable = [MTReachabilityManager isReachable];
-    if (isReachable) {
-    [self showPopupWithStyle:CNPPopupStyleCentered];
-    }
-    else{
-    NSLog(@"Not Reachable");
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Internet Problem" message:@"You are out of network.Prese check your network settings." preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action)
-                         {
-                             [alert dismissViewControllerAnimated:YES completion:nil];
-                             
-                         }];
-    [alert addAction:ok];
-    [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
-    [self presentViewController:alert animated:YES completion:nil];
-    }
-}
-- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle {
-    
-    
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebLoginViewController *webViewController = [sb instantiateViewControllerWithIdentifier:@"WebLoginViewController"];
-    webViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    webViewController.preferredContentSize = CGSizeMake(910, 750);
-    
-    webViewController.modalPresentationStyle = UIModalPresentationPopover;
-    UIPopoverPresentationController *popPC = webViewController.popoverPresentationController;
-    webViewController.popoverPresentationController.sourceRect = _loginButton.frame;
-    webViewController.popoverPresentationController.sourceView = self.view;
-    popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    popPC.delegate = self;
-    [self presentViewController:webViewController animated:YES completion:nil];
-    
-    
-    
-//    self.popupController = [[CNPPopupController alloc] initWithContents:@[/*titleLabel, lineOneLabel, imageView, lineTwoLabel, */webViewController]];
-//    self.popupController.theme = [self defaultTheme];
-//    self.popupController.theme.popupStyle = popupStyle;
-//    self.popupController.delegate = self;
-//    [self.popupController presentPopupControllerAnimated:YES];
-}
-- (CNPPopupTheme *)defaultTheme {
-    CNPPopupTheme *defaultTheme = [[CNPPopupTheme alloc] init];
-    defaultTheme.backgroundColor = [UIColor whiteColor];
-    defaultTheme.cornerRadius = 5.0f;
-    defaultTheme.popupContentInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
-    defaultTheme.popupStyle = CNPPopupStyleCentered;
-    defaultTheme.presentationStyle = CNPPopupPresentationStyleFadeIn;
-    defaultTheme.dismissesOppositeDirection = NO;
-    defaultTheme.maskType = CNPPopupMaskTypeDimmed;
-    defaultTheme.shouldDismissOnBackgroundTouch = YES;
-    defaultTheme.movesAboveKeyboard = YES;
-    defaultTheme.contentVerticalPadding = 16.0f;
-    defaultTheme.maxPopupWidth = self.view.frame.size.width/2;
-    defaultTheme.animationDuration = 0.65f;
-    return defaultTheme;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

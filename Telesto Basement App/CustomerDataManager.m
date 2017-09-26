@@ -20,6 +20,7 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
+#define BASE_NEW_URL  @"http://api.web1.stag.csm.to/1.0"
 #define AUTH_KEY @"authKey"
 #define TOKEN_STRING @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH"
 
@@ -343,66 +344,115 @@
     return countryList;
 
 }
--(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
-    
-    _customerList = [[NSMutableDictionary alloc] init];
-    UIView *window = [UIApplication sharedApplication].keyWindow;
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
-
+-(void)getUserIdWithCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSString *endPoint = @"customer_list";
-    NSString *customerListUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,endPoint];
-    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",nil];
-    [manager POST:customerListUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        // This is not called back on the main queue.
-        // You are responsible for dispatching to the main queue for UI updates
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //Update the progress view
-            NSLog(@"Uploading User FAQ and Use Template Name");
-            [hud showAnimated:YES];
-
-        });
-    } success:^(NSURLSessionDataTask *task, id responseObject){
+    NSString *endPoint = @"/profile/view";
+    NSString *customerIdUrl = [NSString stringWithFormat:@"%@%@",BASE_NEW_URL,endPoint];
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] valueForKey:@"access_token"],@"access_token",nil];
+    [manager GET:customerIdUrl parameters:aParametersDic progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
         NSError *e;
         NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
-        _customerList = [[jsonDic valueForKey:@"results"] valueForKey:@"customers"];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //Update the progress view
-            NSLog(@"Uploading User FAQ and Use Template Name");
-            [hud hideAnimated:YES];
-        });
-//        NSLog(@"%@",_customerList);
-        completionBlock(YES);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"%@", @"Customer list not loaded".capitalizedString);
-//        NSLog(@"%@",error);
-        [hud hideAnimated:YES];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Customer not loaded" message:@"Reload?!!!" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* ok = [UIAlertAction
-                             actionWithTitle:@"OK"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
-                                 [alert dismissViewControllerAnimated:YES completion:nil];
-                                 [self getCustomerListWithBaseController:baseController withCompletionBlock:^(BOOL success){
-                                     completionBlock(NO);
-                                 }];
-                             }];
-        [alert addAction:ok];
-        
-        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                                 [alert dismissViewControllerAnimated:YES completion:nil];
-                             }];
-        [alert addAction:cancel];
-        
-        [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
-        [cancel setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+        NSLog(@"%@",jsonDic);
 
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+        completionBlock(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
         completionBlock(NO);
     }];
+}
+-(void)getCustomerListWithBaseController:(CustomerListViewController*)baseController withCompletionBlock:(void (^)(BOOL succeeded))completionBlock{
+    
+    [self getUserIdWithCompletionBlock:^(BOOL success){
+        UIView *window = [UIApplication sharedApplication].keyWindow;
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
+        if (success == YES) {
+            _customerList = [[NSMutableDictionary alloc] init];
+            
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            NSString *endPoint = @"customer_list";
+            NSString *customerListUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,endPoint];
+            NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:TOKEN_STRING,@"authKey",[NSNumber numberWithLong:[[[NSUserDefaults standardUserDefaults] valueForKey:@"userId"] longValue]],@"userId",nil];
+            [manager POST:customerListUrl parameters:aParametersDic constructingBodyWithBlock:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+                // This is not called back on the main queue.
+                // You are responsible for dispatching to the main queue for UI updates
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //Update the progress view
+                    NSLog(@"Uploading User FAQ and Use Template Name");
+                    [hud showAnimated:YES];
+                    
+                });
+            } success:^(NSURLSessionDataTask *task, id responseObject){
+                NSError *e;
+                NSMutableDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error: &e];
+                _customerList = [[jsonDic valueForKey:@"results"] valueForKey:@"customers"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //Update the progress view
+                    NSLog(@"Uploading User FAQ and Use Template Name");
+                    [hud hideAnimated:YES];
+                });
+                //        NSLog(@"%@",_customerList);
+                completionBlock(YES);
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"%@", @"Customer list not loaded".capitalizedString);
+                //        NSLog(@"%@",error);
+                [hud hideAnimated:YES];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Customer not loaded" message:@"Reload?!!!" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* ok = [UIAlertAction
+                                     actionWithTitle:@"OK"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                         [self getCustomerListWithBaseController:baseController withCompletionBlock:^(BOOL success){
+                                             completionBlock(NO);
+                                         }];
+                                     }];
+                [alert addAction:ok];
+                
+                UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                    [alert dismissViewControllerAnimated:YES completion:nil];
+                }];
+                [alert addAction:cancel];
+                
+                [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+                [cancel setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+                
+                [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+                completionBlock(NO);
+            }];
+        }
+        else{
+            [hud hideAnimated:YES];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Customer not loaded" message:@"Do You Want To Reload?!!!" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction* ok = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     [self getUserIdWithCompletionBlock:^(BOOL success){
+                                         completionBlock(NO);
+                                     }];
+                                 }];
+            [alert addAction:ok];
+            
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alert addAction:cancel];
+            
+            [ok setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            [cancel setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
+            
+            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
+            completionBlock(NO);
+        }
+    }];
+    
+    
 }
 -(NSMutableDictionary*)getCustomerData{
     return _customerList;
