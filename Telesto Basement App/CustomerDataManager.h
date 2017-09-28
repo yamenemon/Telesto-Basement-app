@@ -39,6 +39,9 @@
 
 + (CustomerDataManager *)sharedManager;
 - (BOOL)connected;
+-(void)logoutWithAccessToken:(NSString*)accessToken withCompletionBlock:(void (^)(BOOL success))completionBlock;
+
+
 -(void)uploadBuildingMediaImagesArray:(NSMutableArray*)imageArray withController:(CustomerRecordViewController*)rootController withCompletion:(void (^)(void))completionBlock;
 -(NSMutableArray*)uploadedBuildingMediaArray;
 -(NSMutableDictionary*)getCustomerData;

@@ -4386,6 +4386,92 @@ Ma# 112382 RI#3934</string>
             </objects>
             <point key="canvasLocation" x="-6612.3046875" y="-2078.125"/>
         </scene>
+        <!--Web Log Out View Controller-->
+        <scene sceneID="ZGF-6W-S7F">
+            <objects>
+                <viewController storyboardIdentifier="WebLogOutViewController" id="wFJ-nE-Zgg" customClass="WebLogOutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E9J-0v-Kzq"/>
+                        <viewControllerLayoutGuide type="bottom" id="5CM-de-hBK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EAY-96-C7Q">
+                        <rect key="frame" x="0.0" y="0.0" width="880" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwo-mF-Wh5" userLabel="BaseView">
+                                <rect key="frame" x="0.0" y="0.0" width="880" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yx-mq-iGV">
+                                        <rect key="frame" x="0.0" y="0.0" width="880" height="50"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuG-di-lHd">
+                                                <rect key="frame" x="796" y="1" width="73" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="73" id="uf5-mL-w6A"/>
+                                                </constraints>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelBtnAction:" destination="wFJ-nE-Zgg" eventType="touchUpInside" id="WJR-Ts-39l"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LogOut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmq-eF-70t">
+                                                <rect key="frame" x="408" y="-0.5" width="65.5" height="50"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.038640640679999998" green="0.33505094050000001" blue="0.44409996270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="nmq-eF-70t" firstAttribute="centerX" secondItem="3yx-mq-iGV" secondAttribute="centerX" id="OAh-Z9-u5o"/>
+                                            <constraint firstAttribute="trailing" secondItem="fuG-di-lHd" secondAttribute="trailing" constant="11" id="VWn-4f-qHJ"/>
+                                            <constraint firstItem="fuG-di-lHd" firstAttribute="top" secondItem="3yx-mq-iGV" secondAttribute="top" constant="1" id="WDv-0M-4NK"/>
+                                            <constraint firstItem="fuG-di-lHd" firstAttribute="centerY" secondItem="3yx-mq-iGV" secondAttribute="centerY" id="ds5-DG-yHC"/>
+                                            <constraint firstItem="nmq-eF-70t" firstAttribute="centerY" secondItem="3yx-mq-iGV" secondAttribute="centerY" id="pzN-Rl-Tzc"/>
+                                            <constraint firstItem="nmq-eF-70t" firstAttribute="height" secondItem="3yx-mq-iGV" secondAttribute="height" id="zNm-I4-xu0"/>
+                                        </constraints>
+                                    </view>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-cB-RVu">
+                                        <rect key="frame" x="0.0" y="58" width="880" height="542"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="542" id="HsT-xL-mb7"/>
+                                        </constraints>
+                                    </webView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="3yx-mq-iGV" firstAttribute="trailing" secondItem="rDr-cB-RVu" secondAttribute="trailing" id="2Uc-Je-nWy"/>
+                                    <constraint firstItem="3yx-mq-iGV" firstAttribute="leading" secondItem="rDr-cB-RVu" secondAttribute="leading" id="DXv-co-YXO"/>
+                                    <constraint firstItem="3yx-mq-iGV" firstAttribute="top" secondItem="nwo-mF-Wh5" secondAttribute="top" id="M0u-ht-Z03"/>
+                                    <constraint firstItem="3yx-mq-iGV" firstAttribute="leading" secondItem="nwo-mF-Wh5" secondAttribute="leading" id="NhC-MQ-hbc"/>
+                                    <constraint firstAttribute="trailing" secondItem="3yx-mq-iGV" secondAttribute="trailing" id="Xd1-yZ-sP3"/>
+                                    <constraint firstItem="rDr-cB-RVu" firstAttribute="top" secondItem="3yx-mq-iGV" secondAttribute="bottom" constant="8" symbolic="YES" id="hwO-PU-IdF"/>
+                                    <constraint firstAttribute="bottom" secondItem="rDr-cB-RVu" secondAttribute="bottom" id="sWd-x9-820"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nwo-mF-Wh5" secondAttribute="trailing" id="C9R-sK-Ewk"/>
+                            <constraint firstItem="nwo-mF-Wh5" firstAttribute="top" secondItem="E9J-0v-Kzq" secondAttribute="bottom" id="FFJ-vA-9R6"/>
+                            <constraint firstItem="nwo-mF-Wh5" firstAttribute="leading" secondItem="EAY-96-C7Q" secondAttribute="leading" id="gat-hp-DTg"/>
+                            <constraint firstItem="nwo-mF-Wh5" firstAttribute="bottom" secondItem="5CM-de-hBK" secondAttribute="top" id="nbb-A6-8Cy"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="880" height="600"/>
+                    <connections>
+                        <outlet property="webView" destination="rDr-cB-RVu" id="mWP-f6-Izo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s0k-if-TXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-9162" y="-870"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CarouselBackground" width="25" height="234"/>

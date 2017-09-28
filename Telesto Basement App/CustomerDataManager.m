@@ -20,7 +20,7 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define BASE_URL  @"http://telesto.centralstationmarketing.com/"
-#define BASE_NEW_URL  @"http://api.web1.stag.csm.to/1.0"
+#define BASE_NEW_URL  @"https://api.web1.stag.csm.to/1.0"
 #define AUTH_KEY @"authKey"
 #define TOKEN_STRING @"telesto9NRd7GR11I41Y20P0jKN146SYnzX5uMH"
 
@@ -41,6 +41,27 @@
 - (BOOL)connected {
     return [AFNetworkReachabilityManager sharedManager].reachable;
 }
+
+#pragma mark -
+#pragma mark LOGOUT
+
+-(void)logoutWithAccessToken:(NSString*)accessToken withCompletionBlock:(void (^)(BOOL success))completionBlock{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSString *endPoint = @"/logout";
+    NSMutableDictionary *aParametersDic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:accessToken,@"access_token", nil];
+    [manager GET:[NSString stringWithFormat:@"%@%@",BASE_NEW_URL,endPoint] parameters:aParametersDic progress:nil success:^(NSURLSessionDataTask *task, id responseObject){
+        NSLog(@"Response: %@", responseObject);
+        NSLog(@"%@",[[NSString alloc] initWithData:responseObject encoding:4]);
+        completionBlock(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        completionBlock(NO);
+    }];
+}
+
+#pragma mark -
+#pragma mark CREATE CUSTOMER
 -(void)createCustomerAfterEditing:(CustomerDetailInfoObject*)objects withCompletionBlock:(void (^)(void))completionBlock{
     
     if (uploadedBuildingMediaArray.count>0) {

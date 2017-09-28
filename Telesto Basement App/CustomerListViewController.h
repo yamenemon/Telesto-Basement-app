@@ -17,11 +17,12 @@
 #import <CoreLocation/CoreLocation.h>
 
 
+
 @class CustomerDataManager;
 @class CustomerInfoObject;
 @class CustomerRecordViewController;
 
-@interface CustomerListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>{
+@interface CustomerListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIPopoverPresentationControllerDelegate>{
     CLLocationManager *locationManager;
 
 }

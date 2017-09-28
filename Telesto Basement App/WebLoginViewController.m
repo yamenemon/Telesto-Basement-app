@@ -20,7 +20,7 @@
     webView.delegate = self;
     NSString *deviceToken = [(AppDelegate *)[[UIApplication sharedApplication] delegate] deviceToken];
 
-    NSString *urlString =[NSString stringWithFormat:@"http://api.web1.stag.csm.to/1.0/login?response_type=token&state=%@&redirect_uri=telesto://authorize",deviceToken] ;
+    NSString *urlString =[NSString stringWithFormat:@"https://api.web1.stag.csm.to/1.0/login?response_type=token&state=%@&redirect_uri=telesto://authorize",deviceToken] ;
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [webView loadRequest:urlRequest];

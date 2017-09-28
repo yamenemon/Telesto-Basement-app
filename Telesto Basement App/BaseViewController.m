@@ -103,6 +103,7 @@
                     [Utility showCustomerListViewController];
                 });
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLoggedIn"];
             }];
         }
     }];

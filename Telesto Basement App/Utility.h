@@ -49,4 +49,5 @@
 -(NSMutableArray*)getImageFromArr;
 
 -(UIViewController*)showWebViewLoginViewController;
+-(UIViewController*)showWebViewLogOutViewController;
 @end

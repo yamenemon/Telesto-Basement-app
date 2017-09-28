@@ -75,6 +75,17 @@
     [[UIApplication sharedApplication].keyWindow setRootViewController:vc];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLoggedIn"];
 }
+
+-(UIViewController*)showWebViewLoginViewController{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WebLoginViewController *webViewController = [sb instantiateViewControllerWithIdentifier:@"WebLoginViewController"];
+    webViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    webViewController.preferredContentSize = CGSizeMake(910, 750);
+    webViewController.modalPresentationStyle = UIModalPresentationPopover;
+    return webViewController;
+}
+
+
 + (void)showCustomerListViewController {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"SWRevealViewController"];
@@ -200,15 +211,6 @@
 }
 -(NSMutableArray*)getImageFromArr{
     return faqImageArray;
-}
-
--(UIViewController*)showWebViewLoginViewController{
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebLoginViewController *webViewController = [sb instantiateViewControllerWithIdentifier:@"WebLoginViewController"];
-    webViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    webViewController.preferredContentSize = CGSizeMake(910, 750);
-    webViewController.modalPresentationStyle = UIModalPresentationPopover;
-    return webViewController;
 }
 
 @end

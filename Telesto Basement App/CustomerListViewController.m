@@ -32,7 +32,18 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     [locationManager startUpdatingLocation];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveNotification:)
+                                                 name:@"dismissLogOutWebView"
+                                               object:nil];
+}
+
+- (void)receiveNotification:(NSNotification *)notification
+{
+    if ([[notification name] isEqualToString:@"dismissLogOutWebView"]) {
+        NSString *dismissWebView = (NSString *)notification.object;
+        
+    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     customerDataManager = [CustomerDataManager sharedManager];
@@ -286,18 +297,19 @@
 }
 
 - (IBAction)logoutBtnAction:(id)sender {
-        UIAlertController * alert=   [UIAlertController
+    UIBarButtonItem *btn = (UIBarButtonItem*)sender;
+    UIAlertController * alert=   [UIAlertController
                                       alertControllerWithTitle:@"Log Out"
                                       message:@"Do you want to Log out?"
                                       preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction* ok = [UIAlertAction
+    UIAlertAction* ok = [UIAlertAction
                              actionWithTitle:@"Yes"
                              style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action){
-                                 [Utility showBaseViewController];
+                                 [self showPopupWithStyle:CNPPopupStyleCentered withFrame:btn];
                              }];
-        UIAlertAction* cancel = [UIAlertAction
+    UIAlertAction* cancel = [UIAlertAction
                                  actionWithTitle:@"NO"
                                  style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action)
@@ -307,9 +319,27 @@
                                  }];
 //        [alert setValue:UIColorFromRGB(0x0A5A78) forKey:@"titleTextColor"];
 
-        [alert addAction:ok];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
+- (void)showPopupWithStyle:(CNPPopupStyle)popupStyle withFrame:(UIBarButtonItem*)btn{
+    
+//    UIViewController *webViewController = [[Utility sharedManager] showWebViewLogOutViewController];
+//    UIPopoverPresentationController *popPC = webViewController.popoverPresentationController;
+//    webViewController.popoverPresentationController.sourceRect = CGRectMake(self.view.frame.size.width-10,50, 10, 10);
+//    webViewController.popoverPresentationController.sourceView = self.view;
+//    popPC.permittedArrowDirections = UIPopoverArrowDirectionAny;
+//    popPC.delegate = self;
+//    [self presentViewController:webViewController animated:YES completion:nil];
 
+    
+    CustomerDataManager *manager = [CustomerDataManager sharedManager];
+    
+    [manager logoutWithAccessToken:[[NSUserDefaults standardUserDefaults] valueForKey:@"access_token"] withCompletionBlock:^(BOOL success){
+        if (success == YES) {
+            [Utility showBaseViewController];
+        }
+    }];
+}
 @end

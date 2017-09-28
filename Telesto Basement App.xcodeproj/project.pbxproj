@@ -449,6 +449,8 @@
 		70015E941DF690E100DF542E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				70015E961DF6913200DF542E /* Utility.h */,
+				70015E971DF6913200DF542E /* Utility.m */,
 				3BA8D3A81EF8363400517C65 /* CustomerDataManager.h */,
 				3BA8D3A71EF8363400517C65 /* CustomerDataManager.m */,
 				7084E9A41E07C60100EA5AE8 /* SPUserResizableView.h */,
@@ -457,8 +459,6 @@
 				706FA6B51ECEFCAE003E7247 /* MTReachabilityManager.m */,
 				706FA6B11ECEFC4F003E7247 /* Reachability.h */,
 				706FA6B21ECEFC4F003E7247 /* Reachability.m */,
-				70015E961DF6913200DF542E /* Utility.h */,
-				70015E971DF6913200DF542E /* Utility.m */,
 				70CD67CA1ED6BE5E007980FA /* StringClass.h */,
 				70A9A7B81F4434E80027585A /* MPTextView.h */,
 				70A9A7B91F4434E80027585A /* MPTextView.m */,
